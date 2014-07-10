@@ -1,0 +1,14 @@
+[
+  {
+      "name": "Coursefork"
+    , "uri": "http://coursefork.org/"
+    , "description": "Coursefork is a new way of collaborating in education; it open-sources the process of compiling educational materials and teaching them."
+    , "image": "/img/coursefork.png"
+  },
+  {
+      "name": "soundtrack.io"
+    , "uri": "http://soundtrack.io/"
+    , "description": "soundtrack.io is a collaborative online jukebox for listening to music with your friends."
+    , "image": "/img/soundtrack.io.png"
+  }
+]

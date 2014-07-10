@@ -1,0 +1,15 @@
+extends layouts/default
+
+block content
+  h1 #{forum.name}
+  
+  ul
+    for topic in topics
+      include partials/topic-row
+
+  if (user)
+    h4 Create Topic
+    form(action="/forums/#{forum.slug}/topics", method="POST")
+      input(type="text", name="name")
+      textarea(name="description")
+      input.btn(type="submit")

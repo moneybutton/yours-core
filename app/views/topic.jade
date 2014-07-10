@@ -1,0 +1,15 @@
+extends layouts/default
+
+block content
+  h1 #{topic.name}
+  p !{markdown(topic.description)}
+  
+  for post in posts
+    include partials/post-row
+    
+  
+  if (user)
+    h4 Write Post
+    form(action="/forums/#{forum.slug}/topics/#{topic.slug}/posts", method="POST")
+      textarea(name="content")
+      input.btn(type="submit")

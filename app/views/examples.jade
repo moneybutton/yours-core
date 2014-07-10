@@ -1,0 +1,11 @@
+extends layouts/default
+
+block content
+  h1 Projects Using Maki
+  p Here's a list of projects that are built using Maki, or are using Maki as a reference stack for their own application.
+
+  hr
+
+  ul.media-list
+    for example in examples
+      include partials/example

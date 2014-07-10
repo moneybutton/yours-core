@@ -1,0 +1,5 @@
+li(data-post-id="#{post._id}")
+  h5 by 
+    - var person = post._author
+    include person-slug
+  p !{markdown(post.content)}

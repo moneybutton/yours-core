@@ -1,0 +1,10 @@
+form(action="/login", method="post")
+  .form-group
+    label(for="username") Username
+    input.form-control(type="text", name="username", placeholder="Username")
+
+  .form-group
+    label(for="password") Password
+    input.form-control(type="password", name="password")
+
+  button.btn.btn-default.pull-right(type="submit") Log In &raquo;

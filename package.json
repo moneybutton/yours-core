@@ -1,0 +1,47 @@
+{
+  "name": "converse",
+  "version": "0.0.1",
+  "description": "",
+  "main": "converse.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "bb",
+    "bulletin",
+    "board",
+    "discussion",
+    "forum"
+  ],
+  "author": "Eric Martindale",
+  "license": "MIT",
+  "dependencies": {
+    "passport": "~0.1.16",
+    "jade": "~0.28.2",
+    "passport-local-mongoose": "~0.2.1",
+    "express": "~4.3.2",
+    "mongoose": "~3.8.1",
+    "passport-local": "~0.1.6",
+    "less-middleware": "~0.1.14",
+    "mongoose-slug": "^1.3.0",
+    "flashify": "~0.1.2",
+    "underscore": "~1.6.0",
+    "async": "~0.7.0",
+    "cookie-parser": "~1.1.0",
+    "body-parser": "~1.2.2",
+    "express-session": "~1.2.1",
+    "asset-rack": "git://github.com/martindale/asset-rack.git#8d03859922d83f4839086b1208ff6aab28a0a272",
+    "ws": "~0.4.31",
+    "hbs": "~2.7.0",
+    "provide": "~0.1.1",
+    "path-to-regexp": "~0.2.1",
+    "redis": "~0.10.3",
+    "connect-redis": "~2.0.0",
+    "marked": "~0.3.2"
+  },
+  "devDependencies": {
+    "assert": "~1.1.1",
+    "supertest": "~0.13.0",
+    "mocha": "~1.20.1"
+  }
+}
