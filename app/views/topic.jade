@@ -7,9 +7,11 @@ block content
   for post in posts
     include partials/post-row
     
-  
   if (user)
     h4 Write Post
-    form(action="/forums/#{forum.slug}/topics/#{topic.slug}/posts", method="POST")
-      textarea(name="content")
-      input.btn(type="submit")
+    form.form(action="/forums/#{forum.slug}/topics/#{topic.slug}/posts", method="POST")
+      .form-group
+        label(for="content")
+        textarea.form-control(name="content")
+      .form-group.pull-right
+        input.btn(type="submit")

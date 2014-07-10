@@ -9,7 +9,12 @@ block content
 
   if (user)
     h4 Create Topic
-    form(action="/forums/#{forum.slug}/topics", method="POST")
-      input(type="text", name="name")
-      textarea(name="description")
-      input.btn(type="submit")
+    form.form(action="/forums/#{forum.slug}/topics", method="POST")
+      .form-group
+        label(for="name") Topic Name
+        input.form-control(type="text", name="name")
+      .form-group
+        label(for="description") Topic Description
+        textarea.form-control(name="description")
+      .form-group.pull-right
+        input.btn(type="submit")
