@@ -3,6 +3,8 @@ extends layouts/default
 block content
   h1 #{forum.name}
   
+  
+  h2 Topics
   ul
     for topic in topics
       include partials/topic-row

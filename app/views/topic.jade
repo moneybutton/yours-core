@@ -4,6 +4,7 @@ block content
   h1 #{topic.name}
   p !{markdown(topic.description)}
   
+  h2 Posts
   for post in posts
     include partials/post-row
     
