@@ -8,6 +8,7 @@ var mongoose = require('mongoose')
 // and moreover, their type.
 var PersonSchema = new Schema({
     username: { type: String, required: true }
+  , bio: { type: String }
   , email: { type: String, required: true }
   , created: { type: Date, required: true, default: Date.now }
 });

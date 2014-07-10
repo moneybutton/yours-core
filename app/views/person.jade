@@ -4,3 +4,10 @@ block content
   h1 #{person.username} 
     small a user on Maki
   p #{person.email}
+  p #{person.bio}
+
+
+  form(action="/people/#{person.slug}/edit", method="POST")
+    textarea(name="bio") #{person.bio}
+    
+    input.btn(type="submit")

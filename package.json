@@ -37,7 +37,9 @@
     "path-to-regexp": "~0.2.1",
     "redis": "~0.10.3",
     "connect-redis": "~2.0.0",
-    "marked": "~0.3.2"
+    "marked": "~0.3.2",
+    "bitauth": "~0.1.1",
+    "passport-bitauth": "~0.1.0"
   },
   "devDependencies": {
     "assert": "~1.1.1",

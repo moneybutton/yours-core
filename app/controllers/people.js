@@ -1,6 +1,22 @@
 module.exports = {
+  edit: function(req, res, next) {
+    Person.findOne({ slug: req.param('personSlug') }).exec(function(err, person) {
+      if (err) { console.log(err); }
+      if (!person) { return next(); }
+      
+      person.bio = req.param('bio') || person.bio;
+      person.save(function(err) {
+        if (err) { console.log(err); next(err); }
+        
+        res.redirect('/people/' + person.slug );
+        
+      });
+      
+    });
+  },
   list: function(req, res, next) {
     Person.find().exec(function(err, people) {
+      if (err) { console.log(err); }
       res.provide( 'people', {
         people: people
       });
@@ -8,7 +24,9 @@ module.exports = {
   },
   view: function(req, res, next) {
     Person.findOne({ slug: req.param('personSlug') }).exec(function(err, person) {
-      if (err || !person) { return next(); }
+      if (err) { console.log(err); }
+      if (!person) { return next(); }
+      
       res.provide( 'person', {
         person: person
       });
