@@ -1,9 +1,3 @@
-var endpoints = {
-  register: function( endpoint ) {
-    
-  }
-}
-
 module.exports = {
   examples: function(req, res, next) {
     require('fs').readFile('data/examples.json', function(err, data) {
