@@ -8,6 +8,7 @@ var mongoose = require('mongoose');   // manage
 var flashify = require('flashify');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var BitAuthStrategy = require('passport-bitauth').Strategy;
 var passportLocalMongoose = require('passport-local-mongoose');
 
 // utility
@@ -40,7 +41,10 @@ var maki = new Maki( app );
 
 // make the HTML output readible, for designers. :)
 app.locals.pretty = true;
+
+// make some visual utilities available to the view layer
 app.locals.markdown = require('marked');
+app.locals.moment   = require('moment');
 
 /* use AssetRack to minify and cache static objects */
 var assets = new rack.Rack([
@@ -103,6 +107,7 @@ app.use(passport.session());
 
 /* enable "local" login (e.g., username and password) */
 passport.use(new LocalStrategy( Person.authenticate() ) );
+passport.use(new BitAuthStrategy(function() {}) );
 
 passport.serializeUser( Person.serializeUser() );
 passport.deserializeUser( Person.deserializeUser() );
@@ -165,7 +170,19 @@ var resources = [
   , { name: 'loginForm',        path: '/login',              template: 'login',    get: people.forms.login }
   , { name: 'destroySession' ,  path: '/logout' ,            template: 'index',    get: people.logout }
   , { name: 'people',           path: '/people',             template: 'people',   get: people.list , post: people.create }
-  , { name: 'person',           path: '/people/:personSlug', template: 'person',   get: people.view }
+  , { 
+      name: 'person',
+      path: '/people/:personSlug',
+      template: 'person',
+      get: people.view,
+      put: people.edit
+    }
+  , { 
+      name: 'personEdit',
+      path: '/people/:personSlug/edit',
+      template: 'person',
+      post: people.edit
+    }
   , {
       name: 'forums',
       path: '/forums' ,

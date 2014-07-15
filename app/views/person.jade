@@ -2,5 +2,18 @@ extends layouts/default
 
 block content
   h1 #{person.username} 
-    small a user on Maki
+    small a user on converse
   p #{person.email}
+  p #{person.bio}
+
+  h5 #{posts.length} posts
+  ul.list-group
+    each post in posts
+      li.list-group-item
+        a(href="#") #{post}
+
+  if (user && user._id.toString() === person._id.toString())
+    form(action="/people/#{person.slug}/edit", method="POST")
+      textarea(name="bio") #{person.bio}
+      
+      input.btn(type="submit")

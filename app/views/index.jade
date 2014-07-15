@@ -1,8 +1,12 @@
 extends layouts/default
 
 block content
-  for forum in forums
-    include partials/forum-row
+
+  h2 Forums
+
+  ul.list-group
+    for forum in forums
+      include partials/forum-row
 
   if (user)
     h4 Create Forum
