@@ -1,12 +1,20 @@
 extends layouts/default
 
 block content
+
   h1 #{topic.name}
+    |  
+    small posted 
+      mixin timestamp( topic.created ) 
+      |  by 
+      - var person = topic._author
+      include partials/person-slug
   p !{markdown(topic.description)}
   
   h2 Posts
-  for post in posts
-    include partials/post-row
+  ul.list-group
+    for post in posts
+      include partials/post-row
     
   if (user)
     h4 Write Post

@@ -26,10 +26,16 @@ module.exports = {
     Person.findOne({ slug: req.param('personSlug') }).exec(function(err, person) {
       if (err) { console.log(err); }
       if (!person) { return next(); }
-      
-      res.provide( 'person', {
-        person: person
+
+      Post.find({ _author: person._id }).exec(function(err, posts) {
+        if (err) { console.log(err); }
+
+        res.provide( 'person', {
+            person: person
+          , posts: posts
+        });
       });
+
     });
   },
   // TODO: define a forms class that describes fields

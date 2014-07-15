@@ -41,7 +41,10 @@ var maki = new Maki( app );
 
 // make the HTML output readible, for designers. :)
 app.locals.pretty = true;
+
+// make some visual utilities available to the view layer
 app.locals.markdown = require('marked');
+app.locals.moment   = require('moment');
 
 /* use AssetRack to minify and cache static objects */
 var assets = new rack.Rack([
