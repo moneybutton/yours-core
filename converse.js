@@ -8,7 +8,6 @@ var mongoose = require('mongoose');   // manage
 var flashify = require('flashify');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var BitAuthStrategy = require('passport-bitauth').Strategy;
 var passportLocalMongoose = require('passport-local-mongoose');
 
 // utility
@@ -107,7 +106,6 @@ app.use(passport.session());
 
 /* enable "local" login (e.g., username and password) */
 passport.use(new LocalStrategy( Person.authenticate() ) );
-passport.use(new BitAuthStrategy(function() {}) );
 
 passport.serializeUser( Person.serializeUser() );
 passport.deserializeUser( Person.deserializeUser() );
