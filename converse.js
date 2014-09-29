@@ -26,6 +26,7 @@ Topic  = require('./app/models/Topic').Topic;
 Post   = require('./app/models/Post').Post;
 
 // set up controlers for various resources
+pages    = require('./app/controllers/pages');
 people   = require('./app/controllers/people');
 forums   = require('./app/controllers/forums');
 topics   = require('./app/controllers/topics');
