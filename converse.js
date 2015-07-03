@@ -15,7 +15,8 @@ converse.use( passport );
 converse.define('Person', {
   attributes: {
     username: { type: String , required: true }
-  }
+  },
+  icon: 'user'
 });
 
 converse.define('Forum', {
@@ -26,7 +27,8 @@ converse.define('Forum', {
     _creator: { type: ObjectId, required: true, ref: 'Person' },
     _owner: { type: ObjectId, required: true, ref: 'Person' },
     _moderators: [ { type: ObjectId, ref: 'Person' } ]
-  }
+  },
+  icon: 'list'
 });
 
 converse.define('Topic', {
@@ -36,7 +38,8 @@ converse.define('Topic', {
     _author: { type: ObjectId, required: true, ref: 'Person' },
     _forum:  { type: ObjectId, required: true, ref: 'Forum' },
     created: { type: Date, required: true, default: Date.now }
-  }
+  },
+  icon: 'pin'
 });
 
 converse.define('Post', {
@@ -46,7 +49,8 @@ converse.define('Post', {
     created: { type: Date, required: true, default: Date.now },
     updated: { type: Date },
     content: { type: String, min: 1 }
-  }
+  },
+  icon: 'comment'
 });
 
 converse.start(function(err) {
