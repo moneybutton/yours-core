@@ -6,7 +6,29 @@
 module.exports = {
   service: {
     name: 'converse',
-    icon: 'comment'
+    icon: 'comment',
+    namespace: 'converse',
+    mission: 'Simple, open-source, uncensorable conversations.',
+    description: 'Want a place to share ideas and have discussions?  Keep in a place that can\'t be killed.',
+    source: 'https://github.com/martindale/converse',
+    points: [
+      {
+        header: 'Open Source',
+        description: 'Edit, modify, and improve the features and functionality of the platform.  It\'s open source.'
+      },
+      {
+        header: 'Simple is beautiful.',
+        description: 'Rethought, cleaned, and very direct.  No cruft from supporting legacy crap.'
+      },
+      {
+        header: 'Already registered?',
+        description: 'Go on then.  Get logged in.  You\'re _groovy_.',
+        action: {
+          text: 'Log In &raquo;',
+          link: '/sessions'
+        }
+      }
+    ],
   },
   services: {
     http: {

@@ -14,14 +14,15 @@ converse.use( passport );
 
 converse.define('Person', {
   attributes: {
-    username: { type: String , required: true }
+    username: { type: String , max: 35 , required: true , slug: true },
+    password: { type: String , max: 70 , masked: true }
   },
   icon: 'user'
 });
 
 converse.define('Forum', {
   attributes: {
-    name: { type: String, required: true, max: 255 , slug: true },
+    name: { type: String, required: true, max: 200 , slug: true },
     description: { type: String, max: 1024 },
     created: { type: Date, required: true, default: Date.now },
     _creator: { type: ObjectId, required: true, ref: 'Person' },
@@ -33,10 +34,10 @@ converse.define('Forum', {
 
 converse.define('Topic', {
   attributes: {
-    name: { type: String, required: true, max: 255 },
+    name: { type: String, required: true, max: 200 },
     description: { type: String, required: true },
     _author: { type: ObjectId, required: true, ref: 'Person' },
-    _forum:  { type: ObjectId, required: true, ref: 'Forum' },
+    _forum:  { type: ObjectId, /* required: true, */ ref: 'Forum' },
     created: { type: Date, required: true, default: Date.now }
   },
   icon: 'pin'
