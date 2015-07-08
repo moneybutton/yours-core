@@ -1,0 +1,36 @@
+extends ../node_modules/maki/views/layouts/default
+
+block content
+  style.
+    .ui.cards .card {
+      width: 100%;
+    }
+
+  .ui.cards
+    .card
+      .content
+        img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
+        .header
+          a(href="/posts/#{post._id}") #{post.name}
+        .meta
+          a(href="/posts/#{post._id}")
+            abbr.date.tooltipped(title="#{ moment( post.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( post.created ).fromNow() }
+          | by 
+          a.user(href="/people/#{post._author}") #{post._author}
+        .description !{ markdown(post.description) }
+      .extra.content
+        a(href="/posts/#{post._id}#comments")
+          i.comment.icon
+          | 443 comments
+
+    .card
+      .content
+        if (user)
+          form.ui.form(action="/comments", method="post")
+            input(type="hidden", name="_author", value="#{user._id}")
+            input(type="hidden", name="context", value="#{post._id}")
+            .field
+              label Comment
+              textarea(name="message")
+            .right.floated
+              button.ui.submit.button Add Comment &raquo;
