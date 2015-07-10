@@ -36,10 +36,19 @@ converse.define('Post', {
   attributes: {
     name: { type: String, required: true, max: 200 },
     description: { type: String, required: true },
-    _author: { type: ObjectId, required: true, ref: 'Person' },
+    _author: { type: ObjectId, required: true, ref: 'Person', populate: ['get', 'query'] },
     _board:  { type: ObjectId, /* required: true, */ ref: 'Forum' },
     created: { type: Date, required: true, default: Date.now },
     link:    { type: String }
+  },
+  requires: {
+    'Comment': {
+      filter: function() {
+        var post = this;
+        return { _post: post._id };
+      },
+      populate: '_author _parent'
+    }
   },
   icon: 'pin'
 });
@@ -48,7 +57,7 @@ converse.define('Comment', {
   attributes: {
     _author: { type: ObjectId, required: true, ref: 'Person' },
     _post: { type: ObjectId, required: true , ref: 'Post' },
-    _parent: { type: ObjectId, required: true , ref: 'Comment' },
+    _parent: { type: ObjectId, ref: 'Comment' },
     created: { type: Date, required: true, default: Date.now },
     updated: { type: Date },
     content: { type: String, min: 1 }

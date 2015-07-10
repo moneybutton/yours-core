@@ -16,21 +16,36 @@ block content
           a(href="/posts/#{post._id}")
             abbr.date.tooltipped(title="#{ moment( post.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( post.created ).fromNow() }
           | by 
-          a.user(href="/people/#{post._author}") #{post._author}
+          a.user(href="/people/#{post._author.slug}") #{post._author.username}
         .description !{ markdown(post.description) }
       .extra.content
         a(href="/posts/#{post._id}#comments")
           i.comment.icon
           | 443 comments
 
+    for comment in comments
+      .card
+        .content
+          img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
+          .meta
+            a(href="/posts/#{post._id}#comment#{comment._id}")
+              abbr.date.tooltipped(title="#{ moment( comment.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( comment.created ).fromNow() }
+            | by 
+            a.user(href="/people/#{comment._author.slug}") #{comment._author.username}
+          .description !{ markdown(comment.content || '') }
+        .extra.content
+          a(href="/posts/#{post._id}#comment#{comment._id}")
+            i.comment.icon
+            | 123 comments
+
     .card
       .content
         if (user)
           form.ui.form(action="/comments", method="post")
             input(type="hidden", name="_author", value="#{user._id}")
-            input(type="hidden", name="context", value="#{post._id}")
+            input(type="hidden", name="_post", value="#{post._id}")
             .field
               label Comment
-              textarea(name="message")
+              textarea(name="content")
             .right.floated
               button.ui.submit.button Add Comment &raquo;

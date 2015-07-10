@@ -17,7 +17,7 @@ block content
             a(href="/posts/#{post._id}")
               abbr.date.tooltipped(title="#{ moment( post.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( post.created ).fromNow() }
             | by 
-            a.user(href="/people/#{post._author}") #{post._author}
+            a.user(href="/people/#{post._author.slug}") #{post._author.username}
           .description !{ markdown(post.description) }
         .extra.content
           a(href="/posts/#{post._id}#comments")
@@ -28,7 +28,6 @@ block content
       .content
         if (user)
           h3 New Post
-          
           form.ui.form(action="/posts", method="post")
             input(type="hidden", name="_author", value="#{user._id}")
             .field
