@@ -21,7 +21,7 @@ block content
       .extra.content
         a(href="/posts/#{post._id}#comments")
           i.comment.icon
-          | 443 comments
+          | #{comments.length} comments
           
     if (comments.length >= 3)
       .card

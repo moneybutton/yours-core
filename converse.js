@@ -15,12 +15,13 @@ converse.use( passport );
 converse.define('Person', {
   attributes: {
     username: { type: String , max: 35 , required: true , slug: true },
-    password: { type: String , max: 70 , masked: true }
+    password: { type: String , max: 70 , masked: true },
+    created:  { type: Date , default: Date.now , render: { query: false } }
   },
   icon: 'user'
 });
 
-converse.define('Board', {
+/* converse.define('Board', {
   attributes: {
     name: { type: String, required: true, max: 200 , slug: true },
     description: { type: String, max: 1024 },
@@ -30,14 +31,14 @@ converse.define('Board', {
     _moderators: [ { type: ObjectId, ref: 'Person' } ]
   },
   icon: 'slack'
-});
+}); */
 
 converse.define('Post', {
   attributes: {
     name: { type: String, required: true, max: 200 },
     description: { type: String, required: true },
     _author: { type: ObjectId, required: true, ref: 'Person', populate: ['get', 'query'] },
-    _board:  { type: ObjectId, /* required: true, */ ref: 'Forum' },
+    //_board:  { type: ObjectId, /* required: true, */ ref: 'Board' },
     created: { type: Date, required: true, default: Date.now },
     link:    { type: String }
   },
