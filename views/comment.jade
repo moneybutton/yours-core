@@ -1,42 +1,30 @@
 extends ../node_modules/maki/views/layouts/default
 
-block content  
+block content
+  - var post = comment._post
+
   style.
     .ui.cards .card {
       width: 100%;
     }
-
+  
   .ui.cards
     .card
       .content
         img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
-        .header
-          a(href="/posts/#{post._id}") #{post.name}
         .meta
-          a(href="/posts/#{post._id}")
-            abbr.date.tooltipped(title="#{ moment( post.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( post.created ).fromNow() }
+          a(href="/posts/#{post._id}#comment#{comment._id}")
+            abbr.date.tooltipped(title="#{ moment( comment.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( comment.created ).fromNow() }
           | by 
-          a.user(href="/people/#{post._author.slug}") #{post._author.username}
-        .description !{ markdown(post.description) }
+          a.user(href="/people/#{comment._author.slug}") #{comment._author.username}
+        .description !{ markdown(comment.content || '') }
       .extra.content
-        a(href="/posts/#{post._id}#comments")
+        a(href="/posts/#{post._id}#comment#{comment._id}")
           i.comment.icon
-          | #{comments.length} comments
-        a(href="/posts/#{post._id}#comment")
-          i.reply.icon
-          | reply
+          | 123 comments
           
-    if (comments.length >= 3)
-      .card
-        .content
-          if (user)
-            include forms/add-comment
-          else
-            p For now, we require a user account to participate.
-            include forms/register
-
     for comment in comments
-      .card
+      .card(style="margin-left: 2.5em;")
         .content
           img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
           .meta

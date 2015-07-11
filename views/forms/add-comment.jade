@@ -1,6 +1,10 @@
 form.ui.form#comment(action="/comments", method="post")
   input(type="hidden", name="_author", value="#{user._id}")
   input(type="hidden", name="_post", value="#{post._id}")
+
+  if (comment)
+    input(type="hidden", name="_parent", value="#{comment._id}")
+    
   .field
     label Comment
       .right.floated

@@ -46,7 +46,7 @@ converse.define('Post', {
     'Comment': {
       filter: function() {
         var post = this;
-        return { _post: post._id };
+        return { _post: post._id , _parent: { $exists: false } };
       },
       populate: '_author _parent'
     }
@@ -57,11 +57,20 @@ converse.define('Post', {
 converse.define('Comment', {
   attributes: {
     _author: { type: ObjectId, required: true, ref: 'Person' },
-    _post: { type: ObjectId, required: true , ref: 'Post' },
+    _post: { type: ObjectId, required: true , ref: 'Post', populate: ['get'] },
     _parent: { type: ObjectId, ref: 'Comment' },
     created: { type: Date, required: true, default: Date.now },
     updated: { type: Date },
     content: { type: String, min: 1 }
+  },
+  requires: {
+    'Comment': {
+      filter: function() {
+        var comment = this;
+        return { _parent: comment._id };
+      },
+      populate: '_author _parent'
+    }
   },
   handlers: {
     html: {
