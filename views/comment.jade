@@ -6,7 +6,7 @@ block content
   .ui.cards
     .ui.fluid.card
       .content
-        img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
+        img.right.floated.mini.ui.avatar(src="https://thecatapi.com/api/images/get?format=src&type=gif")
         .meta
           a(href="/posts/#{post._id}#comment#{comment._id}")
             abbr.date.tooltipped(title="#{ moment( comment.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( comment.created ).fromNow() }
@@ -21,7 +21,7 @@ block content
     for comment in comments
       .ui.fluid.card(style="margin-left: 2.5em;")
         .content
-          img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
+          img.right.floated.mini.ui.avatar(src="https://thecatapi.com/api/images/get?format=src&type=gif")
           .meta
             a(href="/posts/#{post._id}#comment#{comment._id}")
               abbr.date.tooltipped(title="#{ moment( comment.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( comment.created ).fromNow() }
