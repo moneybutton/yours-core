@@ -27,7 +27,6 @@ block content
           a(href="/posts/#{post._id}#comment")
             i.reply.icon
             | reply
-          
 
     .card
       .content
@@ -46,3 +45,6 @@ block content
               input(type="text", name="link")
             .right.floated
               button.ui.submit.button Create Post &raquo;
+        else
+          p For now, we require a user account to participate.
+          include forms/register

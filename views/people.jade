@@ -9,17 +9,9 @@ block content
   h1 People
   p We haven't decided what we want to put here yet.
   
-  h2#register Register
-  
-  .ui.cards
-    .card
-      .content
-        form.ui.form(action="/people", method="post")
-          .field
-            label Username
-            input(type="text", name="username")
-          .field
-            label Password
-            input(type="password", name="password")
-          .right.floated
-            button.ui.submit.button Get Started &raquo;
+  if (!user)
+    h2#register Register
+    .ui.cards
+      .card
+        .content
+          include forms/register

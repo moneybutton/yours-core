@@ -28,6 +28,8 @@ block content
         .content
           if (user)
             include forms/add-comment
+          else
+            include forms/register
 
     for comment in comments
       .card
@@ -48,3 +50,9 @@ block content
       .content
         if (user)
           include forms/add-comment
+        else
+          h2#register Register
+          .ui.cards
+            .card
+              .content
+                include forms/register
