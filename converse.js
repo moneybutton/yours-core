@@ -62,6 +62,15 @@ converse.define('Comment', {
     updated: { type: Date },
     content: { type: String, min: 1 }
   },
+  handlers: {
+    html: {
+      create: function(req, res) {
+        var comment = this;
+        req.flash('info', 'Comment created successfully!');
+        res.status( 303 ).redirect('/posts/' + comment._post );
+      }
+    }
+  },
   icon: 'comment'
 });
 

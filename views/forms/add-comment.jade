@@ -1,0 +1,8 @@
+form.ui.form#comment(action="/comments", method="post")
+  input(type="hidden", name="_author", value="#{user._id}")
+  input(type="hidden", name="_post", value="#{post._id}")
+  .field
+    label Comment
+    textarea(name="content")
+  .right.floated
+    button.ui.submit.button Add Comment &raquo;

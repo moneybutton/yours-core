@@ -22,6 +22,12 @@ block content
         a(href="/posts/#{post._id}#comments")
           i.comment.icon
           | 443 comments
+          
+    if (comments.length >= 3)
+      .card
+        .content
+          if (user)
+            include forms/add-comment
 
     for comment in comments
       .card
@@ -41,11 +47,4 @@ block content
     .card
       .content
         if (user)
-          form.ui.form#comment(action="/comments", method="post")
-            input(type="hidden", name="_author", value="#{user._id}")
-            input(type="hidden", name="_post", value="#{post._id}")
-            .field
-              label Comment
-              textarea(name="content")
-            .right.floated
-              button.ui.submit.button Add Comment &raquo;
+          include forms/add-comment
