@@ -23,6 +23,10 @@ block content
           a(href="/posts/#{post._id}#comments")
             i.comment.icon
             | 443 comments
+          a(href="/posts/#{post._id}#comment")
+            i.reply.icon
+            | reply
+          
 
     .card
       .content
@@ -40,4 +44,4 @@ block content
               label Link
               input(type="text", name="link")
             .right.floated
-              button.ui.submit.button Add Comment &raquo;
+              button.ui.submit.button Create Post &raquo;

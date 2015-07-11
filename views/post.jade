@@ -1,6 +1,6 @@
 extends ../node_modules/maki/views/layouts/default
 
-block content
+block content  
   style.
     .ui.cards .card {
       width: 100%;
@@ -41,7 +41,7 @@ block content
     .card
       .content
         if (user)
-          form.ui.form(action="/comments", method="post")
+          form.ui.form#comment(action="/comments", method="post")
             input(type="hidden", name="_author", value="#{user._id}")
             input(type="hidden", name="_post", value="#{post._id}")
             .field
