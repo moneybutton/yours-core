@@ -29,6 +29,7 @@ block content
           if (user)
             include forms/add-comment
           else
+            p For now, we require a user account to participate.
             include forms/register
 
     for comment in comments
@@ -51,8 +52,5 @@ block content
         if (user)
           include forms/add-comment
         else
-          h2#register Register
-          .ui.cards
-            .card
-              .content
-                include forms/register
+          p For now, we require a user account to participate.
+          include forms/register
