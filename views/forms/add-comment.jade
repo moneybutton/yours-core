@@ -3,6 +3,10 @@ form.ui.form#comment(action="/comments", method="post")
   input(type="hidden", name="_post", value="#{post._id}")
   .field
     label Comment
+      .right.floated
+        abbr.tooltipped(title="You can use things like **bold** or _italic_, and even [links](http://foo).")
+          i.font.icon
+          | markdown enabled
     textarea(name="content")
   .right.floated
     button.ui.submit.button Add Comment &raquo;
