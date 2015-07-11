@@ -2,7 +2,7 @@ extends ../node_modules/maki/views/layouts/default
 
 block content  
   .ui.cards
-    .fluid.card
+    .ui.fluid.card
       .content
         img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
         .header
@@ -22,7 +22,7 @@ block content
           | reply
           
     if (comments.length >= 3)
-      .fluid.card
+      .ui.fluid.card
         .content
           if (user)
             include forms/add-comment
@@ -33,7 +33,7 @@ block content
     h5 Only showing top-level comments.  To see a thread, click "reply".
 
     for comment in comments
-      .fluid.card
+      .ui.fluid.card
         .content
           img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
           .meta
@@ -50,7 +50,7 @@ block content
             i.reply.icon
             | reply
 
-    .fluid.card
+    .ui.fluid.card
       .content
         if (user)
           include forms/add-comment

@@ -1,7 +1,8 @@
 for post in posts
-  .fluid.card
+  .ui.fluid.card
     .content
       img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
+
       .header
         a(href="/posts/#{post._id}") #{post.name}
       .meta

@@ -4,7 +4,7 @@ block content
   - var post = comment._post
 
   .ui.cards
-    .fluid.card
+    .ui.fluid.card
       .content
         img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
         .meta
@@ -19,7 +19,7 @@ block content
           | 123 comments
           
     for comment in comments
-      .fluid.card(style="margin-left: 2.5em;")
+      .ui.fluid.card(style="margin-left: 2.5em;")
         .content
           img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
           .meta
@@ -36,7 +36,7 @@ block content
             i.reply.icon
             | reply
 
-    .fluid.card
+    .ui.fluid.card
       .content
         if (user)
           include forms/add-comment
