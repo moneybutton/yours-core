@@ -1,10 +1,6 @@
 extends ../node_modules/maki/views/layouts/default
 
 block content
-  style.
-    .ui.cards .card {
-      width: 100%;
-    }
 
   h1 People
   p We haven't decided what we want to put here yet.
@@ -12,6 +8,6 @@ block content
   if (!user)
     h2#register Register
     .ui.cards
-      .card
+      .fluid.card
         .content
           include forms/register

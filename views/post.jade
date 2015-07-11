@@ -1,13 +1,8 @@
 extends ../node_modules/maki/views/layouts/default
 
 block content  
-  style.
-    .ui.cards .card {
-      width: 100%;
-    }
-
   .ui.cards
-    .card
+    .fluid.card
       .content
         img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
         .header
@@ -27,7 +22,7 @@ block content
           | reply
           
     if (comments.length >= 3)
-      .card
+      .fluid.card
         .content
           if (user)
             include forms/add-comment
@@ -38,7 +33,7 @@ block content
     h5 Only showing top-level comments.  To see a thread, click "reply".
 
     for comment in comments
-      .card
+      .fluid.card
         .content
           img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
           .meta
@@ -55,7 +50,7 @@ block content
             i.reply.icon
             | reply
 
-    .card
+    .fluid.card
       .content
         if (user)
           include forms/add-comment

@@ -2,33 +2,11 @@ extends ../node_modules/maki/views/layouts/default
 
 block content
   style.
-    .ui.cards .card {
-      width: 100%;
-    }
 
   .ui.cards
-    for post in posts
-      .card
-        .content
-          img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
-          .header
-            a(href="/posts/#{post._id}") #{post.name}
-          .meta
-            a(href="/posts/#{post._id}")
-              abbr.date.tooltipped(title="#{ moment( post.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( post.created ).fromNow() }
-            | by 
-            a.user(href="/people/#{post._author.slug}") #{post._author.username}
-          .description #{ post.description.split('\n')[0].split(' ').slice(0, 20).join(' ') }&hellip;
-            a(href="/posts/#{post._id}") Read More &raquo;
-        .extra.content
-          a(href="/posts/#{post._id}#comments")
-            i.comment.icon
-            | 443 comments
-          a(href="/posts/#{post._id}#comment")
-            i.reply.icon
-            | reply
+    include partials/post-list
 
-    .card
+    .fluid.card
       .content
         if (user)
           h3 New Post

@@ -3,13 +3,8 @@ extends ../node_modules/maki/views/layouts/default
 block content
   - var post = comment._post
 
-  style.
-    .ui.cards .card {
-      width: 100%;
-    }
-  
   .ui.cards
-    .card
+    .fluid.card
       .content
         img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
         .meta
@@ -24,7 +19,7 @@ block content
           | 123 comments
           
     for comment in comments
-      .card(style="margin-left: 2.5em;")
+      .fluid.card(style="margin-left: 2.5em;")
         .content
           img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
           .meta
@@ -41,7 +36,7 @@ block content
             i.reply.icon
             | reply
 
-    .card
+    .fluid.card
       .content
         if (user)
           include forms/add-comment
