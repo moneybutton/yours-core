@@ -84,6 +84,24 @@ converse.define('Comment', {
   icon: 'comment'
 });
 
+converse.define('Index', {
+  name: 'Index',
+  static: true,
+  internal: true,
+  routes: {
+    query: '/'
+  },
+  templates: {
+    query: 'posts'
+  },
+  requires: {
+    'Post': {
+      filter: {},
+      populate: '_author'
+    }
+  }
+});
+
 converse.start(function(err) {
 
 });
