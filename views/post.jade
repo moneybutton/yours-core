@@ -5,7 +5,7 @@ include mixins/post
 block content
   .ui.cards
     +PostView(post)
-          
+
     if (comments.length >= 3)
       .ui.fluid.card
         .content
@@ -14,34 +14,29 @@ block content
           else
             p For now, we require a user account to participate.
             include forms/register
-            
-    h5 Only showing top-level comments.  To see a thread, click "reply".
 
+  h5 Only showing top-level comments.  To see a thread, click "reply".
+  .ui.threaded.comments
     for comment in comments
       .ui.fluid.card
         .content
-          .left.floated(style="width: 3em; text-align: center;")
-            .ui.mini.statistic
-              a.label
-                i.chevron.up.icon
-              .value(style="font-size: 1em;") #{post.score || 124}
-              a.label
-                i.chevron.down.icon
+          include partials/influence
           img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
           .meta
             a(href="/posts/#{post._id}#comment#{comment._id}")
               abbr.date.tooltipped(title="#{ moment( comment.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( comment.created ).fromNow() }
             | by 
             a.user(href="/people/#{comment._author.slug}") #{comment._author.username}
-          .description !{ markdown(comment.content || '') }
+          .description(display="clear: none;") !{ markdown(comment.content || '') }
         .extra.content
           a(href="/posts/#{post._id}#comment#{comment._id}")
             i.comment.icon
-            | 123 comments
+            |  #{comment.stats.comments} comments
           a(href="/comments/#{comment._id}#comment")
             i.reply.icon
             | reply
 
+  .ui.cards
     .ui.fluid.card
       .content
         if (user)
