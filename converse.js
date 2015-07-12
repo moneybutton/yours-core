@@ -39,7 +39,7 @@ converse.define('Post', {
   attributes: {
     created:     { type: Date, required: true, default: Date.now },
     name:        { type: String, required: true, max: 200 },
-    description: { type: String, required: true },
+    content:     { type: String, required: true },
     sticky:      { type: Boolean , default: false },
     _author:     { type: ObjectId, required: true, ref: 'Person', populate: ['get', 'query'] },
     //_board:      { type: ObjectId, /* required: true, */ ref: 'Board' },
