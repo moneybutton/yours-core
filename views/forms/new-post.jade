@@ -24,7 +24,7 @@ block append scripts
       return yyyy + (mm[1]?mm:"0"+mm[0]) + (dd[1]?dd:"0"+dd[0]); // padding
     };
 
-    $('form[action="/posts"][method=post]').submit(function(e) {
+    /*$('form[action="/posts"][method=post]').submit(function(e) {
       e.preventDefault();
       var cash = $('form[action="/posts"][method=post] input[name=hashcash]');
       var date = new Date();
@@ -47,4 +47,4 @@ block append scripts
       cash.val(hash);
 
       return true;
-    });
+    });*/
