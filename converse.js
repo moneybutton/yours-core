@@ -91,7 +91,12 @@ var Comment = converse.define('Comment', {
       create: function(req, res) {
         var comment = this;
         req.flash('info', 'Comment created successfully!');
-        res.status( 303 ).redirect('/posts/' + comment._post );
+        if (comment._parent) {
+          res.status( 303 ).redirect('/comments/' + comment._parent + '#comments' + comment._id );
+        } else {
+          res.status( 303 ).redirect('/posts/' + comment._post );
+        }
+
       }
     }
   },
@@ -104,7 +109,6 @@ Comment.post('create', function(next, cb) {
   var pipeline = {};
 
   pipeline.post = function updatePostStats(done) {
-    console.log('comment _post:', comment._post);
     Post.Model.update({
       _id: comment._post
     }, {
@@ -113,7 +117,6 @@ Comment.post('create', function(next, cb) {
   }
 
   if (comment._parent) {
-    console.log('parent:', comment._parent);
     pipeline.parent = function updateParentComment(done) {
       Comment.Model.update({
         _id: comment._parent
