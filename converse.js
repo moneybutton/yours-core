@@ -16,7 +16,9 @@ converse.define('Person', {
   attributes: {
     username: { type: String , max: 35 , required: true , slug: true },
     password: { type: String , max: 70 , masked: true },
-    created:  { type: Date , default: Date.now , render: { query: false } }
+    created:  { type: Date , default: Date.now , render: { query: false } },
+    bio:      { type: String , max: 250 },
+    image:    { type: 'File' }
   },
   icon: 'user'
 });
@@ -35,12 +37,20 @@ converse.define('Person', {
 
 converse.define('Post', {
   attributes: {
-    name: { type: String, required: true, max: 200 },
+    created:     { type: Date, required: true, default: Date.now },
+    name:        { type: String, required: true, max: 200 },
     description: { type: String, required: true },
-    _author: { type: ObjectId, required: true, ref: 'Person', populate: ['get', 'query'] },
-    //_board:  { type: ObjectId, /* required: true, */ ref: 'Board' },
-    created: { type: Date, required: true, default: Date.now },
-    link:    { type: String }
+    sticky:      { type: Boolean , default: false },
+    _author:     { type: ObjectId, required: true, ref: 'Person', populate: ['get', 'query'] },
+    //_board:      { type: ObjectId, /* required: true, */ ref: 'Board' },
+    link:        { type: String },
+    _object:     { type: ObjectId , ref: 'Object', populate: ['get'] },
+    stats:       {
+      comments:  { type: Number , default: 0 }
+    },
+    attribution: {
+      _author: { type: ObjectId , ref: 'Person', populate: ['get', 'query'] }
+    }
   },
   requires: {
     'Comment': {
@@ -57,7 +67,7 @@ converse.define('Post', {
 converse.define('Comment', {
   attributes: {
     _author: { type: ObjectId, required: true, ref: 'Person' },
-    _post: { type: ObjectId, required: true , ref: 'Post', populate: ['get'] },
+    _post:   { type: ObjectId, required: true , ref: 'Post', populate: ['get'] },
     _parent: { type: ObjectId, ref: 'Comment' },
     created: { type: Date, required: true, default: Date.now },
     updated: { type: Date },
@@ -82,6 +92,15 @@ converse.define('Comment', {
     }
   },
   icon: 'comment'
+});
+
+converse.define('Object', {
+  attributes: {
+    url: { type: String , required: true },
+    title: { type: String , max: 1024 },
+    description: { type: String , max: 1024 },
+    image: { type: 'File' }
+  }
 });
 
 converse.define('Index', {
