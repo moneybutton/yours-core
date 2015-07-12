@@ -49,4 +49,11 @@ html
       .row
         .ui.one.column.stackable.center.aligned
           small <a href="http://github.com/martindale/maki">Made</a> with care by <a href="http://www.ericmartindale.com/">Eric Martindale</a>.
+
+    script.
+      $(document).on('click', '*[data-intent=comment]', function(e) {
+        e.preventDefault();
+        $('textarea').focus();
+      });
+
     block scripts
