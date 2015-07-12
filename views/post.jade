@@ -29,7 +29,7 @@ block content
             a.user(href="/people/#{comment._author.slug}") #{comment._author.username}
           .description(display="clear: none;") !{ markdown(comment.content || '') }
         .extra.content
-          a(href="/posts/#{post._id}#comment#{comment._id}")
+          a(href="/comments/#{comment._id}#comments")
             i.comment.icon
             |  #{comment.stats.comments} comments
           a(href="/comments/#{comment._id}#comment")
