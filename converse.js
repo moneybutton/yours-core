@@ -1,4 +1,5 @@
 var config = require('./config');
+var async = require('async');
 
 var Maki = require('maki');
 var converse = new Maki( config );
@@ -35,7 +36,7 @@ converse.define('Person', {
   icon: 'slack'
 }); */
 
-converse.define('Post', {
+var Post = converse.define('Post', {
   attributes: {
     created:     { type: Date, required: true, default: Date.now },
     name:        { type: String, required: true, max: 200 },
@@ -64,14 +65,17 @@ converse.define('Post', {
   icon: 'pin'
 });
 
-converse.define('Comment', {
+var Comment = converse.define('Comment', {
   attributes: {
     _author: { type: ObjectId, required: true, ref: 'Person' },
     _post:   { type: ObjectId, required: true , ref: 'Post', populate: ['get'] },
     _parent: { type: ObjectId, ref: 'Comment' },
     created: { type: Date, required: true, default: Date.now },
     updated: { type: Date },
-    content: { type: String, min: 1 }
+    content: { type: String, min: 1 },
+    stats: {
+      comments: { type: Number , default: 0 }
+    }
   },
   requires: {
     'Comment': {
@@ -92,6 +96,38 @@ converse.define('Comment', {
     }
   },
   icon: 'comment'
+});
+
+Comment.post('create', function(next, cb) {
+  var comment = this;
+
+  var pipeline = {};
+
+  pipeline.post = function updatePostStats(done) {
+    console.log('comment _post:', comment._post);
+    Post.Model.update({
+      _id: comment._post
+    }, {
+      $inc: { 'stats.comments': 1 }
+    }, done);
+  }
+
+  if (comment._parent) {
+    console.log('parent:', comment._parent);
+    pipeline.parent = function updateParentComment(done) {
+      Comment.Model.update({
+        _id: comment._parent
+      }, {
+        $inc: { 'stats.comments': 1 }
+      }, done);
+    }
+  }
+
+  async.parallel(pipeline, function(err, results) {
+    if (err) return cb(err);
+    next();
+  });
+
 });
 
 converse.define('Object', {

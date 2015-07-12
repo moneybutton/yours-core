@@ -16,8 +16,9 @@ block content
       .extra.content
         a(href="/posts/#{post._id}#comment#{comment._id}")
           i.comment.icon
-          | 123 comments
-          
+          | #{comment.stats.comments} comments
+  
+  .ui.threaded.comments
     for comment in comments
       .ui.fluid.card(style="margin-left: 2.5em;")
         .content
@@ -31,11 +32,12 @@ block content
         .extra.content
           a(href="/posts/#{post._id}#comment#{comment._id}")
             i.comment.icon
-            | 123 comments
+            | #{comment.stats.comments} comments
           a(href="/comments/#{comment._id}#comment")
             i.reply.icon
             | reply
 
+  .ui.cards
     .ui.fluid.card
       .content
         if (user)
