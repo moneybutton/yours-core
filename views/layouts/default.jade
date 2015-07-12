@@ -24,6 +24,12 @@ html
     script(src="/js/sha256.js")
     
     script(src="/js/maki.js")
+      
+    style.
+      .statistic i.icon {
+        margin-left: auto;
+        margin-right: auto;
+      }
 
     base(href="/")
 
@@ -43,4 +49,19 @@ html
       .row
         .ui.one.column.stackable.center.aligned
           small <a href="http://github.com/martindale/maki">Made</a> with care by <a href="http://www.ericmartindale.com/">Eric Martindale</a>.
+
+    script.
+      $(window).load(function(e) {
+        console.log('match:', window.location.hash.match(/^#comment$/));
+        if (window.location.hash && window.location.hash.match(/^#comment$/)) {
+          e.preventDefault();
+          $('textarea').focus();
+        }
+      });
+      
+      $(document).on('click', '*[data-intent=comment]', function(e) {
+        e.preventDefault();
+        $('textarea').focus();
+      });
+
     block scripts

@@ -2,9 +2,8 @@ extends layouts/default
 
 block content
 
-  h1 People
-  p We haven't decided what we want to put here yet.
-  
+  h1 There's at least #{people.length} registered users.
+
   if (!user)
     h2#register Register
     .ui.cards
