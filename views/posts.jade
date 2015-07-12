@@ -1,4 +1,4 @@
-extends ../node_modules/maki/views/layouts/default
+extends layouts/default
 
 block content
   style.
@@ -10,19 +10,7 @@ block content
       .content
         if (user)
           h3 New Post
-          form.ui.form(action="/posts", method="post")
-            input(type="hidden", name="_author", value="#{user._id}")
-            .field
-              label Title
-              input(type="text", name="name")
-            .field
-              label Content
-              textarea(name="description")
-            .field
-              label Link
-              input(type="text", name="link")
-            .right.floated
-              button.ui.submit.button Create Post &raquo;
+          include forms/new-post
         else
           p For now, we require a user account to participate.
           include forms/register

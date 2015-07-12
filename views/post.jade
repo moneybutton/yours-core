@@ -1,25 +1,10 @@
-extends ../node_modules/maki/views/layouts/default
+extends layouts/default
 
-block content  
+include mixins/post
+
+block content
   .ui.cards
-    .ui.fluid.card
-      .content
-        img.right.floated.mini.ui.avatar(src="https://thecatapi.com/api/images/get?format=src&type=gif")
-        .header
-          a(href="/posts/#{post._id}") #{post.name}
-        .meta
-          a(href="/posts/#{post._id}")
-            abbr.date.tooltipped(title="#{ moment( post.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( post.created ).fromNow() }
-          | by 
-          a.user(href="/people/#{post._author.slug}") #{post._author.username}
-        .description !{ markdown(post.description) }
-      .extra.content
-        a(href="/posts/#{post._id}#comments")
-          i.comment.icon
-          | #{comments.length} comments
-        a(href="/posts/#{post._id}#comment")
-          i.reply.icon
-          | reply
+    +PostView(post)
           
     if (comments.length >= 3)
       .ui.fluid.card
@@ -35,6 +20,13 @@ block content
     for comment in comments
       .ui.fluid.card
         .content
+          .left.floated(style="width: 3em; text-align: center;")
+            .ui.mini.statistic
+              a.label
+                i.chevron.up.icon
+              .value(style="font-size: 1em;") #{post.score || 124}
+              a.label
+                i.chevron.down.icon
           img.right.floated.mini.ui.avatar(src="http://thecatapi.com/api/images/get?format=src&type=gif")
           .meta
             a(href="/posts/#{post._id}#comment#{comment._id}")

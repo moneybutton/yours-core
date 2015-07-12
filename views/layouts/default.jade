@@ -1,0 +1,46 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    
+    title converse
+
+    meta(name="description", content="#{ (page) ? page.title || config.service.name + ': ' + config.service.mission : config.service.name + ': ' + config.service.mission }")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+
+    link(rel="stylesheet", href="/css/semantic.min.css")
+    link(rel="stylesheet", href="/css/highlight/maki.css")
+    link(rel="stylesheet", href="/css/maki.css")
+    link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700")
+
+    script(src="/js/jquery.js")
+    script(src="/js/semantic.min.js")
+    script(src="/js/lodash.min.js")
+
+    script(src="/js/highlight.pack.js")
+    script(src="/js/uuid.js")
+    script(src="/js/jsonrpc.js")
+    script(src="/js/sha256.js")
+    
+    script(src="/js/maki.js")
+
+    base(href="/")
+
+  body
+    .ui.page.grid
+      .row
+        block navbar
+          include ../partials/navbar
+
+      .row
+        .column.content(data-for="viewport")
+        
+          include ../partials/flash
+        
+          block content
+
+      .row
+        .ui.one.column.stackable.center.aligned
+          small <a href="http://github.com/martindale/maki">Made</a> with care by <a href="http://www.ericmartindale.com/">Eric Martindale</a>.
+    block scripts

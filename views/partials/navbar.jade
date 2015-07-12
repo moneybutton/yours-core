@@ -1,0 +1,32 @@
+.ui.main.tiered.menu.large
+  .menu
+    a.item(href="/")
+      i.comment.icon.left
+      | converse
+
+    //- block for prepend/append/replace-able menu items
+    block mainMenu
+      .right.menu
+        a.item.tooltipped(class="btn btn-default", href="bitcoin:1EBdAcEhP4Qn7sihJoCqinLC8A14zqHJ7R", title="If you have a bitcoin wallet installed and configured, this will launch it.") 
+          i.icon.bitcoin(alt="Bitoin", title="Donate Bitcoin")
+          | Donate &raquo;
+        if (user)
+          a.item(href="/people/#{user.slug}") #{user.username}
+          a.item(href="/sessions/#{session.hash}?method=delete") Logout
+        else
+          a.item(href="/sessions")
+            i.user.icon
+            | Login &raquo;
+
+  .ui.sub.menu
+    a.item(href="/", title="Front page")
+      i.home.icon
+      |  Front Page
+    if (boards)
+      for board in boards
+        a.item(href="/boards/#{board.slug}", title="#{board.name}")
+          i.icon(class="#{board.icon}")
+          |  #{board.name}
+    a.item.tooltipped.right.floating(href="https://github.com/martindale/converse", title="View the Source, Luke!  Source code for this site.")
+      i.fork.icon
+      | Code &raquo;

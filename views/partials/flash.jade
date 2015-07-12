@@ -1,0 +1,17 @@
+if (messages)
+  for info in messages.info
+    .ui.info.message
+      i.icon.close(type="button", data-dismiss="alert")
+      p.header !{info}
+  for warning in messages.warning
+    .ui.error.message
+      i.icon.close(type="button", data-dismiss="alert")
+      p.header !{warning}
+  for error in messages.error
+    .ui.error.message
+      i.icon.close(type="button", data-dismiss="alert")
+      p.header !{error}
+  for success in messages.success
+    .ui.success.message
+      i.icon.close(type="button", data-dismiss="alert")
+      p.header !{success}
