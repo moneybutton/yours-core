@@ -12,7 +12,14 @@ onmessage = function(e) {
 
   for (var counter = 0; bits < difficulty; counter++) {
     var chunks = [
-      '2', difficulty , 'sha256', date, name, '', rand, counter
+      '2', // Hashcash version number.  Note that this is 2, as opposed to 1.
+      difficulty, // asserted number of bits that this cash matches
+      'sha256', // ADDITION FOR VERSION 2: specify the hash function used
+      date, // YYYYMMDD format.  specification doesn't indicate HHMMSS or lower?
+      name, // Input format protocol change, recommend casting any input to hex.
+      '', // empty "meta" field
+      rand, // random seed
+      counter // our randomized input, the nonce (actually sequential)
     ];
     var cash = chunks.join(':');
     hash = CryptoJS.SHA256(cash).toString();
