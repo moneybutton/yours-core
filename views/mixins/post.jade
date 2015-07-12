@@ -19,6 +19,9 @@ mixin PostView(post, maxWords)
           abbr.date.tooltipped(title="#{ moment( post.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( post.created ).fromNow() }
         | by 
         a.user(href="/people/#{post._author.slug}") #{post._author.username}
+        if (post.hashcash)
+          | at 
+          abbr.tooltipped(title="#{post.hashcash.substring(0, 20)}...") difficulty #{post.hashcash.split(':')[1]}
       if (!~maxWords)
         .description(style="clear: none;") #{ post.description.split('\n')[0].split(' ').slice(0, maxWords).join(' ') }&hellip;
           a(href="/posts/#{post._id}") Read More &raquo;

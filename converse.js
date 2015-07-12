@@ -38,8 +38,9 @@ converse.define('Person', {
 converse.define('Post', {
   attributes: {
     created:     { type: Date, required: true, default: Date.now },
+    hashcash:    { type: String, required: true , sparse: true },
     name:        { type: String, required: true, max: 200 },
-    content:     { type: String, required: true },
+    description: { type: String },
     sticky:      { type: Boolean , default: false },
     _author:     { type: ObjectId, required: true, ref: 'Person', populate: ['get', 'query'] },
     //_board:      { type: ObjectId, /* required: true, */ ref: 'Board' },

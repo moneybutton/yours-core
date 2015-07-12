@@ -17,34 +17,46 @@ form.ui.form(action="/posts", method="post")
 
 block append scripts
   script.
-    Date.prototype.yyyymmdd = function() {
-      var yyyy = this.getFullYear().toString();
-      var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
-      var dd  = this.getDate().toString();
-      return yyyy + (mm[1]?mm:"0"+mm[0]) + (dd[1]?dd:"0"+dd[0]); // padding
-    };
+    String.prototype.hexEncode = function(){
+      var hex, i;
+      var result = '';
+      for (i=0; i<this.length; i++) {
+        hex = this.charCodeAt(i).toString(16);
+        result += ('000'+hex).slice(-4);
+      }
+      return result;
+    }
 
     $('form[action="/posts"][method=post]').submit(function(e) {
       e.preventDefault();
+      
+      $('form[action="/posts"][method=post]').addClass('loading');
+      $('form[action="/posts"][method=post] .submit').html('working...');
+      
+      var data = $(self).form('get values');
       var cash = $('form[action="/posts"][method=post] input[name=hashcash]');
-      var date = new Date();
       var name = $('form[action="/posts"][method=post] input[name=name]');
-      var input = name.val();
+      var input = name.val().hexEncode();
 
-      var difficulty = 1;
-      var hash = computeTarget( input , 0 , difficulty );
-      
-      // suffers from browser maximum callstack...
-      function computeTarget(content, state, target) {
-        if (state === target) return content;
-        var hash = CryptoJS.SHA256( content ).toString();
-        return computeTarget( hash , ++state , target );
+      var worker = new Worker('/js/worker.js');
+      worker.onmessage = function(e) {
+        console.log('work result:', e.data);
+        var hash = e.data;
+        cash.val(hash);
+        
+        data.hashcash = hash;
+        data._author     = $('form[action="/posts"][method=post] input[name=_author]').val();
+        data.link        = $('form[action="/posts"][method=post] input[name=link]').val();
+        data.name        = $('form[action="/posts"][method=post] input[name=name]').val();
+        data.description = $('form[action="/posts"][method=post] textarea[name=description]').val();
+        
+        $.post('/posts', data, function(post, status, xhr) {
+          document.location.href = '/posts/' + post._id;
+        }, 'json');
       }
-      
-      //var bits = 
-      //var hash = '2:' + Date.yyyymmdd();
-      
-      cash.val(hash);
 
-      return true;
+      var difficulty = 3;
+      worker.postMessage([ input , difficulty ]);
+
+      return false;
     });
