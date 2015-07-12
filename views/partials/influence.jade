@@ -1,0 +1,10 @@
+- if (!item && post) var item = post;
+- if (!item && comment) var item = comment;
+
+.left.floated(style="width: 3em; text-align: center;")
+  .ui.mini.statistic
+    a.label
+      i.chevron.up.icon
+    .value(style="font-size: 1em;") #{item.score || 0}
+    a.label
+      i.chevron.down.icon
