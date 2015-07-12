@@ -1,4 +1,4 @@
-mixin PostView(post, maxWords)
+mixin PostView(post, maxWords, samePage)
   if (!maxWords)
     - maxWords = 0;
 
@@ -29,6 +29,6 @@ mixin PostView(post, maxWords)
       a(href="/posts/#{post._id}#comments")
         i.comment.icon
         | #{post.stats.comments || 0} comments
-      a(href="/posts/#{post._id}#comment", data-intent="comment")
+      a(href="/posts/#{post._id}#comment", data-intent="#{(samePage) ? 'comment' : undefined}")
         i.reply.icon
         | reply

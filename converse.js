@@ -73,6 +73,7 @@ var Comment = converse.define('Comment', {
     _parent: { type: ObjectId, ref: 'Comment' },
     created: { type: Date, required: true, default: Date.now },
     updated: { type: Date },
+    hashcash: { type: String , required: true , sparse: true },
     content: { type: String, min: 1 },
     stats: {
       comments: { type: Number , default: 0 }

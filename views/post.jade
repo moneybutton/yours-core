@@ -4,7 +4,7 @@ include mixins/post
 
 block content
   .ui.cards
-    +PostView(post)
+    +PostView(post, null, true)
 
     if (comments.length >= 3)
       .ui.fluid.card
@@ -27,7 +27,12 @@ block content
               abbr.date.tooltipped(title="#{ moment( comment.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( comment.created ).fromNow() }
             | by 
             a.user(href="/people/#{comment._author.slug}") #{comment._author.username}
-          .description(display="clear: none;") !{ markdown(comment.content || '') }
+            if (comment.hashcash)
+              | at 
+              abbr.tooltipped(title="#{comment.hashcash.substring(0, 20)}...") difficulty #{comment.hashcash.split(':')[1]}
+          .description(style="clear: none;") !{ markdown(comment.content || '') }
+        .extra.content
+          code(style="word-wrap: break-word;") #{comment.hashcash}
         .extra.content
           a(href="/comments/#{comment._id}#comments")
             i.comment.icon
