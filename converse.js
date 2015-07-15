@@ -39,7 +39,7 @@ converse.define('Person', {
 var Post = converse.define('Post', {
   attributes: {
     created:     { type: Date, required: true, default: Date.now },
-    hashcash:    { type: String, required: true , sparse: true },
+    hashcash:    { type: String },
     name:        { type: String, required: true, max: 200 },
     description: { type: String },
     sticky:      { type: Boolean , default: false },
@@ -73,7 +73,7 @@ var Comment = converse.define('Comment', {
     _parent: { type: ObjectId, ref: 'Comment' },
     created: { type: Date, required: true, default: Date.now },
     updated: { type: Date },
-    hashcash: { type: String , required: true , sparse: true },
+    hashcash: { type: String },
     content: { type: String, min: 1 },
     stats: {
       comments: { type: Number , default: 0 }
