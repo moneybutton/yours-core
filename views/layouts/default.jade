@@ -132,8 +132,9 @@ html
           data.content     = $('form[action="/comments"][method=post] textarea[name=content]').val();
           
           $.post('/comments', data, function(post, status, xhr) {
-            document.location.href = '/posts/' + post._id;
-          }, 'json');
+            // TODO: redirect/highlight specific comment that was created
+            document.location.href = '/posts/' + data._post;
+          });
         }
 
         var difficulty = 2;
