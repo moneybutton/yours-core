@@ -68,7 +68,7 @@ var Post = converse.define('Post', {
 
 var Comment = converse.define('Comment', {
   attributes: {
-    _author: { type: ObjectId, required: true, ref: 'Person' },
+    _author: { type: ObjectId, required: true, ref: 'Person', populate: ['query', 'get'] },
     _post:   { type: ObjectId, required: true , ref: 'Post', populate: ['get'] },
     _parent: { type: ObjectId, ref: 'Comment' },
     created: { type: Date, required: true, default: Date.now },
@@ -116,7 +116,7 @@ Comment.post('create', function(next, cb) {
     }, {
       $inc: { 'stats.comments': 1 }
     }, done);
-  }
+  };
 
   if (comment._parent) {
     pipeline.parent = function updateParentComment(done) {
@@ -125,7 +125,7 @@ Comment.post('create', function(next, cb) {
       }, {
         $inc: { 'stats.comments': 1 }
       }, done);
-    }
+    };
   }
 
   async.parallel(pipeline, function(err, results) {
