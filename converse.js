@@ -190,14 +190,13 @@ var Notification = converse.define('Notification', {
             Person.Model.populate(notifications, {
               path: '_comment._author'
             }, function(err, notifications) {
-
-              Notification.patch({
+              Notification.Model.update({
                 _id: {
-                  $in: notifications.map(function(n) { return n._id })
+                  $in: notifications.map(function(n) { return n._id; })
                 }
-              }, [
-                { op: 'replace', path: '/status', value: 'read' }
-              ], function(err) {
+              }, {
+                $set: { status: 'read' }
+              }, function(err) {
                 return res.render('notifications', {
                   notifications: notifications
                 });
