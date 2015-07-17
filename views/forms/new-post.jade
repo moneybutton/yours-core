@@ -14,37 +14,3 @@ form.ui.form(action="/posts", method="post")
     button.ui.submit.button.primary
       i.edit.icon
       | Create Post &raquo;
-
-block append scripts
-  script.
-    Date.prototype.yyyymmdd = function() {
-      var yyyy = this.getFullYear().toString();
-      var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
-      var dd  = this.getDate().toString();
-      return yyyy + (mm[1]?mm:"0"+mm[0]) + (dd[1]?dd:"0"+dd[0]); // padding
-    };
-
-    /*$('form[action="/posts"][method=post]').submit(function(e) {
-      e.preventDefault();
-      var cash = $('form[action="/posts"][method=post] input[name=hashcash]');
-      var date = new Date();
-      var name = $('form[action="/posts"][method=post] input[name=name]');
-      var input = name.val();
-
-      var difficulty = 1;
-      var hash = computeTarget( input , 0 , difficulty );
-      
-      // suffers from browser maximum callstack...
-      function computeTarget(content, state, target) {
-        if (state === target) return content;
-        var hash = CryptoJS.SHA256( content ).toString();
-        return computeTarget( hash , ++state , target );
-      }
-      
-      //var bits = 
-      //var hash = '2:' + Date.yyyymmdd();
-      
-      cash.val(hash);
-
-      return true;
-    });*/

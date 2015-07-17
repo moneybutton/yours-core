@@ -5,6 +5,6 @@
   .ui.mini.statistic
     a.label
       i.chevron.up.icon
-    .value(style="font-size: 1em;") #{item.score || 0}
+    .value(style="font-size: 1em;") #{item && item.score || 0}
     a.label
       i.chevron.down.icon
