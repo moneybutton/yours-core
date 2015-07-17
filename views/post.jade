@@ -4,7 +4,7 @@ include mixins/post
 
 block content
   .ui.cards
-    +PostView(post)
+    +PostView(post, null, true)
 
     if (comments.length >= 3)
       .ui.fluid.card
@@ -27,7 +27,12 @@ block content
               abbr.date.tooltipped(title="#{ moment( comment.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( comment.created ).fromNow() }
             | by 
             a.user(href="/people/#{comment._author.slug}") #{comment._author.username}
-          .description(display="clear: none;") !{ markdown(comment.content || '') }
+            if (comment.hashcash)
+              | at 
+              abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{comment.hashcash.split(':')[1]}
+          .description(style="clear: none;") !{ markdown(comment.content || '') }
+        .extra.content
+          code(style="word-wrap: break-word;") #{comment.hashcash}
         .extra.content
           a(href="/comments/#{comment._id}#comments")
             i.comment.icon

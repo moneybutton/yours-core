@@ -21,7 +21,7 @@ html
     script(src="/js/highlight.pack.js")
     script(src="/js/uuid.js")
     script(src="/js/jsonrpc.js")
-    script(src="/js/sha256.js")
+    script(src="/js/sha3.js")
     
     script(src="/js/maki.js")
       
@@ -62,6 +62,86 @@ html
       $(document).on('click', '*[data-intent=comment]', function(e) {
         e.preventDefault();
         $('textarea').focus();
+      });
+      
+      String.prototype.hexEncode = function(){
+        var hex, i;
+        var result = '';
+        for (i=0; i<this.length; i++) {
+          hex = this.charCodeAt(i).toString(16);
+          result += ('000'+hex).slice(-4);
+        }
+        return result;
+      }
+
+      $('form[action="/posts"][method=post]').submit(function(e) {
+        e.preventDefault();
+        
+        $('form[action="/posts"][method=post]').addClass('loading');
+        $('form[action="/posts"][method=post] .submit').html('working...');
+        
+        var data = $(self).form('get values');
+        var cash = $('form[action="/posts"][method=post] input[name=hashcash]');
+        var name = $('form[action="/posts"][method=post] input[name=name]');
+        var input = name.val().hexEncode();
+
+        var worker = new Worker('/js/worker.js');
+        worker.onmessage = function(e) {
+          console.log('work result:', e.data);
+          var hash = e.data;
+          cash.val(hash);
+          
+          data.hashcash = hash;
+          data._author     = $('form[action="/posts"][method=post] input[name=_author]').val();
+          data.link        = $('form[action="/posts"][method=post] input[name=link]').val();
+          data.name        = $('form[action="/posts"][method=post] input[name=name]').val();
+          data.description = $('form[action="/posts"][method=post] textarea[name=description]').val();
+          
+          $.post('/posts', data, function(post, status, xhr) {
+            document.location.href = '/posts/' + post._id;
+          }, 'json');
+        }
+
+        var difficulty = 2;
+        worker.postMessage([ input , difficulty ]);
+
+        return false;
+      });
+
+      $('form[action="/comments"][method=post]').submit(function(e) {
+        e.preventDefault();
+        
+        $('form[action="/comments"][method=post]').addClass('loading');
+        $('form[action="/comments"][method=post] .submit').html('working...');
+        
+        var data = $(self).form('get values');
+        var cash = $('form[action="/comments"][method=post] input[name=hashcash]');
+        var name = $('form[action="/comments"][method=post] textarea[name=content]');
+        var input = name.val().hexEncode();
+
+        var worker = new Worker('/js/worker.js');
+        worker.onmessage = function(e) {
+          console.log('work result:', e.data);
+          var hash = e.data;
+          cash.val(hash);
+          
+          data.hashcash = hash;
+          data._author     = $('form[action="/comments"][method=post] input[name=_author]').val();
+          data.link        = $('form[action="/comments"][method=post] input[name=link]').val();
+          data._post       = $('form[action="/comments"][method=post] input[name=_post]').val();
+          data._parent     = $('form[action="/comments"][method=post] input[name=_parent]').val();
+          data.content     = $('form[action="/comments"][method=post] textarea[name=content]').val();
+          
+          $.post('/comments', data, function(post, status, xhr) {
+            // TODO: redirect/highlight specific comment that was created
+            document.location.href = '/posts/' + data._post;
+          });
+        }
+
+        var difficulty = 2;
+        worker.postMessage([ input , difficulty ]);
+
+        return false;
       });
 
     block scripts

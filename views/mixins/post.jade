@@ -1,4 +1,4 @@
-mixin PostView(post, maxWords)
+mixin PostView(post, maxWords, samePage)
   if (!maxWords)
     - maxWords = 0;
 
@@ -13,16 +13,22 @@ mixin PostView(post, maxWords)
           abbr.date.tooltipped(title="#{ moment( post.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( post.created ).fromNow() }
         | by 
         a.user(href="/people/#{post._author.slug}") #{post._author.username}
+        if (post.hashcash)
+          | at 
+          abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{post.hashcash.split(':')[1]}
       if (!~maxWords)
         .description(style="clear: none;") #{ post.description.split('\n')[0].split(' ').slice(0, maxWords).join(' ') }&hellip;
           a(href="/posts/#{post._id}") Read More &raquo;
       else
         .description(style="clear: none;") !{ markdown(post.description) }
-          
+    
+    .extra.content
+      code(style="word-wrap: break-word;") #{post.hashcash}
+    
     .extra.content
       a(href="/posts/#{post._id}#comments")
         i.comment.icon
         | #{post.stats.comments || 0} comments
-      a(href="/posts/#{post._id}#comment", data-intent="comment")
+      a(href="/posts/#{post._id}#comment", data-intent="#{(samePage) ? 'comment' : undefined}")
         i.reply.icon
         | reply
