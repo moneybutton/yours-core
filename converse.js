@@ -196,7 +196,8 @@ var Notification = converse.define('Notification', {
                 }
               }, { $set: { status: 'read' } }, { multi: true }, function(err) {
                 return res.render('notifications', {
-                  notifications: notifications
+                  notifications: notifications,
+                  unreadNotifications: [] // a bit of a hack
                 });
               });
             });
