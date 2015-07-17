@@ -129,6 +129,7 @@ html
           data._author     = $('form[action="/comments"][method=post] input[name=_author]').val();
           data.link        = $('form[action="/comments"][method=post] input[name=link]').val();
           data._post       = $('form[action="/comments"][method=post] input[name=_post]').val();
+          data._parent     = $('form[action="/comments"][method=post] input[name=_parent]').val();
           data.content     = $('form[action="/comments"][method=post] textarea[name=content]').val();
           
           $.post('/comments', data, function(post, status, xhr) {
