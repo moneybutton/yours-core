@@ -17,7 +17,7 @@ block content
           if (comment.hashcash)
             | at 
             abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{comment.hashcash.split(':')[1]}
-        .description !{ markdown(comment.content || '') }
+        .description(style="clear: none;") !{ markdown(comment.content || '') }
       .extra.content
         a(href="/comments/#{comment._id}#comments")
           i.comment.icon
@@ -41,7 +41,7 @@ block content
             if (subcomment.hashcash)
               | at 
               abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{subcomment.hashcash.split(':')[1]}
-          .description !{ markdown(subcomment.content || '') }
+          .description(style="clear: none;") !{ markdown(subcomment.content || '') }
         .extra.content
           a(href="/comments/#{subcomment._id}#comments")
             i.comment.icon
