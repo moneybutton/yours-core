@@ -1,4 +1,4 @@
-importScripts('/js/sha256.js');
+importScripts('/js/sha3.js');
 
 onmessage = function(e) {
   console.log('received work!');
@@ -14,7 +14,7 @@ onmessage = function(e) {
     var chunks = [
       '2', // Hashcash version number.  Note that this is 2, as opposed to 1.
       difficulty, // asserted number of bits that this cash matches
-      'sha256', // ADDITION FOR VERSION 2: specify the hash function used
+      'sha3', // ADDITION FOR VERSION 2: specify the hash function used
       date, // YYYYMMDD format.  specification doesn't indicate HHMMSS or lower?
       name, // Input format protocol change, recommend casting any input to hex.
       '', // empty "meta" field
@@ -22,7 +22,7 @@ onmessage = function(e) {
       counter // our randomized input, the nonce (actually sequential)
     ];
     var cash = chunks.join(':');
-    hash = CryptoJS.SHA256(cash).toString();
+    hash = CryptoJS.SHA3(cash).toString();
     var match = hash.match(/^(0+)/);
     bits = (match) ? match[0].length : 0;
   }
