@@ -118,6 +118,15 @@ Comment.post('create', function(next, cb) {
     }, done);
   };
 
+  pipeline.authorNotification = function notifyAuthor(done) {
+    Post.get({ _id: comment._post }, function(err, post) {
+      Notification.create({
+        _to: post._author,
+        _comment: comment._id
+      }, done);
+    });
+  };
+
   if (comment._parent) {
     pipeline.parent = function updateParentComment(done) {
       Comment.Model.update({
@@ -126,6 +135,15 @@ Comment.post('create', function(next, cb) {
         $inc: { 'stats.comments': 1 }
       }, done);
     };
+
+    pipeline.parentNotification = function notifyParentAuthor(done) {
+      Comment.get({ _id: comment._parent }, function(err, parent) {
+        Notification.create({
+          _to: parent._author,
+          _comment: comment._id
+        }, done);
+      });
+    };
   }
 
   async.parallel(pipeline, function(err, results) {
@@ -133,6 +151,15 @@ Comment.post('create', function(next, cb) {
     next();
   });
 
+});
+
+var Notification = converse.define('Notification', {
+  attributes: {
+    _to: { type: ObjectId , ref: 'Person', required: true },
+    _comment: { type: ObjectId },
+    created: { type: Date , required: true , default: Date.now },
+    status: { type: String , enum: ['unread', 'read'], default: 'unread' }
+  }
 });
 
 converse.define('Object', {
