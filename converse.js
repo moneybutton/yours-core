@@ -13,6 +13,23 @@ var passport = new Passport({
 
 converse.use( passport );
 
+converse.use({
+  extends: {
+    services: {
+      http: {
+        middleware: function(req, res, next) {
+          if (!req.user) return next();
+          Notification.Model.count({ _to: req.user._id }, function(err, notificationCount) {
+            res.locals.notifications = new Array(notificationCount);
+            next();
+          });
+        }
+      }
+    }
+  }
+});
+
+
 converse.define('Person', {
   attributes: {
     username: { type: String , max: 35 , required: true , slug: true },
