@@ -31,6 +31,9 @@ block content
               abbr.date.tooltipped(title="#{ moment( subcomment.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( subcomment.created ).fromNow() }
             | by 
             a.user(href="/people/#{subcomment._author.slug}") #{subcomment._author.username}
+            if (comment.hashcash)
+              | at 
+              abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{comment.hashcash.split(':')[1]}
           .description !{ markdown(subcomment.content || '') }
         .extra.content
           a(href="/comments/#{subcomment._id}#comments")
