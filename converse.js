@@ -194,9 +194,7 @@ var Notification = converse.define('Notification', {
                 _id: {
                   $in: notifications.map(function(n) { return n._id; })
                 }
-              }, {
-                $set: { status: 'read' }
-              }, function(err) {
+              }, { $set: { status: 'read' } }, { multi: true }, function(err) {
                 return res.render('notifications', {
                   notifications: notifications
                 });
