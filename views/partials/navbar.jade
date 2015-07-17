@@ -13,9 +13,9 @@
         if (user)
           a.item(href="/people/#{user.slug}") #{user.username}
           a.item(href="/notifications")
-            if (notifications && notifications.length)
+            if (unreadNotifications && unreadNotifications.length)
               i.mail.icon.red
-              | #{notifications.length}
+              | #{unreadNotifications.length}
             else
               i.mail.icon
               | 0

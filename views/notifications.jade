@@ -1,0 +1,22 @@
+extends layouts/default
+
+block content
+  h2 Notifications
+  .ui.feed
+    for notification in notifications
+      .event
+        .label
+          img.ui.mini.image(src="https://thecatapi.com/api/images/get?format=src&type=gif")
+        .content
+          .summary
+            a.user(href="/people/#{notification._comment._author.slug}") #{notification._comment._author.username}
+            |  commented on 
+            a(href="/comments/#{notification._comment._id}") your post
+            |  
+            .date #{moment(notification.created).fromNow()}
+          .extra.text !{markdown(notification._comment.content)}
+          .meta
+            a(href="/comments/#{notification._comment._id}#comment")
+              i.icon.reply
+              | reply
+          
