@@ -13,7 +13,26 @@ var passport = new Passport({
 
 converse.use( passport );
 
-converse.define('Person', {
+converse.use({
+  extends: {
+    services: {
+      http: {
+        middleware: function(req, res, next) {
+          if (!req.user) return next();
+          Notification.Model.count({
+            _to: req.user._id,
+            status: 'unread'
+          }, function(err, notificationCount) {
+            res.locals.unreadNotifications = new Array(notificationCount);
+            next();
+          });
+        }
+      }
+    }
+  }
+});
+
+var Person = converse.define('Person', {
   attributes: {
     username: { type: String , max: 35 , required: true , slug: true },
     password: { type: String , max: 70 , masked: true },
@@ -118,6 +137,15 @@ Comment.post('create', function(next, cb) {
     }, done);
   };
 
+  pipeline.authorNotification = function notifyAuthor(done) {
+    Post.get({ _id: comment._post }, function(err, post) {
+      Notification.create({
+        _to: post._author,
+        _comment: comment._id
+      }, done);
+    });
+  };
+
   if (comment._parent) {
     pipeline.parent = function updateParentComment(done) {
       Comment.Model.update({
@@ -126,6 +154,15 @@ Comment.post('create', function(next, cb) {
         $inc: { 'stats.comments': 1 }
       }, done);
     };
+
+    pipeline.parentNotification = function notifyParentAuthor(done) {
+      Comment.get({ _id: comment._parent }, function(err, parent) {
+        Notification.create({
+          _to: parent._author,
+          _comment: comment._id
+        }, done);
+      });
+    };
   }
 
   async.parallel(pipeline, function(err, results) {
@@ -133,6 +170,44 @@ Comment.post('create', function(next, cb) {
     next();
   });
 
+});
+
+var Notification = converse.define('Notification', {
+  attributes: {
+    _to: { type: ObjectId , ref: 'Person', required: true },
+    _comment: { type: ObjectId , ref: 'Comment', populate: ['query', 'get'] },
+    created: { type: Date , required: true , default: Date.now },
+    status: { type: String , enum: ['unread', 'read'], default: 'unread' }
+  },
+  handlers: {
+    html: {
+      query: function(req, res, next) {
+        if (!req.user) return next();
+        Notification.query({ _to: req.user._id }, function(err, notifications) {
+          Comment.Model.populate(notifications, {
+            path: '_comment'
+          }, function(err, notifications) {
+            Person.Model.populate(notifications, {
+              path: '_comment._author'
+            }, function(err, notifications) {
+
+              Notification.patch({
+                _id: {
+                  $in: notifications.map(function(n) { return n._id })
+                }
+              }, [
+                { op: 'replace', path: '/status', value: 'read' }
+              ], function(err) {
+                return res.render('notifications', {
+                  notifications: notifications
+                });
+              });
+            });
+          });
+        });
+      }
+    }
+  }
 });
 
 converse.define('Object', {

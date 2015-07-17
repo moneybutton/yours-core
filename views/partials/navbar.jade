@@ -12,6 +12,13 @@
           | Donate &raquo;
         if (user)
           a.item(href="/people/#{user.slug}") #{user.username}
+          a.item(href="/notifications")
+            if (unreadNotifications && unreadNotifications.length)
+              i.mail.icon.red
+              | #{unreadNotifications.length}
+            else
+              i.mail.icon
+              | 0
           a.item(href="/sessions/#{session.hash}?method=delete") Logout
         else
           a.item(href="/sessions")
