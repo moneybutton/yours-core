@@ -119,6 +119,7 @@ var Comment = converse.define('Comment', {
     updated: { type: Date },
     hashcash: { type: String },
     content: { type: String, min: 1 },
+    score: { type: Number , required: 0 , default: 0 },
     stats: {
       comments: { type: Number , default: 0 }
     }
@@ -249,11 +250,20 @@ Tip.post('create', function(next, cb) {
   var pipeline = {};
 
   pipeline.post = function updatePostStats(done) {
-    Post.Model.update({
-      _id: tip._for
-    }, {
-      $inc: { 'score': 1 }
-    }, done);
+    if (tip.context === 'post') {
+      Post.Model.update({
+        _id: tip._for
+      }, {
+        $inc: { 'score': 1 }
+      }, done);
+    }
+    if (tip.context === 'comment') {
+      Comment.Model.update({
+        _id: tip._for
+      }, {
+        $inc: { 'score': 1 }
+      }, done);
+    }
   };
 
   async.parallel(pipeline, function(err, results) {
@@ -275,7 +285,8 @@ converse.define('Index', {
   requires: {
     'Post': {
       filter: {},
-      populate: '_author _document'
+      populate: '_author _document',
+      sort: '-score'
     }
   }
 });
