@@ -16,7 +16,7 @@ mixin PostView(post, maxWords, samePage)
         if (post.hashcash)
           | at 
           abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{post.hashcash.split(':')[1]}
-      if (!~maxWords)
+      if (!!+maxWords)
         .description(style="clear: none;") #{ post.description.split('\n')[0].split(' ').slice(0, maxWords).join(' ') }&hellip;
           a(href="/posts/#{post._id}") Read More &raquo;
       else
@@ -36,17 +36,28 @@ mixin PostView(post, maxWords, samePage)
       .extra.content
         .ui.items
           .item
-            .image
-              img(src="https://thecatapi.com/api/images/get?format=src")
-            .content
-              a.header(href="#{post._document.url}") #{post._document.title}
-              .description #{post._document.description}
-              .extra
-                a.ui.right.floated.primary.button(href="#{post._document.url}")
-                  | Read More
-                  i.icon.right.chevron
-                code(style="word-wrap: break-word;") #{post._document.url}
-      
+            if (!!+maxWords)
+              .content
+                a.header(href="#{post._document.url}")
+                  i.icon.linkify
+                  | #{post._document.title} 
+                  code(style="font-weight: normal; font-size: 0.65em; color: rgba(0,0,0,.5);") #{post._document.url}
+                  .mini.ui.right.floated.primary.button(href="#{post._document.url}")
+                    i.icon.linkify
+                    | Read More
+                    i.icon.right.chevron
+            else
+              .image
+                img(src="https://thecatapi.com/api/images/get?format=src")
+              .content
+                a.header(href="#{post._document.url}") #{post._document.title}
+                .description #{post._document.description}
+                .extra
+                  a.ui.right.floated.primary.button(href="#{post._document.url}")
+                    | Read More
+                    i.icon.right.chevron
+                  code(style="word-wrap: break-word;") #{post._document.url}
+        
     .extra.content
       code(style="word-wrap: break-word;") #{post.hashcash}
 
