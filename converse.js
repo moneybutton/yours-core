@@ -65,7 +65,7 @@ var Post = converse.define('Post', {
     _author:     { type: ObjectId, required: true, ref: 'Person', populate: ['get', 'query'] },
     //_board:      { type: ObjectId, /* required: true, */ ref: 'Board' },
     link:        { type: String },
-    _object:     { type: ObjectId , ref: 'Object', populate: ['get'] },
+    _document:     { type: ObjectId , ref: 'Document', populate: ['get'] },
     stats:       {
       comments:  { type: Number , default: 0 }
     },
@@ -83,6 +83,30 @@ var Post = converse.define('Post', {
     }
   },
   icon: 'pin'
+});
+
+Post.pre('create', function(next, done) {
+  var post = this;
+  if (!post.link) return next();
+
+  // TODO: automatic parsing
+  Document.create({
+    url: post.link,
+    title: post.name,
+    description: post.description
+  }, function(err, document) {
+    post._document = document._id;
+    next();
+  });
+});
+
+var Document = converse.define('Document', {
+  attributes: {
+    url: { type: String , required: true },
+    title: { type: String , max: 1024 },
+    description: { type: String , max: 1024 },
+    image: { type: 'File' }
+  }
 });
 
 var Comment = converse.define('Comment', {
@@ -205,15 +229,6 @@ var Notification = converse.define('Notification', {
         });
       }
     }
-  }
-});
-
-converse.define('Object', {
-  attributes: {
-    url: { type: String , required: true },
-    title: { type: String , max: 1024 },
-    description: { type: String , max: 1024 },
-    image: { type: 'File' }
   }
 });
 

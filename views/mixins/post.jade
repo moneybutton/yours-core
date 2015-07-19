@@ -21,7 +21,17 @@ mixin PostView(post, maxWords, samePage)
           a(href="/posts/#{post._id}") Read More &raquo;
       else
         .description(style="clear: none;") !{ markdown(post.description) }
-    
+        
+    if (post._document)
+      .extra.content
+        .ui.link.items
+          .item
+            .image
+              img(src="https://thecatapi.com/api/images/get?format=src")
+            .content
+              a.header(href="#{post._document.url}") #{post._document.title}
+              .description #{post._document.description}
+      
     .extra.content
       code(style="word-wrap: break-word;") #{post.hashcash}
     
