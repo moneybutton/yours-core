@@ -65,9 +65,10 @@ var Post = converse.define('Post', {
     _author:     { type: ObjectId, required: true, ref: 'Person', populate: ['get', 'query'] },
     //_board:      { type: ObjectId, /* required: true, */ ref: 'Board' },
     link:        { type: String },
+    score:       { type: Number , required: true , default: 0 },
     _document:     { type: ObjectId , ref: 'Document', populate: ['get', 'query'] },
     stats:       {
-      comments:  { type: Number , default: 0 }
+      comments:  { type: Number , default: 0 },
     },
     attribution: {
       _author: { type: ObjectId , ref: 'Person', populate: ['get', 'query'] }
@@ -230,6 +231,35 @@ var Notification = converse.define('Notification', {
       }
     }
   }
+});
+
+var Tip = converse.define('Tip', {
+  attributes: {
+    _from: { type: ObjectId , ref: 'Person', required: true },
+    _to: { type: ObjectId , ref: 'Person', required: true },
+    _for: { type: ObjectId },
+    context: { type: String , enum: ['post', 'comment'] },
+    amount: { type: Number, ref: 'Person', required: true },
+  }
+});
+
+Tip.post('create', function(next, cb) {
+  var tip = this;
+
+  var pipeline = {};
+
+  pipeline.post = function updatePostStats(done) {
+    Post.Model.update({
+      _id: tip._for
+    }, {
+      $inc: { 'score': 1 }
+    }, done);
+  };
+
+  async.parallel(pipeline, function(err, results) {
+    if (err) return cb(err);
+    next();
+  });
 });
 
 converse.define('Index', {
