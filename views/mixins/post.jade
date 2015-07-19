@@ -31,6 +31,10 @@ mixin PostView(post, maxWords, samePage)
             .content
               a.header(href="#{post._document.url}") #{post._document.title}
               .description #{post._document.description}
+              .extra
+                a.ui.right.floated.primary.button(href="#{post._document.url}")
+                  | Read More
+                  i.icon.right.chevron
       
     .extra.content
       code(style="word-wrap: break-word;") #{post.hashcash}
