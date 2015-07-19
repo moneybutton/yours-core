@@ -24,11 +24,11 @@ mixin PostView(post, maxWords, samePage)
     //-.extra.content
       .ui.buttons
         a.ui.button
-          i.icon.usd
+          i.icon.bitcoin
           | tip #{post._author.username} for sharing
         .or
         a.ui.button
-          i.icon.usd
+          i.icon.bitcoin
           | tip SomeOtherGuy for writing
         
     if (post._document)
@@ -44,7 +44,7 @@ mixin PostView(post, maxWords, samePage)
                   code(style="font-weight: normal; font-size: 0.65em; color: rgba(0,0,0,.5);") #{post._document.url}
                   .ui.mini.buttons.right.floated
                     a.ui.button
-                      i.icon.dollar
+                      i.icon.bitcoin
                       | tip author
                     .or
                     a.mini.ui.primary.button(href="/posts/#{post._id}")
@@ -62,7 +62,7 @@ mixin PostView(post, maxWords, samePage)
                 .extra
                   .ui.buttons.right.floated
                     a.ui.button
-                      i.icon.dollar
+                      i.icon.bitcoin
                       | tip author
                     .or
                     a.ui.primary.button(href="#{post._document.url}")
@@ -80,7 +80,7 @@ mixin PostView(post, maxWords, samePage)
        i.bookmark.icon
        | save
       a.ui.button(href="#", data-intent="tip")
-       i.usd.icon
+       i.bitcoin.icon
        | tip
       a.ui.button(href="#", data-intent="share")
         i.share.icon
