@@ -61,7 +61,7 @@ mixin PostView(post, maxWords, samePage)
     .extra.content
       code(style="word-wrap: break-word;") #{post.hashcash}
 
-    .ui.two.bottom.attached.buttons
+    .ui.mini.bottom.attached.buttons
       a.ui.button(href="/posts/#{post._id}#comments")
         i.comment.icon
         | #{post.stats.comments || 0} comments
