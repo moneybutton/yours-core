@@ -3,8 +3,9 @@
 
 .left.floated(style="width: 3em; text-align: center;")
   .ui.mini.statistic
-    a.label
-      i.chevron.up.icon
-    .value(style="font-size: 1em;") #{item && item.score || 0}
-    a.label
-      i.chevron.down.icon
+    a.label.tooltipped(data-intent="tip", title="Donate 100 bits to #{item._author.username} (configurable in settings)")
+      i.add.up.icon
+    .value(style="font-size: 1em;")
+      i.icon.usd
+      |  #{item && item.score || 0}
+    .label tips
