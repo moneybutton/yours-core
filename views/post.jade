@@ -33,11 +33,11 @@ block content
           .description(style="clear: none;") !{ markdown(comment.content || '') }
         .extra.content
           code(style="word-wrap: break-word;") #{comment.hashcash}
-        .extra.content
-          a(href="/comments/#{comment._id}#comments")
+        .ui.two.bottom.attached.buttons
+          a.ui.button(href="/comments/#{comment._id}#comments")
             i.comment.icon
             |  #{comment.stats.comments} comments
-          a(href="/comments/#{comment._id}#comment")
+          a.ui.button(href="/comments/#{comment._id}#comment")
             i.reply.icon
             | reply
 

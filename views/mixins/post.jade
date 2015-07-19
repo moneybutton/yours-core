@@ -21,10 +21,20 @@ mixin PostView(post, maxWords, samePage)
           a(href="/posts/#{post._id}") Read More &raquo;
       else
         .description(style="clear: none;") !{ markdown(post.description) }
+    
+    //-.extra.content
+      .ui.buttons
+        a.ui.button
+          i.icon.usd
+          | tip #{post._author.username} for sharing
+        .or
+        a.ui.button
+          i.icon.usd
+          | tip SomeOtherGuy for writing
         
     if (post._document)
       .extra.content
-        .ui.link.items
+        .ui.items
           .item
             .image
               img(src="https://thecatapi.com/api/images/get?format=src")
@@ -35,14 +45,15 @@ mixin PostView(post, maxWords, samePage)
                 a.ui.right.floated.primary.button(href="#{post._document.url}")
                   | Read More
                   i.icon.right.chevron
+                code(style="word-wrap: break-word;") #{post._document.url}
       
     .extra.content
       code(style="word-wrap: break-word;") #{post.hashcash}
-    
-    .extra.content
-      a(href="/posts/#{post._id}#comments")
+
+    .ui.two.bottom.attached.buttons
+      a.ui.button(href="/posts/#{post._id}#comments")
         i.comment.icon
         | #{post.stats.comments || 0} comments
-      a(href="/posts/#{post._id}#comment", data-intent="#{(samePage) ? 'comment' : undefined}")
+      a.ui.button(href="/posts/#{post._id}#comment", data-intent="#{(samePage) ? 'comment' : undefined}")
         i.reply.icon
         | reply
