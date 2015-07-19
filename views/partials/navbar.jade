@@ -26,9 +26,12 @@
             | Login &raquo;
 
   .ui.sub.menu
-    a.item(href="/", title="Front page")
+    a.item.tooltipped(href="/", title="View the Front Page.")
       i.home.icon
       |  Front Page
+    a.item.tooltipped(href="/#submit", title="Submit a new link or text post.")
+      i.linkify.icon
+      |  Submit
     if (boards)
       for board in boards
         a.item(href="/boards/#{board.slug}", title="#{board.name}")

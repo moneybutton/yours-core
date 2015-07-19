@@ -5,7 +5,7 @@ block content
     include partials/post-list
 
     .ui.fluid.card
-      .content
+      .content#submit(data-intent="comment")
         if (user)
           h3 New Post
           include forms/new-post
