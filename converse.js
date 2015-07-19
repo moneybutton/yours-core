@@ -65,7 +65,7 @@ var Post = converse.define('Post', {
     _author:     { type: ObjectId, required: true, ref: 'Person', populate: ['get', 'query'] },
     //_board:      { type: ObjectId, /* required: true, */ ref: 'Board' },
     link:        { type: String },
-    _document:     { type: ObjectId , ref: 'Document', populate: ['get'] },
+    _document:     { type: ObjectId , ref: 'Document', populate: ['get', 'query'] },
     stats:       {
       comments:  { type: Number , default: 0 }
     },
@@ -245,7 +245,7 @@ converse.define('Index', {
   requires: {
     'Post': {
       filter: {},
-      populate: '_author'
+      populate: '_author _document'
     }
   }
 });
