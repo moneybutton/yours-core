@@ -18,7 +18,6 @@ mixin PostView(post, maxWords, samePage)
           abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{post.hashcash.split(':')[1]}
       if (!!+maxWords)
         .description(style="clear: none;") #{ post.description.split('\n')[0].split(' ').slice(0, maxWords).join(' ') }&hellip;
-          a(href="/posts/#{post._id}") Read More &raquo;
       else
         .description(style="clear: none;") !{ markdown(post.description) }
     
@@ -38,11 +37,12 @@ mixin PostView(post, maxWords, samePage)
           .item
             if (!!+maxWords)
               .content
-                a.header(href="#{post._document.url}")
-                  i.icon.linkify
-                  | #{post._document.title} 
+                .header
+                  a(href="#{post._document.url}")
+                    i.icon.linkify
+                    | #{post._document.title} 
                   code(style="font-weight: normal; font-size: 0.65em; color: rgba(0,0,0,.5);") #{post._document.url}
-                  .mini.ui.right.floated.primary.button(href="#{post._document.url}")
+                  a.mini.ui.right.floated.primary.button(href="/posts/#{post._id}")
                     i.icon.linkify
                     | Read More
                     i.icon.right.chevron
