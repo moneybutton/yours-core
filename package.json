@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "async": "^1.3.0",
+    "html-metadata": "^1.2.1",
     "maki": "git://github.com/martindale/maki",
     "maki-passport-local": "0.0.3"
   },

@@ -1,5 +1,6 @@
 var config = require('./config');
 var async = require('async');
+var scrape = require('html-metadata');
 
 var Maki = require('maki');
 var converse = new Maki( config );
@@ -90,7 +91,6 @@ Post.pre('create', function(next, done) {
   var post = this;
   if (!post.link) return next();
 
-  // TODO: automatic parsing
   Document.create({
     url: post.link,
     title: post.name,
@@ -103,11 +103,35 @@ Post.pre('create', function(next, done) {
 
 var Document = converse.define('Document', {
   attributes: {
+    hash: { type: String },
     url: { type: String , required: true },
     title: { type: String , max: 1024 },
     description: { type: String , max: 1024 },
-    image: { type: 'File' }
+    image: {
+      url: { type: String }
+    },
   }
+});
+
+Document.pre('create', function(next, done) {
+  var document = this;
+  if (!document.url) return done('no url provided');
+  var crypto = require('crypto');
+  document.hash = crypto.createHash('sha256').update(document.url).digest('hex');
+  scrape(document.url, function(err, metadata) {
+    if (err) console.error(err);
+    if (!metadata) return next();
+    if (!metadata.openGraph) metadata.openGraph = {};
+
+    console.log(metadata);
+    // TODO: automatic parsing
+    document.title = document.title || metadata.openGraph.title || metadata.general.title;
+    document.description = document.description || metadata.openGraph.description || metadata.general.description;
+    document.image = metadata.openGraph.image;
+
+    console.log('okay, saved:', document);
+    next(err);
+  });
 });
 
 var Comment = converse.define('Comment', {
@@ -292,5 +316,8 @@ converse.define('Index', {
 });
 
 converse.start(function(err) {
-
+  var url = 'https://www.ericmartindale.com/';
+  scrape(url, function(err, metadata) {
+    console.log(metadata);
+  });
 });
