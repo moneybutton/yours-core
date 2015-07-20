@@ -286,7 +286,7 @@ converse.define('Index', {
     'Post': {
       filter: {},
       populate: '_author _document',
-      sort: '-score'
+      sort: '-score -created'
     }
   }
 });
