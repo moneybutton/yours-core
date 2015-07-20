@@ -1,5 +1,6 @@
 var config = require('./config');
 var async = require('async');
+var scrape = require('html-metadata');
 
 var Maki = require('maki');
 var converse = new Maki( config );
@@ -65,9 +66,10 @@ var Post = converse.define('Post', {
     _author:     { type: ObjectId, required: true, ref: 'Person', populate: ['get', 'query'] },
     //_board:      { type: ObjectId, /* required: true, */ ref: 'Board' },
     link:        { type: String },
+    score:       { type: Number , required: true , default: 0 },
     _document:     { type: ObjectId , ref: 'Document', populate: ['get', 'query'] },
     stats:       {
-      comments:  { type: Number , default: 0 }
+      comments:  { type: Number , default: 0 },
     },
     attribution: {
       _author: { type: ObjectId , ref: 'Person', populate: ['get', 'query'] }
@@ -89,7 +91,6 @@ Post.pre('create', function(next, done) {
   var post = this;
   if (!post.link) return next();
 
-  // TODO: automatic parsing
   Document.create({
     url: post.link,
     title: post.name,
@@ -102,11 +103,35 @@ Post.pre('create', function(next, done) {
 
 var Document = converse.define('Document', {
   attributes: {
+    hash: { type: String },
     url: { type: String , required: true },
     title: { type: String , max: 1024 },
     description: { type: String , max: 1024 },
-    image: { type: 'File' }
+    image: {
+      url: { type: String }
+    },
   }
+});
+
+Document.pre('create', function(next, done) {
+  var document = this;
+  if (!document.url) return done('no url provided');
+  var crypto = require('crypto');
+  document.hash = crypto.createHash('sha256').update(document.url).digest('hex');
+  scrape(document.url, function(err, metadata) {
+    if (err) console.error(err);
+    if (!metadata) return next();
+    if (!metadata.openGraph) metadata.openGraph = {};
+
+    console.log(metadata);
+    // TODO: automatic parsing
+    document.title = document.title || metadata.openGraph.title || metadata.general.title;
+    document.description = document.description || metadata.openGraph.description || metadata.general.description;
+    document.image = metadata.openGraph.image;
+
+    console.log('okay, saved:', document);
+    next(err);
+  });
 });
 
 var Comment = converse.define('Comment', {
@@ -118,6 +143,7 @@ var Comment = converse.define('Comment', {
     updated: { type: Date },
     hashcash: { type: String },
     content: { type: String, min: 1 },
+    score: { type: Number , required: 0 , default: 0 },
     stats: {
       comments: { type: Number , default: 0 }
     }
@@ -232,6 +258,44 @@ var Notification = converse.define('Notification', {
   }
 });
 
+var Tip = converse.define('Tip', {
+  attributes: {
+    _from: { type: ObjectId , ref: 'Person', required: true },
+    _to: { type: ObjectId , ref: 'Person', required: true },
+    _for: { type: ObjectId },
+    context: { type: String , enum: ['post', 'comment'] },
+    amount: { type: Number, ref: 'Person', required: true },
+  }
+});
+
+Tip.post('create', function(next, cb) {
+  var tip = this;
+
+  var pipeline = {};
+
+  pipeline.post = function updatePostStats(done) {
+    if (tip.context === 'post') {
+      Post.Model.update({
+        _id: tip._for
+      }, {
+        $inc: { 'score': 1 }
+      }, done);
+    }
+    if (tip.context === 'comment') {
+      Comment.Model.update({
+        _id: tip._for
+      }, {
+        $inc: { 'score': 1 }
+      }, done);
+    }
+  };
+
+  async.parallel(pipeline, function(err, results) {
+    if (err) return cb(err);
+    next();
+  });
+});
+
 converse.define('Index', {
   name: 'Index',
   static: true,
@@ -245,11 +309,15 @@ converse.define('Index', {
   requires: {
     'Post': {
       filter: {},
-      populate: '_author _document'
+      populate: '_author _document',
+      sort: '-score'
     }
   }
 });
 
 converse.start(function(err) {
-
+  var url = 'https://www.ericmartindale.com/';
+  scrape(url, function(err, metadata) {
+    console.log(metadata);
+  });
 });

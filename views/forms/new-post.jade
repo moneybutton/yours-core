@@ -3,11 +3,12 @@ form.ui.form(action="/posts", method="post")
   input(type="hidden", name="hashcash")
   .field
     label Link
-    input(type="text", name="link", placeholder="http://...")
-  .field.required
-    label Title
-    input(type="text", name="name", placeholder="e.g., \"TEST POST PLEASE IGNORE\"", required)
-  .field
+    input(type="url", name="link", placeholder="http://...")
+  .wrapper
+    .field.wide.required
+      label Title
+      input(type="text", name="name", placeholder="e.g., \"TEST POST PLEASE IGNORE\"", required)
+  .field.wide
     label Content
     textarea(name="description", placeholder="Your thoughtful contribution.")
   .right.floated

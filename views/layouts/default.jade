@@ -66,6 +66,32 @@ html
         e.preventDefault();
         $('textarea').focus();
       });
+
+      $(document).on('click', '*[data-intent=tip]', function(e) {
+        e.preventDefault();
+        
+        var $self = $(this);
+        var target = $self.data('target');
+        
+        var data = {
+          _from: $self.data('from'),
+          _to: $self.data('for'),
+          _for: target,
+          context: $self.data('context'),
+          amount: 1
+        };
+        
+        $.post('/tips', data, function(tip, status, xhr) {
+          console.log(tip);
+          
+          $('*[data-bind='+target+']').each(function(i) {
+            var value = $(this).html();
+            $(this).html( parseInt(value) + 1 );
+          });
+          
+        }, 'json');
+        
+      });
       
       String.prototype.hexEncode = function(){
         var hex, i;
@@ -76,6 +102,48 @@ html
         }
         return result;
       }
+      
+      function getDocumentData(e) {
+        e.preventDefault();
+        var $self = $('form[action="/posts"][method=post]');
+        var url = $self.find('*[name=link]').val();
+
+        if ($self.data('link') === url) return;
+          
+        $self.addClass('loading');
+        $self.data('link', url);
+        
+        var rg = /^(http|https):\/\/(([a-zA-Z0-9$\-_.+!*'(),;:&=]|%[0-9a-fA-F]{2})+@)?(((25[0-5]|2[0-4][0-9]|[0-1][0-9][0-9]|[1-9][0-9]|[0-9])(\.(25[0-5]|2[0-4][0-9]|[0-1][0-9][0-9]|[1-9][0-9]|[0-9])){3})|localhost|([a-zA-Z0-9\-\u00C0-\u017F]+\.)+([a-zA-Z]{2,}))(:[0-9]+)?(\/(([a-zA-Z0-9$\-_.+!*'(),;:@&=]|%[0-9a-fA-F]{2})*(\/([a-zA-Z0-9$\-_.+!*'(),;:@&=]|%[0-9a-fA-F]{2})*)*)?(\?([a-zA-Z0-9$\-_.+!*'(),;:@&=\/?]|%[0-9a-fA-F]{2})*)?(\#([a-zA-Z0-9$\-_.+!*'(),;:@&=\/?]|%[0-9a-fA-F]{2})*)?)?$/;
+        if (!url.match(rg)) {
+          $('form[action="/posts"][method=post]').removeClass('loading');
+          return;
+        }
+        
+        $.post('/documents', {
+          url: url
+        }, function(doc, status, xhr) {
+          console.log(doc);
+          
+          if (!$self.data('name-touched')) $self.find('*[name=name]').val(doc.title);
+          if (!$self.data('description-touched')) $self.find('*[name=description]').val(doc.description);
+          
+          if (doc.image && doc.image.url) {
+            $self.find('.wrapper').addClass('inline fields');
+            $self.find('.wrapper').prepend('<div class="ui left floated small image"><img src="'+doc.image.url+'" /></div>');
+          }
+          
+          $('form[action="/posts"][method=post]').removeClass('loading');
+        }, 'json');
+      }
+      var getDocData = _.debounce(getDocumentData,250);
+      
+      $('form[action="/posts"][method=post] input[name=link]').on('change keyup mouseup', getDocData);
+      $('form[action="/posts"][method=post] input[name=name]').on('keyup', function(e) {
+        $('form[action="/posts"][method=post]').data('name-touched', true);
+      });
+      $('form[action="/posts"][method=post] input[name=description]').on('keyup', function(e) {
+        $('form[action="/posts"][method=post]').data('description-touched', true);
+      });
 
       $('form[action="/posts"][method=post]').submit(function(e) {
         e.preventDefault();

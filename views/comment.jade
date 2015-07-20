@@ -30,7 +30,8 @@ block content
     for subcomment in comments
       .ui.fluid.card(style="margin-left: 2.5em;")
         .content
-          - var item = subcomment
+          - var item = subcomment;
+          - var context = 'comment';
           include partials/influence
           img.right.floated.mini.ui.avatar(src="https://thecatapi.com/api/images/get?format=src&type=gif")
           .meta
