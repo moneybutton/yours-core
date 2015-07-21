@@ -84,7 +84,8 @@ var Post = converse.define('Post', {
         var post = this;
         return { _post: post._id , _parent: { $exists: false } };
       },
-      populate: '_author _parent'
+      populate: '_author _parent',
+      sort: '-score -created'
     }
   },
   icon: 'pin'
@@ -134,7 +135,8 @@ var Comment = converse.define('Comment', {
         var comment = this;
         return { _parent: comment._id };
       },
-      populate: '_author _parent'
+      populate: '_author _parent',
+      sort: '-score -created'
     }
   },
   handlers: {
