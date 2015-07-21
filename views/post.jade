@@ -20,6 +20,8 @@ block content
     for comment in comments
       .ui.fluid.card
         .content
+          - var item = comment
+          - var context = 'comment'
           include partials/influence
           img.right.floated.mini.ui.avatar(src="https://thecatapi.com/api/images/get?format=src&type=gif")
           .meta
