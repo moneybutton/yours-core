@@ -240,6 +240,7 @@ var Notification = converse.define('Notification', {
 
 var Tip = converse.define('Tip', {
   attributes: {
+    //status: { type: String , required: true , enum: ['pending', 'issued', 'failed'], default: 'pending' },
     _from: { type: ObjectId , ref: 'Person', required: true },
     _to: { type: ObjectId , ref: 'Person', required: true },
     _for: { type: ObjectId },
@@ -248,24 +249,32 @@ var Tip = converse.define('Tip', {
   }
 });
 
-Tip.post('create', function(next, cb) {
+Tip.pre('create', function(next, cb) {
   var tip = this;
+  // TODO: why is Maki behaving like this?  shouldn't post('create') have a "done"?
+  if (!cb) var cb = next;
 
   // TODO: transactions, obviously. ;)
 
   function deductFromUser(done) {
-    Person.Model.update({
-      _id: tip._from
-    }, {
-      $inc: { 'balance': -tip.amount }
-    }, function(err) {
-      return done(err);
+    Person.get({ _id: tip._from }, function(err, sender) {
+      if (err) return done(err);
+      // TODO: better error handling across Maki
+      if (sender.balance <= 0) return done({ error: 'insufficient balance' });
+
+      Person.Model.update({
+        _id: tip._from
+      }, {
+        $inc: { 'balance': -tip.amount }
+      }, function(err) {
+        return done(err);
+      });
     });
   };
 
   function addToUser(done) {
     Person.Model.update({
-      _id: tip._from
+      _id: tip._to
     }, {
       $inc: { 'balance': tip.amount }
     }, function(err) {
@@ -296,7 +305,6 @@ Tip.post('create', function(next, cb) {
     updatePostStats
   ], function(err, results) {
     if (err) return cb(err);
-
     next();
   });
 });

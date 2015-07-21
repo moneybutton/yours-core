@@ -93,7 +93,11 @@ html
             $(this).html( (parseInt(value) - 1).toFixed(2) );
           });
           
-        }, 'json');
+        }, 'json').error(function(xhr, text, error) {
+          var tip = JSON.parse(xhr.responseText);
+          if (tip.error) return alert(tip.error);
+          
+        });
         
       });
       
