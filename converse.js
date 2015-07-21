@@ -127,12 +127,28 @@ Document.pre('create', function(next, done) {
     if (err) console.error(err);
     if (!metadata) return next();
     if (!metadata.openGraph) metadata.openGraph = {};
+    if (!metadata.schemaOrg) metadata.schemaOrg = { items: [] };
 
-    console.log(metadata);
+    var authorshipClaims = [];
+
+    metadata.schemaOrg.items.forEach(function(item) {
+      if (item.properties.author) {
+        item.properties.author.forEach(function(author) {
+          if (author.type[0] === 'http://schema.org/Person') {
+            authorshipClaims.push( author.properties.url[0] );
+          }
+        });
+      }
+    });
+
+    console.log('authorshipClaims', authorshipClaims);
+
     // TODO: automatic parsing
     document.title = document.title || metadata.openGraph.title || metadata.general.title;
     document.description = document.description || metadata.openGraph.description || metadata.general.description;
     document.image = metadata.openGraph.image;
+
+
 
     console.log('okay, saved:', document);
     next(err);
@@ -355,8 +371,5 @@ converse.define('Index', {
 });
 
 converse.start(function(err) {
-  var url = 'https://www.ericmartindale.com/';
-  scrape(url, function(err, metadata) {
-    console.log(metadata);
-  });
+
 });
