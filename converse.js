@@ -39,7 +39,11 @@ var Person = converse.define('Person', {
     password: { type: String , max: 70 , masked: true },
     created:  { type: Date , default: Date.now , render: { query: false } },
     bio:      { type: String , max: 250 },
-    image:    { type: 'File' }
+    image:    { type: 'File' },
+    balance:  { type: Number , required: true , default: 100 },
+    settings: {
+      amount: { type: Number , required: true , default: 1 }
+    }
   },
   icon: 'user'
 });
@@ -81,7 +85,8 @@ var Post = converse.define('Post', {
         var post = this;
         return { _post: post._id , _parent: { $exists: false } };
       },
-      populate: '_author _parent'
+      populate: '_author _parent',
+      sort: '-score -created'
     }
   },
   icon: 'pin'
@@ -154,7 +159,8 @@ var Comment = converse.define('Comment', {
         var comment = this;
         return { _parent: comment._id };
       },
-      populate: '_author _parent'
+      populate: '_author _parent',
+      sort: '-score -created'
     }
   },
   handlers: {
@@ -260,37 +266,70 @@ var Notification = converse.define('Notification', {
 
 var Tip = converse.define('Tip', {
   attributes: {
+    //status: { type: String , required: true , enum: ['pending', 'issued', 'failed'], default: 'pending' },
     _from: { type: ObjectId , ref: 'Person', required: true },
     _to: { type: ObjectId , ref: 'Person', required: true },
     _for: { type: ObjectId },
     context: { type: String , enum: ['post', 'comment'] },
-    amount: { type: Number, ref: 'Person', required: true },
+    amount: { type: Number, required: true },
   }
 });
 
-Tip.post('create', function(next, cb) {
+Tip.pre('create', function(next, cb) {
   var tip = this;
+  // TODO: why is Maki behaving like this?  shouldn't post('create') have a "done"?
+  if (!cb) var cb = next;
 
-  var pipeline = {};
+  // TODO: transactions, obviously. ;)
 
-  pipeline.post = function updatePostStats(done) {
+  function deductFromUser(done) {
+    Person.get({ _id: tip._from }, function(err, sender) {
+      if (err) return done(err);
+      // TODO: better error handling across Maki
+      if (sender.balance <= 0) return done({ error: 'insufficient balance' });
+
+      Person.Model.update({
+        _id: tip._from
+      }, {
+        $inc: { 'balance': -tip.amount }
+      }, function(err) {
+        return done(err);
+      });
+    });
+  };
+
+  function addToUser(done) {
+    Person.Model.update({
+      _id: tip._to
+    }, {
+      $inc: { 'balance': tip.amount }
+    }, function(err) {
+      return done(err);
+    });
+  }
+
+  function updatePostStats(done) {
     if (tip.context === 'post') {
       Post.Model.update({
         _id: tip._for
       }, {
-        $inc: { 'score': 1 }
+        $inc: { 'score': tip.amount }
       }, done);
     }
     if (tip.context === 'comment') {
       Comment.Model.update({
         _id: tip._for
       }, {
-        $inc: { 'score': 1 }
+        $inc: { 'score': tip.amount }
       }, done);
     }
   };
 
-  async.parallel(pipeline, function(err, results) {
+  async.waterfall([
+    deductFromUser,
+    addToUser,
+    updatePostStats
+  ], function(err, results) {
     if (err) return cb(err);
     next();
   });
@@ -310,7 +349,7 @@ converse.define('Index', {
     'Post': {
       filter: {},
       populate: '_author _document',
-      sort: '-score'
+      sort: '-score -created'
     }
   }
 });

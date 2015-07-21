@@ -7,6 +7,7 @@ block content
     .ui.fluid.card
       .content
         - var item = comment
+        - var context = 'comment';
         include partials/influence
         img.right.floated.mini.ui.avatar(src="https://thecatapi.com/api/images/get?format=src&type=gif")
         .meta
@@ -18,14 +19,24 @@ block content
             | at 
             abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{comment.hashcash.split(':')[1]}
         .description(style="clear: none;") !{ markdown(comment.content || '') }
-      .extra.content
-        a(href="/comments/#{comment._id}#comments")
+      .ui.mini.bottom.attached.buttons
+        a.ui.button(href="/comments/#{comment._id}")
+          i.comment.icon
+          |  permalink
+        a.ui.button(href="#", data-intent="save")
+          i.bookmark.icon
+          | save
+        if (comment._parent)
+          a.ui.button(href="/comments/#{comment._parent}")
+            i.tree.icon
+            | parent
+        a.ui.button(href="/comments/#{comment._id}#comments")
           i.comment.icon
           | #{comment.stats.comments} comments
-        a(href="/comments/#{comment._id}#comment", data-intent="comment")
+        a.ui.button(href="/comments/#{comment._id}#comment", data-intent="comment")
           i.reply.icon
           | reply
-  
+
   .ui.cards
     for subcomment in comments
       .ui.fluid.card(style="margin-left: 2.5em;")
@@ -43,11 +54,21 @@ block content
               | at 
               abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{subcomment.hashcash.split(':')[1]}
           .description(style="clear: none;") !{ markdown(subcomment.content || '') }
-        .extra.content
-          a(href="/comments/#{subcomment._id}#comments")
+        .ui.mini.bottom.attached.buttons
+          a.ui.button(href="/comments/#{subcomment._id}")
+            i.comment.icon
+            |  permalink
+          a.ui.button(href="#", data-intent="save")
+            i.bookmark.icon
+            | save
+          if (subcomment._parent)
+            a.ui.button(href="/comments/#{subcomment._parent}")
+              i.tree.icon
+              | parent
+          a.ui.button(href="/comments/#{subcomment._id}#comments")
             i.comment.icon
             | #{subcomment.stats.comments} comments
-          a(href="/comments/#{subcomment._id}#comment")
+          a.ui.button(href="/comments/#{subcomment._id}#comment")
             i.reply.icon
             | reply
 

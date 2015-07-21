@@ -20,6 +20,8 @@ block content
     for comment in comments
       .ui.fluid.card
         .content
+          - var item = comment
+          - var context = 'comment'
           include partials/influence
           img.right.floated.mini.ui.avatar(src="https://thecatapi.com/api/images/get?format=src&type=gif")
           .meta
@@ -31,9 +33,19 @@ block content
               | at 
               abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{comment.hashcash.split(':')[1]}
           .description(style="clear: none;") !{ markdown(comment.content || '') }
-        .extra.content
+        //-.extra.content
           code(style="word-wrap: break-word;") #{comment.hashcash}
-        .ui.two.bottom.attached.buttons
+        .ui.mini.bottom.attached.buttons
+          a.ui.button(href="/comments/#{comment._id}")
+            i.comment.icon
+            |  permalink
+          a.ui.button(href="#", data-intent="save")
+            i.bookmark.icon
+            | save
+          if (comment._parent)
+            a.ui.button(href="/comments/#{comment._parent}")
+              i.tree.icon
+              | parent
           a.ui.button(href="/comments/#{comment._id}#comments")
             i.comment.icon
             |  #{comment.stats.comments} comments

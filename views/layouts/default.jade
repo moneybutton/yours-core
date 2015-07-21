@@ -82,14 +82,22 @@ html
         };
         
         $.post('/tips', data, function(tip, status, xhr) {
-          console.log(tip);
-          
+
           $('*[data-bind='+target+']').each(function(i) {
             var value = $(this).html();
             $(this).html( parseInt(value) + 1 );
           });
           
-        }, 'json');
+          $('*[data-bind=user-balance]').each(function(i) {
+            var value = $(this).html();
+            $(this).html( (parseInt(value) - 1).toFixed(2) );
+          });
+          
+        }, 'json').error(function(xhr, text, error) {
+          var tip = JSON.parse(xhr.responseText);
+          if (tip.error) return alert(tip.error);
+          
+        });
         
       });
       
