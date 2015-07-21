@@ -82,11 +82,15 @@ html
         };
         
         $.post('/tips', data, function(tip, status, xhr) {
-          console.log(tip);
-          
+
           $('*[data-bind='+target+']').each(function(i) {
             var value = $(this).html();
             $(this).html( parseInt(value) + 1 );
+          });
+          
+          $('*[data-bind=user-balance]').each(function(i) {
+            var value = $(this).html();
+            $(this).html( (parseInt(value) - 1).toFixed(2) );
           });
           
         }, 'json');

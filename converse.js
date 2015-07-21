@@ -38,7 +38,11 @@ var Person = converse.define('Person', {
     password: { type: String , max: 70 , masked: true },
     created:  { type: Date , default: Date.now , render: { query: false } },
     bio:      { type: String , max: 250 },
-    image:    { type: 'File' }
+    image:    { type: 'File' },
+    balance:  { type: Number , required: true , default: 100 },
+    settings: {
+      amount: { type: Number , required: true , default: 1 }
+    }
   },
   icon: 'user'
 });
@@ -240,34 +244,59 @@ var Tip = converse.define('Tip', {
     _to: { type: ObjectId , ref: 'Person', required: true },
     _for: { type: ObjectId },
     context: { type: String , enum: ['post', 'comment'] },
-    amount: { type: Number, ref: 'Person', required: true },
+    amount: { type: Number, required: true },
   }
 });
 
 Tip.post('create', function(next, cb) {
   var tip = this;
 
-  var pipeline = {};
+  // TODO: transactions, obviously. ;)
 
-  pipeline.post = function updatePostStats(done) {
+  function deductFromUser(done) {
+    Person.Model.update({
+      _id: tip._from
+    }, {
+      $inc: { 'balance': -tip.amount }
+    }, function(err) {
+      return done(err);
+    });
+  };
+
+  function addToUser(done) {
+    Person.Model.update({
+      _id: tip._from
+    }, {
+      $inc: { 'balance': tip.amount }
+    }, function(err) {
+      return done(err);
+    });
+  }
+
+  function updatePostStats(done) {
     if (tip.context === 'post') {
       Post.Model.update({
         _id: tip._for
       }, {
-        $inc: { 'score': 1 }
+        $inc: { 'score': tip.amount }
       }, done);
     }
     if (tip.context === 'comment') {
       Comment.Model.update({
         _id: tip._for
       }, {
-        $inc: { 'score': 1 }
+        $inc: { 'score': tip.amount }
       }, done);
     }
   };
 
-  async.parallel(pipeline, function(err, results) {
+  async.waterfall([
+    deductFromUser,
+    addToUser,
+    updatePostStats
+  ], function(err, results) {
     if (err) return cb(err);
+
     next();
   });
 });

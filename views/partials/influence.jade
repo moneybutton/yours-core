@@ -9,7 +9,7 @@
 
 .left.floated(style="width: 3em; text-align: center;")
   .ui.mini.statistic
-    a.label.tooltipped(data-intent="tip", data-from="#{user ? user._id : undefined }", data-for="#{item._author._id}", data-context="#{context}", data-target="#{item._id}", title="Donate 100 bits to #{item._author.username} (configurable in settings)")
+    a.label.tooltipped(data-intent="tip", data-from="#{user ? user._id : undefined }", data-for="#{item._author._id}", data-context="#{context}", data-target="#{item._id}", title="Donate #{ user ? user.settings.amount : 1 } bit to #{item._author.username} (configurable in settings)")
       i.add.up.icon
     .value(style="font-size: 1em;")
       i.icon.bitcoin

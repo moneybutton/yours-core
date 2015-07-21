@@ -7,10 +7,10 @@
     //- block for prepend/append/replace-able menu items
     block mainMenu
       .right.menu
-        a.item.tooltipped(class="btn btn-default", href="bitcoin:1EBdAcEhP4Qn7sihJoCqinLC8A14zqHJ7R", title="If you have a bitcoin wallet installed and configured, this will launch it.") 
-          i.icon.bitcoin(alt="Bitoin", title="Donate Bitcoin")
-          | Donate &raquo;
         if (user)
+          a.item.tooltipped(href="#", title="Your balance, in bits (1/1000000th of a Bitcoin).")
+            i.icon.bitcoin
+            span(data-bind="user-balance") #{user.balance.toFixed(2)}
           a.item(href="/people/#{user.slug}") #{user.username}
           a.item(href="/notifications")
             if (unreadNotifications && unreadNotifications.length)
@@ -32,6 +32,9 @@
     a.item.tooltipped(href="/#submit", title="Submit a new link or text post.")
       i.linkify.icon
       |  Submit
+    a.item.tooltipped(href="bitcoin:1EBdAcEhP4Qn7sihJoCqinLC8A14zqHJ7R", title="If you have a bitcoin wallet installed and configured, this will launch it.") 
+      i.icon.bitcoin(alt="Bitoin", title="Donate Bitcoin")
+      | Donate &raquo;
     if (boards)
       for board in boards
         a.item(href="/boards/#{board.slug}", title="#{board.name}")
