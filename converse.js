@@ -95,11 +95,12 @@ var Post = converse.define('Post', {
 Post.pre('create', function(next, done) {
   var post = this;
   if (!post.link) return next();
+  if (!post.document) return next();
 
   Document.create({
     url: post.link,
-    title: post.name,
-    description: post.description
+    title: post.document.name,
+    description: post.document.description
   }, function(err, document) {
     post._document = document._id;
     next();
