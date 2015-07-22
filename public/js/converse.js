@@ -1,3 +1,25 @@
+/*
+    Apologies in advance for the sloppiness and, perhaps more notably, the
+    jQuery.  I haven't had time to wrap my head around how we'll do this in Maki
+    with React just yet, but am hoping to tackle this soon.  As for now, I'm
+    trying to stay as close to "javascriptless-HTML" as possible, so I'm using
+    things like `data-bind` and proper form attribute names to preserve the
+    ability to progressively enhance with something like React in the future.
+    If anyone wants to help, tackle it in the Maki repo as a library feature.
+                                                                          ~ Eric
+*/
+
+// TODO: not modify prototypes?  hueh.
+String.prototype.hexEncode = function() {
+  var hex, i;
+  var result = '';
+  for (i=0; i<this.length; i++) {
+    hex = this.charCodeAt(i).toString(16);
+    result += ('000'+hex).slice(-4);
+  }
+  return result;
+};
+
 $(window).load(function(e) {
   console.log('match:', window.location.hash.match(/^#comment$/));
   if (window.location.hash && window.location.hash.match(/^#comment$/)) {
@@ -45,16 +67,11 @@ $(document).on('click', '*[data-intent=tip]', function(e) {
 
 });
 
-String.prototype.hexEncode = function(){
-  var hex, i;
-  var result = '';
-  for (i=0; i<this.length; i++) {
-    hex = this.charCodeAt(i).toString(16);
-    result += ('000'+hex).slice(-4);
-  }
-  return result;
-}
-
+// Block the form until the link information has been retrieved, and make sure
+// that we attach all relevant data that comes back from the server to the form
+// attributes.  Javascript is later used to read these attributes and wrap them
+// in an XHR to progressively upgrade the form experience.  It works without JS!
+// TODO: don't rely on the server to retrive document information; DOM parse.
 function getDocumentData(e) {
   e.preventDefault();
   var $self = $('form[action="/posts"][method=post]');
@@ -94,8 +111,12 @@ function getDocumentData(e) {
     $('form[action="/posts"][method=post]').removeClass('loading');
   }, 'json');
 }
+// prevent it from being called on every keypress, in case the URL is handtyped!
 var getDocData = _.debounce(getDocumentData,250);
 
+// if the user edits the `contenteditable` visual guides, prevent furthur
+// automation _and_ set the hidden field attributes so normal HTML works without
+// any Javascript.
 $('form[action="/posts"][method=post] *[data-bind=document-name]').on('keyup', function(e) {
   var $form = $('form[action="/posts"][method=post]');
   $form.data('name-touched', true);
@@ -109,6 +130,7 @@ $('form[action="/posts"][method=post] *[data-bind=document-description]').on('ke
   $form.find('*[name="document[description]"]').val( description );
 });
 
+// when the "link" field changes, get the document's data.  works on paste!
 $('form[action="/posts"][method=post] input[name=link]').on('change keyup mouseup', getDocData);
 
 $('form[action="/posts"][method=post]').submit(function(e) {
