@@ -33,6 +33,33 @@ $(document).on('click', '*[data-intent=comment]', function(e) {
   $('textarea').focus();
 });
 
+$(document).on('click', '*[data-intent=upvote], *[data-intent=downvote]', function(e) {
+  e.preventDefault();
+
+  var $self = $(this);
+  var target = $self.data('id');
+  var intent = $self.data('intent');
+  var sentiment = (intent === 'upvote') ? 1 : -1;
+
+  var data = {
+    context: $self.data('context'),
+    _target: target,
+    _user: $self.data('for'),
+    sentiment: sentiment
+  };
+
+  $.post('/votes', data, function(vote, status, xhr) {
+    $('*[data-bind='+target+']').each(function(i) {
+      var value = $(this).html();
+      $(this).html( parseInt(value) + sentiment );
+    });
+  }, 'json').error(function(xhr, text, error) {
+    var vote = JSON.parse(xhr.responseText);
+    if (vote.error) return alert(vote.error);
+  });
+
+});
+
 $(document).on('click', '*[data-intent=tip]', function(e) {
   e.preventDefault();
 

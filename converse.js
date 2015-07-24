@@ -6,6 +6,7 @@ var Maki = require('maki');
 var converse = new Maki( config );
 
 var ObjectId = converse.mongoose.SchemaTypes.ObjectId;
+var UUID = converse.mongoose.Types.ObjectId;
 
 var Passport = require('maki-passport-local');
 var passport = new Passport({
@@ -281,74 +282,73 @@ var Notification = converse.define('Notification', {
   }
 });
 
-var Tip = converse.define('Tip', {
+var Vote = converse.define('Vote', {
   attributes: {
     //status: { type: String , required: true , enum: ['pending', 'issued', 'failed'], default: 'pending' },
-    _from: { type: ObjectId , ref: 'Person', required: true },
-    _to: { type: ObjectId , ref: 'Person', required: true },
-    _for: { type: ObjectId },
+    _user: { type: ObjectId , ref: 'Person', required: true },
+    _target: { type: ObjectId, required: true },
     context: { type: String , enum: ['post', 'comment'] },
     amount: { type: Number, required: true },
   }
 });
 
-Tip.pre('create', function(next, cb) {
-  var tip = this;
-  // TODO: why is Maki behaving like this?  shouldn't post('create') have a "done"?
-  if (!cb) var cb = next;
+Vote.on('vote', function(vote) {
+  console.log('vote event!');
 
-  // TODO: transactions, obviously. ;)
-
-  function deductFromUser(done) {
-    Person.get({ _id: tip._from }, function(err, sender) {
-      if (err) return done(err);
-      // TODO: better error handling across Maki
-      if (sender.balance <= 0) return done({ error: 'insufficient balance' });
-
-      Person.Model.update({
-        _id: tip._from
-      }, {
-        $inc: { 'balance': -tip.amount }
-      }, function(err) {
-        return done(err);
-      });
-    });
+  var opts = {
+    'post': Post,
+    'comment': Comment
   };
 
-  function addToUser(done) {
-    Person.Model.update({
-      _id: tip._to
+  Vote.Model.aggregate([
+    { $match: { _target: new UUID(vote._target) } },
+    { $group: {
+      _id: '$_target',
+      score: { $sum: '$amount' }
+    } }
+  ], function(err, stats) {
+    if (err) return console.error(err);
+    if (!stats.length) return;
+    opts[ vote.context ].Model.update({
+      _id: vote._target
     }, {
-      $inc: { 'balance': tip.amount }
+      $set: { 'score': stats[0].score }
     }, function(err) {
-      return done(err);
+      if (err) console.error(err);
     });
+  });
+});
+
+Vote.pre('create', function(next, done) {
+  var vote = this;
+
+  if (vote.sentiment == '1') {
+    vote.amount = 1;
+  } else if (vote.sentiment == '-1') {
+    vote.amount = -1;
+  } else {
+    return done('No such value.');
   }
 
-  function updatePostStats(done) {
-    if (tip.context === 'post') {
-      Post.Model.update({
-        _id: tip._for
-      }, {
-        $inc: { 'score': tip.amount }
-      }, done);
+  Vote.query({
+    _user: vote._user,
+    _target: vote._target
+  }, function(err, votes) {
+    if (err) return done(err);
+    if (!votes.length) {
+      Vote.emit('vote', vote);
+      return next();
     }
-    if (tip.context === 'comment') {
-      Comment.Model.update({
-        _id: tip._for
-      }, {
-        $inc: { 'score': tip.amount }
-      }, done);
-    }
-  };
 
-  async.waterfall([
-    deductFromUser,
-    addToUser,
-    updatePostStats
-  ], function(err, results) {
-    if (err) return cb(err);
-    next();
+    Vote.Model.update({
+      _user: vote._user,
+      _target: vote._target
+    }, {
+      $set: { amount: vote.amount }
+    }, function(err) {
+      Vote.emit('vote', vote);
+      return done(null, vote);
+    });
   });
 });
 
