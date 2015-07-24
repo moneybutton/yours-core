@@ -43,10 +43,6 @@ mixin PostView(post, maxWords, samePage)
                     | #{post._document.title} 
                   code(style="font-weight: normal; font-size: 0.65em; color: rgba(0,0,0,.5);") #{post._document.url}
                   .ui.mini.buttons.right.floated
-                    a.ui.button
-                      i.icon.bitcoin
-                      | tip author
-                    .or
                     a.mini.ui.primary.button(href="/posts/#{post._id}")
                       i.icon.linkify
                       | Read More
@@ -61,10 +57,6 @@ mixin PostView(post, maxWords, samePage)
                 .description #{post._document.description}
                 .extra
                   .ui.buttons.right.floated
-                    a.ui.button
-                      i.icon.bitcoin
-                      | tip author
-                    .or
                     a.ui.primary.button(href="#{post._document.url}")
                       | Read More
                       i.icon.right.chevron
