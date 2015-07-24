@@ -1,5 +1,6 @@
 var config = require('./config');
 var async = require('async');
+var scrape = require('html-metadata');
 
 var Maki = require('maki');
 var converse = new Maki( config );
@@ -38,7 +39,11 @@ var Person = converse.define('Person', {
     password: { type: String , max: 70 , masked: true },
     created:  { type: Date , default: Date.now , render: { query: false } },
     bio:      { type: String , max: 250 },
-    image:    { type: 'File' }
+    image:    { type: 'File' },
+    balance:  { type: Number , required: true , default: 100 },
+    settings: {
+      amount: { type: Number , required: true , default: 1 }
+    }
   },
   icon: 'user'
 });
@@ -65,9 +70,10 @@ var Post = converse.define('Post', {
     _author:     { type: ObjectId, required: true, ref: 'Person', populate: ['get', 'query'] },
     //_board:      { type: ObjectId, /* required: true, */ ref: 'Board' },
     link:        { type: String },
-    _object:     { type: ObjectId , ref: 'Object', populate: ['get'] },
+    score:       { type: Number , required: true , default: 0 },
+    _document:     { type: ObjectId , ref: 'Document', populate: ['get', 'query'] },
     stats:       {
-      comments:  { type: Number , default: 0 }
+      comments:  { type: Number , default: 0 },
     },
     attribution: {
       _author: { type: ObjectId , ref: 'Person', populate: ['get', 'query'] }
@@ -79,10 +85,75 @@ var Post = converse.define('Post', {
         var post = this;
         return { _post: post._id , _parent: { $exists: false } };
       },
-      populate: '_author _parent'
+      populate: '_author _parent',
+      sort: '-score -created'
     }
   },
   icon: 'pin'
+});
+
+Post.pre('create', function(next, done) {
+  var post = this;
+  if (!post.link) return next();
+  if (!post.document) return next();
+
+  Document.create({
+    url: post.link,
+    title: post.document.name,
+    description: post.document.description
+  }, function(err, document) {
+    post._document = document._id;
+    next();
+  });
+});
+
+var Document = converse.define('Document', {
+  attributes: {
+    hash: { type: String },
+    url: { type: String , required: true },
+    title: { type: String , max: 1024 },
+    description: { type: String , max: 1024 },
+    image: {
+      url: { type: String }
+    },
+  }
+});
+
+Document.pre('create', function(next, done) {
+  var document = this;
+  if (!document.url) return done('no url provided');
+  var crypto = require('crypto');
+  document.hash = crypto.createHash('sha256').update(document.url).digest('hex');
+  scrape(document.url, function(err, metadata) {
+    if (err) console.error(err);
+    if (!metadata) return next();
+    if (!metadata.openGraph) metadata.openGraph = {};
+    if (!metadata.schemaOrg) metadata.schemaOrg = { items: [] };
+
+    var authorshipClaims = [];
+
+    metadata.schemaOrg.items.forEach(function(item) {
+      if (item.properties.author) {
+        item.properties.author.forEach(function(author) {
+          if (author.type[0] === 'http://schema.org/Person') {
+            authorshipClaims.push( author.properties.url[0] );
+          }
+        });
+      }
+    });
+
+    console.log('authorshipClaims', authorshipClaims);
+
+    // TODO: automatic parsing
+    document.title = document.title || metadata.openGraph.title || metadata.general.title;
+    document.description = document.description || metadata.openGraph.description || metadata.general.description;
+    document.image = metadata.openGraph.image;
+
+
+
+    console.log('okay, saved:', document);
+    next(err);
+  });
 });
 
 var Comment = converse.define('Comment', {
@@ -94,6 +165,7 @@ var Comment = converse.define('Comment', {
     updated: { type: Date },
     hashcash: { type: String },
     content: { type: String, min: 1 },
+    score: { type: Number , required: 0 , default: 0 },
     stats: {
       comments: { type: Number , default: 0 }
     }
@@ -104,7 +176,8 @@ var Comment = converse.define('Comment', {
         var comment = this;
         return { _parent: comment._id };
       },
-      populate: '_author _parent'
+      populate: '_author _parent',
+      sort: '-score -created'
     }
   },
   handlers: {
@@ -208,13 +281,75 @@ var Notification = converse.define('Notification', {
   }
 });
 
-converse.define('Object', {
+var Tip = converse.define('Tip', {
   attributes: {
-    url: { type: String , required: true },
-    title: { type: String , max: 1024 },
-    description: { type: String , max: 1024 },
-    image: { type: 'File' }
+    //status: { type: String , required: true , enum: ['pending', 'issued', 'failed'], default: 'pending' },
+    _from: { type: ObjectId , ref: 'Person', required: true },
+    _to: { type: ObjectId , ref: 'Person', required: true },
+    _for: { type: ObjectId },
+    context: { type: String , enum: ['post', 'comment'] },
+    amount: { type: Number, required: true },
   }
+});
+
+Tip.pre('create', function(next, cb) {
+  var tip = this;
+  // TODO: why is Maki behaving like this?  shouldn't post('create') have a "done"?
+  if (!cb) var cb = next;
+
+  // TODO: transactions, obviously. ;)
+
+  function deductFromUser(done) {
+    Person.get({ _id: tip._from }, function(err, sender) {
+      if (err) return done(err);
+      // TODO: better error handling across Maki
+      if (sender.balance <= 0) return done({ error: 'insufficient balance' });
+
+      Person.Model.update({
+        _id: tip._from
+      }, {
+        $inc: { 'balance': -tip.amount }
+      }, function(err) {
+        return done(err);
+      });
+    });
+  };
+
+  function addToUser(done) {
+    Person.Model.update({
+      _id: tip._to
+    }, {
+      $inc: { 'balance': tip.amount }
+    }, function(err) {
+      return done(err);
+    });
+  }
+
+  function updatePostStats(done) {
+    if (tip.context === 'post') {
+      Post.Model.update({
+        _id: tip._for
+      }, {
+        $inc: { 'score': tip.amount }
+      }, done);
+    }
+    if (tip.context === 'comment') {
+      Comment.Model.update({
+        _id: tip._for
+      }, {
+        $inc: { 'score': tip.amount }
+      }, done);
+    }
+  };
+
+  async.waterfall([
+    deductFromUser,
+    addToUser,
+    updatePostStats
+  ], function(err, results) {
+    if (err) return cb(err);
+    next();
+  });
 });
 
 converse.define('Index', {
@@ -230,7 +365,8 @@ converse.define('Index', {
   requires: {
     'Post': {
       filter: {},
-      populate: '_author'
+      populate: '_author _document',
+      sort: '-score -created'
     }
   }
 });

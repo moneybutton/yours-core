@@ -1,10 +1,22 @@
-- if (!item && post) var item = post;
-- if (!item && comment) var item = comment;
+- if (!item && comment) {
+-   var item = comment;
+-   var context = 'comment';
+- }
+- if (!item && post) {
+-   var item = post;
+-   var context = 'post';
+- }
 
 .left.floated(style="width: 3em; text-align: center;")
   .ui.mini.statistic
-    a.label
-      i.chevron.up.icon
-    .value(style="font-size: 1em;") #{item && item.score || 0}
-    a.label
-      i.chevron.down.icon
+    if (user)
+      a.label.tooltipped(data-intent="tip", data-from="#{user ? user._id : undefined }", data-for="#{item._author._id}", data-context="#{context}", data-target="#{item._id}", title="Donate #{ user ? user.settings.amount : 1 } bit to #{item._author.username} (configurable in settings)")
+        i.add.up.icon
+    else
+      a.label.tooltipped(href="/people", title="Sign up and you can thank this person with a tip!")
+        i.add.up.icon
+    .value(style="font-size: 1em;")
+      i.icon.bitcoin
+      |  
+      span(data-bind="#{item._id}") #{item && item.score || 0}
+    .label tips

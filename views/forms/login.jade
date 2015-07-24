@@ -1,0 +1,11 @@
+form.ui.form.segment(action="/sessions", method="post")
+  .field
+    label(for="username") Username
+    input.ui.left.labeled.input(type="text", name="username", placeholder="Username")
+
+  .field
+    label(for="password") Password
+    input.ui.left.labeled.input(type="password", name="password")
+
+  button.ui.right.floated.primary.button(type="submit") Log in with these credentials &raquo;
+  a.ui.right.floated.button(href="/people") I don't have an account, let me register.
