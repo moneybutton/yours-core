@@ -16,8 +16,8 @@
       a.label(data-intent="downvote", data-id="#{item._id}", data-context="#{context}", data-for="#{user._id}")
         i.chevron.down.icon
     else
-      a.label(data-intent="upvote", data-id="#{item._id}", data-context="#{context}", data-for="#{user._id}")
+      a.label.tooltipped(title="Register or sign in to vote!")
         i.chevron.up.icon
       .value(style="font-size: 1em;") #{item && item.score || 0}
-      a.label(data-intent="downvote", data-id="#{item._id}", data-context="#{context}", data-for="#{user._id}")
+      a.label.tooltipped(title="Register or sign in to vote!")
         i.chevron.down.icon
