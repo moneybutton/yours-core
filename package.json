@@ -1,0 +1,11 @@
+{
+  "name": "datt",
+  "version": "0.0.1",
+  "description": "Datt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ryan X. Charles <ryanxcharles@gmail.com>",
+  "license": "MIT"
+}
