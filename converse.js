@@ -46,6 +46,16 @@ var Person = converse.define('Person', {
       amount: { type: Number , required: true , default: 1 }
     }
   },
+  requires: {
+    'Post': {
+      filter: function() {
+        var person = this;
+        return { _author: person._id };
+      },
+      populate: '_author _document',
+      sort: '-score -created'
+    }
+  },
   icon: 'user'
 });
 
