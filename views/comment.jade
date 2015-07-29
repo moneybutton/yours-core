@@ -27,7 +27,7 @@ block content
           i.bookmark.icon
           | save
         if (comment._parent)
-          a.ui.button(href="/comments/#{comment._parent}")
+          a.ui.button(href="/comments/#{comment._parent._id}")
             i.tree.icon
             | parent
         a.ui.button(href="/comments/#{comment._id}#comments")
@@ -62,7 +62,7 @@ block content
             i.bookmark.icon
             | save
           if (subcomment._parent)
-            a.ui.button(href="/comments/#{subcomment._parent}")
+            a.ui.button(href="/comments/#{subcomment._parent._id}")
               i.tree.icon
               | parent
           a.ui.button(href="/comments/#{subcomment._id}#comments")
