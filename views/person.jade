@@ -5,14 +5,18 @@ block content
     .row
       .four.wide.column
         .ui.card
-          .image
+          .ui.centered.image
             if person.image
               img(src="/files/#{person.image}")
             else
-              img(src="/img/default.jpg")
+              i.massive.user.icon
           .content
             a.header #{person.username}
             .meta
             .description #{person.bio}
 
       .twelve.wide.column
+        h3 Recent Posts
+        
+        .ui.cards
+          include partials/post-list
