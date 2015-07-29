@@ -54,6 +54,14 @@ var Person = converse.define('Person', {
       },
       populate: '_author _document',
       sort: '-score -created'
+    },
+    'Save': {
+      filter: function() {
+        var person = this;
+        return { _user: person._id };
+      },
+      populate: '_post',
+      sort: '-created'
     }
   },
   icon: 'user'
@@ -360,6 +368,15 @@ Vote.pre('create', function(next, done) {
       return done(null, vote);
     });
   });
+});
+
+var Save = converse.define('Save', {
+  attributes: {
+    _user: { type: ObjectId , required: true , ref: 'Person', populate: ['query', 'get'] },
+    _post: { type: ObjectId , required: true , ref: 'Post', populate: ['query', 'get'] },
+    created: { type: Date , required: true , default: Date.now }
+  },
+  icon: 'bookmark'
 });
 
 converse.define('Index', {
