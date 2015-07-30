@@ -20,3 +20,8 @@ block content
         
         .ui.cards
           include partials/post-list
+
+        h3 Saves
+        .ui.cards
+          for save in saves
+            +PostView(save, 20)

@@ -68,9 +68,14 @@ mixin PostView(post, maxWords, samePage)
       a.ui.button(href="/posts/#{post._id}")
         i.linkify.icon
         | permalink
-      a.ui.button(href="#", data-intent="save")
-        i.bookmark.icon
-        | save
+      if (user)
+        a.ui.button(href="#", data-intent="save", data-post="#{post._id}", data-user="#{user._id}")
+          i.bookmark.icon
+          | save
+      else
+        a.ui.button.tooltipped(href="#", title="Sign in to save this to your bookmarks!")
+          i.bookmark.icon
+          | save
       a.ui.button(href="#", data-intent="tip")
         i.bitcoin.icon
         | tip

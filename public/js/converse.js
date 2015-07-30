@@ -33,6 +33,24 @@ $(document).on('click', '*[data-intent=comment]', function(e) {
   $('textarea').focus();
 });
 
+$(document).on('click', '*[data-intent=save]', function(e) {
+  e.preventDefault();
+
+  var $self = $(this);
+  var post = $self.data('post');
+  var user = $self.data('user');
+
+  var data = {
+    _post: post,
+    _user: user
+  };
+
+  $.post('/saves', data, function(save, status, xhr) {
+    console.log('save:', save);
+  }, 'json');
+
+});
+
 $(document).on('click', '*[data-intent=upvote], *[data-intent=downvote]', function(e) {
   e.preventDefault();
 
