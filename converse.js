@@ -60,7 +60,10 @@ var Person = converse.define('Person', {
         var person = this;
         return { _user: person._id };
       },
-      populate: '_post',
+      map: function(save) {
+        return save._post;
+      },
+      populate: '_post._author',
       sort: '-created'
     }
   },

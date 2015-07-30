@@ -23,8 +23,5 @@ block content
 
         h3 Saves
         .ui.cards
-          code saves: #{saves}
-          code saves.length: #{saves.length}
-          .ui.cards
-            for save in saves
-              +PostView(save, 20)
+          for save in saves
+            +PostView(save, 20)
