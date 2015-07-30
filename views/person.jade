@@ -16,12 +16,14 @@ block content
             .description #{person.bio}
 
       .twelve.wide.column
-        h3 Recent Posts
         
-        .ui.cards
+        .ui.top.attached.tabular.menu
+          .active.item(data-tab="posts") Recent Posts
+          .item(data-tab="saves") Saves
+        
+        .ui.bottom.attached.active.tab.segment(data-tab="posts")
           include partials/post-list
 
-        h3 Saves
-        .ui.cards
+        .ui.bottom.attached.tab.segment(data-tab="saves")
           for save in saves
             +PostView(save, 20)
