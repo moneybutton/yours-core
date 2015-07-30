@@ -21,9 +21,9 @@ block content
           .active.item(data-tab="posts") Recent Posts
           .item(data-tab="saves") Saves
         
-        .ui.bottom.attached.active.tab.segment(data-tab="posts")
+        .ui.bottom.attached.active.tab.segment.no-shadow(data-tab="posts")
           include partials/post-list
 
-        .ui.bottom.attached.tab.segment(data-tab="saves")
+        .ui.bottom.attached.tab.segment.no-shadow(data-tab="saves")
           for save in saves
             +PostView(save, 20)
