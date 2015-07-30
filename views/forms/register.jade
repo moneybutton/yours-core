@@ -1,4 +1,9 @@
-form.ui.form(action="/people", method="post")
+form.ui.form.warning(action="/people", method="post")
+  .ui.warning.message
+    .header Heads up!
+    p Registering won't immediately log you in &mdash; you'll need to do so manually.  If you want to fix this, check the <a href="https://github.com/martindale/maki-passport-local/issues/3">official GitHub issue for this problem</a>.
+    p We'd also like a plugin to support <code>&lt;keygen&gt;</code>, or just cryptographic identity in general!  If only we could do it without Javascript...
+
   .field.required
     label Username
     input(type="text", name="username", required)
