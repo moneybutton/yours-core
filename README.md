@@ -5,6 +5,9 @@ Document All The Things
 
 ### Hackathon Day 1, July 31, 2015
 
+In just two days of invites, we've managed to gather 59 people to join the
+Slack channel!
+
 Priorities:
 
 - Establish minimal product plan, including mockups (subject to change, of
