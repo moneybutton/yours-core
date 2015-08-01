@@ -13,5 +13,11 @@
     }
   ],
   "author": "Ryan X. Charles <ryanxcharles@gmail.com>",
+  "contributors": [
+    {
+      "name": "Eric Martindale",
+      "email": "eric@decentralize.fm"
+    }
+  ],
   "license": "MIT"
 }
