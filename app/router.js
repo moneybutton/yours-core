@@ -6,6 +6,11 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.resource('collectives', {path: '/c'}, function() {
+    this.resource('collective', {path: '/:address'}, function() {
+      this.route('thing', {path: '/t/:address'});
+    });
+  });
 });
 
 export default Router;

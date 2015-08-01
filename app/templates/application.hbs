@@ -1,3 +1,19 @@
-<h2 id="title">Welcome to Ember.js</h2>
+<div class='navbar navbar-default'>
+  <div class='container'>
+    <div class='navbar-header'>
+      {{link-to 'DATT' 'index' class='navbar-brand'}}
+    </div>
+    <div id='navbar' class='navbar-collapse collapse'>
+      <ul class='nav navbar-nav'>
+        <li>{{link-to 'collectives' 'collectives'}}</li>
+      </ul>
+      <ul class='nav navbar-nav navbar-right'>
+      </ul>
+    </div>
+  </div>
+</div>
 
-{{outlet}}
+<div id='maincontainer' class='container'>{{outlet}}</div>
+
+<footer id='footer'>
+</footer>

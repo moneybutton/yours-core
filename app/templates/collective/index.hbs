@@ -1,0 +1,5 @@
+<ol class='list-group'>
+{{#each model as |thing|}}
+  <li class='list-group-item'>{{component thing.type thing=thing}}</li>
+{{/each}}
+</ol>

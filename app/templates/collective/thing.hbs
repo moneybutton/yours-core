@@ -1,0 +1,9 @@
+{{component model.type thing=model}}
+<hr>
+<ol class='list-group'>
+{{#each model.children as |child|}}
+  <li class='list-group-item'>{{component child.type thing=child}}</li>
+{{else}}
+  <p>Nothing to see here!</p>
+{{/each}}
+</ol>

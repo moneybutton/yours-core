@@ -12,10 +12,18 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
-
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self'",
+      'font-src': "'self' *.bootstrapcdn.com http://fonts.gstatic.com fonts.gstatic.com",
+      'connect-src': "'self' *.reddit.com",
+      'img-src': "'self' *.bootstrapcdn.com data:",
+      'style-src': "'self' *.bootstrapcdn.com fonts.googleapis.com",
+      'media-src': "'self'"
     }
   };
 
