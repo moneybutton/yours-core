@@ -14,14 +14,12 @@
     {
       "name": "John M. Villar Zavatti",
       "email": "johnvillarzavatti@gmail.com"
-    }
-  ],
-  "author": "Ryan X. Charles <ryanxcharles@gmail.com>",
-  "contributors": [
+    },
     {
       "name": "Eric Martindale",
       "email": "eric@decentralize.fm"
     }
   ],
+  "author": "Ryan X. Charles <ryanxcharles@gmail.com>",
   "license": "MIT"
 }
