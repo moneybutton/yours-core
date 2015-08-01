@@ -23,6 +23,38 @@ Priorities:
   business plan doesn't have to be final, but rather more of an example of the
   way a business might be able to earn money from running a node.
 
+## Resources and related projects
+
+- aether - http://getaether.net/
+- empeopled - https://empeopled.com
+- colony - colony.io
+- backfeed - backfeed.cc
+- http://lazooz.org/
+- http://www.decent.ch/ 
+
+Resources compiled by John Villar
+- [PeerJS](http://peerjs.com/) - Easy WebRTC
+- [FreedomJS](http://www.freedomjs.org/) - Another Easy WebRTC
+- [GUN.js](http://gun.js.org/) - NoDB High replication memcache
+- [PouchDB](http://pouchdb.com/) - A clientside CouchDB-like database that syncs when online with a CouchDB server
+- [WebTorrent](https://github.com/feross/webtorrent) - Torrent, for HTML5
+- [MaidSafe](http://maidsafe.net/) - A blockchained coin/storage
+- [BitcoinJS](http://bitcoinjs.org/) - Bitcoin's JS Swiss knife
+- [Coinspark](http://coinspark.org/) - Smart contracts on the blockchain (non-js)
+- [Codius](https://codius.org/) - Smart contracts on the blockchain (js)
+- [Key-hq](https://www.npmjs.com/package/key-hq) - BIP32 compliant HD keychain
+- [Bitcore](https://github.com/bitpay/bitcore) - bitpay's javascript implementation of bitcoin
+- [bcoin](https://github.com/indutny/bcoin) - chjj's implementation - has SPV support in node
+- [fullnode](https://github.com/ryanxcharles/fullnode) - ryanxcharles's implementation - similar codebase to bitcore, but monolithic, and written in ES 2015
+- [webcoin](https://github.com/mappum/webcoin) - an SPV node that works in a browser, based on bitcore
+- [Bitmessage](https://bitmessage.org/wiki/Main_Page) - Blockchain specifically dedicated to messaging, think SPV client but with messages, anonymous identities and proof of work message requirement (non-js).
+- [NPM Bitmessage](https://www.npmjs.com/package/bitmessage) - Bitmessage Node.js implementation supporting browserify, alpha quality, still no outgoing connection on browser.
+- [Bitmessage-node](https://github.com/RexMorgan/bitmessage-node) - Bitmessage API library, piggybacks on native Bitmessage installation
+- [BitID](https://github.com/bitid/bitid) - Public key based authentication using Bitcoin Wallets facilities
+- [Blockstack](http://blockstack.org/) - Very similar project to Datt
+- [Ephemeral](https://github.com/losvedir/ephemeral2) - Ephemeral content stored only by the viewers of it
+- [UX Methods &amp; Design](http://uxdesign.cc/ux-methods-deliverables/) - UX/UI design cheatsheet
+
 ## Brainstorms and thoughts
 
 ### Thoughts from Niran:
