@@ -6,6 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "contributors": [
+    {
+      "name": "Ryan X. Charles",
+      "email": "ryanxcharles@gmail.com"
+    }
+  ],
   "author": "Ryan X. Charles <ryanxcharles@gmail.com>",
   "license": "MIT"
 }
