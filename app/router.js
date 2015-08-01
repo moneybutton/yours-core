@@ -11,6 +11,7 @@ Router.map(function() {
       this.route('thing', {path: '/t/:address'});
     });
   });
+  this.resource('balance');
 });
 
 export default Router;
