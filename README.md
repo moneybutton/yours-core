@@ -55,8 +55,9 @@ Resources compiled by John Villar
 - [Ephemeral](https://github.com/losvedir/ephemeral2) - Ephemeral content stored only by the viewers of it
 - [UX Methods &amp; Design](http://uxdesign.cc/ux-methods-deliverables/) - UX/UI design cheatsheet
 
-Security resources
+Articles
 - [The Cryptographic Doom Principle - you should always encrypt then mac - validate mac before decrypting data](http://www.thoughtcrime.org/blog/the-cryptographic-doom-principle/)
+- [Web RTC STUN and TURN](http://www.html5rocks.com/en/tutorials/webrtc/infrastructure/)
 
 ## Brainstorms and thoughts
 
