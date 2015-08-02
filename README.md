@@ -25,6 +25,12 @@ Priorities:
 
 ## Resources and related projects
 
+Documents generated during the hackaton
+- [Brad's overview of the amount of money earned by participants for shared revenue](https://docs.google.com/spreadsheets/d/16vtDV3Ot4lrr2twpUS8Sqgg4OrJ2KIrnQwsuppy56sI/edit#gid=1827203914)
+- [Paul's reward allocation model](https://docs.google.com/spreadsheets/d/19mUSGUwLukbskz5dIj1QXM0rAPmCBrbXZeLz908LfmU/edit#gid=1936031705)
+- [Paul's DATT Concepts & Principles](https://docs.google.com/document/d/1AEHdOlQMyyuZ3U0a1BOcZtX8kAPWZynFVx9r21NPtiE/edit#)
+
+Related projects
 - aether - http://getaether.net/
 - empeopled - https://empeopled.com
 - colony - colony.io
