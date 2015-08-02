@@ -1,0 +1,29 @@
+[
+    {
+        "user": "U08DN0E5S",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08DN0E5S|jmacwhyte> has joined the channel",
+        "ts": "1438550044.000002"
+    },
+    {
+        "user": "U08DN0E5S",
+        "purpose": "How do we get people to participate in distributed storage (and be honest)?",
+        "type": "message",
+        "subtype": "channel_purpose",
+        "text": "<@U08DN0E5S|jmacwhyte> set the channel purpose: How do we get people to participate in distributed storage (and be honest)?",
+        "ts": "1438550044.000003"
+    },
+    {
+        "type": "message",
+        "user": "U08DN0E5S",
+        "text": "Not sure how much of this has been discussed before.",
+        "ts": "1438550341.000004"
+    },
+    {
+        "type": "message",
+        "user": "U08DN0E5S",
+        "text": "The problems we want to overcome, from what I understand:\n\nWe need people to participate in the distributed media storage system\nWe want to incentivize people, most likely by paying them, for serving up the media to others\nWe want to prevent people from taking data and not paying, or serving fraudulent data and getting paid\nWe don\u2019t want people to be forced into storing data they object to",
+        "ts": "1438550508.000005"
+    }
+]

@@ -1,0 +1,662 @@
+[
+    {
+        "type": "message",
+        "user": "U08C22VNW",
+        "text": "My understanding of webRTC rendezvous is that you need an intermediate server (STUN, TURN) to get the NAT traversal mechanisms to work. This is handled by PeerJS using a node.js websocket server, and I think Ryan mentioned in the general channel about your rendezvous server being part of your network location.",
+        "ts": "1438420512.000030"
+    },
+    {
+        "type": "message",
+        "user": "U08C22VNW",
+        "text": "I think you can cut out the rendezvous servers if you can establish message passing though the network to allow two potential peers to exchange the necessary WebRTC endpoints to allow a direct connection.",
+        "ts": "1438420575.000031"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "oh that's interesting. yeah i think rendezvous servers may not actually be strictly necessary for web RTC.",
+        "ts": "1438420637.000032"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "web RTC however also supports STUN and TURN to get through NATs, which is a problem most people will have",
+        "ts": "1438420656.000033"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "those require a rendezvous server ... or not so much \"rendezvous\", but \"NAT hole punching enabler\" or whatever it is called",
+        "ts": "1438420707.000034"
+    },
+    {
+        "type": "message",
+        "user": "U08C22VNW",
+        "text": "I think the default STUN\/TURN servers used by Peer.js are operated by Google, but I imagine \u2018full\u2019 nodes could probably operate these services (either via plugin or standalone servers). I\u2019ve just been reading this article: <http:\/\/www.html5rocks.com\/en\/tutorials\/webrtc\/infrastructure\/> - it seems that STUN is used just to find the external IP of the client, and TURN is to relay a stream if NAT traversal fails: <https:\/\/en.wikipedia.org\/wiki\/Traversal_Using_Relays_around_NAT>",
+        "attachments": [
+            {
+                "service_name": "HTML5 Rocks - A resource for open web HTML5 developers",
+                "title": "WebRTC in the real world: STUN, TURN and signaling - HTML5 Rocks",
+                "title_link": "http:\/\/www.html5rocks.com\/en\/tutorials\/webrtc\/infrastructure\/",
+                "text": "Build the back-end services you need to run a WebRTC application.",
+                "fallback": "HTML5 Rocks - A resource for open web HTML5 developers: WebRTC in the real world: STUN, TURN and signaling - HTML5 Rocks",
+                "thumb_url": "http:\/\/www.html5rocks.com\/static\/images\/profiles\/dutton.png",
+                "from_url": "http:\/\/www.html5rocks.com\/en\/tutorials\/webrtc\/infrastructure\/",
+                "thumb_width": 200,
+                "thumb_height": 200,
+                "id": 1
+            }
+        ],
+        "ts": "1438425905.000035"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yes, the full nodes could run those services",
+        "ts": "1438425970.000037"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "it would also probably be a lot easier for this app than what google is doing ... since web RTC is largely used for video streaming",
+        "ts": "1438426009.000038"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "at least on Day 1, there will be no video streaming. just text. the bandwidth cost will be a lot lower.",
+        "ts": "1438426028.000039"
+    },
+    {
+        "type": "message",
+        "user": "U08C22VNW",
+        "text": "STUN looks like it\u2019s relatively lightweight, and you might be able to do without TURN if the p2p overlay could relay messages between nodes which can\u2019t see each other",
+        "ts": "1438426065.000040"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yeah exactly, i think TURN is probably not actually necessary. it's not a huge deal if the web browsers can't relay to each other. they send data to and from the \"full nodes\" which are connected to other full nodes and so on, eventually reaching another web browser",
+        "ts": "1438426173.000041"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "however if we ever want to do video streaming, TURN would be useful (albeit expensive)",
+        "ts": "1438426202.000042"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "would be better to send video data through a minimum number of servers. TURN would work for that.",
+        "ts": "1438426232.000043"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "but in any case there is no plan for video streaming ... have to do more fundamental work first",
+        "ts": "1438426263.000044"
+    },
+    {
+        "type": "message",
+        "user": "U08C22VNW",
+        "text": "I imagine for high bandwidth stuff you might want to use bittorrent or tip\/pay the host to provide the data. It would give nodes an incentive to cache popular content, and you could probably earn back the cost of acquiring the data by serving it to the next users to request it. Definitely further down the road!",
+        "ts": "1438427605.000045"
+    },
+    {
+        "user": "U08DH3ESU",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08DH3ESU|aramkris> has joined the channel",
+        "ts": "1438452169.000046"
+    },
+    {
+        "user": "U08FELGRX",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08FELGRX|dean> has joined the channel",
+        "ts": "1438453965.000047"
+    },
+    {
+        "user": "U08F438SK",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08F438SK|willy> has joined the channel",
+        "ts": "1438455523.000048"
+    },
+    {
+        "user": "U08F384H3",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08F384H3|binyam> has joined the channel",
+        "ts": "1438455775.000049"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Thanks for the Tradle link BTW, very useful stuff there.",
+        "ts": "1438456193.000050"
+    },
+    {
+        "user": "U08E18GD6",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08E18GD6|mvayngrib> has joined the channel",
+        "ts": "1438459726.000051"
+    },
+    {
+        "type": "message",
+        "user": "U08E18GD6",
+        "text": "in tradle, we've eschewed webrtc for now and connect nodes directly through the dht",
+        "ts": "1438459871.000052"
+    },
+    {
+        "type": "message",
+        "user": "U08E18GD6",
+        "text": "in the browser you can't use the dht (no udp), but in many mobile app envs like react native, chromeapp, etc., you can",
+        "ts": "1438459975.000053"
+    },
+    {
+        "user": "U08E2KZM4",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08E2KZM4|genevayngrib> has joined the channel",
+        "ts": "1438463847.000054"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U08ERPTQF>: thx for the mention of Tradle\u2019s TiM: <https:\/\/github.com\/tradle\/tim> \nI am a co-founder of this project, would be happy to answer anything about it, and how it could be helpful to de-reddit",
+        "edited": {
+            "user": "U08E2KZM4",
+            "ts": "1438464003.000000"
+        },
+        "ts": "1438463994.000055"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "we spent a ton of time on 100% decentralized blockchain-based appdev. We have identities, secure P2P real time and persistent messaging, NAT traversal without a central server (WebRTC normally requires a server for that). By messaging we mean sending any json object, with or without media attachments.",
+        "edited": {
+            "user": "U08E2KZM4",
+            "ts": "1438464314.000000"
+        },
+        "ts": "1438464269.000058"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "We treat the blockchain as a log-based appdev, much like LinkedIn has pioneered",
+        "edited": {
+            "user": "U08E2KZM4",
+            "ts": "1438464434.000000"
+        },
+        "ts": "1438464386.000060"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "I'm certainly interested in exploring tradle. <@U08E18GD6> mentioned dht isn't supported in the browser, but the demos of tradle are all web based",
+        "ts": "1438464449.000062"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "right, we decided to use the existing dht network, following in the footsteps of <http:\/\/bittorrent.com|bittorrent.com> Bleep product",
+        "ts": "1438464555.000063"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "this dht is UDP based, udp does not work in teh browser, period",
+        "ts": "1438464573.000064"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "main demo on <http:\/\/Tradle.io|Tradle.io> is React Native based, not web based: <https:\/\/www.youtube.com\/watch?v=S66T0dPNn5I>",
+        "edited": {
+            "user": "U08E2KZM4",
+            "ts": "1438464767.000000"
+        },
+        "ts": "1438464761.000065"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "Other demos we produced are Chrome App based, which uses Chrome App support for UDP, which is not available in browser",
+        "ts": "1438464852.000068"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U08F438SK> thx for the mention of Tradle, would be happy to answer any questions you have on it, see several messages above I gave a bit of intro for <@U08ERPTQF>",
+        "ts": "1438465176.000069"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U07GDL0H5>: \n&gt;\"NAT hole punching enabler\" or whatever it is called\nWe use bittorrent\u2019s DHT for that, to avoid special signaling servers.",
+        "ts": "1438465315.000070"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "I remember seeing serverless signaling for WebRTC somewhere, if you like, I can try to dig it up",
+        "edited": {
+            "user": "U08E2KZM4",
+            "ts": "1438465403.000000"
+        },
+        "ts": "1438465358.000071"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U07GDL0H5> &amp; <@U08D7E99Q> were weighing up between WebRTC &amp; web sockets yesterday. I think there is likely to be support for both, but web sockets are preferred ",
+        "ts": "1438465456.000074"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "if using web sockets, it is NOT p2p",
+        "ts": "1438465498.000075"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U08C9ML1Y>: I tend to agree",
+        "ts": "1438465509.000076"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "p2p requires WebRTC in the browser",
+        "ts": "1438465512.000077"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "if browser is a requirement, with people spending most of their time in apps, may be we should be talking mobile first",
+        "ts": "1438465539.000078"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "and then, on mobile, you are not forced to webrtc",
+        "ts": "1438465561.000079"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "mobile can be solved with cordova and crosswalk",
+        "ts": "1438465568.000080"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "NO",
+        "ts": "1438465572.000081"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "IT CAN NOT",
+        "ts": "1438465576.000082"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": ":simple_smile:",
+        "ts": "1438465578.000083"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "<https:\/\/crosswalk-project.org\/documentation\/webrtc.html>",
+        "attachments": [
+            {
+                "title": "WebRTC",
+                "title_link": "https:\/\/crosswalk-project.org\/documentation\/webrtc.html",
+                "text": "Enable the most advanced web innovations with the Crosswalk Project web runtime to develop powerful Android and Cordova apps.",
+                "fallback": "WebRTC",
+                "from_url": "https:\/\/crosswalk-project.org\/documentation\/webrtc.html",
+                "id": 1
+            }
+        ],
+        "ts": "1438465616.000084"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "sorry for the strong emotion, mobile apps must be native, I spent 3 years of my life fighting this notion",
+        "ts": "1438465640.000086"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "chrome engineers are making progress on bringing 60fps to mobile, but their own estimate it is a couple of years off",
+        "ts": "1438465724.000087"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "I can dig up a video from the recent Google I\/O",
+        "ts": "1438465765.000088"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "<@U08C9ML1Y>: web RTC for browser -&gt; browser, web sockets for browser -&gt; server. the web can't do everything, so we still need servers that can be run locally. the best way to communicate to them is not web RTC, but web sockets.",
+        "ts": "1438465959.000089"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "web RTC vs. web sockets is not either\/or, it's both",
+        "ts": "1438465968.000090"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "oooh ok",
+        "ts": "1438465988.000091"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "i suppose web sockets are meant to be used for contacting blockchain server, etc",
+        "ts": "1438466009.000092"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "for cryptocoins",
+        "ts": "1438466015.000093"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Thanks for the correction <@U07GDL0H5> ",
+        "ts": "1438466019.000094"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i trust <@U08E2KZM4> about the js vs. native - for mobile, we can consider react native, which (please correct me if i'm wrong) allows the logic of the app to be written in js",
+        "ts": "1438466365.000095"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "so long as we write the logic of the app in a manner compatible with node and browsers, we should be able to use the same code also on native, with a native UI",
+        "ts": "1438466382.000096"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "so we will have to create a different UI for mobile, but at least the guts will still be the same (no?)",
+        "ts": "1438466405.000097"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U07GDL0H5>: yep, React Native recreates part of the HTML5 dream, with JS and  a subset of CSS, and some simple markup JSX instead of HTML",
+        "ts": "1438466432.000098"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "but it ends up with a native mobile app that uses native UI, UIKit on iOS",
+        "ts": "1438466459.000099"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "React Native also recreates some of the essential Web APIs",
+        "ts": "1438466487.000100"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "ajax, etc.",
+        "ts": "1438466494.000101"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "sadly, it would be a stretch to try to achieve this goal of having the same codebase for pure browser and mobile",
+        "ts": "1438466625.000102"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "one problem is a reliable storage, which p2p needs",
+        "ts": "1438466662.000103"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "we have extensive experience with IndexedDB in browser, and although we made it work fairly reliably, it was a nightmare. But the biggest problem is that the user can wipe it out in 2 clicks via privacy settings",
+        "ts": "1438466739.000104"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "imagine losing your identity and a wallet when user does that without realizing what he\/she is doing",
+        "ts": "1438466775.000105"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "second problem is, when people are building for the browser they shoot for the page to load as fast as possible",
+        "ts": "1438466865.000106"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "node-based apps end up unwittingly with 100 module dependencies, which is the opposite of what u need in the browser",
+        "ts": "1438466917.000107"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "the recent advances in browser tech, specifically Service Workers, allow to engineer your bootstrapping of app assets to alleviate this problem for the second time page opens, but not for the first visit to your site",
+        "edited": {
+            "user": "U08E2KZM4",
+            "ts": "1438467007.000000"
+        },
+        "ts": "1438466960.000108"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "so, although tradle team are hardcore web enthusiasts, we sadly concluded that p2p apps in browser are not practical",
+        "ts": "1438467075.000110"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "As we need to support desktop, not just mobiles, a chrome app, or chrome extension in browser is a possibility. A browser-based implementation is also needed, but our conclusion is that browser-based node can\u2019t be a full p2p node, so browser based implementation will always be a leach on a network. \n\nThat said, sorry for a long rant, there is one group of awesome devs that would argue against Tradle's point of view, this is webtorrent guys and moose team <https:\/\/github.com\/moose-team>",
+        "edited": {
+            "user": "U08E2KZM4",
+            "ts": "1438467391.000000"
+        },
+        "ts": "1438467369.000111"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "i digress",
+        "ts": "1438468201.000113"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "the reference client shouldn't deal with these kind of problems",
+        "ts": "1438468216.000114"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "WebRTC is a reality and is here",
+        "ts": "1438468225.000115"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "and the rendezvous problem notwithstanding....",
+        "ts": "1438468238.000116"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "the P2P Web based client is a reality",
+        "ts": "1438468255.000117"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "i have a proof of concept already on a github repo",
+        "ts": "1438468266.000118"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "good point about the \"reference client\" ... reference should have all the basic protocol stuff in there and a minimal feature set ... so that it can be reimplemented",
+        "ts": "1438468418.000119"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "and really good tests, so that people can write code and be sure they are doing it correctly",
+        "ts": "1438468433.000120"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "JSON test vectors for all the protocol features, so the same tests can be reused anywhere",
+        "ts": "1438468445.000121"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "that makes sense",
+        "ts": "1438468456.000122"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Can't wait to get back out there in a few :-). Been stuck in Sunnyvale &gt;_&lt; but have a hotel for tonight so I can stay in city for final push",
+        "ts": "1438469831.000123"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "<@U08E2KZM4> it sounds like what you were missing for reliable storage across a p2p network that doesn't get wiped with that privacy component is ZKP \/ confidential values, that or segregated witness",
+        "ts": "1438470168.000124"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "there exists only C++ implementations for the latter two that I know of, which means this is a ripe opportunity for something to build",
+        "ts": "1438470212.000125"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "hey <@U08D641AP>, which C++ ZKP implementation are you thinking of?",
+        "edited": {
+            "user": "U08F438SK",
+            "ts": "1438470717.000000"
+        },
+        "ts": "1438470692.000126"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "<https:\/\/github.com\/ElementsProject\/secp256k1-zkp>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "ElementsProject\/secp256k1-zkp",
+                "title_link": "https:\/\/github.com\/ElementsProject\/secp256k1-zkp",
+                "text": "secp256k1-zkp - Experimental fork of libsecp256k1 with support for pedersen commitments and range proofs.",
+                "fallback": "GitHub: ElementsProject\/secp256k1-zkp",
+                "thumb_url": "https:\/\/avatars0.githubusercontent.com\/u\/12729539?v=3&s=400",
+                "from_url": "https:\/\/github.com\/ElementsProject\/secp256k1-zkp",
+                "thumb_width": 420,
+                "thumb_height": 420,
+                "id": 1
+            }
+        ],
+        "ts": "1438470723.000128"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Thanks!",
+        "ts": "1438470778.000130"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U08D641AP>: have not explored deeply this particular Sidechain Element, but my first impression was that it was meant to solve transaction malleability issues",
+        "ts": "1438471440.000131"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "i was talking about a browser user wiping out the LocalStorage and IndexedDb with a wallet, and all the potential de-reddit data that i hold on my machine, both produced by me and hosted for other people",
+        "ts": "1438471572.000132"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "I think that is a separate problem from credentials being wiped out from the same action",
+        "ts": "1438471720.000133"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "one can be solved by sufficient replication, the other some sort of of key distribution (schnorr, otherwise)",
+        "ts": "1438471761.000134"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U08D641AP>: agree, theoretically persistence of data and keys are separate issues. I just wonder if it is practical for a user to do recovery of both keys and data when they innocently clear the cache in browser",
+        "ts": "1438472040.000135"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U08D641AP>: what browser storage option do you deem good enough for Datt ?",
+        "ts": "1438472160.000136"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "well, I start with the assumption that any one node is ephemeral, so any store would be good enough \u2013 if, in theory, if we have sufficient replication.",
+        "ts": "1438473260.000137"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "i hear u, how did u mean to apply the segregated witness in Elements?",
+        "ts": "1438473468.000138"
+    },
+    {
+        "user": "U08DD8LNP",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08DD8LNP|go1dfish> has joined the channel",
+        "ts": "1438486032.000139"
+    },
+    {
+        "user": "U08CBD41G",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08CBD41G|delitzer> has joined the channel",
+        "ts": "1438487253.000140"
+    }
+]

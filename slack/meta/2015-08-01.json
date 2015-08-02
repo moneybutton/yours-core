@@ -1,0 +1,1781 @@
+[
+    {
+        "user": "U08EZP01H",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08EZP01H|darrenm> has joined the channel",
+        "ts": "1438487159.000002"
+    },
+    {
+        "user": "U08EZP01H",
+        "purpose": "meta discussion, philosophy, theory",
+        "type": "message",
+        "subtype": "channel_purpose",
+        "text": "<@U08EZP01H|darrenm> set the channel purpose: meta discussion, philosophy, theory",
+        "ts": "1438487159.000003"
+    },
+    {
+        "user": "U08E5P0BZ",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08E5P0BZ|georgevaccaro> has joined the channel",
+        "ts": "1438487181.000004"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "ah, that's better :simple_smile:",
+        "ts": "1438487189.000005"
+    },
+    {
+        "user": "U08ERPTQF",
+        "inviter": "U08EZP01H",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08ERPTQF|paul_xbt> has joined the channel",
+        "ts": "1438487200.000006"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "I hope my comments are taken in the right way.  I don't want to derail anything.  I feel like I may have usurped the role of active moderator.",
+        "ts": "1438487246.000007"
+    },
+    {
+        "user": "U08CBD41G",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08CBD41G|delitzer> has joined the channel",
+        "ts": "1438487273.000008"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "perhaps ryan is heads down and when he comes up all this will have been a waste as they have some great thing already running :simple_smile:",
+        "ts": "1438487281.000009"
+    },
+    {
+        "user": "U08DD8LNP",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08DD8LNP|go1dfish> has joined the channel",
+        "ts": "1438487284.000010"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "All the stuff here is pretty relevant to this channel: <http:\/\/go1dfish.me\/blog>",
+        "ts": "1438487304.000011"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "yea I read a lot of your posts yesterday <@U08DD8LNP> :simple_smile:",
+        "ts": "1438487332.000012"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "if everything has an economic incentive tied to it, will some collectives struggle with 'greedposting'?",
+        "ts": "1438487354.000013"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08E5P0BZ>: Ryan just commented in <#C07GE13K7>",
+        "ts": "1438487355.000014"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "It seems like the censorship concerns and decentralized issues keep coming up, but if I'm not mistaken it's primarily c_prompt who's raising it.  Not that it makes it less relevant.",
+        "ts": "1438487378.000015"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08EZP01H>: they certainly will, greedposting and linkbaiting will be part and parcel of any collective",
+        "ts": "1438487397.000016"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "it already is, it's just kinda obfuscated and indirect",
+        "ts": "1438487446.000017"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "and realistically if we want wide participation we're probably talking very very small individual payments, small enough that I don't think bitcoin will be feasible with the current economics",
+        "ts": "1438487478.000018"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "we may default to micropayments, but there is no upper limit so it could evolve to larger amounts",
+        "ts": "1438487535.000019"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "i'm wondering if this solves more problems than one. does this become a better platform for writers than newspapers?",
+        "ts": "1438487537.000020"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i was just thinking about that, but if it was more of a competitive feel, like we discussed, perhaps the payout could be more substantial.  So forego micro payouts for small content and give it all to the highly rated content - ideas?",
+        "ts": "1438487538.000021"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08ERPTQF>: yeah but link baiting only works well for impressions",
+        "ts": "1438487573.000022"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "yes, I keep thinking of this as a distributed reddit\/Medium - long form could thrive on DATT",
+        "ts": "1438487584.000023"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "click baiting alone that is, click baiting + good content would probably be magic sauce",
+        "ts": "1438487628.000024"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "other than tipping mods\/collectives are there any other incentives that would drive a collective to become spammy?",
+        "ts": "1438487651.000025"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "breaking the network",
+        "ts": "1438487668.000026"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08EZP01H>: in my view yes, I want something like the newsboards in enders game.  a global communications system not owned by anyone",
+        "ts": "1438487668.000027"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "but instead owned by everyone who participates",
+        "ts": "1438487684.000028"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "ive gotta read that.",
+        "ts": "1438487688.000029"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "it's a really good book, but basically it's \"the future\" and there are global anonymized message boards where all the great political debate of the day happens",
+        "ts": "1438487714.000030"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08DD8LNP>: I hadn't made the association, but now you've raised it - it is indeed very similar to what I'd like DATT to be",
+        "ts": "1438487720.000031"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "Ooh, I have another crazy idea.  Might have been brought up, but if you're paying per upvote you could upvote yourself as much as you want, as long as a % went to the platform\/other owners.",
+        "ts": "1438487773.000032"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08E5P0BZ>: I had a similar model I tried a bit at \/r\/getfairshare but it never really took off",
+        "ts": "1438487809.000033"
+    },
+    {
+        "user": "U08F2RTCN",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08F2RTCN|deepakraous> has joined the channel",
+        "ts": "1438487821.000034"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "was it to upvote yourself with karma?",
+        "ts": "1438487831.000035"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<https:\/\/www.reddit.com\/r\/FairShare\/comments\/31hs6j\/crazy_funding_idea_that_may_be_against_reddit\/>",
+        "attachments": [
+            {
+                "service_name": "reddit",
+                "title": "Crazy funding idea that may be against reddit guidelines? What if subs could donate to the UBI pool in return for a link to the sub. Essentially paying the UBI recipients to advertise to them. \u2022 \/r\/FairShare",
+                "title_link": "https:\/\/www.reddit.com\/r\/FairShare\/comments\/31hs6j\/crazy_funding_idea_that_may_be_against_reddit\/",
+                "text": "Not sure if this would run afoul of reddit rules? But it might be an interesting way for people to drive exposure to new reddits. Curious to...",
+                "fallback": "reddit: Crazy funding idea that may be against reddit guidelines? What if subs could donate to the UBI pool in return for a link to the sub. Essentially paying the UBI recipients to advertise to them. \u2022 \/r\/FairShare",
+                "thumb_url": "https:\/\/www.redditstatic.com\/icon.png",
+                "from_url": "https:\/\/www.reddit.com\/r\/FairShare\/comments\/31hs6j\/crazy_funding_idea_that_may_be_against_reddit\/",
+                "thumb_width": 256,
+                "thumb_height": 256,
+                "id": 1
+            }
+        ],
+        "ts": "1438487868.000036"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "no I never vote gamed",
+        "ts": "1438487873.000037"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "what's UBI?",
+        "ts": "1438487953.000039"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "if you're technically skilled really motivated at vote gaming it's honestly near impossible for reddit to stop you from vote gaming but that was never my thing.  The reason it's near impossible for them to completely combat that is the same reason why CryptoUBI is not a well solved problem: <https:\/\/www.reddit.com\/r\/CryptoUBI\/comments\/2v2gi6\/proof_of_identityproof_of_person_the_elephant_in\/>  UBI is universal basic income.  it's the idea of just giving everyone a bunch of money equally",
+        "attachments": [
+            {
+                "service_name": "reddit",
+                "title": "Proof of Identity\/Proof of Person : The elephant in the room. \u2022 \/r\/CryptoUBI",
+                "title_link": "https:\/\/www.reddit.com\/r\/CryptoUBI\/comments\/2v2gi6\/proof_of_identityproof_of_person_the_elephant_in\/",
+                "text": "The blockchain is revolutionary because it is the first example of a decentralized, computationally verified consensus that is able to function...",
+                "fallback": "reddit: Proof of Identity\/Proof of Person : The elephant in the room. \u2022 \/r\/CryptoUBI",
+                "thumb_url": "https:\/\/www.redditstatic.com\/icon.png",
+                "from_url": "https:\/\/www.reddit.com\/r\/CryptoUBI\/comments\/2v2gi6\/proof_of_identityproof_of_person_the_elephant_in\/",
+                "thumb_width": 256,
+                "thumb_height": 256,
+                "id": 1
+            }
+        ],
+        "ts": "1438487987.000040"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "this project has some shared goals with UBI, especially of there's a way to create content bounties",
+        "ts": "1438488004.000042"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "but in our case the karma is actual money that you spend so doesn't that solve that issue?",
+        "ts": "1438488028.000043"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08EZP01H>: I agree, and I think a UBI could be a way to keep up user participation even if they aren't directly submitting content.  because otherwise people have little incentive to vote at all if it has a literal cost",
+        "ts": "1438488047.000044"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08E5P0BZ>: exactly",
+        "ts": "1438488064.000045"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "though I think it might weed out the people who only lurk.  Not sure if that's all bad.",
+        "ts": "1438488079.000046"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "but if some third party made a service of uniquely identifying people voluntarily... there would be some value in having clients sort by people vote counts instead of value",
+        "ts": "1438488104.000047"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Yes I like the UBI aspect than anyone anywhere could 'earn' by being a good network participant (Author, Mod\/Collective, Node)",
+        "ts": "1438488125.000048"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "to enable democratic processes.  Not that I'm a huge fan of democracy in general but it has its purposes",
+        "ts": "1438488134.000049"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "but if it's \"not worth anything\" isn't that the double edged sword?",
+        "ts": "1438488153.000050"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "maybe this is a business question, but what's the size of the market we're addressing here?",
+        "ts": "1438488173.000051"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "client side sorting isn't something we've discussed, could you choose a different algo for sorting\/listing content?",
+        "ts": "1438488185.000052"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "if not being worth anything causes people to game it it should self balance I expect as that would increase the value of the currency in proportion to the desire to game it",
+        "ts": "1438488196.000053"
+    },
+    {
+        "user": "U08D641AP",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08D641AP|martindale> has joined the channel",
+        "ts": "1438488206.000054"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "but then we've got another currency, not that it's bad, but we have one of those already.",
+        "ts": "1438488235.000055"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08ERPTQF>: yeah in my view sorting is a presentation concern that should largely be left up to clients as much as possible, of course in bigger sets of content we will probably need network level abilities to presort",
+        "ts": "1438488251.000056"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "whatever we do I don't think we need to make yet another blockchain",
+        "ts": "1438488275.000057"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "but there are some coins that I think would be interesting candidates to try building on top of even if it's just for prototyping",
+        "ts": "1438488295.000058"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "is sorting another differentiator between collectives? I follow this collective because their sorting is aligned with the freshness of content that I like to see?",
+        "ts": "1438488321.000059"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I think collectives could suggest sorts that made sense for their content",
+        "ts": "1438488345.000060"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "but that the client still has final say in how it wants to sort",
+        "ts": "1438488365.000061"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "versus another collective whose sorting is weighted far more towards popularity of content",
+        "ts": "1438488366.000062"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "once the client has listing they can sort, but the presort is more important IMO",
+        "ts": "1438488395.000063"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "defining sorts so arbitrarily would be difficult to do in an expressible way without turing completeness though I expect",
+        "ts": "1438488399.000064"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I think it's mainly a thing left up to the client and maybe some metadata in the collective could name some common sorts as a suggestive thing",
+        "ts": "1438488421.000065"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "but really your sorts are just going to be stuff like hot\/new\/controversial and maybe augmented hot\/controverial based on identities rather than raw values",
+        "ts": "1438488450.000066"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "or weighted based on people you identify as having similar taste to you etc...",
+        "ts": "1438488470.000067"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "if you pull apart the reddit post sorting algo, there are only a few variables that you are likely to tweak, maybe it's those variables that we focus on, not the whole algo",
+        "ts": "1438488474.000068"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "if we push sorting to the clients, I think we could see a lot of innovation there",
+        "ts": "1438488484.000069"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "and this would be another reason to be for having content effectively \"fall off\" the network in practice",
+        "ts": "1438488512.000070"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i have another meta idea.  the more i was thinking about your filtering ideas <@U08DD8LNP>, the more i started making parallels to other things.  So for example a node itself could be considered a community (or a sub).",
+        "ts": "1438488542.000071"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "want to start a new community, fire up a node.",
+        "ts": "1438488567.000072"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "when we talk about the algo at the client level, perhaps that component could be in use by a client node or a node operating as a collective interchangably",
+        "ts": "1438488573.000073"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "I\/we don't like your community, we blacklist you.",
+        "ts": "1438488584.000074"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "hmm that would be an interesting hybrid of where our thought has been going",
+        "ts": "1438488619.000075"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "widely decentralized nodes....",
+        "ts": "1438488624.000076"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08E5P0BZ>: perhaps having a node is one of the first 'best practices' in starting any serious community",
+        "ts": "1438488633.000077"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "but nodes can elect to become a collective modeled after my listing ideas...",
+        "ts": "1438488637.000078"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "it got me thinking of an old model, that of the BBS back in the day.",
+        "ts": "1438488649.000079"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "and those collectives would serve as a focused host of that content",
+        "ts": "1438488665.000080"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "ensuring it was always available, and maybe even completely ignoring any other content",
+        "ts": "1438488676.000081"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "<@U08EZP01H>: and it could be enforced by the code to help incentivze decentraziation.",
+        "ts": "1438488689.000082"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "yes",
+        "ts": "1438488700.000083"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "maybe that would be how nodes determine what they are hosting even, but having nodes subscribe to collectives",
+        "ts": "1438488716.000084"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "or they fire up a couple for redundancy",
+        "ts": "1438488717.000085"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "by subscribing to a collective you would act as a focused host for that collective's content",
+        "ts": "1438488741.000086"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "and by subscribing to collectives you go from being an ephemeral content store of random shit to being a focused archive of content that you yourself are interested in",
+        "ts": "1438488777.000087"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "yes, i like that",
+        "ts": "1438488787.000088"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "and with it being local to you, this improves the speed of you own access to it",
+        "ts": "1438488789.000089"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "does this raise any new security issues?",
+        "ts": "1438488803.000090"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "and we are basically just talking about a tab for each collective, which is likely what many people do anywah",
+        "ts": "1438488813.000091"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "you node subscribing to a collective would not be linked to any public psuedoidentity if we could avoid it",
+        "ts": "1438488834.000092"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "yea, I liked your comment yesterday that you may yourself browse listings and request a certain piece of content, only for your browser to identify that content is already in your local store so it only needs to display it :simple_smile:",
+        "ts": "1438488858.000093"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "it would just be a broadcast to connected nodes saying \"Hey I host this collective\"",
+        "ts": "1438488860.000094"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "that said, my chrome wasn't too happy when I had chiguireitor's demo open for too long.   :simple_smile:  It was demo code so I'm not sure what was to blame, webrtc, webtorrent or something else.",
+        "ts": "1438488867.000095"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "and that could also be a means of gauging the popularity of certain collectives as this is something I hadn't really thought of a solution for.  other than ranking it monetarily of course",
+        "ts": "1438488898.000096"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08EZP01H>: by security you are thinking open sockets, or malicious content a la XSS?",
+        "ts": "1438488911.000097"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i like this collective brainstorming :simple_smile:",
+        "ts": "1438488933.000098"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "this has really been a great experience so far.",
+        "ts": "1438488946.000099"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I picked the term collective because  they are intentionally similar to communities\/subreddits",
+        "ts": "1438488961.000100"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "I must like it because I was using it in another context",
+        "ts": "1438488985.000101"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "its seeping into my speech",
+        "ts": "1438489003.000102"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "but different enough that they really needed a different term to distinguish their unique properties.  it's a collection of indexes that compose together to create a community like experience, a collective of related content",
+        "ts": "1438489003.000103"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08ERPTQF>: i wasn't thinking so specifically.  basically wondering if we're letting controversial topics become easier targets to spot",
+        "ts": "1438489004.000104"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08EZP01H>: yes if we don't have some sort of anonymity solution for the act of hosting content...",
+        "ts": "1438489049.000105"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "...but we do is what i'm guessing you'll say",
+        "ts": "1438489065.000106"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": ":simple_smile:",
+        "ts": "1438489081.000107"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "then it does indeed cause that sort of security concern, I would lean towards freenode\/tor style onion routing and hidden services would be ideal; but certainly not easy to implement",
+        "ts": "1438489083.000108"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "ok another hybrid idea",
+        "ts": "1438489103.000109"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "the most popular posts get syndicated",
+        "ts": "1438489111.000110"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "that way at least active popular content gets distributed",
+        "ts": "1438489176.000111"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08DD8LNP>: your idea that requesting a listing neither affirms or denies that you are accepting or objecting to the content, does give some element of obfuscation whether a node is 'hosting' said content",
+        "ts": "1438489210.000112"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "how does that help censorship.  I missed that part.",
+        "ts": "1438489243.000113"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "that's only true at the listing level, if a node is saying that it's hosting a collective that's different",
+        "ts": "1438489248.000114"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "but maybe it just doesn't broadcast that at all",
+        "ts": "1438489255.000115"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "I don't think there's a reason to assume there would only be 1 \/r\/poltics",
+        "ts": "1438489283.000116"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08E5P0BZ>: the act of saying something isn't worth looking at is the same as saying that I want you to see this",
+        "ts": "1438489284.000117"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "you're just adding it to a list",
+        "ts": "1438489290.000118"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "whether it's a good list or a bad list is suggested by the collective definition and finally determined by the client",
+        "ts": "1438489310.000119"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i think I'm following",
+        "ts": "1438489324.000120"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08E5P0BZ>: I think we could very well herd people into submitting to a singular bucket for political stuff in this collective model",
+        "ts": "1438489339.000121"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "how about if all that any node broadcasts is listings?",
+        "ts": "1438489345.000122"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "since any collective that wanted to pull from it could and could filter it at will",
+        "ts": "1438489350.000123"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08ERPTQF>: if you are subscribing to a node to determine what content you want to host you don't need to even broadcast listings at all you just need to fetch listings and then use the set result to fetch content to host",
+        "ts": "1438489390.000124"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "that seems like a solutiion",
+        "ts": "1438489391.000125"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "or know what requests to handle vs ignore etc...",
+        "ts": "1438489406.000126"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "also i see no reason why nodes can't relay content for other nodes, like some % of their cpu\/bandwidth",
+        "ts": "1438489449.000127"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i assume you're worried about losing the power of numbers, right?",
+        "ts": "1438489467.000128"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I think it's absolutely ideal to have nodes relaying content that way for anonymity purposes",
+        "ts": "1438489469.000129"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "freenode did this to make it more difficult to determine if you personally are accessing something or if it's just flowing through you",
+        "ts": "1438489502.000130"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "also, the thing I've been meaning to mention is that in chiguireitor's demo he just used a torrent hash as the data.  doesn't that give us a bit of an indirection to help with the censorship thing?",
+        "ts": "1438489535.000131"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "idk im not as familiar with the inner workings of torrents tbh",
+        "ts": "1438489558.000132"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "basically it's just a hash of the content.  Using that hash you can retrieve the content as long as some peer is serving it.",
+        "ts": "1438489600.000133"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "ah yeah we're thinking very similar idea for our content solution",
+        "ts": "1438489624.000134"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "so we could store the hash, the user generates it when posting content, perhaps aside from links, and then it's an indirection to the content rather than the content itself",
+        "ts": "1438489646.000135"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "so while we're blasting the user\/title\/hash we have nothing to do with the content",
+        "ts": "1438489699.000136"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "we meaning nodes",
+        "ts": "1438489706.000137"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "though it would be convenient if the nodes also were serving the torrents or at least being trackers for it",
+        "ts": "1438489749.000138"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "maidsafe may blow that need away too.",
+        "ts": "1438489768.000139"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "i keep wondering about users who make slight adjustments to content so they can repost and reap the rewards. a thought: i wonder if there's a way to let people on the network tag reposts (and label the OP) for a cut of the redirected profits.",
+        "ts": "1438489796.000140"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "tbh I haven't been taking the rewards into consideration for the majority of this collective convo",
+        "ts": "1438489854.000141"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08EZP01H>: yea for long form posts just a grammatical change will mean a new hash for that content",
+        "edited": {
+            "user": "U08ERPTQF",
+            "ts": "1438489995.000000"
+        },
+        "ts": "1438489985.000142"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "harkening back to my BBS days, if I remember correctly toward the end of the era there were syndicates of file sharers.  In the middle of the night they'd all call around to each other and sync new files.  This idea brings be back to those days.  The \"internet\" was more private back then.",
+        "ts": "1438490056.000144"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "although if they do so using the same 'Tag' then a Mod\/Collective would be the decider of whether to list this dupe or not.",
+        "ts": "1438490084.000145"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "<@U08ERPTQF>: was thinking the same thing.  The same content would likely get flagged by these smaller collectives.",
+        "ts": "1438490112.000146"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "the collectives taking quite a large role in the health of the network, but I'm still unclear what incentivizes them",
+        "ts": "1438490177.000147"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "yeah I see marking dupes as a function of moderation\/collectives",
+        "ts": "1438490197.000148"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "not something we can solve reliably at a technical level",
+        "ts": "1438490210.000149"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "well we can do cryptographic signatures that prove the owner of a piece",
+        "ts": "1438490236.000150"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "and have them sign the blockchain address along side it so you know you money is going where it should",
+        "ts": "1438490299.000151"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "there's a service out there already doing that i believe. you sign your artwork with them, digital artwork, and then you can sell 'original, only, copies'",
+        "ts": "1438490326.000152"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "actually yeah I think that's a pretty good a approach, if you choose to sign a piece of content it would also include the authoritative blockchain address of the content in the signature in a structured way that clients could find",
+        "ts": "1438490342.000153"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "someone else could repost the same thing and strip out all that signature though so it's still not perfect",
+        "ts": "1438490393.000154"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "but how would clients know to find that content if all they know is the hash of the content they have listed?",
+        "ts": "1438490409.000155"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "but someone else could at least prove they wrote it first, and nobody could edit it and claim authoritatively that they said it",
+        "ts": "1438490425.000156"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "paul_xbt: IMO for signed content the signature becomes part of the content itself for the purposes of hashing\/identification",
+        "ts": "1438490452.000157"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": ":thumbsup:",
+        "ts": "1438490513.000158"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "is there a place for letting users subscribe to content creators, perhaps in a patreon-like manner?",
+        "ts": "1438490581.000159"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "<@U08EZP01H>: I didn't bring that up early because I was afraid I'd get slapped.  I think that's a good idea though.",
+        "ts": "1438490699.000160"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "it's essentially auto-tip any content this author creates?",
+        "ts": "1438490702.000161"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i feel like a scope creeper",
+        "ts": "1438490724.000162"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "yes",
+        "ts": "1438490799.000163"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "the idea came out of brainstorming what features would best help growth",
+        "ts": "1438490801.000164"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "auto-tip sounds dirty, but essentially, yes.",
+        "ts": "1438490823.000165"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "is there another way to do it?",
+        "ts": "1438490829.000166"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "that actually could take on a whole new meaning if we did something I brought up (perhaps others) yesterday.  If early supporters of content got some sort of cut.",
+        "ts": "1438490854.000167"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "like an investment in the content creator",
+        "ts": "1438490885.000168"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "you become a promoter",
+        "ts": "1438490895.000169"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "in addition of course to a patron",
+        "ts": "1438490903.000170"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "well from a client perspective, your 'following' that author should at a minimum prioritise their content in your stream, then you are more likely to tip them? but that's not the same as subscribing really.",
+        "ts": "1438490913.000171"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "kinda like an incentive for digging through the noise?",
+        "ts": "1438490916.000172"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "Yes, incentive for helping the system sort through the content.",
+        "ts": "1438490970.000173"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "what better motivation and feedback look than if you find the best content first.",
+        "ts": "1438490991.000174"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "in the same way that an author can add to a 'bounty' for their content to get propagated, peers may choose to do the same, and may get rewarded if there is a lot of activity on that post",
+        "ts": "1438490994.000175"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "loop",
+        "ts": "1438490995.000176"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "well, it's not unlike actual investment... early equity is cheaper",
+        "ts": "1438491016.000177"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "it's a bit like betting that that author's content is going to be awesome",
+        "ts": "1438491020.000178"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "oah that's good",
+        "ts": "1438491039.000179"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "the patreon one, the auto invest. and in the case of manually doing it you're betting that people will respond to it, and promoting it at the same time.",
+        "ts": "1438491055.000180"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "the earlier you bet the better your chance of getting a return",
+        "ts": "1438491056.000181"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "that was another idea.  So either it could be the people before a certain threshold get a different cut than once it reaches it, or you could have a sliding reward",
+        "ts": "1438491094.000182"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "tapers over time",
+        "ts": "1438491098.000183"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i like the taper one",
+        "ts": "1438491114.000184"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "some peers will choose to make a lot of small bets as soon as content is posted to spread their risk, others may bet stronger on authors that give consistently good returns :simple_smile:",
+        "ts": "1438491124.000185"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i think it would make for an active community",
+        "ts": "1438491126.000186"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "i think that might be the revolving door feature that keeps some people sitting around all day",
+        "ts": "1438491176.000187"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "true, though in any case they are supporting the content so it seems like that might be OK.  Probably some game theory to look at.  Also we thought perhaps it might lead to overly advertisey stuff but that will happen anyway.",
+        "ts": "1438491181.000188"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "not that a reddit clone needs more of that.",
+        "ts": "1438491185.000189"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "ha",
+        "ts": "1438491187.000190"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "this spreadsheet shows exactly that taper, eventually the author's cut goes to 100%, so only early peers can get a return <https:\/\/docs.google.com\/spreadsheets\/d\/19mUSGUwLukbskz5dIj1QXM0rAPmCBrbXZeLz908LfmU\/edit?usp=sharing>",
+        "ts": "1438491188.000191"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "haha",
+        "ts": "1438491190.000192"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "wow",
+        "ts": "1438491221.000193"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "yea, but to <@U08DD8LNP>'s point that may be a UBI for some people in some parts of the world",
+        "ts": "1438491224.000194"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "you've blown it out",
+        "ts": "1438491227.000195"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "assuming critical mass, there's a huge incentive for a brand to drop buckets in bounties for content",
+        "ts": "1438491287.000196"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "think GoT premier day",
+        "ts": "1438491302.000197"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "so you mean outside bounties?",
+        "ts": "1438491313.000198"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "as long as its not ad money, i think. maybe?",
+        "ts": "1438491347.000199"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "indeed - obviously we shouldn't call it betting - perhaps 'endorsing' 'sponsoring' ' affiliating' are better terms",
+        "ts": "1438491353.000200"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i looked at it like what some people likely would want from kickstarter - invest in promotion and reap a reward",
+        "ts": "1438491392.000201"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "you're basically paying the swarm to create content, and all the rippling effects it has",
+        "ts": "1438491415.000202"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i really like this idea.  I haven't seen anything tangible in the main thread about the details of the reward mechanism so maybe these ideas could work their way in.",
+        "ts": "1438491462.000203"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "'promotion' is quite neutral it can be either the author or peers that promote, but it stands that if the content is illegal or copyright to another holder, then earning anything from your 'promotion' of the content could become a grey area",
+        "ts": "1438491513.000204"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "<@U08ERPTQF>: did your spreadsheet stem from a conversation in the general thread or somewhere else, or is this you following through on your own idea?",
+        "ts": "1438491523.000205"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "Maybe an example to consider is if someone posted a movie?",
+        "ts": "1438491573.000206"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08E5P0BZ>: I've had that spreadsheet on my mind for over a month now. I seeded it into the <#C08F62HEY> channel a few hours ago, but didn't get much feedback",
+        "ts": "1438491575.000207"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "I can't really comment on the details of it but I like the overall idea.",
+        "ts": "1438491605.000208"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "the key factor is that the author forgoes some of their 'revenue' for an early duration of their content being propagated on the network",
+        "ts": "1438491651.000209"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "i've starred at it for awhile, i think i understand the gist",
+        "ts": "1438491652.000210"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "would that make it easy to ask your friends to 'vote early' and get paid?",
+        "ts": "1438491700.000211"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "this still achieves the goal of the majority of the funds going to the author when content becomes popular\/viral",
+        "ts": "1438491703.000212"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "why at J28 does the bounty go down?",
+        "ts": "1438491714.000213"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "j28 is one of the first rows where 4 peers are all paid out, so it's a large payment at that time",
+        "ts": "1438491776.000214"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "but then why does it continue to go down as there are more tips?",
+        "ts": "1438491793.000215"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "oh i think i see, not more tips, just more time?",
+        "ts": "1438491900.000216"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "because in this model there were no more tips after j28",
+        "ts": "1438491905.000217"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "got it",
+        "ts": "1438491911.000218"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "I don't think the variables\/calculations in this spreadsheet are right, but it is something I'd like to see if we can improve on",
+        "ts": "1438491960.000219"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "so does the author start to lose bounty or not make as much per period?",
+        "ts": "1438491963.000220"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "Late night again.  Great ideas everyone.  I have to hit the hay.",
+        "ts": "1438492050.000221"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "ok talk again tomorrow <@U08E5P0BZ>",
+        "ts": "1438492112.000222"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "thanks <@U08ERPTQF> .  Good stuff.",
+        "ts": "1438492126.000223"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08EZP01H>: if creators are encouraged to build a community does this give them a 'celebrity' status akin to a popular twitter account?",
+        "ts": "1438492284.000224"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "maybe at a certain point, initially it would probably be smart business",
+        "ts": "1438492345.000225"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "and for once you have a carrot on a stick for your first supporters",
+        "ts": "1438492356.000226"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "you can't stop celebrity you can't prevent people from identifying themselves even if we don't build it in",
+        "ts": "1438492364.000227"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "yep no need to suppress celebrity IMO",
+        "ts": "1438492389.000228"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "it's one of those things you just have to live with IMO",
+        "ts": "1438492390.000229"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "having the option of contributing anonymously is enough, chilling effects suck",
+        "ts": "1438492410.000230"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "we'll do our part to put the nail in hollywood's coffin",
+        "ts": "1438492421.000231"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "although we pop bottles if someone funds a movie through this content machine",
+        "ts": "1438492439.000232"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "there isn't an upper limit on the number of followers\/subscribers and author can have, so it'll be interesting to see whether that translates to a flood of 'tips' that push any content from that author straight to the 'front-page'",
+        "ts": "1438492514.000233"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "what I also love is that I can follow a collective that doesn't include hugely popular content in their listings",
+        "ts": "1438492622.000234"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "it all comes back to user choice",
+        "ts": "1438492641.000235"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "oh, i came back here since this idea of progressive bounties is in the air",
+        "ts": "1438492868.000236"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": ":simple_smile:",
+        "ts": "1438492922.000237"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "yesterday I had suggested, it may be infeasible, but the idea was that once a threshold was crossed, like say when a post makes it to the reddit home page, content could get pay walled.  I know that's a bit extreme, but perhaps there's another similar concept.",
+        "ts": "1438492925.000238"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "in the patreon model it could be like kickstarter where the people who subscribe early get a better price kinda thing.  similar economic effect",
+        "ts": "1438492978.000239"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "could we position it as there is a greater fee to access the content because it has used more network resources?",
+        "ts": "1438493001.000240"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i suppose that's very similar to your spreadsheet <@U08ERPTQF> but in the subscribe context.",
+        "ts": "1438493002.000241"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "that might be a stretch",
+        "ts": "1438493024.000242"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "I was just thinking if there was a high threshold perhaps people would pay",
+        "ts": "1438493045.000243"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "maybe not though",
+        "ts": "1438493050.000244"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "I don't have a set position on whether browsers\/lurkers pay anything to the nodes or to the author, I think that may initially present a barrier to entry.",
+        "ts": "1438493079.000245"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "also sort of defeats the idea of proliferation of good ideas :simple_smile:",
+        "ts": "1438493090.000246"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "yes.  maybe it will provoke another idea.  I like that idea of the early adopters getting a discount to seed interest",
+        "ts": "1438493123.000247"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "yea and freedom of expression... if the popular content is a unique political view that deserves to be heard then paid-access is counterproductive",
+        "ts": "1438493133.000248"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "might even be able to do that with the platform itself",
+        "ts": "1438493133.000249"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i suppose in a similar sense, what I always thought reddit would do is translate karma into investment or payout.  We could propose that early adopters get some slightly higher % on invested items...",
+        "ts": "1438493238.000250"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "<@U08ERPTQF>: agreed, that part def doesn't work.",
+        "ts": "1438493255.000251"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "might be some complex formulas to figure out.",
+        "ts": "1438493289.000252"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "ya know, a reason why we might leave a small incentive for resposting unmodified content: it allows the original author to continue earning off the content, gives the reposter meaning in life. maybe like 15% or less",
+        "ts": "1438493326.000253"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "i'm no mathematician, but I'm keen to thrash out what those formulas might be",
+        "edited": {
+            "user": "U08ERPTQF",
+            "ts": "1438493437.000000"
+        },
+        "ts": "1438493327.000254"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "<@U08EZP01H>: it's an interesting question.  As it is I wonder how much content on reddit is original vs. just another posting someone else's content.  Likely it's much more the latter.  We had a discussion yesterday about how tracking the true content owner is very likely out of scope, so I think this fits right in there.  Might not want to waste a lot of time on that and it happens everywhere on the net already.",
+        "ts": "1438493422.000255"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "<@U08ERPTQF>:  I had a feeling :simple_smile:",
+        "ts": "1438493428.000256"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "ok, one more crazy idea.",
+        "ts": "1438493519.000258"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08EZP01H>: sure, also reposts are often legitimately bringing that content into light in a different part of the network\/community",
+        "ts": "1438493524.000259"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "exactly or now that events have changed",
+        "ts": "1438493543.000260"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "but the same isn't necessarily true for longform posts",
+        "ts": "1438493553.000261"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "my buttcoin comment from earlier :))",
+        "ts": "1438493553.000262"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": ":simple_smile:",
+        "ts": "1438493561.000263"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "could be tho",
+        "ts": "1438493563.000264"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "predictions etc.",
+        "ts": "1438493569.000265"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "OK, what do you think of this idea?  I've always had an issue with websites using Disqus and Facebook for their comments sections.",
+        "ts": "1438493624.000266"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "We should have a way to easily embed comments into pages like that but they'd be back to the old model of ano\/pseudonymity.",
+        "ts": "1438493668.000267"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "and easy for the website person to integrate, so same benefits but it is wired into this system.",
+        "ts": "1438493690.000268"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "perhaps even the root page\/article get automatically syndicated using some in page meta information",
+        "ts": "1438493721.000269"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "so they exist in both places.",
+        "ts": "1438493726.000270"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "that might be an offshoot of this project if we nail the comment propagation and moderation",
+        "ts": "1438493728.000271"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "yeah, clearly a different scope but I think we should keep our eyes on it so it's not an afterthought.",
+        "ts": "1438493751.000272"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "most websites won't syndicate comments unless they have moderation controls",
+        "edited": {
+            "user": "U08ERPTQF",
+            "ts": "1438493770.000000"
+        },
+        "ts": "1438493756.000273"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "ah, interesting point",
+        "ts": "1438493768.000274"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i bet with momentum they might though, if they were of the right ideology.",
+        "ts": "1438493790.000276"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "if not they wouldn't want this anyway.",
+        "ts": "1438493801.000277"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "i wonder if FB gives them moderation capability.",
+        "ts": "1438493812.000278"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "or perhaps they get moderation if they run their own collective",
+        "ts": "1438493830.000279"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "it's still interesting that there can be an uncensored discourse on the DATT network and a censored one on the page. Users may think to check out the uncensored discourse too :simple_smile:",
+        "ts": "1438493841.000280"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "true, great point",
+        "ts": "1438493855.000281"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "that's really just a filter potentially using <@U08DD8LNP> design",
+        "ts": "1438493872.000282"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "yep",
+        "ts": "1438493912.000283"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "embeddable comment clients is a really interesting idea",
+        "ts": "1438494139.000284"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "and fits in with the web components model.  <http:\/\/www.2ality.com\/2013\/05\/web-components-angular-ember.html>",
+        "ts": "1438494170.000285"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "a website could set up their own collective to moderate the general comments of the DATT network or even just pull them in selectively",
+        "ts": "1438494216.000286"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "<@U08DD8LNP>: thanks.  I've been on a private rant against FB comments and their spying ways for a long time.",
+        "ts": "1438494280.000287"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "I think anonymous feedback, while sometimes full of troll, also can be more true and honest.",
+        "ts": "1438494307.000288"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "seems so silly to make people use their real names (here I am with my real name)",
+        "ts": "1438494327.000289"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "I think free speech really implies freedom from possible persecution and therfor anonymity",
+        "ts": "1438494376.000290"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "and of course we all know that FB comments means that even visits are tracked.  Not that almost every site isn't tracked visits using google analytics...",
+        "ts": "1438494465.000291"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08E5P0BZ>: totally I think anonymity and uncensorship are very related goals",
+        "ts": "1438494836.000292"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "seems like a strange trend away from that.  Maybe the Snowden revelations will tip it in the other direction.",
+        "ts": "1438494901.000293"
+    },
+    {
+        "user": "U07GDL0H5",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U07GDL0H5|ryanxcharles> has joined the channel",
+        "ts": "1438497367.000294"
+    }
+]

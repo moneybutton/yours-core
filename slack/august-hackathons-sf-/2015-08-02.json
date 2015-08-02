@@ -1,0 +1,23 @@
+[
+    {
+        "user": "U08FSH97D",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08FSH97D|matan.field> has joined the channel",
+        "ts": "1438524287.000004"
+    },
+    {
+        "user": "U08CG8V89",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08CG8V89|c_prompt> has joined the channel",
+        "ts": "1438542750.000002"
+    },
+    {
+        "user": "U08FWU9ST",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08FWU9ST|primavera> has joined the channel",
+        "ts": "1438544252.000003"
+    }
+]

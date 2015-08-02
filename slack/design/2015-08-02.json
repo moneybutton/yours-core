@@ -1,0 +1,359 @@
+[
+    {
+        "user": "U08FSH97D",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08FSH97D|matan.field> has joined the channel",
+        "ts": "1438524301.000074"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U07GDL0H5>: what are your thoughts on branding the name 'DATT'? should it be part of the brand name, or just part of the underlying technology? we've got an awesome logo via <@U08C464NS>, should we treat 'DATT' as an official name?",
+        "ts": "1438535634.000075"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08EZP01H|darrenm> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08FV3SJJ\/logo_font-02.png|datt-name-mockup>",
+        "file": {
+            "id": "F08FV3SJJ",
+            "created": 1438535986,
+            "timestamp": 1438535986,
+            "name": "logo_font-02.png",
+            "title": "datt-name-mockup",
+            "mimetype": "image\/png",
+            "filetype": "png",
+            "pretty_type": "PNG",
+            "user": "U08EZP01H",
+            "editable": false,
+            "size": 4911,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08FV3SJJ-9581e521e6\/logo_font-02.png",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08FV3SJJ-9581e521e6\/download\/logo_font-02.png",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08FV3SJJ\/logo_font-02.png",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08FV3SJJ\/download\/logo_font-02.png",
+            "thumb_64": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08FV3SJJ-1498b16264\/logo_font-02_64.png",
+            "thumb_80": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08FV3SJJ-1498b16264\/logo_font-02_80.png",
+            "thumb_360": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08FV3SJJ-1498b16264\/logo_font-02_360.png",
+            "thumb_360_w": 360,
+            "thumb_360_h": 180,
+            "thumb_480": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08FV3SJJ-1498b16264\/logo_font-02_480.png",
+            "thumb_480_w": 480,
+            "thumb_480_h": 240,
+            "thumb_160": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08FV3SJJ-1498b16264\/logo_font-02_160.png",
+            "image_exif_rotation": 1,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08FV3SJJ\/logo_font-02.png",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08FV3SJJ-9581e521e6",
+            "channels": [
+                "C08F8UMGB"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 0,
+            "reactions": [
+                {
+                    "name": "+1",
+                    "users": [
+                        "U08ERPTQF"
+                    ],
+                    "count": 1
+                }
+            ]
+        },
+        "user": "U08EZP01H",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U08EZP01H|darrenm>",
+        "bot_id": null,
+        "ts": "1438535988.000076"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "nice logo <@U08EZP01H> ! want to add it to the design repo? <https:\/\/github.com\/dattnetwork\/datt>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "dattnetwork\/datt",
+                "title_link": "https:\/\/github.com\/dattnetwork\/datt",
+                "text": "datt - Decentralize all the things.",
+                "fallback": "GitHub: dattnetwork\/datt",
+                "thumb_url": "https:\/\/avatars0.githubusercontent.com\/u\/13266895?v=3&s=400",
+                "from_url": "https:\/\/github.com\/dattnetwork\/datt",
+                "thumb_width": 214,
+                "thumb_height": 214,
+                "id": 1
+            }
+        ],
+        "ts": "1438538632.000077"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "on branding, we somehow need to clarify the distinction between \"datt, the network\" and \"datt, the company\" since i will almost certainly be creating a company called Datt, Inc. soon. they should have different logos.",
+        "ts": "1438538668.000079"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Sure. Soon as I get home. ",
+        "ts": "1438538683.000080"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "one way is to copy what OpenBazaar did ... OpenBazaar is the network, and OB1 is the first business on the yet-to-launch decentralized network. they're the only other company i know explicitly pursuing a business model like this.",
+        "ts": "1438538735.000081"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Sounds excellent. I'll talk to <@U08C464NS> and we can outline something. ",
+        "ts": "1438539030.000082"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "also see what <@U08FSH97D> has to say about this ... they're doing very similar work and may have some thoughts on this ... not sure what their business model is though",
+        "ts": "1438539131.000083"
+    },
+    {
+        "user": "U08CG8V89",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08CG8V89|c_prompt> has joined the channel",
+        "ts": "1438541358.000084"
+    },
+    {
+        "user": "U08FELGRX",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08FELGRX|dean> has joined the channel",
+        "ts": "1438543510.000085"
+    },
+    {
+        "user": "U08BY8MGV",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08BY8MGV|bradkam> has joined the channel",
+        "ts": "1438543518.000086"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08FELGRX|dean> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/dean\/F08FX8MD3\/untitled.pdn|possible mod view, cloned from reddit front page> and commented: test mod view, copied\/adapted from reddit front page. ",
+        "file": {
+            "id": "F08FX8MD3",
+            "created": 1438543596,
+            "timestamp": 1438543596,
+            "name": "Untitled.pdn",
+            "title": "possible mod view, cloned from reddit front page",
+            "mimetype": "application\/octet-stream",
+            "filetype": "binary",
+            "pretty_type": "Binary",
+            "user": "U08FELGRX",
+            "editable": false,
+            "size": 231674,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08FX8MD3-5d41d15720\/untitled.pdn",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08FX8MD3-5d41d15720\/download\/untitled.pdn",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08FX8MD3\/untitled.pdn",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08FX8MD3\/download\/untitled.pdn",
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/dean\/F08FX8MD3\/untitled.pdn",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08FX8MD3-5d41d15720",
+            "channels": [
+                "C08F8UMGB"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 1,
+            "initial_comment": {
+                "id": "Fc08FX8ME1",
+                "created": 1438543597,
+                "timestamp": 1438543597,
+                "user": "U08FELGRX",
+                "comment": "test mod view, copied\/adapted from reddit front page. "
+            }
+        },
+        "user": "U08FELGRX",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U08FELGRX|dean>",
+        "bot_id": null,
+        "ts": "1438543597.000087"
+    },
+    {
+        "type": "message",
+        "user": "U08BY8MGV",
+        "text": "<https:\/\/docs.google.com\/presentation\/d\/1SlSlpEtZWa6g3jddrFdpY0hL9W8YePWItrOV0W4bPyc\/edit#slide=id.g63d6e66a7_0_210>",
+        "ts": "1438543693.000088"
+    },
+    {
+        "user": "U08FWU9ST",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08FWU9ST|primavera> has joined the channel",
+        "ts": "1438544247.000089"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I kind of like the idea of using DATT as a prefix for everything.  DATT network, DATT company, DATT ass",
+        "ts": "1438544251.000090"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "DATT ass clearly refers to the back end technology. +1",
+        "ts": "1438545262.000092"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "After talking to a few people it sounds like the best approach for the brand would be to keep separate identities for the technology and revenue model. DATT would refer to the technology the values behind it. <@U08C464NS> made us an awesome logo, so it is a question whether it fits alongside DATT, or whether it should be the mark for 'Content Node 1', or whatever we name the business behind the first node. <@U07GDL0H5>",
+        "ts": "1438555615.000093"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Here are the marks we have so far: <https:\/\/github.com\/dattnetwork\/dattmedia\/blob\/master\/chris_NODE\/Logo\/logo_vector.svg>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "dattnetwork\/dattmedia",
+                "title_link": "https:\/\/github.com\/dattnetwork\/dattmedia\/blob\/master\/chris_NODE\/Logo\/logo_vector.svg",
+                "text": "dattmedia - Design all the things.",
+                "fallback": "GitHub: dattnetwork\/dattmedia",
+                "thumb_url": "https:\/\/avatars0.githubusercontent.com\/u\/13266895?v=3&s=400",
+                "from_url": "https:\/\/github.com\/dattnetwork\/dattmedia\/blob\/master\/chris_NODE\/Logo\/logo_vector.svg",
+                "thumb_width": 214,
+                "thumb_height": 214,
+                "id": 1
+            }
+        ],
+        "ts": "1438555641.000094"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<https:\/\/raw.githubusercontent.com\/dattnetwork\/dattmedia\/master\/datt_logo\/logo_font_small.png>",
+        "attachments": [
+            {
+                "fallback": "300x121px image",
+                "image_url": "https:\/\/raw.githubusercontent.com\/dattnetwork\/dattmedia\/master\/datt_logo\/logo_font_small.png",
+                "image_width": 300,
+                "image_height": 121,
+                "image_bytes": 2302,
+                "from_url": "https:\/\/raw.githubusercontent.com\/dattnetwork\/dattmedia\/master\/datt_logo\/logo_font_small.png",
+                "id": 1
+            }
+        ],
+        "ts": "1438555647.000096"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08FELGRX|dean> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/dean\/F08FZQUDU\/text_post.png|text_post.png> and commented: <@U08EZP01H> I like the mockups on the github. i've replaced some of the lorem ipsum with actual verbiage:",
+        "file": {
+            "id": "F08FZQUDU",
+            "created": 1438555799,
+            "timestamp": 1438555799,
+            "name": "text_post.png",
+            "title": "text_post.png",
+            "mimetype": "image\/png",
+            "filetype": "png",
+            "pretty_type": "PNG",
+            "user": "U08FELGRX",
+            "editable": false,
+            "size": 56398,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08FZQUDU-9db7a09af3\/text_post.png",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08FZQUDU-9db7a09af3\/download\/text_post.png",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08FZQUDU\/text_post.png",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08FZQUDU\/download\/text_post.png",
+            "thumb_64": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08FZQUDU-4334d543ac\/text_post_64.png",
+            "thumb_80": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08FZQUDU-4334d543ac\/text_post_80.png",
+            "thumb_360": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08FZQUDU-4334d543ac\/text_post_360.png",
+            "thumb_360_w": 360,
+            "thumb_360_h": 194,
+            "thumb_480": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08FZQUDU-4334d543ac\/text_post_480.png",
+            "thumb_480_w": 480,
+            "thumb_480_h": 259,
+            "thumb_160": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08FZQUDU-4334d543ac\/text_post_160.png",
+            "thumb_720": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08FZQUDU-4334d543ac\/text_post_720.png",
+            "thumb_720_w": 720,
+            "thumb_720_h": 388,
+            "thumb_960": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08FZQUDU-4334d543ac\/text_post_960.png",
+            "thumb_960_w": 960,
+            "thumb_960_h": 518,
+            "thumb_1024": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08FZQUDU-4334d543ac\/text_post_1024.png",
+            "thumb_1024_w": 1024,
+            "thumb_1024_h": 552,
+            "image_exif_rotation": 1,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/dean\/F08FZQUDU\/text_post.png",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08FZQUDU-9db7a09af3",
+            "channels": [
+                "C08F8UMGB"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 1,
+            "initial_comment": {
+                "id": "Fc08FZQWS2",
+                "created": 1438555804,
+                "timestamp": 1438555804,
+                "user": "U08FELGRX",
+                "comment": "<@U08EZP01H> I like the mockups on the github. i've replaced some of the lorem ipsum with actual verbiage:"
+            }
+        },
+        "user": "U08FELGRX",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U08FELGRX|dean>",
+        "bot_id": null,
+        "ts": "1438555804.000098"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08FELGRX> They're super clean. <@U08C464NS> was cranking them out yesterday like crazy. i really like his style.",
+        "ts": "1438555851.000099"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yes agree it's important to distinguish between network and company",
+        "ts": "1438555856.000100"
+    },
+    {
+        "type": "message",
+        "user": "U08FELGRX",
+        "text": "oh I thought that was your work. well done <@U08C464NS>",
+        "ts": "1438555889.000101"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "the mockups are really awesome",
+        "ts": "1438555929.000102"
+    }
+]

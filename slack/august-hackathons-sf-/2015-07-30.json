@@ -1,0 +1,25 @@
+[
+    {
+        "user": "U08BU3AA2",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08BU3AA2|schwentker> has joined the channel",
+        "ts": "1438314758.000002"
+    },
+    {
+        "type": "message",
+        "user": "U08BU3AA2",
+        "text": "I'm co-organizer of <http:\/\/hackcoin.in|hackcoin.in> - in Mumbai at Bombay Stock Exchange  will see if any devs want to join DATT hack",
+        "edited": {
+            "user": "U08BU3AA2",
+            "ts": "1438315709.000000"
+        },
+        "ts": "1438314807.000003"
+    },
+    {
+        "type": "message",
+        "user": "U08BU3AA2",
+        "text": "Thanks to ChangeTip for sponsoring food\/drink in SF!",
+        "ts": "1438315628.000002"
+    }
+]
