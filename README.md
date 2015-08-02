@@ -58,6 +58,11 @@ Resources compiled by John Villar
 Articles
 - [The Cryptographic Doom Principle - you should always encrypt then mac - validate mac before decrypting data](http://www.thoughtcrime.org/blog/the-cryptographic-doom-principle/)
 - [Web RTC STUN and TURN](http://www.html5rocks.com/en/tutorials/webrtc/infrastructure/)
+- https://valme.io/c/journal/c_prompt/f5qqs/an-open-letter-to-steve-huffman-reddits-new-ceo-with-an-offer-to-exchange-values (general business model ideas)
+- http://valme.io/c/gettingstarted/faq/nqqqs/why-does-it-cost-1-karma-to-upvote-but-2-to-downvote (related to downvoting)
+- http://valme.io/c/gettingstarted/faq/yqqqs/whats-a-sponsored-account (related to allowing mods to change the price of content)
+- http://valme.io/c/gettingstarted/faq/7mqqs/valme-transaction-costs (related to different transaction fees for different actions)
+- http://valme.io/c/gettingstarted/faq/5qqqs/whats-a-modqueue-what-are-moderators-mods (related to flagging/downvote brigades)
 
 ## Brainstorms and thoughts
 
