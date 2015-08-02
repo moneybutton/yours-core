@@ -3,6 +3,12 @@ import Ember from 'ember';
 export default Ember.Service.extend({
   defaultCollective: '1NHy1SqQSeyEopKv3v1iTfx7sFdEiqocWb',
 
+  myId: Ember.computed({
+    get: function() {
+      return mocks.client.myId;
+    }
+  }),
+
   getCollectiveThings: function(id) {
     return this.getCollective(id).then(function(collective) {
       return Ember.RSVP.hash({
@@ -52,8 +58,33 @@ export default Ember.Service.extend({
     return Ember.RSVP.resolve(things().filterProperty('parent', id));
   },
 
+  getMyThings: function() {
+    return this.getThings(mocks.client.myThings.concat([this.get('myId')]));
+  },
+
   getTransactions: function(user) {
-    return Ember.RSVP.resolve(mocks.balance.transactions);
+    return this.getMyThings().then(function(things) {
+      return Ember.RSVP.all(things.map(function(thing) {
+        var txs = Ember.get(thing, 'txs.in') || [];
+        if (!txs.length) {return Ember.RSVP.resolve(txs);}
+        return Ember.RSVP.all(txs.map(function(tx) {
+          return this.getThing(tx.from).then(function(fromThing) {
+            return {
+              from: fromThing,
+              to: thing,
+              amount: tx.amount,
+              created: tx.created
+            };
+          })
+        }.bind(this)));
+      }.bind(this)));
+    }.bind(this)).then(function(txLists) {
+      var txs = [];
+      txLists.forEach(function(list) {txs.addObjects(list);});
+      return txs;
+    }).catch(function (error) {
+      console.error(error.stack || error);
+    });
   }
 });
 
@@ -67,6 +98,15 @@ function things() {
 
 // Note these addresses are random, do not send
 var mocks = {
+  // Client stored data not shared to peers
+  client: {
+    myId: '1JBbuhbsnou187vsQX8M9xHX64HWCAEpJi',
+    myThings: [
+      '19KTMFNpNQPg2NV6FQuVKELJc48Xk1u9vA',
+      '1Q7TRn5sxVdi7kvbjdGSXkvyBt8Hsabpmz'
+    ]
+  },
+
   stuff: { // content
   },
 
@@ -175,7 +215,14 @@ var mocks = {
       title: 'The Downing Street Memo',
       body: 'http://www.downingstreetmemo.com/',
       balance: 6791,
-      created: 1438379902
+      created: 1438379902,
+      txs: {
+        in: [{
+          from: '1BAxuGGZPFELEN64aNhtN3ioyY5F3snhq1',
+          amount: 12000,
+          created: 1438370939
+        }]
+      }
     },
     '1Q7TRn5sxVdi7kvbjdGSXkvyBt8Hsabpmz': {
       type: 'datt-link',
@@ -199,6 +246,48 @@ var mocks = {
       body: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       balance: 666,
       created: 1438376816
+    },
+
+    '1BAxuGGZPFELEN64aNhtN3ioyY5F3snhq1': {
+      type: 'datt-user',
+      title: 'ryanxcharles',
+      balance: 24100,
+      created: 1438368730,
+      txs: {
+        out: [{
+          to: '19KTMFNpNQPg2NV6FQuVKELJc48Xk1u9vA',
+          amount: 12000,
+          created: 1438370939
+        }]
+      }
+    },
+
+    '1JBbuhbsnou187vsQX8M9xHX64HWCAEpJi': {
+      type: 'datt-user',
+      title: 'go1dfish',
+      balance: 11200,
+      created: 1438389517,
+      txs: {
+        in: [{
+          from: '19YASTSag6HrzFdLU7Chaor9dK8fkcrwH4',
+          amount: 26000,
+          created: 1438389517
+        }]
+      }
+    },
+
+    '19YASTSag6HrzFdLU7Chaor9dK8fkcrwH4': {
+      type: 'datt-other',  // Unknown address
+      balance: 4200,
+      created: 1438389517,
+      title: 'Unknown Address',
+      txs: {
+        out: [{
+          to: '1JBbuhbsnou187vsQX8M9xHX64HWCAEpJi',
+          amount: 26000,
+          created: 1438389517
+        }]
+      }
     }
   },
 

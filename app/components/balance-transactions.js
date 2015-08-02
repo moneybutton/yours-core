@@ -12,4 +12,3 @@ export default Ember.Component.extend({
   }.on('init')
 
 });
-
