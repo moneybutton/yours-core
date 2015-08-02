@@ -289,24 +289,5 @@ var mocks = {
         }]
       }
     }
-  },
-
-  balance: {
-    transactions: [
-      {
-        user: 'RYANXCHARLES',
-        date: '10/10/2015',
-        description: 'Received tip for "My First Post"',
-        user: 'RYANXCHARLES',
-        amount: 0.012
-      },
-      {
-        user: 'RYANXCHARLES',
-        date: '10/11/2015',
-        description: 'Received tip',
-        user: 'RYANXCHARLES',
-        amount: 0.026
-      }
-    ]
   }
 };
