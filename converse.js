@@ -314,14 +314,10 @@ var Vote = converse.define('Vote', {
 });
 
 Vote.on('vote', function(vote) {
-  console.log('vote event!');
-
   var opts = {
     'post': Post,
     'comment': Comment
   };
-
-  console.log('matching for...', vote._target );
 
   Vote.Model.aggregate([
     { $match: { _target: new UUID(vote._target) } },
@@ -330,8 +326,6 @@ Vote.on('vote', function(vote) {
       score: { $sum: '$amount' }
     } }
   ], function(err, stats) {
-    console.log('aggregate returning:', err, stats);
-
     if (err) return console.error(err);
     if (!stats.length) return;
     opts[ vote.context ].patch({
