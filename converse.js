@@ -346,13 +346,15 @@ Vote.on('vote', function(vote) {
 
 Vote.post('create', function() {
   var vote = this;
+  // NOTE: the only other time a vote event is emitted is when a vote is
+  // updated in pre:create (see below)
   Vote.emit('vote', vote);
 });
 
 Vote.pre('create', function(next, finalize) {
   var vote = this;
-
-  var COST = 1;
+  var COST = 1; // maybe this will eventually be per-sub or per-tag, whatever
+                // the group ends up deciding.
 
   if (vote.sentiment == '1') {
     vote.amount = COST;
@@ -367,8 +369,6 @@ Vote.pre('create', function(next, finalize) {
     deductFromUser,
     addToUser
   ], function(err, results) {
-    console.log('err:', err);
-    console.log('results:', results);
     // Note: counterintuitive.  Err here is likely the vote, if it's an update
     if (err) return finalize(null, err);
     next();
@@ -385,15 +385,12 @@ Vote.pre('create', function(next, finalize) {
       }, {
         $inc: { 'balance': -COST }
       }, function(err) {
-        console.log('model update...', vote._user, err);
         return done(err);
       });
     });
   }
 
   function addToUser(done) {
-    console.log('adding to user...');
-
     var Resource;
     if (vote.context === 'post') {
       Resource = Post;
@@ -417,8 +414,6 @@ Vote.pre('create', function(next, finalize) {
       _user: vote._user,
       _target: vote._target
     }, function(err, votes) {
-      console.log('vote checker coming back...', err, votes);
-
       if (err) return done(err);
       if (!votes.length) {
         return done();
@@ -428,6 +423,8 @@ Vote.pre('create', function(next, finalize) {
         _user: vote._user,
         _target: vote._target
       }, [{ op: 'replace', path: '/amount', value: vote.amount }], function(err) {
+        // NOTE: if you change this, beware of consequences – the vote scoring
+        // only updates on:vote (see above)
         Vote.emit('vote', vote);
         return done(vote);
       });
