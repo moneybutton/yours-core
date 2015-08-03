@@ -123,6 +123,7 @@ Documents generated during the hackaton
 - [Paul's DATT Concepts & Principles](https://docs.google.com/document/d/1AEHdOlQMyyuZ3U0a1BOcZtX8kAPWZynFVx9r21NPtiE/edit#)
 
 Related projects
+- Blockstack - https://github.com/blockstack - naming, identity, storage
 - aether - http://getaether.net/
 - empeopled - https://empeopled.com
 - colony - colony.io
