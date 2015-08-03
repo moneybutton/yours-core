@@ -1,0 +1,16 @@
+[
+    {
+        "user": "U08BU3AA2",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08BU3AA2|schwentker> has joined the channel",
+        "ts": "1438227066.000002"
+    },
+    {
+        "user": "U08BY8MGV",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08BY8MGV|bradkam> has joined the channel",
+        "ts": "1438236596.000003"
+    }
+]

@@ -1,0 +1,37 @@
+[
+    {
+        "user": "U08E18GD6",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08E18GD6|mvayngrib> has joined the channel",
+        "ts": "1438349141.000002"
+    },
+    {
+        "user": "U08D641AP",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08D641AP|martindale> has joined the channel",
+        "ts": "1438369361.000002"
+    },
+    {
+        "user": "U08F1FZE2",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08F1FZE2|jgerber> has joined the channel",
+        "ts": "1438394333.000003"
+    },
+    {
+        "user": "U08F30KA8",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08F30KA8|igor> has joined the channel",
+        "ts": "1438396419.000004"
+    },
+    {
+        "user": "U07GDL0H5",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U07GDL0H5|ryanxcharles> has joined the channel",
+        "ts": "1438407767.000002"
+    }
+]
