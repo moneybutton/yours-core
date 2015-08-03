@@ -321,6 +321,8 @@ Vote.on('vote', function(vote) {
     'comment': Comment
   };
 
+  console.log('matching for...', vote._target );
+
   Vote.Model.aggregate([
     { $match: { _target: new UUID(vote._target) } },
     { $group: {
@@ -328,6 +330,8 @@ Vote.on('vote', function(vote) {
       score: { $sum: '$amount' }
     } }
   ], function(err, stats) {
+    console.log('aggregate returning:', err, stats);
+
     if (err) return console.error(err);
     if (!stats.length) return;
     opts[ vote.context ].patch({
@@ -340,35 +344,96 @@ Vote.on('vote', function(vote) {
   });
 });
 
-Vote.pre('create', function(next, done) {
+Vote.post('create', function() {
+  var vote = this;
+  Vote.emit('vote', vote);
+});
+
+Vote.pre('create', function(next, finalize) {
   var vote = this;
 
+  var COST = 1;
+
   if (vote.sentiment == '1') {
-    vote.amount = 1;
+    vote.amount = COST;
   } else if (vote.sentiment == '-1') {
-    vote.amount = -1;
+    vote.amount = -COST;
   } else {
     return done('No such value.');
   }
 
-  Vote.query({
-    _user: vote._user,
-    _target: vote._target
-  }, function(err, votes) {
-    if (err) return done(err);
-    if (!votes.length) {
-      Vote.emit('vote', vote);
-      return next();
+  async.waterfall([
+    applyVote,
+    deductFromUser,
+    addToUser
+  ], function(err, results) {
+    console.log('err:', err);
+    console.log('results:', results);
+    // Note: counterintuitive.  Err here is likely the vote, if it's an update
+    if (err) return finalize(null, err);
+    next();
+  });
+
+  function deductFromUser(done) {
+    Person.get({ _id: vote._user }, function(err, sender) {
+      if (err) return done(err);
+      // TODO: better error handling across Maki
+      if (sender.balance - COST <= 0) return done({ error: 'insufficient balance' });
+
+      Person.Model.update({
+        _id: vote._user
+      }, {
+        $inc: { 'balance': -COST }
+      }, function(err) {
+        console.log('model update...', vote._user, err);
+        return done(err);
+      });
+    });
+  }
+
+  function addToUser(done) {
+    console.log('adding to user...');
+
+    var Resource;
+    if (vote.context === 'post') {
+      Resource = Post;
+    } else if (vote.context === 'comment') {
+      Resource = Comment;
     }
 
-    Vote.patch({
+    Resource.get({ _id: vote._target }, function(err, resource) {
+      Person.Model.update({
+        _id: resource._author
+      }, {
+        $inc: { 'balance': COST }
+      }, function(err) {
+        return done(err);
+      });
+    });
+  }
+
+  function applyVote(done) {
+    Vote.query({
       _user: vote._user,
       _target: vote._target
-    }, [{ op: 'replace', path: '/amount', value: vote.amount }], function(err) {
-      Vote.emit('vote', vote);
-      return done(null, vote);
+    }, function(err, votes) {
+      console.log('vote checker coming back...', err, votes);
+
+      if (err) return done(err);
+      if (!votes.length) {
+        return done();
+      }
+
+      Vote.patch({
+        _user: vote._user,
+        _target: vote._target
+      }, [{ op: 'replace', path: '/amount', value: vote.amount }], function(err) {
+        Vote.emit('vote', vote);
+        return done(vote);
+      });
     });
-  });
+  }
+
 });
 
 var Save = converse.define('Save', {
