@@ -66,11 +66,20 @@ $(document).on('click', '*[data-intent=upvote], *[data-intent=downvote]', functi
     sentiment: sentiment
   };
 
+  $('*[data-bind=user-balance]').each(function(i) {
+    var value = $(this).html();
+    $(this).html( (parseInt(value) - 1).toFixed(2) );
+  });
+
+  $('*[data-bind='+target+']').each(function(i) {
+    var originally = parseInt( $(this).html() );
+    $(this).data('originally', originally);
+    $(this).html( originally + sentiment );
+  });
+
   $.post('/votes', data, function(vote, status, xhr) {
-    $('*[data-bind='+target+']').each(function(i) {
-      var value = $(this).html();
-      $(this).html( parseInt(value) + sentiment );
-    });
+    console.log('voting request completed');
+    console.log(vote);
   }, 'json').error(function(xhr, text, error) {
     var vote = JSON.parse(xhr.responseText);
     if (vote.error) return alert(vote.error);
