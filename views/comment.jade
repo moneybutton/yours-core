@@ -18,6 +18,9 @@ block content
           if (comment.hashcash)
             | at 
             abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{comment.hashcash.split(':')[1]}
+          .ui.mini.label.tooltipped(title="2 gilded a total of 2,400.21μ฿")
+            i.trophy.icon
+            |  2
         .description(style="clear: none;") !{ markdown(comment.content || '') }
       .ui.mini.bottom.attached.buttons
         a.ui.button(href="/comments/#{comment._id}")
@@ -26,6 +29,9 @@ block content
         a.ui.button(href="#", data-intent="save")
           i.bookmark.icon
           | save
+        a.ui.button(href="#", data-intent="gild")
+          i.trophy.icon
+          | gild
         if (comment._parent)
           if (comment._parent._id)
             a.ui.button(href="/comments/#{comment._parent._id}")
@@ -58,6 +64,9 @@ block content
             if (subcomment.hashcash)
               | at 
               abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{subcomment.hashcash.split(':')[1]}
+            .ui.mini.label.tooltipped(title="2 gilded a total of 2,400.21μ฿")
+              i.trophy.icon
+              |  2
           .description(style="clear: none;") !{ markdown(subcomment.content || '') }
         .ui.mini.bottom.attached.buttons
           a.ui.button(href="/comments/#{subcomment._id}")
@@ -66,6 +75,9 @@ block content
           a.ui.button(href="#", data-intent="save")
             i.bookmark.icon
             | save
+          a.ui.button(href="#", data-intent="gild")
+            i.trophy.icon
+            | gild
           if (subcomment._parent)
             if (subcomment._parent._id)
               a.ui.button(href="/comments/#{subcomment._parent._id}")

@@ -38,6 +38,11 @@ html
       .no-shadow .card {
         box-shadow: none;
       }
+      
+      .ui.mini.label,
+      .ui.mini.labels .label {
+        vertical-align: top;
+      }
 
     base(href="/")
 
@@ -46,14 +51,10 @@ html
       .row
         block navbar
           include ../partials/navbar
-
       .row
         .column.content(data-for="viewport")
-        
           include ../partials/flash
-        
           block content
-
       .row
         .ui.one.column.stackable.center.aligned
           p

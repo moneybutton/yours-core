@@ -8,6 +8,9 @@ mixin PostView(post, maxWords, samePage)
       img.right.floated.mini.ui.avatar(src="https://thecatapi.com/api/images/get?format=src&type=gif")
       .header
         a(href="/posts/#{post._id}") #{post.name}
+          .ui.mini.label.tooltipped(title="2 gilded a total of 2,400.21μ฿")
+            i.trophy.icon
+            | 2
       .meta
         a(href="/posts/#{post._id}")
           abbr.date.tooltipped(title="#{ moment( post.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( post.created ).fromNow() }
@@ -76,9 +79,9 @@ mixin PostView(post, maxWords, samePage)
         a.ui.button.tooltipped(href="#", title="Sign in to save this to your bookmarks!")
           i.bookmark.icon
           | save
-      a.ui.button(href="#", data-intent="tip")
-        i.bitcoin.icon
-        | tip
+      a.ui.button(href="#", data-intent="gild")
+        i.trophy.icon
+        | gild
       a.ui.button(href="#", data-intent="share")
         i.share.icon
         | share

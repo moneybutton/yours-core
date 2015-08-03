@@ -87,7 +87,7 @@ $(document).on('click', '*[data-intent=upvote], *[data-intent=downvote]', functi
 
 });
 
-$(document).on('click', '*[data-intent=tip]', function(e) {
+$(document).on('click', '*[data-intent=gild]', function(e) {
   e.preventDefault();
 
   var $self = $(this);

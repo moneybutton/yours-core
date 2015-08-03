@@ -313,6 +313,16 @@ var Vote = converse.define('Vote', {
   }
 });
 
+var Gilding = converse.define('Gilding', {
+  attributes: {
+    //status: { type: String , required: true , enum: ['pending', 'issued', 'failed'], default: 'pending' },
+    _user: { type: ObjectId , ref: 'Person', required: true },
+    _target: { type: ObjectId, required: true },
+    context: { type: String , enum: ['post', 'comment'] },
+    value: { type: Number, required: true },
+  }
+});
+
 Vote.on('vote', function(vote) {
   var opts = {
     'post': Post,
