@@ -43,13 +43,14 @@ I like the discussions and discourse that rises up around posts. A good healthy 
 - Collectives decide what rate limit they will enforce for clients requesting listings.
 
 **Example:**
-1. An Author publishes a post without any bounty, but does include a generous 40% portion for nodes that are propagating the post in the first 60 minutes
-2. The post was tagged with /lolcatz and was picked up a Mod at the collective /funny
-3. The collective /funny has quite a few nodes subscribed so the content propagates quickly
-4. Nodes are paying /funny 1000 satoshis per new listing
-5. Within the first 60 minutes there are 500 upvotes cast equating to roughly \$700, 40% of which is apportioned to the nodes according to their seniority
-6. Another 800 upvotes are cast afterwards which is another roughly \$1100 to the Author
-7. Some users gild the author with amounts ranging from \$20 - \$50
+
+ 1. An Author publishes a post without any bounty, but does include a generous 40% portion for nodes that are propagating the post in the first 60 minutes
+ 2. The post was tagged with /lolcatz and was picked up a Mod at the collective /funny
+ 3. The collective /funny has quite a few nodes subscribed so the content propagates quickly
+ 4. Nodes are paying /funny 1000 satoshis per new listing
+ 5. Within the first 60 minutes there are 500 upvotes cast equating to roughly $700, 40% of which is apportioned to the nodes according to their seniority
+ 6. Another 800 upvotes are cast afterwards which is another roughly $1100 to the Author
+ 7. Some users gild the author with amounts ranging from $20 - $50
 
 **To be determined:**
  - where do votes on comments pay out?

@@ -33,6 +33,6 @@ A Reddit like application where users pay a predefined amount directly to creato
  - Legal liability arising from receiving a % necessitates removing criminal content.
 
 
-To be determined:
+**To be determined:**
+
  - where do down votes on posts pay out? (do we need down votes?)
- - 
