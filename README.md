@@ -1,4 +1,3 @@
-![Datt Logo](https://raw.githubusercontent.com/dattnetwork/dattmedia/master/datt_logo/logo_font_small.png)
 Decentralize All The Things
 =====================
 
