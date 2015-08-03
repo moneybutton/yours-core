@@ -285,11 +285,11 @@ var Notification = converse.define('Notification', {
             Person.Model.populate(notifications, {
               path: '_comment._author'
             }, function(err, notifications) {
-              Notification.Model.update({
-                _id: {
-                  $in: notifications.map(function(n) { return n._id; })
-                }
-              }, { $set: { status: 'read' } }, { multi: true }, function(err) {
+              Notification.patch({
+                _id: { $in: notifications.map(function(n) { return n._id; }) }
+              }, [
+                { op: 'replace', path: '/status', value: 'read' }
+              ], function(err) {
                 return res.render('notifications', {
                   notifications: notifications,
                   unreadNotifications: [] // a bit of a hack
@@ -330,11 +330,11 @@ Vote.on('vote', function(vote) {
   ], function(err, stats) {
     if (err) return console.error(err);
     if (!stats.length) return;
-    opts[ vote.context ].Model.update({
+    opts[ vote.context ].patch({
       _id: vote._target
-    }, {
-      $set: { 'score': stats[0].score }
-    }, function(err) {
+    }, [{
+      op: 'replace', path: '/score', value: stats[0].score
+    }], function(err) {
       if (err) console.error(err);
     });
   });
@@ -361,12 +361,10 @@ Vote.pre('create', function(next, done) {
       return next();
     }
 
-    Vote.Model.update({
+    Vote.patch({
       _user: vote._user,
       _target: vote._target
-    }, {
-      $set: { amount: vote.amount }
-    }, function(err) {
+    }, [{ op: 'replace', path: '/amount', value: vote.amount }], function(err) {
       Vote.emit('vote', vote);
       return done(null, vote);
     });
