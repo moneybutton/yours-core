@@ -1,5 +1,19 @@
 @aramkris's business model
 =======================
+Notes: 
+User Experience is the Key to making this happen. 
+- There are 3 Major player(s) in this P2P Network. Creator <-> Collector/Commentor/Audience <-> Connector/Share (arrow back to creator). 1 & 3 provide the value addition; 2 & 3 help in passing information and content; 3 helps in growing the network along with 1 who might be able to provide better content.
+- Node: Any computer (server or a simple desktop) that hosts content and allows itself to participate in the network. Nodes provide rights to the network to store data (to the extent allowed) on the local hard drive.
+	- Full Node: Allows creation, consumption and sharing of all content created everywhere in the network within its set of rules.
+	- Restricted Node: Allows creation and sharing of content created by the specific node. Consumption of all content is also allowed. 
+	- Simple Node: Allows consumption of content for the chosen topics. 
+	- Blocking content: This type of content is blocked from being accessed from a node. Other node(s) can still allow this content. 
+	- Reject content: The type of content is rejected by a node and will not be hosted by it. 
+	(Difference between Blocking and Rejection: For example, content which involves information on politics can be accepted by a node, but specific comments which follow that might not meet the rules 		required. So, these comments can be blocked by a node. However, the original content is still available. In case of rejection of content, the node will not host anything on that specific topic(s).)
+- Information cache: Information stored locally by the application. The information present when the application exited will be stored as it would provide better context to the network with the application comes online.
+- Content: Any information (article, link, media etc) that is submitted to the network. The person submitting this information is the creator.
+- Comment: Subsequent information added to submitted content by a user different from the creator.
+- Additional information: Additions or updation of the original content submitted by the creator. This will update the original post. (Still thinking about this as if we lock the post with a hash, then changes would lead to violations) <End of Notes>
 
 #### Protocol
   - Needs to be minimal
@@ -83,7 +97,7 @@
       - Use the blockchain to track any posts by the user (or think of something that can be left on the blockchain to check)
 
 #### Revenue
-
+(In addition to hosting revenue that a node will generate and what the creator makes)
   - Usage as a corporate Intranet
     "Use this network inside the company and let people subscribe to information. This can provide flexibility to people as not all information will be flashed when someone comes online. "
     - Secure board(s)/pages
