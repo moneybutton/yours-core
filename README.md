@@ -130,6 +130,7 @@ Related projects
 - backfeed - backfeed.cc
 - http://lazooz.org/
 - http://www.decent.ch/ 
+- Qora - http://qora.co.in:9090/index/main.html
 
 Resources compiled by John Villar
 - [PeerJS](http://peerjs.com/) - Easy WebRTC
