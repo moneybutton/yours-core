@@ -96,6 +96,7 @@ var Post = converse.define('Post', {
     _document:     { type: ObjectId , ref: 'Document', populate: ['get', 'query'] },
     stats:       {
       comments:  { type: Number , default: 0 },
+      gildings:  { type: Number , default: 0 },
     },
     attribution: {
       _author: { type: ObjectId , ref: 'Person', populate: ['get', 'query'] }
@@ -189,7 +190,8 @@ var Comment = converse.define('Comment', {
     content: { type: String, min: 1 },
     score: { type: Number , required: 0 , default: 0 },
     stats: {
-      comments: { type: Number , default: 0 }
+      comments: { type: Number , default: 0 },
+      gildings: { type: Number , default: 0 },
     }
   },
   requires: {
@@ -303,16 +305,6 @@ var Notification = converse.define('Notification', {
   }
 });
 
-var Vote = converse.define('Vote', {
-  attributes: {
-    //status: { type: String , required: true , enum: ['pending', 'issued', 'failed'], default: 'pending' },
-    _user: { type: ObjectId , ref: 'Person', required: true },
-    _target: { type: ObjectId, required: true },
-    context: { type: String , enum: ['post', 'comment'] },
-    amount: { type: Number, required: true },
-  }
-});
-
 var Gilding = converse.define('Gilding', {
   attributes: {
     //status: { type: String , required: true , enum: ['pending', 'issued', 'failed'], default: 'pending' },
@@ -320,6 +312,16 @@ var Gilding = converse.define('Gilding', {
     _target: { type: ObjectId, required: true },
     context: { type: String , enum: ['post', 'comment'] },
     value: { type: Number, required: true },
+  }
+});
+
+var Vote = converse.define('Vote', {
+  attributes: {
+    //status: { type: String , required: true , enum: ['pending', 'issued', 'failed'], default: 'pending' },
+    _user: { type: ObjectId , ref: 'Person', required: true },
+    _target: { type: ObjectId, required: true },
+    context: { type: String , enum: ['post', 'comment'] },
+    amount: { type: Number, required: true },
   }
 });
 

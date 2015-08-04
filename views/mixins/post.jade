@@ -8,9 +8,10 @@ mixin PostView(post, maxWords, samePage)
       img.right.floated.mini.ui.avatar(src="https://thecatapi.com/api/images/get?format=src&type=gif")
       .header
         a(href="/posts/#{post._id}") #{post.name}
-          .ui.mini.label.tooltipped(title="2 gilded a total of 2,400.21μ฿")
-            i.trophy.icon
-            | 2
+          if (post.stats.gildings)
+            .ui.mini.label.tooltipped(title="#{post.stats.gildings} gilded a total of #{post.stats.gilded}μ฿")
+              i.trophy.icon
+              | #{post.stats.gildings}
       .meta
         a(href="/posts/#{post._id}")
           abbr.date.tooltipped(title="#{ moment( post.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( post.created ).fromNow() }

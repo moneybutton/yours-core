@@ -32,9 +32,10 @@ block content
             if (comment.hashcash)
               | at 
               abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{comment.hashcash.split(':')[1]}
-            .ui.mini.label.tooltipped(title="2 gilded a total of 2,400.21μ฿")
-              i.trophy.icon
-              |  2
+            if (comment.stats.gildings)
+              .ui.mini.label.tooltipped(title="#{comment.stats.gildings} gilded a total of #{comment.stats.gilded}μ฿")
+                i.trophy.icon
+                |  #{comment.stats.gildings}
           .description(style="clear: none;") !{ markdown(comment.content || '') }
         //-.extra.content
           code(style="word-wrap: break-word;") #{comment.hashcash}
