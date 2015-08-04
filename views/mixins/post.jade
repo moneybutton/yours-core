@@ -11,7 +11,7 @@ mixin PostView(post, maxWords, samePage)
           if (post.stats.gildings)
             .ui.mini.label.tooltipped(title="#{post.stats.gildings} gilded a total of #{post.stats.gilded}μ฿")
               i.trophy.icon
-              | #{post.stats.gildings}
+              span(data-bind="#{post._id}", data-for="gildings") #{post.stats.gildings}
       .meta
         a(href="/posts/#{post._id}")
           abbr.date.tooltipped(title="#{ moment( post.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( post.created ).fromNow() }
@@ -76,13 +76,16 @@ mixin PostView(post, maxWords, samePage)
         a.ui.button(href="#", data-intent="save", data-post="#{post._id}", data-user="#{user._id}")
           i.bookmark.icon
           | save
+        a.ui.button.tooltipped(href="#", data-intent="gild", data-target="#{post._id}", data-user="#{user._id}", data-context="post", title="Gives the author 50 bits, and marks the post as having been gilded.")
+          i.trophy.icon
+          | gild
       else
         a.ui.button.tooltipped(href="#", title="Sign in to save this to your bookmarks!")
           i.bookmark.icon
           | save
-      a.ui.button(href="#", data-intent="gild")
-        i.trophy.icon
-        | gild
+        a.ui.button.tooltipped(href="#", data-intent="gild", title="Sign in to gild this post!")
+          i.trophy.icon
+          | gild
       a.ui.button(href="#", data-intent="share")
         i.share.icon
         | share

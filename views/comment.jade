@@ -42,6 +42,10 @@ block content
             a.ui.button(href="/comments/#{comment._parent}")
               i.tree.icon
               | parent
+        else
+          a.ui.button(href="/posts/#{comment._post}")
+            i.tree.icon
+            | parent
         a.ui.button(href="/comments/#{comment._id}#comments")
           i.comment.icon
           | #{comment.stats.comments} comments

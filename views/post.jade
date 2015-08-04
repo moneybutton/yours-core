@@ -46,7 +46,7 @@ block content
           a.ui.button(href="#", data-intent="save")
             i.bookmark.icon
             | save
-          a.ui.button(href="#", data-intent="gild")
+          a.ui.button(href="#", data-intent="gild", data-target="#{comment._id}")
             i.trophy.icon
             | gild
           if (comment._parent)

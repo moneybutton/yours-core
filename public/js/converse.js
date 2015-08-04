@@ -93,30 +93,30 @@ $(document).on('click', '*[data-intent=gild]', function(e) {
   var $self = $(this);
   var target = $self.data('target');
 
+  var AMOUNT = 50;
+
   var data = {
-    _from: $self.data('from'),
-    _to: $self.data('for'),
-    _for: target,
+    _user: $self.data('user'),
+    _target: target,
     context: $self.data('context'),
-    amount: 1
+    amount: AMOUNT
   };
 
-  $.post('/tips', data, function(tip, status, xhr) {
+  $('*[data-bind='+target+'][data-for=gildings]').each(function(i) {
+    var value = $(this).html();
+    $(this).html( parseInt(value) + 1 );
+  });
 
-    $('*[data-bind='+target+']').each(function(i) {
-      var value = $(this).html();
-      $(this).html( parseInt(value) + 1 );
-    });
+  $('*[data-bind=user-balance]').each(function(i) {
+    var value = $(this).html();
+    $(this).html( (parseInt(value) - AMOUNT).toFixed(2) );
+  });
 
-    $('*[data-bind=user-balance]').each(function(i) {
-      var value = $(this).html();
-      $(this).html( (parseInt(value) - 1).toFixed(2) );
-    });
-
+  $.post('/gildings', data, function(gilding, status, xhr) {
+    console.log('gilded!', gilding);
   }, 'json').error(function(xhr, text, error) {
-    var tip = JSON.parse(xhr.responseText);
-    if (tip.error) return alert(tip.error);
-
+    var gilding = JSON.parse(xhr.responseText);
+    if (gilding.error) return alert(gilding.error);
   });
 
 });

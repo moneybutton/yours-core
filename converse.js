@@ -97,6 +97,7 @@ var Post = converse.define('Post', {
     stats:       {
       comments:  { type: Number , default: 0 },
       gildings:  { type: Number , default: 0 },
+      gilded:    { type: Number , default: 0 },
     },
     attribution: {
       _author: { type: ObjectId , ref: 'Person', populate: ['get', 'query'] }
@@ -192,6 +193,7 @@ var Comment = converse.define('Comment', {
     stats: {
       comments: { type: Number , default: 0 },
       gildings: { type: Number , default: 0 },
+      gilded:   { type: Number , default: 0 },
     }
   },
   requires: {
@@ -311,8 +313,42 @@ var Gilding = converse.define('Gilding', {
     _user: { type: ObjectId , ref: 'Person', required: true },
     _target: { type: ObjectId, required: true },
     context: { type: String , enum: ['post', 'comment'] },
-    value: { type: Number, required: true },
+    amount: { type: Number, required: true },
   }
+});
+
+Gilding.on('gilding', function(gilding) {
+  var opts = {
+    'post': Post,
+    'comment': Comment
+  };
+
+  Gilding.Model.aggregate([
+    { $match: { _target: new UUID(gilding._target) } },
+    { $group: {
+      _id: '$_target',
+      total: { $sum: '$amount' },
+      count: { $sum: 1 }
+    } }
+  ], function(err, stats) {
+    if (err) return console.error(err);
+    if (!stats.length) return;
+    opts[ gilding.context ].patch({
+      _id: gilding._target
+    }, [
+      { op: 'replace', path: '/stats/gildings', value: stats[0].count },
+      { op: 'replace', path: '/stats/gilded', value: stats[0].total }
+    ], function(err) {
+      if (err) console.error(err);
+    });
+  });
+});
+
+Gilding.post('create', function() {
+  var gilding = this;
+  // NOTE: the only other time a vote event is emitted is when a vote is
+  // updated in pre:create (see below)
+  Gilding.emit('gilding', gilding);
 });
 
 var Vote = converse.define('Vote', {
