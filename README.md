@@ -159,6 +159,7 @@ Resources compiled by John Villar
 Articles
 - [Don't display negative karma](http://www.raphkoster.com/2009/10/07/building-web-reputation-systems-the-blog-the-dollhouse-mafia-or-dont-display-negative-karma/)
 - [Rating Systems - Christopher Allen](http://www.lifewithalacrity.com/2005/12/collective_choi.html)
+- [Dunbar, Altruistic Punishment, and Meta-Moderation - Christopher Allen](http://www.lifewithalacrity.com/2005/03/dunbar_altruist.html)
 - [The Web We Have to Save](https://medium.com/matter/the-web-we-have-to-save-2eb1fe15a426)
 - [The Cryptographic Doom Principle - you should always encrypt then mac - validate mac before decrypting data](http://www.thoughtcrime.org/blog/the-cryptographic-doom-principle/)
 - [Web RTC STUN and TURN](http://www.html5rocks.com/en/tutorials/webrtc/infrastructure/)
