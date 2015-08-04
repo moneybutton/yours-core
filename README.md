@@ -157,6 +157,7 @@ Resources compiled by John Villar
 - [Paul's Datt doc](https://docs.google.com/document/d/1AEHdOlQMyyuZ3U0a1BOcZtX8kAPWZynFVx9r21NPtiE/edit#heading=h.65lcma1tm8an)
 
 Articles
+- [Mutually Assured Content](http://www.theawl.com/2015/07/in-no-charts)
 - [Don't display negative karma](http://www.raphkoster.com/2009/10/07/building-web-reputation-systems-the-blog-the-dollhouse-mafia-or-dont-display-negative-karma/)
 - [Rating Systems - Christopher Allen](http://www.lifewithalacrity.com/2005/12/collective_choi.html)
 - [Dunbar, Altruistic Punishment, and Meta-Moderation - Christopher Allen](http://www.lifewithalacrity.com/2005/03/dunbar_altruist.html)
