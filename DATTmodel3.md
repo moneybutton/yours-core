@@ -18,6 +18,7 @@ Value propositions
 -	Connect with the network and discover new things, share, vote and comment
 -	Have a social context and engage with like-minded people
 -	Personalize the interactions within limited groups, if necessary
+-	Search the content (assuming the content creator allows it). In certain cases, the content creator might want to restrict access to search to keep things relatively private.
 -	No requirement for registration with the network. But, usage of the key-pair will serve as identity on the network.
 -	If the user/creator pays the network for publishing/access then they remain anonymous unless they want to identify themselves. 
 	o	This can be very useful for political issues.
