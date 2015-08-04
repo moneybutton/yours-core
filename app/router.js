@@ -9,6 +9,7 @@ Router.map(function() {
   this.resource('collectives', {path: '/c'}, function() {
     this.resource('collective', {path: '/:address'}, function() {
       this.route('thing', {path: '/t/:address'});
+      this.route('submit');
     });
   });
   this.resource('balance');

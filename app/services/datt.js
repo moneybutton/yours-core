@@ -1,3 +1,4 @@
+/* globals moment */
 import Ember from 'ember';
 
 export default Ember.Service.extend({
@@ -8,6 +9,29 @@ export default Ember.Service.extend({
       return mocks.client.myId;
     }
   }),
+
+  generateAddress: function() {
+    // TODO Generate BTC addresses.
+    return Ember.RSVP.resolve('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+      return v.toString(16);
+    }));
+  },
+
+  submit: function(collective, data) {
+    return this.generateAddress().then(function(id) {
+      var item = $.extend(true, {
+        type: 'datt-text',
+        balance: 0,
+        created: moment().utc()
+      }, data);
+      mocks.things[id] = item;
+      return this.getThing(collective.include.get('firstObject')).then(function(listing) {
+        listing.ids.addObject(id);
+        return item;
+      });
+    }.bind(this));
+  },
 
   getCollectiveThings: function(id) {
     return this.getCollective(id).then(function(collective) {

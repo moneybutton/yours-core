@@ -1,0 +1,7 @@
+{{input value=title placeholder='Title' class='form-control'}}
+{{#if isText}}
+  {{textarea value=text placeholder='Your story' class='form-control'}}
+{{else}}
+  {{input value=link placeholder="URL" class='form-control'}}
+{{/if}}
+<button class='btn-success btn-lg btn-block' {{action 'submit'}}>Submit</button>
