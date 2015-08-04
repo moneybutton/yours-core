@@ -1,7 +1,110 @@
 @aramkris's business model
 =======================
-Notes: 
 User Experience is the Key to making this happen. 
+
+Business Model Canvas
+----------------------------------
+Customer Segments
+(Who are we creating value for?)
+-	Internet users
+-	Advertisers/marketers & Sponsors of content
+-	Developers
+-	Anyone who cares about anonymity and censorship
+
+Value propositions
+(What value do we deliver to the customer?)
+-	Incentivize good content generation thru’ direct monetization options
+-	Ability to express oneself without any censorship (limited by Node though other nodes can host the same content)
+-	Connect with the network and discover new things, share, vote and comment
+-	Have a social context and engage with like-minded people
+-	Personalize the interactions within limited groups, if necessary
+-	No requirement for registration with the network. But, usage of the key-pair will serve as identity on the network.
+-	If the user/creator pays the network for publishing/access then they remain anonymous unless they want to identify themselves. 
+	o	This can be very useful for political issues.
+
+Channel(s)
+(How do we reach our customer segment(s)?)
+-	Desktop application and a mobile application (http(s) website would be challenging)
+-	Tools and APIs
+-	Sales channel to forge relationships with large publishers and going forward academic and for-profit organizations.
+
+Customer Relationship(s)
+(What type of relationship do our customer segment expect?)
+-	We are making a multi-sided platform here.
+-	Same side and cross side network effect(s)
+	o	Note: Both of these require Two-sided network effects to be in operation.
+	o	Same side network effect: If content creators start publishing in the network, then it will pull other 
+content creators so that they don’t lose out on the opportunity and vice-versa.
+	o	Cross side network effect: If content creators start publishing in the network, then more users might start accessing the network and vice-versa.
+
+Revenue Stream(s)
+(What value are our customer(s) willing to pay for?)
+-	Payment revenue
+	o	User(s): Freemium model
+			Pay a minimum fee to access content
+			Pay to Vote or vote on comment(s)
+	o	Creator(s)
+			Pay the moderator(s) for their service(s)
+			Indirectly pay the network as the moderator pays the network
+			Receive direct payment(s) from the User (thur' the DATT network or directly to the wallet)
+	o	Moderator(s):
+			Get paid by the Creator for services
+	o	Node(s) & Protocol usage:
+			Gets paid by the moderator
+-	Sponsored content 
+-	Advertising revenue can be an option depending on what a Node want(s)
+	o	Let’s say a node is ready to serve content for free and in exchange will sell ads to its users
+	o	This will be challenging as the advertiser will not know about the audience they are serving.
+-	Sale of the protocol for a school, college or corporate set-up
+-	Integration of other application(s)
+	o	For example, creating a secure content sharing platform which can be used inside a school or college or corporate might require integration with other applications used in those scenarios. For example, a school scenario might require integration with their classroom application. 
+
+Key Resource(s)
+(What key resources are required for our value proposition?)
+-	DATT Protocol
+	o	Platform for the protocol to function
+	o	Ability of protocol to operate in a constrained environment like school, college or corporate set-up
+-	Integration with Bitcoin 
+-	Technology infrastructure to bootstrap the initial few node(s)
+-	Integration with other service(s) to handle ownership, IFFTT etc.
+
+Key Activities
+(What key activities do our value proposition require?)
+-	Development of the protocol and platform
+-	Creation of a suitable UX to ensure that the cryptography principles which are key to the network are hidden suitably.
+-	Operations management from a technical perspective to ensure Moderator(s), Node(s) etc function properly
+-	Bootstrapping node/node(s)
+
+Key Partner(s)
+(Who are our key partners?)
+-	Content publisher(s)
+	o	All types of content but in the order of Text, Audio and Video.
+-	User(s)
+	o	They are a key partner for this network as content access does not come for free. So, we need good user(s) also to start with. This is the only way the value of the network will go up.
+-	Moderator(s) - Indirectly
+	o	Content curation will be an important part of building the network. The better the moderator(s) are more nodes will want to work with them and more content publishers will go with them.
+-	In the future, universities and other institutions which might want to promote uncensored content will become partners.
+
+Cost Structure
+(What are the important costs inherent on the business model?)
+-	Protocol/Platform development costs
+-	Bootstrapping the initial few node(s)
+-	Marketing to get content publishers and users to start using the platform
+	o	This might involve paying the initial users and content publishers to use the platform
+-	Research and development for further enhancement(s) of the platform
+-	General administrative expenses
+
+Competitors
+(Who are the competitors?)
+-	Centralized Social Networks like Facebook, twitter etc
+-	Decentralized Social Networks like Synereo, Aether, peerSon etc can enter this space in future.
+
+------
+
+Functional, technical and Operational models
+-------
+Notes: 
+
 - There are 3 Major player(s) in this P2P Network. Creator <-> Collector/Commentor/Audience <-> Connector/Share (arrow back to creator). 1 & 3 provide the value addition; 2 & 3 help in passing information and content; 3 helps in growing the network along with 1 who might be able to provide better content.
 - Node: Any computer (server or a simple desktop) that hosts content and allows itself to participate in the network. Nodes provide rights to the network to store data (to the extent allowed) on the local hard drive.
 	- Full Node: Allows creation, consumption and sharing of all content created everywhere in the network within its set of rules.
