@@ -351,6 +351,55 @@ Gilding.post('create', function() {
   Gilding.emit('gilding', gilding);
 });
 
+Gilding.pre('create', function(next, finalize) {
+  var gilding = this;
+  var COST = 50;
+
+  async.waterfall([
+    deductFromUser,
+    addToUser
+  ], function(err, results) {
+    // Note: counterintuitive.  Err here is likely the vote, if it's an update
+    if (err) return finalize(null, err);
+    next();
+  });
+
+  function deductFromUser(done) {
+    Person.get({ _id: gilding._user }, function(err, sender) {
+      if (err) return done(err);
+      // TODO: better error handling across Maki
+      if (sender.balance - COST <= 0) return done({ error: 'insufficient balance' });
+
+      Person.Model.update({
+        _id: gilding._user
+      }, {
+        $inc: { 'balance': -COST }
+      }, function(err) {
+        return done(err);
+      });
+    });
+  }
+
+  function addToUser(done) {
+    var Resource;
+    if (gilding.context === 'post') {
+      Resource = Post;
+    } else if (gilding.context === 'comment') {
+      Resource = Comment;
+    }
+
+    Resource.get({ _id: gilding._target }, function(err, resource) {
+      Person.Model.update({
+        _id: resource._author
+      }, {
+        $inc: { 'balance': COST }
+      }, function(err) {
+        return done(err);
+      });
+    });
+  }
+});
+
 var Vote = converse.define('Vote', {
   attributes: {
     //status: { type: String , required: true , enum: ['pending', 'issued', 'failed'], default: 'pending' },
@@ -392,18 +441,12 @@ Vote.on('vote', function(vote) {
       },
     } }
   ], function(err, stats) {
+    if (err) return console.error(err);
+    if (!stats.length) return;
     var meta = stats[0];
 
     opts[ vote.context ].get({ _id: vote._target }, function(err, item) {
       var hotness = hotScore(meta.ups, meta.downs, item.created);
-
-      console.log('date:', item.created);
-      console.log('WE HAVE ARRIVED:', stats);
-      console.log('hot score:', hotness);
-
-
-      if (err) return console.error(err);
-      if (!stats.length) return;
       opts[ vote.context ].patch({
         _id: vote._target
       }, [
