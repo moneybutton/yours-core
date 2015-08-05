@@ -33,10 +33,11 @@ There are many contributors working on aspects of the MVP. Some direction and pr
  - Tag or Categorize posts
  - Allow for peers to participate as Moderators listing the content that they have curated
  - Create a BIP39 address for the user
+ - Monetarily incentivize contributors (Content creators)
 
 **It is desirable to be able to:**
 
- - Monetarily incentivize contributors (Content creators)
+ - Monetarily incentivize network participants (Moderators & Nodes)
  - Optionally include a Title image
  - Crawl link posts to pull a thumbnail image from the source content
  - Display only comments above a defined karma threshold
