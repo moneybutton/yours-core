@@ -53,7 +53,7 @@ var Person = converse.define('Person', {
         return { _author: person._id };
       },
       populate: '_author _document',
-      sort: '-score -created'
+      sort: '-created'
     },
     'Save': {
       filter: function() {
@@ -95,6 +95,7 @@ var Post = converse.define('Post', {
     score:       { type: Number , required: true , default: 0 },
     _document:     { type: ObjectId , ref: 'Document', populate: ['get', 'query'] },
     stats:       {
+      wilson:    { type: Number , default: 0 },
       hotness:   { type: Number , default: 0 },
       comments:  { type: Number , default: 0 },
     },
@@ -109,7 +110,7 @@ var Post = converse.define('Post', {
         return { _post: post._id , _parent: { $exists: false } };
       },
       populate: '_author _parent',
-      sort: '-score -created'
+      sort: '-stats.wilson'
     }
   },
   icon: 'pin'
@@ -188,6 +189,7 @@ var Comment = converse.define('Comment', {
     content: { type: String, min: 1 },
     score: { type: Number , required: 0 , default: 0 },
     stats: {
+      wilson:   { type: Number , default: 0 },
       hotness:  { type: Number , default: 0 },
       comments: { type: Number , default: 0 },
       gildings: { type: Number , default: 0 },
@@ -331,6 +333,18 @@ Vote.on('vote', function(vote) {
     return order - secAge / decay;
   }
 
+  function wilsonScore(ups, downs) {
+    var z = 1.96;
+    var n = ups + downs;
+    if (n === 0) {
+      return 0;
+    }
+
+    var p = ups / n;
+    var zzfn = z*z / (4*n);
+    return (p + 2*zzfn - z*Math.sqrt((zzfn / n + p*(1 - p))/n)) / (1 + 4*zzfn);
+  }
+
   Vote.Model.aggregate([
     { $match: { _target: new UUID(vote._target) } },
     { $group: {
@@ -350,12 +364,18 @@ Vote.on('vote', function(vote) {
   ], function(err, stats) {
     var meta = stats[0];
 
+    console.log('id:', vote._target);
+    console.log('err:', err);
+    console.log('stats:', stats);
+
     opts[ vote.context ].get({ _id: vote._target }, function(err, item) {
       var hotness = hotScore(meta.ups, meta.downs, item.created);
+      var wilson = wilsonScore(meta.ups, meta.downs);
 
       console.log('date:', item.created);
-      console.log('WE HAVE ARRIVED:', stats);
+      console.log('WE HAVE ARRIVED:', meta);
       console.log('hot score:', hotness);
+      console.log('wilson score:', wilson);
 
 
       if (err) return console.error(err);
@@ -364,7 +384,8 @@ Vote.on('vote', function(vote) {
         _id: vote._target
       }, [
         { op: 'replace', path: '/score', value: meta.score },
-        { op: 'replace', path: '/stats/hotness', value: hotness }
+        { op: 'replace', path: '/stats/hotness', value: hotness },
+        { op: 'replace', path: '/stats/wilson', value: wilson },
       ], function(err) {
         if (err) console.error(err);
       });
