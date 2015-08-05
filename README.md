@@ -118,17 +118,20 @@ Priorities:
 ## Resources and related projects
 
 Documents generated during the hackaton
+- [Brad's business-focused mockups](https://docs.google.com/presentation/d/1SlSlpEtZWa6g3jddrFdpY0hL9W8YePWItrOV0W4bPyc/edit#slide=id.g63d6e66a7_0_200)
 - [Brad's overview of the amount of money earned by participants for shared revenue](https://docs.google.com/spreadsheets/d/16vtDV3Ot4lrr2twpUS8Sqgg4OrJ2KIrnQwsuppy56sI/edit#gid=1827203914)
 - [Paul's reward allocation model](https://docs.google.com/spreadsheets/d/19mUSGUwLukbskz5dIj1QXM0rAPmCBrbXZeLz908LfmU/edit#gid=1936031705)
 - [Paul's DATT Concepts & Principles](https://docs.google.com/document/d/1AEHdOlQMyyuZ3U0a1BOcZtX8kAPWZynFVx9r21NPtiE/edit#)
 
 Related projects
+- Blockstack - https://github.com/blockstack - naming, identity, storage
 - aether - http://getaether.net/
 - empeopled - https://empeopled.com
 - colony - colony.io
 - backfeed - backfeed.cc
 - http://lazooz.org/
 - http://www.decent.ch/ 
+- Qora - http://qora.co.in:9090/index/main.html
 
 Resources compiled by John Villar
 - [PeerJS](http://peerjs.com/) - Easy WebRTC
@@ -155,6 +158,11 @@ Resources compiled by John Villar
 - [Paul's Datt doc](https://docs.google.com/document/d/1AEHdOlQMyyuZ3U0a1BOcZtX8kAPWZynFVx9r21NPtiE/edit#heading=h.65lcma1tm8an)
 
 Articles
+- [Mutually Assured Content](http://www.theawl.com/2015/07/in-no-charts)
+- [Don't display negative karma](http://www.raphkoster.com/2009/10/07/building-web-reputation-systems-the-blog-the-dollhouse-mafia-or-dont-display-negative-karma/)
+- [Rating Systems - Christopher Allen](http://www.lifewithalacrity.com/2005/12/collective_choi.html)
+- [Dunbar, Altruistic Punishment, and Meta-Moderation - Christopher Allen](http://www.lifewithalacrity.com/2005/03/dunbar_altruist.html)
+- [The Web We Have to Save](https://medium.com/matter/the-web-we-have-to-save-2eb1fe15a426)
 - [The Cryptographic Doom Principle - you should always encrypt then mac - validate mac before decrypting data](http://www.thoughtcrime.org/blog/the-cryptographic-doom-principle/)
 - [Web RTC STUN and TURN](http://www.html5rocks.com/en/tutorials/webrtc/infrastructure/)
 - https://valme.io/c/journal/c_prompt/f5qqs/an-open-letter-to-steve-huffman-reddits-new-ceo-with-an-offer-to-exchange-values (general business model ideas)
