@@ -94,3 +94,35 @@ anyone knows how to derive the private key, e.g. it is the hash of the name
 - datalen: uint32, length of data to follow
 
 - data: arbitrary data
+
+## Tradle's work on p2p protocol
+
+genevayngrib 8:19 AM @ryanxcharles: agree, p2p work is done by so many people!
+Every multisig wallet needs it, other group sigs need it, lightning net needs
+it! It is insane that we do not have a standard yet.
+
+At Tradle we have spent a huge amount of time designing p2p protocol associated
+with the blockchain and producing the associated OSS code. The basic ideas
+are:-  all actions are associated with the identity of your choice. Identity
+can be totally fake or verified by the government (as required on airbnb for
+example). You can create as many of them as u like and all identities, their
+keys and key restore/revocation as anchored on blockchain, so the chain is your
+key server.
+
+- p2p messages can be ephemeral or permanent. Permanent can be anchored to the
+  public blockchain and not (anchored to local/federated chains, but for now we
+  just use simpler logs)
+
+- p2p  messages have open ended structure (json for now) and types of messages
+  (models) are loaded from github or other web sites freely. These msgs can be
+  new community, new post, upvote/downvote, moderator actions, etc. or could be
+  verification of identity or any other stuff needed for the web of trust (or
+  as keybase.io calls them - tracked identities)
+
+- discovery of peers and topic should be 100% decentralized (we use a
+  combination of identities on chain for finding verified pub keys and the
+  bittorrent DHT for finding IP/Port of peers.
+
+- peer discovery leads to a NAT traversal and UDP-based rUDP or uTP for
+  reliable delivery of jsons over this line. Could support webrtc too of
+  course, but does not yet. 
