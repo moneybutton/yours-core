@@ -1,7 +1,7 @@
 /* globals moment */
 import Ember from 'ember';
 
-export default Ember.Service.extend({
+export default Ember.Service.extend(Ember.Evented, {
   defaultCollective: '1NHy1SqQSeyEopKv3v1iTfx7sFdEiqocWb',
 
   myId: Ember.computed({
@@ -21,6 +21,7 @@ export default Ember.Service.extend({
   submit: function(collective, data) {
     return this.generateAddress().then(function(id) {
       var item = $.extend(true, {
+        id: id,
         type: 'datt-text',
         balance: 0,
         created: moment().utc()
@@ -30,6 +31,22 @@ export default Ember.Service.extend({
         listing.ids.addObject(id);
         return item;
       });
+    }.bind(this));
+  },
+
+  submitComment: function(parent, data) {
+    if (parent && parent.id) {parent = parent.id;}
+    return this.generateAddress().then(function(id) {
+      var item = $.extend(true, {
+        id: id,
+        type: 'datt-text',
+        parent: parent,
+        balance: 0,
+        created: moment().utc()
+      }, data);
+      mocks.things[id] = item;
+      this.trigger('newReply', parent, item);
+      return item;
     }.bind(this));
   },
 
@@ -79,7 +96,12 @@ export default Ember.Service.extend({
   },
 
   getChildren: function(id) {
-    return Ember.RSVP.resolve(things().filterProperty('parent', id));
+    return this.getThing(id).then(function(thing) {
+      if (thing.ids) {
+        return this.getThings(thing.ids);
+      }
+      return Ember.RSVP.resolve(things().filterProperty('parent', id));
+    }.bind(this));
   },
 
   getMyThings: function() {
@@ -116,6 +138,7 @@ export default Ember.Service.extend({
 // Mocks
 function things() {
   return Object.keys(mocks.things).map(function(id) {
+    Ember.set(mocks.things[id], 'id', id);
     return mocks.things[id];
   });
 }
@@ -270,6 +293,41 @@ var mocks = {
       body: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       balance: 666,
       created: 1438376816
+    },
+
+    '17CXcVoUDgyzVP9WnKirTnhh4zUFAkDfrt': {
+      type: 'datt-text',
+      title: 'Comment on The Downing Street Memo',
+      parent: '19KTMFNpNQPg2NV6FQuVKELJc48Xk1u9vA',
+      balance: 33,
+      created: 1438376816,
+      body: [
+        "# 7-11 is a minimum wage job"
+      ].join('\n\n')
+    },
+
+    '1HmBBWy5xwrAJQzncSXY3LkTkstW9unxys': {
+      type: 'datt-text',
+      title: 'Comment on The Downing Street Memo',
+      parent: '19KTMFNpNQPg2NV6FQuVKELJc48Xk1u9vA',
+      balance: 70,
+      created: 1438376816,
+      body: [
+        "Things *will* go down-hill once we support comments.",
+        "That's the conventional wisdom anyway.",
+        "[I disagree](https://www.youtube.com/watch?v=7R6_Chr2vro)"
+      ].join('\n\n')
+    },
+
+    '15F63GJoRhYvnvHnbi8WT4vAXPM3pr5LnD': {
+      type: 'datt-text',
+      title: 'Comment on The Downing Street Memo',
+      parent: '1HmBBWy5xwrAJQzncSXY3LkTkstW9unxys',
+      balance: 70,
+      created: 1438376816,
+      body: [
+        "OP is a **SHILL**",
+      ].join('\n\n')
     },
 
     '1BAxuGGZPFELEN64aNhtN3ioyY5F3snhq1': {

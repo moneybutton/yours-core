@@ -7,8 +7,8 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.resource('collectives', {path: '/c'}, function() {
-    this.resource('collective', {path: '/:address'}, function() {
-      this.route('thing', {path: '/t/:address'});
+    this.resource('collective', {path: '/:collective_id'}, function() {
+      this.route('thing', {path: '/t/:thing_id'});
       this.route('submit');
     });
   });

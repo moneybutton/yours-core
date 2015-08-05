@@ -7,13 +7,16 @@
   </button>
 </div>
 <div class='media-body'>
-  <h4 class='media-heading'>
-    <a href="{{thing.body}}" target="_new">{{thing.title}}</a>
-  </h4>
   <div class='meta'>
     {{#link-to 'collective.thing' thing.id class='label label-success balance' title=thing.id}}
       {{thing.balance}} bits{{/link-to}}
-    <span class='label label-primary type'>{{thing.type}}</span>
+    <span class='label label-info type'>{{thing.type}}</span>
     <span class='label label-info age'>{{moment-from-now thing.created 'X'}}</span>
+    <button {{action 'reply'}} class='btn btn-xs btn-primary reply'>reply</button>
   </div>
+  <div class='md'>{{markdown-to-html markdown=thing.body}}</div>
+  {{#if isReplying}}
+    {{comment-form parent=thing.id cancel='cancelReply' saved='cancelReply'}}
+  {{/if}}
+  {{sorted-thread thing=thing}}
 </div>

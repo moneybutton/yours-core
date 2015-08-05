@@ -4,7 +4,7 @@ export default Ember.Route.extend({
   datt: Ember.inject.service(),
 
   model: function(args) {
-    return this.get('datt').getCollective(args.address);
+    return this.get('datt').getCollective(args.collective_id);
   },
 
   afterModel: function(model) {

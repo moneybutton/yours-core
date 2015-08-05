@@ -14,6 +14,6 @@
     {{#link-to 'collective' thing.id class='label label-success balance' title=thing.id}}
       {{thing.balance}} bits{{/link-to}}
     <span class='label label-primary type'>{{thing.type}}</span>
-    <span class='label label-info age'>{{ago thing.created 'X'}}</span>
+    <span class='label label-info age'>{{moment-from-now thing.created 'X'}}</span>
   </div>
 </div>
