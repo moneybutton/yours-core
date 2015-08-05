@@ -351,6 +351,9 @@ Gilding.post('create', function() {
   Gilding.emit('gilding', gilding);
 });
 
+// NOTE: this is strikingly similar to how the pre:create hook for Vote works,
+// and probably deserves some consolidation.  We'll also need atomic operations,
+// if not a full-on linked-list/blockchain-based accounting system.
 Gilding.pre('create', function(next, finalize) {
   var gilding = this;
   var COST = 50;
@@ -359,7 +362,6 @@ Gilding.pre('create', function(next, finalize) {
     deductFromUser,
     addToUser
   ], function(err, results) {
-    // Note: counterintuitive.  Err here is likely the vote, if it's an update
     if (err) return finalize(null, err);
     next();
   });
