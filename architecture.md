@@ -9,7 +9,7 @@ at a later date, but for now writing everything in javascript is the easiest
 way to share code between server (backend) and client (frontend).
 
 A datt node connects to the datt p2p network. A node can authenticate with
-other nodes, broadcast new data, download data, and relay data. The data
+other nodes, broadcast availability of new data, download content for new data, download updates for existing data and relay data. The data
 primarily consists of the text content of posts and comments as well as
 actions, such as proof-of-payment for upvoting or downvoting.
 
@@ -36,6 +36,8 @@ keys that are hashes and values that are content. There will also be some meta
 data to help find some content more easily rather than directly by hash. All
 the data will need to be organized in key/value fashion, since leveldb is a
 key/value store.
+
+The content and actions will consist of messages, handling comments and votes on those messages, information on other node(s) and other types of content like files, audio and video (in future). It should ideally be a threaded system in which a separate thread handles, the P2P application, listens to the network for incoming messages and handles alive requests so that the node table can be maintained. The p2p application should also be able to maintain sessions over a period of time so that it can handle messages which need to be broken down into multiple blocks and shared across the network.  
 
 The primary interface of the full node is the p2p protocol. For MVP, there may
 or may not be other interfaces, such as a REST or RPC interface.
