@@ -1,0 +1,32 @@
+form.ui.form(action="/posts", method="post")
+  input(type="hidden", name="_author", value="#{user._id}")
+  input(type="hidden", name="hashcash")
+  input(type="hidden", name="document[name]")
+  input(type="hidden", name="document[description]")
+
+  .field.required
+    label Title
+    input(type="text", name="name", placeholder="e.g., \"TEST POST PLEASE IGNORE\"", required)
+  .field
+    label Content
+    textarea(name="description", placeholder="Your thoughtful contribution.")
+  .field
+    label Attach a link...
+    input(type="url", name="link", placeholder="http://...")
+
+    .hidden.ui.items(data-bind="preview")
+      //- TODO: something with a mixin, template, component in React...
+      //- because this is shared across a few locations
+      .item
+        .image
+          img(data-bind="document-image")
+        .content
+          .header(data-bind="document-name", contenteditable)
+          .meta
+            code(style="word-wrap: break-word;", data-bind="document-url")
+          .description(data-bind="document-description", contenteditable)
+
+  .right.floated
+    button.ui.submit.button.primary
+      i.edit.icon
+      | Create Post &raquo;

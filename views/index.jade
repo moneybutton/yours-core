@@ -1,0 +1,13 @@
+extends layouts/default
+
+block content
+  .ui.cards
+    include partials/post-list
+
+    .ui.fluid.card
+      .content#submit
+        if (user)
+          h3 New Post
+          include forms/new-post
+        else
+          include partials/authenticate

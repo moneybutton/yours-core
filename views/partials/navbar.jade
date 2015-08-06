@@ -1,0 +1,52 @@
+.ui.main.tiered.menu.large
+  .menu
+    a.item(href="/")
+      i.comment.icon.left
+      | converse
+
+    //- block for prepend/append/replace-able menu items
+    block mainMenu
+      .right.menu
+        if (user)
+          a.item.tooltipped(href="#", title="Your balance, in bits (1/1000000th of a Bitcoin).")
+            span(style="color: rgba(0,0,0,0.75); margin-right: -0.275em;") µ
+            i.icon.bitcoin
+            span(data-bind="user-balance") #{user.balance.toFixed(2)}
+          a.item(href="/people/#{user.slug}") #{user.username}
+          a.item(href="/notifications")
+            if (unreadNotifications && unreadNotifications.length)
+              i.mail.icon.red
+              | #{unreadNotifications.length}
+            else
+              i.mail.icon
+              | 0
+          a.item(href="/sessions/#{session.hash}?method=delete") Logout
+        else
+          a.item(href="/sessions")
+            i.user.icon
+            | Login &raquo;
+          a.item(href="/people")
+            i.user.icon
+            | Register &raquo;
+
+  .ui.sub.menu
+    a.item.tooltipped(href="/", title="View the Front Page.")
+      i.home.icon
+      |  Front Page
+    a.item.tooltipped(href="/#submit", title="Submit a new link or text post.")
+      i.linkify.icon
+      |  Submit
+    a.item.tooltipped(href="bitcoin:1EBdAcEhP4Qn7sihJoCqinLC8A14zqHJ7R", title="If you have a bitcoin wallet installed and configured, this will launch it.") 
+      i.icon.bitcoin(alt="Bitoin", title="Donate Bitcoin")
+      | Donate &raquo;
+    if (boards)
+      for board in boards
+        a.item(href="/boards/#{board.slug}", title="#{board.name}")
+          i.icon(class="#{board.icon}")
+          |  #{board.name}
+    a.item.tooltipped.right.floating(href="https://github.com/martindale/converse", title="We're completely open source and encourage you to fork and modify the code to suit your own needs.")
+      i.github.alternate.icon
+      | Contribute &raquo;
+    a.item.tooltipped.right.floating(href="https://chrome.google.com/webstore/detail/converse/idkglnjabogbllnodjbmboiobfogkiac", title="Chrome extension that notifies you of new posts and comments.  Also open source.")
+      i.announcement.alternate.icon
+      | Extension &raquo;

@@ -1,0 +1,97 @@
+mixin PostView(post, maxWords, samePage)
+  if (!maxWords)
+    - maxWords = 0;
+
+  .ui.fluid.card
+    .content
+      include ../partials/influence
+      img.right.floated.mini.ui.avatar(src="https://thecatapi.com/api/images/get?format=src&type=gif")
+      .header
+        a(href="/posts/#{post._id}") #{post.name}
+          if (post.stats.gildings)
+            .ui.mini.label.tooltipped(title="#{post.stats.gildings} gilded a total of #{post.stats.gilded}μ฿")
+              i.trophy.icon
+              span(data-bind="#{post._id}", data-for="gildings") #{post.stats.gildings}
+      .meta
+        a(href="/posts/#{post._id}")
+          abbr.date.tooltipped(title="#{ moment( post.created ).format('MMMM Do YYYY, h:mm:ss a') }") #{ moment( post.created ).fromNow() }
+        | by 
+        a.user(href="/people/#{post._author.slug}") #{post._author.username}
+        if (post.hashcash)
+          | at 
+          abbr.tooltipped(title="We require a proof-of-work for posting content on Converse.  Your computer performs a complex calculation that, once it meets a certain threshold (the difficulty score), allows your content to be posted.") difficulty #{post.hashcash.split(':')[1]}
+      if (!!+maxWords)
+        .description(style="clear: none;") #{ post.description.split('\n')[0].split(' ').slice(0, maxWords).join(' ') }&hellip;
+      else
+        .description(style="clear: none;") !{ markdown(post.description) }
+    
+    //-.extra.content
+      .ui.buttons
+        a.ui.button
+          i.icon.bitcoin
+          | tip #{post._author.username} for sharing
+        .or
+        a.ui.button
+          i.icon.bitcoin
+          | tip SomeOtherGuy for writing
+        
+    if (post._document)
+      .extra.content
+        .ui.items
+          .item
+            if (!!+maxWords)
+              .content
+                .header
+                  a(href="#{post._document.url}")
+                    i.icon.linkify
+                    | #{post._document.title} 
+                  code(style="font-weight: normal; font-size: 0.65em; color: rgba(0,0,0,.5);") #{post._document.url}
+                  .ui.mini.buttons.right.floated
+                    a.mini.ui.primary.button(href="/posts/#{post._id}")
+                      i.icon.linkify
+                      | Read More
+                      i.icon.right.chevron
+            else
+              .image
+                img(src="https://thecatapi.com/api/images/get?format=src")
+              .content
+                a.header(href="#{post._document.url}") #{post._document.title}
+                .meta
+                  code(style="word-wrap: break-word;") #{post._document.url}
+                .description #{post._document.description}
+                .extra
+                  .ui.buttons.right.floated
+                    a.ui.primary.button(href="#{post._document.url}")
+                      | Read More
+                      i.icon.right.chevron
+        
+    .extra.content
+      code(style="word-wrap: break-word;") #{post.hashcash}
+
+    .ui.bottom.mini.attached.buttons
+      a.ui.button(href="/posts/#{post._id}")
+        i.linkify.icon
+        | permalink
+      if (user)
+        a.ui.button(href="#", data-intent="save", data-post="#{post._id}", data-user="#{user._id}")
+          i.bookmark.icon
+          | save
+        a.ui.button.tooltipped(href="#", data-intent="gild", data-target="#{post._id}", data-user="#{user._id}", data-context="post", title="Gives the author 50 bits, and marks the post as having been gilded.")
+          i.trophy.icon
+          | gild
+      else
+        a.ui.button.tooltipped(href="#", title="Sign in to save this to your bookmarks!")
+          i.bookmark.icon
+          | save
+        a.ui.button.tooltipped(href="#", data-intent="gild", title="Sign in to gild this post!")
+          i.trophy.icon
+          | gild
+      a.ui.button(href="#", data-intent="share")
+        i.share.icon
+        | share
+      a.ui.button(href="/posts/#{post._id}#comments")
+        i.comment.icon
+        | #{post.stats.comments || 0} comments
+      a.ui.button(href="/posts/#{post._id}#comment", data-intent="#{(samePage) ? 'comment' : undefined}")
+        i.reply.icon
+        | reply

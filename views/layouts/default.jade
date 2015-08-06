@@ -1,0 +1,70 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    
+    title converse
+
+    meta(name="description", content="#{ (page) ? page.title || config.service.name + ': ' + config.service.mission : config.service.name + ': ' + config.service.mission }")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+
+    link(rel="stylesheet", href="/css/semantic.min.css")
+    link(rel="stylesheet", href="/css/highlight/maki.css")
+    link(rel="stylesheet", href="/css/maki.css")
+    link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700")
+
+    script(src="/js/jquery.js")
+    script(src="/js/semantic.min.js")
+    script(src="/js/lodash.min.js")
+
+    script(src="/js/highlight.pack.js")
+    script(src="/js/uuid.js")
+    script(src="/js/jsonrpc.js")
+    script(src="/js/sha3.js")
+    
+    script(src="/js/maki.js")
+      
+    style.
+      .statistic i.icon {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .hidden {
+        display: none;
+      }
+      
+      .no-shadow .card {
+        box-shadow: none;
+      }
+      
+      .ui.mini.label,
+      .ui.mini.labels .label {
+        vertical-align: top;
+      }
+
+    base(href="/")
+
+  body
+    .ui.page.grid
+      .row
+        block navbar
+          include ../partials/navbar
+      .row
+        .column.content(data-for="viewport")
+          include ../partials/flash
+          block content
+      .row
+        .ui.one.column.stackable.center.aligned
+          p
+            small Built with <a href="http://github.com/martindale/maki">Maki</a> and deployed to <a href="https://www.ericmartindale.com/2015/06/01/new-chapters">the Fabric network</a>.
+          p
+            strong decentralize <em>all</em> the things.
+    
+    script(src="/js/converse.js")
+    script(src="/js/bitcore.min.js")
+    script(src="/js/bitcore-mnemonic.min.js")
+    script(src="/js/bundle.js")
+
+    block scripts
