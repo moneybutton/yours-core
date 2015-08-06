@@ -1,0 +1,12 @@
+extends layouts/default
+
+block content
+
+  h1 There's at least #{people.length} registered users.
+
+  if (!user)
+    h2#register Register
+    .ui.cards
+      .ui.fluid.card
+        .content
+          include forms/register

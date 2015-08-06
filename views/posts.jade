@@ -1,0 +1,15 @@
+extends layouts/default
+
+block content
+  style.
+
+  .ui.cards
+    include partials/post-list
+
+    .ui.fluid.card
+      .content
+        if (user)
+          h3 New Post
+          include forms/new-post
+        else
+          include partials/authenticate

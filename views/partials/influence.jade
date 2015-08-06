@@ -1,0 +1,23 @@
+- if (!item && comment) {
+-   var item = comment;
+-   var context = 'comment';
+- }
+- if (!item && post) {
+-   var item = post;
+-   var context = 'post';
+- }
+
+.left.floated(style="width: 3em; text-align: center;")
+  .ui.mini.statistic
+    if (user)
+      a.label(data-intent="upvote", data-id="#{item._id}", data-context="#{context}", data-for="#{user._id}")
+        i.chevron.up.icon
+      .value(style="font-size: 1em;", data-bind="#{item._id}") #{item && item.score || 0}
+      a.label(data-intent="downvote", data-id="#{item._id}", data-context="#{context}", data-for="#{user._id}")
+        i.chevron.down.icon
+    else
+      a.label.tooltipped(title="Register or sign in to vote!")
+        i.chevron.up.icon
+      .value(style="font-size: 1em;") #{item && item.score || 0}
+      a.label.tooltipped(title="Register or sign in to vote!")
+        i.chevron.down.icon
