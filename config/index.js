@@ -5,12 +5,12 @@
 
 module.exports = {
   service: {
-    name: 'converse',
+    name: 'datt',
     icon: 'comment',
-    namespace: 'converse',
+    namespace: 'datt',
     mission: 'Simple, open-source, uncensorable conversations.',
     description: 'Want a place to share ideas and have discussions?  Keep in a place that can\'t be killed.',
-    source: 'https://github.com/martindale/converse',
+    source: 'https://github.com/dattnetwork/datt',
     points: [
       {
         header: 'Open Source',
@@ -32,20 +32,20 @@ module.exports = {
   },
   services: {
     http: {
-      port: process.env.CONVERSE_HTTP_PORT || 9200
+      port: process.env.DATT_HTTP_PORT || 3000
     }
   },
   database: {
-    name: process.env.CONVERSE_DATABASE_NAME || 'converse',
-    uri:  process.env.CONVERSE_DATABASE_URI  || 'localhost'
+    name: process.env.DATT_DATABASE_NAME || 'datt',
+    uri:  process.env.DATT_DATABASE_URI  || 'localhost'
   },
   sessions: {
-    enabled: process.env.CONVERSE_SESSIONS_ENABLE || true,
-    secret:  process.env.CONVERSE_SESSIONS_SECRET || 'this can be any random string, you can even use this one. :)'
+    enabled: process.env.DATT_SESSIONS_ENABLE || true,
+    secret:  process.env.DATT_SESSIONS_SECRET || 'this can be any random string, you can even use this one. :)'
   },
   redis: {
-    host: process.env.CONVERSE_REDIS_HOST || 'localhost',
-    port: process.env.CONVERSE_REDIS_PORT || 6379
+    host: process.env.DATT_REDIS_HOST || 'localhost',
+    port: process.env.DATT_REDIS_PORT || 6379
   },
   auth: {
     local: {
