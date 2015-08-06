@@ -110,3 +110,13 @@ implement all of these features for MVP. Some possible simplifications:
 - Start by implementing only the full node, and the "light node" operates by
   trusting the full node.
 - Do not implement lightning network. Instead, use normal bitcoin transactions.
+
+## Other considerations
+
+There are a number of other elements we may want to include in the datt
+architecture that have not been discussed here.
+
+- Do we want to use torrents?
+- Do we want to use ipfs?
+- Do we want to use ethereum?
+- Do we want to use smart contracts?
