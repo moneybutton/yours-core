@@ -2,7 +2,7 @@ Document All The Things
 =======================
 ## Goal
 
-**To prove the feasibility of a browser based P2P publishing market where content ownership remains with the author and moderation choice remains with the user.**
+**To prove the feasibility of a P2P publishing market where content ownership remains with the author and moderation choice remains with the user.**
 
 ## Principles
 
