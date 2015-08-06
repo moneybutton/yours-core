@@ -60,7 +60,7 @@
       "email": "ley.clemens@gmail.com"
     }
   ],
-  "author": "Ryan X. Charles <ryanxcharles@gmail.com>",
+  "author": "Datt Developers <developers@datt.co>",
   "license": "MIT",
   "dependencies": {
     "fullnode": "^0.10.0"
