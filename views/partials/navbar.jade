@@ -1,8 +1,8 @@
 .ui.main.tiered.menu.large
   .menu
     a.item(href="/")
-      i.comment.icon.left
-      | converse
+      img#header-logo(src="/img/datt-logo.png")
+      | datt
 
     //- block for prepend/append/replace-able menu items
     block mainMenu
@@ -36,7 +36,7 @@
     a.item.tooltipped(href="/#submit", title="Submit a new link or text post.")
       i.linkify.icon
       |  Submit
-    a.item.tooltipped(href="bitcoin:1EBdAcEhP4Qn7sihJoCqinLC8A14zqHJ7R", title="If you have a bitcoin wallet installed and configured, this will launch it.") 
+    //-a.item.tooltipped(href="bitcoin:1EBdAcEhP4Qn7sihJoCqinLC8A14zqHJ7R", title="If you have a bitcoin wallet installed and configured, this will launch it.") 
       i.icon.bitcoin(alt="Bitoin", title="Donate Bitcoin")
       | Donate &raquo;
     if (boards)
@@ -44,9 +44,9 @@
         a.item(href="/boards/#{board.slug}", title="#{board.name}")
           i.icon(class="#{board.icon}")
           |  #{board.name}
-    a.item.tooltipped.right.floating(href="https://github.com/martindale/converse", title="We're completely open source and encourage you to fork and modify the code to suit your own needs.")
+    a.item.tooltipped.right.floating(href="https://github.com/dattnetwork/datt", title="We're completely open source and encourage you to fork and modify the code to suit your own needs.")
       i.github.alternate.icon
       | Contribute &raquo;
-    a.item.tooltipped.right.floating(href="https://chrome.google.com/webstore/detail/converse/idkglnjabogbllnodjbmboiobfogkiac", title="Chrome extension that notifies you of new posts and comments.  Also open source.")
+    //-a.item.tooltipped.right.floating(href="https://chrome.google.com/webstore/detail/converse/idkglnjabogbllnodjbmboiobfogkiac", title="Chrome extension that notifies you of new posts and comments.  Also open source.")
       i.announcement.alternate.icon
       | Extension &raquo;
