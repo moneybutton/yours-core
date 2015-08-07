@@ -1,4 +1,4 @@
-Datt Network Website
-====================
+Datt
+====
 
-The website of Datt Network (datt.co).
+The website of Datt (datt.co).
