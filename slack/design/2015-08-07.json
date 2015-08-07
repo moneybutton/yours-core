@@ -1,0 +1,20 @@
+[
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08EZP01H>: I felt Influence was doing too much, so I've gone fairly minimal with Jekyll &amp; Bootstrap and dark bg to contrast with the app mockups",
+        "ts": "1438943470.000433"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Nothing committed yet, but I'll push my work to GitHub in the morning",
+        "ts": "1438943520.000434"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08ERPTQF>: ahh I'm not familiar. I usually trim themes until they're minimal since everyone adds 50 features. I'll check it out Jekyll today and learn more",
+        "ts": "1438959743.000435"
+    }
+]

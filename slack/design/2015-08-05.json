@@ -1,0 +1,15 @@
+[
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08C464NS>: Any update on that template?",
+        "ts": "1438831041.000416"
+    },
+    {
+        "user": "U08MEV56D",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08MEV56D|mashaal> has joined the channel",
+        "ts": "1438839649.000417"
+    }
+]

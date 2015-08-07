@@ -25,5 +25,26 @@
         "user": "U08DN0E5S",
         "text": "The problems we want to overcome, from what I understand:\n\nWe need people to participate in the distributed media storage system\nWe want to incentivize people, most likely by paying them, for serving up the media to others\nWe want to prevent people from taking data and not paying, or serving fraudulent data and getting paid\nWe don\u2019t want people to be forced into storing data they object to",
         "ts": "1438550508.000005"
+    },
+    {
+        "user": "U08CG8V89",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08CG8V89|c_prompt> has joined the channel",
+        "ts": "1438560844.000002"
+    },
+    {
+        "user": "U08G10908",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08G10908|christophera> has joined the channel",
+        "ts": "1438560967.000003"
+    },
+    {
+        "user": "U08F2RTCN",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08F2RTCN|deepakraous> has joined the channel",
+        "ts": "1438571929.000004"
     }
 ]

@@ -1,0 +1,46 @@
+[
+    {
+        "type": "message",
+        "user": "U08DDG1SB",
+        "text": "i feel like all of this rework should be put into something like blockstore or some other effort that\u2019s already working on this.",
+        "ts": "1438805827.000039"
+    },
+    {
+        "type": "message",
+        "user": "U08DDG1SB",
+        "text": "is this going to be all browser based?",
+        "ts": "1438805832.000040"
+    },
+    {
+        "type": "message",
+        "user": "U08DDG1SB",
+        "text": "your db structure is just a key-value store? so just one big data table? that would suffice for the DHT data but will you need anything else specific to the client? like settings\/preferences?",
+        "ts": "1438805961.000041"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08DDG1SB>: client settings for people\/collectives that they follow and their own filtering\/sorting preferences can probably be stored in indexedDB in the same manner. Just have separate stores for Addresses\/Identities; Content\/Messages; Settings\/Preferences",
+        "ts": "1438807870.000042"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "<@U08DDG1SB>: haven't actually put much thought into the db schema. don't take minimalist data structure too seriously.",
+        "ts": "1438808046.000043"
+    },
+    {
+        "user": "U08MAKT70",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08MAKT70|johan> has joined the channel",
+        "ts": "1438829851.000044"
+    },
+    {
+        "user": "U08MEV56D",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08MEV56D|mashaal> has joined the channel",
+        "ts": "1438839694.000045"
+    }
+]

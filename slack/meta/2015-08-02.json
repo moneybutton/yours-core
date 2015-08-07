@@ -81,7 +81,16 @@
         "type": "message",
         "user": "U08EZP01H",
         "text": "\"Our society is increasingly relying on the digitized, aggregated opinions of others to make decisions. We therefore designed and analyzed a large-scale randomized experiment on a social news aggregation Web site to investigate whether knowledge of such aggregates distorts decision-making.\" <http:\/\/www.sciencemag.org\/content\/341\/6146\/647.abstract>",
-        "ts": "1438549516.000307"
+        "ts": "1438549516.000307",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -165,7 +174,16 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "in this model a community is the sum of the content, and I agree that it\u2019s not as strong of a community model as the subreddit model and that\u2019s why I call them collectives to differentiate that.  It\u2019s more about curation than trying to foster separate communities but they have a lot of similarity",
-        "ts": "1438552585.000321"
+        "ts": "1438552585.000321",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -183,6 +201,22 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "These are just my ideas btw, but they do seem to have fairly wide support here, it\u2019s not the only way to do things",
-        "ts": "1438552842.000324"
+        "ts": "1438552842.000324",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08FW063C"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "user": "U08G10908",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08G10908|christophera> has joined the channel",
+        "ts": "1438560953.000325"
     }
 ]

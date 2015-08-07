@@ -1,0 +1,328 @@
+[
+    {
+        "user": "U07GDL0H5",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U07GDL0H5|ryanxcharles> has joined the channel",
+        "ts": "1438662390.000002"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "security is probably the most important subject we haven't touched on much.",
+        "ts": "1438662402.000003"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i think the MVP needs to have a client-side bitcoin wallet. a user has a master private key - a BIP39 mnemonic.",
+        "ts": "1438662424.000004"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "when you first open a client, it autogenerates a new identity",
+        "ts": "1438662434.000005"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "users don't have to think much about it",
+        "ts": "1438662439.000006"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "but if they want to back it up or migrate to another device, they need to copy the mnemonic",
+        "ts": "1438662451.000007"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "this is not very secure - if a user has a mallicious browser extension installed, that could steal the private key",
+        "ts": "1438662466.000008"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "one solution is multisig - put a second key on the user's phone",
+        "ts": "1438662479.000009"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "this increases complexity but adds a great deal of security",
+        "ts": "1438662486.000010"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "think of it as multisig 2-factor auth",
+        "ts": "1438662491.000011"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "the better long-term option is to integrate with other wallets directly. the wallets will need to understand our protocol. they will need to both host the user's identity and bitcoin wallet. we will be much better off long-term offloading security on to specialized bitcoin wallets.",
+        "ts": "1438662535.000012"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "however, i doubt any of the bitcoin wallets are ready for something like this today. hence the MVP of putting the mnemonic in the user's client-side IndexedDB or localStorage",
+        "ts": "1438662559.000013"
+    },
+    {
+        "user": "U08EZP01H",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08EZP01H|darrenm> has joined the channel",
+        "ts": "1438663056.000014"
+    },
+    {
+        "user": "U08E2KZM4",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08E2KZM4|genevayngrib> has joined the channel",
+        "ts": "1438663169.000015"
+    },
+    {
+        "user": "U08E5P0BZ",
+        "inviter": "U08EZP01H",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08E5P0BZ|georgevaccaro> has joined the channel",
+        "ts": "1438663459.000016"
+    },
+    {
+        "user": "U08F2RTCN",
+        "inviter": "U08EZP01H",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08F2RTCN|deepakraous> has joined the channel",
+        "ts": "1438663459.000017"
+    },
+    {
+        "user": "U08BY8MGV",
+        "inviter": "U08EZP01H",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08BY8MGV|bradkam> has joined the channel",
+        "ts": "1438663459.000018"
+    },
+    {
+        "user": "U08DD8LNP",
+        "inviter": "U08EZP01H",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08DD8LNP|go1dfish> has joined the channel",
+        "ts": "1438663459.000019"
+    },
+    {
+        "user": "U08D641AP",
+        "inviter": "U08EZP01H",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08D641AP|martindale> has joined the channel",
+        "ts": "1438663460.000020"
+    },
+    {
+        "user": "U08ERPTQF",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08ERPTQF|paul_xbt> has joined the channel",
+        "ts": "1438663574.000021"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U07GDL0H5>: what you've described isn't too dissimilar to Copay right :wink:",
+        "ts": "1438663612.000022"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "heh yep, similar to copay",
+        "ts": "1438663645.000023"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "multisig ftw :simple_smile:",
+        "ts": "1438663649.000024"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "actually this will be better than copay, because copay still uses a central server which is trusted with account balances (but not private keys)",
+        "ts": "1438663678.000025"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "they also migrated away from Web RTC and now use a central server to relay messages",
+        "ts": "1438663694.000026"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "(although the server is open source)",
+        "ts": "1438663700.000027"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "SPV in a browser + p2p network makes a truly decentralized bitcoin wallet",
+        "ts": "1438663717.000028"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "plus identity",
+        "ts": "1438663719.000029"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "Another aspect of security is preserving the identity\/karma. Identity does not need to be directly associated with one private key. It can be associated with 2 public keys, say, the first key generated on a mobile and the second key generated on a different device, e.g. a tablet. Then those two devices (their public keys) can be \u201cpaired\u201d and that pairing can be recorded on the blockchain.",
+        "ts": "1438663730.000030",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yes exactly. multisig identity.",
+        "ts": "1438663763.000031"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "yep, sort of",
+        "ts": "1438663772.000032"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i think this is probably the way to do it long-term, but IMO out of scope for MVP",
+        "ts": "1438663782.000033"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "and you can devise even the key revocation this way",
+        "ts": "1438663787.000034"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "oh cool. yes key revocation would be nice.",
+        "ts": "1438663798.000035"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "define a third key that must be used together with one of the two others to record the revocation event.",
+        "ts": "1438663821.000036"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "so, for normal posting it would be 1 out of 2. For revocation it could be a special third key plus 1 of 2.",
+        "ts": "1438663860.000037"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "where 2 are two devices. But could be any number of personal devices.",
+        "ts": "1438663887.000038"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "We describe this method in our identity wiki. <https:\/\/github.com\/tradle\/about\/wiki\/Identity> and in a specific mapping to Ethereum <https:\/\/github.com\/tradle\/about\/wiki\/Identity-on-Ethereum>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "tradle\/about",
+                "title_link": "https:\/\/github.com\/tradle\/about\/wiki\/Identity",
+                "text": "about - This is a place for Tradle docs",
+                "fallback": "GitHub: tradle\/about",
+                "thumb_url": "https:\/\/avatars2.githubusercontent.com\/u\/9482126?v=3&s=400",
+                "from_url": "https:\/\/github.com\/tradle\/about\/wiki\/Identity",
+                "thumb_width": 400,
+                "thumb_height": 400,
+                "id": 1
+            }
+        ],
+        "ts": "1438663966.000039"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "yep, not MVP",
+        "ts": "1438663988.000041"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "we will be working very actively on this identity stuff for our customers, so it could be reused as-is I hope. We are also exploring the Touch ID and Secure Enclave on iOS",
+        "ts": "1438664389.000042"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "for key generation and management",
+        "ts": "1438664408.000043"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I didn\u2019t think that was accessible to devs?",
+        "ts": "1438665814.000044"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "it is in iOS9 \n\niOS9 allows to gen priv keys directly in Secure Enclave (and then sign with them, verify sigs)\n\n&gt; SecGenerateKeyPair(), which is used to generate RSA and ECDSA key pairs, can now be configured to directly store the generated private key in the device\u2019s Keychain (within the Secure Enclave). The key can then be subsequently used to sign data or verify signatures directly within the Secure Enclave by specifying additional parameters to SecKeyRawSign() and SecKeyRawVerify(). This means that the private key can be used without ever leaving the device\u2019s Secure Enclave. The kSecAttrTokenIDSecureEnclave attribute needs to be used when generating the key pair.",
+        "ts": "1438666264.000045"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<https:\/\/nabla-c0d3.github.io\/blog\/2015\/06\/16\/ios9-security-privacy\/>",
+        "ts": "1438666283.000046"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "u can also gen the key yourself and then store it on keychain, which in iOS9 is stored on Secure Enclave. But it is less secure, as you have to move it between the normal user space and the Enclave. But I think they also have an encrypted transport to do it. My teammate <@U08E18GD6> will be  experimenting with this soon and we will post the code when it works.",
+        "edited": {
+            "user": "U08E2KZM4",
+            "ts": "1438666525.000000"
+        },
+        "ts": "1438666473.000047",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "oh, that\u2019s pretty sweet",
+        "ts": "1438668703.000049"
+    }
+]

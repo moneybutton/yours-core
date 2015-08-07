@@ -1,0 +1,2417 @@
+[
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "<@U08EZP01H>",
+        "ts": "1438592637.000104"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "<@U08EZP01H>: If I'm honest, I'm not keen on the logo you designed. I don't think it fits in with the rest of the designs.  For example, the line quality on the mockups is very thin and minimal, yet yours is super thick. If you all think there should be a separate identity for Datt the company, I would suggest something simpler. Maybe just a very minimal type logo (using Open Sans).  I'm a fan of very clean, minimal design, and we should question why we're adding anything extraneous at all.",
+        "ts": "1438592886.000105"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08C464NS> I follow what you're saying. Minimal design is where the party is. My thoughts with the DATT logo were twofold 1.) I thought it shouldn't look similar to the logo (and name TBD) for the node. My logic is that the technology should be represented by an idea of security and trust, which I've personified through the heavy letters and padlock imagery. This would be in contrast to your logo, and the name alongside it, which would represent the concept of a node broadcasting\/announcing content on the network. For this, thin Open Sans font would pair nicely with the decentralized dots logo. 2.) I wanted to ship something and iterate, a personal goal of mine from the design-side.",
+        "ts": "1438619285.000106"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08EZP01H|darrenm> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08GZTSNQ\/spoke_concept-01.png|spoke_concept-01.png> and commented: Just a mockup comparing the bold branding style to a thin style. Name is just a placeholder.",
+        "file": {
+            "id": "F08GZTSNQ",
+            "created": 1438619441,
+            "timestamp": 1438619441,
+            "name": "spoke_concept-01.png",
+            "title": "spoke_concept-01.png",
+            "mimetype": "image\/png",
+            "filetype": "png",
+            "pretty_type": "PNG",
+            "user": "U08EZP01H",
+            "editable": false,
+            "size": 18799,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08GZTSNQ-0f5a754aa6\/spoke_concept-01.png",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08GZTSNQ-0f5a754aa6\/download\/spoke_concept-01.png",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08GZTSNQ\/spoke_concept-01.png",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08GZTSNQ\/download\/spoke_concept-01.png",
+            "thumb_64": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08GZTSNQ-9f0bbb5cfc\/spoke_concept-01_64.png",
+            "thumb_80": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08GZTSNQ-9f0bbb5cfc\/spoke_concept-01_80.png",
+            "thumb_360": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08GZTSNQ-9f0bbb5cfc\/spoke_concept-01_360.png",
+            "thumb_360_w": 321,
+            "thumb_360_h": 360,
+            "thumb_480": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08GZTSNQ-9f0bbb5cfc\/spoke_concept-01_480.png",
+            "thumb_480_w": 428,
+            "thumb_480_h": 480,
+            "thumb_160": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08GZTSNQ-9f0bbb5cfc\/spoke_concept-01_160.png",
+            "thumb_720": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08GZTSNQ-9f0bbb5cfc\/spoke_concept-01_720.png",
+            "thumb_720_w": 642,
+            "thumb_720_h": 720,
+            "thumb_960": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08GZTSNQ-9f0bbb5cfc\/spoke_concept-01_960.png",
+            "thumb_960_w": 856,
+            "thumb_960_h": 960,
+            "image_exif_rotation": 1,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08GZTSNQ\/spoke_concept-01.png",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08GZTSNQ-0f5a754aa6",
+            "channels": [
+                "C08F8UMGB"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 1,
+            "initial_comment": {
+                "id": "Fc08GZSZKQ",
+                "created": 1438619445,
+                "timestamp": 1438619445,
+                "user": "U08EZP01H",
+                "comment": "Just a mockup comparing the bold branding style to a thin style. Name is just a placeholder."
+            }
+        },
+        "user": "U08EZP01H",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U08EZP01H|darrenm>",
+        "bot_id": null,
+        "ts": "1438619445.000107"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "I did play around with the idea to 'see what it looks like'. I picked a name that I thought kinda fit, but my intent was experimenting. This should show the contrast between two brand directions.",
+        "ts": "1438619495.000108"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Let me know your thoughts <@U08C464NS>. If anyone else has some ideas on how the two identities should appear, your feedback would be awesome.",
+        "ts": "1438619633.000109"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "FWIW, my current thinking is that the company should be named \"Datt, Inc.\" and the \"Inc.\" part deliberately appears in all text\/logos for the company",
+        "ts": "1438619666.000110"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "meanwhile, the network itself is called \"Datt\" or \"DATT\" or \"datt\" or \"Datt Network\" or \"Datt Foundation\" or something like that",
+        "ts": "1438619690.000111"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "they can have similar names but visually distinguish with different typefaces, logos, and be sure to always be clear about which one you are talking about",
+        "ts": "1438619721.000112"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i don't like the idea of having two completely different names ... if the company has an unrelated name, that will make it harder to to show the relationship between the two",
+        "ts": "1438619796.000113"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "also, there can be multiple companies. if there's a trademark held on \"datt\", that could be held by a nonprofit foundation",
+        "ts": "1438619814.000114"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "but the company holds a trademark on something related, such as \"Datt, Inc.\"",
+        "ts": "1438619825.000115"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "company could have a longer name ... \"Datt Node, Inc.\" or just \"Datt Node\" or something, but simpler seems better to me",
+        "ts": "1438619847.000116"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Alright I think I'm following. So Datt, Inc is the company and will have a logo\/fontmark. The network will still have Datt in it but be referred to in a more specific sense than Datt, Inc.",
+        "ts": "1438620006.000117"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yes, similar to OpenBazaar vs. OB1. they made invented the network first, then gave the name of the company and obvious relationship to the network.",
+        "ts": "1438620077.000118"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "What brand would 'Content Node 1' be rocking?",
+        "ts": "1438620154.000119"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "the company. the foundation won't host any content. anyone is free to run a node and host content on it. e.g., Datt Twitter could use the same software, protocol, network, but only serve content that is less than 160 chars",
+        "ts": "1438620241.000120"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "none of this is set in stone, but it's the best way i've found to align incentives correctly. the foundation should not be hosting content or they are competing with the nodes. the foundation exists to make sure the software is supported. meanwhile, the first company, which writes most of the software and hosts the first node, earns money by running the node.",
+        "ts": "1438620344.000121"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Alright I'm getting it. I'll put together another brand-spec outline with your feedback, and <@U08C464NS> thoughts on additional minimalism. A few iterations should square this away.",
+        "ts": "1438620520.000122"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "awesome!",
+        "ts": "1438620532.000123"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "also, although no domain names have been settled on, note that i own datt.network and <http:\/\/datt.co|datt.co>, and was thinking datt.network is an information page about the software owned by the foundation, and <http:\/\/datt.co|datt.co> is The First Node that is owned by the company.",
+        "ts": "1438620578.000124"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "the company would own <http:\/\/datt.com|datt.com> if i can manage to acquire it for a reasonable pric",
+        "ts": "1438620599.000125"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "e",
+        "ts": "1438620599.000126"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "but i don't like putting domain names in branding, because i think DNS is not properly decentralized. so it's better for the company to be \"Datt, Inc.\" rather than \"<http:\/\/datt.co|datt.co>\"",
+        "ts": "1438620644.000127"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "The original idea was for the dots logo to stand on its own",
+        "ts": "1438620713.000128"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "like how apples symbol does",
+        "ts": "1438620721.000129"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i think the dots could be a great network-wide branding. you see them on all datt node websites\/apps.",
+        "ts": "1438620744.000130"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "that would be the ultimate in simplicity",
+        "ts": "1438620750.000131"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "I can get behind that. What should we do about the text 'DATT' for brand recognition?",
+        "ts": "1438620754.000132"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i have a call in a few minutes so i'll get back to you guys later. talking with MIT media lab.",
+        "ts": "1438620776.000133"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "it would be the recognition. kind of like car manufacturers and their badges",
+        "ts": "1438620800.000134"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "the name is so short and simple that it's easy to remember on its own",
+        "ts": "1438620826.000135"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Do you think we need an additional mark?",
+        "ts": "1438620849.000136"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "There's a clear sense that we should divide the branding identities along some line, just not sure if that means adding another mark, another bit of text...",
+        "ts": "1438620884.000137"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I'm not sure",
+        "ts": "1438620932.000138"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "What will the different entities be? You have the main datt app (e.g. P2P reddit), then the \"datt, inc\" site?",
+        "ts": "1438621035.000139"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "That's basically what I'm wondering. Ryan listed some details above.",
+        "ts": "1438621062.000140"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "We also have the option of using another line of text 'the worlds first decentralized p2p publishing network'",
+        "ts": "1438621105.000141"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I think adding a tagline directly to the logo is a little on the nose",
+        "ts": "1438621183.000142"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "that could be explained on the sites itself",
+        "ts": "1438621192.000143"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "True, but that requires more effort, which is something a user might not have if we don't tell them what we are at some point",
+        "ts": "1438621221.000144"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "We can kick that down the road too.",
+        "ts": "1438621239.000145"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Figuring out all the unique entities and their relationship is the first part.",
+        "ts": "1438621252.000146"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I think we're getting ahead of ourselves. We're thinking about possible stuff for spinoffs and whatnot, but we haven't even figured out what the first, main product is going to be like",
+        "ts": "1438621383.000147"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Ryan gave us some direction here: \"the company should be named \"Datt, Inc.\" and the \"Inc.\" part deliberately appears in all text\/logos for the company\"",
+        "ts": "1438621462.000148"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "\" the network itself is called \"Datt\" or \"DATT\" or \"datt\" or \"Datt Network\" or \"Datt Foundation\" or something like that\"",
+        "ts": "1438621472.000149"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08C464NS|chris> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/chris\/F08H20QBW\/logo.png|logo.png>",
+        "file": {
+            "id": "F08H20QBW",
+            "created": 1438621665,
+            "timestamp": 1438621665,
+            "name": "logo.png",
+            "title": "logo.png",
+            "mimetype": "image\/png",
+            "filetype": "png",
+            "pretty_type": "PNG",
+            "user": "U08C464NS",
+            "editable": false,
+            "size": 7831,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08H20QBW-827514a8f6\/logo.png",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08H20QBW-827514a8f6\/download\/logo.png",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08H20QBW\/logo.png",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08H20QBW\/download\/logo.png",
+            "thumb_64": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08H20QBW-6ad138c959\/logo_64.png",
+            "thumb_80": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08H20QBW-6ad138c959\/logo_80.png",
+            "thumb_360": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08H20QBW-6ad138c959\/logo_360.png",
+            "thumb_360_w": 360,
+            "thumb_360_h": 203,
+            "thumb_480": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08H20QBW-6ad138c959\/logo_480.png",
+            "thumb_480_w": 480,
+            "thumb_480_h": 270,
+            "thumb_160": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08H20QBW-6ad138c959\/logo_160.png",
+            "thumb_720": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08H20QBW-6ad138c959\/logo_720.png",
+            "thumb_720_w": 720,
+            "thumb_720_h": 405,
+            "thumb_960": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08H20QBW-6ad138c959\/logo_960.png",
+            "thumb_960_w": 960,
+            "thumb_960_h": 540,
+            "thumb_1024": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08H20QBW-6ad138c959\/logo_1024.png",
+            "thumb_1024_w": 1024,
+            "thumb_1024_h": 576,
+            "image_exif_rotation": 1,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/chris\/F08H20QBW\/logo.png",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08H20QBW-827514a8f6",
+            "channels": [
+                "C08F8UMGB"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 0
+        },
+        "user": "U08C464NS",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U08C464NS|chris>",
+        "bot_id": null,
+        "ts": "1438621669.000150"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "it could be something simple like this",
+        "ts": "1438621676.000151"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "(that's only a quick mockup)",
+        "ts": "1438621706.000152"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Yea that's great with the dots",
+        "ts": "1438621720.000153"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "with such minimalism i'd be curious to see all lower case",
+        "ts": "1438621745.000154"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "not that you should output another file",
+        "ts": "1438621757.000155"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "So if that's the logomark for the company, how might we differentiate the foundation\/nonprofit?",
+        "ts": "1438621784.000156"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Some random ideas: would could make a logo variant that's a derivative",
+        "ts": "1438621889.000157"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "either something using the same mark and diff text, or maybe a new symbol that has similar vibes, i.e. a grid, a diamond shape",
+        "ts": "1438621898.000158"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "what do you think?",
+        "ts": "1438621934.000159"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "color could be introduced as well, rotation.",
+        "ts": "1438621936.000160"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "It sounds like we're all arriving at the same location",
+        "ts": "1438621971.000161"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "sorry about being in ballbusting mode :simple_smile: I'm very particular about how my work is used",
+        "ts": "1438621971.000162"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "I totally feel you. Your work is great though.",
+        "ts": "1438622009.000163"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Nothing is worse than having a giant portfolio of stuff the client ruined lol",
+        "ts": "1438622028.000164"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I know right? That's why when I work on open source stuff for free, at least I want it to be pure",
+        "ts": "1438622061.000165"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "but then I don't want it to just be about my ego. like Ryan was talking about IDEO being involved somehow",
+        "ts": "1438622109.000166"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I'd be cool with that, they know their shit",
+        "ts": "1438622132.000167"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "IDEO is the reason I do this lol. They had a special on ABC back in '99 that showed them reinventing the shopping cart by studying human experience",
+        "ts": "1438622170.000168"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "but whatever we end up doing, it's got to be fucking AMAZING. we're creating the next wave of the internet and we might as well put everything into it",
+        "ts": "1438622191.000169",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U07GDL0H5"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "^ Not sure how anyone who's worked on world-changing tech can ever go back to pushing papers",
+        "ts": "1438622237.000170"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "I'm gonna coffee-up and go into an Adobe spiral. And I have to fix my GitHub because I *may* have just learned it yesterday.",
+        "ts": "1438622288.000171"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "(haha me too, never used Github before this project)",
+        "ts": "1438622354.000172"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "It's powerful and deeply confusing. I've been studying definitions trying to figure it out... upstream, downstream, push, pull, fetch, merge, clone, mirror, fork... :collision:",
+        "ts": "1438622527.000173"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "yeah no shit. feels like an achievement to have learnt the basics",
+        "ts": "1438622666.000174"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "It might be easier to go command line. The windows UI is pretty but it assumes you know the 'steps' to 'not accidentally delete the server'",
+        "ts": "1438622995.000175"
+    },
+    {
+        "type": "message",
+        "user": "U08BY8MGV",
+        "text": "I think it would be worth considering a separate brand for the company. Datt speaks to the decentralized open source project, but not to the value that an application would provide it's users. For example, Reddit's name speaks directly to the consumers. As a consumer, why do I care about decentralizing all the things?",
+        "ts": "1438623926.000176"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "how does an Apple symbol do that?",
+        "ts": "1438624153.000177"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "well, Apple is 1 company",
+        "ts": "1438624179.000178"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "it wouldn't behoove them to have multiple identies",
+        "ts": "1438624189.000179"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I'm talking about brads points on Reddits brand speaking to the consumer",
+        "ts": "1438624213.000180"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "oh",
+        "ts": "1438624218.000181"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "actually I misread that!",
+        "ts": "1438624266.000182"
+    },
+    {
+        "type": "message",
+        "user": "U08BY8MGV",
+        "text": "It will be 2 different legal entities with different missions. That's why I think they should have different names",
+        "ts": "1438624283.000183"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "no,  you're right there should be a difference",
+        "ts": "1438624287.000184"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "I very much can see both sides <@U08BY8MGV>. On one hand using separate brands allows us to go in two directions without contradicting ourselves, on the other hand using 1 brand builds dominate brand awareness.",
+        "ts": "1438624358.000185"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I like the idea of similar (not the same) brands, so if someone saw it they'd know it was connected somehow",
+        "ts": "1438624400.000186"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "I think a difference is important. It's just a matter of how we can do that while accomplishing Ryan's vision and making sure users 'get it'",
+        "ts": "1438624407.000187"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "but that's just an aesthetic preference. I like the consistency of that",
+        "ts": "1438624443.000188"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "I agree, they should reference each other somehow. But not so much that differentiating is ambiguous",
+        "ts": "1438624493.000189"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "The confusion right now comes from whether we use logo, logo+font, or just a font.",
+        "ts": "1438624537.000190"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Because everytime we use the text DATT it should appear the same",
+        "ts": "1438624565.000191"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "At least, I can't see a scenario where the name DATT should have variations. That would be the confusing part. Perhaps the logo should then?",
+        "ts": "1438624623.000192"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Your last mockup might hold the key though. We could swap Datt, Inc with Datt Foundation and still keep the same bold\/thin style",
+        "ts": "1438624720.000193"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "yeah I dig that. like if we do end up using Open Sans for the site UI, then maybe have the same DATT text prefix with each symbol",
+        "ts": "1438624725.000194"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "yeah",
+        "ts": "1438624729.000195"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "then for the font we just play with variations until we like one?",
+        "ts": "1438624757.000196"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "and if you do it that simple, the text can be arranged in different ways, depending on how it's needed",
+        "ts": "1438624760.000197"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "*logomark",
+        "ts": "1438624761.000198"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "sure",
+        "ts": "1438624779.000199"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I think in most cases (like on the site, or say a tshirt), the symbol alone would be fine",
+        "ts": "1438624799.000200"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Do you think the current dot logo, better fits with Datt, Inc or with Datt Foundation?",
+        "ts": "1438624816.000201"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "datt the app",
+        "ts": "1438624827.000202"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "dots show the P2P nature and the arrangement (big top to smaller below) mirrors the apps function, i.e. the best content rises",
+        "ts": "1438624858.000203"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "so i think that would be Datt, Inc then. cause i believe its a portal on our website",
+        "ts": "1438624916.000204"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "this is confusing",
+        "ts": "1438624934.000205"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "what I mean is DATT, the app, like the decentralized reddit",
+        "ts": "1438624948.000206"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "the site people use to access that",
+        "ts": "1438624962.000207"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "yea i think i need some technical clarification. hey <@U08DD8LNP> will the 'website reddit UI' be driven by a single node or the whole network?",
+        "ts": "1438625044.000208"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "it's supposed to be accessible through the web",
+        "ts": "1438625101.000209"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "or another way to ask the question, if someone wants to launch their own web-based UI to run on the DATT network, will they need their own node &amp; front end?",
+        "ts": "1438625152.000210"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I think there will be both",
+        "ts": "1438625179.000211"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "It wouldn't appeal to many people if they had to set up nodes to use it",
+        "ts": "1438625197.000212"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "well, not normal, non-tech people",
+        "ts": "1438625233.000213"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "yea, they'd just come use ours instead, Datt, Inc with the dot logo.... i think",
+        "ts": "1438625288.000214"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "or they could build their own front end, connect to a node (maybe they NEED one) and compete with us with their own logo",
+        "ts": "1438625330.000215"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "but since our logo will have elements of the logo used by THE NETWORK ITSELF, our business model has a head start",
+        "ts": "1438625363.000216"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "that was my attempt to explain my understanding. ha",
+        "ts": "1438625382.000217"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "crap i just realized i haven't done anything other than sit down at my desk today. bbiab",
+        "ts": "1438625418.000218"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "this answers many of our questions: <https:\/\/github.com\/dattnetwork\/dattdocs#hackathon-day-3-aug-2-2015>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "dattnetwork\/dattdocs",
+                "title_link": "https:\/\/github.com\/dattnetwork\/dattdocs#hackathon-day-3-aug-2-2015",
+                "text": "dattdocs - Document all the things.",
+                "fallback": "GitHub: dattnetwork\/dattdocs",
+                "thumb_url": "https:\/\/avatars0.githubusercontent.com\/u\/13266895?v=3&s=400",
+                "from_url": "https:\/\/github.com\/dattnetwork\/dattdocs#hackathon-day-3-aug-2-2015",
+                "thumb_width": 214,
+                "thumb_height": 214,
+                "id": 1
+            }
+        ],
+        "ts": "1438627132.000219"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08EZP01H>: as far as hosting the app? that\u2019s something specific addressible nodes will have to do",
+        "ts": "1438629707.000221"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "not something we should expect of all nodes, but we could I guess since it\u2019s just a static file host, the bigger problem is making it findable for normal web clients",
+        "ts": "1438629735.000222"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "they probably don\u2019t even need their own node; IMO we ought to be able to host a \u2018canonical\u2019 version of the web app on github pages",
+        "ts": "1438629776.000223",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "with knowledge of a few bootstrap nodes to connect to",
+        "ts": "1438629788.000224"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "for example this app: <http:\/\/fair-share.github.io\/#\/btc\/addr\/1JBbuhbsnou187vsQX8M9xHX64HWCAEpJi>  it interfaces with the blockchain through web services but it\u2019s just a bunch of static html\/js\/css hosted on github pages",
+        "ts": "1438629881.000225"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "if we want to make the thing indexable by search engines we\u2019ll probably have to get a bit more complex than that; but at the core the frontend is just static html\/js\/css and it needs some services to connect to but they don\u2019t necessarily have to be hosted at the same place",
+        "ts": "1438629930.000226"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "how far did you guys get with the html mocks? I can probably get those ported into our functional-ish mocks this week sometime",
+        "ts": "1438630273.000227"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I want to start turning your ui flow diagrams into actual ui flows with a mocked out backend",
+        "ts": "1438630392.000228"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08DD8LNP>:  That helps clarify. Thank you. As for the templates, <@U08C464NS> started them the other day I believe. I think he said they're not responsive yet.",
+        "ts": "1438630982.000229"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "I've been trying to nail down identity concepts. Here's a document I made to outline the Organization Structure and Brand Identity. Nothing is set in stone; the goal here is to get the semantics right.",
+        "ts": "1438631102.000230"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08EZP01H|darrenm> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08HAFYRW\/structure_outline-02.png|structure_outline-02.png> and commented: Rough identity outline.",
+        "file": {
+            "id": "F08HAFYRW",
+            "created": 1438631121,
+            "timestamp": 1438631121,
+            "name": "structure_outline-02.png",
+            "title": "structure_outline-02.png",
+            "mimetype": "image\/png",
+            "filetype": "png",
+            "pretty_type": "PNG",
+            "user": "U08EZP01H",
+            "editable": false,
+            "size": 48911,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HAFYRW-874c245fae\/structure_outline-02.png",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HAFYRW-874c245fae\/download\/structure_outline-02.png",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HAFYRW\/structure_outline-02.png",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HAFYRW\/download\/structure_outline-02.png",
+            "thumb_64": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HAFYRW-22f7340bc9\/structure_outline-02_64.png",
+            "thumb_80": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HAFYRW-22f7340bc9\/structure_outline-02_80.png",
+            "thumb_360": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HAFYRW-22f7340bc9\/structure_outline-02_360.png",
+            "thumb_360_w": 321,
+            "thumb_360_h": 360,
+            "thumb_480": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HAFYRW-22f7340bc9\/structure_outline-02_480.png",
+            "thumb_480_w": 428,
+            "thumb_480_h": 480,
+            "thumb_160": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HAFYRW-22f7340bc9\/structure_outline-02_160.png",
+            "thumb_720": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HAFYRW-22f7340bc9\/structure_outline-02_720.png",
+            "thumb_720_w": 642,
+            "thumb_720_h": 720,
+            "thumb_960": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HAFYRW-22f7340bc9\/structure_outline-02_960.png",
+            "thumb_960_w": 856,
+            "thumb_960_h": 960,
+            "image_exif_rotation": 1,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08HAFYRW\/structure_outline-02.png",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08HAFYRW-874c245fae",
+            "channels": [
+                "C08F8UMGB"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 1,
+            "initial_comment": {
+                "id": "Fc08HAQXBP",
+                "created": 1438631127,
+                "timestamp": 1438631127,
+                "user": "U08EZP01H",
+                "comment": "Rough identity outline."
+            }
+        },
+        "user": "U08EZP01H",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U08EZP01H|darrenm>",
+        "bot_id": null,
+        "ts": "1438631127.000231"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U07GDL0H5> If you could let me know whether those paragraphs are accurate, that would be awesome.",
+        "ts": "1438631355.000232"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08C464NS> these logos are based on your mockup, and not final, we can still slightly differentiate the logo if we can decide on the best method",
+        "ts": "1438631367.000233"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "<@U08EZP01H>: looking better mate : )",
+        "ts": "1438631932.000234"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08EZP01H>: looks good man",
+        "ts": "1438633440.000235"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "<@U08EZP01H>: exactly what i had in mind. looks awesome.",
+        "ts": "1438640369.000236"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "good to hear. <@U08C464NS> and i discussed adding a bit more variation in terms of style, orientation, color, but i'm glad we've got the verbage down",
+        "ts": "1438640476.000237"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "how about the capitalization? I've been using only DATT, but I'm seeing datt and Datt used as well",
+        "ts": "1438642491.000238"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08ERPTQF>: that's something we'll have to nail down and be consistent with. <@U08C464NS> do you have a preference here? a happy balance between professional and minimal seems to be 'Datt'",
+        "ts": "1438642626.000239"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Agree that Datt has the best aesthetics, however DATT is more aligned with the acronym \"Distribute All The Things\"",
+        "ts": "1438642737.000240"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Maybe DATT upper case is the network\/protocol, and Datt title case is the company\/foundation...",
+        "ts": "1438642876.000241"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "can you make up another mockup <@U08EZP01H> ?",
+        "ts": "1438642936.000242"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "would be nice to have consistency, but then again, for the network's logo, it'll mostly be the symbol used on its own I reckon so not a massive thing",
+        "ts": "1438642989.000243"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "what are you thinking? of some various different flavors?",
+        "ts": "1438642993.000244"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "just so we can see the upper\/lowercase variations",
+        "ts": "1438643014.000245"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "sure, gimme a few",
+        "ts": "1438643024.000246"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "k, no rush :simple_smile:",
+        "ts": "1438643031.000247"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08EZP01H|darrenm> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08HLJJ5R\/logo_variations.png|logo_variations.png>",
+        "file": {
+            "id": "F08HLJJ5R",
+            "created": 1438644871,
+            "timestamp": 1438644871,
+            "name": "logo_variations.png",
+            "title": "logo_variations.png",
+            "mimetype": "image\/png",
+            "filetype": "png",
+            "pretty_type": "PNG",
+            "user": "U08EZP01H",
+            "editable": false,
+            "size": 25855,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HLJJ5R-ee6f46b087\/logo_variations.png",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HLJJ5R-ee6f46b087\/download\/logo_variations.png",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HLJJ5R\/logo_variations.png",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HLJJ5R\/download\/logo_variations.png",
+            "thumb_64": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HLJJ5R-4e7a5b2daa\/logo_variations_64.png",
+            "thumb_80": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HLJJ5R-4e7a5b2daa\/logo_variations_80.png",
+            "thumb_360": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HLJJ5R-4e7a5b2daa\/logo_variations_360.png",
+            "thumb_360_w": 288,
+            "thumb_360_h": 360,
+            "thumb_480": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HLJJ5R-4e7a5b2daa\/logo_variations_480.png",
+            "thumb_480_w": 384,
+            "thumb_480_h": 480,
+            "thumb_160": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HLJJ5R-4e7a5b2daa\/logo_variations_160.png",
+            "thumb_720": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HLJJ5R-4e7a5b2daa\/logo_variations_720.png",
+            "thumb_720_w": 576,
+            "thumb_720_h": 720,
+            "thumb_960": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HLJJ5R-4e7a5b2daa\/logo_variations_960.png",
+            "thumb_960_w": 768,
+            "thumb_960_h": 960,
+            "image_exif_rotation": 1,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08HLJJ5R\/logo_variations.png",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08HLJJ5R-ee6f46b087",
+            "channels": [
+                "C08F8UMGB"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 0
+        },
+        "user": "U08EZP01H",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U08EZP01H|darrenm>",
+        "bot_id": null,
+        "ts": "1438644874.000248"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08C464NS> <@U08ERPTQF> here's a whole bunch of different 'combos' to help guide the direction",
+        "ts": "1438644916.000249"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "thanks <@U08EZP01H>",
+        "ts": "1438644974.000250"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "another variant i'm about to try: making the bottom 4 dots a different shade\/color for 'foundation'",
+        "ts": "1438645027.000251"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I like Datt and datt",
+        "ts": "1438645060.000252"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "both look nice to me",
+        "ts": "1438645066.000253"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "bold first, or second?",
+        "ts": "1438645113.000254"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "second, like you originally did it",
+        "ts": "1438645142.000255"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I basically like how you did it originally :stuck_out_tongue:",
+        "ts": "1438645216.000256"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "just wanted to see what the others looked like",
+        "ts": "1438645223.000257"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "yea, for being a creative type I only take an engineering approach lol",
+        "ts": "1438645268.000258"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "what do you think about adding a touch of color? are we trying to include too much?",
+        "ts": "1438645352.000259"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "for the foundation logo variant i think it works well.",
+        "ts": "1438645378.000260"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I like the plain black one tbh. The idea was that it's versatile enough so that custom channels\/boards would have their own colorscheme and it'd still fit in",
+        "ts": "1438645512.000261"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08EZP01H|darrenm> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08HLRGBH\/logo_variations-02.png|example idea>",
+        "file": {
+            "id": "F08HLRGBH",
+            "created": 1438645515,
+            "timestamp": 1438645515,
+            "name": "logo_variations-02.png",
+            "title": "example idea",
+            "mimetype": "image\/png",
+            "filetype": "png",
+            "pretty_type": "PNG",
+            "user": "U08EZP01H",
+            "editable": false,
+            "size": 5657,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HLRGBH-a851ebc196\/logo_variations-02.png",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HLRGBH-a851ebc196\/download\/logo_variations-02.png",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HLRGBH\/logo_variations-02.png",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HLRGBH\/download\/logo_variations-02.png",
+            "thumb_64": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HLRGBH-f2846b379b\/logo_variations-02_64.png",
+            "thumb_80": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HLRGBH-f2846b379b\/logo_variations-02_80.png",
+            "thumb_360": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HLRGBH-f2846b379b\/logo_variations-02_360.png",
+            "thumb_360_w": 344,
+            "thumb_360_h": 360,
+            "thumb_480": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HLRGBH-f2846b379b\/logo_variations-02_480.png",
+            "thumb_480_w": 459,
+            "thumb_480_h": 480,
+            "thumb_160": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HLRGBH-f2846b379b\/logo_variations-02_160.png",
+            "image_exif_rotation": 1,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08HLRGBH\/logo_variations-02.png",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08HLRGBH-a851ebc196",
+            "channels": [
+                "C08F8UMGB"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 0
+        },
+        "user": "U08EZP01H",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U08EZP01H|darrenm>",
+        "bot_id": null,
+        "ts": "1438645519.000262"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "i.e. <https:\/\/github.com\/dattnetwork\/dattmedia\/tree\/master\/chris_NODE\/Mockups\/Board%20Color%20Customization>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "dattnetwork\/dattmedia",
+                "title_link": "https:\/\/github.com\/dattnetwork\/dattmedia\/tree\/master\/chris_NODE\/Mockups\/Board%20Color%20Customization",
+                "text": "dattmedia - Design all the things.",
+                "fallback": "GitHub: dattnetwork\/dattmedia",
+                "thumb_url": "https:\/\/avatars0.githubusercontent.com\/u\/13266895?v=3&s=400",
+                "from_url": "https:\/\/github.com\/dattnetwork\/dattmedia\/tree\/master\/chris_NODE\/Mockups\/Board%20Color%20Customization",
+                "thumb_width": 214,
+                "thumb_height": 214,
+                "id": 1
+            }
+        ],
+        "ts": "1438645555.000263"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "then the branding could be changed to any colors that were suitable",
+        "ts": "1438645690.000265"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "*as well",
+        "ts": "1438645704.000266"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Yea, the plain version does stand strong on its own. I still worry we don't provide clear differentiation aside from the word. <@U07GDL0H5> suggested \"they can have similar names but visually distinguish with different typefaces, logos, and be sure to always be clear about which one you are talking about\"",
+        "ts": "1438645713.000267"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I thought we discussed this earlier? I said that a different symbol would work too",
+        "ts": "1438645763.000268"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "it could still retain the feeling of the other without being exactly the same",
+        "ts": "1438645789.000269"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I'll have a play with some ideas",
+        "ts": "1438645798.000270"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Well I think we've done exactly that. The difference is subtle enough to communicate they're related, but different enough to be recognizable.",
+        "ts": "1438645929.000271"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "We lose the minimalist feeling if we venture farther too far out from subtle changes.",
+        "ts": "1438646077.000272"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08C464NS|chris> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/chris\/F08HM9ETE\/structure_outline.png|structure_outline.png>",
+        "file": {
+            "id": "F08HM9ETE",
+            "created": 1438646339,
+            "timestamp": 1438646339,
+            "name": "structure_outline.png",
+            "title": "structure_outline.png",
+            "mimetype": "image\/png",
+            "filetype": "png",
+            "pretty_type": "PNG",
+            "user": "U08C464NS",
+            "editable": false,
+            "size": 50276,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HM9ETE-f4d1022cec\/structure_outline.png",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HM9ETE-f4d1022cec\/download\/structure_outline.png",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HM9ETE\/structure_outline.png",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HM9ETE\/download\/structure_outline.png",
+            "thumb_64": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HM9ETE-b0c8b1d129\/structure_outline_64.png",
+            "thumb_80": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HM9ETE-b0c8b1d129\/structure_outline_80.png",
+            "thumb_360": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HM9ETE-b0c8b1d129\/structure_outline_360.png",
+            "thumb_360_w": 321,
+            "thumb_360_h": 360,
+            "thumb_480": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HM9ETE-b0c8b1d129\/structure_outline_480.png",
+            "thumb_480_w": 428,
+            "thumb_480_h": 480,
+            "thumb_160": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HM9ETE-b0c8b1d129\/structure_outline_160.png",
+            "thumb_720": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HM9ETE-b0c8b1d129\/structure_outline_720.png",
+            "thumb_720_w": 642,
+            "thumb_720_h": 720,
+            "thumb_960": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HM9ETE-b0c8b1d129\/structure_outline_960.png",
+            "thumb_960_w": 856,
+            "thumb_960_h": 960,
+            "image_exif_rotation": 1,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/chris\/F08HM9ETE\/structure_outline.png",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08HM9ETE-f4d1022cec",
+            "channels": [
+                "C08F8UMGB"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 0
+        },
+        "user": "U08C464NS",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U08C464NS|chris>",
+        "bot_id": null,
+        "ts": "1438646343.000273"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "how about something like that for the foundation",
+        "ts": "1438646353.000274"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "the building shape adds the feeling of some kind of insitution",
+        "ts": "1438646376.000275"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "i see the house-like imagery, but i also see space invaders lol",
+        "ts": "1438646380.000276"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "I see where you're headed. Maybe try dot pattern variations as well as colors",
+        "ts": "1438646441.000277"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": ":thumbsup:  :space_invader:",
+        "ts": "1438646442.000278"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08C464NS|chris> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/chris\/F08HMK1PT\/structure_outline2.png|structure_outline2.png>",
+        "file": {
+            "id": "F08HMK1PT",
+            "created": 1438646512,
+            "timestamp": 1438646512,
+            "name": "structure_outline2.png",
+            "title": "structure_outline2.png",
+            "mimetype": "image\/png",
+            "filetype": "png",
+            "pretty_type": "PNG",
+            "user": "U08C464NS",
+            "editable": false,
+            "size": 50335,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HMK1PT-52bb192c26\/structure_outline2.png",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HMK1PT-52bb192c26\/download\/structure_outline2.png",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HMK1PT\/structure_outline2.png",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HMK1PT\/download\/structure_outline2.png",
+            "thumb_64": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HMK1PT-bdfb88c0b0\/structure_outline2_64.png",
+            "thumb_80": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HMK1PT-bdfb88c0b0\/structure_outline2_80.png",
+            "thumb_360": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HMK1PT-bdfb88c0b0\/structure_outline2_360.png",
+            "thumb_360_w": 321,
+            "thumb_360_h": 360,
+            "thumb_480": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HMK1PT-bdfb88c0b0\/structure_outline2_480.png",
+            "thumb_480_w": 428,
+            "thumb_480_h": 480,
+            "thumb_160": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HMK1PT-bdfb88c0b0\/structure_outline2_160.png",
+            "thumb_720": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HMK1PT-bdfb88c0b0\/structure_outline2_720.png",
+            "thumb_720_w": 642,
+            "thumb_720_h": 720,
+            "thumb_960": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HMK1PT-bdfb88c0b0\/structure_outline2_960.png",
+            "thumb_960_w": 856,
+            "thumb_960_h": 960,
+            "image_exif_rotation": 1,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/chris\/F08HMK1PT\/structure_outline2.png",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08HMK1PT-52bb192c26",
+            "channels": [
+                "C08F8UMGB"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 0
+        },
+        "user": "U08C464NS",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U08C464NS|chris>",
+        "bot_id": null,
+        "ts": "1438646517.000279"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "that's the kind of thing I had in mind when I said similar-ish but not a copy",
+        "ts": "1438646546.000280"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Personally I think the four color dots is my top pick. It's very minimal still, but futuristic feeling",
+        "ts": "1438646592.000281"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "(the latest one)",
+        "ts": "1438646607.000282"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "so the Datt, Inc one would be solid black always, basically",
+        "ts": "1438646658.000283"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "yeah I could see that",
+        "ts": "1438646674.000284"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "do you wanna try some diff colors?",
+        "ts": "1438646687.000285"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Can we avoid the comma in Datt, Inc?",
+        "ts": "1438646696.000286"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "we could. right?",
+        "ts": "1438646709.000287"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "yeah looking at it, the color difference makes the top look like a roof",
+        "ts": "1438646730.000288"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08C464NS> i'll update that structure outline concept. maybe we should scrap the special font for Datt Network and not brand it uniquely",
+        "ts": "1438646781.000289"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "how about intersecting the top 9 dots of the network, with another 9 dots of the foundation?",
+        "ts": "1438646789.000290"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08ERPTQF>: i can play with some ideas in that thread. we may end up trading simplicity if we get too cluttered though.",
+        "ts": "1438646834.000291"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "fair enough",
+        "ts": "1438646870.000292"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "here's a simple idea",
+        "ts": "1438647072.000293"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "how about for the foundation, just swapping the symbols dots for diamond shapes",
+        "ts": "1438647093.000294"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "i'll do throw that in too",
+        "ts": "1438647179.000295"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08ERPTQF> 's idea actually led to a pretty cool concept. i made 18 dots and intersected them so it looks like 9 pegholes",
+        "ts": "1438647241.000296"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "few more min...",
+        "ts": "1438647253.000297"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": ":simple_smile:",
+        "ts": "1438647275.000298"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "the small diamonds are hard to see unless you switch to outline. ill show that",
+        "ts": "1438647955.000299"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "cool",
+        "ts": "1438647970.000300"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "As an aside, do you guys have any ideas around iconography for Tip | Gild or Like | Vote? I didn't see these elements on the mockup text post",
+        "ts": "1438648031.000301"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "the like\/vote are the dots",
+        "ts": "1438648051.000302"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "<https:\/\/github.com\/dattnetwork\/dattmedia\/blob\/master\/chris_NODE\/Mockups\/Standard%20Colors\/frontpage.png>",
+        "ts": "1438648086.000303"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "on the left",
+        "ts": "1438648101.000304"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "right, they're down the left column",
+        "ts": "1438648105.000305"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "for gild, you could just have \"GILD\" in the subtext",
+        "ts": "1438648131.000306"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "GUIL*",
+        "ts": "1438648136.000307"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "GUILD*****",
+        "ts": "1438648139.000308"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "that signifies that there is only one direction, e.g. you can't down vote - which is not a bad thing IMO",
+        "edited": {
+            "user": "U08ERPTQF",
+            "ts": "1438648160.000000"
+        },
+        "ts": "1438648141.000309"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "yeah",
+        "ts": "1438648171.000311"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I think combined with votes = bitcoin, it could create a completely different dynamic to reddit",
+        "ts": "1438648195.000312"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "hopefully better",
+        "ts": "1438648201.000313"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "but we'd have to wait and see",
+        "ts": "1438648208.000314"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "avoiding arrows seems like a sound idea",
+        "ts": "1438648238.000315"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "it's over done",
+        "ts": "1438648242.000316"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "this was discussed a lot in <#C08FM0F6G> - I'm all for only up votes... but we might do better than call it 'likes'",
+        "ts": "1438648248.000317"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "yeah, that's just semantics. whatever we end up calling it :stuck_out_tongue:",
+        "ts": "1438648275.000318"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "maximum appreciation brownie points",
+        "ts": "1438648285.000319"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "we need to invent a new simple term that describes the concept of actually, literally, putting your money where your mouth is",
+        "ts": "1438648292.000320"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "'value backing' or something",
+        "ts": "1438648340.000321"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08EZP01H|darrenm> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08HNANBW\/logo_variations-03.png|logo_variations-03.png>",
+        "file": {
+            "id": "F08HNANBW",
+            "created": 1438648350,
+            "timestamp": 1438648350,
+            "name": "logo_variations-03.png",
+            "title": "logo_variations-03.png",
+            "mimetype": "image\/png",
+            "filetype": "png",
+            "pretty_type": "PNG",
+            "user": "U08EZP01H",
+            "editable": false,
+            "size": 21356,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HNANBW-cac2e96650\/logo_variations-03.png",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HNANBW-cac2e96650\/download\/logo_variations-03.png",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HNANBW\/logo_variations-03.png",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HNANBW\/download\/logo_variations-03.png",
+            "thumb_64": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HNANBW-1d733a6660\/logo_variations-03_64.png",
+            "thumb_80": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HNANBW-1d733a6660\/logo_variations-03_80.png",
+            "thumb_360": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HNANBW-1d733a6660\/logo_variations-03_360.png",
+            "thumb_360_w": 288,
+            "thumb_360_h": 360,
+            "thumb_480": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HNANBW-1d733a6660\/logo_variations-03_480.png",
+            "thumb_480_w": 384,
+            "thumb_480_h": 480,
+            "thumb_160": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HNANBW-1d733a6660\/logo_variations-03_160.png",
+            "thumb_720": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HNANBW-1d733a6660\/logo_variations-03_720.png",
+            "thumb_720_w": 576,
+            "thumb_720_h": 720,
+            "thumb_960": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HNANBW-1d733a6660\/logo_variations-03_960.png",
+            "thumb_960_w": 768,
+            "thumb_960_h": 960,
+            "image_exif_rotation": 1,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08HNANBW\/logo_variations-03.png",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08HNANBW-cac2e96650",
+            "channels": [
+                "C08F8UMGB"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 0
+        },
+        "user": "U08EZP01H",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U08EZP01H|darrenm>",
+        "bot_id": null,
+        "ts": "1438648354.000322"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "endorse.... \"Mary endorsed your post\"",
+        "ts": "1438648354.000323"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Cashdorse",
+        "ts": "1438648362.000324"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "really though, endorse works well.",
+        "ts": "1438648370.000325"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "cool good work darren",
+        "ts": "1438648395.000326"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "i reduced each diamond size layer by 20%",
+        "ts": "1438648420.000327"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "not sure what you used, but it looked roughly the same",
+        "ts": "1438648429.000328"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "i think we're getting down to details now. i don't know if i'm sold on the open-diamond concept... i do like that it implies openness",
+        "ts": "1438648501.000329"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "you know I like top left one",
+        "ts": "1438648522.000330"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "that crescents",
+        "ts": "1438648530.000331"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "something about that simplicity",
+        "ts": "1438648559.000332"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "which ones do you like",
+        "ts": "1438648567.000333"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "i like that top left one myself, but the crescent is used on many flags",
+        "ts": "1438648687.000334"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "should we worry about that? am i stretching it too far?",
+        "ts": "1438648704.000335"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<https:\/\/en.wikipedia.org\/wiki\/Star_and_crescent>",
+        "ts": "1438648716.000336"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "nah I don't think people will care\/notice",
+        "ts": "1438648765.000337"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "it feels the strongest",
+        "ts": "1438648767.000338"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "plus there's 9 of them at a completely diff angle",
+        "ts": "1438648786.000339"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "it compliments the Datt Inc one the most",
+        "ts": "1438648838.000340"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "good job dawwwg",
+        "ts": "1438648876.000341"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "9 moons = 9 months = the birth of something...",
+        "ts": "1438648954.000342"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "haha",
+        "ts": "1438648974.000343"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "not that we're going to take 9 months to launch Datt, but it's another 'meaning' people could infer",
+        "edited": {
+            "user": "U08ERPTQF",
+            "ts": "1438649012.000000"
+        },
+        "ts": "1438648999.000344",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08C464NS"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "HL3 confirmed.",
+        "ts": "1438649013.000346"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "and we will moonlight as midwives",
+        "ts": "1438649016.000347"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "create an army",
+        "ts": "1438649025.000348"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "of Datt babies",
+        "ts": "1438649031.000349"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "genetically engineered for curating the best content",
+        "ts": "1438649049.000350"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "FYI I tried putting the crescent at different angles. putting the shadow at 4-5 o'clock seems to best create the illusion",
+        "ts": "1438649059.000351"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I'm buzzed, glad we worked through this :simple_smile:",
+        "ts": "1438649133.000352"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "good job",
+        "ts": "1438649136.000353"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "and thanks for the idea <@U08ERPTQF> !",
+        "ts": "1438649174.000354"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "cheers",
+        "ts": "1438649213.000355"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08C464NS>: I also have some ideas for the balance mockup if now's a good time to discuss",
+        "ts": "1438649258.000356"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "yeah go for it",
+        "ts": "1438649281.000357"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "beneath current balance we could offer a simple breakdown, which also could act as a filter on the transaction list\n\n-&gt;] deposits +0.001 BTC  |  -&gt;] likes +0.0002 BTC  |  [-&gt; likes  -0.00005BTC  |  [-&gt; withdrawals -0.001 BTC",
+        "ts": "1438649748.000358"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "-&gt;] should be an icon, but hopefully you get the idea",
+        "ts": "1438649780.000359"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "good idea",
+        "ts": "1438649826.000360"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "so the user can easily switch between the differnt types of transactions",
+        "ts": "1438649845.000361"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "yea and it gives them a high level view of where their money is coming \/ going... over years this could be quite a nice motivator to keep engaging with the community",
+        "edited": {
+            "user": "U08ERPTQF",
+            "ts": "1438649935.000000"
+        },
+        "ts": "1438649919.000362"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "cool yeah. good stuff!",
+        "ts": "1438649998.000364"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I'll play with some ideas for the next version",
+        "ts": "1438650015.000365"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": ":thumbsup:",
+        "ts": "1438650040.000366"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "right I'm going to bed",
+        "ts": "1438650125.000367"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "I'm really enjoying the collaborative efforts across design\/dev\/business\/meta aspects of the project, :simple_smile:",
+        "ts": "1438650141.000368"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "later people. good progress today :simple_smile:",
+        "ts": "1438650146.000369"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "night <@U08C464NS>",
+        "ts": "1438650160.000370"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "hey one more question",
+        "ts": "1438650162.000371"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08EZP01H|darrenm> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08HP604X\/logo_variations-04.png|logo_variations-04.png>",
+        "file": {
+            "id": "F08HP604X",
+            "created": 1438650169,
+            "timestamp": 1438650169,
+            "name": "logo_variations-04.png",
+            "title": "logo_variations-04.png",
+            "mimetype": "image\/png",
+            "filetype": "png",
+            "pretty_type": "PNG",
+            "user": "U08EZP01H",
+            "editable": false,
+            "size": 8378,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HP604X-e1209e320d\/logo_variations-04.png",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HP604X-e1209e320d\/download\/logo_variations-04.png",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HP604X\/logo_variations-04.png",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HP604X\/download\/logo_variations-04.png",
+            "thumb_64": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HP604X-3ce177e520\/logo_variations-04_64.png",
+            "thumb_80": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HP604X-3ce177e520\/logo_variations-04_80.png",
+            "thumb_360": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HP604X-3ce177e520\/logo_variations-04_360.png",
+            "thumb_360_w": 360,
+            "thumb_360_h": 104,
+            "thumb_480": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HP604X-3ce177e520\/logo_variations-04_480.png",
+            "thumb_480_w": 480,
+            "thumb_480_h": 138,
+            "thumb_160": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HP604X-3ce177e520\/logo_variations-04_160.png",
+            "thumb_720": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HP604X-3ce177e520\/logo_variations-04_720.png",
+            "thumb_720_w": 720,
+            "thumb_720_h": 208,
+            "image_exif_rotation": 1,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08HP604X\/logo_variations-04.png",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08HP604X-e1209e320d",
+            "channels": [
+                "C08F8UMGB"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 0
+        },
+        "user": "U08EZP01H",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U08EZP01H|darrenm>",
+        "bot_id": null,
+        "ts": "1438650172.000372"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "left is pretty strong",
+        "ts": "1438650194.000373"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "but right too",
+        "ts": "1438650213.000374"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "ill make the one on the right a bit bolder than",
+        "ts": "1438650221.000375"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "its also offset, so much sharper edges",
+        "ts": "1438650229.000376"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "I guess depends where it's gonna be used and how big it'll be",
+        "ts": "1438650238.000377"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "i'll keep all my source files and we can call most the logo stuff done for now",
+        "ts": "1438650278.000378"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "yeah man, upload the vector to github when you get the chance",
+        "ts": "1438650302.000379"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "sure thing. great day today",
+        "ts": "1438650315.000380"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "ciao :simple_smile:",
+        "ts": "1438650324.000381"
+    },
+    {
+        "type": "message",
+        "user": "U08C464NS",
+        "text": "good stuff. later",
+        "ts": "1438650326.000382"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "just committed the .ai and .png files. here's the one of the last outputs.",
+        "ts": "1438651890.000383"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<https:\/\/github.com\/dattnetwork\/dattmedia\/blob\/master\/design_strategy\/logo_variations3.png>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "dattnetwork\/dattmedia",
+                "title_link": "https:\/\/github.com\/dattnetwork\/dattmedia\/blob\/master\/design_strategy\/logo_variations3.png",
+                "text": "dattmedia - Design all the things.",
+                "fallback": "GitHub: dattnetwork\/dattmedia",
+                "thumb_url": "https:\/\/avatars0.githubusercontent.com\/u\/13266895?v=3&s=400",
+                "from_url": "https:\/\/github.com\/dattnetwork\/dattmedia\/blob\/master\/design_strategy\/logo_variations3.png",
+                "thumb_width": 214,
+                "thumb_height": 214,
+                "id": 1
+            }
+        ],
+        "ts": "1438651891.000384"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08EZP01H|darrenm> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08HQ5G9H\/logo_variations3.png|logo_variations3.png> and commented: <https:\/\/github.com\/dattnetwork\/dattmedia\/blob\/master\/design_strategy\/logo_variations3.png>",
+        "file": {
+            "id": "F08HQ5G9H",
+            "created": 1438651908,
+            "timestamp": 1438651908,
+            "name": "logo_variations3.png",
+            "title": "logo_variations3.png",
+            "mimetype": "image\/png",
+            "filetype": "png",
+            "pretty_type": "PNG",
+            "user": "U08EZP01H",
+            "editable": false,
+            "size": 25271,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HQ5G9H-84d9c674eb\/logo_variations3.png",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08HQ5G9H-84d9c674eb\/download\/logo_variations3.png",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HQ5G9H\/logo_variations3.png",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08HQ5G9H\/download\/logo_variations3.png",
+            "thumb_64": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HQ5G9H-f1b2589d70\/logo_variations3_64.png",
+            "thumb_80": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HQ5G9H-f1b2589d70\/logo_variations3_80.png",
+            "thumb_360": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HQ5G9H-f1b2589d70\/logo_variations3_360.png",
+            "thumb_360_w": 288,
+            "thumb_360_h": 360,
+            "thumb_480": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HQ5G9H-f1b2589d70\/logo_variations3_480.png",
+            "thumb_480_w": 384,
+            "thumb_480_h": 480,
+            "thumb_160": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HQ5G9H-f1b2589d70\/logo_variations3_160.png",
+            "thumb_720": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HQ5G9H-f1b2589d70\/logo_variations3_720.png",
+            "thumb_720_w": 576,
+            "thumb_720_h": 720,
+            "thumb_960": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08HQ5G9H-f1b2589d70\/logo_variations3_960.png",
+            "thumb_960_w": 768,
+            "thumb_960_h": 960,
+            "image_exif_rotation": 1,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/darrenm\/F08HQ5G9H\/logo_variations3.png",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08HQ5G9H-84d9c674eb",
+            "channels": [
+                "C08F8UMGB"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 1,
+            "initial_comment": {
+                "id": "Fc08HQ2GLS",
+                "created": 1438651912,
+                "timestamp": 1438651912,
+                "user": "U08EZP01H",
+                "comment": "<https:\/\/github.com\/dattnetwork\/dattmedia\/blob\/master\/design_strategy\/logo_variations3.png>"
+            }
+        },
+        "user": "U08EZP01H",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U08EZP01H|darrenm>",
+        "bot_id": null,
+        "ts": "1438651912.000386"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "awesome work <@U08C464NS> <@U08EZP01H> !! i love the most recent one ... different dot formations are better than colors just because it makes placing the logo on different backgrounds a lot easier",
+        "ts": "1438657156.000387",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08C464NS"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "and i love the moons for the datt foundation",
+        "ts": "1438657165.000388"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": ":+1::smile:",
+        "ts": "1438658055.000389"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<http:\/\/dattnetwork.github.io\/> now has a really basic submit flow mock going",
+        "ts": "1438668533.000390"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "can you link me some documentation on how this works so I can read up. <@U08C464NS> will prolly want to know too",
+        "ts": "1438669150.000391"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08DD8LNP>*",
+        "ts": "1438669163.000392"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<https:\/\/github.com\/dattnetwork\/datt.ui> lists dependencies and how to get it running",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "dattnetwork\/datt.ui",
+                "title_link": "https:\/\/github.com\/dattnetwork\/datt.ui",
+                "text": "datt.ui - Ember.js UX\/mock playground that may eventually evolve into something useful",
+                "fallback": "GitHub: dattnetwork\/datt.ui",
+                "thumb_url": "https:\/\/avatars0.githubusercontent.com\/u\/13266895?v=3&s=400",
+                "from_url": "https:\/\/github.com\/dattnetwork\/datt.ui",
+                "thumb_width": 214,
+                "thumb_height": 214,
+                "id": 1
+            }
+        ],
+        "ts": "1438669224.000393"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "in general you\u2019ll be dealing with: <https:\/\/github.com\/dattnetwork\/datt.ui\/tree\/master\/app\/templates> and <https:\/\/github.com\/dattnetwork\/datt.ui\/tree\/master\/app\/styles>",
+        "ts": "1438669251.000395"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "once you get it running it will auto refresh when you keep the browser open to it as you make changes",
+        "ts": "1438669274.000396"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "Best general ember docs are here: <http:\/\/guides.emberjs.com\/v1.13.0\/>",
+        "ts": "1438669290.000397"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "and feel free to ping me if you have any questions",
+        "ts": "1438669314.000398"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "In general ember is specifically designed for this sort of very thick browser application.",
+        "ts": "1438669558.000399"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I\u2019ve built some CRAZY intranet apps with this stuff",
+        "ts": "1438669581.000400"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "alright i'll refer back to this quite a bit",
+        "ts": "1438669676.000401"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<http:\/\/discuss.emberjs.com> discourse is built on ember as well.  But like my crazy intranet apps it was built before the big push towards the component model of ember development",
+        "attachments": [
+            {
+                "text": "Companion discussion forum for the ember.js project",
+                "fallback": "Companion discussion forum for the ember.js project",
+                "from_url": "http:\/\/discuss.emberjs.com",
+                "id": 1
+            }
+        ],
+        "ts": "1438669854.000402"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I\u2019m trying to keep things really simple and well separated in the datt.ui mock app",
+        "ts": "1438669883.000404"
+    }
+]

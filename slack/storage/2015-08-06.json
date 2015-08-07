@@ -1,0 +1,9 @@
+[
+    {
+        "user": "U08DH3ESU",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08DH3ESU|aramkris> has joined the channel",
+        "ts": "1438921154.000046"
+    }
+]

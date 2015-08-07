@@ -244,11 +244,11 @@
                 "color": "D0D0D0",
                 "fallback": "[August 1st, 2015 11:53 AM] chris: (I'll pin this so new people can see) The design files and mockups are at <https:\/\/github.com\/dattnetwork\/dattmedia>",
                 "author_subname": "chris",
-                "ts": "1438455195.000027",
+                "ts": 1438455195,
                 "text": "(I'll pin this so new people can see) The design files and mockups are at <https:\/\/github.com\/dattnetwork\/dattmedia>",
                 "author_name": "Hello",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/chris",
-                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/7ebe6998ac28a82051477b003945a82a.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0010-48.png",
+                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/7ebe6998ac28a82051477b003945a82a.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0010-48.png",
                 "mrkdwn_in": [
                     "text"
                 ]
@@ -310,7 +310,16 @@
         "type": "message",
         "user": "U08C464NS",
         "text": "ah yeah, I can see that :simple_smile:. The reason I didn't do that originally was because it seemed a little too generic for a logo. How it is right now with the larger dots at the top is unique enough to stand out, and still communicate in an abstract way what the site's about :simple_smile:",
-        "ts": "1438467327.000038"
+        "ts": "1438467327.000038",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -330,7 +339,16 @@
                 "id": 1
             }
         ],
-        "ts": "1438482728.000039"
+        "ts": "1438482728.000039",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08C464NS"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "user": "U08DD8LNP",

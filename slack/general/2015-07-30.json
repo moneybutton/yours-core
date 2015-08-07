@@ -182,7 +182,16 @@
         "type": "message",
         "user": "U08CCGGG1",
         "text": "Thanks for the invite <@U07GDL0H5>! Hey <@U08CBD41G>",
-        "ts": "1438265611.000034"
+        "ts": "1438265611.000034",
+        "reactions": [
+            {
+                "name": "wave",
+                "users": [
+                    "U08CBD41G"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -1566,11 +1575,11 @@
                 "color": "D0D0D0",
                 "fallback": "[July 30th, 2015 4:57 PM] go1dfish: I've collected some of my higher level thoughts here: <http:\/\/go1dfish.me\/blog\/crypto-anarchy-social-aggregator-bitcoin-world-wide-ledger>",
                 "author_subname": "go1dfish",
-                "ts": "1438300669.000221",
+                "ts": 1438300669,
                 "text": "I've collected some of my higher level thoughts here: <http:\/\/go1dfish.me\/blog\/crypto-anarchy-social-aggregator-bitcoin-world-wide-ledger>",
                 "author_name": "Alex Goodwin",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/go1dfish",
-                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0010-48.png",
+                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0010-48.png",
                 "mrkdwn_in": [
                     "text"
                 ]
@@ -1741,11 +1750,11 @@
                 "color": "D0D0D0",
                 "fallback": "[July 30th, 2015 5:01 PM] go1dfish: This is another good thing to read IMO I've always had mad respect for yishan <https:\/\/www.reddit.com\/r\/Bitcoin\/comments\/3ckf7u\/ryan_x_charles_is_building_a_decentralized_reddit\/csxsm1w>",
                 "author_subname": "go1dfish",
-                "ts": "1438300912.000243",
+                "ts": 1438300912,
                 "text": "This is another good thing to read IMO I've always had mad respect for yishan <https:\/\/www.reddit.com\/r\/Bitcoin\/comments\/3ckf7u\/ryan_x_charles_is_building_a_decentralized_reddit\/csxsm1w>",
                 "author_name": "Alex Goodwin",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/go1dfish",
-                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0010-48.png",
+                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0010-48.png",
                 "mrkdwn_in": [
                     "text"
                 ]
@@ -2191,7 +2200,16 @@
         "type": "message",
         "user": "U08D641AP",
         "text": "only allow one action, monetary flow",
-        "ts": "1438301741.000316"
+        "ts": "1438301741.000316",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08DDG1SB"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -2630,7 +2648,16 @@
                 "id": 1
             }
         ],
-        "ts": "1438302576.000388"
+        "ts": "1438302576.000388",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08D641AP"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -2668,7 +2695,7 @@
                 "color": "D0D0D0",
                 "fallback": "[July 30th, 2015 5:29 PM] c_prompt: it's rather long so you won't want to read it now but, as options are thrown out, here's something i wrote about how valME's model works: <https:\/\/valme.io\/c\/journal\/c_prompt\/f5qqs\/an-open-letter-to-steve-huffman-reddits-new-ceo-with-an-offer-to-exchange-values>",
                 "author_subname": "c_prompt",
-                "ts": "1438302598.000391",
+                "ts": 1438302598,
                 "text": "it's rather long so you won't want to read it now but, as options are thrown out, here's something i wrote about how valME's model works: <https:\/\/valme.io\/c\/journal\/c_prompt\/f5qqs\/an-open-letter-to-steve-huffman-reddits-new-ceo-with-an-offer-to-exchange-values>",
                 "author_name": "c prompt",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/c_prompt",
@@ -2691,11 +2718,11 @@
                 "color": "D0D0D0",
                 "fallback": "[July 30th, 2015 5:29 PM] go1dfish: <http:\/\/planetawesome.org>  and <https:\/\/frizbee.co> are worth looking at.",
                 "author_subname": "go1dfish",
-                "ts": "1438302576.000388",
+                "ts": 1438302576,
                 "text": "<http:\/\/planetawesome.org>  and <https:\/\/frizbee.co> are worth looking at.",
                 "author_name": "Alex Goodwin",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/go1dfish",
-                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0010-48.png",
+                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0010-48.png",
                 "mrkdwn_in": [
                     "text"
                 ]
@@ -4205,7 +4232,7 @@
                 "color": "D0D0D0",
                 "fallback": "[July 30th, 2015 5:21 PM] martindale: here's Reddit's two different algorithms, which I plan (in converse at least) to simply replace karma with bitcoin \u2013 <http:\/\/amix.dk\/blog\/post\/19588>",
                 "author_subname": "martindale",
-                "ts": "1438302087.000356",
+                "ts": 1438302087,
                 "text": "here's Reddit's two different algorithms, which I plan (in converse at least) to simply replace karma with bitcoin \u2013 <http:\/\/amix.dk\/blog\/post\/19588>",
                 "author_name": "Eric Martindale",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/martindale",
@@ -4240,11 +4267,11 @@
                 "color": "D0D0D0",
                 "fallback": "[July 30th, 2015 5:35 PM] go1dfish: <@U08C9ML1Y>: the one from here: <http:\/\/www.randalolson.com\/2013\/03\/12\/retracing-the-evolution-of-reddit-through-post-data\/>",
                 "author_subname": "go1dfish",
-                "ts": "1438302918.000407",
+                "ts": 1438302918,
                 "text": "<@U08C9ML1Y>: the one from here: <http:\/\/www.randalolson.com\/2013\/03\/12\/retracing-the-evolution-of-reddit-through-post-data\/>",
                 "author_name": "Alex Goodwin",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/go1dfish",
-                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0010-48.png",
+                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0010-48.png",
                 "mrkdwn_in": [
                     "text"
                 ]
@@ -4269,11 +4296,11 @@
                 "color": "D0D0D0",
                 "fallback": "[July 30th, 2015 6:06 PM] go1dfish: <http:\/\/snew.github.io> is a JS reddit client I built, it has it's own default set different from reddits.  I think you'd see the same thing with our client.  People hosting customized versions that provide some default view into a given topic or whatever",
                 "author_subname": "go1dfish",
-                "ts": "1438304768.000491",
+                "ts": 1438304768,
                 "text": "<http:\/\/snew.github.io> is a JS reddit client I built, it has it's own default set different from reddits.  I think you'd see the same thing with our client.  People hosting customized versions that provide some default view into a given topic or whatever",
                 "author_name": "Alex Goodwin",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/go1dfish",
-                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0010-48.png",
+                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0010-48.png",
                 "mrkdwn_in": [
                     "text"
                 ]
@@ -4399,13 +4426,31 @@
         "type": "message",
         "user": "U08C9ML1Y",
         "text": "i'll be the devil's advocate: if we allow everything, deviants will reveal their data accidentally\/eventually, making law enforcement easy...",
-        "ts": "1438312041.000673"
+        "ts": "1438312041.000673",
+        "reactions": [
+            {
+                "name": "clap",
+                "users": [
+                    "U08DDG1SB"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
         "user": "U08DD8LNP",
         "text": "IMO, given the current political climate the benefits outweigh the negatives",
-        "ts": "1438312049.000674"
+        "ts": "1438312049.000674",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08DDG1SB"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",

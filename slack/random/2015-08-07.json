@@ -1,0 +1,57 @@
+[
+    {
+        "user": "U08PP2QQJ",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08PP2QQJ|aweissman> has joined the channel",
+        "ts": "1438955696.000174"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "I\u2019m attending a Meetup with Entropi <http:\/\/meetu.ps\/2LdRQq>",
+        "attachments": [
+            {
+                "service_name": "Meetup",
+                "title": "Entropi",
+                "title_link": "http:\/\/meetu.ps\/2LdRQq",
+                "text": "Co-working and project update for Ryan X Charles' decentralized Reddit project (<http:\/\/github.com\/dattnetwork|github.com\/dattnetwork>) following the DATT hackathon in SF.",
+                "fallback": "Meetup: Entropi",
+                "thumb_url": "http:\/\/img1.meetupstatic.com\/img\/004881038276245959070\/new_logo_big.png",
+                "from_url": "http:\/\/meetu.ps\/2LdRQq",
+                "thumb_width": 567,
+                "thumb_height": 392,
+                "id": 1
+            }
+        ],
+        "ts": "1438971854.000175"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "<@U08BY8MGV> here is the meetup link",
+        "ts": "1438971918.000177"
+    },
+    {
+        "type": "message",
+        "user": "U08F31MGX",
+        "text": "So true: <http:\/\/thenextweb.com\/insider\/2015\/03\/24\/slack-is-quietly-unintentionally-killing-irc\/>",
+        "attachments": [
+            {
+                "service_name": "The Next Web",
+                "title": "Slack Is Quietly, Unintentionally Killing IRC",
+                "title_link": "http:\/\/thenextweb.com\/insider\/2015\/03\/24\/slack-is-quietly-unintentionally-killing-irc\/",
+                "text": "Slack, the messaging tool for business that's changing the way people talk at work, is gaining traction\u00a0in areas that even the company itself didn't antici",
+                "fallback": "The Next Web: Slack Is Quietly, Unintentionally Killing IRC",
+                "image_url": "http:\/\/cdn1.tnwcdn.com\/wp-content\/blogs.dir\/1\/files\/2015\/03\/1-ryU77MsLt5tnp3ow8kqELA.png",
+                "ts": 1427226836,
+                "from_url": "http:\/\/thenextweb.com\/insider\/2015\/03\/24\/slack-is-quietly-unintentionally-killing-irc\/",
+                "image_width": 700,
+                "image_height": 250,
+                "image_bytes": 129934,
+                "id": 1
+            }
+        ],
+        "ts": "1438974107.000178"
+    }
+]

@@ -100,7 +100,16 @@
         "type": "message",
         "user": "U07GDL0H5",
         "text": "i prefer to make sure the user that produced the content gets all or most of the revenue.",
-        "ts": "1438424729.000020"
+        "ts": "1438424729.000020",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -178,7 +187,17 @@
         "type": "message",
         "user": "U07GDL0H5",
         "text": "yes that's the idea. the goal is to create a profitable business by being the first, largest, most reliable, best-branded node on the network",
-        "ts": "1438424938.000033"
+        "ts": "1438424938.000033",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08EZP01H"
+                ],
+                "count": 2
+            }
+        ]
     },
     {
         "type": "message",
@@ -304,11 +323,11 @@
                 "color": "D0D0D0",
                 "fallback": "[August 1st, 2015 3:42 PM] paul_xbt: Okay, here's a spreadsheet showing a particular model of apportioning rewards between Author, Peer, &amp; DATT (Mods or Supernodes are outside of this model) <https:\/\/docs.google.com\/spreadsheets\/d\/19mUSGUwLukbskz5dIj1QXM0rAPmCBrbXZeLz908LfmU\/edit>",
                 "author_subname": "paul_xbt",
-                "ts": "1438468954.000051",
+                "ts": 1438468954,
                 "text": "Okay, here's a spreadsheet showing a particular model of apportioning rewards between Author, Peer, &amp; DATT (Mods or Supernodes are outside of this model) <https:\/\/docs.google.com\/spreadsheets\/d\/19mUSGUwLukbskz5dIj1QXM0rAPmCBrbXZeLz908LfmU\/edit>",
                 "author_name": "Paul Salisbury",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/paul_xbt",
-                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/96cf283248628534fdee2cc0e690c360.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0020-48.png",
+                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/96cf283248628534fdee2cc0e690c360.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0020-48.png",
                 "mrkdwn_in": [
                     "text"
                 ]
@@ -389,11 +408,11 @@
                 "color": "D0D0D0",
                 "fallback": "[August 1st, 2015 4:01 PM] bradkam: <https:\/\/docs.google.com\/spreadsheets\/d\/16vtDV3Ot4lrr2twpUS8Sqgg4OrJ2KIrnQwsuppy56sI\/edit#gid=1827203914>",
                 "author_subname": "bradkam",
-                "ts": "1438470061.000057",
+                "ts": 1438470061,
                 "text": "<https:\/\/docs.google.com\/spreadsheets\/d\/16vtDV3Ot4lrr2twpUS8Sqgg4OrJ2KIrnQwsuppy56sI\/edit#gid=1827203914>",
                 "author_name": "Bradley Kam",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/bradkam",
-                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/5305351f980d56efacf0395267d38f45.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F272a%2Fimg%2Favatars%2Fava_0002-48.png",
+                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/5305351f980d56efacf0395267d38f45.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0002-48.png",
                 "mrkdwn_in": [
                     "text"
                 ]
@@ -430,7 +449,7 @@
                 "color": "D0D0D0",
                 "fallback": "[August 1st, 2015 5:01 PM] ryanxcharles: yo <@U08FELGRX> , business model, how the moderation works, how \"tipping\" \"buying\" \"sponsoring\" whatever works",
                 "author_subname": "ryanxcharles",
-                "ts": "1438473696.000065",
+                "ts": 1438473696,
                 "text": "yo <@U08FELGRX> , business model, how the moderation works, how \"tipping\" \"buying\" \"sponsoring\" whatever works",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/ryanxcharles",
                 "author_icon": "https:\/\/secure.gravatar.com\/avatar\/17e6619ba42a009b25f1883641e64e1c.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0021-48.png",
@@ -754,7 +773,16 @@
         "type": "message",
         "user": "U08EZP01H",
         "text": "i think as long as we maintain an emphasis on getting content creators paid for there work, then demand should go up from the simple, low barrier to entry",
-        "ts": "1438490103.000098"
+        "ts": "1438490103.000098",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",

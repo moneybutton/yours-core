@@ -1,0 +1,633 @@
+[
+    {
+        "type": "message",
+        "user": "U08C22VNW",
+        "text": "An article on the platform\/publisher relationship: <http:\/\/www.theawl.com\/2015\/07\/in-no-charts>",
+        "attachments": [
+            {
+                "service_name": "The Awl",
+                "title": "Mutually Assured Content",
+                "title_link": "http:\/\/www.theawl.com\/2015\/07\/in-no-charts",
+                "text": "In 2015, the illusion of audience ownership is becoming harder to sustain.",
+                "fallback": "The Awl: Mutually Assured Content",
+                "thumb_url": "http:\/\/cdn0.theawl.com\/wp-content\/uploads\/2015\/07\/2015-07-29-16_43_00.gif",
+                "from_url": "http:\/\/www.theawl.com\/2015\/07\/in-no-charts",
+                "thumb_width": 500,
+                "thumb_height": 270,
+                "id": 1
+            }
+        ],
+        "ts": "1438679328.003482"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Great find <@U08C22VNW>!",
+        "ts": "1438683020.003484"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "\"All these worries stem from a transfer of power: from publisher to platform; from content creator to content distributor. In exchange for audience, platforms ask for some degree of labor and conformity and control.\"\nLet's aim to be a platform where publishers &amp; content creators keep control and reduce their reliance on advertising revenue",
+        "ts": "1438683180.003485"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "<@U08ERPTQF>: It seems like someone else is making the BBS and siloed community connection.  I used to run Hotline back in the day too but had forgotten until I read this: <http:\/\/cointelegraph.com\/news\/115053\/how-an-australian-teen-nearly-created-a-decentralized-reddit-in-1997>",
+        "attachments": [
+            {
+                "service_name": "CoinTelegraph",
+                "title": "How an Australian Teen Nearly Created a Decentralized Reddit in 1997 (Op-Ed)",
+                "title_link": "http:\/\/cointelegraph.com\/news\/115053\/how-an-australian-teen-nearly-created-a-decentralized-reddit-in-1997",
+                "text": "In 1997, an Australian teenager created one of the web's first viable p2p programs. What happened to it can teach us a lot about emergent technologies today and where we may be going in the future.",
+                "fallback": "CoinTelegraph: How an Australian Teen Nearly Created a Decentralized Reddit in 1997 (Op-Ed)",
+                "thumb_url": "http:\/\/cointelegraph.com\/images\/725_aHR0cDovL2NvaW50ZWxlZ3JhcGguY29tL3N0b3JhZ2UvdXBsb2Fkcy92aWV3LzBkM2MxYzU3NTk2MTZlYTU3MDBiMDJiZTYxNTFiMDMzLnBuZw==.jpg",
+                "from_url": "http:\/\/cointelegraph.com\/news\/115053\/how-an-australian-teen-nearly-created-a-decentralized-reddit-in-1997",
+                "thumb_width": 725,
+                "thumb_height": 483,
+                "id": 1
+            }
+        ],
+        "ts": "1438692143.003486"
+    },
+    {
+        "user": "U08JFURT3",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08JFURT3|archana> has joined the channel",
+        "ts": "1438698057.003488"
+    },
+    {
+        "type": "message",
+        "user": "U08F31MGX",
+        "text": "I don't know if anyone else is from ATX, but if you are you will probably enjoy this: <http:\/\/www.meetup.com\/Distributed-Systems-Enthusiasts\/events\/223997680\/>",
+        "attachments": [
+            {
+                "service_name": "Meetup",
+                "title": "Distributed Systems Enthusiasts",
+                "title_link": "http:\/\/www.meetup.com\/Distributed-Systems-Enthusiasts\/events\/223997680\/",
+                "text": "I am launching a new service to help folks track their personal location. This talk will describe the architecture, the flow and compartmentalization of information, and the implementation choices mad",
+                "fallback": "Meetup: Distributed Systems Enthusiasts",
+                "thumb_url": "http:\/\/photos2.meetupstatic.com\/photos\/event\/1\/0\/6\/a\/highres_294724202.jpeg",
+                "from_url": "http:\/\/www.meetup.com\/Distributed-Systems-Enthusiasts\/events\/223997680\/",
+                "thumb_width": 800,
+                "thumb_height": 600,
+                "id": 1
+            }
+        ],
+        "ts": "1438699817.003489"
+    },
+    {
+        "type": "message",
+        "user": "U08F31MGX",
+        "text": "&gt;Spot: A Distributed, Cryptographically Private Location Tracking System",
+        "ts": "1438699835.003491"
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "I designed a simple protocol for location privacy. I could not get anyone to care about location privacy. <https:\/\/docs.google.com\/document\/d\/1Lq6uZzgSrO4FkizTUVfbSHHL8T7r0_U7AOmKm4_miEc\/edit>",
+        "ts": "1438706078.003492"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U08G10908|christophera> shared a file: <https:\/\/dattnetwork.slack.com\/files\/christophera\/F08JQ1WTZ\/ephemerallocalityserviceapi|Ephemeral Locality Service API>",
+        "file": {
+            "id": "F08JQ1WTZ",
+            "created": 1438706095,
+            "timestamp": 1438706095,
+            "name": "EphemeralLocalityServiceAPI",
+            "title": "Ephemeral Locality Service API",
+            "mimetype": "application\/vnd.google-apps.document",
+            "filetype": "gdoc",
+            "pretty_type": "GDocs Document",
+            "user": "U08G10908",
+            "editable": false,
+            "size": 45970,
+            "mode": "external",
+            "is_external": true,
+            "external_type": "gdrive",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/docs.google.com\/document\/d\/1Lq6uZzgSrO4FkizTUVfbSHHL8T7r0_U7AOmKm4_miEc\/edit?usp=drivesdk",
+            "url_private": "https:\/\/docs.google.com\/document\/d\/1Lq6uZzgSrO4FkizTUVfbSHHL8T7r0_U7AOmKm4_miEc\/edit?usp=drivesdk",
+            "thumb_64": "https:\/\/slack.global.ssl.fastly.net\/66f9\/img\/files\/gdraw_64.png",
+            "thumb_360": "https:\/\/slack.global.ssl.fastly.net\/272a\/img\/files\/gdoc_360.png",
+            "thumb_360_w": 360,
+            "thumb_360_h": 167,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/christophera\/F08JQ1WTZ\/ephemerallocalityserviceapi",
+            "channels": [
+                "C07GDL0Q7"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 0
+        },
+        "user": "U08G10908",
+        "upload": false,
+        "display_as_bot": false,
+        "username": "<@U08G10908|christophera>",
+        "bot_id": null,
+        "ts": "1438706095.003493"
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "I've some extensions to this protocol that I've never published.",
+        "ts": "1438706164.003494"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08G10908>: That API sounds pretty cool. There's all sorts of fun applications around spontaneous local messaging.",
+        "ts": "1438709762.003495"
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "I registered <http:\/\/shallweplay.com|shallweplay.com> with the intention of a find a game or sport partner with privacy. Never implemented ",
+        "ts": "1438710529.003496"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08G10908>: have you seen the YikYak app? You could build a distributed YikYak with your API &amp; Datt :simple_smile:",
+        "ts": "1438716202.003497"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "my status: talked with ken miyoshi this morning. he's working on a similar idea, using bitcoin for something more like stack overflow than reddit. his is not decentralized, but in other ways has a similar spirit to our work. he's also a potential investor.",
+        "ts": "1438717364.003498",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08D641AP"
+                ],
+                "count": 2
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i'll be beta testing his app soon and then after they're sure it's working as promised we'll open up the beta testing to more people",
+        "ts": "1438717382.003499"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "also will be talking today with: zapchain, andrew of purse, and dan held of general bitcoin fame",
+        "ts": "1438717399.003500",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08DDGSNQ",
+                    "U08EZP01H",
+                    "U08D641AP"
+                ],
+                "count": 3
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U07GDL0H5|ryanxcharles> uploaded a file: <https:\/\/dattnetwork.slack.com\/files\/ryanxcharles\/F08K13QTU\/2015-08-03_16.48.05.jpg|2015-08-03 16.48.05.jpg> and commented: oh, and yesterday, i got a PO box for a business address. this is a view from outside the new \"office\" :simple_smile:",
+        "file": {
+            "id": "F08K13QTU",
+            "created": 1438717492,
+            "timestamp": 1438717492,
+            "name": "2015-08-03 16.48.05.jpg",
+            "title": "2015-08-03 16.48.05.jpg",
+            "mimetype": "image\/jpeg",
+            "filetype": "jpg",
+            "pretty_type": "JPEG",
+            "user": "U07GDL0H5",
+            "editable": false,
+            "size": 4742961,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08K13QTU-8475d12747\/2015-08-03_16.48.05.jpg",
+            "url_download": "https:\/\/slack-files.com\/files-pub\/T07GDKW3U-F08K13QTU-8475d12747\/download\/2015-08-03_16.48.05.jpg",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08K13QTU\/2015-08-03_16.48.05.jpg",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T07GDKW3U-F08K13QTU\/download\/2015-08-03_16.48.05.jpg",
+            "thumb_64": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08K13QTU-d008e7afb4\/2015-08-03_16.48.05_64.jpg",
+            "thumb_80": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08K13QTU-d008e7afb4\/2015-08-03_16.48.05_80.jpg",
+            "thumb_360": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08K13QTU-d008e7afb4\/2015-08-03_16.48.05_360.jpg",
+            "thumb_360_w": 360,
+            "thumb_360_h": 203,
+            "thumb_480": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08K13QTU-d008e7afb4\/2015-08-03_16.48.05_480.jpg",
+            "thumb_480_w": 480,
+            "thumb_480_h": 270,
+            "thumb_160": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08K13QTU-d008e7afb4\/2015-08-03_16.48.05_160.jpg",
+            "thumb_720": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08K13QTU-d008e7afb4\/2015-08-03_16.48.05_720.jpg",
+            "thumb_720_w": 720,
+            "thumb_720_h": 405,
+            "thumb_960": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08K13QTU-d008e7afb4\/2015-08-03_16.48.05_960.jpg",
+            "thumb_960_w": 960,
+            "thumb_960_h": 540,
+            "thumb_1024": "https:\/\/slack-files.com\/files-tmb\/T07GDKW3U-F08K13QTU-d008e7afb4\/2015-08-03_16.48.05_1024.jpg",
+            "thumb_1024_w": 1024,
+            "thumb_1024_h": 576,
+            "image_exif_rotation": 1,
+            "permalink": "https:\/\/dattnetwork.slack.com\/files\/ryanxcharles\/F08K13QTU\/2015-08-03_16.48.05.jpg",
+            "permalink_public": "https:\/\/slack-files.com\/T07GDKW3U-F08K13QTU-8475d12747",
+            "channels": [
+                "C07GDL0Q7"
+            ],
+            "groups": [],
+            "ims": [],
+            "comments_count": 1,
+            "initial_comment": {
+                "id": "Fc08K18TCK",
+                "created": 1438717506,
+                "timestamp": 1438717506,
+                "user": "U07GDL0H5",
+                "comment": "oh, and yesterday, i got a PO box for a business address. this is a view from outside the new \"office\" :simple_smile:"
+            },
+            "reactions": [
+                {
+                    "name": "+1",
+                    "users": [
+                        "U08C464NS",
+                        "U08F2RTCN"
+                    ],
+                    "count": 2
+                }
+            ]
+        },
+        "user": "U07GDL0H5",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U07GDL0H5|ryanxcharles>",
+        "bot_id": null,
+        "ts": "1438717506.003501"
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "What is the plan for identity system? What form of crypto?",
+        "ts": "1438719649.003504"
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "I've been playing more and more with NIKE (Non-Interactive Key Exchange) systems such as EdDSA (Schnorr signature under 25519 curve). It offers a lot of advantages. A good list is here: <http:\/\/bitcoin.stackexchange.com\/questions\/34288\/what-are-the-implications-of-schnorr-signatures>",
+        "attachments": [
+            {
+                "title": "What are the implications of Schnorr signatures?",
+                "title_link": "http:\/\/bitcoin.stackexchange.com\/questions\/34288\/what-are-the-implications-of-schnorr-signatures",
+                "text": "Adam Back (adam3us) explained in March, 2014, but it is all math. There's another short post with advantages, though. This answer on <http:\/\/crypto.SE|crypto.SE> claims that Bitcoin considered using Ed25519 which is...",
+                "fallback": "What are the implications of Schnorr signatures?",
+                "thumb_url": "http:\/\/cdn.sstatic.net\/bitcoin\/img\/apple-touch-icon.png?v=a43e5a337e6b&a",
+                "from_url": "http:\/\/bitcoin.stackexchange.com\/questions\/34288\/what-are-the-implications-of-schnorr-signatures",
+                "thumb_width": 158,
+                "thumb_height": 158,
+                "id": 1
+            }
+        ],
+        "ts": "1438719729.003505"
+    },
+    {
+        "type": "message",
+        "user": "U08F31MGX",
+        "text": "I sure have some background research to do before I even _understand_ all the implications of these options.",
+        "ts": "1438719947.003507"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "<@U08G10908>: i think it's important that the user has one \"master private key\" or \"master seed\" so they can (relatively) easily port their identity around ... so long as we can deterministically derive a 25519 private key from a master seed, it should be pretty easy to use one curve for payments and another for identity",
+        "ts": "1438720215.003508"
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "I've been investigating this further, going beyond BIP32 to more complex hierarchical keys. Some clues in part 2 of <http:\/\/www.isg.rhul.ac.uk\/~kp\/theses\/EFthesis.pdf>",
+        "ts": "1438720418.003509",
+        "reactions": [
+            {
+                "name": "book",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "5.1 A hierarchical key assignment scheme (HKAS) is a method for implementing access\ncontrol policies by assigning encryption keys and private information to each class in\na hierarchy in such a way that the private information assigned to a class, along with\nsome public information, can be used to derive encryption keys to all classes lower\ndown in the hierarchy. Formally, the hierarchy is modelled as a partially ordered set\n(poset), each data item is labelled by a class u in the hierarchy, and is encrypted\nusing the encryption key \u03bau corresponding to that class. Now a user, given access\nto the private information Su, can derive the relevant encryption key \u03bav for any\ndescendant class v, and hence gain access to the data of class v.\nSuch hierarchical key assignment schemes can be used in many applications where\nit is desirable to provide differentiated access to data according to an access control\npolicy. As an illustration, consider the management of a database containing sensitive\ninformation, such as medical records in a hospital; doctors, depending on their\nseniority, are assigned access permission to a set of files in a patient\u2019s medical record,\nwhile nurses, being at a lower level in the hierarchy, have more restricted access to\nthat information. Other application domains include government communication,\nprotection of industrial secrets, and broadcast services such as cable TV.",
+        "ts": "1438720449.003510"
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "Hierarchical Keys have some real advantages for digital identity systems. I like that you could have your master key offline in a paper wallet or other cold storage, which then has a 1st-generation child that delegated to your personal cloud as an agent to represent you, which then can be used to create 2nd-generation keys (grand-children) that are used by local apps like miniLock or in an iPhone app. You can use your higher level keys to revoke lower keys. Hierarchies could also allow for one direction used for signing keys, another for encryption keys. There are numerous other possibilities with hierarchical keys.",
+        "ts": "1438720536.003511",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "I've been trying to get some cryptographers together in early Fall to dive deeper into this. Jon Callas (former CTO of PGP and now CTO of Silent Circle\/Blackphone) has committed to coming, and he is helping me get some people like Bernstein, Tanje Lange, and others to participate.",
+        "ts": "1438720655.003512"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08G10908>: I'd certainly like the ability for agents (think IFTTT) to post on a user's behalf, it sounds like your heirrarchy could achieve this",
+        "ts": "1438720661.003513"
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "<https:\/\/www.rsaconference.com\/writable\/presentations\/file_upload\/cryp-w22.pdf>",
+        "ts": "1438720958.003514"
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "If you add threshold ring signature keys to HKAS ideas, you also get some interesting possibilities for group ownership and moderation.",
+        "ts": "1438721930.003515"
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "This would cryptographically enable something that the Xanadu Project in the 80's called the \"Club System\".",
+        "ts": "1438721983.003516"
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "Simple, Efficient and Strongly KI-Secure Hierarchical Key Assignment Schemes: <https:\/\/eprint.iacr.org\/2012\/645.pdf>",
+        "ts": "1438725274.003517"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "One thing that remains unclear to me is the upper bounds of participants in an EC Schnorr; I can't discern a limit on G",
+        "ts": "1438726913.003520"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "wow, somehow missed all o the above messages",
+        "ts": "1438727015.003521"
+    },
+    {
+        "user": "U08K9N7PU",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08K9N7PU|bitappend> has joined the channel",
+        "ts": "1438727586.003522"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "so i met ellen pao by chance at the creamery in SF just now",
+        "ts": "1438727785.003523",
+        "reactions": [
+            {
+                "name": "joy",
+                "users": [
+                    "U08ERPTQF",
+                    "U08D641AP"
+                ],
+                "count": 2
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "ahaha",
+        "ts": "1438727861.003524"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": ":simple_smile:",
+        "ts": "1438728221.003525"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "i wonder how that went.",
+        "ts": "1438729185.003526"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "also, what are the chances",
+        "ts": "1438729239.003527"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "she said \"hey, ryan, how are you doing?\" and i said \"hey ellen, i'm doing well, how are you?\" and she said \"i'm doing great\" and then we parted ways :simple_smile:",
+        "ts": "1438729241.003528"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "ha yeah in SF chances are quite high. not actually a very big city.",
+        "ts": "1438729257.003529"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "oh, i interpreted 'met' wrong",
+        "ts": "1438729273.003530"
+    },
+    {
+        "type": "message",
+        "user": "U08CFV27P",
+        "text": "not much commenting other than mine but +20 is solid for the sub <https:\/\/www.reddit.com\/r\/RedditAlternatives\/comments\/3frwa8\/former_reddit_cryptocurrency_engineer_hosts\/>",
+        "attachments": [
+            {
+                "service_name": "reddit",
+                "title": "Former Reddit Cryptocurrency Engineer Hosts Hackathon For Reddit Alternative \u2022 \/r\/RedditAlternatives",
+                "title_link": "https:\/\/www.reddit.com\/r\/RedditAlternatives\/comments\/3frwa8\/former_reddit_cryptocurrency_engineer_hosts\/",
+                "text": "20 points and 4 comments so far on reddit",
+                "fallback": "reddit: Former Reddit Cryptocurrency Engineer Hosts Hackathon For Reddit Alternative \u2022 \/r\/RedditAlternatives",
+                "thumb_url": "https:\/\/www.redditstatic.com\/icon.png",
+                "from_url": "https:\/\/www.reddit.com\/r\/RedditAlternatives\/comments\/3frwa8\/former_reddit_cryptocurrency_engineer_hosts\/",
+                "thumb_width": 256,
+                "thumb_height": 256,
+                "id": 1
+            }
+        ],
+        "ts": "1438730684.003531"
+    },
+    {
+        "type": "message",
+        "user": "U08CFV27P",
+        "text": "oops meant to put that in community",
+        "ts": "1438730710.003533"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "cool <@U08CFV27P> :simple_smile:",
+        "ts": "1438730832.003534"
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "Paraphrasing a quote from <http:\/\/bitcoin.stackexchange.com\/questions\/34288\/what-are-the-implications-of-schnorr-signatures>: \"Using EdDSA Schnorr signatures, authorized parties, using a third-party organizer (which doesn't need to be trusted with private keys), it is possible to prevent signers from knowing whether their private key is part of the set of signing keys. Ths property can be used for distributed forum moderation: choose a bunch of senior forum members, get a public key from each of them, create a threshold public key from some of the individual public keys, and then let individuals submit a signature when they think a post should be removed. The third-party organizer (probably an automated program) will combine the signatures without leaking whose signature actually contributed towards meeting the threshold. If nobody knows whose signature actually matters and the pool of possible moderators is large, effective reprisals against moderators become very expensive.\"",
+        "attachments": [
+            {
+                "title": "What are the implications of Schnorr signatures?",
+                "title_link": "http:\/\/bitcoin.stackexchange.com\/questions\/34288\/what-are-the-implications-of-schnorr-signatures",
+                "text": "Adam Back (adam3us) explained in March, 2014, but it is all math. There's another short post with advantages, though. This answer on <http:\/\/crypto.SE|crypto.SE> claims that Bitcoin considered using Ed25519 which is...",
+                "fallback": "What are the implications of Schnorr signatures?",
+                "thumb_url": "http:\/\/cdn.sstatic.net\/bitcoin\/img\/apple-touch-icon.png?v=a43e5a337e6b&a",
+                "from_url": "http:\/\/bitcoin.stackexchange.com\/questions\/34288\/what-are-the-implications-of-schnorr-signatures",
+                "thumb_width": 158,
+                "thumb_height": 158,
+                "id": 1
+            }
+        ],
+        "ts": "1438731969.003535"
+    },
+    {
+        "type": "message",
+        "user": "U08K9N7PU",
+        "text": "hi gang.  Looks like I got some reading to catch up. I do suspect we are going with some kind of proof of burn on the identity side right?",
+        "ts": "1438738038.003537"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Hi <@U08K9N7PU> I don't believe anything is finalized regarding identity management. But the client default is *not* to tie an identity to a post. So anonymity is the focus of the MVP scope",
+        "ts": "1438742077.003538"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "as it relates to user experience the client could default to identifiable behavior, but we want it to not be a requirement",
+        "ts": "1438746690.003539"
+    },
+    {
+        "type": "message",
+        "user": "U08K9N7PU",
+        "text": "Gasp.  That might foster an environment of free speech or something ",
+        "ts": "1438748134.003540"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Oh my... the internet came back. What a day!",
+        "ts": "1438748608.003541"
+    },
+    {
+        "type": "message",
+        "user": "U08FELGRX",
+        "text": "lol @ ryanxcharles what a small world",
+        "ts": "1438749077.003542"
+    },
+    {
+        "type": "message",
+        "user": "U08K9N7PU",
+        "text": "I'm still reading past comments..  I'm so glad several of us are thinking on same\/similar lines.  \n",
+        "ts": "1438749786.003543"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "another cool idea i'll throw out there was if our MVP was self-hosting so we could stop using slack",
+        "ts": "1438752793.003544"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "realtime chat would be really nice",
+        "ts": "1438752864.003545"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "how feasible it is to support would mainly be a matter of <#C08EJG7M1>",
+        "ts": "1438752899.003546"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "well other people have already made real-time chats based on Web RTC ... we could probably copy them and add paid upvotes",
+        "ts": "1438752948.003547"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<http:\/\/www.freedomjs.org\/tutorial\/04dorabelladesign\/>",
+        "attachments": [
+            {
+                "text": "Tutorial for freedom.js, a framework for peer-to-peer web apps",
+                "fallback": "Tutorial for freedom.js, a framework for peer-to-peer web apps",
+                "from_url": "http:\/\/www.freedomjs.org\/tutorial\/04dorabelladesign\/",
+                "id": 1
+            }
+        ],
+        "ts": "1438752978.003548"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "the freedom.js tutorial is a end to end pgp encrypted chat",
+        "ts": "1438752993.003550"
+    },
+    {
+        "type": "message",
+        "user": "U08DH3ESU",
+        "text": "Maybe version 2 of the protocol\/platform should be developed using real-time chat or discussions on version 1 of the protocol; that would be very nice",
+        "ts": "1438753274.003551"
+    },
+    {
+        "type": "message",
+        "user": "U08DH3ESU",
+        "text": "real-time chat would also depend on external factors; But cost of bandwidth and data has come down a long way to support this; And this can also be another option to generate revenue",
+        "ts": "1438753403.003552"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "hmm one interesting chat idea would be to support a chat room for each submission",
+        "ts": "1438753420.003553"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "and have the ability to pull chat messages out into comments",
+        "ts": "1438753434.003554"
+    },
+    {
+        "user": "U08KP51FU",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08KP51FU|lapingvino> has joined the channel",
+        "ts": "1438754961.003555"
+    }
+]

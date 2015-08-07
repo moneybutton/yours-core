@@ -87,5 +87,39 @@
         "user": "U08EZP01H",
         "text": "How can I work with the blue angels in the city? Best distraction.",
         "ts": "1438547795.000109"
+    },
+    {
+        "user": "U08G10908",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08G10908|christophera> has joined the channel",
+        "ts": "1438560810.000110"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08E5P0BZ>: suggested  something similar to this yesterday: <http:\/\/www.metafruit.com\/kiwi>",
+        "attachments": [
+            {
+                "text": "Know what people are saying about any site you\u2019re visiting",
+                "fallback": "Know what people are saying about any site you\u2019re visiting",
+                "from_url": "http:\/\/www.metafruit.com\/kiwi",
+                "id": 1
+            }
+        ],
+        "ts": "1438564506.000111"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "From a DATT perspective Kiwi could run a DATT node that focused on indexing the comments to display to their plugin users",
+        "ts": "1438564578.000113"
+    },
+    {
+        "user": "U08G8DW66",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08G8DW66|harsh54> has joined the channel",
+        "ts": "1438582104.000114"
     }
 ]

@@ -1,0 +1,9 @@
+[
+    {
+        "user": "U08CG8V89",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08CG8V89|c_prompt> has joined the channel",
+        "ts": "1438770793.000002"
+    }
+]

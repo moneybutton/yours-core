@@ -91,7 +91,16 @@
         "type": "message",
         "user": "U07GDL0H5",
         "text": "perhaps what users on datt are doing is actually 'gilding' each other, except the content producer gets the money instead of the company",
-        "ts": "1438499332.003042"
+        "ts": "1438499332.003042",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -729,7 +738,17 @@
         "type": "message",
         "user": "U07GDL0H5",
         "text": "after discussing this for an hour or so in SF, we got nowhere near consensus on what to do about it. i suggest we shelve the idea and wait until we have the software actually written and are in a position to actually decide what to do about it.",
-        "ts": "1438504747.003147"
+        "ts": "1438504747.003147",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08F2RTCN"
+                ],
+                "count": 2
+            }
+        ]
     },
     {
         "type": "message",
@@ -1011,7 +1030,17 @@
         "type": "message",
         "user": "U07GDL0H5",
         "text": "managed to wake up after only 3-4 hrs of sleep ... normal sleeping schedule begins today :simple_smile:",
-        "ts": "1438537421.003194"
+        "ts": "1438537421.003194",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08FJ080J"
+                ],
+                "count": 2
+            }
+        ]
     },
     {
         "user": "U08FVLJR4",
@@ -1158,7 +1187,16 @@
         "type": "message",
         "user": "U08C9ML1Y",
         "text": "liking 7)",
-        "ts": "1438547151.003211"
+        "ts": "1438547151.003211",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -1297,7 +1335,17 @@
         "type": "message",
         "user": "U08FW063C",
         "text": "For example.  Using the Backfeed protocols as I understand them (@matan can do a much better job than I here), you might have an \"attention-worthy\" token that is allocated by any\/all users to the content that they deem attention-worthy.  The Backfeed algorithms would then take in all of this information and return an \"attention-worthy\" value for each piece of content (equivalent to but more precise than the \"net upvote\" score at Reddit).  It would also return a \"reputation\" score to each user - indicating how good they are at \"curating\" or \"identifying attention-worthy\" content.",
-        "ts": "1438550914.003232"
+        "ts": "1438550914.003232",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08EZP01H"
+                ],
+                "count": 2
+            }
+        ]
     },
     {
         "type": "message",
@@ -1381,7 +1429,16 @@
         "type": "message",
         "user": "U08DN0E5S",
         "text": "I like the idea of better rewarding an early voter who accurately predicts how the group as a whole will react versus someone who just piles on later after the majority of people have spoken. Although a system like that might encourage people to vote how they think everyone else will feel, and not necessarily how they really feel themselves.",
-        "ts": "1438555475.003246"
+        "ts": "1438555475.003246",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -1469,7 +1526,16 @@
         "type": "message",
         "user": "U07GDL0H5",
         "text": "FWIW, i'll just throw out there that at a technical level, it would be easier to implement the equivalent of \"gilding\" with bitcoin beacause with $5 payments we wouldn't need the lightning network, and upvotes\/downvotes wouldn't cost any bitcoin",
-        "ts": "1438556776.003260"
+        "ts": "1438556776.003260",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -1516,5 +1582,346 @@
         "user": "U07GDL0H5",
         "text": "ha yes of course <@U08F35H0V> :simple_smile:",
         "ts": "1438557451.003269"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "just exported and counted the total # of slack messages. 3816.",
+        "ts": "1438558423.003270"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "in one weekend. wow.",
+        "ts": "1438558425.003271"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "that doesn't include PMs, FWIW",
+        "ts": "1438558511.003272"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "only the public messages",
+        "ts": "1438558516.003273"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "cool <@U07GDL0H5> , we can push it to dattdocs,",
+        "ts": "1438558538.003274"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Nice, I'd wager that &gt;800 messages are <@U08DD8LNP> ;P",
+        "ts": "1438558556.003275"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "lol",
+        "ts": "1438558570.003276"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "lol",
+        "ts": "1438558590.003277"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "it would be possible to count, the data is json",
+        "ts": "1438558602.003278"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i actually created a separate repo just for slack messages, <@U08F2RTCN> , but maybe i should have just put it on dattdocs instead. makes more sense there actually.",
+        "ts": "1438558649.003279"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i think i will move it",
+        "ts": "1438558657.003280"
+    },
+    {
+        "type": "message",
+        "user": "U08DN0E5S",
+        "text": "Many people send one message per line when writing a paragraph (like you did above), but still impressive!",
+        "ts": "1438559477.003281"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "true, but it shows a rough measure of how active the channel is ... which is quite active",
+        "ts": "1438559526.003282"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i created my summary of the hackathon: <https:\/\/github.com\/dattnetwork\/dattdocs#hackathon-day-3-aug-2-2015>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "dattnetwork\/dattdocs",
+                "title_link": "https:\/\/github.com\/dattnetwork\/dattdocs#hackathon-day-3-aug-2-2015",
+                "text": "dattdocs - Document all the things.",
+                "fallback": "GitHub: dattnetwork\/dattdocs",
+                "thumb_url": "https:\/\/avatars0.githubusercontent.com\/u\/13266895?v=3&s=400",
+                "from_url": "https:\/\/github.com\/dattnetwork\/dattdocs#hackathon-day-3-aug-2-2015",
+                "thumb_width": 214,
+                "thumb_height": 214,
+                "id": 1
+            }
+        ],
+        "ts": "1438559563.003283",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08F2RTCN"
+                ],
+                "count": 2
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "this summary is not intended to be comprehensive. please feel free to add to it.",
+        "ts": "1438559604.003285"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "also i want to make sure to record the important documents on dattdocs - at least having links to them",
+        "ts": "1438559638.003286"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i think we're going to call an end to the event soon ... does anybody have any final words? ... i will continue to be on the slack channel every day indefinitely. i hope we can continue the conversation, although i'm sure a lot of people will be spending a lot of time on normal lives",
+        "ts": "1438559861.003287"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U07GDL0H5>: I'll push some more docs into DATTdocs. I got sidetracked with writing a new business model last night.",
+        "ts": "1438559898.003288"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "<@U08F2RTCN> suggested we hold another event in SF next saturday ... we can make that international as well. we will obviously hang out on slack during that.",
+        "ts": "1438559920.003289",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08D641AP"
+                ],
+                "count": 2
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "great <@U08ERPTQF> !",
+        "ts": "1438559923.003290"
+    },
+    {
+        "type": "message",
+        "user": "U08DN0E5S",
+        "text": "Cool",
+        "ts": "1438560090.003291"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "<@U07GDL0H5>: yeah it would be good to have another event in SF or in the southbay , maybe in Hackerdojo in Moutainview would be good, <@U08F438SK> also has a place where we can meet, I can get back to you on tuesday see if thats possible",
+        "ts": "1438560097.003292"
+    },
+    {
+        "type": "message",
+        "user": "U08DN0E5S",
+        "text": "Great overview, it really looks like a lot was accomplished!",
+        "ts": "1438560101.003293"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "ok great. looking forward to next saturday!",
+        "ts": "1438560127.003294"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "also a few other notes ... i do indeed intend to start a business around this, so people who are interested in being a part of that, please do stay in touch and make sure i know you might like to be involved, i.e. as cofounder or joining in some other respect",
+        "ts": "1438560183.003295",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08F2RTCN",
+                    "U08DN0E5S",
+                    "U08D641AP",
+                    "U08DFAGBW",
+                    "U08E2KZM4",
+                    "U08EZP01H",
+                    "U08F438SK"
+                ],
+                "count": 8
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "not everyone involved needs to or should be a part of the same company, however. we are ideally building a platform where there can be many companies.",
+        "ts": "1438560200.003296"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "nice",
+        "ts": "1438560607.003297"
+    },
+    {
+        "user": "U08G10908",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08G10908|christophera> has joined the channel",
+        "ts": "1438560810.003298"
+    },
+    {
+        "type": "message",
+        "user": "U08DFAGBW",
+        "text": "Wow that's a lot of messages. I'll have to go over all of them so I'm completely up to speeding ",
+        "ts": "1438560923.003299"
+    },
+    {
+        "type": "message",
+        "user": "U08F31MGX",
+        "text": "Good lord this is some epic backscroll ",
+        "ts": "1438560978.003300"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "yea, I am also having a bit of a hard time going through all the posts. Very interesting ideas! I hope my teammates will manage to submit the results of our today\u2019s hacking soon. Is there a place to post, or just do it here?",
+        "ts": "1438561150.003303"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "there's the Datt repo on github",
+        "ts": "1438561547.003305"
+    },
+    {
+        "type": "message",
+        "user": "U08C9ML1Y",
+        "text": "do a pull request to be added as collaborator",
+        "ts": "1438561560.003306"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U08C9ML1Y>: thanks",
+        "ts": "1438562492.003307",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08C9ML1Y"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "<@U08E2KZM4>: yeah, just do a PR so i have your github usernames and i will add you. add yourselves as contributors to the main \"datt\" repo in the package.json",
+        "ts": "1438567184.003308"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U07GDL0H5>: thx will do",
+        "ts": "1438569403.003309"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "Thanks to <@U08BY8MGV>  for providing us the space and to <@U08F1RZ7H>  for the logistics.",
+        "ts": "1438571663.003310",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U07GDL0H5",
+                    "U08F438SK",
+                    "U08F1RZ7H"
+                ],
+                "count": 3
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08F35H0V",
+        "text": "Agreed, thanks both :simple_smile:",
+        "ts": "1438571742.003311"
+    },
+    {
+        "type": "message",
+        "user": "U08BY8MGV",
+        "text": "Sure thing. Thanks to everyone for participating. It was amazing! Looking forward to seeing where the project goes",
+        "ts": "1438572727.003312"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Created placeholder meetup for next Saturday's session in South Bay @ Entropi:  <http:\/\/meetu.ps\/2LdRQq> \nWill update description text when off mobile (feel free to send me suggested edits)",
+        "attachments": [
+            {
+                "service_name": "Meetup",
+                "title": "Entropi",
+                "title_link": "http:\/\/meetu.ps\/2LdRQq",
+                "text": "Co-working and project update for Ryan X Charles' decentralized Reddit project (<http:\/\/github.com\/dattnetwork|github.com\/dattnetwork>) following the DATT hackathon in SF.",
+                "fallback": "Meetup: Entropi",
+                "thumb_url": "http:\/\/img1.meetupstatic.com\/img\/004881038276245959070\/new_logo_big.png",
+                "from_url": "http:\/\/meetu.ps\/2LdRQq",
+                "thumb_width": 567,
+                "thumb_height": 392,
+                "id": 1
+            }
+        ],
+        "ts": "1438573980.003313",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08F2RTCN"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "user": "U08G8DW66",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08G8DW66|harsh54> has joined the channel",
+        "ts": "1438582104.003315"
     }
 ]

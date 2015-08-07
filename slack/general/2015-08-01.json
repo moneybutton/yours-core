@@ -34,7 +34,16 @@
         "type": "message",
         "user": "U07GDL0H5",
         "text": "but then again i don't want to jump the shark. hopefully we can just focus on an MVP.",
-        "ts": "1438419425.002140"
+        "ts": "1438419425.002140",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -298,7 +307,17 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "\"We shouldn\u2019t delay forever until every possible feature is done. There\u2019s always going to be one more thing to do.\" \u2014 Satoshi Nakamoto",
-        "ts": "1438421157.002183"
+        "ts": "1438421157.002183",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U07GDL0H5"
+                ],
+                "count": 2
+            }
+        ]
     },
     {
         "type": "message",
@@ -1294,7 +1313,18 @@
                 "id": 1
             }
         ],
-        "ts": "1438423815.002344"
+        "ts": "1438423815.002344",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U07GDL0H5",
+                    "U08D641AP"
+                ],
+                "count": 3
+            }
+        ]
     },
     {
         "type": "message",
@@ -1758,7 +1788,16 @@
         "type": "message",
         "user": "U08D641AP",
         "text": "instead of mining, if a majority of nodes agree to the database change, it's a \"block\" \u2013 and that block would include a new modification to update the schnorr construction and delegate signing capability to the new group",
-        "ts": "1438449810.002393"
+        "ts": "1438449810.002393",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -1840,7 +1879,18 @@
         "type": "message",
         "user": "U08BY8MGV",
         "text": "Hey guys. We've been talking about a business model involving Users paying creators to vote, Mods getting a % of the Creator fee, and Nodes getting a % of the Mod fee. I've added it to the bottom of this doc: <https:\/\/docs.google.com\/document\/d\/1AEHdOlQMyyuZ3U0a1BOcZtX8kAPWZynFVx9r21NPtiE\/edit#>",
-        "ts": "1438457543.002406"
+        "ts": "1438457543.002406",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08C464NS",
+                    "U08F2RTCN"
+                ],
+                "count": 3
+            }
+        ]
     },
     {
         "user": "U08FFACCU",
@@ -2062,7 +2112,16 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "TOR facilitates the transfer of illegal content, but the US Navy still funded the research because the benefits outweighed the downside.  TOR and DATT and guns are just tools it's people who use them to do good or bad things.  These tools aren't inherently bad.",
-        "ts": "1438460795.002440"
+        "ts": "1438460795.002440",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08FFU90F"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -2630,7 +2689,16 @@
         "type": "message",
         "user": "U08D641AP",
         "text": "okay, then yes, I agree with that approach \u2013 this is Alan Kay's thesis on computer science, and I think what we should base ourselves on",
-        "ts": "1438468080.002531"
+        "ts": "1438468080.002531",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -2995,7 +3063,19 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "much love for OpenBazaar welcome <@U08FJ080J>",
-        "ts": "1438470341.002587"
+        "ts": "1438470341.002587",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08FJ080J",
+                    "U07GDL0H5",
+                    "U08E5P0BZ",
+                    "U08FELGRX"
+                ],
+                "count": 4
+            }
+        ]
     },
     {
         "type": "message",
@@ -3534,7 +3614,7 @@
                 "color": "D0D0D0",
                 "fallback": "[August 1st, 2015 3:28 PM] martindale: on that note, <@U08DE11UZ> over there has put together the fabulous <https:\/\/github.com\/muttr\/whitepaper> and <https:\/\/github.com\/gordonwritescode\/coalescent>",
                 "author_subname": "martindale",
-                "ts": "1438468098.002532",
+                "ts": 1438468098,
                 "text": "on that note, <@U08DE11UZ> over there has put together the fabulous <https:\/\/github.com\/muttr\/whitepaper> and <https:\/\/github.com\/gordonwritescode\/coalescent>",
                 "author_name": "Eric Martindale",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/martindale",
@@ -3717,7 +3797,16 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "also if we're using the blockchain itself as a content index focusing on transaction times is probably easier anyway",
-        "ts": "1438478016.002734"
+        "ts": "1438478016.002734",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -3795,7 +3884,16 @@
         "type": "message",
         "user": "U08C9ML1Y",
         "text": "semi-ephemeral should be the way to go",
-        "ts": "1438478946.002747"
+        "ts": "1438478946.002747",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -3825,7 +3923,17 @@
         "type": "message",
         "user": "U07GDL0H5",
         "text": "i want to comment on the censorship discussion from before ... <@U08CG8V89> <@U08DD8LNP> <@U08BY8MGV> ... my personal goal is to allow content users to own and profit from their content, and also allow hosts and moderators to profit as well. a consequence of this is that, if executed correctly, moderation should be much better than reddit. because the network is decentralized, it is not possible to eliminate some content from the network. however, censorship prevention is NOT the primary goal. nodes can and should be able to censor content that they host. mods should be able to moderate content they disagree with (although bad mods can be outvoted by some type of market mechanism - good mods are better rewarded).",
-        "ts": "1438479077.002752"
+        "ts": "1438479077.002752",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08FJ080J"
+                ],
+                "count": 2
+            }
+        ]
     },
     {
         "type": "message",
@@ -4063,7 +4171,16 @@
         "type": "message",
         "user": "U07GDL0H5",
         "text": "i think the following two things are compatible: 1) censorship is not built into the protocol, 2) nodes can censor the content they host",
-        "ts": "1438480317.002792"
+        "ts": "1438480317.002792",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -4257,7 +4374,16 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "IMO every submission at least should have a corresponding coin address, and the metadata could be set in an initial transaction with outputs to that address",
-        "ts": "1438481722.002814"
+        "ts": "1438481722.002814",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -4335,7 +4461,16 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "and it also inherently rewards content in an individualized way that isn't necessarily tied to any other identity, but really you could think of the poster as whoever sends the first transactions that set the metadata",
-        "ts": "1438482760.002827"
+        "ts": "1438482760.002827",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -4596,7 +4731,16 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "You guys read enders game?  I want the equivalent of their global message boards where the great political debates of the day took place with as much anonymity as was desired",
-        "ts": "1438485194.002870"
+        "ts": "1438485194.002870",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -4750,7 +4894,16 @@
         "type": "message",
         "user": "U08ERPTQF",
         "text": "I think there is consensus on decentralization being a core principle, not federation. ",
-        "ts": "1438486077.002895"
+        "ts": "1438486077.002895",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08FJ080J"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -5034,7 +5187,16 @@
         "type": "message",
         "user": "U08E5P0BZ",
         "text": "it would be nice if we got some feedback from the folks in SF, perhaps we have :simple_smile:",
-        "ts": "1438487017.002941"
+        "ts": "1438487017.002941",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -5469,7 +5631,19 @@
         "type": "message",
         "user": "U08D641AP",
         "text": "great post on usenet: <https:\/\/news.ycombinator.com\/item?id=9987679>",
-        "ts": "1438493848.003012"
+        "ts": "1438493848.003012",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08F2RTCN",
+                    "U08E5P0BZ",
+                    "U08CG8V89"
+                ],
+                "count": 4
+            }
+        ]
     },
     {
         "type": "message",

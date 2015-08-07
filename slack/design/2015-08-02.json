@@ -218,7 +218,17 @@
         "type": "message",
         "user": "U08EZP01H",
         "text": "DATT ass clearly refers to the back end technology. +1",
-        "ts": "1438545262.000092"
+        "ts": "1438545262.000092",
+        "reactions": [
+            {
+                "name": "laughing",
+                "users": [
+                    "U08DD8LNP",
+                    "U07GDL0H5"
+                ],
+                "count": 2
+            }
+        ]
     },
     {
         "type": "message",
@@ -355,5 +365,12 @@
         "user": "U07GDL0H5",
         "text": "the mockups are really awesome",
         "ts": "1438555929.000102"
+    },
+    {
+        "user": "U08G10908",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08G10908|christophera> has joined the channel",
+        "ts": "1438560974.000103"
     }
 ]

@@ -1,0 +1,435 @@
+[
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "great <@U08ERPTQF> :simple_smile: i'm heading to bed imminently. see you guys tomorrow.",
+        "ts": "1438758228.000258"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Ciao <@U07GDL0H5> ",
+        "ts": "1438758888.000259"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "Gnite <@U07GDL0H5> ",
+        "ts": "1438758919.000260"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "I've updated the spreadsheet to align bounties with the concepts of votes &amp; gilding\nWe should probably continue this discussion over in <#C08F62HEY> - although it's worth noting that bounties won't work unless we have a p2p protocol that will negotiate payment channels",
+        "ts": "1438776311.000261"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U07GDL0H5>: agree, p2p work is done by so many people! Every multisig wallet needs it, other group sigs need it, lightning net needs it! It is insane that we do not have a standard yet. \n\nAt Tradle we have spent a huge amount of time designing p2p protocol associated with the blockchain and producing the associated OSS code. The basic ideas are:\n\n-  all actions are associated with the identity of your choice. Identity can be totally fake or verified by the government (as required on airbnb for example). You can create as many of them as u like and all identities, their keys and key restore\/revocation as anchored on blockchain, so the chain is your key server.\n- p2p messages can be ephemeral or permanent. Permanent can be anchored to the public blockchain and not (anchored to local\/federated chains, but for now we just use simpler logs)\n- p2p  messages have open ended structure (json for now) and types of messages (models) are loaded from github or other web sites freely. These msgs can be new community, new post, upvote\/downvote, moderator actions, etc. or could be verification of identity or any other stuff needed for the web of trust (or as <http:\/\/keybase.io|keybase.io> calls them - tracked identities)\n- discovery of peers and topic should be 100% decentralized (we use a combination of identities on chain for finding verified pub keys and the bittorrent DHT for finding IP\/Port of peers.\n- peer discovery leads to a NAT traversal and UDP-based rUDP or uTP for reliable delivery of jsons over this line. Could support webrtc too of course, but does not yet.",
+        "ts": "1438787983.000262",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U07GDL0H5"
+                ],
+                "count": 2
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "I can post a better explanation with the links to docs, code, etc. on datt github repo, if desired.",
+        "ts": "1438788141.000263"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U07GDL0H5>: <@U08DD8LNP> \nI would say screw global unique names to avoid name squatting, trademark lawsuits and other issues that lead to centralization and government intervention. Instead in Tradle we use the the personal address book notion, which are the list of names, verified by me\/each user. The same way a list of topics\/communities could be added to my address book\/list of subscriptions.",
+        "ts": "1438788493.000264"
+    },
+    {
+        "type": "message",
+        "user": "U08DH3ESU",
+        "text": "<@U08E2KZM4>: On your first point, I think everyone agrees that identities need not be unique and you can have as many accounts as the number of key pairs you can maintain. But, for the network to gain mainstream adoption it might need some form of identification unique to the network, if the user wants it. This might be very useful when you are a creator\/publisher.",
+        "ts": "1438790072.000265"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U08DH3ESU>: agree, how do you think we should reconcile the need for unlimited multiple identities and recognizable identification for content creators\/publishers?",
+        "ts": "1438801198.000266"
+    },
+    {
+        "type": "message",
+        "user": "U08DDG1SB",
+        "text": "if users can create unlimited identities how will you deal with sybil attacks? and spam botnets?",
+        "ts": "1438806028.000267"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "<@U08DDG1SB> \n1. creating identities like creating posts on datt will cost a bit. \n2. identity by itself does not bother anyone. UI should work in such a way that searching for identities shows the web-of-trust-ed identities first",
+        "ts": "1438806614.000268"
+    },
+    {
+        "type": "message",
+        "user": "U08DDG1SB",
+        "text": "Re:#1 how much? if i\u2019m bankrolled pretty well I can just plunk down a good bit to fuck up the network",
+        "ts": "1438806766.000269"
+    },
+    {
+        "type": "message",
+        "user": "U08DDG1SB",
+        "text": "or if I\u2019m in one locale it might not be a lot of money for me compared to another",
+        "ts": "1438806778.000270"
+    },
+    {
+        "type": "message",
+        "user": "U08DDG1SB",
+        "text": "Re:#2 if you\u2019re creating tons of these identities how will the WoT be worth much if you\u2019re not able to aggregate these into something meaningful?",
+        "ts": "1438806824.000271"
+    },
+    {
+        "type": "message",
+        "user": "U08E2KZM4",
+        "text": "Re: #1 in what way would u f-k up the network?",
+        "ts": "1438808537.000272"
+    },
+    {
+        "type": "message",
+        "user": "U08DDG1SB",
+        "text": "well create a ton of identities and downvote content. i mean you could create huge swarms of identities that downvote or upvote stuff.",
+        "ts": "1438809981.000273"
+    },
+    {
+        "type": "message",
+        "user": "U08DDG1SB",
+        "text": "i mean you can\u2019t make voting too expensive so that creates an opening with anyone willing to fork over money. and this would definitely be something worth pumping money into if it works well.",
+        "ts": "1438810015.000274"
+    },
+    {
+        "type": "message",
+        "user": "U08G10908",
+        "text": "You can use a number of bayesian tricks on voting \u2014 if you, or what you are voting on are too out of sync, the cost can be higher. With RPGnet, we had to basically discount any user that only voted on one topic, and any topic that was too hot.",
+        "ts": "1438812861.000275"
+    },
+    {
+        "user": "U08MAKT70",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08MAKT70|johan> has joined the channel",
+        "ts": "1438829839.000276"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "ok, here's another prototype of the p2p protocol: <https:\/\/github.com\/dattnetwork\/dattdocs\/blob\/master\/p2p.md#message-overview>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "dattnetwork\/dattdocs",
+                "title_link": "https:\/\/github.com\/dattnetwork\/dattdocs\/blob\/master\/p2p.md#message-overview",
+                "text": "dattdocs - Document all the things.",
+                "fallback": "GitHub: dattnetwork\/dattdocs",
+                "thumb_url": "https:\/\/avatars0.githubusercontent.com\/u\/13266895?v=3&s=400",
+                "from_url": "https:\/\/github.com\/dattnetwork\/dattdocs\/blob\/master\/p2p.md#message-overview",
+                "thumb_width": 214,
+                "thumb_height": 214,
+                "id": 1
+            }
+        ],
+        "ts": "1438833131.000277"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i haven't detailed the byte-wise structure, but i've explained the rationale behind each message type",
+        "ts": "1438833149.000279"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "again, this protocol is not necessarily intended to be the one we use, but is a way for me to make sure i understand all the features our p2p protocol needs to have. if nothing better unveils itself, we can adopt this protocol.",
+        "ts": "1438833178.000280"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "the protocol is centered around posting and getting data, as well as making payments",
+        "ts": "1438833203.000281"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "also, lemme know if i forgot something important",
+        "ts": "1438833373.000282"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U07GDL0H5>: looks like a suitable p2p spec for MVP\nMy only thought is how hard would it be to initiate payment channels? would you use the same messaging to handshake the channel?",
+        "ts": "1438833426.000283"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "my thinking on that is that the payment channels are actually a separate protocol ... although it could be integrated if we want",
+        "ts": "1438833453.000284"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "if we didn't implement payment channels, but did include normal bitcoin payments, there are 2 different p2p protocols involved",
+        "ts": "1438833473.000285"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "the datt p2p protocol and bitcoin p2p protocol. two separate networks",
+        "ts": "1438833483.000286"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "my thinking was that even for lightning network, it's probably the same. a separate network is used for actually sending payments on the lightning network.",
+        "ts": "1438833510.000287"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "It may be desirable to couple node connections and payment channels so that a node doesn't stop serving content but keep the payment channel open and vice versa - but I agree they should be implemented in the p2p layer best suited to it, just loosely coupled.",
+        "ts": "1438833616.000288"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yes that may be desirable, but if you open a payment channel with a node, that would only work to make payments to that node. the same payment channel couldn't be used to make upvotes.",
+        "ts": "1438833660.000289"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "making upvotes means knowing either 1) the bitcoin address of the user, in which case you broadcast a tx as normal, or 2) knowing the \"lightning address\" in which case you use the lightning network to send the payment. in either case, user1 is not in direct contact with user2",
+        "ts": "1438833710.000290"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "yes, payment channels aren't necessary for the votes or the tipping\/gilding - though this does mean we need to stay above 'dust' for the up vote on posts\/comments",
+        "ts": "1438834076.000291"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "\"aren't\" necessary? i was assuming they are, as there will be a lot of such payments of small values ... the blockchain is already basically full ... i think we probably need the lightning network for upvotes to be feasible",
+        "ts": "1438834132.000292"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i was thinking maybe for MVP that only gilding sends a bitcoin payment and then not use the lightning network, since that would be easy easier to implementing, and gilding could be a lot, say $5",
+        "ts": "1438834157.000293"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "If you limit number of peers and channel messages through network , you could keep payment channels only open W\/ your say, 20 peers",
+        "ts": "1438834907.000294"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "They keep payment channels open W\/ their 20 peers",
+        "ts": "1438834947.000295"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "So on",
+        "ts": "1438834949.000296"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yeah i mean that basically is a network of payment channels... but i'm just trying to point out that node != user",
+        "ts": "1438835034.000297"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Since Tx fee reduction goes up as number of Tx\/channel increases, keeping small number of channels (small number of peers) is better",
+        "ts": "1438835042.000298"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "would each node establish a payment channel with other nodes they are connected to?",
+        "ts": "1438835077.000299"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Agreed. For gilding, or other author recognition, esp if content announced in Blockchain, you can pay direct",
+        "ts": "1438835081.000300"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "But maybe more efficient to route through peers whenever possible. Yes, say keep at most 20 peers",
+        "ts": "1438835122.000301"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "If I ask for thousands of independent tweet size snippets in a session, transaction costs would be impossible ",
+        "ts": "1438835173.000302"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Not so if I can negotiate via my 20 channels something via a few hops",
+        "ts": "1438835218.000303"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "\"Yes,\"-&gt;\"\"* typed on phone (unnecessarily, oi)",
+        "ts": "1438835297.000304"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "what you're describing sounds a lot like the lightning network",
+        "ts": "1438835477.000305"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "though TBH i never made it all the way through the lightning network whitepaper, so my understanding is not complete",
+        "ts": "1438835515.000306"
+    },
+    {
+        "type": "message",
+        "user": "U08DH3ESU",
+        "text": "Yes; that sounds a lot like lightning network; I think we might be better off thinking about a payment system specifically for this as",
+        "ts": "1438836921.000307"
+    },
+    {
+        "type": "message",
+        "user": "U08DH3ESU",
+        "text": "Lot of payment is going to happen intra-network; the amounts we are talking about is micro-payments mostly unless it is the content creator;",
+        "ts": "1438836974.000308"
+    },
+    {
+        "type": "message",
+        "user": "U08DH3ESU",
+        "text": "maybe an accounting system inside the network and when you want to take the payment out you use a wallet and put it on the blockchain",
+        "ts": "1438837003.000309"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i would love to come up with something simpler than the lightning network that suits our needs ... i think the lightning network would end up being the most complicated piece of this whole thing and slow everything down",
+        "ts": "1438837005.000310"
+    },
+    {
+        "type": "message",
+        "user": "U08DH3ESU",
+        "text": "might look an overhead at this moment as it is another network, but thinking about it as messages, we need to do simple accounting at a public-id level",
+        "ts": "1438837042.000311"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "would be very difficult to make the accounting system secure when decentralized. that is the problem solved by bitcoin :simple_smile:",
+        "ts": "1438837049.000312"
+    },
+    {
+        "type": "message",
+        "user": "U08DH3ESU",
+        "text": "true; but if we are starting everyone off with a new public address then this might work as everyone is going to start with zero as their balance or the amount we put into their wallets",
+        "ts": "1438837148.000313"
+    },
+    {
+        "type": "message",
+        "user": "U08DH3ESU",
+        "text": "anyway, I would presume this is a problem for later and not now; For now, we can implement a payment channel which would be used at a node level instead of a user\/public key level",
+        "ts": "1438837217.000314"
+    },
+    {
+        "type": "message",
+        "user": "U08DH3ESU",
+        "text": "once the node level payments to serve content is addressed, then user level payments can be addressed as that would involve different payment channels presumably to the same node itself and possibly multiple nodes if they are serving content to the same user",
+        "ts": "1438837325.000315"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "hmm, I like your simple protocol first but will keep prototyping and hacking and see if a \"the simplest thing that could possibly work\" -style alternative to lightning surfaces.",
+        "ts": "1438837650.000316",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "thanks!",
+        "ts": "1438837655.000317"
+    },
+    {
+        "user": "U08MEV56D",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08MEV56D|mashaal> has joined the channel",
+        "ts": "1438839641.000318"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "why can't we just use pure payment channels between nodes...?",
+        "ts": "1438840515.000319"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "no need for lightning",
+        "ts": "1438840520.000320"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "because a user is not a node. if they had to establish a payment channel with every other user, that would create a lot of transactions on the blockchain.",
+        "ts": "1438840658.000321"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "nonetheless, as stated, i'm very open to options outside of the lightning network because that is probably going to be the hardest part",
+        "ts": "1438840686.000322"
+    },
+    {
+        "type": "message",
+        "user": "U08E5P0BZ",
+        "text": "I missed much of the identity conversation, but I think I saw a discussion regarding losing the password\/private key.  This SQRL project seems to have some interesting ideas around how to deal with that scenario: <https:\/\/www.grc.com\/sqrl\/idlock.htm> .  Perhaps this will help.",
+        "attachments": [
+            {
+                "text": "SQRL Secure Quick Reliable Login Identity Lock",
+                "fallback": "SQRL Secure Quick Reliable Login Identity Lock",
+                "from_url": "https:\/\/www.grc.com\/sqrl\/idlock.htm",
+                "id": 1
+            }
+        ],
+        "ts": "1438842587.000323"
+    }
+]

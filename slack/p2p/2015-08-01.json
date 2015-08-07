@@ -493,7 +493,16 @@
         "type": "message",
         "user": "U08C9ML1Y",
         "text": "the reference client shouldn't deal with these kind of problems",
-        "ts": "1438468216.000114"
+        "ts": "1438468216.000114",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",

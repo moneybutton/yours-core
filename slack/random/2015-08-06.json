@@ -1,0 +1,190 @@
+[
+    {
+        "user": "U08MT2FTL",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08MT2FTL|jeff> has joined the channel",
+        "ts": "1438861874.000143"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "&lt;--- nntpchan guy",
+        "ts": "1438862139.000144"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "hi <@U08MT2FTL>",
+        "ts": "1438862286.000145"
+    },
+    {
+        "text": "reads scrollback",
+        "type": "message",
+        "subtype": "me_message",
+        "user": "U08MT2FTL",
+        "ts": "1438862311.000146"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "there is a *lot* of scrollback",
+        "edited": {
+            "user": "U08ERPTQF",
+            "ts": "1438862354.000000"
+        },
+        "ts": "1438862342.000147"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "eh, not too much, for IRC there's usually a lot more when I wake up",
+        "ts": "1438862370.000149"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "Some initial thoughts, I don't think that a true p2p reddit would be adopted because you'd need to install a local application, I've seen that the federated way like with gnusocial and nntpchan works a lot better in practice vs something truely p2p like twister or aether",
+        "ts": "1438862464.000150"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "we are absolutely avoiding the need to install a local application",
+        "ts": "1438862511.000151"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "so it'd be federated?",
+        "ts": "1438862532.000152"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "I'll look at the documentation a bit.",
+        "ts": "1438862596.000153"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "a bit more*",
+        "ts": "1438862604.000154"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "no it'll be p2p... <@U07GDL0H5> has started to document the architecture better here: <https:\/\/github.com\/dattnetwork\/dattdocs\/blob\/master\/architecture.md>",
+        "edited": {
+            "user": "U08ERPTQF",
+            "ts": "1438862648.000000"
+        },
+        "ts": "1438862634.000155"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "yeah I'm reading it",
+        "ts": "1438862664.000158"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "wow this is a really complex design @_@",
+        "ts": "1438862698.000159"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "full nodes will be enabling p2p communication on both the Bitcoin network and Datt network",
+        "ts": "1438862726.000160"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "really really ambitious",
+        "ts": "1438862750.000161"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "is there code?",
+        "ts": "1438862756.000162"
+    },
+    {
+        "text": "rtfms more",
+        "type": "message",
+        "subtype": "me_message",
+        "user": "U08MT2FTL",
+        "ts": "1438862764.000163",
+        "reactions": [
+            {
+                "name": "simple_smile",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "I think I could make a PoC federated version of DATT in about a month by myself, there's already a rather sizable backbone infrastructure deployed for nntpchan, I don't see why there needs to be a totally new protocol when it could be done with signed messages over nntp, but that's just me.",
+        "ts": "1438862997.000164"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "right now the main issue i see with my nntp architecture is that you need to trust the frontend with private keys, I could push back the boundary to do client side js crypto but that makes the tor people upset :^)",
+        "ts": "1438863099.000165"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "not dissing anything, just thinking out lod",
+        "ts": "1438863211.000166"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "loud*",
+        "ts": "1438863214.000167"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "np there are always two sides of the coin and we know we are choosing the harder to implement side :wink:",
+        "ts": "1438863684.000168"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "One thing that I think would  absolutely be an issue is vote spamming, even if you do weigh votes based on reputation",
+        "ts": "1438863701.000169"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "of course, sybil isn't that anyone has been able to mitigate with the current set of tools.",
+        "ts": "1438864117.000170"
+    },
+    {
+        "type": "message",
+        "user": "U08MT2FTL",
+        "text": "isn't something that*",
+        "ts": "1438864127.000171"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08MT2FTL>: knowing that we can\u2019t counter sybil that\u2019s why we are focusing on upvotes having an actual cost associated",
+        "ts": "1438912485.000172"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "but also if some votes are tied to verified identities clients could use this to weight vote scoring rather than going purely on value alone",
+        "ts": "1438912531.000173"
+    }
+]

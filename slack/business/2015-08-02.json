@@ -502,5 +502,31 @@
         "user": "U07GDL0H5",
         "text": "it will take the form of a BIP 39 mnemonic",
         "ts": "1438557644.000157"
+    },
+    {
+        "user": "U08G10908",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08G10908|christophera> has joined the channel",
+        "ts": "1438560947.000158"
+    },
+    {
+        "type": "message",
+        "user": "U08BY8MGV",
+        "text": "That's a pretty difficult thing to get lots of users to do. I wonder how Zapchain does it. Are they holding the bits you received from tipping in their own wallet or at Coinbase? In order to send funds, they require you to connect a Coinbase account",
+        "ts": "1438561154.000159"
+    },
+    {
+        "user": "U08C9ML1Y",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08C9ML1Y|chiguireitor> has joined the channel",
+        "ts": "1438565715.000160"
+    },
+    {
+        "type": "message",
+        "user": "U08C22VNW",
+        "text": "My thought on preserving identity \/wallet was to allow the user to log in to dropbox or another cloud provider to back up their keys (encrypted with a password) in cases where they aren't prepared to manually handle export and backup.",
+        "ts": "1438584816.000161"
     }
 ]

@@ -1,0 +1,143 @@
+[
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "<@U08EZP01H>: would you mind uploading some cropped assets?  no padding",
+        "ts": "1438844672.000325"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "errrr wrong chanenl",
+        "ts": "1438844676.000326"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Perhaps Duplex Micropayment Channels could solve the complexity in moving funds between users. Full Nodes become PSPs as described in this paper <http:\/\/www.researchgate.net\/profile\/Christian_Decker5\/publication\/277991245_A_Fast_and_Scalable_Payment_Network_with_Bitcoin_Duplex_Micropayment_Channels\/links\/55780a4e08aeb6d8c01cf2d0.pdf>",
+        "ts": "1438862250.000327"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Hey <@U08ERPTQF> , thanks for the fascinating reaf",
+        "ts": "1438873220.000328"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Read*",
+        "ts": "1438873224.000329"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "That paper is really remarkable. This quote is my favorite: \"If such a channel is initially funded with 1\r\nbitcoin, the channel can be used to transfer a total of 148 billion bitcoins, an\r\nequivalent of 35.3 trillion USD at today\u2019s exchange rate, twice the US national\r\ndebt. Notice that both n and d can be chosen arbitrarily, further extending the\r\namount transferable by a channel.\"",
+        "ts": "1438891241.000330"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Have some side-by-side comparison W\/ lightning too",
+        "ts": "1438891274.000331"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "And it is much simpler than lightning",
+        "ts": "1438891312.000332"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yeah, this article is 1) easier to read that the lightning network whitepaper, 2) seems simpler",
+        "ts": "1438892071.000333",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08D641AP",
+                    "U08CBD41G"
+                ],
+                "count": 3
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "thanks for bringing this to our attention <@U08ERPTQF> !",
+        "ts": "1438892081.000334"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i spent some time yesterday reviewing the lightning network presentation: <http:\/\/lightning.network\/lightning-network.pdf>",
+        "ts": "1438892104.000335"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "seems lightning network is roughly equal to or greater in complexity than the entire rest of the project put together.",
+        "ts": "1438892132.000336"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "I was searching for innovative micropayment channel concepts last night, stumbled upon this and then stayed up reading it. I'll reread it again now, but it really seems to have good potential for our use case :)",
+        "ts": "1438892576.000337"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U07GDL0H5>: Possibly worth inviting the Duplex MPC authors to collaboration on Datt... <https:\/\/github.com\/cdecker>",
+        "ts": "1438895593.000338"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "<@U08ERPTQF>: please invite them if you want ... i just gave you admin access to slack so you should be able to invite people",
+        "ts": "1438899825.000339",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08D641AP"
+                ],
+                "count": 2
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08DDG1SB",
+        "text": "You guys should set up a slackit button so you can just let people sign themselves up",
+        "ts": "1438900359.000340"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "done: <https:\/\/datt-slackin.herokuapp.com\/>",
+        "ts": "1438902108.000341"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "domain outstanding",
+        "ts": "1438902112.000342"
+    },
+    {
+        "type": "message",
+        "user": "U08DDG1SB",
+        "text": "Did you set up the twitter stream?",
+        "ts": "1438910496.000343"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i'll set up a twitter stream once i have email working on the website",
+        "ts": "1438910573.000344"
+    }
+]

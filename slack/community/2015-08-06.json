@@ -1,0 +1,72 @@
+[
+    {
+        "type": "message",
+        "user": "U08ELNFTP",
+        "text": "<@U08ERPTQF>: I think reaching out to Glen when the platform is closer to launching is a top notch idea",
+        "ts": "1438846795.000084"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08ELNFTP>: I think we should absolutely get Glen involved at some point",
+        "ts": "1438850110.000085"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<https:\/\/np.reddit.com\/r\/IAmA\/comments\/2a8hn2\/we_are_glenn_greenwald_murtaza_hussain_who_just\/cisiv2g?context=1>",
+        "attachments": [
+            {
+                "service_name": "reddit",
+                "title": "We are Glenn Greenwald &amp; Murtaza Hussain, who just revealed the Muslim-American leaders spied on by the NSA &amp; FBI. Ask Us Anything. \u2022 \/r\/IAmA",
+                "title_link": "https:\/\/np.reddit.com\/r\/IAmA\/comments\/2a8hn2\/we_are_glenn_greenwald_murtaza_hussain_who_just\/cisiv2g?context=1",
+                "text": "&gt; How do you feel about the fact that the moderators of \/r\/worldnews have a policy of filtering any story from The Intercept as \"Opinion\"? Reddit...",
+                "fallback": "reddit: We are Glenn Greenwald &amp; Murtaza Hussain, who just revealed the Muslim-American leaders spied on by the NSA &amp; FBI. Ask Us Anything. \u2022 \/r\/IAmA",
+                "thumb_url": "https:\/\/www.redditstatic.com\/icon.png",
+                "from_url": "https:\/\/np.reddit.com\/r\/IAmA\/comments\/2a8hn2\/we_are_glenn_greenwald_murtaza_hussain_who_just\/cisiv2g?context=1",
+                "thumb_width": 256,
+                "thumb_height": 256,
+                "id": 1
+            }
+        ],
+        "ts": "1438850141.000086"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "Another person I think we should eventually reach out to is Lawrence Lessig.",
+        "ts": "1438850236.000088"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<https:\/\/www.reddit.com\/r\/dataisbeautiful\/comments\/2ymopi\/us_students_are_fleeing_law_schools_and_pouring\/cpbft7m?context=3>",
+        "attachments": [
+            {
+                "service_name": "reddit",
+                "title": "US students are fleeing law schools and pouring into engineering \u2022 \/r\/dataisbeautiful",
+                "title_link": "https:\/\/www.reddit.com\/r\/dataisbeautiful\/comments\/2ymopi\/us_students_are_fleeing_law_schools_and_pouring\/cpbft7m?context=3",
+                "text": "3970 points and 2362 comments so far on reddit",
+                "fallback": "reddit: US students are fleeing law schools and pouring into engineering \u2022 \/r\/dataisbeautiful",
+                "thumb_url": "http:\/\/b.thumbs.redditmedia.com\/0zczrIosMx3Yw3pf31Yh67scOCx1Z-EACD_PAEAJkBY.jpg",
+                "from_url": "https:\/\/www.reddit.com\/r\/dataisbeautiful\/comments\/2ymopi\/us_students_are_fleeing_law_schools_and_pouring\/cpbft7m?context=3",
+                "thumb_width": 140,
+                "thumb_height": 80,
+                "id": 1
+            }
+        ],
+        "ts": "1438850260.000089"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Those are both great leaders. Lessig is based out of Seattle here. Nick Hanauer comes to mind as well.",
+        "ts": "1438877163.000091"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "or maybe it's Eric Liu. Another good connect.",
+        "ts": "1438877279.000092"
+    }
+]

@@ -1,0 +1,9 @@
+[
+    {
+        "user": "U08KP51FU",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08KP51FU|lapingvino> has joined the channel",
+        "ts": "1438757185.000002"
+    }
+]

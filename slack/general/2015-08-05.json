@@ -1,0 +1,1217 @@
+[
+    {
+        "type": "message",
+        "user": "U08BY8MGV",
+        "text": "Hey Everyone - Changetip is willing to host the group on Sat August 16th at their office. Until we can find a permanent working space,  many btc companies might be willing to do this. Are we interested in Changetip's offer? Do we want to wait and decide or go ahead and lock this down?",
+        "ts": "1438793142.003556"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "um, yes! <@U08BY8MGV>",
+        "ts": "1438796774.003557"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "that is, we do want to accept the offer and be there on the 16th :simple_smile:",
+        "ts": "1438796812.003558"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "we can still talk with other btc companies as well and maybe hang out at some other places at other times",
+        "ts": "1438796866.003559"
+    },
+    {
+        "type": "message",
+        "user": "U08BY8MGV",
+        "text": "What are reasonable hours? 12 to 6?",
+        "ts": "1438796896.003560"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yeah that sounds pretty reasonable to me",
+        "ts": "1438796911.003561"
+    },
+    {
+        "type": "message",
+        "user": "U08BY8MGV",
+        "text": "Cool. I'll coordinate with them and then send out a meeting invite on slack",
+        "ts": "1438797873.003562"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Another MVP question: should we scrape\/crawl the link posts to pull in a thumbnail image from the source content? Is there an easy client side way to do this, then add it to the metadata of the link post? Or is this better left to after MVP?",
+        "ts": "1438808079.003563"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i definitely don't think that's necessary for MVP",
+        "ts": "1438808102.003564"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "cool",
+        "ts": "1438808126.003565"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "I'll update DATTmvp with some more of these types of decisions",
+        "ts": "1438808202.003566"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "I actually have that working already, but agree it's not necessary.  just nice to have\u2122.",
+        "ts": "1438808736.003567",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Updated DATTmvp in dattdocs repo :simple_smile:",
+        "ts": "1438809215.003568"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "two development updates from me today;\n1. I've implemented \"gilding\" of both posts and comments; <https:\/\/github.com\/martindale\/converse\/pull\/25> \u2013 this currently spends 50 bits and adorns the post with a trophy.  surely this will be configurable (per sub?) in the future, but this is sufficient for a preview\n2. I've also begun implementing both \"hotness\" (for posts) and Wilson Scoring (for comments): <https:\/\/github.com\/martindale\/converse\/pull\/26> \n\nboth of these changes are now live on <https:\/\/converse.fm> for your experimenting pleasure.",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "WIP: Gilding by martindale \u00b7 Pull Request #25 \u00b7 martindale\/converse \u00b7 GitHub",
+                "title_link": "https:\/\/github.com\/martindale\/converse\/pull\/25",
+                "text": "This implements a basic \"gilding\" functionality, which allows a user to adorn a piece of content with a gold trophy \u2013 spending from their balance to do so.",
+                "fallback": "GitHub: WIP: Gilding by martindale \u00b7 Pull Request #25 \u00b7 martindale\/converse",
+                "thumb_url": "https:\/\/avatars2.githubusercontent.com\/u\/129761?v=3&s=400",
+                "from_url": "https:\/\/github.com\/martindale\/converse\/pull\/25",
+                "thumb_width": 398,
+                "thumb_height": 398,
+                "id": 1
+            },
+            {
+                "service_name": "GitHub",
+                "title": "WIP: Hotness and Wilson Scores by martindale \u00b7 Pull Request #26 \u00b7 martindale\/converse \u00b7 GitHub",
+                "title_link": "https:\/\/github.com\/martindale\/converse\/pull\/26",
+                "text": "This implements new sorting mechanisms for posts and comments.",
+                "fallback": "GitHub: WIP: Hotness and Wilson Scores by martindale \u00b7 Pull Request #26 \u00b7 martindale\/converse",
+                "thumb_url": "https:\/\/avatars2.githubusercontent.com\/u\/129761?v=3&s=400",
+                "from_url": "https:\/\/github.com\/martindale\/converse\/pull\/26",
+                "thumb_width": 398,
+                "thumb_height": 398,
+                "id": 2
+            },
+            {
+                "text": "converse: Simple, open-source, uncensorable conversations.",
+                "fallback": "converse: Simple, open-source, uncensorable conversations.",
+                "from_url": "https:\/\/converse.fm",
+                "id": 3
+            }
+        ],
+        "ts": "1438809611.003569"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "having now re-sorted the front page using the new hotness mechanism, it's starting to \"feel\" right.",
+        "ts": "1438809723.003571"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "awesome !",
+        "ts": "1438810219.003572"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "Do we have a good public summary overview of progress and defined priorities?",
+        "ts": "1438810707.003573"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "There is going to be a lot of buzz about reddit\/censorship today and it might be a good time to attract more interested developers",
+        "ts": "1438810732.003574"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Excellent work <@U08D641AP>",
+        "ts": "1438810744.003575"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08DD8LNP>: should we try to structure an intro to the project in the dattdocs readme.md you think?",
+        "ts": "1438810787.003576"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08ERPTQF>: totally, the google doc is probably a good start",
+        "ts": "1438810820.003577"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Some of the content is hiding in the principles and mvp docs, so I'll start by referencing those.\nDo we agree that the stated goal is simply: \"To prove the feasibility of a browser based P2P publishing platform that is distributed and not centrally moderated.\" or should we expand on that?",
+        "ts": "1438811005.003578"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "IMO, we should place more emphasis on payments. this isn't just about creating something decentralized but allowing users, moderators and hosts to get paid",
+        "ts": "1438811290.003579"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "what about \"To prove the feasibility of a browser based P2P publishing market that is distributed and not centrally moderated\"",
+        "ts": "1438811380.003580"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "... \"where content ownership remains with the author\"",
+        "ts": "1438811399.003581"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yeah i like that",
+        "ts": "1438811415.003582"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "\"To prove the feasibility of a browser based P2P publishing market where content ownership remains with the author\" ... this removes a bit of redundancy",
+        "ts": "1438811649.003583"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "and i kept \"market\" which to me implies payments",
+        "ts": "1438811662.003584"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "I would still like to highlight moderation as a point of difference, but I agree \"not centrally moderated\" doesn't mean much to people outside of the discussions we've had.",
+        "ts": "1438811797.003585"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "hmm yeah that's a good point",
+        "ts": "1438811819.003586"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "how about ... \"To prove the feasibility of a browser based P2P publishing market that is not centrally moderated and where content ownership remains with the author\"",
+        "ts": "1438811856.003587"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "basically this just removes \"distributed\" which is implied by P2P",
+        "ts": "1438811871.003588"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "\"To prove the feasibility of a browser based P2P publishing market where content ownership remains with the author, and moderation choice remains with the user\"",
+        "ts": "1438811924.003589",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08D641AP"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "ooh, yes i like that",
+        "ts": "1438811935.003590"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "alright, I just finished up the \"accounting\" for gilding, and balances are updated appropriately \u2013 this completes most of the monetary flow (I think); votes in both directions cost 1 bit, gildings cost 50 bits.  now, I need a few folks to participate in actually using this stuff so we can understand a bit more about the dynamics!",
+        "ts": "1438812082.003591"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "I'm ready to start using it mate... will pull the latest converse datt branch... any other setup instructions for seeding?",
+        "ts": "1438812151.003592"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "every new account currently starts with \"100 bits\", and it's a closed system for now (no deposits, no withdrawals).  when I finish `maki-identity-mnemonic`, I'll probably use that to do browser-based key management",
+        "ts": "1438812171.003593"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "<@U08ERPTQF>: you'll probably want maki locally too, on the `fabric` branch \u2013 that's how content is distributed across nodes right now",
+        "ts": "1438812193.003594"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "I need to backfill the oplog before you'll get a full copy of the known content, though",
+        "ts": "1438812215.003595"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "probably best for today to just use the hosted version, as I probably won't finish backfill this week :disappointed:",
+        "ts": "1438812239.003596"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "ok that's all live on <https:\/\/converse.ericmartindale.com\/> by the look of it",
+        "ts": "1438812589.003597"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "yep, also mirrored on <http:\/\/converse.fm|converse.fm> for convenience :simple_smile:",
+        "ts": "1438812606.003598"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "gilding permanently deducts 50 bits from my balance, but up votes don't persist after a page refresh",
+        "ts": "1438813351.003599"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "votes will increment on the node if it's either your first vote or a change in the direction of your vote \u2013 the UI provides instant feedback, but it doesn't block if the node rejects the vote",
+        "ts": "1438813429.003600"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "yet",
+        "ts": "1438813432.003601"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "I'd like some help with the UI at some point, either React or Ember for binding these types of updates \u2013 maybe <@U08DD8LNP> could chime in here",
+        "ts": "1438813490.003602"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "really liking Flux architecture for managing UI",
+        "ts": "1438813519.003603"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08D641AP>: I\u2019ve started some functional mocks here: <http:\/\/dattnetwork.github.io\/>",
+        "ts": "1438813573.003604"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<https:\/\/github.com\/dattnetwork\/datt.ui>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "dattnetwork\/datt.ui",
+                "title_link": "https:\/\/github.com\/dattnetwork\/datt.ui",
+                "text": "datt.ui - Ember.js UX\/mock playground that may eventually evolve into something useful",
+                "fallback": "GitHub: dattnetwork\/datt.ui",
+                "thumb_url": "https:\/\/avatars0.githubusercontent.com\/u\/13266895?v=3&s=400",
+                "from_url": "https:\/\/github.com\/dattnetwork\/datt.ui",
+                "thumb_width": 214,
+                "thumb_height": 214,
+                "id": 1
+            }
+        ],
+        "ts": "1438813581.003605"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "Waiting on the HTML\/CSS from the design guys, for now I\u2019m just using bootstrap and trying to get things well separated with realistic-ish mocks here: <https:\/\/github.com\/dattnetwork\/datt.ui\/blob\/master\/app\/services\/datt.js>",
+        "ts": "1438813632.003607"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "I've abandoned bootstrap in Maki for semantic ui, you might appreciate it: <http:\/\/semantic-ui.com\/>",
+        "attachments": [
+            {
+                "text": "Semantic empowers designers and developers by creating a shared vocabulary for UI.",
+                "fallback": "Semantic empowers designers and developers by creating a shared vocabulary for UI.",
+                "from_url": "http:\/\/semantic-ui.com\/",
+                "id": 1
+            }
+        ],
+        "ts": "1438813692.003608"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "I guess I'm looking for someone to just build the UI management component for Maki apps in general, converse being the most mature of them",
+        "ts": "1438813727.003610"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I\u2019m expecting all my html to get replaced, it\u2019s more of a playground to try out UX ideas and demonstrate how ember could work for a thick app like this",
+        "ts": "1438813730.003611"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "yeah, that's why I revived converse, to serve as a UX testing ground",
+        "ts": "1438813764.003612"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "also as a small demo of how I think moderation could work",
+        "ts": "1438813772.003613"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "from the user experience anyway",
+        "ts": "1438813779.003614"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "it seems like <@U08D641AP>'s Converse has some of the UX missing from DattUI and <@U08DD8LNP>'s DattUI has some of the UX missing from Converse :wink:",
+        "ts": "1438813879.003615"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "how can we pull our work together?  most of what I've done is server-side, real API and node sync, and I'm really lacking on the UI stuff \u2013 all my code on client is just temporary hacks to update elements",
+        "ts": "1438813897.003616"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "yes, exactly",
+        "ts": "1438813900.003617"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08DD8LNP> <@U07GDL0H5> the readme is updated so that's as good a place as any to direct people interested in the project.",
+        "ts": "1438814263.003618"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "nice <@U08ERPTQF> !",
+        "ts": "1438814273.003619"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08D641AP>: awesome I was going for the exact opposite and hoping someone would do what you\u2019re doing",
+        "ts": "1438814606.003620"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "Basically we need to modify <https:\/\/github.com\/dattnetwork\/datt.ui\/blob\/master\/app\/services\/datt.js> to use your backend stuff",
+        "ts": "1438814626.003621"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "I'll write up some docs for what I have then \u2013",
+        "ts": "1438814653.003622"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "and go from there, I\u2019m sure it wont map 1 for 1 but we can change the datt.js service as well and update the UI to match",
+        "ts": "1438814655.003623"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "excellent, basically I am trying to be the go between for <#C08F8UMGB> and <#C08EJG7M1> datt.ui is the rug that will pull the room together",
+        "ts": "1438814688.003624"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "<@U08ERPTQF>: you have this under \"desirable\" ... \"Monetarily incentivize contributors (Content creators)\"",
+        "ts": "1438814753.003625"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "IMO, that is a requirement for the project, not just desirable",
+        "ts": "1438814764.003626"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "since that is difficult to do correctly, it may not be in some type of demo, but should be in the MVP",
+        "ts": "1438814789.003627"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Correct, what might not make it in the MVP is probably the incentives to Mods &amp; Nodes",
+        "ts": "1438814891.003628"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "<@U08D641AP>: <@U08DD8LNP> be aware i also started some server work in the main \"datt\" repo ... probably not as complete as eric's",
+        "ts": "1438815211.003629"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "in fact, definitely not as complete, but was intended to be a starting point",
+        "ts": "1438815231.003630"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "I only have a minor headstart, converse was one of the first things I built with Maki over a year ago... all the features Maki has are automatically available in converse :simple_smile:",
+        "ts": "1438822861.003631"
+    },
+    {
+        "type": "message",
+        "user": "U08K9N7PU",
+        "text": "this came to my mind \"Improving content by harnessing micro-payments\"",
+        "ts": "1438822910.003632"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "to re-iterate from earlier, there is still one big missing item in Maki; a good UI compositing system \u2013 in the server-client world we might call this a clientside framework, but the Maki philosophy just delegates that role to \"UI layer\" of a local application (which acts like a server, but it's p2p)",
+        "ts": "1438822976.003633"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "I'm consuming g0ldfish's work here to see if I can make something work, but this is not my area of expertise",
+        "ts": "1438823007.003634"
+    },
+    {
+        "type": "message",
+        "user": "U08K9N7PU",
+        "text": "how solid is the moderation  concept?",
+        "ts": "1438823439.003635"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08D641AP>: if you can provide and document a solid API for interfacing with the network I can work from there.  Ideally making use of promises for async",
+        "ts": "1438823721.003636"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "if I can serve a list of resources via the API (maybe via an `OPTIONS` request), do you think it would be possible to make an API-agnostic framework?  maybe even serve HTML templates for rendering, along with it",
+        "ts": "1438826667.003637"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "<@U08DD8LNP>: agreed with promises. have you used Promise in ES 2015? i've been writing fullnode with those. or are you partial to, say, q?",
+        "ts": "1438826718.003638"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I\u2019ve been using RSVP as that\u2019s what is shipped with ember <https:\/\/github.com\/tildeio\/rsvp.js\/>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "tildeio\/rsvp.js",
+                "title_link": "https:\/\/github.com\/tildeio\/rsvp.js\/",
+                "text": "rsvp.js - A lightweight library that provides tools for organizing asynchronous code",
+                "fallback": "GitHub: tildeio\/rsvp.js",
+                "thumb_url": "https:\/\/avatars1.githubusercontent.com\/u\/1355851?v=3&s=400",
+                "from_url": "https:\/\/github.com\/tildeio\/rsvp.js\/",
+                "thumb_width": 400,
+                "thumb_height": 400,
+                "id": 1
+            }
+        ],
+        "ts": "1438826758.003639"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "it\u2019s modeled after ES 2015 promises though and should be good with whatever",
+        "ts": "1438826772.003641"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "actually, there, `curl -X OPTIONS <https:\/\/converse.fm>`",
+        "attachments": [
+            {
+                "text": "converse: Simple, open-source, uncensorable conversations.",
+                "fallback": "converse: Simple, open-source, uncensorable conversations.",
+                "from_url": "https:\/\/converse.fm",
+                "id": 1
+            }
+        ],
+        "ts": "1438826895.003642"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "snoocore is based on when.js promises and it always worked fine: <https:\/\/github.com\/cujojs\/when>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "cujojs\/when",
+                "title_link": "https:\/\/github.com\/cujojs\/when",
+                "text": "A solid, fast Promises\/A+ and when() implementation, plus other async goodies.",
+                "fallback": "GitHub: cujojs\/when",
+                "thumb_url": "https:\/\/avatars1.githubusercontent.com\/u\/1211266?v=3&s=400",
+                "from_url": "https:\/\/github.com\/cujojs\/when",
+                "thumb_width": 400,
+                "thumb_height": 400,
+                "id": 1
+            }
+        ],
+        "ts": "1438826909.003644"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "that will give you a full list of the API endpoints, their attributes, and the templates associated with them",
+        "ts": "1438826917.003646"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "and RSVP is able to wrap the promise likes from jquery as well",
+        "ts": "1438826926.003647"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "I will bundle the above JSON into human-readable HTML upstream in Maki",
+        "ts": "1438827418.003648"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "but it should list everything currently in the `resources` attribute there",
+        "ts": "1438827438.003649"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "people, posts, comments, votes, gildings",
+        "ts": "1438827460.003650"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "the primary ones",
+        "ts": "1438827463.003651"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "(all predictably at `\/people`, `\/posts`, etc.)",
+        "ts": "1438827476.003652"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<https:\/\/github.com\/majestrate\/nntpchan>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "majestrate\/nntpchan",
+                "title_link": "https:\/\/github.com\/majestrate\/nntpchan",
+                "text": "nntpchan - nntp based decentralized imageboard",
+                "fallback": "GitHub: majestrate\/nntpchan",
+                "thumb_url": "https:\/\/avatars2.githubusercontent.com\/u\/499653?v=3&s=400",
+                "from_url": "https:\/\/github.com\/majestrate\/nntpchan",
+                "thumb_width": 236,
+                "thumb_height": 236,
+                "id": 1
+            }
+        ],
+        "ts": "1438829159.003653"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<https:\/\/voat.co\/v\/technology\/comments\/380501> getting some good pickup on voat",
+        "ts": "1438829207.003655"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "sounds awesome ... reading the description i see \" It utilizes cryptograpghicly signed posts\" in the second sentence ... that typo doesn't encourage me to spend more time reviewing the source code :simple_smile:",
+        "ts": "1438829282.003656"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "okay <@U08DD8LNP> \u2013 <https:\/\/converse.fm\/api> was far easier than I expected!  all Maki apps have auto-documented APIs now :simple_smile:",
+        "ts": "1438829649.003657"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "hey could someone add <mailto:johanth@gmail.com|johanth@gmail.com> to this slack? he's a blockchain dev (&amp; rust enthusiast) excited to check out the project",
+        "ts": "1438829725.003658"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "done!",
+        "ts": "1438829749.003659"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "thanks!",
+        "ts": "1438829784.003660"
+    },
+    {
+        "user": "U08MAKT70",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08MAKT70|johan> has joined the channel",
+        "ts": "1438829790.003661"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "<@U08D641AP>: is <http:\/\/converse.fm|converse.fm> open to try it out?",
+        "ts": "1438829820.003662"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "yep, feel free, it's just where I'm testing out all of our datt ideas",
+        "ts": "1438829842.003663"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "cool, thanks!",
+        "ts": "1438829858.003664"
+    },
+    {
+        "type": "message",
+        "user": "U08FELGRX",
+        "text": "first impressions: I like it",
+        "ts": "1438830247.003665"
+    },
+    {
+        "type": "message",
+        "user": "U08FELGRX",
+        "text": "I like the \"expand\" feature of RES where you can open a post without navigating to a new page though",
+        "ts": "1438830498.003666"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "I'm sure someone far more competent than me at extensions can build something similar, since the API is pretty easy",
+        "ts": "1438830837.003667"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "we can do that in the UI as a first class feature",
+        "ts": "1438830860.003668"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "not need for extensions, reddit is only lacking in that stuff because they are extremely conservative with the frontend",
+        "ts": "1438830874.003669"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "and partly this is due to them allowing moderators to have full reign over CSS, but this causes DOM lock-in and probably reluctance to rock the boat",
+        "ts": "1438830902.003670"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "well, I did build the one extension so I can get notifications on new content",
+        "ts": "1438830976.003671"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "actually, you're right, it wouldn't be hard to just build that into the platform",
+        "ts": "1438831037.003672"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "We can one-up voat as well",
+        "ts": "1438831089.003673"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<http:\/\/snew.github.io\/#\/r\/videos>",
+        "ts": "1438831091.003674"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "click a youtube video, it will play in the bottom right, and you can keep browsing threads",
+        "ts": "1438831106.003675"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "we\u2019ll be able to integrate that same sort of functionality since the client is going to just be a long running JS app anyway.  no page context changes = continuous playback",
+        "ts": "1438831136.003676"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "we\u2019ll want to make it so you can queue up media (Right now the snew thing has an internal playlist it switches to after whatever you play)",
+        "ts": "1438831163.003677"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "that's pretty neat",
+        "ts": "1438831167.003678"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "any comments on the API docs before I pack up and head home?",
+        "ts": "1438831213.003679"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "The same principle is what makes <http:\/\/dig.ccmixter.org\/people\/go1dfish> work you can listen while browsing.",
+        "ts": "1438831216.003680"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "they are really dry and need some english embelishment to add context IMO",
+        "ts": "1438831256.003681"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "but I\u2019m lazy",
+        "ts": "1438831275.003682"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "hueh, agreed, I did not yet supply the \"description\" field for the resources",
+        "ts": "1438831276.003683"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "so they are all bland defaults",
+        "ts": "1438831287.003684"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "the basic idea is there I might start playing with it some tonight",
+        "ts": "1438831300.003685"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "is there a good chrome extension to send the right accept header and take advantage of my json formatter?",
+        "ts": "1438831328.003686"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "or is there a way to force json returns in a browser through a query param or something?",
+        "ts": "1438831341.003687"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "other than the `Accept` header?",
+        "ts": "1438831377.003688"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "oh hrm",
+        "ts": "1438831385.003689"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "maybe I can add `format=json` quickly, let me look into the http service in maki",
+        "ts": "1438831409.003690"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "alternatively, maybe it should be `.json` at the end of any url?",
+        "ts": "1438831431.003691"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "yeah that\u2019s useful IMO not so much for development but for getting familiar with the API, it reduces friction",
+        "ts": "1438831433.003692"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "when you can just link to example returns since most people implementing this are going to start from reading the data",
+        "ts": "1438831461.003693"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "done!  `format=json` on any URL",
+        "ts": "1438832142.003694"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "sweet <https:\/\/converse.fm\/posts?format=json>",
+        "ts": "1438832257.003695"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I can start integrating that directly into the ember datt.js service for now at least for the initial\/read content",
+        "ts": "1438832330.003696"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "but realistically it will likely be pretty different from where we want to end up with datt",
+        "ts": "1438832377.003697"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "awesome.  I need to patch the resources to make the credentials all restricted fields if this ever becomes a real thing, but also we should just switch to cryptographic identity",
+        "ts": "1438832396.003698"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "if we\u2019re going for a P2P model with browsers as full participatory nodes",
+        "ts": "1438832397.003699"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "yep, I think that's the objective",
+        "ts": "1438832414.003700"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "which reminds me; are we going with the presumption that all data will be public?  or will we need some sort of restricted values (ZKP?)",
+        "ts": "1438832439.003701"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I\u2019ll probably just use this to seed more interesting mock data for now :simple_smile:",
+        "ts": "1438832441.003702"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "my impression is that we\u2019ve only been focussing on fully public stuff without much consideration for private communities",
+        "ts": "1438832466.003703"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "if people want private communities they could always layer more crypto on top of the content to restrict access; will be quite a bit more effort to build fully private communities in a distributed system I would think",
+        "ts": "1438832501.003704",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08F2RTCN",
+                    "U08D641AP"
+                ],
+                "count": 3
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "I have plans to implement confidential values \/ snarks in Fabric at large, but I will keep that de-prioritized for now then",
+        "ts": "1438832606.003705"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "okay, heading out now",
+        "ts": "1438832639.003706"
+    },
+    {
+        "type": "message",
+        "user": "U08D641AP",
+        "text": "chat when home",
+        "ts": "1438832653.003707"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "This guy wants an invite: <https:\/\/github.com\/mashaal\/>",
+        "ts": "1438837684.003708"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "some guy on voat is asking for a btc\/paypal donation address <@U07GDL0H5> do we have something for that?",
+        "ts": "1438838170.003709"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "ha wow. um, let me go make one.",
+        "ts": "1438838228.003710"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "a reason to use bitgo :simple_smile:",
+        "ts": "1438838248.003711",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08D641AP"
+                ],
+                "count": 2
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "might also want to tweet it or something to prove its yours",
+        "ts": "1438838279.003712"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "also add it to dattdocs readme?",
+        "ts": "1438838323.003713"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "yeah probably a good idea",
+        "ts": "1438838400.003714"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "3GQaBbxNcwP1VTTcM7DL49CystR89tLsk7",
+        "ts": "1438838664.003715"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i created a new BitGo wallet called \"Datt Donation Wallet\"",
+        "ts": "1438838674.003716"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i will add this to dattdocs with a signed commit",
+        "ts": "1438838682.003717"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "sweet",
+        "ts": "1438838693.003718"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "might want to wait before sharing to validate that slack isn't MITM us :simple_smile:",
+        "ts": "1438838702.003719"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "heh, also you might describe in general what the money will be used for",
+        "ts": "1438838731.003720"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "well i have no idea... but i can't turn down a donation :simple_smile: yes i should add something like that to the README",
+        "ts": "1438838757.003721"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "that\u2019s the approach I took with getfairshare rather than asking for money (which is against reddit rules depending on how you look at it)",
+        "ts": "1438838761.003722"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I said \u201cmoney sent here will do this\"",
+        "ts": "1438838775.003723"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "for now just saying it helps fund the meetups is probably enough",
+        "ts": "1438838796.003724"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "<https:\/\/github.com\/dattnetwork\/dattdocs\/blob\/master\/donations.md>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "dattnetwork\/dattdocs",
+                "title_link": "https:\/\/github.com\/dattnetwork\/dattdocs\/blob\/master\/donations.md",
+                "text": "dattdocs - Document all the things.",
+                "fallback": "GitHub: dattnetwork\/dattdocs",
+                "thumb_url": "https:\/\/avatars0.githubusercontent.com\/u\/13266895?v=3&s=400",
+                "from_url": "https:\/\/github.com\/dattnetwork\/dattdocs\/blob\/master\/donations.md",
+                "thumb_width": 214,
+                "thumb_height": 214,
+                "id": 1
+            }
+        ],
+        "ts": "1438839262.003725"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "ok i just invited him to the slack channel as well",
+        "ts": "1438839299.003727"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i sent invite to <mailto:omar@teacups.io|omar@teacups.io>",
+        "ts": "1438839307.003728"
+    },
+    {
+        "user": "U08MEV56D",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08MEV56D|mashaal> has joined the channel",
+        "ts": "1438839481.003729"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "welcome <@U08MEV56D> !",
+        "ts": "1438839510.003730"
+    },
+    {
+        "type": "message",
+        "user": "U08MEV56D",
+        "text": "Thanks <@U07GDL0H5>",
+        "ts": "1438839534.003731"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U07GDL0H5>: only work on the open-soure project.",
+        "ts": "1438839559.003732"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<http:\/\/j-walk.com\/other\/ossw\/>",
+        "ts": "1438839599.003733"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "are you  suggesting i remove \"open protocol and open design\" ?",
+        "ts": "1438839619.003734"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "no I\u2019m suggesting you accidentally a letter",
+        "ts": "1438839641.003735"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "oh woops. will fix. with another signed commit.",
+        "ts": "1438839680.003736"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "fixed",
+        "ts": "1438839726.003737"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "cool",
+        "ts": "1438840010.003738"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "just wrote up a doc explaining what i have in mind for the architecture. what i've described here is sort of the \"full picture\", but may go further than what we actually need for MVP. thoughts appreciated. <https:\/\/github.com\/dattnetwork\/dattdocs\/blob\/master\/architecture.md>",
+        "ts": "1438840818.003739"
+    }
+]

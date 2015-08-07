@@ -1,0 +1,70 @@
+[
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "this makes me want a better mind-blown emoji <http:\/\/www.callumhart.com\/blog\/vector-based-graphics-in-html-and-css>",
+        "attachments": [
+            {
+                "text": "A web designer and developer who loves to use the latest web technologies to create beautiful, functional websites and applications.",
+                "fallback": "A web designer and developer who loves to use the latest web technologies to create beautiful, functional websites and applications.",
+                "from_url": "http:\/\/www.callumhart.com\/blog\/vector-based-graphics-in-html-and-css",
+                "id": 1
+            }
+        ],
+        "ts": "1438710672.000405"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "I think our logo lends itself well to this technique.",
+        "ts": "1438710723.000407"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08EZP01H>: it didn't take long to make a SIML animated SVG version of the Datt logo, so crafting it in CSS with SASS should be relatively straight forward",
+        "ts": "1438717233.000408"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "basic commend ux mocked: <http:\/\/dattnetwork.github.io\/#\/c\/19A823btChtfS4MQBrj83NKiez2MP33rNC\/t\/19KTMFNpNQPg2NV6FQuVKELJc48Xk1u9vA>",
+        "ts": "1438752179.000409"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I\u2019m speaking of the interaction itself btw, I know my UI is ugly as shit right now, waiting on you html\/css gurus :wink:",
+        "ts": "1438752215.000410"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "nice !",
+        "ts": "1438752324.000411"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "lol @ your default comments",
+        "ts": "1438752344.000412"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": ":simple_smile:",
+        "ts": "1438752357.000413"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "many many years ago one of the most prolific trolls was named 911WasAnInsideJob or something like that.  I remember someone making a novelty account that did the 7\/11 joke",
+        "ts": "1438752438.000414"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "lol",
+        "ts": "1438752733.000415"
+    }
+]

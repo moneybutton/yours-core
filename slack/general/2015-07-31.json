@@ -16,11 +16,11 @@
                 "color": "D0D0D0",
                 "fallback": "[July 30th, 2015 11:55 PM] go1dfish: Collected some more of my thoughts here: <http:\/\/go1dfish.me\/blog\/my-two-cents-there-aint-no-such-thing-as-free-speech>",
                 "author_subname": "go1dfish",
-                "ts": "1438325706.000732",
+                "ts": 1438325706,
                 "text": "Collected some more of my thoughts here: <http:\/\/go1dfish.me\/blog\/my-two-cents-there-aint-no-such-thing-as-free-speech>",
                 "author_name": "Alex Goodwin",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/go1dfish",
-                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0010-48.png",
+                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0010-48.png",
                 "mrkdwn_in": [
                     "text"
                 ]
@@ -1287,7 +1287,16 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "<@U08CBRZNX>: I don't think we can achieve what we want to achieve in a way that would give us the ability to remove content at all",
-        "ts": "1438367940.000937"
+        "ts": "1438367940.000937",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08CZDYB1"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -1329,7 +1338,16 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "<@U08CZDYB1>: yeah I lean towards that approach.  We should focus on building a listing service that indexes an existing datastore.  Then we don't really care what's being stored",
-        "ts": "1438368346.000944"
+        "ts": "1438368346.000944",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08CZDYB1"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -1892,7 +1910,16 @@
         "type": "message",
         "user": "U08CZDYB1",
         "text": "it works well for large bundles of data. trying to serve many small files that change over time will be rough",
-        "ts": "1438370912.001043"
+        "ts": "1438370912.001043",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08DD8LNP"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -2247,7 +2274,16 @@
         "type": "message",
         "user": "U08ERPTQF",
         "text": "comments will almost certainly be offchain",
-        "ts": "1438374287.001101"
+        "ts": "1438374287.001101",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08CZDYB1"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -2332,11 +2368,11 @@
                 "color": "D0D0D0",
                 "fallback": "[July 31st, 2015 1:30 PM] paul_xbt: if we do consider using the browser cache for content  then EphemeralP2P has a nice approach to stop seeding once the tab is closed -&gt; <http:\/\/ephemeralp2p.durazo.us\/> <https:\/\/github.com\/losvedir\/ephemeral2>",
                 "author_subname": "paul_xbt",
-                "ts": "1438374655.001106",
+                "ts": 1438374655,
                 "text": "if we do consider using the browser cache for content  then EphemeralP2P has a nice approach to stop seeding once the tab is closed -&gt; <http:\/\/ephemeralp2p.durazo.us\/> <https:\/\/github.com\/losvedir\/ephemeral2>",
                 "author_name": "Paul Salisbury",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/paul_xbt",
-                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/96cf283248628534fdee2cc0e690c360.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0020-48.png",
+                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/96cf283248628534fdee2cc0e690c360.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0020-48.png",
                 "mrkdwn_in": [
                     "text"
                 ]
@@ -2393,7 +2429,18 @@
         "type": "message",
         "user": "U08C9ML1Y",
         "text": "also, i think eventual consistency is a must, if we want to go the route of big datasets",
-        "ts": "1438375307.001126"
+        "ts": "1438375307.001126",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08DD8LNP",
+                    "U08ERPTQF",
+                    "U08D641AP"
+                ],
+                "count": 3
+            }
+        ]
     },
     {
         "type": "message",
@@ -2579,7 +2626,16 @@
         "type": "message",
         "user": "U08E5P0BZ",
         "text": "Sounds like moderation is a user choice?  Seems like something to explore. ",
-        "ts": "1438376214.001173"
+        "ts": "1438376214.001173",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08CBRZNX"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -3183,7 +3239,16 @@
         "type": "message",
         "user": "U08CZDYB1",
         "text": "tags don\u2019t build communities. subreddits do. using a single comments page for multiple communities leads to no communities",
-        "ts": "1438377357.001206"
+        "ts": "1438377357.001206",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -3435,7 +3500,16 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "that would let us build out something much like pre-comments reddit.  and then we could build out content handlers\/p2p distribution next on top of that, in a way that is addressable by the listing",
-        "ts": "1438379496.001248"
+        "ts": "1438379496.001248",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -3453,7 +3527,16 @@
         "type": "message",
         "user": "U08CBRZNX",
         "text": "that's more the perspective from which I am approaching this project - i see the underlying tech as a facillitator for an improved conversation",
-        "ts": "1438379910.001251"
+        "ts": "1438379910.001251",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -3579,7 +3662,16 @@
         "type": "message",
         "user": "U08C22VNW",
         "text": "Have you guys thought about some kind of partial transactions for scoring? <https:\/\/www.vinumeris.com\/lighthouse> uses partial transactions which can be combined with a contract to allow crowd-funding type transactions. Maybe date-stamped partial transactions which can only be redeemed after 1 week?",
-        "ts": "1438381884.001272"
+        "ts": "1438381884.001272",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -3603,7 +3695,7 @@
                 "color": "D0D0D0",
                 "fallback": "[July 31st, 2015 3:31 PM] mhouston: Have you guys thought about some kind of partial transactions for scoring? <https:\/\/www.vinumeris.com\/lighthouse> uses partial transactions which can be combined with a contract to allow crowd-funding type transactions. Maybe date-stamped partial transactions which can only be redeemed after 1 week?",
                 "author_subname": "mhouston",
-                "ts": "1438381884.001272",
+                "ts": 1438381884,
                 "text": "Have you guys thought about some kind of partial transactions for scoring? <https:\/\/www.vinumeris.com\/lighthouse> uses partial transactions which can be combined with a contract to allow crowd-funding type transactions. Maybe date-stamped partial transactions which can only be redeemed after 1 week?",
                 "author_name": "Michael Houston",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/mhouston",
@@ -3666,7 +3758,17 @@
                 "id": 1
             }
         ],
-        "ts": "1438383810.001281"
+        "ts": "1438383810.001281",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08C9ML1Y",
+                    "U08ERPTQF"
+                ],
+                "count": 2
+            }
+        ]
     },
     {
         "type": "message",
@@ -3775,7 +3877,16 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "I kind touch on that here: <https:\/\/go1dfish.liberty.me\/my-two-cents-there-aint-no-such-thing-as-free-speech\/> the tl;dr is speech and money are inseparable ideas and that we should embrace it and just try to make things as cheap as possible",
-        "ts": "1438386001.001298"
+        "ts": "1438386001.001298",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "user": "U08EZM3KL",
@@ -3788,7 +3899,16 @@
         "type": "message",
         "user": "U07GDL0H5",
         "text": "agreed with <@U08E5P0BZ> ... although i think ads are a valid way for nodes to earn money, there are so many other ways if we integrate bitcoin, that applying brainpower to other solutions is the best use of time\/energy",
-        "ts": "1438386034.001300"
+        "ts": "1438386034.001300",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08E2KZM4"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -4062,11 +4182,11 @@
                 "color": "D0D0D0",
                 "fallback": "[July 31st, 2015 4:54 PM] go1dfish: <@U08E5P0BZ>: My reddit account was nearly 9 years old and I've lurked since the lisp days.  <https:\/\/www.reddit.com\/r\/SubredditDrama\/comments\/quq7n\/mods_connected_to_srs_and_moderator_of\/c40nyr3>",
                 "author_subname": "go1dfish",
-                "ts": "1438386851.001330",
+                "ts": 1438386851,
                 "text": "<@U08E5P0BZ>: My reddit account was nearly 9 years old and I've lurked since the lisp days.  <https:\/\/www.reddit.com\/r\/SubredditDrama\/comments\/quq7n\/mods_connected_to_srs_and_moderator_of\/c40nyr3>",
                 "author_name": "Alex Goodwin",
                 "author_link": "https:\/\/dattnetwork.slack.com\/team\/go1dfish",
-                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0010-48.png",
+                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/27935e087cec25907e3cc9c8481d03e6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0010-48.png",
                 "mrkdwn_in": [
                     "text"
                 ]
@@ -4674,7 +4794,16 @@
         "type": "message",
         "user": "U07GDL0H5",
         "text": "maybe today we can focus on just identifying the technologies. give people a chance to pitch alternatives. i'm heavily biased towards my own work, but that may not be the best technology.",
-        "ts": "1438388385.001429"
+        "ts": "1438388385.001429",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -4756,7 +4885,16 @@
                 "id": 1
             }
         ],
-        "ts": "1438388652.001439"
+        "ts": "1438388652.001439",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -5026,7 +5164,16 @@
         "type": "message",
         "user": "U08D641AP",
         "text": "agree, let's focus on a working prototype with a minimum featureset; publish content, no central servers",
-        "ts": "1438390226.001482"
+        "ts": "1438390226.001482",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -5185,7 +5332,16 @@
         "type": "message",
         "user": "U08EZP01H",
         "text": "they all tap a psychological hook, and combine it with content (curated data)",
-        "ts": "1438390641.001507"
+        "ts": "1438390641.001507",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -5362,7 +5518,17 @@
         "type": "message",
         "user": "U07GDL0H5",
         "text": "<@U08DD8LNP>: that's why we have to implement the lightning network to really make this thing work :simple_smile:",
-        "ts": "1438391125.001536"
+        "ts": "1438391125.001536",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08CBD41G"
+                ],
+                "count": 2
+            }
+        ]
     },
     {
         "type": "message",
@@ -5404,7 +5570,17 @@
         "type": "message",
         "user": "U07GDL0H5",
         "text": "<@U08DD8LNP>: i disagree ... i think using real value that can be used off-site is both where the best opportunity actually is to make something useful, important, and profitable ... and i also think that NOT using payments would disencentivize people from running node, like diaspora or the gnu social media project",
-        "ts": "1438391195.001543"
+        "ts": "1438391195.001543",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08CBD41G"
+                ],
+                "count": 2
+            }
+        ]
     },
     {
         "type": "message",
@@ -5614,7 +5790,16 @@
         "type": "message",
         "user": "U08D641AP",
         "text": "we should be making zero considerations for \"illegal\" content",
-        "ts": "1438391640.001578"
+        "ts": "1438391640.001578",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -5674,7 +5859,16 @@
         "type": "message",
         "user": "U08D641AP",
         "text": "if it's true that the majority of Reddit's users are nonregistered viewers, then the registration fee is sufficient barrier for spammers, but insignificant enough for real content producers who will earn a return",
-        "ts": "1438391842.001588"
+        "ts": "1438391842.001588",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -5838,7 +6032,16 @@
         "type": "message",
         "user": "U08EZP01H",
         "text": "Ethereum raised money by selling ether. There may be a crafty way to raise 'content' by selling 'dattcoin'",
-        "ts": "1438392102.001614"
+        "ts": "1438392102.001614",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -6068,7 +6271,25 @@
         "type": "message",
         "user": "U08C9ML1Y",
         "text": "i'm even using puns on a prototype",
-        "ts": "1438393101.001650"
+        "ts": "1438393101.001650",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08D641AP",
+                    "U08DD8LNP"
+                ],
+                "count": 3
+            },
+            {
+                "name": "joy",
+                "users": [
+                    "U08D641AP"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -6086,7 +6307,16 @@
         "type": "message",
         "user": "U08DFAGBW",
         "text": "Inb4 \"Dattass\"",
-        "ts": "1438393131.001653"
+        "ts": "1438393131.001653",
+        "reactions": [
+            {
+                "name": "wink",
+                "users": [
+                    "U08D641AP"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -7348,7 +7578,17 @@
                 "id": 1
             }
         ],
-        "ts": "1438397358.001862"
+        "ts": "1438397358.001862",
+        "reactions": [
+            {
+                "name": "joy",
+                "users": [
+                    "U08ERPTQF",
+                    "U08D641AP"
+                ],
+                "count": 2
+            }
+        ]
     },
     {
         "type": "message",
@@ -7943,7 +8183,16 @@
         "type": "message",
         "user": "U08C9ML1Y",
         "text": "hey i saw your post paul :smile:",
-        "ts": "1438399280.001961"
+        "ts": "1438399280.001961",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -8581,7 +8830,18 @@
         "type": "message",
         "user": "U08C9ML1Y",
         "text": "just tested a webtorrent transfer here on my pc and the thing worked to boot",
-        "ts": "1438403336.002063"
+        "ts": "1438403336.002063",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08D641AP",
+                    "U07GDL0H5"
+                ],
+                "count": 3
+            }
+        ]
     },
     {
         "type": "message",
@@ -8900,7 +9160,18 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "yeah decentralization doesn't mean all the nodes have to be the same, just means that there can be no singular points of failure that ruin everyone's day",
-        "ts": "1438404273.002116"
+        "ts": "1438404273.002116",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08D641AP",
+                    "U07GDL0H5"
+                ],
+                "count": 3
+            }
+        ]
     },
     {
         "type": "message",

@@ -1,0 +1,684 @@
+[
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i've uploading some *highly preliminary* p2p message stuff here: <https:\/\/github.com\/dattnetwork\/dattdocs\/blob\/master\/p2p.md>",
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "dattnetwork\/dattdocs",
+                "title_link": "https:\/\/github.com\/dattnetwork\/dattdocs\/blob\/master\/p2p.md",
+                "text": "dattdocs - Document all the things.",
+                "fallback": "GitHub: dattnetwork\/dattdocs",
+                "thumb_url": "https:\/\/avatars0.githubusercontent.com\/u\/13266895?v=3&s=400",
+                "from_url": "https:\/\/github.com\/dattnetwork\/dattdocs\/blob\/master\/p2p.md",
+                "thumb_width": 214,
+                "thumb_height": 214,
+                "id": 1
+            }
+        ],
+        "ts": "1438750809.000150"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "my thinking with the p2p protocol is that we basically need 2 primary things: to send and receive data, and to make payments",
+        "ts": "1438750830.000152"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i've not yet thought deeply about how to do authentication, but that may also need to play a role",
+        "ts": "1438750847.000153"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i.e. to establish a connection, perhaps you must first sign a random value proving your (pseudonymous) identity",
+        "ts": "1438750873.000154"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "not sure",
+        "ts": "1438750874.000155"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "this work is also almost certainly redundant with other projects' work on p2p protocols",
+        "ts": "1438750888.000156"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "if we find another p2p protocol that fits the bill, we should use that instead",
+        "ts": "1438750897.000157"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "nonetheless i find it valuable to design a p2p protocol so that i thoroughly understand what is required so we can better assess potential p2p protocol candidates",
+        "ts": "1438750921.000158"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Agreed. I've been prototyping to understand. Hoping to share some demo code on Saturday to help w\/ decision",
+        "ts": "1438750977.000159",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "also the p2p protocol is intended to work over any underlying network protocol, particularly TCP, web sockets and web RTC",
+        "ts": "1438750978.000160"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "awesome, great <@U08F438SK>",
+        "ts": "1438750988.000161"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Auth is tricky w\/out central server AND w\/out burdening the user to keep keys",
+        "ts": "1438751531.000162"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "If you want user friendliness (password resets, etc) raw public key crypto will not cut it no matter the UI. ",
+        "ts": "1438751570.000163"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Details: Naive solution is to deterministically generate a private key from password + username, and sign with that all messages.",
+        "ts": "1438751761.000164"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "But if you lose the password your account is gone forever. Or if someone else gets your password they have it, period, and pass cannot be changed.",
+        "ts": "1438751804.000165"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "also note that we can't guarantee global uniqueness of names without making use of namecoin or something of that sort",
+        "ts": "1438752063.000166"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i think the guys at <http:\/\/blockstack.slack.com|blockstack.slack.com> probably have a lot to say about this",
+        "ts": "1438752204.000167"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "also <http:\/\/github.com\/blockstack|github.com\/blockstack>",
+        "ts": "1438752212.000168"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "also <@U08E2KZM4> has a bunch of work and thoughts around handling identities along these lines ... involving key rotation",
+        "ts": "1438752237.000169"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "IMO for MVP we should do the simplest thing that works for MVP even if we know we will have to change it later ... i.e. perhaps username+pass -&gt; master key is best. there's also BIP 39 for using a mnemonic as the master private key.",
+        "ts": "1438752301.000170"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Another solution which is prob not for MVP but still relatively simple is to use token (colored coin) &lt;-&gt; username\/account",
+        "ts": "1438752510.000171"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Then you can put the token into a multisig address controlled by mods and the user's current deterministically generated key",
+        "ts": "1438752531.000172"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "if I want to change my password, I prove to a mod that I am myself (with whatever UI) and then both of us spend the token to a new key (new password)",
+        "ts": "1438752569.000173"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "still would be hard to guarantee global uniqueness... you would have to scan the blockchain and find the earliest occurance of a name",
+        "ts": "1438752581.000174"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "if I lose my password, I convince multiple mods to spend the token to my new password",
+        "ts": "1438752588.000175"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "but yeah, that does sound like a relatively simple solution from a bitcoin point of view",
+        "ts": "1438752602.000176"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "And it would all be hidden in terms of user experience",
+        "ts": "1438752625.000177"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "so long as you remember which mod you asked to hold a key for you :simple_smile:",
+        "ts": "1438752642.000178"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "maybe the mod is the subreddit server of my choice.  or maybe they are just my friends",
+        "ts": "1438752666.000179"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "I tell 10 friends, giving any 3 of them the power to help me reset my password",
+        "ts": "1438752679.000180"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yeah",
+        "ts": "1438752686.000181"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "hmm tricky if 3 of them fallout of the platform",
+        "ts": "1438752743.000182"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "But if we end up with a solution that involves public key crypto under the covers (e.g. for MVP we just deterministically generate private key from fixed password + username) then all the auth stuff becomes much simpler",
+        "ts": "1438752748.000183"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "just signed messages",
+        "ts": "1438752750.000184"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "but that would be a edge case",
+        "ts": "1438752780.000185"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "yeah you could add new friends over time to the pool (technically spending the token to new multisig with more signers)",
+        "ts": "1438752802.000186"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "As far as name uniqueness, scanning blockchain doesn't seem out of the question to me for MVP, could cache username&lt;-&gt;key pairs in nodes as well. Namecoin is purpose made but maybe too difficult to integrate. Have to think about that.",
+        "ts": "1438752982.000187"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "it just requires a special index ... all bitcoin full nodes have to scan the blockchain at least once anyway. but it does mean we can't realistically do it from within a web browser.",
+        "ts": "1438753033.000188"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "I think doing it within browser is a great goal. Definitely worth burning brain cycles to figure out how to make it feasible.",
+        "ts": "1438753092.000189"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "I don\u2019t think we should really worry much about name uniqueness",
+        "ts": "1438753096.000190"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "client should probably support \u201cfriending\u201d people to track them in a consistent way and prevent impersonations though",
+        "ts": "1438753124.000191"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "dunno, I don't want adding a friend to be as tough as sharing  a BTC address (example of sharing a key which is not human friendly)",
+        "ts": "1438753195.000192"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "but maybe that's the best tradeoff",
+        "ts": "1438753204.000193"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "if you wanted to do blockchain scanning things we could offload that functionality to the bigger\/dedicated nodes but it kinda requires trusting them",
+        "ts": "1438753205.000194"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "it shouldn't be that hard ... you see their comment, and click \"add friend\" ... you never see the actual key",
+        "ts": "1438753220.000195"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "my thinking is that mostly this would take the form of yeah what <@U07GDL0H5> said but willy is talking out of band",
+        "ts": "1438753231.000196"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "like if I already know you and want to add you as a friend in the datt network",
+        "ts": "1438753258.000197"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "ah i see",
+        "ts": "1438753266.000198"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "well you could search for a name and see a list of candidate public keys .... doing something like what keybase does might help here.",
+        "ts": "1438753301.000199"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "yeah, I think the \"out of band\" case is smaller",
+        "ts": "1438753334.000200"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "authenticating with multiple services. i.e., you see two different \"gavin_andressen\" users, one of which has authed with the correct twitter account, and the other has authed with nothing. you can tell which one is legit.",
+        "ts": "1438753345.000201"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "yeah I was just thinking keybase or a similar service could be helpful.  Just because we want the core services to be anon\/decentralized doesn\u2019t mean we can\u2019t take advantage of more centralized services for non-core functions",
+        "ts": "1438753351.000202"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "adding via comments is easy enough and as long as you can list hte public keys, etc, it will be easy enough.",
+        "ts": "1438753358.000203"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "makes sense.",
+        "ts": "1438753373.000204"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "cool!",
+        "ts": "1438753380.000205"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "OK I will resist temptation to try token method with password resets for MVP and just do deterministically generated from username+password :simple_smile:",
+        "ts": "1438753472.000206"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "ok that works. but also worth noting that if the users choose a weak password, anyone could crack the account easily.",
+        "ts": "1438753521.000207"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "yeah but isn't that always true? I guess here we can't throttle attempts",
+        "ts": "1438753544.000208"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "pretty much. yeah, here we can't throttle attempts which i think is the difference.",
+        "ts": "1438753569.000209"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "it's a big difference, though :simple_smile:",
+        "ts": "1438753588.000210"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "we could also autogenerate a password and store it locally ... tell them to write it down or if they forget it, they can't log in again.",
+        "ts": "1438753589.000211"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "that's pretty bad though. I might argue it's fatal. I reset a LOT of my autogen passwords unfortunately",
+        "ts": "1438753621.000212"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "personally i use a password manager and almost never reset ... but i know i'm the 1% exception",
+        "ts": "1438753645.000213"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "haha, yeah unfortunately",
+        "ts": "1438753681.000214"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "but then again maybe that's your customer, I dunno",
+        "ts": "1438753704.000215"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i think this problem is important for mainstream adoption, but it's not important for our first userbase, which will probably be more technical than average. then again, maybe not ... if we get a lot of disaffected reddit users who are not tech savvy, they may lose their password or get hacked and get disenchanted with the thing.",
+        "ts": "1438753740.000216"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Let's just iterate. Do it deterministically, no mercy for forgotten passwords",
+        "ts": "1438753839.000217"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "agreed",
+        "ts": "1438753845.000218"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "And then as fast as we can afterwards we can try to get the next awesome thing :stuck_out_tongue:",
+        "ts": "1438753853.000219"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yep :simple_smile:",
+        "ts": "1438753859.000220"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "OK, so to storage for a moment",
+        "ts": "1438753889.000221"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "we do have a channel for that :simple_smile: <#C08FYN4KT>",
+        "ts": "1438753909.000222"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "lol ok, nice",
+        "ts": "1438753916.000223"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "but just curious, we still thinking we handle storage ourselves, totally decentralized? Or offload to torrents, or choose-your-own-server\/host-your-own-content-this-just links",
+        "ts": "1438754001.000224"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yeah i actually posted my thoughts on that in here: <https:\/\/github.com\/dattnetwork\/dattdocs\/blob\/master\/database.md> ... in a nutshell, one way to handle that is for nodes to store data locally in a database as normal, but they could also choose to use web torrent or ipfs",
+        "ts": "1438754042.000225"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "they pretty much must have a local database of some kind though, presumably IndexedDB in the browser and leveldb server-side (because they are both very similar key-value stores)",
+        "ts": "1438754073.000226"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "even if the local database is just a cache, it still must exist. so maybe MVP puts data in a normal database, and then we add support for webtorrent\/torrent\/ipfs later",
+        "ts": "1438754129.000227"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "OK, sounds good.  how about we just use a Kademlia network w\/ IndexedDB as the backend, and announce posts in blockchain (or elsewhere -- but blockchain associates with username\/key for payment)?",
+        "ts": "1438754187.000228"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i'll have to google Kademlia, give me a sec",
+        "ts": "1438754208.000229"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "(our own Kademlia network, between browsers)",
+        "ts": "1438754209.000230"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "<http:\/\/ephemeralp2p.durazo.us\/2bbbf21959178ef2f935e90fc60e5b6e368d27514fe305ca7dcecc32c0134838>",
+        "ts": "1438754221.000231"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "it's just a routing and allocation system for distributing the key\/value pairs to the nodes and helping nodes find one another.",
+        "ts": "1438754245.000232"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "at first glance, Kademlia, being designed some time ago, probably does not include a notion of payments, i.e. if we want the option of requiring payment for storing or retrieving, we could have to hack it in",
+        "ts": "1438754271.000233"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "yeah,  nodes can opt to *not* route if there is not proof of payment for the content",
+        "ts": "1438754307.000234"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "ah i see, interesting",
+        "ts": "1438754332.000235"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "but that's prepaying and has lots of issues, one of which is always micropaying for content. We could also just do it for free in beginning and at least you know how to tip the person (since username is associated with address)",
+        "ts": "1438754371.000236"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "but they should be able to inititally if the a Content is attached with a Bounty",
+        "ts": "1438754378.000237"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yeah my thinking on payments for content is that nodes will always want to deliver new content for free, and the user's own content for free ... but delivering archival data, or huge amounts of data, they may want to charge (as this would actually be expensive)",
+        "ts": "1438754423.000238"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "yeah, I think we can evolve that on top of basic kademlia routing. I have some ideas but they can all be hacked in after the fact",
+        "ts": "1438754453.000239"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "probably best way to surface issues (where payment is needed to grease the wheels) is to get it going and see where it breaks",
+        "ts": "1438754526.000240"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "amazing how it hasn't broken so far for torrents :stuck_out_tongue:",
+        "ts": "1438754558.000241"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "true",
+        "ts": "1438754575.000242"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "(for the Torrent DHT*)",
+        "ts": "1438754587.000243"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Deepak what do you mean by bounty?",
+        "ts": "1438754668.000244"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "from content creator to the other nodes?",
+        "ts": "1438754684.000245"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "(btw <http:\/\/ephemeralp2p.durazo.us|ephemeralp2p.durazo.us> is definitely something I'm digging into now -- thanks for the link!)",
+        "ts": "1438754800.000246"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "well the Content creator setups a initial Bounty to entice the nodes to serve them and eventually the nodes will get the revenues , think <@U08ERPTQF> had a excel mapping it",
+        "ts": "1438754801.000247"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "<@U08F438SK>: thats what I am looking into, thanks to <@U08D641AP> for the tip and its in Elixir too :smiley:",
+        "ts": "1438754873.000248"
+    },
+    {
+        "type": "message",
+        "user": "U08F2RTCN",
+        "text": "but I am not sure if we need to include  the Bounty system in the MVP",
+        "ts": "1438755026.000249"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "awesome. more excited than ever to smash some prototypes together on Saturday! thnx all!",
+        "ts": "1438755202.000250",
+        "reactions": [
+            {
+                "name": "simple_smile",
+                "users": [
+                    "U07GDL0H5"
+                ],
+                "count": 1
+            },
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "The spreadsheet I made would show how some of the author's profits could be apportioned as a bounty for nodes that connect and start propagating the content. Their portion is tied to their seniority and the duration that they continue storing the content. <https:\/\/docs.google.com\/spreadsheets\/d\/19mUSGUwLukbskz5dIj1QXM0rAPmCBrbXZeLz908LfmU\/>",
+        "ts": "1438755437.000251"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "The assumption is that if the node doesn't open a payment channel with the 'author' then they won't get paid anything",
+        "ts": "1438755484.000252"
+    },
+    {
+        "type": "message",
+        "user": "U08F438SK",
+        "text": "Cool, will study the spreadsheet",
+        "ts": "1438755576.000253"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Just ignore the hackiness of the cell formula's it was a late night effort to demonstrate the 'gamification' potential of this model. It would be left to the author to decide whether they wanted to contribute to the bounty up front or just a portion of the tips over a time period.",
+        "ts": "1438755876.000254"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "There is more context in <https:\/\/github.com\/dattnetwork\/dattdocs\/blob\/master\/DATTmodel2.md> but it refers to upvotes \/ gilding",
+        "ts": "1438755987.000255"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U07GDL0H5>: reading your new docs now :simple_smile:",
+        "ts": "1438756047.000256"
+    },
+    {
+        "user": "U08KP51FU",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08KP51FU|lapingvino> has joined the channel",
+        "ts": "1438757132.000257"
+    }
+]

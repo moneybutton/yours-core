@@ -761,7 +761,16 @@
         "type": "message",
         "user": "U08DD8LNP",
         "text": "<@U08ERPTQF>: if you are subscribing to a node to determine what content you want to host you don't need to even broadcast listings at all you just need to fetch listings and then use the set result to fetch content to host",
-        "ts": "1438489390.000124"
+        "ts": "1438489390.000124",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF"
+                ],
+                "count": 1
+            }
+        ]
     },
     {
         "type": "message",
@@ -1609,7 +1618,17 @@
         "type": "message",
         "user": "U08E5P0BZ",
         "text": "OK, what do you think of this idea?  I've always had an issue with websites using Disqus and Facebook for their comments sections.",
-        "ts": "1438493624.000266"
+        "ts": "1438493624.000266",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08FW063C"
+                ],
+                "count": 2
+            }
+        ]
     },
     {
         "type": "message",

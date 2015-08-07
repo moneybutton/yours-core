@@ -1,0 +1,105 @@
+[
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08C22VNW>: we could backup to MEGA for another layer of encrypted storage",
+        "ts": "1438589008.000162"
+    },
+    {
+        "type": "message",
+        "user": "U08DH3ESU",
+        "text": "<@U07GDL0H5>: \"presumably also stored on other nodes in encrypted form\" -&gt; Do we need this so that an user can switch devices and still access all the information associated with their public key seamlessly? Or is it just a security precaution to build some redundancy as the crashing of a single device need not lead to loss of all keys?",
+        "ts": "1438598973.000163"
+    },
+    {
+        "user": "U08FVLJR4",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08FVLJR4|akshithg> has joined the channel",
+        "ts": "1438616841.000164"
+    },
+    {
+        "user": "U08DDGSNQ",
+        "type": "message",
+        "subtype": "channel_join",
+        "text": "<@U08DDGSNQ|andrew> has joined the channel",
+        "ts": "1438626539.000165"
+    },
+    {
+        "type": "message",
+        "user": "U08BY8MGV",
+        "text": "One more thought on gilding. We could create a special category for a tip that is $5 or greater. It would add a symbol to the Mod's profile like gilding, but the Mod would receive the $5 (instead of the company getting that money which is the case with Reddit). This way, you receive the same public cred as from gilding and  you receive the money. We could create other gild tiers that confer even more authority like $10, $15, etc.  each with their own symbols",
+        "ts": "1438630112.000166"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08BY8MGV>: I support gilding either authors or mods as the user chooses. Displaying a badge for the tier next to the amount gilded to a user is cool too. Perhaps the tiers are a combination of amount gilded and number of times gilded so &gt;$10 and &gt;5 gilds is tier 1 and so on...",
+        "ts": "1438633979.000167"
+    },
+    {
+        "type": "message",
+        "user": "U08BY8MGV",
+        "text": "Agreed. It's just as important to gild content creators as it is Mods",
+        "ts": "1438637550.000168"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "<@U08DH3ESU>: yes, it should be easy for users to switch devices. that can be done by manually copying your private key (in the form of a mnemonic) or perhaps setting a simpler 'account password' that you can use to authenticate on other devices by retrieving your encrypted master key ... however, making this seamlessly use-friendly is not easy",
+        "ts": "1438658194.000169"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "is it possible to store your private key in a way that allows two-factor authentication with something like authy (and a password)? those push notifications are sleek and make for good UX",
+        "ts": "1438658802.000170"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "possible with multisig",
+        "ts": "1438658856.000171"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "you have one key on each device, both of which are required to perform actions",
+        "ts": "1438658876.000172"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "also possible with Trezor",
+        "ts": "1438659152.000173"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "yeah",
+        "ts": "1438659210.000174"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "multisig is another potential way to enable 3rd party integrations as proposed in <#C07GDL0Q7> <https:\/\/dattnetwork.slack.com\/archives\/general\/p1438653626003376>\n\nYou post something on your wordpress blog, IFTTT picks up the post from your RSS feed, IFTTT uses the key you gave it to create a transaction writing a reference to this post to the blockchain, IFTTT pushes the partially signed transaction, You switch over to the Datt client and confirm the post, Datt client pushes the signed transaction and you're done",
+        "attachments": [
+            {
+                "color": "4D394B",
+                "from_url": "https:\/\/dattnetwork.slack.com\/archives\/general\/p1438653626003376",
+                "fallback": "[August 3rd, 2015 7:00 PM] paul_xbt: It's also interesting to consider IFTTT style integrations with publishing platforms. If you compose a post on Wordpress\/Medium\/FB\/Other and have your DATT client pull it straight in to the network.",
+                "author_subname": "paul_xbt",
+                "ts": "1438653626.003376",
+                "text": "It's also interesting to consider IFTTT style integrations with publishing platforms. If you compose a post on Wordpress\/Medium\/FB\/Other and have your DATT client pull it straight in to the network.",
+                "author_name": "Paul Salisbury",
+                "author_link": "https:\/\/dattnetwork.slack.com\/team\/paul_xbt",
+                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/96cf283248628534fdee2cc0e690c360.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0020-48.png",
+                "mrkdwn_in": [
+                    "text"
+                ],
+                "id": 1
+            }
+        ],
+        "ts": "1438660603.000175"
+    }
+]

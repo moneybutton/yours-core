@@ -1,0 +1,168 @@
+[
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08DD8LNP>: I think you just articulated a great blogging plan as well.",
+        "ts": "1438876876.000340"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "Heh, words to live by: <http:\/\/go1dfish.me\/blog>",
+        "ts": "1438888457.000341"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<@U08EZP01H>: more really inspirational quotes here: <https:\/\/www.reddit.com\/r\/FairShare\/wiki\/index>  <https:\/\/www.youtube.com\/watch?v=lbaemWIljeQ>",
+        "attachments": [
+            {
+                "service_name": "YouTube",
+                "service_url": "https:\/\/www.youtube.com\/",
+                "title": "How to Start a Movement? Leadership Lessons from Dancing Guy",
+                "title_link": "https:\/\/www.youtube.com\/watch?v=lbaemWIljeQ",
+                "author_name": "Gabo Huang",
+                "author_link": "https:\/\/www.youtube.com\/user\/TrendGuardian",
+                "thumb_url": "https:\/\/i.ytimg.com\/vi\/lbaemWIljeQ\/hqdefault.jpg",
+                "thumb_width": 480,
+                "thumb_height": 360,
+                "fallback": "YouTube Video: How to Start a Movement? Leadership Lessons from Dancing Guy",
+                "video_html": "<iframe width=\"400\" height=\"225\" src=\"https:\/\/www.youtube.com\/embed\/lbaemWIljeQ?feature=oembed\" frameborder=\"0\" allowfullscreen><\/iframe>",
+                "video_html_width": 400,
+                "video_html_height": 225,
+                "from_url": "https:\/\/www.youtube.com\/watch?v=lbaemWIljeQ",
+                "id": 1
+            }
+        ],
+        "ts": "1438888511.000342"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<http:\/\/dfw.cbslocal.com\/2015\/08\/06\/lawyer-says-free-open-internet-is-dying\/>",
+        "attachments": [
+            {
+                "service_name": "CBS Dallas \/ Fort Worth",
+                "service_url": "http:\/\/dfw.cbslocal.com",
+                "title": "Lawyer Says Free &amp; Open Internet Is\u00a0Dying",
+                "title_link": "http:\/\/dfw.cbslocal.com\/2015\/08\/06\/lawyer-says-free-open-internet-is-dying\/",
+                "author_name": "KTVTPhil",
+                "author_link": "https:\/\/dfw.cbslocal.com\/author\/ktvtphil\/",
+                "thumb_url": "https:\/\/i0.wp.com\/cbsdallas.files.wordpress.com\/2012\/10\/computer_85595140.jpg?fit=200%2C150",
+                "thumb_width": 200,
+                "thumb_height": 150,
+                "text": "The dream of a free and open internet is slowly being killed by censorship, overregulation and bad laws that don't stop the right people, a top computer crime defense lawyer said.",
+                "fallback": "CBS Dallas \/ Fort Worth Link: Lawyer Says Free &amp; Open Internet Is&nbsp;Dying",
+                "from_url": "http:\/\/dfw.cbslocal.com\/2015\/08\/06\/lawyer-says-free-open-internet-is-dying\/",
+                "id": 1
+            }
+        ],
+        "ts": "1438892027.000344"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<http:\/\/cointelegraph.com\/news\/115069\/why-the-rise-of-decentralized-media-is-the-end-of-censorship?ref=2604&amp;utm_source=twitter&amp;utm_medium=twit&amp;utm_campaign=alx>",
+        "attachments": [
+            {
+                "service_name": "CoinTelegraph",
+                "title": "Why the Rise of Decentralized Media is the End of Censorship",
+                "title_link": "http:\/\/cointelegraph.com\/news\/115069\/why-the-rise-of-decentralized-media-is-the-end-of-censorship?ref=2604&utm_source=twitter&utm_medium=twit&utm_campaign=alx",
+                "text": "In the buzzing world of altcoins, blockchains, and crypto-startups, if you aren't decentralized these days, you're probably still considered a bit of a dinosaur.",
+                "fallback": "CoinTelegraph: Why the Rise of Decentralized Media is the End of Censorship",
+                "thumb_url": "http:\/\/cointelegraph.com\/images\/725_aHR0cDovL2NvaW50ZWxlZ3JhcGguY29tL3N0b3JhZ2UvdXBsb2Fkcy92aWV3L2M3OTMzZWU4NTZiOGZiMDgxOTZjM2YwMzJmZjk4MTVkLnBuZw==.jpg",
+                "from_url": "http:\/\/cointelegraph.com\/news\/115069\/why-the-rise-of-decentralized-media-is-the-end-of-censorship?ref=2604&utm_source=twitter&utm_medium=twit&utm_campaign=alx",
+                "thumb_width": 725,
+                "thumb_height": 483,
+                "id": 1
+            }
+        ],
+        "ts": "1438905590.000346"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "Given the coverage DECENT is getting, we should consider a landing page for Datt.\nI'll start working on a FAQ shortly",
+        "ts": "1438909194.000348"
+    },
+    {
+        "type": "message",
+        "user": "U07GDL0H5",
+        "text": "i think the best place for a landing page is <http:\/\/datt.co|datt.co> ... i have some basic code for one on the datt.network repo",
+        "ts": "1438909393.000349",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08ERPTQF",
+                    "U08EZP01H",
+                    "U08DD8LNP"
+                ],
+                "count": 3
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<@U08ERPTQF>: count me in too. i've been browsing on <https:\/\/wrapbootstrap.com> looking for something that fits our needs",
+        "attachments": [
+            {
+                "text": "WrapBootstrap is a marketplace for premium themes and templates for Bootstrap. Buy and sell Bootstrap themes!",
+                "fallback": "WrapBootstrap is a marketplace for premium themes and templates for Bootstrap. Buy and sell Bootstrap themes!",
+                "from_url": "https:\/\/wrapbootstrap.com",
+                "id": 1
+            }
+        ],
+        "ts": "1438911899.000350"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "i have a spare copy of this one: <http:\/\/wrapbootstrap.com\/preview\/WB0T91XF9>",
+        "attachments": [
+            {
+                "text": "Live preview for Influence - One Page Business Template at WrapBootstrap",
+                "fallback": "Live preview for Influence - One Page Business Template at WrapBootstrap",
+                "from_url": "http:\/\/wrapbootstrap.com\/preview\/WB0T91XF9",
+                "id": 1
+            }
+        ],
+        "ts": "1438912211.000352"
+    },
+    {
+        "type": "message",
+        "user": "U08ERPTQF",
+        "text": "<@U08EZP01H>: cool, I'll focus on the content.\nI can't load the preview on my phone, but if you think it is clean enough to align with the <#C08F8UMGB|design> principles then I'm happy ",
+        "ts": "1438912888.000354"
+    },
+    {
+        "type": "message",
+        "user": "U08DH3ESU",
+        "text": "<@U08ERPTQF>: Let me know how I can help",
+        "ts": "1438913710.000355"
+    },
+    {
+        "type": "message",
+        "user": "U08DH3ESU",
+        "text": "we can work on different sections, if that would work",
+        "ts": "1438913721.000356"
+    },
+    {
+        "type": "message",
+        "user": "U08DD8LNP",
+        "text": "<http:\/\/www.businessinsider.com\/these-6-corporations-control-90-of-the-media-in-america-2012-6?IR=T>",
+        "attachments": [
+            {
+                "service_name": "Business Insider",
+                "title": "These 6 Corporations Control 90% Of The Media In America",
+                "title_link": "http:\/\/www.businessinsider.com\/these-6-corporations-control-90-of-the-media-in-america-2012-6?IR=T",
+                "text": "Radio, television, newspapers and online.",
+                "fallback": "Business Insider: These 6 Corporations Control 90% Of The Media In America",
+                "from_url": "http:\/\/www.businessinsider.com\/these-6-corporations-control-90-of-the-media-in-america-2012-6?IR=T",
+                "id": 1
+            }
+        ],
+        "ts": "1438914146.000357"
+    }
+]

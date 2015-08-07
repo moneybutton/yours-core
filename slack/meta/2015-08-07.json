@@ -1,0 +1,35 @@
+[
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "<https:\/\/evolution-institute.org\/article\/the-world-needs-a-secular-community-revolution\/?source=tvol>",
+        "attachments": [
+            {
+                "service_name": "Evolution Institute",
+                "title": "The World Needs a Secular Community Revolution",
+                "title_link": "https:\/\/evolution-institute.org\/article\/the-world-needs-a-secular-community-revolution\/?source=tvol",
+                "text": "Human nature is adapted for community life. Our species evolved in tight-knit, face-to-face, small-scale, inter-generational hunter-gatherer communities [1]. These communities provided an essential resource for their members: a network of social support [2]. As a community member, your co-members would have included your long-term partners in mutually advantageous reciprocal relationships\u2014people who cared deeply about your [\u2026]",
+                "fallback": "Evolution Institute: The World Needs a Secular Community Revolution",
+                "image_url": "https:\/\/evolution-institute.org\/wp-content\/uploads\/2015\/07\/world-360x360.png",
+                "from_url": "https:\/\/evolution-institute.org\/article\/the-world-needs-a-secular-community-revolution\/?source=tvol",
+                "image_width": 250,
+                "image_height": 250,
+                "image_bytes": 262501,
+                "id": 1
+            }
+        ],
+        "ts": "1438964007.000359"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Hey <@U08DD8LNP>, another 'conspiracy' esque truth: Lookup who owns all the major food companies and when they purchased them.",
+        "ts": "1438964040.000361"
+    },
+    {
+        "type": "message",
+        "user": "U08EZP01H",
+        "text": "Spoiler: Big Tobacco. Oops.",
+        "ts": "1438964248.000362"
+    }
+]
