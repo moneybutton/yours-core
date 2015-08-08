@@ -2,6 +2,7 @@
 title: Datt
 email: contact@datt.co
 url: https://dattnetwork.github.io/datt.co
+baseurl: /datt.co
 description: ""
 
 # Color settings (hex-codes without the leading hash-tag)
