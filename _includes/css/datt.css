@@ -269,19 +269,16 @@ a:focus {
     margin-top: 100px;
 }
 
-.panel-heading .accordion-toggle .fa {
-  float: right;
-  color: black;
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f152";
+    float: right;
+    color: black;
 }
-
-.panel-heading .accordion-toggle .fa-toggle-right {
-    display: none;
-}
-
-.panel-heading .accordion-toggle.collapsed .fa-toggle-down {
-    display: none;
-}
-
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\f150";
 .panel-body {
   color: {{ site.color.primary-dark }};
 }
