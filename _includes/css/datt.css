@@ -130,6 +130,13 @@ a:focus {
     }
 }
 
+.navbar-header .logo-sm {
+  height: 1.8em;
+  float: left;
+  margin-top: .9em;
+  margin-right: .25em;
+}
+
 .intro {
     display: table;
     width: 100%;
