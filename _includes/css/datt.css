@@ -282,8 +282,8 @@ a:focus {
     content: "\f152";
 }
 
-.panel-body {
-  color: {{ site.color.primary-dark }};
+.panel-collapse.collapse {
+  background-color: {{ site.color.primary-dark }};
 }
 
 @media(min-width:767px) {
