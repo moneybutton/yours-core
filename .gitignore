@@ -1,0 +1,6 @@
+*.swp
+node_modules
+/dist
+/tmp
+/coverage/*
+npm-debug.log

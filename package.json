@@ -1,0 +1,67 @@
+{
+  "name": "datt-node",
+  "version": "0.0.1",
+  "description": "Javascript implementation of datt full node and light node.",
+  "main": "index.js",
+  "scripts": {
+  },
+  "contributors": [
+    {
+      "name": "Ryan X. Charles",
+      "email": "ryanxcharles@gmail.com"
+    },
+    {
+      "name": "John M. Villar Zavatti",
+      "email": "johnvillarzavatti@gmail.com"
+    },
+    {
+      "name": "Eric Martindale",
+      "email": "eric@decentralize.fm"
+    },
+    {
+      "name": "Paul Salisbury",
+      "email": "paul.salis@gmail.com"
+    },
+    {
+      "name": "go1dfish",
+      "email": "me@go1dfish.me"
+    },
+    {
+      "name": "George Vaccaro",
+      "email": "georgevaccaro@powerteamcorp.com"
+    },
+    {
+      "name": "Chris Robinson",
+      "email": "hello@chrisrobinson.me"
+    },
+    {
+      "name": "Mike Houston",
+      "email": "mike@kothar.net"
+    },
+    {
+      "name": "Darren Mills",
+      "email": "darrenrmills@gmail.com"
+    },
+    {
+      "name": "Deepak Rao",
+      "email": "deepakraous@gmail.com"
+    },
+    {
+      "name": "Logan Lowell",
+      "email": "logan@decentralized.systems"
+    },
+    {
+      "name": "Clemens Ley",
+      "email": "ley.clemens@gmail.com"
+    }
+  ],
+  "author": "Datt Developers <developers@datt.co>",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.12.0"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
