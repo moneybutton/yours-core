@@ -155,7 +155,7 @@ a:focus {
 }
 
 .intro .intro-body .brand-heading::before {
-    content: url({{ site.baseurl }}/img/logo_dark.png);
+    content: url( {{ /img/logo_dark.png | prepend: site.baseurl }} );
     float: left;
     height: auto;
     max-width: 20%;
