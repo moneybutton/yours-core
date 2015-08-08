@@ -2,6 +2,11 @@
 =======================
 User Experience is the Key to making this happen. 
 
+Updation to the Business Model
+----------------------
+I am proposing that we charge for 'Content Curation' rather than for access or vote(s). At least I would like to have the primary mode of revenue to come from 'Content Curation' as the network will be new and content (possibly) needs to be handled with care. The sheet below has more information. (For now I have used payments for votes and access also).
+https://docs.google.com/spreadsheets/d/1_M0KyHaBJqUIOl4KDZYYpE3gSyq8XhAQEy1csPABiHw/edit?usp=sharing 
+
 Business Model Canvas
 ----------------------------------
 Customer Segments
