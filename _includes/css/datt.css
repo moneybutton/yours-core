@@ -154,13 +154,6 @@ a:focus {
     text-transform: capitalize!important;
 }
 
-.intro .intro-body .brand-heading::before {
-    content: url( {{ /img/logo_dark.png | prepend: site.baseurl }} );
-    float: left;
-    height: auto;
-    max-width: 20%;
-}
-
 .intro .intro-body .intro-text {
     font-size: 18px;
 }
