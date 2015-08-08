@@ -64,7 +64,6 @@ a:focus {
 .navbar-custom {
     margin-bottom: 0;
     border-bottom: 1px solid rgba(255,255,255,.3);
-    text-transform: uppercase;
     font-family: 'Open Sans',sans-serif;
     background-color: {{ site.color.primary-dark }};
 }
@@ -152,6 +151,14 @@ a:focus {
 
 .intro .intro-body .brand-heading {
     font-size: 40px;
+    text-transform: capitalize!important;
+}
+
+.intro .intro-body .brand-heading::before {
+    content: url(/img/logo_dark.png);
+    float: left;
+    height: auto;
+    max-width: 20%;
 }
 
 .intro .intro-body .intro-text {
@@ -272,14 +279,14 @@ a:focus {
 .panel-heading .accordion-toggle:after {
     /* symbol for "opening" panels */
     font: normal normal normal 14px/1 FontAwesome;
-    content: "\f152";
+    content: "\f150";
     float: right;
     color: black;
 }
 
 .panel-heading .accordion-toggle.collapsed:after {
     /* symbol for "collapsed" panels */
-    content: "\f150";
+    content: "\f152";
 }
 
 .panel-body {
