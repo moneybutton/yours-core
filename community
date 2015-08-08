@@ -2,8 +2,9 @@ Goal
 To prove the feasibility of a P2P publishing market where content ownership remains with the author and moderation choice remains with the user.
 
 Building the Community
-(This document consists of thoughts that I picked up from the #community channel and my own thoughts that I have consolidated over the last few weeks. Thanks to @ryancharles, @tonysakich, @paul_xbt, @darrenm, @bradkam, @genevayngrib and @go1dfish)
-(Some of the thoughts assume that the identity of the user is known at least in a smaller circle. For example, local communities or targeted journalism would not work without a certain level of identity being available.)
+(This document consists of ideas that I picked up from the #community channel and my own thoughts that I have consolidated over the last few weeks. Thanks to @ryancharles, @tonysakich, @paul_xbt, @darrenm, @bradkam, @genevayngrib and @go1dfish)
+(Some of the thoughts assume that the identity of the user is known at least in a smaller circle. For example, local communities or targeted journalism would not work without a certain level of identity being available. This can be a consistent identity just by maintaining a single pseudo identity associated with the public key.)
+
 Datt is a content platform. We will not be publisher(s) of content as this can lead to censorship which is against the core tenets of the network.
 
 1.  What are we appealing to?
@@ -35,11 +36,12 @@ Datt is a content platform. We will not be publisher(s) of content as this can l
 4. What is the value of the network?
     a. The value of the network for the initial 50-100,000 users is not very great as the contribution level on the web for user generated content is 1:10. So, the network would be running with approx. 5-10,000 users contributing while the remaining would only be consumers.
       a.1. I would presume the threshold to be in the range of 1Mn users for the network to start becoming invaluable to its creators and users. We will be able to reach approx. 50,000 users per community (as data updation would be pushed when the user connects) with total number of users around 1Mn.
-    b. (The value of the network be higher if we source content from journalists or content writers, but then we would be getting into the space of publishing rather than being a platform)
+    b. (The value of the network be higher if we source content from journalists or professional content writers, but then we would be getting into the space of publishing rather than being a platform)
     c. Datt network can differentiate itself from the regular content publishing platforms like developers started distinguishing themselves by developing for Android when iOS was the main platform. This is the social trend that we can use and journalists and bloggers might be key to use a platform which actually uses the same principles about which they write.
     d. For centralized or decentralized systems, the network holds the key. And at this point, the first mover gets the advantage as it appeals to people looking for alternatives and also solves a problem area which is currently visible to everyone in the web.
     e. The establishment of the platform which would enable creators to reach users and vice-versa without a central system has to be the first focus rather than revenue. The value of the network lies in the protocol and the benefits it brings along.
     f. Datt can be the Content Delivery Network (CDN) for smaller content publishers once it reaches a critical mass. This can reduce their cost of publishing and also ensure better geographical coverage.
+    g. Can datt become a 'torrent' for content ownership? We can serve all types of content and we also know who is consuming the content.
 
 5. What is the possible demographics that we are targeting?
     a. Users would be in the age group of 18-34 mostly and will be probably from US and Western Europe and maybe Aus/NZ/Arg/Bra for early adopters. There will definitely be a niche set in other countries but this would be very small.
