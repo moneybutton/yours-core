@@ -276,9 +276,12 @@ a:focus {
     float: right;
     color: black;
 }
+
 .panel-heading .accordion-toggle.collapsed:after {
     /* symbol for "collapsed" panels */
     content: "\f150";
+}
+
 .panel-body {
   color: {{ site.color.primary-dark }};
 }
