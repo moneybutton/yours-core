@@ -3,7 +3,7 @@ function Datt(coordinationServerConfig) {
 
     var config = $.extend({
 	debug: 3,
-	host: "localhost",
+	host: "localhost", /** default to localhost **/
 	port: 9000,
 	path: "/peers"
     }, coordinationServerConfig);
@@ -17,6 +17,10 @@ function Datt(coordinationServerConfig) {
 	if(self.config && self.config.onOpen && typeof(self.config.onOpen) === "function") {
 	    self.config.onOpen();
 	}
+	self.getPeers();
+    });
+
+    this.getPeers = function refreshPeers() {
 	self.peer.listAllPeers(function(peers) {
 	    console.log("Datt got peers!");
 	    self.peers = peers;
@@ -24,7 +28,7 @@ function Datt(coordinationServerConfig) {
 		self.config.onPeers(peers);
 	    }
 	});
-    });
+    };
 
     this.peer.on('connection', function(dataConnection) {
 	console.log("New connection: ");

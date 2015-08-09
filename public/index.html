@@ -3,42 +3,62 @@
 <script type="text/javascript" src="bitcoin.js"></script>
 <script type="text/javascript" src="bigi.js"></script>
 <script type="text/javascript" src="peer.js"></script>
+<script type="text/javascript" src="webcoin.js"></script>
 <script type="text/javascript" src="index.js"></script>
-
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 <script type="text/javascript">
 var datt = null;
+var peers = new Webcoin.PeerGroup();
+peers.connect();
+
 
 function writeToBody(txt) {
    $("body").append("<br><span>" + txt + "</span><br>");
 }
+
 function onOpen() {
    var txt = "Connected to rendezvous server.";
-   writeToBody(txt);
-
-   var user = datt.signIn("willy", "testpassword");
-   var txt = "User created with username: '<b>" + user.username + "</b>' and address '<b>" + user.address + "</b>'.";
-   writeToBody(txt);
+   $("#status").html(txt);
 }
+
+function dattLogin() {
+   var username = $("#username").val();
+   var password = $("#password").val();
+   var user = datt.signIn(username,password);
+   var txt = "User created with username: '<b>" + user.username + "</b>' and address '<b>" + user.address + "</b>'.";
+   $("#user").html(txt);
+}
+
 function onPeers(peers) {
    var txt = "Got peers:<br>" + JSON.stringify(peers, null, 4);
-   writeToBody(txt);
+   $("#peers").html(txt);
 }
+
 function whenConnectedToPeer(dataConnection) {
    var txt = JSON.stringify(dataConnection, null, 4);
    writeToBody(txt);
 }
+
 var datt = new Datt({
    onOpen: onOpen,
    onConnection: whenConnectedToPeer,
-   onPeers: onPeers
+   onPeers: onPeers,
+   host: document.location.hostname
 });
 
 </script>
 </head>
 <body>
-Hello world (peer.js)
-
+<span>P2P prototyping FTW!</span><br><br>
+<span id="status"></span><br><br>
+<span id="peers"></span><br><br>
+<div id="user">
+<form id="userform" onsubmit="return dattLogin() && false;" action="return false;">
+<span>Username:</span><input id="username"/>
+<span>Password:</span><input id="password" type="password"/>
+<input type="submit" style="position: absolute; left: -9999px"/>
+</form>
+</div>
 
 </body>
 </html>
