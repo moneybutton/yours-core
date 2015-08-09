@@ -1,4 +1,3 @@
-Datt
-====
+#dattco
 
-The website of Datt (datt.co).
+final build in `/dist`
