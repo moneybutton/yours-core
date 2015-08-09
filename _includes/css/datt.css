@@ -293,6 +293,16 @@ a:focus {
   background-color: {{ site.color.primary-dark }};
 }
 
+.form-control {
+  margin: auto;
+  margin-bottom: 1em;
+  max-width: 50%;
+}
+
+.btn-lg {
+  margin-bottom: 1em;
+}
+
 @media(min-width:767px) {
     .content-section {
         padding-top: 200px;
