@@ -2,5 +2,6 @@
 
 built with gulp webapp generator
 
-edit files in `app`
-run `gulp` to build
+* to get started (first time) - run `bower install` & `npm install`
+* edit files in `app`
+* run `gulp` to build
