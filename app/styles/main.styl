@@ -54,7 +54,7 @@ mark
   background-color #ff9
   color #000
   font-style italic
-  font-weight bold
+  font-weight 600
 
 del
   text-decoration line-through
@@ -81,7 +81,7 @@ input, select
 
 p.chromeframe
   padding 20px
-  font-weight 800
+  font-weight 600
   text-align center
 
 html
@@ -93,7 +93,7 @@ html
   -moz-osx-font-smoothing grayscale
 
 strong
-  font-weight bold
+  font-weight 600
 
 #menu
   position fixed
@@ -101,10 +101,14 @@ strong
   width 100%
   text-align left
   line-height 20px
-  padding 10px 20px
+  padding 30px
+  user-select none
   .menu
     float right
     line-height 20px
+    a
+      text-decoration none
+      margin 0 0 0 20px
 
   img
     display inline-block
@@ -119,13 +123,14 @@ body
   padding 0
   text-align center
   font-family: 'Open Sans', sans-serif;
-  font-size 14px
+  font-weight 300
+  font-size 16px
   line-height 28px
   color white
 
 a
   color white
-  font-weight bold
+  font-weight 600
   display inline-block
   margin 0 5px 0 0
   &:hover
@@ -138,6 +143,7 @@ p.footer
 form
   max-width 600px
   margin 0 auto 1em
+  position relative
   input
     appearance none
     background white
@@ -153,7 +159,7 @@ form
     box-shadow none
     &[type='submit']
       background #aaaaaa
-      font-weight bold
+      font-weight 600
       color white
       cursor pointer
       &:hover
@@ -191,7 +197,8 @@ a.button
     padding 10px
   span
     text-transform uppercase
-    font-weight bold
+    font-weight 600
+    user-select none
     cursor pointer
     display block
     color #333333
@@ -224,10 +231,12 @@ a.button
 
 h1
   font-size 20px
+  font-weight 600
 
 h2
   font-size 18px
   margin-bottom 1em
+  font-weight 600
 
 @media (max-width: 600px)
   .menu
