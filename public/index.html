@@ -21,6 +21,11 @@ function onOpen() {
    $("#status").html(txt);
 }
 
+function onConnectionData(data, conn) {
+   var htmlSnippet = "<span>Peer '" + conn.peer +"' sent: " + JSON.stringify(data, null, 4) + "</span><br><br>";
+   $("#data").html(htmlSnippet + $("#data").html());
+}
+
 function dattLogin() {
    var username = $("#username").val();
    var password = $("#password").val();
@@ -43,6 +48,7 @@ var datt = new Datt({
    onOpen: onOpen,
    onConnection: whenConnectedToPeer,
    onPeers: onPeers,
+   onConnectionData: onConnectionData,
    host: document.location.hostname
 });
 
@@ -58,6 +64,9 @@ var datt = new Datt({
 <span>Password:</span><input id="password" type="password"/>
 <input type="submit" style="position: absolute; left: -9999px"/>
 </form>
+</div>
+<br><br>
+<div id="data">
 </div>
 
 </body>

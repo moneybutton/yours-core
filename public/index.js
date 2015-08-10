@@ -15,7 +15,9 @@ function Datt(coordinationServerConfig) {
     this.peer.on('open', function() {
 	console.log("PeerJS connected!");
 	if(self.config && self.config.onOpen && typeof(self.config.onOpen) === "function") {
-	    self.config.onOpen();
+	    try {
+		self.config.onOpen();
+	    } catch (exc) {}
 	}
 	self.getPeers();
     });
@@ -25,24 +27,62 @@ function Datt(coordinationServerConfig) {
 	    console.log("Datt got peers!");
 	    self.peers = peers;
 	    if(self.config && self.config.onPeers && typeof(self.config.onPeers) === "function") {
-		self.config.onPeers(peers);
+		try {
+		    self.config.onPeers(peers);
+		} catch(exc) {}
+	    }
+	    if(!self.peer.connections.length) {
+		self._connectToAvailablePeers();
 	    }
 	});
     };
 
     this.peer.on('connection', function(dataConnection) {
-	console.log("New connection: ");
-	console.log(JSON.stringify(dataConnection, null, 4));
-	console.log("");
-	if(self.config && self.config.onConnection && typeof(self.config.onConnection) === "function") {
-	    self.config.onConnection(dataConnection);
-	}
+	var peerId = (dataConnection && dataConnection.peer?dataConnection.peer:null);
+	console.log("New connection from '" + peerId + "'");
+	self._setupNewConnection(dataConnection);
     });
 
 }
 
+Datt.prototype._setupNewConnection = function _setupNewConnection(dataConnection) {
+    var peerId = (dataConnection && dataConnection.peer?dataConnection.peer:null);
+    var self = this;
+    try {
+	console.log(JSON.stringify(dataConnection, null, 4));
+    } catch(exc) {}
+    console.log("");
+    if(self.config && self.config.onConnection && typeof(self.config.onConnection) === "function") {
+	try {
+	    self.config.onConnection(dataConnection);
+	} catch(exc) {}
+    }
+    
+    dataConnection.on('data', function(data) {
+	console.log("Connection w/ '" + peerId + "' sent data:");
+	try {
+	    console.log(data);
+	} catch (exc) {}
+
+	if(self.config && self.config.onConnectionData && typeof(self.config.onConnectionData) === "function") {
+	    try {
+		self.config.onConnectionData(data, dataConnection);
+	    } catch(exc) {}
+	}
+    });
+
+    if(self.peers.indexOf(peerId) === -1) {
+	self.peers.push(peerId);
+    }
+    self.connections = self.connections || {};
+    self.connections[peerId] = dataConnection;
+}
+
 Datt.prototype.signIn = function signIn(user, password) {
     this.user = new User(user, password);
+    if(this.user) {
+	this.announceIdentity();
+    }
     return this.user;
 }
 
@@ -62,17 +102,20 @@ Datt.prototype.announceIdentity = function announceIdentity() {
     }
 };
 Datt.prototype._connectToAvailablePeers = function _refreshConnections() {
+    this.connections = this.connections || {};
     for(var peerKey in this.peers) {
 	var peer = this.peers[peerKey];
 	if(peer === this.peer.id) {
 	    continue;
 	}
-	this.peer.connect(peer);
+	var dataConnection = this.peer.connect(peer);
+	console.log("Connecting to peer '" + peer + "'");
+	this._setupNewConnection(dataConnection);
     }
 };
 Datt.prototype.broadcastMessage = function broadcastMessage(message) {
-    for(var peerConnectionKey in this.peer.connections) {
-	var peerConnection = this.peer.connections[peerConnectionKey][0];
+    for(var peerConnectionKey in this.connections) {
+	var peerConnection = this.connections[peerConnectionKey];
 	peerConnection.send(message);
     }
 };
