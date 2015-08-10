@@ -64,8 +64,11 @@
     "node": ">= 0.12.0"
   },
   "dependencies": {
+    "bigi": "^1.4.0",
+    "bitcoinjs-lib": "git@github.com:bitcoinjs/bitcoinjs-lib.git",
     "express": "^4.13.3",
-    "peer": "^0.2.8"
+    "peer": "^0.2.8",
+    "peerjs": "^0.3.14"
   },
   "devDependencies": {}
 }
