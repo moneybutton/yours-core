@@ -1,0 +1,53 @@
+doctype html
+html.no-js
+  head
+    meta(charset='utf-8')
+    title Datt - Decentralize all the things
+    meta(name='description' content='Decentralize all the things')
+    meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+    link(rel='shortcut icon' href='favicon.png')
+
+    // build:css styles/vendor.css
+    // bower:css
+    // endbower
+    // endbuild
+
+    // build:css styles/main.css
+    link(rel='stylesheet' href='styles/main.css')
+    // endbuild
+
+    // build:js scripts/vendor/modernizr.js
+    script(src='../bower_components/modernizr/modernizr.js')
+    // endbuild
+
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css')
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css")
+
+  body
+    | <!--[if lt IE 10]>
+    |   <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    | <![endif]-->
+
+
+    block content
+
+    //- script.
+    //-   (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    //-   function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    //-   e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    //-   e.src='//www.google-analytics.com/analytics.js';
+    //-   r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    //-   ga('create','UA-xxx-1');ga('send','pageview');
+
+    // build:js scripts/vendor.js
+    // bower:js
+    script(src='../bower_components/jquery/dist/jquery.js')
+    // endbower
+    // endbuild
+
+    // build:js scripts/plugins.js
+    // endbuild
+
+    // build:js scripts/main.js
+    script(src='scripts/main.js')
+    // endbuild

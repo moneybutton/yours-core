@@ -1,3 +1,4 @@
 *.swp
 node_modules
-_site
+bower_components
+.tmp

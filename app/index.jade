@@ -1,0 +1,67 @@
+extends layouts/datt
+
+block content
+  #menu
+    img(src='images/datt.svg')
+    strong Datt
+    .menu
+      a(href='#about') About
+      a(href='#faq') FAQ
+      a(href='#connect') Connect
+  .screen.hero
+    .cell
+      img#datt(src='images/datt.svg')
+      h1 Decentralize all the things
+    
+  .screen#about
+    .cell
+      h2 About Datt
+      p Datt is a social media application where the users own their content and pay each other for quality content, moderation, and hosting. It does not depend on a central organization has no central point of failure.
+      p Datt stands for "decentralize all the things."
+      p Our goal is to prove the feasibility of a P2P publishing market where content ownership remains with the author and moderation choice remains with the user.
+  
+  .screen#faq
+    .cell
+      h2 FAQ
+      .question
+        span Why is Datt Peer-To-Peer?
+        .answer
+          p It's important that content published to Datt can be distributed widely and freely without a central organization having control. While it would be easier to centralize or federate content between servers, this would not achieve our goals.
+      .question
+        span Do I need to install anything?
+        .answer
+          p No. The basic Datt client will run as a web app in your browser. We expect mobile apps and advanced clients will be developed at a later stage.
+      .question
+        span HOW WILL USERS HAVE CHOICE OVER CONTENT MODERATION?
+        .answer
+          p Users can apply their own content filters, or subscribe to collectives where moderators have curated content. Users can select as little or as many collectives to filter the content you most want to see.
+      .question
+        span OTHER THAN FREEDOM OF SPEECH, WHAT ARE THE BENEFITS OF USING DATT OVER ALL THE OTHER EXISTING PLATFORMS?
+        .answer
+          p We've worked out a model that benefits everyone who participates on the network - Authors, Moderators, Node Operators, and Commenters can all benefit from Bitcoin micropayments. We'll announce more on this soon.
+      p Find out more in the 
+        a(href="https://github.com/dattnetwork/dattdocs" target='_blank') DATT Documentation
+    
+  .screen#connect
+    .cell
+      h2 Get Connected
+      p Connect with us if you're interested in using Datt.
+      p We will send you a beta invite prior to launch.
+      form(action='//formspree.io/ryanxcharles+dattform@gmail.com', method='POST')
+        input.form-control.input-name(type='text', name='name', placeholder='Your Name')
+        input.form-control.input-email(type='email', name='_replyto', placeholder='Your Email')
+        input(type='hidden', name='_next', value='//datt.co')
+        input(type='hidden', name='_subject', value='Datt beta request')
+        input(type='hidden', name='_gotcha', style='display:none')
+        input.btn.btn-default.btn-lg(type='submit', value='Send Me a Beta Invite')
+      p Follow us for progress updates.
+      a.button(href='https://twitter.com/dattnetwork' target='_blank') 
+        i.fa.fa-twitter
+        | twitter
+      a.button(href='https://github.com/dattnetwork' target='_blank') 
+        i.fa.fa-github
+        | github
+      p Or join the Datt team on Slack to collaborate with us.
+      iframe.__slackin(src='http://datt-slackin.herokuapp.com/iframe?large', style='border-width: 0px; width: 154px; height: 30px; visibility: visible;')
+      p.footer
+        small &copy; 2015 Datt
