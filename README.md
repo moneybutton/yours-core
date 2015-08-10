@@ -329,6 +329,7 @@ Bitcoin, lightning network, sidechains
 - [A fast and scalable network with bitcoin micropayment channels (PDF)](http://www.researchgate.net/profile/Christian_Decker5/publication/277991245_A_Fast_and_Scalable_Payment_Network_with_Bitcoin_Duplex_Micropayment_Channels/links/55780a4e08aeb6d8c01cf2d0.pdf) - not lightning, but similar
 
 Articles
+- [It's time to build the private web - need encryption by default](http://kernelmag.dailydot.com/issue-sections/staff-editorials/13919/private-web-encryption-is-a-basic-human-right/)
 - [Meta on hardforking - mods censors a post about Bitcoin XT](https://www.reddit.com/r/Bitcoin/comments/3gdad5/meta_on_hardforking_if_bitcoin_is_so_vulnerable/)
 - [Mutually Assured Content](http://www.theawl.com/2015/07/in-no-charts)
 - [Don't display negative karma](http://www.raphkoster.com/2009/10/07/building-web-reputation-systems-the-blog-the-dollhouse-mafia-or-dont-display-negative-karma/)
