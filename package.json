@@ -70,5 +70,8 @@
     "peer": "^0.2.8",
     "peerjs": "^0.3.14"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "grunt-browserify": "^4.0.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
 }
