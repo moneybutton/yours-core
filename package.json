@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Javascript implementation of datt full node and light node.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "mocha",
+    "test-browser": "grunt && ./node_modules/karma/bin/karma start .karma.conf.js"
+  },
   "contributors": [
     {
       "name": "Ryan X. Charles",
@@ -65,13 +68,18 @@
   },
   "dependencies": {
     "bigi": "^1.4.0",
-    "bitcoinjs-lib": "git@github.com:bitcoinjs/bitcoinjs-lib.git",
+    "bitcoinjs-lib": "git@github.com:bitcoinjs/bitcoinjs-lib.git#a3b05905046ddd0af04558d17299a469d2ac96f4",
     "express": "^4.13.3",
+    "mocha": "^2.2.5",
     "peer": "^0.2.8",
-    "peerjs": "^0.3.14"
+    "peerjs": "^0.3.14",
+    "should": "^7.0.3"
   },
   "devDependencies": {
     "grunt-browserify": "^4.0.0",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-watch": "^0.6.1",
+    "karma": "^0.13.8",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-mocha": "^0.2.0"
   }
 }
