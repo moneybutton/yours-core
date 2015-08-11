@@ -73,13 +73,16 @@
     "mocha": "^2.2.5",
     "peer": "^0.2.8",
     "peerjs": "^0.3.14",
-    "should": "^7.0.3"
+    "should": "^7.0.3",
+    "underscore": "^1.8.3",
+    "underscore.deferred": "^0.4.0"
   },
   "devDependencies": {
     "grunt-browserify": "^4.0.0",
     "grunt-contrib-watch": "^0.6.1",
     "karma": "^0.13.8",
     "karma-chrome-launcher": "^0.2.0",
-    "karma-mocha": "^0.2.0"
+    "karma-mocha": "^0.2.0",
+    "standard": "^5.0.2"
   }
 }
