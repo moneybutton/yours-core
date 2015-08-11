@@ -20,6 +20,27 @@ $(document).ready ->
       $(this).parent().find('.answer').css 'height', wow
     else
       $(this).parent().find('.answer').css 'height', 0
+    return
+
+  $contactForm = $('#contact-form')
+  $contactForm.submit (e) ->
+    e.preventDefault()
+    $.ajax
+      url: '//formspree.io/omar@teacups.io'
+      method: 'POST'
+      data: $(this).serialize()
+      dataType: 'json'
+      beforeSend: ->
+        $('.contact-form-message').remove()
+        $contactForm.append '<div class="contact-form-message loading">Sending request…</div>'
+        return
+      success: (data) ->
+        $('.contact-form-message').html 'Request successful!'
+        return
+      error: (err) ->
+        $('.contact-form-message').html 'Error'
+        return
+    return
 
 $(window).scroll ->
   if $(window).width() > 600
