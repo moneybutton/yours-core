@@ -40,20 +40,6 @@ $(document).ready ->
 
     if validateEmail(email)
       console.log 'succes'
-      # $.ajax
-      #   url: '//formspree.io/ryanxcharles+dattform@gmail.com'
-      #   method: 'POST'
-      #   data: $(this).serialize()
-      #   dataType: 'json'
-      #   beforeSend: ->
-      #     $('.contact-form-message').html 'Sending request...'
-      #     return
-      #   success: (data) ->
-      #     $('.contact-form-message').html 'Request successful!'
-      #     return
-      #   error: (err) ->
-      #     $('.contact-form-message').html 'Error'
-      #     return
     else
       $('.contact-form-message').html 'Invalid Email Address'
     return
