@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "description": "Javascript implementation of datt full node and light node.",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "contributors": [
     {
       "name": "Ryan X. Charles",
@@ -53,6 +52,10 @@
     {
       "name": "Clemens Ley",
       "email": "ley.clemens@gmail.com"
+    },
+    {
+      "name": "Willy Bruns",
+      "email": "willy@entropi.info"
     }
   ],
   "author": "Datt Developers <developers@datt.co>",
@@ -61,7 +64,14 @@
     "node": ">= 0.12.0"
   },
   "dependencies": {
+    "bigi": "^1.4.0",
+    "bitcoinjs-lib": "git@github.com:bitcoinjs/bitcoinjs-lib.git",
+    "express": "^4.13.3",
+    "peer": "^0.2.8",
+    "peerjs": "^0.3.14"
   },
   "devDependencies": {
+    "grunt-browserify": "^4.0.0",
+    "grunt-contrib-watch": "^0.6.1"
   }
 }
