@@ -13,8 +13,8 @@ module.exports = function (grunt) {
       }
     },
     'watch': {
-      'files': [ 'lib/*.js'],
-      'tasks': [ 'browserify' ]
+      'files': ['lib/*.js'],
+      'tasks': ['browserify']
     }
   })
 
