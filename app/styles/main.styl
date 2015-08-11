@@ -101,6 +101,7 @@ strong
   width 100%
   text-align left
   line-height 20px
+  z-index 999
   padding 30px
   user-select none
   .menu
@@ -214,10 +215,22 @@ a.button
   background-position center top
   background-attachment fixed
 
+.screen#press
+  .links
+    margin auto
+    a
+      display inline-block
+      border-bottom 1px solid white
+      padding 2px 0
+      text-decoration none
+      &:hover
+        border-color #0099ff
+
 .screen
   display table
   width 100%
   height 100%
+  padding 10px 0
   .cell
     padding 10px
     opacity 0
