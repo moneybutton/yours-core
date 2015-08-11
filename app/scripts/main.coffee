@@ -9,6 +9,13 @@ $ ->
     return
   return
 
+validateEmail = (sEmail) ->
+  filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
+  if filter.test(sEmail)
+    true
+  else
+    false
+
 $(document).ready ->
   $('.screen').css 'height', $(window).outerHeight()
   $('.cell').css 'opacity', 1
@@ -25,21 +32,26 @@ $(document).ready ->
   $contactForm = $('#contact-form')
   $contactForm.submit (e) ->
     e.preventDefault()
-    $.ajax
-      url: '//formspree.io/omar@teacups.io'
-      method: 'POST'
-      data: $(this).serialize()
-      dataType: 'json'
-      beforeSend: ->
-        $('.contact-form-message').remove()
-        $contactForm.append '<div class="contact-form-message loading">Sending request…</div>'
-        return
-      success: (data) ->
-        $('.contact-form-message').html 'Request successful!'
-        return
-      error: (err) ->
-        $('.contact-form-message').html 'Error'
-        return
+    email = $('#email').val()
+    if $.trim(email).length == 0
+      $('.contact-form-message').html 'Please enter valid email address'
+    if validateEmail(email)
+      $.ajax
+        url: '//formspree.io/ryanxcharles+dattform@gmail.com'
+        method: 'POST'
+        data: $(this).serialize()
+        dataType: 'json'
+        beforeSend: ->
+          $('.contact-form-message').html 'Sending request...'
+          return
+        success: (data) ->
+          $('.contact-form-message').html 'Request successful!'
+          return
+        error: (err) ->
+          $('.contact-form-message').html 'Error'
+          return
+    else
+      $('.contact-form-message').html 'Invalid Email Address'
     return
 
 $(window).scroll ->

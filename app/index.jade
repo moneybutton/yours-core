@@ -83,11 +83,12 @@ block content
       p We will send you a beta invite prior to launch.
       form#contact-form(action='http://formspree.io/ryanxcharles+dattform@gmail.com', method='POST')
         input.form-control.input-name(type='text', name='name', placeholder='Your Name')
-        input.form-control.input-email(type='email', name='_replyto', placeholder='Your Email')
+        input#email.form-control.input-email(type='email', name='_replyto', placeholder='Your Email')
         input(type='hidden', name='_next', value='//datt.co')
         input(type='hidden', name='_subject', value='Datt beta request')
         input(type='hidden', name='_gotcha', style='display:none')
         input.btn.btn-default.btn-lg(type='submit', value='Send Me a Beta Invite')
+        .contact-form-message &nbsp;
       p Follow us for progress updates.
       a.button(href='https://twitter.com/dattnetwork' target='_blank') 
         i.fa.fa-twitter
