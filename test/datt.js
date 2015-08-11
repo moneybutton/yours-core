@@ -1,5 +1,7 @@
-//var Datt = require('../lib/datt');
+var Datt = require('../lib/datt')
 
-describe('Datt', function() {
-  var datt;
-});
+describe('Datt', function () {
+  var datt
+
+}
+)
