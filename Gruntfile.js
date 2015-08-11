@@ -3,6 +3,7 @@ module.exports = function(grunt) {
     "pkg": grunt.file.readJSON('package.json'),
     "browserify": {
       "./public/index.js": ["./index.js"],
+      "./public/tests.js": ["./test/*.js"],
       "options": {
         "browserifyOptions": {
           "require": "./index.js",
