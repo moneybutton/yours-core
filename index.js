@@ -1,4 +1,4 @@
-var bitcoin = require('bitcoinjs-lib')
+var bitcore = require('bitcore')
 var Peer = require('./lib/peer')
 
 var Content = require('./lib/content')
@@ -12,5 +12,5 @@ module.exports = {
   'Message': Message,
   'Datt': Datt,
   'Peer': Peer,
-  'bitcoin': bitcoin
+  'bitcore': bitcore
 }
