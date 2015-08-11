@@ -10,7 +10,7 @@ $ ->
   return
 
 $(document).ready ->
-  $('.screen').css 'min-height', $(window).outerHeight()
+  $('.screen').css 'height', $(window).outerHeight()
   $('.cell').css 'opacity', 1
 
   $('.question span').click ->
@@ -27,5 +27,5 @@ $(window).scroll ->
 
 
 $(window).resize ->
-  $('.screen').css 'min-height', $(window).outerHeight()
+  $('.screen').css 'height', $(window).outerHeight()
   $('.answer').css 'height', 0
