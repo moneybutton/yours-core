@@ -18,43 +18,43 @@ peers.connect();
 
 
 function writeToBody(txt) {
-   $("body").append("<br><span>" + txt + "</span><br>");
+  $("body").append("<br><span>" + txt + "</span><br>");
 }
 
 function onOpen() {
-   var txt = "Connected to rendezvous server.";
-   $("#status").html(txt);
+  var txt = "Connected to rendezvous server.";
+  $("#status").html(txt);
 }
 
 function onConnectionData(data, conn) {
-   var htmlSnippet = "<span>Peer '" + conn.peer +"' sent: " + JSON.stringify(data, null, 4) + "</span><br><br>";
-   $("#data").html(htmlSnippet + $("#data").html());
+  var htmlSnippet = "<span>Peer '" + conn.peer +"' sent: " + JSON.stringify(data, null, 4) + "</span><br><br>";
+  $("#data").html(htmlSnippet + $("#data").html());
 }
 
 function dattLogin() {
-   var username = $("#username").val();
-   var password = $("#password").val();
-   var user = datt.signIn(username,password);
-   var txt = "User created with username: '<b>" + user.username + "</b>' and address '<b>" + user.address + "</b>'.";
-   $("#user").html(txt);
+  var username = $("#username").val();
+  var password = $("#password").val();
+  var user = datt.signIn(username,password);
+  var txt = "User created with username: '<b>" + user.username + "</b>' and address '<b>" + user.address + "</b>'.";
+  $("#user").html(txt);
 }
 
 function onPeers(peers) {
-   var txt = "Got peers:<br>" + JSON.stringify(peers, null, 4);
-   $("#peers").html(txt);
+  var txt = "Got peers:<br>" + JSON.stringify(peers, null, 4);
+  $("#peers").html(txt);
 }
 
 function whenConnectedToPeer(dataConnection) {
-   var txt = JSON.stringify(dataConnection, null, 4);
-   writeToBody(txt);
+  var txt = JSON.stringify(dataConnection, null, 4);
+  writeToBody(txt);
 }
 
 var datt = new Datt({
-   onOpen: onOpen,
-   onConnection: whenConnectedToPeer,
-   onPeers: onPeers,
-   onConnectionData: onConnectionData,
-   host: document.location.hostname
+  onOpen: onOpen,
+  onConnection: whenConnectedToPeer,
+  onPeers: onPeers,
+  onConnectionData: onConnectionData,
+  host: document.location.hostname
 });
 
 </script>
