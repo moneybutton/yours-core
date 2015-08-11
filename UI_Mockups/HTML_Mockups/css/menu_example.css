@@ -1,0 +1,141 @@
+html, body {
+	margin: auto;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	color: #4c4c4c;
+	background: #FFF;
+	background: url(../images/sidebar_bg.png) repeat-y right;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+/*Header Styles*/
+/*------------------------------------------------*/
+
+#header {
+	width: 100%;
+	height: 80px;
+	background: #FFF;
+	border-bottom: 1px solid #e8e8e8;
+	position: absolute;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.arrow {
+	margin-left: 5px;
+}
+
+.logo {
+	float: left;
+	height: 80px;
+	margin: 25px 35px;
+}
+
+.menu {
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.menu > li {
+	float: left;
+	margin: 30px 40px 0 0;
+}
+
+#selected {
+	border-bottom: 2px solid #404040;
+	padding-bottom: 0;
+}
+
+#selected a {
+	color: #4c4c4c;
+	text-decoration: none;
+	height: 49px;
+	display: block;
+}
+
+.balance {
+	font-size: 13px;
+	color: #4c4c4c;
+	font-weight: 400;
+	margin-left: 10px;
+}
+
+.icons {
+	float: right;
+	height: 18px;
+	margin: 32px 35px 0 0;
+}
+
+.icons > li {
+	margin-left: 15px;
+	float: right;
+}
+
+#menu_hidden {
+	width: 100%;
+	float: left;
+	position: absolute;
+	display: block;
+	height: 34px;
+	margin-top: 46px;
+	padding-left: 10px;
+	transition-duration: 0.2s;
+	transition-delay: 0.4s;
+	z-index: -1;
+	border-bottom: 1px solid #e8e8e8;
+	background: #FFF;
+	overflow: hidden;
+}
+
+#header:hover #menu_hidden {
+	margin-top: 81px;
+	background: #FFF;
+}
+
+.hidden > li {
+	float: left;
+	margin:8px 15px 0 0;
+	padding:0;
+	font-size: 11px;
+	color: #404040;
+	text-transform: uppercase;
+	overflow: hidden;
+	white-space:nowrap;
+}
+
+.more {
+	right: 20px;
+	position: absolute;
+	text-align: right;
+	margin:8px 0 0 0;
+	padding:0;
+	padding-left: 20px;
+	font-weight: 600;
+	color: #404040;
+	background: #FFF;
+	font-size: 11px;
+	text-transform: uppercase;
+}
+
+
+/*Main Content*/
+/*------------------------------------------------*/
+
+.message {
+	width: 700px;
+	float: left;
+	margin-left: 98px;
+	position: absolute;
+	z-index: -210;
+}
+
+.content {
+	width: 100%;
+	float: left;
+}
