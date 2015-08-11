@@ -1,5 +1,5 @@
 var bitcoin = require('bitcoinjs-lib')
-var Peer = require('peerjs')
+var Peer = require('./lib/peer')
 
 var Content = require('./lib/content')
 var User = require('./lib/user')
