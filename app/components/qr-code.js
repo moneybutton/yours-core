@@ -6,12 +6,12 @@ export default Ember.Component.extend({
   value: '',
 
   qrCode: Ember.computed({
-    get: function() {
+    get() {
       return new QRCode(this.get('element'), this.get('value'));
     }
   }),
 
-  drawCode: function() {
+  drawCode: Ember.on('didInsertElement', function() {
     this.get('qrCode');
-  }.on('didInsertElement')
+  })
 });

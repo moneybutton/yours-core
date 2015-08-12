@@ -6,20 +6,20 @@ export default Ember.Component.extend({
   classNames: 'comment-form',
 
   actions: {
-    cancel: function() {
+    cancel() {
       this.set('body', '');
       this.sendAction('cancel');
     },
-    save: function() {
+    save() {
       if (!this.get('body')) {
         alert('A body is required');
       }
       this.get('datt').submitComment(this.get('parent'), {
         body: this.get('body')
-      }).then(function(comment) {
+      }).then(() => {
         this.set('body', '');
         this.sendAction('saved');
-      }.bind(this));
+      });
     }
   }
 });

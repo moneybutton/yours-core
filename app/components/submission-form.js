@@ -1,4 +1,3 @@
-/* globals QRCode */
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -8,8 +7,8 @@ export default Ember.Component.extend({
   isText: false,
 
   actions: {
-    submit: function() {
-      var data = {
+    submit() {
+      let data = {
         title: this.get('title')
       };
       if (this.get('isText')) {
@@ -19,12 +18,12 @@ export default Ember.Component.extend({
         data.type = 'datt-link';
         data.body = this.get('link');
       }
-      this.get('datt').submit(this.get('collective'), data).then(function(item) {
-        this.sendAction('success', item);
-      }.bind(this)).catch(function(error) {
-        this.sendAction('error', error);
-        console.error(error);
-      });
+      this.get('datt').submit(this.get('collective'), data)
+        .then(item =>this.sendAction('success', item))
+        .catch(error => {
+          this.sendAction('error', error);
+          console.error(error);
+        });
     }
   }
 });

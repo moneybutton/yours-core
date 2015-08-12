@@ -4,10 +4,10 @@ export default Ember.Component.extend({
   isReplying: false,
   class: 'media',
   actions: {
-    reply: function() {
+    reply() {
       this.set('isReplying', true);
     },
-    cancelReply: function() {
+    cancelReply() {
       this.set('isReplying', false);
     }
   }

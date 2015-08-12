@@ -7,22 +7,20 @@ export default Ember.Component.extend({
   sortedThings: Ember.computed.sort('things', 'sortParams'),
   includeChildren: false,
   thing: null,
-  getThings: function() {
-    var thing = this.get('thing.id');
+  getThings: Ember.on('init', function() {
+    let thing = this.get('thing.id');
     if (!thing) {return;}
-    this.get('datt').getChildren(thing).then(function(children) {
+    this.get('datt').getChildren(thing).then(children => {
       this.set('things', children);
-    }.bind(this)).catch(function(error) {
-      console.error(error.stack || error);
-    });
-  }.on('init').observes('thing'),
+    }).catch(error => console.error(error.stack || error));
+  }).observes('thing'),
 
-  listenForReplies: function() {
-    var thing = this.get('thing.id');
+  listenForReplies: Ember.on('init', function() {
+    let thing = this.get('thing.id');
     if (!thing) {return;}
-    this.get('datt').on('newReply', function(parent, item) {
+    this.get('datt').on('newReply', (parent, item) => {
       if (parent !== thing) {return;}
       this.get('things').addObject(item);
-    }.bind(this));
-  }.on('init').observes('thing')
+    });
+  }).observes('thing')
 });

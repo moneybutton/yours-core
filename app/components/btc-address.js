@@ -1,4 +1,3 @@
-/* globals QRCode */
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -6,7 +5,7 @@ export default Ember.Component.extend({
   showQrCode: false,
 
   actions: {
-    toggleQrCode: function() {
+    toggleQrCode() {
       this.toggleProperty('showQrCode');
     }
   }

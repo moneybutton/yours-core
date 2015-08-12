@@ -1,16 +1,18 @@
 /* globals moment */
 import Ember from 'ember';
 
+let $ = Ember.$;
+
 export default Ember.Service.extend(Ember.Evented, {
   defaultCollective: '1NHy1SqQSeyEopKv3v1iTfx7sFdEiqocWb',
 
   myId: Ember.computed({
-    get: function() {
+    get() {
       return mocks.client.myId;
     }
   }),
 
-  generateAddress: function() {
+  generateAddress() {
     // TODO Generate BTC addresses.
     return Ember.RSVP.resolve('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
@@ -18,26 +20,26 @@ export default Ember.Service.extend(Ember.Evented, {
     }));
   },
 
-  submit: function(collective, data) {
-    return this.generateAddress().then(function(id) {
-      var item = $.extend(true, {
+  submit(collective, data) {
+    return this.generateAddress().then(id => {
+      let item = $.extend(true, {
         id: id,
         type: 'datt-text',
         balance: 0,
         created: moment().utc()
       }, data);
       mocks.things[id] = item;
-      return this.getThing(collective.include.get('firstObject')).then(function(listing) {
+      return this.getThing(collective.include.get('firstObject')).then(listing => {
         listing.ids.addObject(id);
         return item;
       });
-    }.bind(this));
+    });
   },
 
-  submitComment: function(parent, data) {
+  submitComment(parent, data) {
     if (parent && parent.id) {parent = parent.id;}
-    return this.generateAddress().then(function(id) {
-      var item = $.extend(true, {
+    return this.generateAddress().then(id => {
+      let item = $.extend(true, {
         id: id,
         type: 'datt-text',
         parent: parent,
@@ -47,88 +49,84 @@ export default Ember.Service.extend(Ember.Evented, {
       mocks.things[id] = item;
       this.trigger('newReply', parent, item);
       return item;
-    }.bind(this));
+    });
   },
 
-  getCollectiveThings: function(id) {
-    return this.getCollective(id).then(function(collective) {
+  getCollectiveThings(id) {
+    return this.getCollective(id).then(collective => {
       return Ember.RSVP.hash({
         include: this.getListingsUnion(collective.include),
         exclude: this.getListingsUnion(collective.exclude)
       }).then(function(hash) {
-        var ids = hash.include.slice();
+        let ids = hash.include.slice();
         ids.removeObjects(hash.exclude);
         return ids;
       });
-    }.bind(this)).then(this.getThings.bind(this));
+    }).then(this.getThings.bind(this));
   },
 
-  getListingsUnion: function(ids) {
-    return Ember.RSVP.all(ids.map(function(id) {
-      return this.getListing(id).then(function(listing) {
-        return listing.ids;
-      });
-    }.bind(this))).then(function(lists) {
-      var result = [];
-      lists.forEach(function(list) {
-        result.addObjects(list);
-      });
+  getListingsUnion(ids) {
+    return Ember.RSVP.all(ids.map(id => {
+      return this.getListing(id).then(listing => listing.ids);
+    })).then(lists => {
+      let result = [];
+      lists.forEach(list => result.addObjects(list));
       return result;
     });
   },
 
-  getCollective: function(id) {
+  getCollective(id) {
     return this.getThing(id);
   },
 
-  getListing: function(id) {
+  getListing(id) {
     return this.getThing(id);
   },
 
-  getThings: function(ids) {
+  getThings(ids) {
     return Ember.RSVP.all(ids.map(this.getThing.bind(this)));
   },
 
-  getThing: function(id) {
-    var thing = mocks.things[id];
+  getThing(id) {
+    let thing = mocks.things[id];
     Ember.set(thing, 'id', id);
     return Ember.RSVP.resolve(thing);
   },
 
-  getChildren: function(id) {
-    return this.getThing(id).then(function(thing) {
+  getChildren(id) {
+    return this.getThing(id).then(thing => {
       if (thing.ids) {
         return this.getThings(thing.ids);
       }
       return Ember.RSVP.resolve(things().filterProperty('parent', id));
-    }.bind(this));
+    });
   },
 
-  getMyThings: function() {
+  getMyThings() {
     return this.getThings(mocks.client.myThings.concat([this.get('myId')]));
   },
 
-  getTransactions: function(user) {
-    return this.getMyThings().then(function(things) {
-      return Ember.RSVP.all(things.map(function(thing) {
-        var txs = Ember.get(thing, 'txs.in') || [];
+  getTransactions() {
+    return this.getMyThings().then(things => {
+      return Ember.RSVP.all(things.map(thing => {
+        let txs = Ember.get(thing, 'txs.in') || [];
         if (!txs.length) {return Ember.RSVP.resolve(txs);}
-        return Ember.RSVP.all(txs.map(function(tx) {
-          return this.getThing(tx.from).then(function(fromThing) {
+        return Ember.RSVP.all(txs.map(tx => {
+          return this.getThing(tx.from).then(fromThing => {
             return {
               from: fromThing,
               to: thing,
               amount: tx.amount,
               created: tx.created
             };
-          })
-        }.bind(this)));
-      }.bind(this)));
-    }.bind(this)).then(function(txLists) {
-      var txs = [];
+          });
+        }));
+      }));
+    }).then(txLists => {
+      let txs = [];
       txLists.forEach(function(list) {txs.addObjects(list);});
       return txs;
-    }).catch(function (error) {
+    }).catch(error => {
       console.error(error.stack || error);
     });
   }
@@ -137,7 +135,7 @@ export default Ember.Service.extend(Ember.Evented, {
 
 // Mocks
 function things() {
-  return Object.keys(mocks.things).map(function(id) {
+  return Object.keys(mocks.things).map(id => {
     Ember.set(mocks.things[id], 'id', id);
     return mocks.things[id];
   });
