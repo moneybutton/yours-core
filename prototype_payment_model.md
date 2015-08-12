@@ -1,4 +1,4 @@
-**How Payment(s) will
+**How Payment(s) can
 work in datt – First prototype**
 
 Note: 
