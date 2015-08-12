@@ -1,5 +1,7 @@
 Check out the "READ FIRST - Workflows" folder to understand how specific UX features and site functions work. These images in this folder include references which will tell you where to find specific files.
 
+If you want to get exact measurements, elements, fonts, colors etc, you can use the source photoshop file located at UI_Mockups/Image_Mockups/PSD Source File/
+
 
 ---------------------------------
 
@@ -15,12 +17,10 @@ Here are some general notes and reasoning behind my design choices:
 	- The dots are way simpler aesthetically.
 	- If the psychological aspect of points is removed, and no-one knows exactly what the point number is, this may get rid of karma whoring.
 
-- The colorscheme of the main site is intentionally limited
+- The colorscheme of the main site is intentionally limited (as shown in Image_Mockups/standard/)
 	- Admins can still customize the colors of the boards they run to add their own style. (only custom colors, not css/images)
 	- There could be a "lights out" night theme. (various people have requested this)
 	- Users should be able to override the different colors and have the simple monotone theme site-wide.
-
-- The board menu is accessible by mousing over the first menu item. This will contain any subscribed boards first, then the most popular. It's intentionally hidden to simplify.
 
 - Similar to reddit, the sidebar will show relevant content/rules for each board.
 
