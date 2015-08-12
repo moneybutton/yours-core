@@ -34,7 +34,7 @@ describe('Message', function () {
 
   describe('@getIdentityAnnouncementForUser', function () {
     it('should produce this known announcement', function () {
-      JSON.stringify(Message.getIdentityAnnouncementForUser(user)).should.equal('{"type":1,"body":"username_1DRb9bha3BqeVQmLiXAKVwmoLm3eDhUNCx_029dd0864fd2134e82616d12f54c6f35281e056824ca983456fc4384e0eb047d0b"}')
+      JSON.stringify(Message.getIdentityAnnouncementForUser(user)).should.equal('{"type":1,"body":"username_19aM8TSmimwBsH9uVbS6SXigqM42fEzGtY_02af59b2cc4ebe9cc796f8076b095efaaed11f4f249805d3db18459f15be04de4f"}')
     })
 
   })

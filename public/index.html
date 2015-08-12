@@ -3,7 +3,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 <script type="text/javascript" src="index.js"></script>
 <script type="text/javascript">
-var bitcoin = DattLib.bitcoin;
+var bitcore = DattLib.bitcore;
 var Peer = DattLib.Peer;
 
 var Datt = DattLib.Datt;
@@ -55,6 +55,8 @@ var datt = new Datt({
   onConnectionData: onConnectionData,
   host: document.location.hostname
 });
+
+datt.begin();
 
 </script>
 </head>
