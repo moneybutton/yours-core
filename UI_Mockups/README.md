@@ -1,6 +1,6 @@
 Check out the "READ FIRST - Workflows" folder to understand how specific UX features and site functions work. These images in this folder include references which will tell you where to find specific files.
 
-If you want to get exact measurements, elements, fonts, colors etc, you can use the source photoshop file located at UI_Mockups/Image_Mockups/PSD Source File/
+If you want to get exact measurements, elements, fonts, colors etc, you can use the source photoshop file located at Image_Mockups/PSD Source File/
 
 
 ---------------------------------
