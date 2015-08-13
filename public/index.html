@@ -10,14 +10,17 @@ var Datt = DattLib.Datt;
 var User = DattLib.User;
 var Message = DattLib.Message;
 var Content = DattLib.Content;
+var ContentStore = DattLib.ContentStore;
 
 var datt = null;
+var contentStore = new ContentStore();
 //var peers = new Webcoin.PeerGroup();
 //peers.connect();
 
 
 function writeToBody(txt) {
-  $("body").append("<br><span>" + txt + "</span><br>");
+  var htmlSnippet = txt + "<br><br>";
+  $("#data").html(htmlSnippet + $("#data").html());
 }
 
 function onOpen() {
@@ -26,16 +29,45 @@ function onOpen() {
 }
 
 function onConnectionData(data, conn) {
-  var htmlSnippet = "<span>Peer '" + conn.peer +"' sent: " + JSON.stringify(data, null, 4) + "</span><br><br>";
-  $("#data").html(htmlSnippet + $("#data").html());
+
+  var htmlSnippet = "<span><strong>Peer '" + conn.peer +"' sent:</strong> " + JSON.stringify(data, null, 4) + "</span>";
+  writeToBody(htmlSnippet);
+  var content = contentStore.getContent(data);
+  if(content){
+    datt.broadcastMessage(content);
+  }
 }
 
 function dattLogin() {
   var username = $("#username").val();
   var password = $("#password").val();
   var user = datt.signIn(username,password);
-  var txt = "User created with username: '<b>" + user.username + "</b>' and address '<b>" + user.address + "</b>'.";
+  var txt = "User created with username: '<strong>" + user.username + "</strong>' and address '<strong>" + user.address + "</strong>'.";
   $("#user").html(txt);
+  return false;
+}
+
+function dattAddContent() {
+  var content = $("#addcontent").val();
+  var hash = contentStore.putContent(content);
+  $("#addcontent").val("");
+  writeToBody("Added " + content + " to storage with hash " + hash);
+  datt.broadcastMessage("New content: " + hash);
+  return false;
+}
+
+function dattGetLocalContent() {
+  var hash = $("#getlocalcontent").val();
+  var content = contentStore.getContent(hash);
+  $("#getlocalcontent").val("");
+  writeToBody("<strong>Got local content:</strong> " + content);
+  return false;
+}
+
+function dattGetRemoteContent() {
+  var hash = $("#getremotecontent").val();
+  $("#getremotecontent").val("");
+  var content = datt.askPeersForContent(hash);
   return false;
 }
 
@@ -62,19 +94,35 @@ datt.begin();
 </script>
 </head>
 <body>
-<span>P2P prototyping FTW!</span><br><br>
-<span id="status"></span><br><br>
-<span id="peers"></span><br><br>
-<div id="user">
-<form id="userform" onsubmit="return dattLogin();" action="return false;">
-<span>Username:</span><input id="username"/>
-<span>Password:</span><input id="password" type="password"/>
-<input type="submit"/>
-</form>
-</div>
-<br><br>
-<div id="data">
-</div>
-
+  <span>P2P prototyping FTW!</span><br><br>
+  <span id="status"></span><br><br>
+  <span id="peers"></span><br><br>
+  <div id="user">
+    <form id="userform" onsubmit="return dattLogin();" action="return false;">
+      <span>Username:</span><input id="username"/>
+      <span>Password:</span><input id="password" type="password"/>
+      <input type="submit"/>
+    </form>
+  </div>
+  <div id="addContent">
+    <form id="addcontentform" onsubmit="return dattAddContent();" action="return false;">
+      <span>Add content:</span><input id="addcontent"/>
+      <input type="submit"/>
+    </form>
+  </div>
+  <div id="getLocalContent">
+    <form id="getlocalcontentform" onsubmit="return dattGetLocalContent();" action="return false;">
+      <span>Get local content:</span><input id="getlocalcontent"/>
+      <input type="submit"/>
+    </form>
+  </div>
+  <div id="getRemoteContent">
+    <form id="getremotecontentform" onsubmit="return dattGetRemoteContent();" action="return false;">
+      <span>Get remote content:</span><input id="getremotecontent"/>
+      <input type="submit"/>
+    </form>
+  </div>
+  <br><br>
+  <div id="data"></div>
 </body>
 </html>
