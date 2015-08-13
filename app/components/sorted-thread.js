@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import DattThing from 'datt-ui/mixins/datt-thing';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(DattThing, {
   datt: Ember.inject.service(),
   things: [],
   sortParams: ['created:desc'],

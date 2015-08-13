@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import DattThing from 'datt-ui/mixins/datt-thing';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(DattThing, {
   isReplying: false,
   class: 'media',
   actions: {
