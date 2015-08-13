@@ -331,6 +331,7 @@ Bitcoin, lightning network, sidechains
 - [Experimental lightning node in python](https://github.com/hashplex/Lightning)
 - [Thunder Network - a more near-term solution for our micropayments problem, already implemented in Java](http://thunder.network/)
 - [A fast and scalable network with bitcoin micropayment channels (PDF)](http://www.researchgate.net/profile/Christian_Decker5/publication/277991245_A_Fast_and_Scalable_Payment_Network_with_Bitcoin_Duplex_Micropayment_Channels/links/55780a4e08aeb6d8c01cf2d0.pdf) - not lightning, but similar
+- [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
 Articles
 - ["Projects and Companies" by Sam Altman](http://blog.samaltman.com/projects-and-companies)
