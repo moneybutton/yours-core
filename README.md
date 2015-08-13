@@ -332,6 +332,7 @@ Bitcoin, lightning network, sidechains
 - [A fast and scalable network with bitcoin micropayment channels (PDF)](http://www.researchgate.net/profile/Christian_Decker5/publication/277991245_A_Fast_and_Scalable_Payment_Network_with_Bitcoin_Duplex_Micropayment_Channels/links/55780a4e08aeb6d8c01cf2d0.pdf) - not lightning, but similar
 
 Articles
+- ["Projects and Companies" by Sam Altman](http://blog.samaltman.com/projects-and-companies)
 - [The WeChat wallet](https://a16z.com/2015/08/06/wechat-china-mobile-first/)
 - [It's time to build the private web - need encryption by default](http://kernelmag.dailydot.com/issue-sections/staff-editorials/13919/private-web-encryption-is-a-basic-human-right/)
 - [Meta on hardforking - mods censors a post about Bitcoin XT](https://www.reddit.com/r/Bitcoin/comments/3gdad5/meta_on_hardforking_if_bitcoin_is_so_vulnerable/)
