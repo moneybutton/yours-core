@@ -36,6 +36,7 @@ function dattLogin() {
   var user = datt.signIn(username,password);
   var txt = "User created with username: '<b>" + user.username + "</b>' and address '<b>" + user.address + "</b>'.";
   $("#user").html(txt);
+  return false;
 }
 
 function onPeers(peers) {
@@ -65,10 +66,10 @@ datt.begin();
 <span id="status"></span><br><br>
 <span id="peers"></span><br><br>
 <div id="user">
-<form id="userform" onsubmit="return dattLogin() && false;" action="return false;">
+<form id="userform" onsubmit="return dattLogin();" action="return false;">
 <span>Username:</span><input id="username"/>
 <span>Password:</span><input id="password" type="password"/>
-<input type="submit" style="position: absolute; left: -9999px"/>
+<input type="submit"/>
 </form>
 </div>
 <br><br>
