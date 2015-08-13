@@ -328,6 +328,7 @@ Resources compiled by John Villar
 - [Paul's Datt doc](https://docs.google.com/document/d/1AEHdOlQMyyuZ3U0a1BOcZtX8kAPWZynFVx9r21NPtiE/edit#heading=h.65lcma1tm8an)
 
 Bitcoin, lightning network, sidechains
+- [Experimental lightning node in python](https://github.com/hashplex/Lightning)
 - [Thunder Network - a more near-term solution for our micropayments problem, already implemented in Java](http://thunder.network/)
 - [A fast and scalable network with bitcoin micropayment channels (PDF)](http://www.researchgate.net/profile/Christian_Decker5/publication/277991245_A_Fast_and_Scalable_Payment_Network_with_Bitcoin_Duplex_Micropayment_Channels/links/55780a4e08aeb6d8c01cf2d0.pdf) - not lightning, but similar
 
