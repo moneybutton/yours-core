@@ -34,7 +34,11 @@ describe('ContentStore', function() {
 
     it('should get this content', function() {
       var hashhex = hash.toString('hex')
-      return q.when(contentStore.getContent(hashhex)).then(function (val) {
+      return q.when(contentStore.putContent(content)).then(function (hashhex) {
+        hashhex.should.equal(hash.toString('hex'))
+      }).then(function () {
+        return contentStore.getContent(hashhex)
+      }).then(function (val) {
         val.should.equal(content)
       })
     })
