@@ -17,12 +17,12 @@ C -> D: Give me peers (Bootstrap Nodes)
 D -> C: [Peer1, Peer2, ...]
 note right of N: "User is not logged in,\n so no identity to announce yet"
 C -> N: Give me recent listings (Bootstrap Collectives)
-N -> C: 10 most popular hashes + metadata + keys
+N -> C: 10 most popular hashes + metadata
 C -> C: Choose hashes to request based on client filters
 C -> N: Give me HASH 1ae5b18...
 C -> N: Give me HASH 8bac321...
-N -> C: CONTENT msg 1ae5b18: Ryan X Charles says...
-N -> C: CONTENT msg 8bac321: Paul says...
+N -> C: CONTENT msg 1ae5b18: Ryan X Charles says... + symmetric keys
+N -> C: CONTENT msg 8bac321: Paul says... + symmetric keys
 C -> U: Display of listing titles and metadata
 newpage Browsing content
 U -> C: Click on listing title to view CONTENT msg 1ae5b18
