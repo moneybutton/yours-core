@@ -32,10 +32,12 @@ function onConnectionData(data, conn) {
 
   var htmlSnippet = "<span><strong>Peer '" + conn.peer +"' sent:</strong> " + JSON.stringify(data, null, 4) + "</span>";
   writeToBody(htmlSnippet);
-  var content = contentStore.getContent(data);
-  if(content){
-    datt.broadcastMessage(content);
-  }
+  contentStore.getContent(data).then(function(content) {
+    if(content){
+      datt.broadcastMessage(content);
+    }
+  });
+  return false
 }
 
 function dattLogin() {
@@ -49,18 +51,20 @@ function dattLogin() {
 
 function dattAddContent() {
   var content = $("#addcontent").val();
-  var hash = contentStore.putContent(content);
-  $("#addcontent").val("");
-  writeToBody("Added " + content + " to storage with hash " + hash);
-  datt.broadcastMessage("New content: " + hash);
+  contentStore.putContent(content).then(function (hashhex) {
+    $("#addcontent").val("");
+    writeToBody("Added " + content + " to storage with hash " + hashhex);
+    datt.broadcastMessage("New content: " + hashhex);
+  })
   return false;
 }
 
 function dattGetLocalContent() {
   var hash = $("#getlocalcontent").val();
-  var content = contentStore.getContent(hash);
-  $("#getlocalcontent").val("");
-  writeToBody("<strong>Got local content:</strong> " + content);
+  contentStore.getContent(hash).then(function (content) {
+    $("#getlocalcontent").val("");
+    writeToBody("<strong>Got local content:</strong> " + content);
+  });
   return false;
 }
 

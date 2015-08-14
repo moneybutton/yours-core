@@ -70,9 +70,13 @@
     "bitcore": "^0.12.15",
     "bn.js": "^2.0.4",
     "express": "^4.13.3",
+    "leveldown": "^1.4.0",
+    "levelup": "^1.2.1",
+    "memdown": "^1.0.0",
     "mocha": "^2.2.5",
     "peer": "^0.2.8",
     "peerjs": "^0.3.14",
+    "q": "^1.4.1",
     "should": "^7.0.3",
     "underscore": "^1.8.3",
     "underscore.deferred": "^0.4.0"
