@@ -4,12 +4,14 @@ var should = require('should')
 var ContentStore = require('../lib/contentStore')
 
 describe('ContentStore', function() {
+  this.timeout(10000) // karma seems to need longer timeout for IndexedDB tests
   var contentStore
   var content = "test"
   var hash = bitcore.crypto.Hash.sha256(new Buffer(content))
 
   before(function() {
     contentStore = new ContentStore()
+    return contentStore.init()
   })
 
   describe('ContentStore', function() {
