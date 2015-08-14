@@ -302,6 +302,9 @@ Related projects
 - http://lazooz.org/
 - http://www.decent.ch/ 
 - Qora - http://qora.co.in:9090/index/main.html
+- Tent - decentralized, users own their content - https://tent.io/docs
+- BitTess - p2p website - https://github.com/BitTess/BitTess
+- MediaGoblin - GNU's decentralized social media app - http://mediagoblin.org/
 
 Resources compiled by John Villar
 - [PeerJS](http://peerjs.com/) - Easy WebRTC
