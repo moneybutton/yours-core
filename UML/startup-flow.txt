@@ -1,10 +1,12 @@
 @startuml
 title Datt startup flow
 actor User as U
-participant Client as C
-participant D as "datt.co"
+box "Client" #LightGrey
+	participant "P2P Node" as C
+end box
+	participant D as "datt.co"
 box "Peer N" #LightGrey
-	participant N as "SPV Node"
+	participant N as "P2P Node"
 	participant FN as "Full Node"
 end box
 
