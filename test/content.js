@@ -1,3 +1,4 @@
+/* global it,describe,before */
 var Content = require('../lib/content')
 var should = require('should')
 

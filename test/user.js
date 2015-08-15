@@ -1,3 +1,4 @@
+/* global it,describe,before */
 var should = require('should')
 var User = require('../lib/user')
 
