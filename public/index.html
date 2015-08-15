@@ -44,9 +44,14 @@ function onConnectionData(data, conn) {
 function dattLogin() {
   var username = $("#username").val();
   var password = $("#password").val();
-  var user = datt.signIn(username,password);
-  var txt = "User created with username: '<strong>" + user.username + "</strong>' and address '<strong>" + user.address + "</strong>'.";
-  $("#user").html(txt);
+  try {
+  datt.signIn(username,password).then(function(user) {
+    var txt = "User created with username: '<strong>" + user.username + "</strong>' and address '<strong>" + user.address + "</strong>'.";
+    $("#user").html(txt);
+  });
+  } catch (err) {
+    console.log('caught error ' + err)
+  }
   return false;
 }
 
