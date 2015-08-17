@@ -345,6 +345,7 @@ Related projects
 - [Patchwork - based on scuttlebutt](https://github.com/ssbc/patchwork)
 - [a bunch of "alternative internet" links](https://redecentralize.github.io/alternative-internet/)
 - [cryptosphere, built in ruby, seems similar](https://github.com/cryptosphere/cryptosphere)
+- [Alexandria - blocktech.com - uses ipfs](http://blocktech.com/)
 
 Resources compiled by John Villar
 - [PeerJS](http://peerjs.com/) - Easy WebRTC
