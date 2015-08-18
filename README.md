@@ -380,6 +380,7 @@ Bitcoin, lightning network, sidechains
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
 Articles
+- [Locking the Web Open - a call for a distributed web](http://brewster.kahle.org/2015/08/11/locking-the-web-open-a-call-for-a-distributed-web-2/)
 - ["Projects and Companies" by Sam Altman](http://blog.samaltman.com/projects-and-companies)
 - [The WeChat wallet](https://a16z.com/2015/08/06/wechat-china-mobile-first/)
 - [It's time to build the private web - need encryption by default](http://kernelmag.dailydot.com/issue-sections/staff-editorials/13919/private-web-encryption-is-a-basic-human-right/)
