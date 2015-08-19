@@ -10,6 +10,7 @@ describe('Message', function () {
   before(function () {
     message = new Message(Message.Type.ANNOUNCE_IDENTITY, 'body')
     user = new User('username', 'password')
+    return user.init()
   })
 
   describe('Message', function () {

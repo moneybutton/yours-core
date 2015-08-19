@@ -24,6 +24,7 @@ describe('Datt', function () {
     return
   }
 
+  /* TODO: re-enable when tests automatically run web RTC rendezvous server
   describe('#begin', function () {
 
     it('should initialize our global datt', function () {
@@ -31,6 +32,7 @@ describe('Datt', function () {
     })
 
   })
+  */
 
   describe('#signIn', function () {
 
