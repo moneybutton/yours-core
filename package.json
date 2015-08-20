@@ -4,7 +4,9 @@
   "description": "Javascript implementation of datt full node and light node.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "build": "grunt",
+    "test": "npm run test-node && npm run test-browser",
+    "test-node": "mocha",
     "test-browser": "grunt && ./node_modules/karma/bin/karma start .karma.conf.js"
   },
   "contributors": [
