@@ -16,7 +16,11 @@ var server = app.listen(3000, function () {
   console.log('Run the mocha tests at http://%s:%s/tests.html', host, port)
 })
 
-app.use('/', ExpressPeerServer(server, {debug: true}))
+app.use('/', ExpressPeerServer(server, {
+  debug: true,
+  allow_discovery: true
+}));
+
 
 module.exports.app = app
 module.exports.server = server
