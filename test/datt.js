@@ -10,7 +10,6 @@ describe('Datt', function () {
   })
 
   describe('Datt', function () {
-
     it('should see the global datt', function () {
       should.exist(datt)
     })
@@ -25,7 +24,6 @@ describe('Datt', function () {
   }
 
   describe('#begin', function () {
-
     it('should initialize our global datt', function () {
       return datt.begin()
     })
@@ -33,7 +31,6 @@ describe('Datt', function () {
   })
 
   describe('#signIn', function () {
-
     it('should sign in a user', function () {
       return datt.signIn('user', 'password').then(function (user) {
         user.username.should.equal('user')
@@ -44,7 +41,6 @@ describe('Datt', function () {
   })
 
   describe('#broadcastMessage', function () {
-
     it('should return a promise', function () {
       return datt.broadcastMessage('my message')
     })
