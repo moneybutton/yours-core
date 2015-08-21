@@ -1,13 +1,15 @@
-// Karma configuration
-// Generated on Tue Jan 06 2015 16:30:03 GMT-0800 (PST)
-
 module.exports = function(config) {
   config.set({
+
+    basePath: 'public',
 
     frameworks: ['mocha'],
 
     files: [
-      {pattern: 'public/tests.js'}
+      {pattern: 'datt-node.js', watched: true, included: false, served: true},
+      {pattern: 'datt-node-worker.js', watched: true, included: false, served: true},
+      {pattern: 'datt-node-workerpool.js', watched: true, included: false, served: true},
+      {pattern: 'datt-node-tests.js'}
     ],
 
     client: {
@@ -20,5 +22,5 @@ module.exports = function(config) {
     browsers: ['Chrome'],
 
     singleRun: true
-  });
-};
+  })
+}

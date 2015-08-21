@@ -1,6 +1,7 @@
 var q = require('q')
 var gulp = require('gulp')
 var mocha = require('gulp-mocha')
+var karma = require('gulp-karma')
 var globby = require('globby')
 var path = require('path')
 var fs = require('fs')
@@ -66,6 +67,29 @@ gulp.task('test-node', function () {
   return gulp.src(['./test/*.js'])
   .pipe(mocha({reporter: 'list'}))
   .once('end', function () {
+    process.exit()
+  })
+})
+
+gulp.task('build-karma-url', function() {
+  // karma serves static files, including js files, from /base/
+  process.env.DATT_NODE_JS_BASE_URL = '/base/'
+})
+
+gulp.task('build-karma', ['build-karma-url', 'build-tests'])
+
+gulp.task('test-karma', ['build-karma'], function() {
+  var server = require(path.join(__dirname, 'bin', 'testapp')).server // runs the PeerJS server
+  return gulp.src([])
+  .pipe(karma({
+    configFile: '.karma.conf.js',
+    action: 'run'
+  }))
+  .on('error', function(err) {
+    throw err
+  })
+  .on('end', function() {
+    server.close()
     process.exit()
   })
 })
