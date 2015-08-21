@@ -19,8 +19,7 @@ var server = app.listen(3000, function () {
 app.use('/', ExpressPeerServer(server, {
   debug: true,
   allow_discovery: true
-}));
-
+}))
 
 module.exports.app = app
 module.exports.server = server

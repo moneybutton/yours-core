@@ -71,24 +71,24 @@ gulp.task('test-node', function () {
   })
 })
 
-gulp.task('build-karma-url', function() {
+gulp.task('build-karma-url', function () {
   // karma serves static files, including js files, from /base/
   process.env.DATT_NODE_JS_BASE_URL = '/base/'
 })
 
 gulp.task('build-karma', ['build-karma-url', 'build-tests'])
 
-gulp.task('test-karma', ['build-karma'], function() {
+gulp.task('test-karma', ['build-karma'], function () {
   var server = require(path.join(__dirname, 'bin', 'testapp')).server // runs the PeerJS server
   return gulp.src([])
   .pipe(karma({
     configFile: '.karma.conf.js',
     action: 'run'
   }))
-  .on('error', function(err) {
+  .on('error', function (err) {
     throw err
   })
-  .on('end', function() {
+  .on('end', function () {
     server.close()
     process.exit()
   })

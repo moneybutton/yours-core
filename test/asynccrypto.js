@@ -1,7 +1,6 @@
 /* global it,describe */
 var should = require('should')
 var bitcore = require('bitcore')
-var Mnemonic = require('bitcore-mnemonic')
 var AsyncCrypto = require('../lib/asynccrypto')
 var asyncCrypto = new AsyncCrypto()
 
