@@ -18,7 +18,7 @@ describe('ContentStore', function () {
     user = new User('username', 'password')
     content = Content.fromDataAndUser(data, user)
     hashHexString = content.getHashHex()
-    storeLocation = './' + util._randomString(10)
+    storeLocation = './dbs/' + util._randomString(10)
     contentStore = new ContentStore({'dbName': storeLocation})
     contentStore.init()
   })

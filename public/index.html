@@ -1,15 +1,18 @@
 <html>
 <head>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="datt-node.js"></script>
 <script type="text/javascript">
-var bitcore = DattLib.bitcore;
-var Peer = DattLib.Peer;
-var Datt = DattLib.Datt;
-var User = DattLib.User;
-var Message = DattLib.Message;
-var Content = DattLib.Content;
-var ContentStore = DattLib.ContentStore;
+
+var bitcore = datt_node.bitcore;
+var Peer = datt_node.Peer;
+
+var Datt = datt_node.Datt;
+var User = datt_node.User;
+var Message = datt_node.Message;
+var Content = datt_node.Content;
+var ContentStore = datt_node.ContentStore;
+
 
 var datt = null;
 var contentStore = new ContentStore();
