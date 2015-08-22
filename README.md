@@ -123,8 +123,9 @@ Here are some important documents that have been made this week:
 
 - [Ramki's Payment Flow document](https://docs.google.com/document/d/1B3Y2Y4dTfqZNROoNTGQOzcCSstHEJxnzAJY-Z9fxzcc/edit)
 - [Ramki's Business Thoughts](https://docs.google.com/document/d/1vhLrVlBu7_l_xgXkUs9HCWd4nOuh9G4TagO2zjU9Gys/edit?usp=sharing)
-- [Paul's timeline](https://files.slack.com/files-pri/T07GDKW3U-F09F508E7/roadmap_to_mvp.png)
+- [Paul's Roadmap](https://github.com/dattnetwork/dattdocs/raw/master/planning/Roadmap%20to%20MVP.png)
 - [Darren's sketch of the Datt Network](https://github.com/dattnetwork/dattmedia/blob/master/misc/network_overview-01.png)
+- [Paul's network graphs](https://github.com/dattnetwork/dattdocs/raw/master/UML/Datt%20network%20graph%20circular%20content%20incl%20curation.png)
 
 (Please let me know if I've forgotten something that should be on this list.)
 
