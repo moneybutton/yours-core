@@ -465,6 +465,7 @@ Bitcoin, lightning network, sidechains
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
 Articles
+- [The internet's own Magna Carta](http://www.renderingwithstyle.com/post/127493183563/the-internets-own-magna-carta)
 - [Locking the Web Open - a call for a distributed web](http://brewster.kahle.org/2015/08/11/locking-the-web-open-a-call-for-a-distributed-web-2/)
 - ["Projects and Companies" by Sam Altman](http://blog.samaltman.com/projects-and-companies)
 - [The WeChat wallet](https://a16z.com/2015/08/06/wechat-china-mobile-first/)
