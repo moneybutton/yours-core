@@ -4,8 +4,10 @@
   "description": "Javascript implementation of datt full node and light node.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "test-browser": "grunt && ./node_modules/karma/bin/karma start .karma.conf.js"
+    "build": "./node_modules/.bin/gulp",
+    "test": "npm run test-node && npm run test-browser",
+    "test-node": "./node_modules/.bin/gulp test-node",
+    "test-browser": "./node_modules/.bin/gulp test-karma"
   },
   "contributors": [
     {
@@ -67,7 +69,7 @@
     "node": ">= 0.12.0"
   },
   "dependencies": {
-    "bitcore": "^0.12.15",
+    "bitcore": "https://github.com/bitpay/bitcore.git#d7cd12b9d6095ab590a30eedac578df2f1383651",
     "bitcore-mnemonic": "^0.12.0",
     "bn.js": "^2.0.4",
     "express": "^4.13.3",
@@ -84,8 +86,13 @@
     "workerpool": "^1.0.0"
   },
   "devDependencies": {
-    "grunt-browserify": "^4.0.0",
-    "grunt-contrib-watch": "^0.6.1",
+    "browserify": "^11.0.1",
+    "envify": "^3.4.0",
+    "globby": "^2.1.0",
+    "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-karma": "0.0.4",
+    "gulp-mocha": "^2.1.3",
     "karma": "^0.13.8",
     "karma-chrome-launcher": "^0.2.0",
     "karma-mocha": "^0.2.0",

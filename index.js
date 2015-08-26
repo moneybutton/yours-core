@@ -16,3 +16,5 @@ module.exports = {
   'Peer': Peer,
   'bitcore': bitcore
 }
+
+global.datt_node = module.exports

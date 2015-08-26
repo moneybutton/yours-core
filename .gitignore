@@ -5,5 +5,5 @@ node_modules
 /coverage/*
 npm-debug.log
 *~
-public/index.js
+public/datt-*.js
 public/tests.js
