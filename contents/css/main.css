@@ -4,8 +4,8 @@ h1, h2, h3, h4, h5, h6, p, body, a, img, ul, ol, blockquote, pre {
 }
 
 body {
-  font-family: 'Lora', serif;
-  font-size: 21px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
   line-height: 1.52;
   background-color: #f8f8f8;
   text-rendering: optimizeLegibility;
@@ -41,20 +41,20 @@ pre {
 
 h1 {
   font-size: 2em;
+  font-weight: normal;
   margin-bottom: 1em;
 }
 
 h2 {
   font-size: 1.2em;
-  font-weight: 400;
+  font-weight: normal;
   line-height: 1.43;
   margin-bottom: 1.35em;
 }
 
 h3 {
-  font-style: italic;
   text-align: center;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 1.4em;
   margin-top: 1.8em;
   margin-bottom: 0.8em;
@@ -88,9 +88,9 @@ hr {
 }
 
 .header h1 {
-  font-size: 2.6em;
+  font-size: 1.6em;
   text-align: center;
-  font-weight: 700;
+  font-weight: normal;
   margin: 0;
 }
 
@@ -100,26 +100,23 @@ hr {
 }
 
 .header .author {
-  font-family: 'Merriweather', serif;
   font-variant: small-caps;
   text-transform: lowercase;
   text-rendering: auto;
   text-align: center;
-  font-weight: 400;
+  font-weight: normal;
   letter-spacing: 1px;
 }
 
 .header .description {
-  font-size: 1.2em;
-  font-style: italic;
+  font-size: 1.0em;
   text-align: center;
   margin-top: -0.3em;
 }
 
 body.article-detail > header h1 {
-  font-size: 2.5em;
-  font-style: italic;
-  font-weight: 400;
+  font-size: 1.6em;
+  font-weight: normal;
   margin-bottom: -0.2em;
 }
 
@@ -162,7 +159,6 @@ footer .about {
 footer .copy {
   text-align: center;
   font-size: 0.7em;
-  font-style: italic;
   margin-top: 1em;
 }
 
@@ -181,9 +177,8 @@ footer .copy, footer .copy a {
 }
 
 .article header h2 {
-  font-style: italic;
   text-align: center;
-  font-weight: 400;
+  font-weight: normal;
   margin: 0.8em 0;
   font-size: 1.4em;
 }
@@ -219,10 +214,9 @@ footer .copy, footer .copy a {
 }
 
 .more, .date {
-  font-family: 'Merriweather', serif;
   font-variant: small-caps;
   text-transform: lowercase;
-  font-weight: 400;
+  font-weight: normal;
   text-rendering: auto;
   letter-spacing: 1px;
 }
@@ -240,7 +234,6 @@ footer .copy, footer .copy a {
   margin: 0;
   margin-left: 6.1em;
   margin-bottom: 0.5em;
-  font-style: italic;
 }
 
 .archive a, .archive span{
@@ -268,10 +261,9 @@ footer .copy, footer .copy a {
 .archive .year-label,
 .archive .month-label{
   width: 4em;
-  font-family: 'Merriweather', serif;
   font-variant: small-caps;
   text-transform: lowercase;
-  font-weight: 400;
+  font-weight: normal;
   text-rendering: auto;
   letter-spacing: 1px;
   text-align: center;
