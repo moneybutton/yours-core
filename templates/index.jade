@@ -9,7 +9,7 @@ block content
         h2
           a(href=article.url)= article.title
         p.date
-          span= moment.utc(article.date).format('MMMM DD., YYYY')
+          span= moment.utc(article.date).format('MMMM DD, YYYY')
       section.content
         if article.intro.length > 0
           != typogr(article.intro).typogrify()
