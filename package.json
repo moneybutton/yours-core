@@ -69,7 +69,7 @@
     "node": ">= 0.12.0"
   },
   "dependencies": {
-    "bitcore": "https://github.com/ryanxcharles/bitcore.git#fix-web-workers",
+    "bitcore": "https://github.com/bitpay/bitcore.git#d7cd12b9d6095ab590a30eedac578df2f1383651",
     "bitcore-mnemonic": "^0.12.0",
     "bn.js": "^2.0.4",
     "express": "^4.13.3",
