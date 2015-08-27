@@ -46,14 +46,17 @@ function onConnectionData(data, conn) {
 function dattLogin() {
   var username = $("#username").val();
   var password = $("#password").val();
-  try {
-  datt.signIn(username,password).then(function(user) {
+
+  datt.signIn(username, password).then(function() {
+    var user = datt.user;
+    console.log("datt#signIn - callback executed with user: ");
+    console.log(user);
     var txt = "User created with username: '<strong>" + user.username + "</strong>' and address '<strong>" + user.address + "</strong>'.";
     $("#user").html(txt);
-  });
-  } catch (err) {
+  }).catch(function(err) {
     console.log('caught error ' + err)
-  }
+  });
+
   return false;
 }
 
