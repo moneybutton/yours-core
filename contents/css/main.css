@@ -7,7 +7,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   line-height: 1.52;
-  background-color: #f8f8f8;
+  background-color: #fff;
   text-rendering: optimizeLegibility;
 }
 
@@ -21,7 +21,7 @@ body, a {
 }
 
 a:hover {
-  color: #ff8000;
+  color: #58b;
   text-decoration: underline;
 }
 
@@ -33,7 +33,7 @@ pre {
   font-size: 0.9em;
   overflow: auto;
   background: #fff;
-  border: 1px dashed #d2d2d2;
+  border: 1px solid #d2d2d2;
   border-radius: 0.25em;
   margin-bottom: 1.8em;
   padding: 1em;
@@ -76,7 +76,7 @@ blockquote {
 
 hr {
   border: 0;
-  border-top: 1px dashed #d2d2d2;
+  border-top: 1px solid #d2d2d2;
   height: 0;
   margin: 1.6em 0;
 }
@@ -85,6 +85,11 @@ hr {
 
 .header {
   margin: 3em 0 5em;
+  text-align: center;
+}
+
+.header img {
+  width: 80px;
 }
 
 .header h1 {
@@ -96,12 +101,10 @@ hr {
 
 .header a, .header a:hover {
   text-decoration: none;
-  color: #171717;
 }
 
 .header .author {
-  font-variant: small-caps;
-  text-transform: lowercase;
+  margin-top: 1em;
   text-rendering: auto;
   text-align: center;
   font-weight: normal;
@@ -143,17 +146,10 @@ footer .nav a {
 }
 
 footer .about {
-  border-top: 1px dashed #d2d2d2;
+  text-align: center;
+  border-top: 1px solid #d2d2d2;
   padding: 2.2em 3em;
   font-size: 0.7em;
-  -webkit-column-count: 3;
-  -moz-column-count: 3;
-  -ms-column-count: 3;
-  column-count: 3;
-  -webkit-column-gap: 2em;
-  -moz-column-gap: 2em;
-  -ms-column-gap: 2em;
-  column-gap: 2em;
 }
 
 footer .copy {
@@ -173,7 +169,7 @@ footer .copy, footer .copy a {
 }
 
 .article header {
-  border-top: 1px dashed #d2d2d2;
+  border-top: 1px solid #d2d2d2;
 }
 
 .article header h2 {
@@ -194,7 +190,6 @@ footer .copy, footer .copy a {
 }
 
 .article header .date span {
-  background-color: #f8f8f8;
   padding: 0 0.7em;
 }
 
@@ -214,8 +209,6 @@ footer .copy, footer .copy a {
 }
 
 .more, .date {
-  font-variant: small-caps;
-  text-transform: lowercase;
   font-weight: normal;
   text-rendering: auto;
   letter-spacing: 1px;
@@ -261,8 +254,6 @@ footer .copy, footer .copy a {
 .archive .year-label,
 .archive .month-label{
   width: 4em;
-  font-variant: small-caps;
-  text-transform: lowercase;
   font-weight: normal;
   text-rendering: auto;
   letter-spacing: 1px;
@@ -299,7 +290,6 @@ p code {
   padding: 0.1em 0.3em 0.2em;
   border-radius: 0.3em;
   position: relative;
-  background: #fffff3;
 
   white-space: nowrap;
 }
@@ -416,10 +406,6 @@ code.lang-markdown .bullet {
     padding: 0;
     font-size: 0.9em;
     padding-top: 1.6em;
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    -ms-column-count: 1;
-    column-count: 1;
   }
   footer .about p {
     margin-bottom: 1em;
