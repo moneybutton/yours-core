@@ -5,6 +5,7 @@ var User = require('../lib/user')
 var Content = require('../lib/content')
 var util = require('../lib/util')
 
+/**
 describe('ContentStore', function () {
   this.timeout(10000) // karma seems to need longer timeout for IndexedDB tests
   var contentStore
@@ -64,3 +65,4 @@ describe('ContentStore', function () {
   })
 
 })
+**/

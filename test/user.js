@@ -10,7 +10,6 @@ describe('User', function () {
   })
 
   describe('User', function () {
-
     it('should exist test user', function () {
       should.exist(user)
     })
@@ -18,18 +17,43 @@ describe('User', function () {
   })
 
   describe('#init', function () {
-
-    it('should compute the user private key and public key', function () {
-      return user.init().then(function () {
+    it('should compute the user private key and public key', function (done) {
+      console.log('About to run user.init()')
+      user.init().then(function () {
+        console.log('User#init promise was resolved')
         should.exist(user.privateKey)
         should.exist(user.publicKey)
         should.exist(user.address)
+        done()
+      })
+    })
+  })
+
+  describe('#then', function () {
+    it('should take a callback function and invoke that function when user is initialized', function (done) {
+      var otheruser = new User('ausername', 'apassword')
+      otheruser.init()
+      otheruser.then(function () {
+        should.exist(otheruser.privateKey)
+        should.exist(otheruser.publicKey)
+        should.exist(otheruser.address)
+        done()
+      })
+    })
+
+    it('should bind the instance as "this" within the callback function', function (done) {
+      var otheruser = new User('ausername', 'apassword')
+      otheruser.init()
+      otheruser.then(function () {
+        should.exist(this)
+        otheruser.username.should.eql(this.username)
+        otheruser.publicKey.should.eql(this.publicKey)
+        done()
       })
     })
   })
 
   describe('#serialize', function () {
-
     it('should serialize this known user', function () {
       user.serialize().should.equal('username_19aM8TSmimwBsH9uVbS6SXigqM42fEzGtY_02af59b2cc4ebe9cc796f8076b095efaaed11f4f249805d3db18459f15be04de4f')
     })
@@ -37,7 +61,6 @@ describe('User', function () {
   })
 
   describe('#sign', function () {
-
     it('should produce this known signature', function () {
       // this is possible thanks to deterministic K, a.k.a. RFC 6979
       return user.sign('data').then(function (sig) {
