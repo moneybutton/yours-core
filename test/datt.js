@@ -35,8 +35,9 @@ describe('Datt', function () {
   describe('#signIn', function () {
     it('should sign in a user', function () {
       return datt.signIn('user', 'password').then(function (user) {
-        user.username.should.equal('user')
-        user.password.should.equal('password')
+        should.exist(datt.user)
+        datt.user.username.should.equal('user')
+        datt.user.password.should.equal('password')
       })
     })
 

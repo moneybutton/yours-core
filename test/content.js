@@ -225,12 +225,13 @@ describe('Content', function () {
       testcontent.init().then(function () {
         should.not.exist(testcontent.getOwnerPubKey())
 
-        ;(function () {
-          testcontent.setOwnerPubKey('not a pub key, man')
-        }).should.throw()
-
-        should.not.exist(testcontent.getOwnerPubKey())
-        done()
+        testcontent.setOwnerPubKey('not a pub key, man').then(function () {
+          should.fail('#setOwnerPubKey - should fail with invalid bitcoin pub key string')
+        }).catch(function (err) {
+          should.exist(err)
+          should.not.exist(testcontent.getOwnerPubKey())
+          done()
+        })
       })
 
     })
@@ -240,12 +241,14 @@ describe('Content', function () {
       testcontent.init().then(function () {
         should.not.exist(testcontent.getOwnerPubKey())
 
-        ;(function () {
-          testcontent.setOwnerPubKey({'not': true, 'a': true, 'pubkey': true})
-        }).should.throw()
+        testcontent.setOwnerPubKey({'not': true, 'a': true, 'pubkey': true}).then(function () {
+          should.fail('#setOwnerPubKey should fail with invalid bitcoin pub key object')
+        }).catch(function (err) {
+          should.exist(err)
+          should.not.exist(testcontent.getOwnerPubKey())
+          done()
+        })
 
-        should.not.exist(testcontent.getOwnerPubKey())
-        done()
       })
     })
 
@@ -261,16 +264,17 @@ describe('Content', function () {
     it('should set the signature from a hex-string signature', function (done) {
       var newContent = new Content(data, testuser.getUsername(), testuser.getAddress(), post_time, post_height)
       newContent.init().then(function () {
-        var signature = testuser.sign(data)
-        var signatureStr = signature.toString()
-        should.not.exist(newContent.getSignature())
+        testuser.sign(data).then(function (signature) {
+          var signatureStr = signature.toString()
+          should.not.exist(newContent.getSignature())
 
-        ;(function () {
-          newContent.setSignature(signatureStr)
-        }).should.not.throw()
-
-        newContent.getSignature().should.eql(signatureStr)
-        done()
+          newContent.setSignature(signatureStr).then(function () {
+            newContent.getSignature().should.eql(signatureStr)
+            done()
+          }).catch(function (err) {
+            should.fail(err)
+          })
+        })
       })
     })
 
@@ -279,28 +283,32 @@ describe('Content', function () {
       newContent.init().then(function () {
         should.not.exist(newContent.getSignature())
 
-        ;(function () {
-          newContent.setSignature('nope not a signature')
-        }).should.throw()
-
-        should.not.exist(newContent.getSignature())
-        done()
+        newContent.setSignature('nope not a signature')
+          .then(function () {
+            should.fail('should throw an error if an invalid signature string is provided')
+          })
+          .catch(function (err) {
+            should.exist(err)
+            should.not.exist(newContent.getSignature())
+            done()
+          })
       })
     })
 
     it('should set the signature from a signature object', function (done) {
       var newContent = new Content(data, testuser.getUsername(), testuser.getAddress(), post_time, post_height)
       newContent.init().then(function () {
-        var signature = testuser.sign(data)
-        var signatureStr = signature.toString()
-        should.not.exist(newContent.getSignature())
+        testuser.sign(data).then(function (signature) {
+          var signatureStr = signature.toString()
+          should.not.exist(newContent.getSignature())
 
-        ;(function () {
-          newContent.setSignature(signature)
-        }).should.not.throw()
-
-        newContent.getSignature().should.eql(signatureStr)
-        done()
+          newContent.setSignature(signature).then(function () {
+            newContent.getSignature().should.eql(signatureStr)
+            done()
+          }).catch(function (err) {
+            should.fail(err)
+          })
+        })
       })
     })
 
@@ -309,28 +317,34 @@ describe('Content', function () {
       newContent.init().then(function () {
         should.not.exist(newContent.getSignature())
 
-        ;(function () {
-          newContent.setSignature({'not': true, 'a': true, 'signature': true})
-        }).should.throw()
-
-        should.not.exist(newContent.getSignature())
-        done()
+        newContent.setSignature({'not': true, 'a': true, 'signature': true})
+          .then(function () {
+            should.fail('should throw an error with invalid signature')
+          })
+          .catch(function (err) {
+            should.exist(err)
+            should.not.exist(newContent.getSignature())
+            done()
+          })
       })
     })
 
     it('should be able to set the signature when the associated public key is set on the content', function (done) {
       var newContent = new Content(data, testuser.getUsername(), testuser.getAddress(), post_time, post_height, testuser.getPubKey())
       newContent.init().then(function () {
-        var signature = testuser.sign(data)
-        var signatureStr = signature.toString()
-        should.not.exist(newContent.getSignature())
+        testuser.sign(data).then(function (signature) {
+          var signatureStr = signature.toString()
+          should.not.exist(newContent.getSignature())
 
-        ;(function () {
           newContent.setSignature(signatureStr)
-        }).should.not.throw()
-
-        newContent.getSignature().should.eql(signatureStr)
-        done()
+            .then(function () {
+              newContent.getSignature().should.eql(signatureStr)
+              done()
+            })
+            .catch(function (err) {
+              should.fail(err)
+            })
+        })
       })
     })
 
@@ -339,17 +353,23 @@ describe('Content', function () {
       var otherUser = new User('adiffuser', 'adiffpassword')
       otherUser.init()
       newContent.init().then(function () {
-        var otherSignatureStr = otherUser.sign(data).toString()
+        otherUser.sign(data).then(function (otherSignature) {
+          var otherSignatureStr = otherSignature.toString()
 
-        should.not.exist(newContent.getSignature())
+          should.not.exist(newContent.getSignature())
 
-        ;(function () {
           newContent.setSignature(otherSignatureStr)
-        }).should.throw()
-
-        should.not.exist(newContent.getSignature())
-        done()
+            .then(function () {
+              should.fail('should throw an error since signature is not compatible with public key')
+            })
+            .catch(function (err) {
+              should.exist(err)
+              should.not.exist(newContent.getSignature())
+              done()
+            })
+        })
       })
+
     })
   })
 

@@ -52,7 +52,11 @@ describe('ContentStore', function () {
       contentStore.getContent(hashHexString).then(function (val) {
         should.exist(val)
         console.log(JSON.stringify(val, null, 4))
-        val.should.eql(data)
+        val.getHashHex().should.eql(content.getHashHex())
+        val.getData().should.eql(content.getData())
+        val.getOwnerPubKey().should.eql(content.getOwnerPubKey())
+        val.getOwnerAddress().should.eql(content.getOwnerAddress())
+        val.serialize().should.eql(content.serialize())
         done()
       })
     })
