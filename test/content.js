@@ -351,8 +351,8 @@ describe('Content', function () {
     it('should THROW AN ERROR if one attempts to set a signature NOT compatible with public key associated with the content instance', function (done) {
       var newContent = new Content(data, testuser.getUsername(), testuser.getAddress(), post_time, post_height, testuser.getPubKey())
       var otherUser = new User('adiffuser', 'adiffpassword')
-      otherUser.init()
-      newContent.init().then(function () {
+
+      q.all([otherUser.init(), newContent.init()]).then(function () {
         otherUser.sign(data).then(function (otherSignature) {
           var otherSignatureStr = otherSignature.toString()
 
@@ -490,54 +490,57 @@ describe('Content', function () {
 
   describe('@verifySignature', function () {
     it('should return a boolean indicating whether a (data, ECDSA signature, ECDSA public key) tuple is consistent -- whether given signature was generated for given data by given pub key', function (done) {
-      var p_matchedSigAndKey = Content.verifySignature(data, testuser.sign(data), testuser.getPubKey())
-      var p_mismatchedSigAndKey = Content.verifySignature(data, User.randomTestUser().sign(data), testuser.getPubKey())
-      var p_sigAndMismatchedKey = Content.verifySignature(data, testuser.sign(data), User.randomTestUser().getPubKey())
-      var p_mismatchedDataForMatchedSigAndKey = Content.verifySignature('other data!', testuser.sign(data), testuser.getPubKey())
+      var randomTestUser = User.randomTestUser()
 
-      q.all([p_matchedSigAndKey, p_sigAndMismatchedKey, p_mismatchedSigAndKey, p_mismatchedDataForMatchedSigAndKey]).then(function (matchedSigAndKey, sigAndMismatchedKey, mismatchedSigAndKey, mismatchedDataForMatchedSigAndKey) {
-        matchedSigAndKey.should.eql(true)
-        sigAndMismatchedKey.should.eql(false)
-        mismatchedSigAndKey.should.eql(false)
-        mismatchedDataForMatchedSigAndKey.should.eql(false)
-        done()
+      randomTestUser.init().then(function () {
+        var p_matchedSigAndKey = Content.verifySignature(data, testuser.sign(data), testuser.getPubKey())
+        var p_mismatchedSigAndKey = Content.verifySignature(data, randomTestUser.sign(data), testuser.getPubKey())
+        var p_sigAndMismatchedKey = Content.verifySignature(data, testuser.sign(data), User.randomTestUser().getPubKey())
+        var p_mismatchedDataForMatchedSigAndKey = Content.verifySignature('other data!', testuser.sign(data), testuser.getPubKey())
+
+        q.all([p_matchedSigAndKey, p_sigAndMismatchedKey, p_mismatchedSigAndKey, p_mismatchedDataForMatchedSigAndKey]).spread(function (matchedSigAndKey, sigAndMismatchedKey, mismatchedSigAndKey, mismatchedDataForMatchedSigAndKey) {
+          matchedSigAndKey.should.eql(true)
+          sigAndMismatchedKey.should.eql(false)
+          mismatchedSigAndKey.should.eql(false)
+          mismatchedDataForMatchedSigAndKey.should.eql(false)
+          done()
+        }).catch(function (err) {
+          should.fail(err)
+        })
       })
 
     })
 
-    it('should THROW AN ERROR if any argument is null or missing', function () {
-      ;(function () {
-        Content.verifySignature().catch(function (err) { throw err })
-      }).should.throw()
-
-      ;(function () {
-        Content.verifySignature(null, testuser.sign(data), testuser.getPubKey()).catch(function (err) { throw err })
-      }).should.throw()
-
-      ;(function () {
-        Content.verifySignature(data, undefined, testuser.getPubKey()).catch(function (err) { throw err })
-      }).should.throw()
-
-      ;(function () {
-        Content.verifySignature(data, testuser.sign(data), null).catch(function (err) { throw err })
-      }).should.throw()
-
+    it('should THROW AN ERROR if no arguments are supplied', function (done) {
+      q.allSettled([
+        Content.verifySignature(),
+        Content.verifySignature(null, testuser.sign(data), testuser.getPubKey()),
+        Content.verifySignature(data, undefined, testuser.getPubKey()),
+        Content.verifySignature(data, testuser.sign(data), null)
+      ]).spread(function (noArgs, missingData, missingSignature, missingPubKey) {
+        noArgs.state.should.eql('rejected')
+        missingData.state.should.eql('rejected')
+        missingSignature.state.should.eql('rejected')
+        missingPubKey.state.should.eql('rejected')
+        done()
+      })
     })
 
-    it('should THROW AN ERROR if any argument is an IMPROPER TYPE OR INVALID', function () {
-      ;(function () {
-        Content.verifySignature(data, 'not a signature', testuser.getPubKey()).catch(function (err) { throw err })
-        Content.verifySignature(data, {'not': true, 'a': true, 'signature': true}, testuser.getPubKey()).catch(function (err) { throw err })
-      }).should.throw()
-
-      ;(function () {
-        Content.verifySignature(data, testuser.sign(data), 'not a public key').catch(function (err) { throw err })
-        Content.verifySignature(data, testuser.sign(data), {'not': true, 'a': true, 'public': true, 'key': true}).catch(function (err) { throw err })
-      }).should.throw()
-
-      ;(function () {
-        Content.verifySignature({'not': true, 'normal': true, 'data': true}, testuser.sign(data), testuser.getPubKey()).catch(function (err) { throw err })
-      }).should.throw()
+    it('should THROW AN ERROR if any argument is an IMPROPER TYPE OR INVALID', function (done) {
+      q.allSettled([
+        Content.verifySignature(data, 'not a signature', testuser.getPubKey()),
+        Content.verifySignature(data, {'not': true, 'a': true, 'signature': true}, testuser.getPubKey()),
+        Content.verifySignature(data, testuser.sign(data), 'not a public key'),
+        Content.verifySignature(data, testuser.sign(data), {'not': true, 'a': true, 'public': true, 'key': true}),
+        Content.verifySignature({'not': true, 'normal': true, 'data': true}, testuser.sign(data), testuser.getPubKey())
+      ]).spread(function (invalidSignatureString, invalidSignatureObject, invalidPubKeyString, invalidPubKeyObject, invalidDataObject) {
+        invalidSignatureString.state.should.eql('rejected')
+        invalidSignatureObject.state.should.eql('rejected')
+        invalidPubKeyString.state.should.eql('rejected')
+        invalidPubKeyObject.state.should.eql('rejected')
+        invalidDataObject.state.should.eql('rejected')
+        done()
+      })
     })
   })
 })
