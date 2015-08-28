@@ -191,15 +191,15 @@ describe('Content', function () {
         should.not.exist(newContent.getOwnerPubKey())
         should.exist(newContent.getOwnerAddress())
 
-        (newContent.getOwnerAddress()).should.not.equal(otherUser.getAddress())
+        ;(newContent.getOwnerAddress()).should.not.equal(otherUser.getAddress())
 
-          newContent.setOwnerPubKey(otherUser.getPubKey()).then(function(pubkey) {
-	      should.not.exist(pubkey)
-	      should.fail("#setOwnerPubKey should fail if public key is incompatible!")
-	  }).catch(function (err) {
-	      should.not.exist(newContent.getOwnerPubKey())
-	      done()
-          })
+        newContent.setOwnerPubKey(otherUser.getPubKey()).then(function (pubkey) {
+          should.not.exist(pubkey)
+          should.fail('#setOwnerPubKey should fail if public key is incompatible!')
+        }).catch(function (err) {
+          should.not.exist(newContent.getOwnerPubKey())
+          done()
+        })
       })
     })
 
@@ -209,14 +209,14 @@ describe('Content', function () {
         should.not.exist(newContent.getOwnerPubKey())
         should.not.exist(newContent.getOwnerAddress())
 
-          newContent.setOwnerPubKey(testuser.getPubKey()).then(function() {
-              newContent.getOwnerPubKey().should.eql(testuser.getPubKey())
-              newContent.getOwnerAddress().should.eql(testuser.getAddress())
-              done()
-	  }).catch(function(err) {
-	      should.not.exist(err)
-	      should.fail("Should not throw this error: " + err)
-	  })
+        newContent.setOwnerPubKey(testuser.getPubKey()).then(function () {
+          newContent.getOwnerPubKey().should.eql(testuser.getPubKey())
+          newContent.getOwnerAddress().should.eql(testuser.getAddress())
+          done()
+        }).catch(function (err) {
+          should.not.exist(err)
+          should.fail('Should not throw this error: ' + err)
+        })
       })
     })
 
@@ -475,8 +475,9 @@ describe('Content', function () {
       var p_sigAndMismatchedKey = Content.verifySignature(data, testuser.sign(data), User.randomTestUser().getPubKey())
       var p_mismatchedDataForMatchedSigAndKey = Content.verifySignature('other data!', testuser.sign(data), testuser.getPubKey())
 
-      q.all([p_matchedSigAndKey, p_mismatchedSigAndKey, p_mismatchedDataForMatchedSigAndKey]).then(function (matchedSigAndKey, mismatchedSigAndKey, mismatchedDataForMatchedSigAndKey) {
+      q.all([p_matchedSigAndKey, p_sigAndMismatchedKey, p_mismatchedSigAndKey, p_mismatchedDataForMatchedSigAndKey]).then(function (matchedSigAndKey, sigAndMismatchedKey, mismatchedSigAndKey, mismatchedDataForMatchedSigAndKey) {
         matchedSigAndKey.should.eql(true)
+        sigAndMismatchedKey.should.eql(false)
         mismatchedSigAndKey.should.eql(false)
         mismatchedDataForMatchedSigAndKey.should.eql(false)
         done()

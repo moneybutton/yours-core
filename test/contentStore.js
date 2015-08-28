@@ -5,7 +5,6 @@ var User = require('../lib/user')
 var Content = require('../lib/content')
 var util = require('../lib/util')
 
-/**
 describe('ContentStore', function () {
   this.timeout(10000) // karma seems to need longer timeout for IndexedDB tests
   var contentStore
@@ -15,13 +14,20 @@ describe('ContentStore', function () {
   var hashHexString
   var storeLocation
 
-  before(function () {
+  before(function (done) {
     user = new User('username', 'password')
-    content = Content.fromDataAndUser(data, user)
-    hashHexString = content.getHashHex()
-    storeLocation = './dbs/' + util._randomString(10)
-    contentStore = new ContentStore({'dbName': storeLocation})
-    contentStore.init()
+    user.init().then(function () {
+      Content.fromDataAndUser(data, user).then(function (newContent) {
+        content = newContent
+        hashHexString = content.getHashHex()
+        storeLocation = './dbs/' + util._randomString(10)
+        contentStore = new ContentStore({'dbName': storeLocation})
+        contentStore.init().then(function () {
+          done()
+        })
+      })
+
+    })
   })
 
   describe('ContentStore', function () {
@@ -44,18 +50,20 @@ describe('ContentStore', function () {
     it('should get this content', function (done) {
       console.log(hashHexString)
       contentStore.getContent(hashHexString).then(function (val) {
+        should.exist(val)
         console.log(JSON.stringify(val, null, 4))
+        val.should.eql(data)
         done()
-        return val
       })
     })
 
   })
 
   describe('info', function () {
-    it('provides db info', function () {
+    it('provides db info', function (done) {
       contentStore.db.info().then(function () {
         console.log(JSON.stringify(arguments, null, 4))
+        done()
       })
     })
   })
@@ -65,4 +73,3 @@ describe('ContentStore', function () {
   })
 
 })
-**/
