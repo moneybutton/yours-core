@@ -203,11 +203,10 @@ describe('Content', function () {
 
         return newContent.setOwnerPubKey(testuser.getPubKey())
       }).then(function () {
-        newContent.getOwnerPubKey().should.eql(testuser.getPubKey())
-        newContent.getOwnerAddress().should.eql(testuser.getAddress())
+        testuser.getPubKey().should.eql(newContent.getOwnerPubKey())
+        testuser.getAddress().should.eql(newContent.getOwnerAddress())
       }).catch(function (err) {
-        should.not.exist(err)
-        should.fail('Should not throw this error: ' + err)
+        should.fail('Should not throw this error: ' + err + "\n\n " + err.stack )
       })
     })
 
@@ -325,10 +324,11 @@ describe('Content', function () {
 
         return newContent.setSignature(signatureStr)
       }).then(function () {
+	should.ok(newContent.getSignature())
         newContent.getSignature().should.eql(signatureStr)
       })
       .catch(function (err) {
-        should.fail(err)
+        should.fail(err + "\n\n" + err.stack)
       })
     })
 
