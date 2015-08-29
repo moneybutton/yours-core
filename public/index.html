@@ -12,6 +12,7 @@ var User = datt_node.User;
 var Message = datt_node.Message;
 var Content = datt_node.Content;
 var ContentStore = datt_node.ContentStore;
+var logger = datt_node.logger;
 
 
 var datt = null;
@@ -49,12 +50,12 @@ function dattLogin() {
 
   datt.signIn(username, password).then(function() {
     var user = datt.user;
-    console.log("datt#signIn - callback executed with user: ");
-    console.log(user);
+    logger.debug("datt#signIn - callback executed with user: ");
+    logger.debug(user);
     var txt = "User created with username: '<strong>" + user.username + "</strong>' and address '<strong>" + user.address + "</strong>'.";
     $("#user").html(txt);
   }).catch(function(err) {
-    console.log('caught error ' + err)
+    logger.debug('caught error ' + err)
   });
 
   return false;
