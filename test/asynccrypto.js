@@ -2,6 +2,7 @@
 var should = require('should')
 var bitcore = require('bitcore')
 var AsyncCrypto = require('../lib/asynccrypto')
+var Workers = require('../lib/workers')
 
 describe('AsyncCrypto', function () {
   var databuf = new Buffer(50)
@@ -20,6 +21,15 @@ describe('AsyncCrypto', function () {
       should.exist(asyncCrypto.PublicKeyFromPrivateKey)
       should.exist(asyncCrypto.AddressFromPublicKey)
       should.exist(asyncCrypto.sign)
+    })
+
+    it('should share the same default workers', function () {
+      var asyncCrypto = new AsyncCrypto()
+      var asyncCrypto2 = new AsyncCrypto()
+      asyncCrypto2.workers.should.equal(asyncCrypto.workers)
+      var workers = new Workers()
+      var asyncCrypto3 = new AsyncCrypto(workers)
+      asyncCrypto3.workers.should.not.equal(asyncCrypto.workers)
     })
 
   })
