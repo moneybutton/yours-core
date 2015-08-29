@@ -84,8 +84,8 @@
     "q": "^1.4.1",
     "should": "^7.0.3",
     "underscore": "^1.8.3",
+    "winston": "^1.0.1",
     "workerpool": "^1.0.0"
-
   },
   "devDependencies": {
     "browserify": "^11.0.1",
