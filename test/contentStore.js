@@ -37,18 +37,17 @@ describe('ContentStore', function () {
   })
 
   describe('#putContent', function () {
-    it('should put this content', function (done) {
-      contentStore.putContent(content).then(function (hashhex) {
+    it('should put this content', function () {
+      return contentStore.putContent(content).then(function (hashhex) {
         hashhex.should.equal(hashHexString)
-        done()
       })
     })
   })
 
   describe('#getContent', function () {
-    it('should get this content', function (done) {
+    it('should get this content', function () {
       console.log(hashHexString)
-      contentStore.getContent(hashHexString).then(function (val) {
+      return contentStore.getContent(hashHexString).then(function (val) {
         should.exist(val)
         console.log(JSON.stringify(val, null, 4))
         val.getHashHex().should.eql(content.getHashHex())
@@ -56,17 +55,15 @@ describe('ContentStore', function () {
         val.getOwnerPubKey().should.eql(content.getOwnerPubKey())
         val.getOwnerAddress().should.eql(content.getOwnerAddress())
         val.serialize().should.eql(content.serialize())
-        done()
       })
     })
 
   })
 
   describe('info', function () {
-    it('provides db info', function (done) {
-      contentStore.db.info().then(function () {
+    it('provides db info', function () {
+      return contentStore.db.info().then(function () {
         console.log(JSON.stringify(arguments, null, 4))
-        done()
       })
     })
   })

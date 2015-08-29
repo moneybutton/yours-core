@@ -17,38 +17,35 @@ describe('User', function () {
   })
 
   describe('#init', function () {
-    it('should compute the user private key and public key', function (done) {
+    it('should compute the user private key and public key', function () {
       console.log('About to run user.init()')
-      user.init().then(function () {
+      return user.init().then(function () {
         console.log('User#init promise was resolved')
         should.exist(user.privateKey)
         should.exist(user.publicKey)
         should.exist(user.address)
-        done()
       })
     })
   })
 
   describe('#then', function () {
-    it('should take a callback function and invoke that function when user is initialized', function (done) {
+    it('should take a callback function and invoke that function when user is initialized', function () {
       var otheruser = new User('ausername', 'apassword')
       otheruser.init()
-      otheruser.then(function () {
+      return otheruser.then(function () {
         should.exist(otheruser.privateKey)
         should.exist(otheruser.publicKey)
         should.exist(otheruser.address)
-        done()
       })
     })
 
-    it('should bind the instance as "this" within the callback function', function (done) {
+    it('should bind the instance as "this" within the callback function', function () {
       var otheruser = new User('ausername', 'apassword')
       otheruser.init()
-      otheruser.then(function () {
+      return otheruser.then(function () {
         should.exist(this)
         otheruser.username.should.eql(this.username)
         otheruser.publicKey.should.eql(this.publicKey)
-        done()
       })
     })
   })
