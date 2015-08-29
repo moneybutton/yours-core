@@ -489,24 +489,26 @@ describe('Content', function () {
   })
 
   describe('@verifySignature', function () {
-    it('should return a boolean indicating whether a (data, ECDSA signature, ECDSA public key) tuple is consistent -- whether given signature was generated for given data by given pub key', function (done) {
+    it('should return a boolean indicating whether a (data, ECDSA signature, ECDSA public key) tuple is consistent -- whether given signature was generated for given data by given pub key', function () {
       var randomTestUser = User.randomTestUser()
+      var randomTestUser2 = User.randomTestUser()
+      var p_matchedSigAndKey
+      var p_mismatchedSigAndKey
+      var p_sigAndMismatchedKey
+      var p_mismatchedDataForMatchedSigAndKey
 
-      randomTestUser.init().then(function () {
-        var p_matchedSigAndKey = Content.verifySignature(data, testuser.sign(data), testuser.getPubKey())
-        var p_mismatchedSigAndKey = Content.verifySignature(data, randomTestUser.sign(data), testuser.getPubKey())
-        var p_sigAndMismatchedKey = Content.verifySignature(data, testuser.sign(data), User.randomTestUser().getPubKey())
-        var p_mismatchedDataForMatchedSigAndKey = Content.verifySignature('other data!', testuser.sign(data), testuser.getPubKey())
+      return q.all([randomTestUser.init(), randomTestUser2.init()]).spread(function () {
+        p_matchedSigAndKey = Content.verifySignature(data, testuser.sign(data), testuser.getPubKey())
+        p_mismatchedSigAndKey = Content.verifySignature(data, randomTestUser.sign(data), testuser.getPubKey())
+        p_sigAndMismatchedKey = Content.verifySignature(data, testuser.sign(data), randomTestUser2.getPubKey())
+        p_mismatchedDataForMatchedSigAndKey = Content.verifySignature('other data!', testuser.sign(data), testuser.getPubKey())
 
-        q.all([p_matchedSigAndKey, p_sigAndMismatchedKey, p_mismatchedSigAndKey, p_mismatchedDataForMatchedSigAndKey]).spread(function (matchedSigAndKey, sigAndMismatchedKey, mismatchedSigAndKey, mismatchedDataForMatchedSigAndKey) {
-          matchedSigAndKey.should.eql(true)
-          sigAndMismatchedKey.should.eql(false)
-          mismatchedSigAndKey.should.eql(false)
-          mismatchedDataForMatchedSigAndKey.should.eql(false)
-          done()
-        }).catch(function (err) {
-          should.fail(err)
-        })
+        return q.all([p_matchedSigAndKey, p_sigAndMismatchedKey, p_mismatchedSigAndKey, p_mismatchedDataForMatchedSigAndKey])
+      }).spread(function (matchedSigAndKey, sigAndMismatchedKey, mismatchedSigAndKey, mismatchedDataForMatchedSigAndKey) {
+        matchedSigAndKey.should.eql(true)
+        sigAndMismatchedKey.should.eql(false)
+        mismatchedSigAndKey.should.eql(false)
+        mismatchedDataForMatchedSigAndKey.should.eql(false)
       })
 
     })
