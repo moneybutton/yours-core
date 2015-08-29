@@ -12,14 +12,14 @@ describe('AsyncCrypto', function () {
     it('should exist', function () {
       should.exist(AsyncCrypto)
       should.exist(AsyncCrypto.sha256)
-      should.exist(AsyncCrypto.PublicKeyFromPrivateKey)
-      should.exist(AsyncCrypto.AddressFromPublicKey)
+      should.exist(AsyncCrypto.publicKeyFromPrivateKey)
+      should.exist(AsyncCrypto.addressFromPublicKey)
       should.exist(AsyncCrypto.sign)
       var asyncCrypto = new AsyncCrypto()
       should.exist(asyncCrypto)
       should.exist(asyncCrypto.sha256)
-      should.exist(asyncCrypto.PublicKeyFromPrivateKey)
-      should.exist(asyncCrypto.AddressFromPublicKey)
+      should.exist(asyncCrypto.publicKeyFromPrivateKey)
+      should.exist(asyncCrypto.addressFromPublicKey)
       should.exist(asyncCrypto.sign)
     })
 
@@ -43,21 +43,21 @@ describe('AsyncCrypto', function () {
 
   })
 
-  describe('@PublicKeyFromPrivateKey', function () {
+  describe('@publicKeyFromPrivateKey', function () {
     it('should compute the same as bitcore', function () {
       var privateKey = new bitcore.PrivateKey()
-      return AsyncCrypto.PublicKeyFromPrivateKey(privateKey).then(function (publicKey) {
+      return AsyncCrypto.publicKeyFromPrivateKey(privateKey).then(function (publicKey) {
         publicKey.toString('hex').should.equal(privateKey.toPublicKey().toString('hex'))
       })
     })
 
   })
 
-  describe('@AddressFromPublicKey', function () {
+  describe('@addressFromPublicKey', function () {
     it('should compute the same as bitcore', function () {
       var privateKey = new bitcore.PrivateKey()
       var publicKey = privateKey.toPublicKey()
-      return AsyncCrypto.AddressFromPublicKey(publicKey).then(function (address) {
+      return AsyncCrypto.addressFromPublicKey(publicKey).then(function (address) {
         address.toString().should.equal(publicKey.toAddress().toString())
       })
     })
