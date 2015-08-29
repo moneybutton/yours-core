@@ -412,9 +412,9 @@ describe('Content', function () {
       var data = 'test data ftw'
 
       return Content.fromDataAndUser(data, newUser).then(function (newContent) {
-        newContent.getOwnerUsername() === newUser.getUsername()
-        newContent.getOwnerAddress() === newUser.getAddress()
-        newContent.getOwnerPubKey() === newUser.getPubKey()
+        newContent.getOwnerUsername().should.eql(newUser.getUsername())
+        newContent.getOwnerAddress().should.eql(newUser.getAddress())
+        newContent.getOwnerPubKey().should.eql(newUser.getPubKey())
       })
 
     })
@@ -424,7 +424,7 @@ describe('Content', function () {
 
       var data = 'test data ftw'
       return Content.fromDataAndUser(data, newUser).then(function (newContent) {
-        newContent.getData() === data
+        newContent.getData().should.eql(data)
       })
     })
 
@@ -449,7 +449,7 @@ describe('Content', function () {
       var data = 'test data ftw'
       var pt = new Date()
       return Content.fromDataAndUser(data, newUser, pt).then(function (nc2) {
-        nc2.getPostTime() === pt.toString()
+        nc2.getPostTime().should.eql(pt.toString())
       })
     })
 
@@ -460,7 +460,7 @@ describe('Content', function () {
       var pt = new Date()
       var ph = 305000
       return Content.fromDataAndUser(data, newUser, pt, ph).then(function (nc3) {
-        nc3.getPostHeight() === ph
+        nc3.getPostHeight().should.eql(ph)
       })
     })
   })
