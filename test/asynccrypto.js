@@ -9,7 +9,6 @@ describe('AsyncCrypto', function () {
   databuf.fill(0)
 
   describe('AsyncCrypto', function () {
-
     it('should exist', function () {
       should.exist(AsyncCrypto)
       should.exist(asyncCrypto)
@@ -18,7 +17,6 @@ describe('AsyncCrypto', function () {
   })
 
   describe('#sha256', function () {
-
     it('should compute the same as bitcore', function () {
       return asyncCrypto.sha256(databuf).then(function (buf) {
         buf.compare(bitcore.crypto.Hash.sha256(databuf)).should.equal(0)
@@ -28,7 +26,6 @@ describe('AsyncCrypto', function () {
   })
 
   describe('#PublicKeyFromPrivateKey', function () {
-
     it('should compute the same as bitcore', function () {
       var privateKey = new bitcore.PrivateKey()
       return asyncCrypto.PublicKeyFromPrivateKey(privateKey).then(function (publicKey) {
@@ -39,7 +36,6 @@ describe('AsyncCrypto', function () {
   })
 
   describe('#AddressFromPublicKey', function () {
-
     it('should compute the same as bitcore', function () {
       var privateKey = new bitcore.PrivateKey()
       var publicKey = privateKey.toPublicKey()
@@ -51,9 +47,7 @@ describe('AsyncCrypto', function () {
   })
 
   describe('ECDSA', function () {
-
     describe('#sign', function () {
-
       it('should compute the same as bitcore', function () {
         var privateKey = new bitcore.PrivateKey()
         var hashbuf = bitcore.crypto.Hash.sha256(databuf)

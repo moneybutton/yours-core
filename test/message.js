@@ -2,7 +2,7 @@
 var should = require('should')
 var Message = require('../lib/message')
 var User = require('../lib/user')
-
+/**
 describe('Message', function () {
   var message
   var user
@@ -42,3 +42,4 @@ describe('Message', function () {
   })
 
 })
+**/

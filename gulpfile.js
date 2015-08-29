@@ -35,40 +35,40 @@ if (!process.env.DATT_NODE_JS_TESTS_FILE) {
 
 gulp.task('build-workerpool', function () {
   return fs.createReadStream(path.join(__dirname, 'node_modules', 'workerpool', 'dist', 'workerpool.js'))
-  .pipe(fs.createWriteStream(path.join(__dirname, 'public', process.env.DATT_NODE_JS_WORKERPOOL_FILE)))
+    .pipe(fs.createWriteStream(path.join(__dirname, 'public', process.env.DATT_NODE_JS_WORKERPOOL_FILE)))
 })
 
 gulp.task('build-worker', ['build-workerpool'], function () {
   return browserify({debug: false})
-  .transform(envify)
-  .require(require.resolve('./lib/worker.js'), {entry: true})
-  .bundle()
-  .pipe(fs.createWriteStream(path.join(__dirname, 'public', process.env.DATT_NODE_JS_WORKER_FILE)))
+    .transform(envify)
+    .require(require.resolve('./lib/worker.js'), {entry: true})
+    .bundle()
+    .pipe(fs.createWriteStream(path.join(__dirname, 'public', process.env.DATT_NODE_JS_WORKER_FILE)))
 })
 
 gulp.task('build-bundle', ['build-worker'], function () {
   return browserify({debug: false})
-  .transform(envify)
-  .require(require.resolve('./index.js'), {entry: true})
-  .bundle()
-  .pipe(fs.createWriteStream(path.join(__dirname, 'public', process.env.DATT_NODE_JS_BUNDLE_FILE)))
+    .transform(envify)
+    .require(require.resolve('./index.js'), {entry: true})
+    .bundle()
+    .pipe(fs.createWriteStream(path.join(__dirname, 'public', process.env.DATT_NODE_JS_BUNDLE_FILE)))
 })
 
 gulp.task('build-tests', ['build-worker'], function () {
   return q.nfbind(globby)(['./test/*.js']).done(function (entries) {
     browserify({entries: entries, debug: false})
-    .transform(envify)
-    .bundle()
-    .pipe(fs.createWriteStream(path.join(__dirname, 'public', process.env.DATT_NODE_JS_TESTS_FILE)))
+      .transform(envify)
+      .bundle()
+      .pipe(fs.createWriteStream(path.join(__dirname, 'public', process.env.DATT_NODE_JS_TESTS_FILE)))
   })
 })
 
 gulp.task('test-node', function () {
   return gulp.src(['./test/*.js'])
-  .pipe(mocha({reporter: 'list'}))
-  .once('end', function () {
-    process.exit()
-  })
+    .pipe(mocha({reporter: 'list'}))
+    .once('end', function () {
+      process.exit()
+    })
 })
 
 gulp.task('build-karma-url', function () {
@@ -81,17 +81,17 @@ gulp.task('build-karma', ['build-karma-url', 'build-tests'])
 gulp.task('test-karma', ['build-karma'], function () {
   var server = require(path.join(__dirname, 'bin', 'testapp')).server // runs the PeerJS server
   return gulp.src([])
-  .pipe(karma({
-    configFile: '.karma.conf.js',
-    action: 'run'
-  }))
-  .on('error', function (err) {
-    throw err
-  })
-  .on('end', function () {
-    server.close()
-    process.exit()
-  })
+    .pipe(karma({
+      configFile: '.karma.conf.js',
+      action: 'run'
+    }))
+    .on('error', function (err) {
+      throw err
+    })
+    .on('end', function () {
+      server.close()
+      process.exit()
+    })
 })
 
 gulp.task('default', ['build-bundle', 'build-tests'])
