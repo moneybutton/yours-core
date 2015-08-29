@@ -32,7 +32,7 @@ function onOpen() {
 }
 
 function onConnectionData(data, conn) {
-
+  datt.onConnectionData(data)
   var htmlSnippet = "<span><strong>Peer '" + conn.peer +"' sent:</strong> " + JSON.stringify(data, null, 4) + "</span>";
   writeToBody(htmlSnippet);
   contentStore.getContent(data).then(function(content) {
@@ -86,6 +86,14 @@ function dattGetRemoteContent() {
   return false;
 }
 
+function dattGetPeersForContent() {
+  var hash = $("#getpeersforcontent").val();
+  $("#getpeersforcontent").val("");
+  datt.askPeersForPeersForContent(hash);
+  //datt.broadcastMessage("Newhhhh: " + hash);
+  return false;
+}
+
 function onPeers(peers) {
   var txt = "Got peers:<br>" + JSON.stringify(peers, null, 4);
   $("#peers").html(txt);
@@ -134,6 +142,12 @@ datt.begin();
   <div id="getRemoteContent">
     <form id="getremotecontentform" onsubmit="return dattGetRemoteContent();" action="return false;">
       <span>Get remote content:</span><input id="getremotecontent"/>
+      <input type="submit"/>
+    </form>
+  </div>
+  <div id="getPeersForContent">
+    <form id="getpeersforcontentform" onsubmit="return dattGetPeersForContent();" action="return false;">
+      <span>Get peers for content:</span><input id="getpeersforcontent"/>
       <input type="submit"/>
     </form>
   </div>
