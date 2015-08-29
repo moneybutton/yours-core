@@ -10,7 +10,6 @@ describe('Datt', function () {
   })
 
   describe('Datt', function () {
-
     it('should see the global datt', function () {
       should.exist(datt)
     })
@@ -26,7 +25,6 @@ describe('Datt', function () {
 
   /* TODO: re-enable when tests automatically run web RTC rendezvous server
   describe('#begin', function () {
-
     it('should initialize our global datt', function () {
       return datt.begin()
     })
@@ -35,18 +33,17 @@ describe('Datt', function () {
   */
 
   describe('#signIn', function () {
-
     it('should sign in a user', function () {
       return datt.signIn('user', 'password').then(function (user) {
-        user.username.should.equal('user')
-        user.password.should.equal('password')
+        should.exist(datt.user)
+        datt.user.username.should.equal('user')
+        datt.user.password.should.equal('password')
       })
     })
 
   })
 
   describe('#broadcastMessage', function () {
-
     it('should return a promise', function () {
       return datt.broadcastMessage('my message')
     })
