@@ -28,9 +28,9 @@ describe('Content', function () {
     post_height = 300000
     asyncCrypto = new AsyncCrypto()
     return testuser.init().then(function () {
-      return createTestContent().then(function (newcontent) {
-        content = newcontent
-      })
+      return createTestContent()
+    }).then(function (newcontent) {
+      content = newcontent
     })
   })
 
@@ -56,7 +56,7 @@ describe('Content', function () {
     it('should return undefined if the owning user/address/pubkey has not been set', function () {
       var testcontent = new Content('hello world')
       should.exist(testcontent)
-      testcontent.init().then(function () {
+      return testcontent.init().then(function () {
         should.not.exist(testcontent.getOwnerAddress())
       })
     })
@@ -65,68 +65,67 @@ describe('Content', function () {
   describe('#setOwnerAddress', function () {
     it('should set the owner address from a string in absence of owner public key', function () {
       var testcontent = new Content('hello world')
-      testcontent.init().then(function () {
+      var user_address
+      return testcontent.init().then(function () {
         should.not.exist(testcontent.getOwnerAddress())
-        var user_address = testuser.getAddress()
-        ;(function () {
-          testcontent.setOwnerAddress(user_address)
-        }).should.not.throw()
-
+        user_address = testuser.getAddress()
+        return testcontent.setOwnerAddress(user_address)
+      }).then(function () {
         testcontent.getOwnerAddress().should.eql(user_address)
       })
     })
 
     it('should set the owner address from a string when compatible owner public key is present', function () {
       var testcontent = new Content('hello world')
-      testcontent.init().then(function () {
-        testcontent.setOwnerPubKey(testuser.getPubKey())
+      return testcontent.init().then(function () {
+        return testcontent.setOwnerPubKey(testuser.getPubKey())
+      }).then(function () {
         testcontent.getOwnerPubKey().should.eql(testuser.getPubKey())
-
-        ;(function () {
-          testcontent.setOwnerAddress(testuser.getAddress())
-        }).should.not.throw()
-
+        return testcontent.setOwnerAddress(testuser.getAddress())
+      }).then(function () {
         testcontent.getOwnerAddress().should.eql(testuser.getAddress())
       })
     })
 
-    it('should THROW AN ERROR if one attempts to set owner address from a string when incompatible owner public key is present', function () {
+    it('should reject the promise if one attempts to set owner address from a string when incompatible owner public key is present', function () {
       var testcontent = new Content('hello world')
       var otheruser = User.randomTestUser()
-      q.all([testcontent.init(), otheruser.init()]).then(function () {
+      return q.all([testcontent.init(), otheruser.init()]).then(function () {
         testuser.getAddress().should.not.eql(otheruser.getAddress())
 
-        testcontent.setOwnerPubKey(otheruser.getPubKey())
+        return testcontent.setOwnerPubKey(otheruser.getPubKey())
+      }).then(function () {
         testcontent.getOwnerPubKey().should.eql(otheruser.getPubKey())
 
-        ;(function () {
-          testcontent.setOwnerAddress(testuser.getAddress())
-        }).should.throw()
+        return testcontent.setOwnerAddress(testuser.getAddress())
+      }).then(function () {
+        should.fail('#setOwnerAddress - should fail with incompatible public key')
+      }).catch(function () {
       })
     })
 
-    it('should THROW AN ERROR if one provides an invalid bitcoin address object', function () {
+    it('should reject the promise if one provides an invalid bitcoin address object', function () {
       var testcontent = new Content('hello world')
-      testcontent.init().then(function () {
+      return testcontent.init().then(function () {
         should.not.exist(testcontent.getOwnerAddress())
 
-        ;(function () {
-          testcontent.setOwnerAddress({'not': true, 'an': true, 'address': true})
-        }).should.throw()
-
+        return testcontent.setOwnerAddress({'not': true, 'an': true, 'address': true})
+      }).then(function () {
+        should.fail('#setOwnerAddress - should fail with invalid address')
+      }).catch(function () {
         should.not.exist(testcontent.getOwnerAddress())
       })
     })
 
     it('should THROW AN ERROR if one provides an invalid bitcoin address string', function () {
       var testcontent = new Content('hello world')
-      testcontent.init().then(function () {
+      return testcontent.init().then(function () {
         should.not.exist(testcontent.getOwnerAddress())
 
-        ;(function () {
-          testcontent.setOwnerAddress('1RlyInvalidAddress')
-        }).should.throw()
-
+        return testcontent.setOwnerAddress('1RlyInvalidAddress')
+      }).then(function () {
+        should.fail('#setOwnerAddress - should fail with invalid address')
+      }).catch(function () {
         should.not.exist(testcontent.getOwnerAddress())
       })
     })
@@ -156,9 +155,9 @@ describe('Content', function () {
         should.not.exist(newContent.getOwnerPubKey())
         console.log(JSON.stringify(newUser, null, 4))
         should.exist(newUser.getPubKey())
-        newContent.setOwnerPubKey(newUser.getPubKey()).then(function () {
-          newContent.getOwnerPubKey().should.equal(newUser.getPubKey())
-        })
+        return newContent.setOwnerPubKey(newUser.getPubKey())
+      }).then(function () {
+        newContent.getOwnerPubKey().should.equal(newUser.getPubKey())
       }).catch(function (err) {
         console.error('#setOwnerPubKey: failed to initialize content and user objects prior to test:')
         console.error(err)
@@ -171,9 +170,9 @@ describe('Content', function () {
       var newContent = new Content(data, testuser.getUsername(), testuser.getAddress())
       return newContent.init().then(function () {
         should.not.exist(newContent.getOwnerPubKey())
-        newContent.setOwnerPubKey(testuser.getPubKey()).then(function () {
-          newContent.getOwnerPubKey().should.equal(testuser.getPubKey())
-        })
+        return newContent.setOwnerPubKey(testuser.getPubKey())
+      }).then(function () {
+        newContent.getOwnerPubKey().should.equal(testuser.getPubKey())
       })
     })
 
@@ -187,12 +186,12 @@ describe('Content', function () {
 
         ;(newContent.getOwnerAddress()).should.not.equal(otherUser.getAddress())
 
-        return newContent.setOwnerPubKey(otherUser.getPubKey()).then(function (pubkey) {
-          should.not.exist(pubkey)
-          should.fail('#setOwnerPubKey should fail if public key is incompatible!')
-        }).catch(function (err) {
-          should.not.exist(newContent.getOwnerPubKey())
-        })
+        return newContent.setOwnerPubKey(otherUser.getPubKey())
+      }).then(function (pubkey) {
+        should.not.exist(pubkey)
+        should.fail('#setOwnerPubKey should fail if public key is incompatible!')
+      }).catch(function (err) {
+        should.not.exist(newContent.getOwnerPubKey())
       })
     })
 
@@ -202,13 +201,13 @@ describe('Content', function () {
         should.not.exist(newContent.getOwnerPubKey())
         should.not.exist(newContent.getOwnerAddress())
 
-        return newContent.setOwnerPubKey(testuser.getPubKey()).then(function () {
-          newContent.getOwnerPubKey().should.eql(testuser.getPubKey())
-          newContent.getOwnerAddress().should.eql(testuser.getAddress())
-        }).catch(function (err) {
-          should.not.exist(err)
-          should.fail('Should not throw this error: ' + err)
-        })
+        return newContent.setOwnerPubKey(testuser.getPubKey())
+      }).then(function () {
+        newContent.getOwnerPubKey().should.eql(testuser.getPubKey())
+        newContent.getOwnerAddress().should.eql(testuser.getAddress())
+      }).catch(function (err) {
+        should.not.exist(err)
+        should.fail('Should not throw this error: ' + err)
       })
     })
 
@@ -217,12 +216,12 @@ describe('Content', function () {
       return testcontent.init().then(function () {
         should.not.exist(testcontent.getOwnerPubKey())
 
-        testcontent.setOwnerPubKey('not a pub key, man').then(function () {
-          should.fail('#setOwnerPubKey - should fail with invalid bitcoin pub key string')
-        }).catch(function (err) {
-          should.exist(err)
-          should.not.exist(testcontent.getOwnerPubKey())
-        })
+        return testcontent.setOwnerPubKey('not a pub key, man')
+      }).then(function () {
+        should.fail('#setOwnerPubKey - should fail with invalid bitcoin pub key string')
+      }).catch(function (err) {
+        should.exist(err)
+        should.not.exist(testcontent.getOwnerPubKey())
       })
 
     })
@@ -232,14 +231,14 @@ describe('Content', function () {
       return testcontent.init().then(function () {
         should.not.exist(testcontent.getOwnerPubKey())
 
-        return testcontent.setOwnerPubKey({'not': true, 'a': true, 'pubkey': true}).then(function () {
-          should.fail('#setOwnerPubKey should fail with invalid bitcoin pub key object')
-        }).catch(function (err) {
-          should.exist(err)
-          should.not.exist(testcontent.getOwnerPubKey())
-        })
-
+        return testcontent.setOwnerPubKey({'not': true, 'a': true, 'pubkey': true})
+      }).then(function () {
+        should.fail('#setOwnerPubKey should fail with invalid bitcoin pub key object')
+      }).catch(function (err) {
+        should.exist(err)
+        should.not.exist(testcontent.getOwnerPubKey())
       })
+
     })
 
   })
@@ -253,17 +252,18 @@ describe('Content', function () {
   describe('@setSignature', function () {
     it('should set the signature from a hex-string signature', function () {
       var newContent = new Content(data, testuser.getUsername(), testuser.getAddress(), post_time, post_height)
+      var signatureStr
       return newContent.init().then(function () {
-        return testuser.sign(data).then(function (signature) {
-          var signatureStr = signature.toString()
-          should.not.exist(newContent.getSignature())
+        return testuser.sign(data)
+      }).then(function (signature) {
+        signatureStr = signature.toString()
+        should.not.exist(newContent.getSignature())
 
-          return newContent.setSignature(signatureStr).then(function () {
-            newContent.getSignature().should.eql(signatureStr)
-          }).catch(function (err) {
-            should.fail(err)
-          })
-        })
+        return newContent.setSignature(signatureStr)
+      }).then(function () {
+        newContent.getSignature().should.eql(signatureStr)
+      }).catch(function (err) {
+        should.fail(err)
       })
     })
 
@@ -273,29 +273,29 @@ describe('Content', function () {
         should.not.exist(newContent.getSignature())
 
         return newContent.setSignature('nope not a signature')
-          .then(function () {
-            should.fail('should throw an error if an invalid signature string is provided')
-          })
-          .catch(function (err) {
-            should.exist(err)
-            should.not.exist(newContent.getSignature())
-          })
+      }).then(function () {
+        should.fail('should throw an error if an invalid signature string is provided')
+      })
+      .catch(function (err) {
+        should.exist(err)
+        should.not.exist(newContent.getSignature())
       })
     })
 
     it('should set the signature from a signature object', function () {
       var newContent = new Content(data, testuser.getUsername(), testuser.getAddress(), post_time, post_height)
+      var signatureStr
       return newContent.init().then(function () {
-        return testuser.sign(data).then(function (signature) {
-          var signatureStr = signature.toString()
-          should.not.exist(newContent.getSignature())
+        return testuser.sign(data)
+      }).then(function (signature) {
+        signatureStr = signature.toString()
+        should.not.exist(newContent.getSignature())
 
-          return newContent.setSignature(signature).then(function () {
-            newContent.getSignature().should.eql(signatureStr)
-          }).catch(function (err) {
-            should.fail(err)
-          })
-        })
+        return newContent.setSignature(signature)
+      }).then(function () {
+        newContent.getSignature().should.eql(signatureStr)
+      }).catch(function (err) {
+        should.fail(err)
       })
     })
 
@@ -305,31 +305,30 @@ describe('Content', function () {
         should.not.exist(newContent.getSignature())
 
         return newContent.setSignature({'not': true, 'a': true, 'signature': true})
-          .then(function () {
-            should.fail('should throw an error with invalid signature')
-          })
-          .catch(function (err) {
-            should.exist(err)
-            should.not.exist(newContent.getSignature())
-          })
+      }).then(function () {
+        should.fail('should throw an error with invalid signature')
+      })
+      .catch(function (err) {
+        should.exist(err)
+        should.not.exist(newContent.getSignature())
       })
     })
 
     it('should be able to set the signature when the associated public key is set on the content', function () {
       var newContent = new Content(data, testuser.getUsername(), testuser.getAddress(), post_time, post_height, testuser.getPubKey())
+      var signatureStr
       return newContent.init().then(function () {
-        return testuser.sign(data).then(function (signature) {
-          var signatureStr = signature.toString()
-          should.not.exist(newContent.getSignature())
+        return testuser.sign(data)
+      }).then(function (signature) {
+        signatureStr = signature.toString()
+        should.not.exist(newContent.getSignature())
 
-          return newContent.setSignature(signatureStr)
-            .then(function () {
-              newContent.getSignature().should.eql(signatureStr)
-            })
-            .catch(function (err) {
-              should.fail(err)
-            })
-        })
+        return newContent.setSignature(signatureStr)
+      }).then(function () {
+        newContent.getSignature().should.eql(signatureStr)
+      })
+      .catch(function (err) {
+        should.fail(err)
       })
     })
 
@@ -338,20 +337,19 @@ describe('Content', function () {
       var otherUser = new User('adiffuser', 'adiffpassword')
 
       return q.all([otherUser.init(), newContent.init()]).then(function () {
-        return otherUser.sign(data).then(function (otherSignature) {
-          var otherSignatureStr = otherSignature.toString()
+        return otherUser.sign(data)
+      }).then(function (otherSignature) {
+        var otherSignatureStr = otherSignature.toString()
 
-          should.not.exist(newContent.getSignature())
+        should.not.exist(newContent.getSignature())
 
-          return newContent.setSignature(otherSignatureStr)
-            .then(function () {
-              should.fail('should throw an error since signature is not compatible with public key')
-            })
-            .catch(function (err) {
-              should.exist(err)
-              should.not.exist(newContent.getSignature())
-            })
-        })
+        return newContent.setSignature(otherSignatureStr)
+      }).then(function () {
+        should.fail('should throw an error since signature is not compatible with public key')
+      })
+      .catch(function (err) {
+        should.exist(err)
+        should.not.exist(newContent.getSignature())
       })
 
     })
@@ -433,13 +431,15 @@ describe('Content', function () {
     it('should return a content instance with a valid signature for the data and user provided', function () {
       var newUser = new User('auser', 'apassword')
       newUser.init()
-
+      var newContent
       var data = 'test data ftw'
-      return Content.fromDataAndUser(data, newUser).then(function (newContent) {
-        return newUser.sign(data).then(function (sig) {
-          var expectedSigStr = sig.toString()
-          newContent.getSignature().should.eql(expectedSigStr)
-        })
+
+      return Content.fromDataAndUser(data, newUser).then(function (res) {
+        newContent = res
+        return newUser.sign(data)
+      }).then(function (sig) {
+        var expectedSigStr = sig.toString()
+        newContent.getSignature().should.eql(expectedSigStr)
       })
     })
 
@@ -474,7 +474,7 @@ describe('Content', function () {
       var p_sigAndMismatchedKey
       var p_mismatchedDataForMatchedSigAndKey
 
-      return q.all([randomTestUser.init(), randomTestUser2.init()]).spread(function () {
+      return q.all([randomTestUser.init(), randomTestUser2.init()]).then(function () {
         p_matchedSigAndKey = Content.verifySignature(data, testuser.sign(data), testuser.getPubKey())
         p_mismatchedSigAndKey = Content.verifySignature(data, randomTestUser.sign(data), testuser.getPubKey())
         p_sigAndMismatchedKey = Content.verifySignature(data, testuser.sign(data), randomTestUser2.getPubKey())
