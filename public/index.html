@@ -62,7 +62,7 @@ function dattLogin() {
 
 function dattAddContent() {
   var content = $("#addcontent").val();
-  contentStore.putContent(content).then(function (hashhex) {
+  datt.addContent(content).then(function (hashhex) {
     $("#addcontent").val("");
     writeToBody("Added " + content + " to storage with hash " + hashhex);
     datt.broadcastMessage("New content: " + hashhex);
@@ -74,7 +74,7 @@ function dattGetLocalContent() {
   var hash = $("#getlocalcontent").val();
   contentStore.getContent(hash).then(function (content) {
     $("#getlocalcontent").val("");
-    writeToBody("<strong>Got local content:</strong> " + content);
+    writeToBody("<strong>Got local content:</strong> " + content.getData());
   });
   return false;
 }
