@@ -96,11 +96,11 @@ describe('Content', function () {
         return testcontent.setOwnerPubKey(otheruser.getPubKey())
       }).then(function () {
         testcontent.getOwnerPubKey().should.eql(otheruser.getPubKey())
-
         return testcontent.setOwnerAddress(testuser.getAddress())
       }).then(function () {
         should.fail('#setOwnerAddress - should fail with incompatible public key')
-      }).catch(function () {
+      }).catch(function (err) {
+        should.exist(err)
       })
     })
 
@@ -206,7 +206,7 @@ describe('Content', function () {
         testuser.getPubKey().should.eql(newContent.getOwnerPubKey())
         testuser.getAddress().should.eql(newContent.getOwnerAddress())
       }).catch(function (err) {
-        should.fail('Should not throw this error: ' + err + "\n\n " + err.stack )
+        should.fail('Should not throw this error: ' + err + '\n\n ' + err.stack)
       })
     })
 
@@ -275,10 +275,10 @@ describe('Content', function () {
       }).then(function () {
         should.fail('should throw an error if an invalid signature string is provided')
       })
-      .catch(function (err) {
-        should.exist(err)
-        should.not.exist(newContent.getSignature())
-      })
+        .catch(function (err) {
+          should.exist(err)
+          should.not.exist(newContent.getSignature())
+        })
     })
 
     it('should set the signature from a signature object', function () {
@@ -307,10 +307,10 @@ describe('Content', function () {
       }).then(function () {
         should.fail('should throw an error with invalid signature')
       })
-      .catch(function (err) {
-        should.exist(err)
-        should.not.exist(newContent.getSignature())
-      })
+        .catch(function (err) {
+          should.exist(err)
+          should.not.exist(newContent.getSignature())
+        })
     })
 
     it('should be able to set the signature when the associated public key is set on the content', function () {
@@ -324,12 +324,12 @@ describe('Content', function () {
 
         return newContent.setSignature(signatureStr)
       }).then(function () {
-	should.ok(newContent.getSignature())
+        should.ok(newContent.getSignature())
         newContent.getSignature().should.eql(signatureStr)
       })
-      .catch(function (err) {
-        should.fail(err + "\n\n" + err.stack)
-      })
+        .catch(function (err) {
+          should.fail(err + '\n\n' + err.stack)
+        })
     })
 
     it('should THROW AN ERROR if one attempts to set a signature NOT compatible with public key associated with the content instance', function () {
@@ -347,10 +347,10 @@ describe('Content', function () {
       }).then(function () {
         should.fail('should throw an error since signature is not compatible with public key')
       })
-      .catch(function (err) {
-        should.exist(err)
-        should.not.exist(newContent.getSignature())
-      })
+        .catch(function (err) {
+          should.exist(err)
+          should.not.exist(newContent.getSignature())
+        })
 
     })
   })
