@@ -66,6 +66,34 @@ describe('AsyncCrypto', function () {
 
   })
 
+  describe('@xkeysFromSeed', function () {
+    it('should derive new mnemonic, xprv, xpub', function () {
+      var seedbuf = new Buffer(128 / 8)
+      seedbuf.fill(0)
+      return AsyncCrypto.xkeysFromSeed(seedbuf).then(function (obj) {
+        obj.mnemonic.should.equal('abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about')
+        obj.xprv.toString().should.equal('xprv9s21ZrQH143K3GJpoapnV8SFfukcVBSfeCficPSGfubmSFDxo1kuHnLisriDvSnRRuL2Qrg5ggqHKNVpxR86QEC8w35uxmGoggxtQTPvfUu')
+        obj.xpub.toString().should.equal('xpub661MyMwAqRbcFkPHucMnrGNzDwb6teAX1RbKQmqtEF8kK3Z7LZ59qafCjB9eCRLiTVG3uxBxgKvRgbubRhqSKXnGGb1aoaqLrpMBDrVxga8')
+      })
+    })
+
+  })
+
+  describe('@deriveXkeysFromXprv', function () {
+    it('should derive new xprv, xpub, address', function () {
+      var seedbuf = new Buffer(128 / 8)
+      seedbuf.fill(0)
+      var xprv = bitcore.HDPrivateKey.fromSeed(seedbuf, 'mainnet')
+      var path = "m/44'/0'/0'/0/0"
+      return AsyncCrypto.deriveXkeysFromXprv(xprv, path).then(function (obj) {
+        obj.xprv.toString().should.equal('xprvA4EMaq49eKGKGK2k3kAsiqTowWrNuidQTx5DaYm669TjJUtsEARurRTwXiP1PXsNkxL4pLijwktqb9gSWHccdm92nKDKznNUCSKwvktQLp2')
+        obj.xpub.toString().should.equal('xpub6HDhzLb3UgpcUo7D9mht5yQYVYgsKBMFqAzpNwAheUziBHE1mhkAQDnRNyTArZsiyczWpmchy1H6nEzCeLpa7Xm5BGxpbHRP2dKKUR3puTv')
+        obj.address.toString().should.equal('1CwgwxqUVapWbgk6ssLruv9eHxHe6LvCe6')
+      })
+    })
+
+  })
+
   describe('ECDSA', function () {
     describe('@sign', function () {
       it('should compute the same as bitcore', function () {
