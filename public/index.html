@@ -11,13 +11,10 @@ var Datt = datt_node.Datt;
 var User = datt_node.User;
 var Message = datt_node.Message;
 var Content = datt_node.Content;
-var ContentStore = datt_node.ContentStore;
 var logger = datt_node.logger;
 
 
 var datt = null;
-var contentStore = new ContentStore();
-contentStore.init()
 //var peers = new Webcoin.PeerGroup();
 //peers.connect();
 
@@ -36,7 +33,7 @@ function onConnectionData(data, conn) {
   datt.onConnectionData(data)
   var htmlSnippet = "<span><strong>Peer '" + conn.peer +"' sent:</strong> " + JSON.stringify(data, null, 4) + "</span>";
   writeToBody(htmlSnippet);
-  contentStore.getContent(data).then(function(content) {
+  datt.contentStore.getContent(data).then(function(content) {
     if(content){
       datt.broadcastMessage(content);
     }
@@ -73,7 +70,7 @@ function dattAddContent() {
 
 function dattGetLocalContent() {
   var hash = $("#getlocalcontent").val();
-  contentStore.getContent(hash).then(function (content) {
+  datt.contentStore.getContent(hash).then(function (content) {
     $("#getlocalcontent").val("");
     writeToBody("<strong>Got local content:</strong> " + content.getData());
   });
