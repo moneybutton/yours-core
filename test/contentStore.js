@@ -6,6 +6,7 @@ var Content = require('../lib/content')
 var util = require('../lib/util')
 var os = require('os')
 var tmpdir = os.tmpdir()
+var q = require('q')
 
 describe('ContentStore', function () {
   this.timeout(15000) // karma seems to need longer timeout for IndexedDB tests
@@ -56,6 +57,48 @@ describe('ContentStore', function () {
       })
     })
 
+  })
+
+  describe('#getContentHashes', function () {
+    it('should return an array', function () {
+      return contentStore.getContentHashes().then(function (hashes) {
+        should.exist(hashes)
+        should(hashes instanceof Array).be.eql(true)
+      })
+    })
+
+    it('should return an array of strings, each one a Content hash', function () {
+	contentStore.putContent(content).then(function () {
+	    return contentStore.getContentHashes()
+	}).catch(function (err) {
+	    should.fail("Should not throw error: " + err + " \n\n " + (err || {}).stack)
+	}).then(function (hashes) {
+	    should(hashes.indexOf(hashHexString)).not.eql(-1)
+	})
+    })
+
+    it('should return an array with a count equal to the number of docs in the PouchDB minus the number of indices (2)', function () {
+	q.all([contentStore.db.info(), contentStore.getContentHashes()])
+	    .spread(function (info, hashes) {
+		should.exist(hashes)
+		should.exist(info)
+		should(hashes.length).be.eql(info.doc_count - 2)
+	    })
+    })
+
+    it('should return an empty array without error if the content store is empty', function () {
+      var emptyContentStore = new ContentStore('empty-content-store')
+      emptyContentStore.init().then(function () {
+        return emptyContentStore.getContentHashes()
+      }).catch(function (err) {
+        should.fail('Should not throw an error: ' + err + ' \n\n ' + (err || {}).stack)
+      }).then(function (hashes) {
+        console.log(arguments)
+        should.exist(hashes)
+        should(hashes instanceof Array).be.eql(true)
+        should(hashes.length).be.eql(0)
+      })
+    })
   })
 
   describe('info', function () {
