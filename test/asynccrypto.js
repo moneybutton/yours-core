@@ -66,6 +66,19 @@ describe('AsyncCrypto', function () {
 
   })
 
+  describe('@xkeysFromSeed', function () {
+    it('should derive new mnemonic, xprv, xpub', function () {
+      var seedbuf = new Buffer(128 / 8)
+      seedbuf.fill(0)
+      return AsyncCrypto.xkeysFromSeed(seedbuf).then(function (obj) {
+        obj.mnemonic.should.equal('abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about')
+        obj.xprv.toString().should.equal('xprv9s21ZrQH143K3GJpoapnV8SFfukcVBSfeCficPSGfubmSFDxo1kuHnLisriDvSnRRuL2Qrg5ggqHKNVpxR86QEC8w35uxmGoggxtQTPvfUu')
+        obj.xpub.toString().should.equal('xpub661MyMwAqRbcFkPHucMnrGNzDwb6teAX1RbKQmqtEF8kK3Z7LZ59qafCjB9eCRLiTVG3uxBxgKvRgbubRhqSKXnGGb1aoaqLrpMBDrVxga8')
+      })
+    })
+
+  })
+
   describe('ECDSA', function () {
     describe('@sign', function () {
       it('should compute the same as bitcore', function () {
