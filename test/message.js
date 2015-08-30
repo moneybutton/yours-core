@@ -2,7 +2,7 @@
 var should = require('should')
 var Message = require('../lib/message')
 var User = require('../lib/user')
-/**
+
 describe('Message', function () {
   var message
   var user
@@ -40,12 +40,6 @@ describe('Message', function () {
     })
 
   })
-
-})
-**/
-
-
-describe('Message', function () {
 
   describe('@fromObject', function () {
     it('should be able to create a valid message from a parsed JSON object', function () {
