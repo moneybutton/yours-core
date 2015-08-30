@@ -24,7 +24,7 @@ The goal of the prototype is to merge our design work in the [dattmedia
 repo](https://github.com/dattnetwork/dattmedia) into our UI in the [datt.ui
 repo](https://github.com/dattnetwork/datt.ui), and then to finish our p2p
 protocol in datt-node, and merge that into datt.ui as well. There are some
-significant hurdles left before all these pieces an be fit together. Although
+significant hurdles left before all these pieces can be fit together. Although
 we have the basics of the p2p protocol ready in datt-node, its interface is not
 yet ready to be used by datt.ui. Also, we have not integrated bitcoin payments
 at all in any form.
