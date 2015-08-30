@@ -30,7 +30,6 @@ function onOpen() {
 }
 
 function onConnectionData(data, conn) {
-  datt.onConnectionData(data)
   var htmlSnippet = "<span><strong>Peer '" + conn.peer +"' sent:</strong> " + JSON.stringify(data, null, 4) + "</span>";
   writeToBody(htmlSnippet);
   datt.contentStore.getContent(data).then(function(content) {
