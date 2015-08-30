@@ -65,8 +65,7 @@ including not putting SPV in a browser. If necessary, we can take even more
 short cuts to get to a prototype. The prototype needs to be able to have two or
 more users connect to the network, post and receive content, and tip each
 other. If certain features are missing or broken, that's fine, so long as we
-can demo the basic functionalityIf certain features are missing or broken,
-that's fine, so long as we can demo the basic functionality.
+can demo the basic functionality.
 
 This week was my first full week working from IDEO. I am an experimental
 "Entrepreneur in Residence" at IDEO Futures. We don't have a formal
