@@ -2,6 +2,7 @@
 var ContentDiscovery = require('../lib/contentDiscovery')
 var Message = require('../lib/message')
 var should = require('should')
+
 var q = require('q')
 
 // Create a temporary to be used during tests
@@ -29,79 +30,74 @@ function getDattObject() {
 }
 
 describe('ContentDiscovery', function () {
-  var contentDiscovery
+    var contentDiscovery
+    var datt = getDattObject()
 
-  before(function () {
-    contentDiscovery = new ContentDiscovery()
-  })
-
-  describe('ContentDiscovery', function () {
-    it('should exist test contentDiscovery', function () {
-      should.exist(contentDiscovery)
+    before(function () {
+	contentDiscovery = new ContentDiscovery()
     })
-  })
 
-  var datt = getDattObject()
-
-  describe('notHandleOwnMessage', function () {
-    it('should not handle message coming from itself', function () { 
-      var message = Message.requestPeersForHash("testhash", datt)
-      return contentDiscovery.handleContentDiscoveryRequest(message, datt).then(function(result) {
-        result.should.equal("Own message")
-      })
+    describe('ContentDiscovery', function () {
+	it('should exist test contentDiscovery', function () {
+	    should.exist(contentDiscovery)
+	})
     })
-  })
 
-  describe('handleOtherMessage', function () {
-    it('should handle message with another id and send an announcement because it has this content', function () { 
-      datt.peer.id = "1"
-      var message = Message.requestPeersForHash("testhash", datt)      
-      datt.peer.id = "0"
-      return contentDiscovery.handleContentDiscoveryRequest(message, datt).then(function(result) {
-        result.should.eql(["broadcasted","sentMessage"])
-      })
+    describe('#handleContentDiscoveryRequest', function () {
+	it('should not handle message coming from itself', function () { 
+	    var message = Message.requestPeersForHash("testhash", datt)
+	    return contentDiscovery.handleContentDiscoveryRequest(message, datt).then(function(result) {
+		result.should.equal("Own message")
+	    })
+	})
+
+	it('should handle message with another id and send an announcement because it has this content', function () { 
+	    datt.peer.id = "1"
+	    var message = Message.requestPeersForHash("testhash", datt)      
+	    datt.peer.id = "0"
+	    return contentDiscovery.handleContentDiscoveryRequest(message, datt).then(function(result) {
+		result.should.eql(["broadcasted","sentMessage"])
+	    })
+	})
+
+	it('should not propagate the same message twice', function () { 
+	    datt.peer.id = "1"
+	    var message = Message.requestPeersForHash("testhash", datt)      
+	    datt.peer.id = "0"
+	    return contentDiscovery.handleContentDiscoveryRequest(message, datt).then(function(result) {
+		result.should.equal("Already seen message. Stop propagating")
+	    })
+	})
+
+	it('should propagate message and not send announcement', function () { 
+	    datt.peer.id = "1"
+	    var message = Message.requestPeersForHash("testhash2", datt)      
+	    datt.peer.id = "0"
+	    return contentDiscovery.handleContentDiscoveryRequest(message, datt).then(function(result) {
+		result.should.eql(['broadcasted', 'Did not have content'])
+	    })
+	})
     })
-  })
 
-  describe('notHandleMessageTwice', function () {
-    it('should not propagate the same message twice', function () { 
-      datt.peer.id = "1"
-      var message = Message.requestPeersForHash("testhash", datt)      
-      datt.peer.id = "0"
-      return contentDiscovery.handleContentDiscoveryRequest(message, datt).then(function(result) {
-        result.should.equal("Already seen message. Stop propagating")
-      })
+
+    it('should throw an error if it cannot send announcement', function () { 
+	// Create datt object with failing send
+	var datt2 = getDattObject()
+	datt2.sendMessage = function(msg, sender) {
+	    var deferred = q.defer()
+	    deferred.reject("send error")
+	    return deferred.promise
+	}
+	datt2.peer.id = "2"
+	var message = Message.requestPeersForHash("testhash", datt2)      
+	datt2.peer.id = "0"
+
+	return contentDiscovery.handleContentDiscoveryRequest(message, datt).then(function(result) {
+	    should.fail("ContentDiscover#handleContentDiscoveryRequest should fail when unable to send message")
+	}).fail(function(error) {
+            error.should.equal("send error")
+	})
     })
-  })  
-
-  describe('notHavingContent', function () {
-    it('should propagate message and not send announcement', function () { 
-      datt.peer.id = "1"
-      var message = Message.requestPeersForHash("testhash2", datt)      
-      datt.peer.id = "0"
-      return contentDiscovery.handleContentDiscoveryRequest(message, datt).then(function(result) {
-        result.should.eql(['broadcasted', 'Did not have content'])
-      })
-    })
-  })
-
-  // Create datt object with failing send
-  var datt2 = getDattObject()
-  datt2.sendMessage = function(msg, sender) {
-    var deferred = q.defer()
-    deferred.reject("send error")
-    return deferred.promise
-  }
-
-  describe('throwError', function () {
-    it('should throw error since cannot send announcement', function () { 
-      datt2.peer.id = "2"
-      var message = Message.requestPeersForHash("testhash", datt2)      
-      datt2.peer.id = "0"
-      return contentDiscovery.handleContentDiscoveryRequest(message, datt).fail(function(error) {
-        error.should.equal("send error")
-      })
-    })
-  })
-
 })
+
+
