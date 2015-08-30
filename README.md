@@ -57,6 +57,10 @@ There are many contributors working on aspects of the MVP. Some direction and pr
 
 ## Log
 
+Note that the log is now obsolete and has been replaced by [our blog at
+blog.datt.co](http://blog.datt.co), of which the [github repository is at
+github.com/dattnetwork/dattblog](https://github.com/dattnetwork/dattblog).
+
 ### Thoughts on DHTs for Datt - Ryan X. Charles
 
 A DHT is a way to store key value pairs across a distributed network of
