@@ -7,6 +7,7 @@ var util = require('../lib/util')
 var os = require('os')
 var tmpdir = os.tmpdir()
 
+var bitcore = require('bitcore')
 var q = require('q')
 var u = require('underscore')
 
@@ -104,7 +105,62 @@ describe('ContentStore', function () {
     })
   })
 
-  describe('#getContentByUserAddress', function () {})
+  describe('#getContentByUserAddress', function () {
+    it('should return an array containing Content instances where owner address matches the one provided', function () {
+      return contentStore.getContentByUserAddress(content.getOwnerAddress()).then(function (results) {
+        should.exist(results)
+        should(results instanceof Array).be.eql(true)
+        should(results.length).be.above(0)
+
+        var numMatching = u.map(results, function (result) {
+          if (result instanceof Content) {
+            return result.getOwnerAddress()
+          } else {
+            return null
+          }
+        })
+          .filter(function (address) { return address === content.getOwnerAddress() })
+          .length
+        should(results.length).be.eql(numMatching)
+      })
+    })
+
+    it('should return an empty array when an address without associated content is provided', function () {
+      var pkey = new bitcore.PrivateKey()
+      var newAddress = pkey.toAddress().toString()
+      return contentStore.getContentByUserAddress(newAddress)
+        .catch(function (err) {
+          should.fail('Should not throw error: ' + err + ' \n\n ' + err.stack)
+        })
+        .then(function (results) {
+          should.exist(results)
+          should(results instanceof Array).be.eql(true)
+          should(results.length).be.eql(0)
+        })
+    })
+
+    // it('should reject the promise if address is not a valid bitcoin address', function () {
+    // 	  return contentStore.getContentByUserAddress('1InvalidBitcoinAddress')
+    // 	      .catch(function (err) {
+    // 		  should.exist(err)
+    // 	      })
+    // 		  .then(function () {
+    // 		      should.fail('ContentStore#getContentByUserAddress should reject promise if the address provided is not a valid bitcoin address')
+    // 		  })
+    // })
+
+    it('should reject the promise if address is undefined, null, or not a string', function () {
+      return q.allSettled([
+        contentStore.getContentByUserAddress(),
+        contentStore.getContentByUserAddress(null),
+        contentStore.getContentByUserAddress({'type': 'wrong'})
+      ]).spread(function (undefinedUserAddress, nullUserAddress, wrongTypeUserAddress) {
+        undefinedUserAddress.state.should.eql('rejected')
+        nullUserAddress.state.should.eql('rejected')
+        wrongTypeUserAddress.state.should.eql('rejected')
+      })
+    })
+  })
 
   describe('#getContentHashes', function () {
     it('should return an array', function () {
