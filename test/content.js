@@ -46,6 +46,26 @@ describe('Content', function () {
       Content.serialize(content).should.equal('{"data":"test data","owner_username":"username","owner_pubkey":"02af59b2cc4ebe9cc796f8076b095efaaed11f4f249805d3db18459f15be04de4f","owner_address":"19aM8TSmimwBsH9uVbS6SXigqM42fEzGtY","post_time":"2015-08-21T09:58:19.733Z","post_height":300000,"signature":"30440220529021857f03063b1ef4b6ea6599c99363b97f1a4dbd0f8c9f4fce5c0c236cf20220074c170c029183b098de1b088e22f9f6399ed769cd388f84a02b87f28ad18b80"}')
 
     })
+
+    it('should produce valid JSON', function () {
+      q(Content.serialize(content)).then(function (contentString) {
+        should.exist(contentString)
+        should(typeof (contentString)).be.eql('string')
+        return JSON.parse(contentString)
+      }).catch(function (err) {
+        should.fail('Should not throw an error: ' + err + ' \n\n ' + err.stack)
+      }).then(function (contentObj) {
+        should.exist(contentObj)
+        contentObj.data.should.eql(content.getData())
+        contentObj.owner_username.should.eql(content.getOwnerUsername())
+        contentObj.owner_pubkey.should.eql(content.getOwnerPubKey())
+        contentObj.owner_address.should.eql(content.getOwnerAddress())
+        contentObj.signature.should.eql(content.getSignature())
+        contentObj.post_time.should.eql(content.getPostTime())
+        contentObj.post_height.should.eql(content.getPostHeight())
+      })
+
+    })
   })
 
   describe('#getOwnerAddress', function () {
@@ -406,6 +426,7 @@ describe('Content', function () {
         ;(newContent.constructor.name === 'Content').should.be.ok()
       })
     })
+
     it('should return a content instance owned by the user provided', function () {
       var newUser = new User('auser', 'apassword')
       newUser.init()
@@ -419,6 +440,7 @@ describe('Content', function () {
       })
 
     })
+
     it('should return a content instance containing the data provided', function () {
       var newUser = new User('auser', 'apassword')
       newUser.init()
@@ -521,4 +543,32 @@ describe('Content', function () {
       })
     })
   })
+
+  describe('@fromObject', function () {
+    it('should create a valid Content instance from a Plain-Old-Javascript-Object describing a Content object', function () {
+      var pojo = JSON.parse(content.serialize())
+      should(pojo instanceof Content).be.eql(false)
+      return Content.fromObject(pojo).then(function (contentFromPojo) {
+        should(contentFromPojo instanceof Content).be.eql(true)
+        should(contentFromPojo.getHashHex()).be.eql(content.getHashHex())
+      })
+    })
+
+    it('should reject the promise if it is called with an undefined, null, mistyped, or empty argument', function () {
+      return q.allSettled([
+        Content.fromObject(),
+        Content.fromObject(null),
+        Content.fromObject(3),
+        Content.fromObject('hello'),
+        Content.fromObject({})
+      ]).spread(function (undefinedObj, nullObj, numObj, stringObj, emptyObj) {
+        undefinedObj.state.should.eql('rejected')
+        nullObj.state.should.eql('rejected')
+        numObj.state.should.eql('rejected')
+        stringObj.state.should.eql('rejected')
+        emptyObj.state.should.eql('rejected')
+      })
+    })
+  })
+
 })

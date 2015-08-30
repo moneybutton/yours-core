@@ -71,14 +71,14 @@ describe('ContentStore', function () {
 
     it('should return an empty array when a username without associated content is provided', function () {
       return contentStore.getContentByUsername('a_random_username_with_no_content')
-	    .catch(function (err) {
-		should.fail("Should not throw error: " + err + " \n\n " + err.stack)
-	    })
-	    .then(function (result) {
-        should.exist(result)
-        should(result instanceof Array).be.eql(true)
-        should(result.length).be.eql(0)
-      })
+        .catch(function (err) {
+          should.fail('Should not throw error: ' + err + ' \n\n ' + err.stack)
+        })
+        .then(function (result) {
+          should.exist(result)
+          should(result instanceof Array).be.eql(true)
+          should(result.length).be.eql(0)
+        })
     })
 
     it('should return content with the provided username', function () {
@@ -87,20 +87,20 @@ describe('ContentStore', function () {
         should(result.length).be.eql(1)
         var retrievedContent = result[0]
         should(retrievedContent.getHashHex()).be.eql(content.getHashHex())
-	should(retrievedContent.getOwnerUsername()).be.eql(content.getOwnerUsername())
+        should(retrievedContent.getOwnerUsername()).be.eql(content.getOwnerUsername())
       })
     })
 
     it('should reject the promise if username is undefined, null, or not a string', function () {
-	return q.allSettled([
-	    contentStore.getContentByUsername(), 
-	    contentStore.getContentByUsername(null), 
-	    contentStore.getContentByUsername({'type': "wrong"})
-	]).spread(function (undefinedUsername, nullUsername, wrongTypeUsername) {
-	   undefinedUsername.state.should.eql('rejected') 
-	   nullUsername.state.should.eql('rejected')
-	   wrongTypeUsername.state.should.eql('rejected')
-	})
+      return q.allSettled([
+        contentStore.getContentByUsername(),
+        contentStore.getContentByUsername(null),
+        contentStore.getContentByUsername({'type': 'wrong'})
+      ]).spread(function (undefinedUsername, nullUsername, wrongTypeUsername) {
+        undefinedUsername.state.should.eql('rejected')
+        nullUsername.state.should.eql('rejected')
+        wrongTypeUsername.state.should.eql('rejected')
+      })
     })
   })
 
@@ -120,11 +120,11 @@ describe('ContentStore', function () {
       }).catch(function (err) {
         should.fail('Should not throw error: ' + err + ' \n\n ' + (err || {}).stack)
       }).then(function (hashes) {
-	var stringElements = u.filter(
-	    u.map(hashes, function(el) { return typeof(el) }), 
-	    function(typeofel) { return typeofel === 'string' }
-	)
-	stringElements.length.should.eql(hashes.length)
+        var stringElements = u.filter(
+          u.map(hashes, function (el) { return typeof (el) }),
+          function (typeofel) { return typeofel === 'string' }
+        )
+        stringElements.length.should.eql(hashes.length)
 
         should(hashes.indexOf(hashHexString)).not.eql(-1)
       })
