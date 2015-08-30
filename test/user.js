@@ -18,9 +18,7 @@ describe('User', function () {
 
   describe('#init', function () {
     it('should compute the user private key and public key', function () {
-      console.log('About to run user.init()')
       return user.init().then(function () {
-        console.log('User#init promise was resolved')
         should.exist(user.privateKey)
         should.exist(user.publicKey)
         should.exist(user.address)

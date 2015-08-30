@@ -7,6 +7,7 @@ var ContentDiscovery = require('./lib/contentDiscovery')
 var User = require('./lib/user')
 var Message = require('./lib/message')
 var Datt = require('./lib/datt')
+var logger = require('./lib/logger')
 
 module.exports = {
   'Content': Content,
@@ -16,7 +17,8 @@ module.exports = {
   'Message': Message,
   'Datt': Datt,
   'Peer': Peer,
-  'bitcore': bitcore
+  'bitcore': bitcore,
+  'logger': logger
 }
 
 global.datt_node = module.exports
