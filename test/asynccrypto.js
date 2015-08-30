@@ -79,6 +79,21 @@ describe('AsyncCrypto', function () {
 
   })
 
+  describe('@deriveXkeysFromXprv', function () {
+    it('should derive new xprv, xpub, address', function () {
+      var seedbuf = new Buffer(128 / 8)
+      seedbuf.fill(0)
+      var xprv = bitcore.HDPrivateKey.fromSeed(seedbuf, 'mainnet')
+      var path = "m/44'/0'/0'/0/0"
+      return AsyncCrypto.deriveXkeysFromXprv(xprv, path).then(function (obj) {
+        obj.xprv.toString().should.equal('xprvA4EMaq49eKGKGK2k3kAsiqTowWrNuidQTx5DaYm669TjJUtsEARurRTwXiP1PXsNkxL4pLijwktqb9gSWHccdm92nKDKznNUCSKwvktQLp2')
+        obj.xpub.toString().should.equal('xpub6HDhzLb3UgpcUo7D9mht5yQYVYgsKBMFqAzpNwAheUziBHE1mhkAQDnRNyTArZsiyczWpmchy1H6nEzCeLpa7Xm5BGxpbHRP2dKKUR3puTv')
+        obj.address.toString().should.equal('1CwgwxqUVapWbgk6ssLruv9eHxHe6LvCe6')
+      })
+    })
+
+  })
+
   describe('ECDSA', function () {
     describe('@sign', function () {
       it('should compute the same as bitcore', function () {
