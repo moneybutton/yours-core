@@ -68,26 +68,14 @@ function dattAddContent() {
   return false;
 }
 
-function dattGetLocalContent() {
-  var hash = $("#getlocalcontent").val();
-  datt.contentStore.getContent(hash).then(function (content) {
-    $("#getlocalcontent").val("");
-    writeToBody("<strong>Got local content:</strong> " + content.getData());
+function dattGetContent() {
+  var hash = $("#getcontent").val();
+  datt.getContent(hash).then(function (content) {
+    $("#getcontent").val("");
+    writeToBody("<strong>Got content:</strong> " + content.getData());
+  }).fail(function(err){
+    console.log("getContent failed: " + err)
   });
-  return false;
-}
-
-function dattGetRemoteContent() {
-  var hash = $("#getremotecontent").val();
-  $("#getremotecontent").val("");
-  var content = datt.askPeersForContent(hash);
-  return false;
-}
-
-function dattGetPeersForContent() {
-  var hash = $("#getpeersforcontent").val();
-  $("#getpeersforcontent").val("");
-  datt.findPeersForContent(hash);
   return false;
 }
 
@@ -130,21 +118,9 @@ datt.begin();
       <input type="submit"/>
     </form>
   </div>
-  <div id="getLocalContent">
-    <form id="getlocalcontentform" onsubmit="return dattGetLocalContent();" action="return false;">
-      <span>Get local content:</span><input id="getlocalcontent"/>
-      <input type="submit"/>
-    </form>
-  </div>
-  <div id="getRemoteContent">
-    <form id="getremotecontentform" onsubmit="return dattGetRemoteContent();" action="return false;">
-      <span>Get remote content:</span><input id="getremotecontent"/>
-      <input type="submit"/>
-    </form>
-  </div>
-  <div id="getPeersForContent">
-    <form id="getpeersforcontentform" onsubmit="return dattGetPeersForContent();" action="return false;">
-      <span>Get peers for content:</span><input id="getpeersforcontent"/>
+  <div id="getContent">
+    <form id="getcontentform" onsubmit="return dattGetContent();" action="return false;">
+      <span>Get content:</span><input id="getcontent"/>
       <input type="submit"/>
     </form>
   </div>
