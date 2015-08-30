@@ -46,10 +46,8 @@ describe('ContentStore', function () {
 
   describe('#getContent', function () {
     it('should get this content', function () {
-      console.log(hashHexString)
       return contentStore.getContent(hashHexString).then(function (val) {
         should.exist(val)
-        console.log(JSON.stringify(val, null, 4))
         val.getHashHex().should.eql(content.getHashHex())
         val.getData().should.eql(content.getData())
         val.getOwnerPubKey().should.eql(content.getOwnerPubKey())
@@ -62,9 +60,7 @@ describe('ContentStore', function () {
 
   describe('info', function () {
     it('provides db info', function () {
-      return contentStore.db.info().then(function () {
-        console.log(JSON.stringify(arguments, null, 4))
-      })
+      return contentStore.db.info().then(function () {})
     })
   })
 

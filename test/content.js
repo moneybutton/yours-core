@@ -99,6 +99,7 @@ describe('Content', function () {
         return testcontent.setOwnerAddress(testuser.getAddress())
       }).then(function () {
         should.fail('#setOwnerAddress - should fail with incompatible public key')
+
       }).catch(function (err) {
         should.exist(err)
       })
@@ -153,7 +154,6 @@ describe('Content', function () {
 
       return q.all([newUser.init(), newContent.init()]).then(function () {
         should.not.exist(newContent.getOwnerPubKey())
-        console.log(JSON.stringify(newUser, null, 4))
         should.exist(newUser.getPubKey())
         return newContent.setOwnerPubKey(newUser.getPubKey())
       }).then(function () {
