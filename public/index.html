@@ -32,11 +32,12 @@ function onOpen() {
 function onConnectionData(data, conn) {
   var htmlSnippet = "<span><strong>Peer '" + conn.peer +"' sent:</strong> " + JSON.stringify(data, null, 4) + "</span>";
   writeToBody(htmlSnippet);
-  datt.contentStore.getContent(data).then(function(content) {
-    if(content){
-      datt.broadcastMessage(content);
-    }
-  });
+  // contentStore.getContent(data).then(function(content) {
+  //   if(content){
+  //     datt.broadcastMessage(content);
+  //   }
+  // });
+
   return false
 }
 
@@ -86,8 +87,7 @@ function dattGetRemoteContent() {
 function dattGetPeersForContent() {
   var hash = $("#getpeersforcontent").val();
   $("#getpeersforcontent").val("");
-  datt.askPeersForPeersForContent(hash);
-  //datt.broadcastMessage("Newhhhh: " + hash);
+  datt.findPeersForContent(hash);
   return false;
 }
 
