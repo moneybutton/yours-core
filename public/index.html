@@ -73,6 +73,29 @@ function dattGetContent() {
   datt.getContent(hash).then(function (content) {
     $("#getcontent").val("");
     writeToBody("<strong>Got content:</strong> " + content.getData());
+
+    var iframe = document.getElementById("contentiframe")
+
+    var rawHtml = content.getData()
+    var html = content.getData()
+
+    var re =/@{content,([0-9,a-f]*)}/g
+
+    var result
+    while(result = re.exec(rawHtml)) {
+      var matchText = result[0];
+      var match = result[1];
+      console.log("Match: " + match + " text " + matchText);
+      (function(m, mt) {
+        datt.getContent(m).then(function(piece){
+          var replacer = new RegExp(mt, 'g')
+          var str = piece.getData()
+          console.log("replacing " + mt + " with " + str)
+          html = html.replace(replacer, str)
+          iframe.contentDocument.body.innerHTML = html
+        })
+      })(match, matchText)
+    }
   }).fail(function(err){
     console.log("getContent failed: " + err)
   });
@@ -126,5 +149,6 @@ datt.init();
   </div>
   <br><br>
   <div id="data"></div>
+  <iframe id="contentiframe"></iframe>
 </body>
 </html>
