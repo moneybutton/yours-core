@@ -123,7 +123,6 @@ describe('AsyncCrypto', function () {
       it('should return false for an invalid signature', function () {
         var hashbuf = bitcore.crypto.Hash.sha256(databuf)
         var privateKey = new bitcore.PrivateKey()
-        var publicKey = privateKey.toPublicKey()
 
         var otherPrivateKey = new bitcore.PrivateKey()
         var otherPublicKey = otherPrivateKey.toPublicKey()
