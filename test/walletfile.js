@@ -43,7 +43,6 @@ describe('WalletFile', function () {
       var seedbuf = new Buffer(128 / 8)
       seedbuf.fill(0)
       return WalletFile.fromSeed(seedbuf).then(function (walletfile) {
-        console.log(walletfile.mnemonic)
         return walletfile.deriveBIP44Xkeys(0, 0, 0)
       }).then(function (obj) {
         obj.xprv.toString().should.equal('xprvA2cWYEXRrpaYZmR4Mat3aHw7ARSGFAtb5LQNfSuyQCCGVJXRNWA3zkkHZcBM4voi9TBrb9WaC65HGv5e8gZgfnjzH71WofaXT3haLw8LYqQ')
