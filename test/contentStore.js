@@ -1,4 +1,4 @@
-/* global it,describe,before */
+/* global it,describe,before,after */
 var should = require('should')
 var ContentStore = require('../lib/contentStore')
 var User = require('../lib/user')

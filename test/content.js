@@ -4,8 +4,6 @@ var should = require('should')
 
 var User = require('../lib/user')
 
-var bitcore = require('bitcore')
-
 var q = require('q')
 
 var AsyncCrypto = require('../lib/asynccrypto')

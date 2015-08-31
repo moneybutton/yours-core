@@ -1,6 +1,5 @@
 /* global it,describe */
 var should = require('should')
-var q = require('q')
 var WalletFile = require('../lib/walletfile')
 
 describe('WalletFile', function () {
