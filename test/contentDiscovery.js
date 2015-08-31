@@ -91,7 +91,7 @@ describe('ContentDiscovery', function () {
     var message = Message.requestPeersForHash('testhash', datt2)
     datt2.peer.id = '0'
 
-    return contentDiscovery.handleContentDiscoveryRequest(message, datt).then(function (result) {
+    return contentDiscovery.handleContentDiscoveryRequest(message, datt2).then(function (result) {
       should.fail('ContentDiscover#handleContentDiscoveryRequest should fail when unable to send message')
     }).fail(function (error) {
       error.should.equal('send error')
