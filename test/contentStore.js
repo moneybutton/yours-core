@@ -15,9 +15,12 @@ describe('ContentStore', function () {
   this.timeout(15000) // karma seems to need longer timeout for IndexedDB tests
   var contentStore
   var content
+  var content2
   var data = 'test data'
+  var data2 = 'test data 2'
   var user
   var hashHexString
+  var hashHexString2
   var storeLocation
 
   before(function () {
@@ -26,7 +29,11 @@ describe('ContentStore', function () {
       return Content.fromDataAndUser(data, user)
     }).then(function (newContent) {
       content = newContent
+      return Content.fromDataAndUser(data2, user)
+    }).then(function (newContent) {
+      content2 = newContent
       hashHexString = content.getHashHex()
+      hashHexString2 = content2.getHashHex()
       storeLocation = tmpdir + '/' + util._randomString(10)
       contentStore = new ContentStore({'dbName': storeLocation})
       return contentStore.init()
@@ -171,23 +178,22 @@ describe('ContentStore', function () {
     })
 
     it('should return an array of strings, each one a Content hash, which includes the Content we inserted earlier', function () {
-      contentStore.putContent(content).then(function () {
+      return contentStore.putContent(content2).then(function () {
         return contentStore.getContentHashes()
-      }).catch(function (err) {
-        should.fail('Should not throw error: ' + err + ' \n\n ' + (err || {}).stack)
       }).then(function (hashes) {
         var stringElements = u.filter(
-          u.map(hashes, function (el) { return typeof (el) }),
+          u.map(hashes, function (el) { return typeof (el._id) }),
           function (typeofel) { return typeofel === 'string' }
         )
         stringElements.length.should.eql(hashes.length)
 
-        should(hashes.indexOf(hashHexString)).not.eql(-1)
+        hashes = u.map(hashes, function (obj) {return obj._id})
+        should(hashes.indexOf(hashHexString2)).not.eql(-1)
       })
     })
 
     it('should return an array with a count equal to the number of docs in the PouchDB minus the number of indices (2)', function () {
-      q.all([contentStore.db.info(), contentStore.getContentHashes()])
+      return q.all([contentStore.db.info(), contentStore.getContentHashes()])
         .spread(function (info, hashes) {
           should.exist(hashes)
           should.exist(info)
@@ -196,8 +202,9 @@ describe('ContentStore', function () {
     })
 
     it('should return an empty array without error if the content store is empty', function () {
-      var emptyContentStore = new ContentStore('empty-content-store')
-      emptyContentStore.init().then(function () {
+      var storeLocation = tmpdir + '/' + util._randomString(10)
+      var emptyContentStore = new ContentStore({'dbName': storeLocation})
+      return emptyContentStore.init().then(function () {
         return emptyContentStore.getContentHashes()
       }).catch(function (err) {
         should.fail('Should not throw an error: ' + err + ' \n\n ' + (err || {}).stack)
