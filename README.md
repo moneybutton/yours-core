@@ -493,6 +493,9 @@ Related projects
 - [cryptosphere, built in ruby, seems similar](https://github.com/cryptosphere/cryptosphere)
 - [Alexandria - blocktech.com - uses ipfs](http://blocktech.com/)
 - [zeronet - based on bitcoin cryptography and bittorrent](http://zeronet.io/)
+- [ipfs - decentalized storage - permanent web - global DHT](https://github.com/ipfs/ipfs)
+- [sia - decentralized storage that integrates payments - sounds similar to ipfs](https://bitcointalk.org/index.php?topic=1060294.0)
+
 
 Resources compiled by John Villar
 - [PeerJS](http://peerjs.com/) - Easy WebRTC
