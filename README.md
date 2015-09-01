@@ -525,6 +525,7 @@ Bitcoin, lightning network, sidechains
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
 Articles
+- [Google Votes: A Liquid Democracy Experiment on a Corporate Social Network (PDF)](http://www.tdcommons.org/cgi/viewcontent.cgi?article=1092&context=dpubs_series)
 - [The internet's own Magna Carta](http://www.renderingwithstyle.com/post/127493183563/the-internets-own-magna-carta)
 - [Locking the Web Open - a call for a distributed web](http://brewster.kahle.org/2015/08/11/locking-the-web-open-a-call-for-a-distributed-web-2/)
 - ["Projects and Companies" by Sam Altman](http://blog.samaltman.com/projects-and-companies)
