@@ -500,6 +500,7 @@ Related projects
 
 Resources compiled by John Villar
 - [PeerJS](http://peerjs.com/) - Easy WebRTC
+- [Simple Peer - easy Web RTC, works in node via wrtc](https://github.com/feross/simple-peer)
 - [FreedomJS](http://www.freedomjs.org/) - Another Easy WebRTC
 - [GUN.js](http://gun.js.org/) - NoDB High replication memcache
 - [PouchDB](http://pouchdb.com/) - A clientside CouchDB-like database that syncs when online with a CouchDB server
