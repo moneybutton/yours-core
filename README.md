@@ -495,6 +495,7 @@ Related projects
 - [zeronet - based on bitcoin cryptography and bittorrent](http://zeronet.io/)
 - [ipfs - decentalized storage - permanent web - global DHT](https://github.com/ipfs/ipfs)
 - [sia - decentralized storage that integrates payments - sounds similar to ipfs](https://bitcointalk.org/index.php?topic=1060294.0)
+- [Kudos: A Peer-to-Peer Discussion System Based on Social Voting (PDF)](http://lucaa.org/docs/kudos.pdf)
 
 
 Resources compiled by John Villar
