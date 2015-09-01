@@ -3,6 +3,14 @@ module.exports = function(config) {
 
     basePath: 'public',
 
+    // Increase timeout from 2000 to 20000 ms, since the content store seems to
+    // cause timeout-based disconnects frequently.
+    browserDisconnectTimeout: 20000,
+
+    // Increase tolerance for disconnects, to account for content store-related
+    // disconnects.
+    // browserDisconnectTolerance: 5,
+
     frameworks: ['mocha'],
 
     files: [
