@@ -523,6 +523,7 @@ Resources compiled by John Villar
 - [Ephemeral](https://github.com/losvedir/ephemeral2) - Ephemeral content stored only by the viewers of it
 - [UX Methods &amp; Design](http://uxdesign.cc/ux-methods-deliverables/) - UX/UI design cheatsheet
 - [Paul's Datt doc](https://docs.google.com/document/d/1AEHdOlQMyyuZ3U0a1BOcZtX8kAPWZynFVx9r21NPtiE/edit#heading=h.65lcma1tm8an)
+- [rupy - a distributed database for the web](https://github.com/tinspin/rupy)
 
 Bitcoin, lightning network, sidechains
 - [Experimental lightning node in python](https://github.com/hashplex/Lightning)
