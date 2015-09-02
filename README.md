@@ -533,6 +533,7 @@ Bitcoin, lightning network, sidechains
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
 Articles
+- [Will there be a distributed HTTP?](https://www.mnot.net/blog/2015/08/18/distributed_http?imm_mid=0d7194&cmp=em-web-na-na-newsltr_20150819)
 - [Google Votes: A Liquid Democracy Experiment on a Corporate Social Network (PDF)](http://www.tdcommons.org/cgi/viewcontent.cgi?article=1092&context=dpubs_series)
 - [The internet's own Magna Carta](http://www.renderingwithstyle.com/post/127493183563/the-internets-own-magna-carta)
 - [Locking the Web Open - a call for a distributed web](http://brewster.kahle.org/2015/08/11/locking-the-web-open-a-call-for-a-distributed-web-2/)
