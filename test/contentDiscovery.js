@@ -45,7 +45,7 @@ describe('ContentDiscovery', function () {
 
   describe('#handleContentDiscoveryRequest', function () {
     it('should not handle message coming from itself', function () {
-      var message = Message.requestPeersForHash('testhash', datt)
+      var message = Message.requestPeersForHash('testhash', datt.peer.id)
       return contentDiscovery.handleContentDiscoveryRequest(message, datt).then(function (result) {
         result.should.equal('Own message')
       })
@@ -53,7 +53,7 @@ describe('ContentDiscovery', function () {
 
     it('should handle message with another id and send an announcement because it has this content', function () {
       datt.peer.id = '1'
-      var message = Message.requestPeersForHash('testhash', datt)
+      var message = Message.requestPeersForHash('testhash', datt.peer.id)
       datt.peer.id = '0'
       return contentDiscovery.handleContentDiscoveryRequest(message, datt).then(function (result) {
         result.should.eql(['broadcasted', 'sentMessage'])
