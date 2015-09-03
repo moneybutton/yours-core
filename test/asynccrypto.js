@@ -4,7 +4,7 @@ var q = require('q')
 var bitcore = require('bitcore')
 
 var AsyncCrypto = require('../lib/asynccrypto')
-var Workers = require('../lib/workers')
+var workerpool = require('workerpool')
 
 describe('AsyncCrypto', function () {
   var databuf = new Buffer(50)
@@ -25,13 +25,20 @@ describe('AsyncCrypto', function () {
       should.exist(asyncCrypto.sign)
     })
 
-    it('should share the same default workers', function () {
+    it('should share the same default worker pool', function () {
       var asyncCrypto = new AsyncCrypto()
       var asyncCrypto2 = new AsyncCrypto()
-      asyncCrypto2.workers.should.equal(asyncCrypto.workers)
-      var workers = new Workers()
-      var asyncCrypto3 = new AsyncCrypto(workers)
-      asyncCrypto3.workers.should.not.equal(asyncCrypto.workers)
+      asyncCrypto2.pool.should.equal(asyncCrypto.pool)
+
+      var pool
+      if (!process.browser) {
+        pool = workerpool.pool(__dirname + '/worker.js')
+      } else {
+        pool = workerpool.pool(process.env.DATT_NODE_JS_BASE_URL + process.env.DATT_NODE_JS_WORKER_FILE)
+      }
+      var asyncCrypto3 = new AsyncCrypto(pool)
+      asyncCrypto3.pool.should.not.equal(asyncCrypto.pool)
+      asyncCrypto3.pool.should.equal(pool)
     })
 
   })
