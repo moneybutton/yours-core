@@ -112,7 +112,7 @@ function whenConnectedToPeer(dataConnection) {
   writeToBody(txt);
 }
 
-var main = new Main({
+var main = datt_node.createMain({
   onOpen: onOpen,
   onConnection: whenConnectedToPeer,
   onPeers: onPeers,
