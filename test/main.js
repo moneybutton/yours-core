@@ -1,17 +1,17 @@
 /* global it,describe,before */
-var Datt = require('../lib/datt')
+var Main = require('../lib/main')
 var should = require('should')
 
-describe('Datt', function () {
-  var datt
+describe('Main', function () {
+  var main
 
   before(function () {
-    datt = new Datt()
+    main = new Main()
   })
 
-  describe('Datt', function () {
-    it('should see the global datt', function () {
-      should.exist(datt)
+  describe('Main', function () {
+    it('should see the global main', function () {
+      should.exist(main)
     })
 
   })
@@ -25,8 +25,8 @@ describe('Datt', function () {
 
   /* TODO: re-enable when tests automatically run web RTC rendezvous server
   describe('#init', function () {
-    it('should initialize our global datt', function () {
-      return datt.init()
+    it('should initialize our global main', function () {
+      return main.init()
     })
 
   })
@@ -34,10 +34,10 @@ describe('Datt', function () {
 
   describe('#signIn', function () {
     it('should sign in a user', function () {
-      return datt.signIn('user', 'password').then(function (user) {
-        should.exist(datt.user)
-        datt.user.username.should.equal('user')
-        datt.user.password.should.equal('password')
+      return main.signIn('user', 'password').then(function (user) {
+        should.exist(main.user)
+        main.user.username.should.equal('user')
+        main.user.password.should.equal('password')
       })
     })
 
@@ -45,7 +45,7 @@ describe('Datt', function () {
 
   describe('#broadcastMessage', function () {
     it('should return a promise', function () {
-      return datt.broadcastMessage('my message')
+      return main.broadcastMessage('my message')
     })
 
   })

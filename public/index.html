@@ -7,14 +7,14 @@
 var bitcore = datt_node.bitcore;
 var Peer = datt_node.Peer;
 
-var Datt = datt_node.Datt;
+var Main = datt_node.Main;
 var User = datt_node.User;
 var Message = datt_node.Message;
 var Content = datt_node.Content;
 var logger = datt_node.logger;
 
 
-var datt = null;
+var main = null;
 //var peers = new Webcoin.PeerGroup();
 //peers.connect();
 
@@ -34,20 +34,20 @@ function onConnectionData(data, conn) {
   writeToBody(htmlSnippet);
   // contentStore.getContent(data).then(function(content) {
   //   if(content){
-  //     datt.broadcastMessage(content);
+  //     main.broadcastMessage(content);
   //   }
   // });
 
   return false
 }
 
-function dattLogin() {
+function mainLogin() {
   var username = $("#username").val();
   var password = $("#password").val();
 
-  datt.signIn(username, password).then(function() {
-    var user = datt.user;
-    logger.debug("datt#signIn - callback executed with user: ");
+  main.signIn(username, password).then(function() {
+    var user = main.user;
+    logger.debug("main#signIn - callback executed with user: ");
     logger.debug(user);
     var txt = "User created with username: '<strong>" + user.username + "</strong>' and address '<strong>" + user.address + "</strong>'.";
     $("#user").html(txt);
@@ -58,19 +58,19 @@ function dattLogin() {
   return false;
 }
 
-function dattAddContent() {
+function mainAddContent() {
   var content = $("#addcontent").val();
-  datt.addContent(content).then(function (hashhex) {
+  main.addContent(content).then(function (hashhex) {
     $("#addcontent").val("");
     writeToBody("Added " + content + " to storage with hash " + hashhex);
-    datt.broadcastMessage("New content: " + hashhex);
+    main.broadcastMessage("New content: " + hashhex);
   })
   return false;
 }
 
-function dattGetContent() {
+function mainGetContent() {
   var hash = $("#getcontent").val();
-  datt.getContent(hash).then(function (content) {
+  main.getContent(hash).then(function (content) {
     $("#getcontent").val("");
     writeToBody("<strong>Got content:</strong> " + content.getData());
 
@@ -87,7 +87,7 @@ function dattGetContent() {
       var match = result[1];
       console.log("Match: " + match + " text " + matchText);
       (function(m, mt) {
-        datt.getContent(m).then(function(piece){
+        main.getContent(m).then(function(piece){
           var replacer = new RegExp(mt, 'g')
           var str = piece.getData()
           console.log("replacing " + mt + " with " + str)
@@ -112,7 +112,7 @@ function whenConnectedToPeer(dataConnection) {
   writeToBody(txt);
 }
 
-var datt = new Datt({
+var main = new Main({
   onOpen: onOpen,
   onConnection: whenConnectedToPeer,
   onPeers: onPeers,
@@ -120,7 +120,7 @@ var datt = new Datt({
   host: document.location.hostname
 });
 
-datt.init();
+main.init();
 
 </script>
 </head>
@@ -129,20 +129,20 @@ datt.init();
   <span id="status"></span><br><br>
   <span id="peers"></span><br><br>
   <div id="user">
-    <form id="userform" onsubmit="return dattLogin();" action="return false;">
+    <form id="userform" onsubmit="return mainLogin();" action="return false;">
       <span>Username:</span><input id="username"/>
       <span>Password:</span><input id="password" type="password"/>
       <input type="submit"/>
     </form>
   </div>
   <div id="addContent">
-    <form id="addcontentform" onsubmit="return dattAddContent();" action="return false;">
+    <form id="addcontentform" onsubmit="return mainAddContent();" action="return false;">
       <span>Add content:</span><input id="addcontent"/>
       <input type="submit"/>
     </form>
   </div>
   <div id="getContent">
-    <form id="getcontentform" onsubmit="return dattGetContent();" action="return false;">
+    <form id="getcontentform" onsubmit="return mainGetContent();" action="return false;">
       <span>Get content:</span><input id="getcontent"/>
       <input type="submit"/>
     </form>

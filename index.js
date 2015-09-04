@@ -6,17 +6,17 @@ var ContentStore = require('./lib/contentStore')
 var ContentDiscovery = require('./lib/contentDiscovery')
 var User = require('./lib/user')
 var Message = require('./lib/message')
-var Datt = require('./lib/datt')
+var Main = require('./lib/main')
 var logger = require('./lib/logger')
 
 module.exports = {
   'Content': Content,
-  'ContentStore': ContentStore,
   'ContentDiscovery': ContentDiscovery,
-  'User': User,
+  'ContentStore': ContentStore,
+  'Main': Main,
   'Message': Message,
-  'Datt': Datt,
   'Peer': Peer,
+  'User': User,
   'bitcore': bitcore,
   'logger': logger
 }
