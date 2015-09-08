@@ -532,7 +532,8 @@ Bitcoin, lightning network, sidechains
 - [A fast and scalable network with bitcoin micropayment channels (PDF)](http://www.researchgate.net/profile/Christian_Decker5/publication/277991245_A_Fast_and_Scalable_Payment_Network_with_Bitcoin_Duplex_Micropayment_Channels/links/55780a4e08aeb6d8c01cf2d0.pdf) - not lightning, but similar
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
-Articles
+Articles and Links
+- [reddit users on their grievances about reddit](https://www.reddit.com/r/Upvoted/comments/3jn7e9/ask_an_admin_vol_6_on_amageddon_blackout_2015_etc/cuqnuyo)
 - [Will there be a distributed HTTP?](https://www.mnot.net/blog/2015/08/18/distributed_http?imm_mid=0d7194&cmp=em-web-na-na-newsltr_20150819) - [HN](https://news.ycombinator.com/item?id=10159873)
 - [Google Votes: A Liquid Democracy Experiment on a Corporate Social Network (PDF)](http://www.tdcommons.org/cgi/viewcontent.cgi?article=1092&context=dpubs_series)
 - [The internet's own Magna Carta](http://www.renderingwithstyle.com/post/127493183563/the-internets-own-magna-carta)
