@@ -22,5 +22,10 @@ block content
     section.content!= typogr(page.html).typogrify()
 
 block prepend footer
+  hr
+  div.opensourceblog
+    | Want to write a blog post on the Datt Blog?
+    a(href='https://github.com/dattnetwork/dattblog') Issue a PR to our open-source blog repo.
+  hr
   div.nav
     a(href=contents.index.url) « Datt Blog
