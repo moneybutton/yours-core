@@ -93,6 +93,6 @@ increase the max block size soon, and not to wait for the lightning network or
 sidechains. Although I believe increasing the max block size is insufficient
 for scaling bitcoin long-term, it is much, much easier and nearer-term than the
 lightning network or sidechains. I will put my full argument in the form of a
-presentation which I will share publically. [I have also previously shared some
+presentation which I will share publicly. [I have also previously shared some
 thoughts on this back in
 May](http://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-May/008190.html).
