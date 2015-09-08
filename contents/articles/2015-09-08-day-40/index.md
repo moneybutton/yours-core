@@ -96,3 +96,32 @@ lightning network or sidechains. I will put my full argument in the form of a
 presentation which I will share publicly. [I have also previously shared some
 thoughts on this back in
 May](http://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-May/008190.html).
+
+### Next steps
+
+There are four pillars of this project:
+
+1) Technology
+
+2) Community
+
+3) Product/design
+
+4) Business
+
+These all need to be weighted equally upon launch, however I believe the
+priority right now is on building the prototype, which means technology needs
+to be weighted more right now. That is because it is noticeably the biggest
+bottleneck. And there, the we are in pretty much the same situation as the last
+update: We need to merge the graphics into the UI, we need to merge the
+back-end into the UI, and we need to add bitcoin payments to the back-end. Then
+we will have a prototype.
+
+Second to that, the other priorities are to 1) find a community to focus on and
+make sure we are building a good product for them, 2) design what the actual
+product will be, which won't necessarily look like reddit and will be [informed
+by the different ways and reasons to pay
+people](http://blog.datt.co/articles/2015-09-08-day-40/), and 3) merge all of
+our business ideas into a The Business Plan ([Ramki has done some work on that
+in this
+document](https://docs.google.com/document/d/1k1bH3woxXLAH6glqEnsNZNyxCxnShVXD7moNsNGME54/edit)).
