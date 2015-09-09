@@ -30,6 +30,7 @@ describe('Main', function () {
         }
         return deferred.promise
       }
+      main.getLocalContent = main.getContent
       main.broadcastMessage = function (msg) {
         return q('broadcasted')
       }
