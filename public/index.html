@@ -120,7 +120,14 @@ var main = datt_node.createMain({
   host: document.location.hostname
 });
 
-main.init();
+main.init()
+.then(function () {
+  console.log('performed main.init() successfully')
+})
+.catch(function (err) {
+  console.log('caught error in main.init(): ' + err);
+})
+.done();
 
 </script>
 </head>
