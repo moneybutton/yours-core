@@ -2,6 +2,7 @@ var q = require('q')
 var gulp = require('gulp')
 var mocha = require('gulp-mocha')
 var karma = require('gulp-karma')
+var through = require('through2')
 var globby = require('globby')
 var path = require('path')
 var fs = require('fs')
@@ -55,12 +56,15 @@ gulp.task('build-bundle', ['build-worker'], function () {
 })
 
 gulp.task('build-tests', ['build-worker'], function () {
-  return q.nfbind(globby)(['./test/*.js']).done(function (entries) {
+  var bundledStream = through()
+  q.nfbind(globby)(['./test/*.js']).done(function (entries) {
     browserify({entries: entries, debug: false})
       .transform(envify)
       .bundle()
+      .pipe(bundledStream)
       .pipe(fs.createWriteStream(path.join(__dirname, 'public', process.env.DATT_NODE_JS_TESTS_FILE)))
   })
+  return bundledStream
 })
 
 gulp.task('test-node', function () {
@@ -92,6 +96,10 @@ gulp.task('test-karma', ['build-karma'], function () {
       server.close()
       process.exit()
     })
+})
+
+gulp.task('watch', function () {
+  gulp.watch(['./lib/*.js', './test/*.js'], ['build-tests'])
 })
 
 gulp.task('default', ['build-bundle', 'build-tests'])
