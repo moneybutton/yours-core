@@ -1,6 +1,6 @@
 /* global it,describe,before,after */
 var should = require('should')
-var ContentStore = require('../lib/contentStore')
+var ContentStore = require('../lib/contentstore')
 var User = require('../lib/user')
 var Content = require('../lib/content')
 var util = require('../lib/util')

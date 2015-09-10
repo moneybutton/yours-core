@@ -2,7 +2,7 @@ var bitcore = require('bitcore')
 var Peer = require('./lib/peer')
 
 var Content = require('./lib/content')
-var ContentStore = require('./lib/contentStore')
+var ContentStore = require('./lib/contentstore')
 var User = require('./lib/user')
 var Message = require('./lib/message')
 var Main = require('./lib/main')
