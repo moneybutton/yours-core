@@ -1,13 +1,12 @@
 Datt P2P Protocol
 =================
 
-There are a lot of decentralized protocols we could leverage to build Datt. The
-goal of this document is to design such a protocol. We may or may not use the
-protocol designed in this document. If it turns out there is another protocol
-that already exists that solves our problem, it would be better to leverage
-that. However, such protocols may either not exist, or may not solve the
-problem we have. This document can serve as a reference for what a protocol
-would need to do to solve our problem.
+The goal of this document is to design a minimalist p2p protocol for the datt
+prototype. If it turns out there is another protocol that already exists that
+solves our problem, it would be better to leverage that. However, such
+protocols may either not exist, or may not solve the problem we have. This
+document can serve as a reference for what a protocol would need to do to solve
+our problem.
 
 Note that this protocol is nothing like bittorrent, and is a lot more like
 bitcoin. This does not describe a protocol intended for use with a DHT. It is
