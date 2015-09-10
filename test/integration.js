@@ -1,4 +1,4 @@
-/* global describe,it */
+/* global before,describe,it */
 /**
  * Integration tests for the browser.
  * TODO: rewrite to work both in node and a browser.
@@ -15,8 +15,8 @@ describe('Integration Tests For Browser (TODO: for node also)', function () {
   // creating databases and establishing network connections takes time
   this.timeout(5000)
 
-  var main1, user1, hashhex1
-  var main2, user2, hashhex2
+  var main1, hashhex1
+  var main2
 
   before(function () {
     // clear our test databases first
@@ -31,6 +31,7 @@ describe('Integration Tests For Browser (TODO: for node also)', function () {
     main1 = datt_node.createMain({
       host: document.location.hostname
     }, 'datt-store-1')
+    should.exist(main1)
 
     return main1.init()
   })
@@ -39,20 +40,17 @@ describe('Integration Tests For Browser (TODO: for node also)', function () {
     main2 = datt_node.createMain({
       host: document.location.hostname
     }, 'datt-store-2')
+    should.exist(main2)
 
     return main2.init()
   })
 
   it('should should authenticate as user 1', function () {
-    return main1.signIn('testuser1', 'testpassword1').then(function () {
-      user1 = main1.user
-    })
+    return main1.signIn('testuser1', 'testpassword1')
   })
 
   it('should should authenticate as user 2', function () {
-    return main2.signIn('testuser2', 'testpassword2').then(function () {
-      user2 = main2.user
-    })
+    return main2.signIn('testuser2', 'testpassword2')
   })
 
   it('should post new content as user 1', function () {
