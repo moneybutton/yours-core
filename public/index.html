@@ -4,14 +4,14 @@
 <script type="text/javascript" src="datt-node.js"></script>
 <script type="text/javascript">
 
-var bitcore = datt_node.bitcore;
-var Peer = datt_node.Peer;
+var bitcore = DattNode.bitcore;
+var Peer = DattNode.Peer;
 
-var Main = datt_node.Main;
-var User = datt_node.User;
-var Message = datt_node.Message;
-var Content = datt_node.Content;
-var logger = datt_node.logger;
+var Main = DattNode.Main;
+var User = DattNode.User;
+var Message = DattNode.Message;
+var Content = DattNode.Content;
+var logger = DattNode.logger;
 
 
 var main = null;
@@ -112,7 +112,7 @@ function whenConnectedToPeer(dataConnection) {
   writeToBody(txt);
 }
 
-var main = datt_node.createMain({
+var main = DattNode.create({
   onOpen: onOpen,
   onConnection: whenConnectedToPeer,
   onPeers: onPeers,

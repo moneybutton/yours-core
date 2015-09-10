@@ -4,7 +4,7 @@
  * TODO: rewrite to work both in node and a browser.
  */
 var should = require('should')
-var datt_node = require('../')
+var DattNode = require('../')
 var PouchDB = require('pouchdb')
 
 describe('Integration Tests For Browser (TODO: for node also)', function () {
@@ -28,7 +28,7 @@ describe('Integration Tests For Browser (TODO: for node also)', function () {
   })
 
   it('should should init 1', function () {
-    main1 = datt_node.createMain({
+    main1 = DattNode.create({
       host: document.location.hostname
     }, 'datt-store-1')
     should.exist(main1)
@@ -37,7 +37,7 @@ describe('Integration Tests For Browser (TODO: for node also)', function () {
   })
 
   it('should should init 2', function () {
-    main2 = datt_node.createMain({
+    main2 = DattNode.create({
       host: document.location.hostname
     }, 'datt-store-2')
     should.exist(main2)

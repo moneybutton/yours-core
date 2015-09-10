@@ -1,25 +1,25 @@
 /* global describe,it */
-var datt_node = require('../index')
+var DattNode = require('../index')
 var Main = require('../lib/main')
 var should = require('should')
 
-describe('datt_node', function () {
+describe('DattNode', function () {
 
   it('should have these components', function () {
-    should.exist(datt_node.Content)
-    should.exist(datt_node.ContentStore)
-    should.exist(datt_node.Main)
-    should.exist(datt_node.Message)
-    should.exist(datt_node.Peer)
-    should.exist(datt_node.User)
-    should.exist(datt_node.bitcore)
-    should.exist(datt_node.logger)
+    should.exist(DattNode.Content)
+    should.exist(DattNode.ContentStore)
+    should.exist(DattNode.Main)
+    should.exist(DattNode.Message)
+    should.exist(DattNode.Peer)
+    should.exist(DattNode.User)
+    should.exist(DattNode.bitcore)
+    should.exist(DattNode.logger)
   })
 
-  describe('@createMain', function () {
+  describe('@create', function () {
 
     it('should make a new "Main"', function () {
-      var main = datt_node.createMain()
+      var main = DattNode.create()
       should(main instanceof Main).equal(true)
     })
 

@@ -19,10 +19,10 @@ module.exports = {
   'logger': logger
 }
 
-module.exports.createMain = function () {
+module.exports.create = function () {
   var main = Object.create(Main.prototype)
   Main.apply(main, arguments)
   return main
 }
 
-global.datt_node = module.exports
+global.DattNode = module.exports
