@@ -2,6 +2,7 @@ Check out the "READ FIRST - Workflows" folder to understand how specific UX feat
 
 If you want to get exact measurements, elements, fonts, colors etc, you can use the source photoshop file located at Image_Mockups/PSD Source File/
 
+Remember, these are just ideas. They need a lot of work to polish them up and make them consistent, but it should be enough to get an idea.
 
 ---------------------------------
 
