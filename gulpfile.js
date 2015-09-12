@@ -1,7 +1,6 @@
 var q = require('q')
 var gulp = require('gulp')
 var mocha = require('gulp-mocha')
-var karma = require('gulp-karma')
 var through = require('through2')
 var globby = require('globby')
 var path = require('path')
@@ -13,7 +12,9 @@ var envify = require('envify')
 // directory, "/", of the http server. karma, however, assumes files are in the
 // "/base/" directory, thus we invented this variable to allow overriding the
 // directory. If you wish to put your javascript somewhere other than root,
-// specify it by setting this environment variable before building.
+// specify it by setting this environment variable before building. karma is
+// disabled for now, but if we ever add it back we will need this. Some people
+// will also need it if they need to put their js in some specific location.
 if (!process.env.DATT_NODE_JS_BASE_URL) {
   process.env.DATT_NODE_JS_BASE_URL = '/'
 }
@@ -81,22 +82,6 @@ gulp.task('build-karma-url', function () {
 })
 
 gulp.task('build-karma', ['build-karma-url', 'build-tests'])
-
-gulp.task('test-karma', ['build-karma'], function () {
-  var server = require(path.join(__dirname, 'bin', 'testapp')).server // runs the PeerJS server
-  return gulp.src([])
-    .pipe(karma({
-      configFile: '.karma.conf.js',
-      action: 'run'
-    }))
-    .on('error', function (err) {
-      throw err
-    })
-    .on('end', function () {
-      server.close()
-      process.exit()
-    })
-})
 
 gulp.task('watch', function () {
   gulp.watch(['./lib/*.js', './test/*.js'], ['build-tests'])
