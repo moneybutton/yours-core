@@ -528,6 +528,7 @@ Resources compiled by John Villar
 
 Bitcoin, lightning network, sidechains
 - [Experimental lightning node in python](https://github.com/hashplex/Lightning)
+- [Amiko pay - something very much like the lightning network implemented in python, distinct from the hashplex one](https://github.com/cornwarecjp/amiko-pay)
 - [Thunder Network - a more near-term solution for our micropayments problem, already implemented in Java](http://thunder.network/)
 - [A fast and scalable network with bitcoin micropayment channels (PDF)](http://www.researchgate.net/profile/Christian_Decker5/publication/277991245_A_Fast_and_Scalable_Payment_Network_with_Bitcoin_Duplex_Micropayment_Channels/links/55780a4e08aeb6d8c01cf2d0.pdf) - not lightning, but similar
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
