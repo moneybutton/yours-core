@@ -1,6 +1,6 @@
 {
   "locals": {
-    "url": "http://localhost:8080",
+    "url": "http://blog.datt.co",
     "name": "Datt Blog",
     "owner": "Datt, Inc.",
     "description": "It's cool when users own their content."
