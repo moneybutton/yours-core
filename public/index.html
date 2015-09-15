@@ -1,161 +1,18 @@
+<!DOCTYPE html>
 <html>
-<head>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-<script type="text/javascript" src="datt-node.js"></script>
-<script type="text/javascript">
-
-var bitcore = DattNode.bitcore;
-var Peer = DattNode.Peer;
-
-var Main = DattNode.Main;
-var User = DattNode.User;
-var Message = DattNode.Message;
-var Content = DattNode.Content;
-var logger = DattNode.logger;
-
-
-var main = null;
-//var peers = new Webcoin.PeerGroup();
-//peers.connect();
-
-
-function writeToBody(txt) {
-  var htmlSnippet = txt + "<br><br>";
-  $("#data").html(htmlSnippet + $("#data").html());
-}
-
-function onOpen() {
-  var txt = "Connected to rendezvous server.";
-  $("#status").html(txt);
-}
-
-function onConnectionData(data, conn) {
-  var htmlSnippet = "<span><strong>Peer '" + conn.peer +"' sent:</strong> " + JSON.stringify(data, null, 4) + "</span>";
-  writeToBody(htmlSnippet);
-  // contentStore.getContent(data).then(function(content) {
-  //   if(content){
-  //     main.broadcastMessage(content);
-  //   }
-  // });
-
-  return false
-}
-
-function mainLogin() {
-  var username = $("#username").val();
-  var password = $("#password").val();
-
-  main.signIn(username, password).then(function() {
-    var user = main.user;
-    logger.debug("main#signIn - callback executed with user: ");
-    logger.debug(user);
-    var txt = "User created with username: '<strong>" + user.username + "</strong>' and address '<strong>" + user.address + "</strong>'.";
-    $("#user").html(txt);
-  }).catch(function(err) {
-    logger.debug('caught error ' + err)
-  });
-
-  return false;
-}
-
-function mainAddContent() {
-  var content = $("#addcontent").val();
-  main.addContent(content).then(function (hashhex) {
-    $("#addcontent").val("");
-    writeToBody("Added " + content + " to storage with hash " + hashhex);
-    main.broadcastMessage("New content: " + hashhex);
-  })
-  return false;
-}
-
-function mainGetContent() {
-  var hash = $("#getcontent").val();
-  main.getContent(hash).then(function (content) {
-    $("#getcontent").val("");
-    writeToBody("<strong>Got content:</strong> " + content.getData());
-
-    var iframe = document.getElementById("contentiframe")
-
-    var rawHtml = content.getData()
-    var html = content.getData()
-
-    var re =/@{content,([0-9,a-f]*)}/g
-
-    var result
-    while(result = re.exec(rawHtml)) {
-      var matchText = result[0];
-      var match = result[1];
-      console.log("Match: " + match + " text " + matchText);
-      (function(m, mt) {
-        main.getContent(m).then(function(piece){
-          var replacer = new RegExp(mt, 'g')
-          var str = piece.getData()
-          console.log("replacing " + mt + " with " + str)
-          html = html.replace(replacer, str)
-          iframe.contentDocument.body.innerHTML = html
-        })
-      })(match, matchText)
-    }
-  }).fail(function(err){
-    console.log("getContent failed: " + err)
-  });
-  return false;
-}
-
-function onPeers(peers) {
-  var txt = "Got peers:<br>" + JSON.stringify(peers, null, 4);
-  $("#peers").html(txt);
-}
-
-function whenConnectedToPeer(dataConnection) {
-  var txt = JSON.stringify(dataConnection, null, 4);
-  writeToBody(txt);
-}
-
-var main = DattNode.create({
-  onOpen: onOpen,
-  onConnection: whenConnectedToPeer,
-  onPeers: onPeers,
-  onConnectionData: onConnectionData,
-  host: document.location.hostname
-});
-
-main.init()
-.then(function () {
-  console.log('performed main.init() successfully')
-})
-.catch(function (err) {
-  console.log('caught error in main.init(): ' + err);
-})
-.done();
-
-</script>
-</head>
-<body>
-  <span>P2P prototyping FTW!</span><br><br>
-  <span id="status"></span><br><br>
-  <span id="peers"></span><br><br>
-  <div id="user">
-    <form id="userform" onsubmit="return mainLogin();" action="return false;">
-      <span>Username:</span><input id="username"/>
-      <span>Password:</span><input id="password" type="password"/>
-      <input type="submit"/>
-    </form>
-  </div>
-  <div id="addContent">
-    <form id="addcontentform" onsubmit="return mainAddContent();" action="return false;">
-      <span>Add content:</span><input id="addcontent"/>
-      <input type="submit"/>
-    </form>
-  </div>
-  <div id="getContent">
-    <form id="getcontentform" onsubmit="return mainGetContent();" action="return false;">
-      <span>Get content:</span><input id="getcontent"/>
-      <input type="submit"/>
-    </form>
-  </div>
-  <br><br>
-  <div id="data"></div>
-  <iframe id="contentiframe"></iframe>
-</body>
+  <head>
+    <title>Mocha</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/mocha/mocha.css" />
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script src="/mocha/mocha.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <script src="./datt-node-tests.js"></script>
+    <script>
+      mocha.run();
+    </script>
+  </body>
 </html>
