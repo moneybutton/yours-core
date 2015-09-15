@@ -44,3 +44,6 @@ writing our own from scratch, which would take a significant amount of time and
 effort. This would almost certainly delay the launch of Datt, unless we could
 somehow find enough developer resources to develop Datt and the payment network
 in parallel, which I think is unlikely.
+
+* [See my summary from co-leading the "Hosting & Infrastructure" roundtable at Scaling Bitcoin](https://gist.github.com/ryanxcharles/b5011eedf96601c7007b)
+* [See my post on the bitcoin-development mailing list about what block size would be necessary for bitcoin to be a global settlement network](http://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-May/008190.html)
