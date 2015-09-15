@@ -1,3 +1,4 @@
+/* globals Ember */
 import DattThing from 'datt-ui/mixins/datt-thing';
 
 export default Ember.Component.extend(DattThing, {

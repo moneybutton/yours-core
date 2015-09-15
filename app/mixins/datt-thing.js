@@ -12,4 +12,4 @@ export default Ember.Mixin.create({
       this.sendAction('down', thing || this.get('thing'));
     }
   }
-})
+});
