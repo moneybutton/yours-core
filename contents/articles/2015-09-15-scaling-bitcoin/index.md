@@ -15,13 +15,13 @@ other in person.
 
 I'm fairly confident the overpowering economic interests of the actors in the
 bitcoin community will determine what happens, which is that the max block size
-will increase, and payment networks networks like the lightning network or
-alternatives like sidechains will also be developed, but slower, and only after
-a max block size increase has happened. The basic reason for this is simple:
-Almost everyone wants more transactions, but lightning and sidechains are much
-harder to develop and a long way from production, and not to mention that they
-don't solve the same problem (they are not as secure or trustless as bitcoin).
-It is easier, safer, and more useful to increase the max block size.
+will increase, and payment networks like the lightning network or alternatives
+like sidechains will also be developed, but slower, and only after a max block
+size increase has happened. The basic reason for this is simple: Almost
+everyone wants more transactions, but lightning and sidechains are much harder
+to develop and a long way from production, and not to mention that they don't
+solve the same problem (they are not as secure or trustless as bitcoin).  It is
+easier, safer, and more useful to increase the max block size.
 
 I could write a lot about the max block size, since it has been an issue the
 entire time I've been involved in bitcoin (since early 2011). However, I don't
