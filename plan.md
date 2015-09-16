@@ -59,12 +59,27 @@ build it. Rather than commit to solutions that we don't actually know will
 work, we value experimentation so that we can learn what to do. We will never
 have all the answers, so we must continue to experiment indefinitely.
 
+## Goal
+
+Our goal is to solve the incentives problem of social media so that users get
+financially rewarded for their work producing, curating and moderating content,
+and companies can earn money not by selling their users' private information
+but by participating in the system as equals. We are doing this by creating a
+web-first, mobile-second decentralized social media app that leverages bitcoin
+for p2p payments.
+
+With most social media apps, the users are the product and the customers are
+advertisers, which is a moral hazard and conflict of interest. With Datt, the
+users are the customers, so there is no moral hazard and no conflict of
+interest.
+
 ## The Product Plan
 
-The purpose of the product plan is to specify what we are building from the
-point-of-view of a user. The product plan does not specify why we are building
-it (see The Community Plan), how to build it (The Technology Plan), or how to
-monetize it (The Business Plan).
+The purpose of the product plan is to specify what we are building and how it
+works from the point-of-view of a user. The product plan does not specify why
+we are building it or who uses it (see The Community Plan), how to build it
+technically (The Technology Plan), or how to monetize it or how to build it
+operationally (The Business Plan).
 
 ### Overview
 
