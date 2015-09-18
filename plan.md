@@ -438,9 +438,54 @@ The purpose of the technology plan is to establish how to achieve our goals at
 a technical level, including our tech stack, protocols, and high-level software
 decisions.
 
-### Technology Stack
+### Basic Technology Outline
+
+Datt is a decentralized content sharing application that integrates bitcoin
+payments. It is important that users can post original content, post comments
+in response to other users' comments, and make payments to other users. The
+payments will probably be voluntary and based on quality content, however there
+are many ways we could integrate payments and we are not yet sure what the best
+way to do that is, so our protocol needs to be flexible to allow payments in
+different circumstances. For instance, we may wish to require a payment of a
+certain amount for downloading content, or we me may want to integrate payments
+in order to post a response. Although we do not need to solve every conceivable
+payment problem in one protocol, our protocol needs to be flexible enough that
+if we decided to add a payments feature or change the way payments work, we do
+not need to rewrite all the software.
+
+We have considered using a DHT to store content or using something more like
+Usenet where the nodes can store all or a subset of content. It is undecided
+what the storage strategy is, although for the time-being we are going with the
+latter. [See this blog post on
+DHTs](http://blog.datt.co/articles/2015-08-26-thoughts-on-dhts/).
+
+### Software
+
+We're building everything in javascript because this is the easiest way to get
+on the most platforms with the fewest lines of code. There are only two issues
+with javascript: It is insecure if done incorrectly, and it is slow for
+cryptography. The first problem can be solved by being very security conscious
+and making use of web crypto. The second problem is solved by using both C++
+cryptography modules in node and web crypto in a browser.
+
+Our repositories are:
+
+* [datt.ui](https://github.com/dattnetwork/datt.ui): a front-end written in
+Ember
+* [datt-node](https://github.com/dattnetwork/datt-node): the back-end written
+in isomorphic javascript (i.e., javascript that runs both in node and a
+browser, including the database and network connections - this is where the
+datt p2p protocol lives)
+* [datt](https://github.com/dattnetwork/datt): a repo that combines the
+back-end and front-end
+
 ### Peer-to-Peer Protocol
-### Other Notes on Software
+
+See p2p.md.
+
+### Database
+
+See database.md.
 
 ## Conclusion
 
