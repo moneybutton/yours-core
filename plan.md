@@ -1,6 +1,15 @@
 The Plan
 ========
 
+* [Introduction](#introduction)
+* [Values](#values)
+* [Goal](#goal)
+* [Product](#product)
+* [Community](#community)
+* [Business](#business)
+* [Technology](#technology)
+* [Conclusion](#conclusion)
+
 ## Introduction
 
 Datt is a product, community, business and technology spawned from turmoil that
@@ -17,6 +26,10 @@ have been discussed and have preliminary plans, but some of the plans have
 logical inconsistencies between them. The purpose of this document is to
 compile all of our plans into one coherent master plan that encompasses the
 entire project.
+
+This plan is based on work by Ryan X. Charles, Paul Salisbury, Dan Elitzer,
+Ramakrishnan A, Bradley Kam, Guillaume Dumas, Willy Bruns, Lisa Cheng, and
+others.
 
 ## Values
 
@@ -73,7 +86,7 @@ advertisers, which is a moral hazard and conflict of interest. With Datt, the
 users are the customers, so there is no moral hazard and no conflict of
 interest.
 
-## The Product Plan
+## Product
 
 The purpose of the product plan is to specify what we are building and how it
 works from the point-of-view of a user. The product plan does not specify why
@@ -140,12 +153,11 @@ product plan modifies the first by adding comments. Users may comment on any
 content they see. Their comment is visible on their own page, with a link back
 to the original content. If the user wishes their content to appear beneath the
 original content, they must pay $0.25, which goes to the author of the content
-along with 20% to the re-poster, and 20% of the remainder to the re-re-poster,
-and so on.
+along with 20% to the re-poster (and other re-posters in a chain).
 
 Like with original content, users can re-post comments. When users re-post, the
-author of the comment gets $0.25, with 20% going to the re-poster, and 20% to
-of the remainder to the re-re-poster and so on.
+author of the comment gets $0.25, with 20% going to the re-poster (and other
+re-posters in a chain).
 
 In this model, users can comment for free, but their comment is only visible on
 their own page. A user can achieve greater visibility by paying to make their
@@ -163,16 +175,40 @@ to re-post someone else's comment and thus give it better visibility.
 We would like to add a notion of sub-communities that are moderated by multiple
 users. 
 
-## The Community Plan
-* Core Community
-* Growth and Marketing
+## Community
 
-## The Business Plan
+The purpose of the community plan is to identify who our users are, how to
+communicate with them, and establishing a strategy to service more users.
+
+[The
+Original
+Article](https://medium.com/@ryanxcharles/fix-reddit-with-bitcoin-7da3f85fb9ba)
+drew interest from three camps of people:
+
+1. Disaffected reddit users
+2. Bitcoin users
+3. Fans of decentralization
+
+These groups consitute our core community at the present time. However, we aim
+to produce a mainstream social media app, which should have many people not in
+these groups. We need to find a way to service our core community while
+expanding outward to to a greater and greater audience until we service every
+person, robot, and alien in the world.
+
+Some key questions are:
+
+1. Should we focus on our core user base upon launch, or should we aim to
+service a larger user base on Day 1?
+2. What other community or communities should we focus on besides the core
+community?
+3. What is our marketing and growth plan to service our target commities?
+
+## Business
 * Profit model
 * Operations
 * Legal
 
-## The Technology Plan
+## Technology
 * Technology Stack
 * Peer-to-Peer Protocol
 
