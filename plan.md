@@ -326,9 +326,111 @@ The purpose of the business plan is identify a strategy for earning money, and
 raising money, the operations of the business and hiring, and a legal strategy.
 
 ### Profit Model
+
+It is common for people to assume that because Datt is decentralized that
+therefore there is no business model. This is not true. I believe some of the
+same business models that work for centralized business can and will work for a
+decentralized business. The only catch is that we are deliberately not trying
+to lock-in our users at a protocol level.
+
+For instance, consider the Amazon Kindle. Amazon executed on the vision of
+digital books by creating the entire market, including the book devices and the
+digital book store. Amazon (almost certainly) attempts to lock-in their users
+by making it very inexpensive to acquire a book device, and very difficult to
+transfer books from the Kindle to a competitor's product.
+
+Datt is different in that it will be significantly easier for users to avoid
+interacting with the company. If they Desire, they can route around the company
+and route through competing service providers, using software that we wrote.
+This would be a huge problem if Datt acted in a manner to anger or infuriate
+our users, who could then leave to competitors while retaining their data and
+connections relatively easily.
+
+Whatever our business strategy is, it cannot rely on our users being locked in.
+Instead, we must rely on moral authority. It is important that our users
+continue to like us, get value from our work, and actually want to pay us. We
+must curate customer loyalty by being really good and likeable. We can also
+make it really easy to pay us, because payments are integrated into the app.
+The customer loyalty problem is primarily a product and community problem.
+
+Assuming our users do indeed like us and are willing to pay us and not
+interested in routing around us and going to our competitors, what is our
+business plan? We have discussed several strategies for earning money at our
+hackathons and in our documents:
+
+1. Be a user of our own app (since users can earn money)
+2. Take a cut of payments that occur on the app
+3. Offer value-added products and services
+
+I believe 1. is by far the best strategy both for being potentially profitable
+and being compatible with all of the other compenents of our project. By being
+a user of our own app and trying to profit that way, we are therefore "eating
+our own dog food" and will be hyper-aware of ways our product and community are
+lacking and will be incentivized to improve our own product not just for our
+users but for ourselves.
+
+The way this would work is severalfold: For one, we are content producers.
+There is a main Datt account that literally posts original content. At first,
+this account would be controlled by one person. We could then expand control to
+more than one person. Ultimately we could add a feature that allows the account
+to be controlled by multiple parties. This is highly aligned with the goal of
+producting communities that can be moderated by multiple individuals. The
+"Datt" user account would become its own community that is moderated by several
+employees of Datt.
+
+Besides being an original author, Datt would also be a curator and moderator of
+content, taking an appropriate cut of payments at each step, in the exact same
+manner as the users of our app. If Datt posts original content, we get 80% of
+the value. If we re-post content, we get 20%. If we re-re-post, we get 20% of
+20%, and so on. Users will also be able to post content directly to the "Datt"
+page, which requires no effort on our part and results in revenue. This will
+work if the "datt" property is highly trafficked. This will be the case if we
+make the homepage of datt.co be the Datt user's home page. i.e., users will
+need to pay the Datt user if they want to post content to the homepage.
+
+It will also be possible to build in a (voluntary) cut of payments to each
+payment that occurs in the app, which the users would be able to turn off if
+they want. However, that is probably not nececssary at first. We can also build
+value-added products and services, such as, say, avatar hosting for $1. Both of
+these strategies are probably less effective than simply using the app
+ourselves, so we should avoid building in those features until a later date
+when we have the resources to do it without distracting from our main focus.
+
+In summary, our business plan is to: 1) Mainain moral authority so the users
+actually want to pay us, 2) Be a content producer, curator, and moderator on
+our own app, thus dog-fooding our app leading a a positive feedback loop where
+we are correcty incentivized to improve the app in a manner that increases both
+our profit and the profit of our users.
+
 ### Raising Money
+
+Ryan X. Charles has been in touch with a number of investors who we can contact
+when we are ready to raise money. The key things to have in place when raising
+money are: 1) Identifying the cofounding team, 2) Having a prototype. Also note
+that YC applications end on Oct. 13, 2015 and LAUNCH applications end on Oct.
+18, 2015.
+
 ### Operations
+
+* Who works for the company?
+* Who doesn't work for the company but the company needs to work with?
+ (open-source contributors, lawyers)
+* What do we do on a daily basis?
+* How do we organize ourselves?
+
 ### Legal
+
+Because our app involves bitcoin payments, which touches on the most highly
+regulated subject (banking), we need to be very clued into the law and be sure
+we are acting legally. Some key notes:
+
+* By keeping things decentralized where we are not in possession of people's
+money and ideally not even involved computationally in relaying the
+transactions, we are arguably not any sort of financial business and therefore
+are not subject to banking or money transmission laws
+* The Bitlicense in New York is so onerous that there may not be any way we can
+follow it, and therefore we may have to exclude residents of New York from
+being able to use our app.
 
 ## Technology
 
