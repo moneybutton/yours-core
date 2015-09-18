@@ -197,8 +197,7 @@ The purpose of the community plan is to identify who our users are, how to
 communicate with them, and finding and executing a strategy to service more
 users.
 
-[The
-Original
+[The Original
 Article](https://medium.com/@ryanxcharles/fix-reddit-with-bitcoin-7da3f85fb9ba)
 drew interest from three camps of people:
 
@@ -220,18 +219,126 @@ service a larger user base on Day 1?
 community?
 3. What is our marketing and growth plan to service our target commities?
 
+### Core Users
+
+We are building something that is technically sophisticated and it will be a
+big challenge to make it easy to use. In some sense, our entire mission is to
+make the same technology easier and easier to use over time. Since our
+technology is not likely to be easy for normal people to use on Day 1, we
+should probably be sure we are at least servicing our core users before trying
+to expand in to larger markets. If our core users can't use the technology
+first, than we have a huge problem that we will need to fix before we can
+expand.
+
+Furthermore, it is remarkable that we even have core users at this stage,
+considering we do not even have a prototype. When we launch, we will be able to
+gather hundreds or thousands of core users with almost no effort, and all of
+these users are disaffected reddit users, bitcoiners, and fans of
+decentralization. If we attempt to start with a different community other than
+these core users, we would need to be sure we can get the same kickstart that
+we would get from these potentially devoted users, which would be difficult.
+
+And lastly, because we are integrated bitcoin payments, we have a significant
+bootstrapping problem around how to get bitcoin to the users. Appealing to
+bitcoin users on Day 1 ensures that we will have some users who at least
+possess bitcoin and are capable of sending that bitcoin to other users (exactly
+how to encourage them to actually send bitcoin falls under "product").
+
+In summary, it is valuable at launch to leverage our existing core users. We
+should be sure whatever product we create services them well. Although over the
+long-term these users will constitute only a minority of our user base, they
+will be very important at the start and probably for the duration of our
+project. At the same time, we will need to be sure we have a clear plan for
+expanding outward from this core user base, since it is not large enough to
+sustain our project.
+
+### Initial Growth Step
+
+Our most powerful ally for growth is the network effect if we can leverage it
+correctly. In other words, our users need to want to tell their friends to join
+Datt. As our users tell more people to join, we will have the ideal outward
+growth we desire.
+
+In order to leverage the network effect, first let us assume we able to solve
+the product problem of creating incentives to encourage our users to bring on
+other users. We will need to make sure we develop features that make it
+possible for our users to bring on board an outwardly growing community of more
+users. For instance, consider two directions we could take:
+
+* The independent music community
+* The finance community
+
+An obvious feature we could develop for the independent music community is to
+integrate audio so that users do not have to click out of our app to hear
+music, but can hear music from within the app. Contrast that with what type of
+feature we would want to build for finance: Perhaps we could integrate
+automatic posting of financial news.
+
+The music feature and finance feature are completely different and we probably
+couldn't build both at the same time. So which feature should we build? This
+depends entirely on who our users are and what direction we should aim to go in
+for our growth plan. Without having more information, both music and finance
+seem like valid directions. However, I would argue that finance is probably
+closer to our core users, since the bitcoin community has some overlap with
+finance, while music has no overlap with our current core users, therefore the
+network effect would probably be stronger if we attempted to service finance.
+This indicates we should focus our efforts on features more appropriate for
+finance rather than music.
+
+Note that this discussion is hypothetical - upon launch, we might find data
+indicating that we have more overlap with music than finance, in which case we
+may choose to focus on that community instead. The point is that whatever
+direction we go in needs to be guided by where we are right now, i.e. who our
+current users are.
+
+An array of communities to service beyond our core users that movies in the
+direction of mainstream would be the following:
+
+* Technology - leverages bitcoin, decentralization communities
+* Science - leverages bitcoin, decentralization communities
+* News - Top community on Voat, leverages disaffected reddit users
+
+In order to service these communities, we need to identify what features we
+should develop that are appropriate for these communities, as well as identify
+marketing plans to encourage the growth of these communities on our platform.
+
+### Long-Term Community Plan
+
+Ultimately, Datt should be a mainstream app and a household name. This is
+(obviously) a non-trivial undertaking - very few social media apps have
+achieved this level of adoption. I would argue that none, including Facebook,
+have fully achieved the potential of social media. Being decentralized and
+focused on solving the incentives problem, I believe Datt is well-directioned
+to target global usage.
+
+There are some key points to keep in mind as we move in that direction. We need
+to avoid being locked into small markets, such as bitcoin. Although the bitcoin
+community is critical for our early and long-term success, if we attempt to
+service only the bitcoin community, we are doomed never to achieve our full
+potential. Even if bitcoin itself achieves global adoption, it will still be
+the case that most people on the planet do not actually care about bitcoin and
+aren't interested in participating in the bitcoin community. To service those
+users, we need to be sure we are not locked-in to bitcoin.
+
 ## Business
 
-The purpose of the business plan is identify a strategy for earning money and
+The purpose of the business plan is identify a strategy for earning money, and
 raising money, the operations of the business and hiring, and a legal strategy.
 
-* Profit model
-* Operations
-* Legal
+### Profit Model
+### Raising Money
+### Operations
+### Legal
 
 ## Technology
-* Technology Stack
-* Peer-to-Peer Protocol
+
+The purpose of the technology plan is to establish how to achieve our goals at
+a technical level, including our tech stack, protocols, and high-level software
+decisions.
+
+### Technology Stack
+### Peer-to-Peer Protocol
+### Other Notes on Software
 
 ## Conclusion
 
