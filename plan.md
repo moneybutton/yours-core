@@ -489,4 +489,13 @@ See database.md.
 
 ## Conclusion
 
+Our goal is to create an application that correctly incentizes authoring
+original content, curating content, and moderating content with p2p payments.
+We will start with a core community of disaffected reddit users, bitcoiners,
+and fans of decentralization, and expand outward in a logical manner towards a
+mainstream audience. We will make money by using the app ourselves as a content
+producer, curator, and moderator. Our technology is based on javascript to
+enable reaching the most users with the easiest-to-use application with the
+littlest engineering effort.
+
 ## References
