@@ -1,5 +1,5 @@
-The Plan
-========
+The Plan (alpha)
+================
 
 * [Introduction](#introduction)
 * [Values](#values)
