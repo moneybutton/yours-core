@@ -162,6 +162,12 @@ footer .copy, footer .copy a {
   color: #8e8e8e;
 }
 
+footer .copy a.button {
+  font-size: 1.2em;
+  padding: 8px;
+  text-decoration: none;
+}
+
 /* article */
 
 .article {

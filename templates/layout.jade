@@ -12,6 +12,7 @@ html(lang='en')
           = locals.name
       link(rel='alternate', href='/feed.xml', type='application/rss+xml', title=locals.description)
       link(rel='stylesheet', href=contents.css['main.css'].url)
+      link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css")
   body(class=bodyclass)
     header.header
       div.content-wrap
@@ -31,6 +32,13 @@ html(lang='en')
           section.about
             !=contents['about.md'].html
           section.copy
+            p
+              a.button(href='https://twitter.com/dattnetwork' target='_blank') 
+                i.fa.fa-twitter
+                |  twitter
+              a.button(href='https://github.com/dattnetwork' target='_blank') 
+                i.fa.fa-github
+                |  github
             p &copy; #{ new Date().getFullYear() } #{ locals.owner } &mdash; powered by&nbsp;
               a(href='https://github.com/jnordberg/wintersmith') Wintersmith
               //- please leave the "powered by" if you use the design
