@@ -89,10 +89,7 @@ interest.
 ## Product
 
 The purpose of the product plan is to specify what we are building and how it
-works from the point-of-view of a user. The product plan does not specify why
-we are building it or who uses it (see The Community Plan), how to build it
-technically (The Technology Plan), or how to monetize it or how to build it
-operationally (The Business Plan).
+works from the point-of-view of a user.
 
 ### Overview
 
@@ -173,12 +170,32 @@ to re-post someone else's comment and thus give it better visibility.
 ### Product Plan 3
 
 We would like to add a notion of sub-communities that are moderated by multiple
-users. 
+users. We will adopt the notion of a "collective" invented by go1dfish. A
+collective is a combination of a label and a set of moderators, which can be
+chosen by a user. For instance, a user may post content with the label "music".
+There are no objective moderators of the "music" label. However, a user (say,
+User A) may subscribe to a collective for the music label moderated by another
+user (say, User B). When User A browses this collective, they see the posts
+that were either authored or curated by User B. User B can also remove content
+from the collective. A user who is a member of a collective is a moderator.
+
+Collectives work exactly like a user's individual page in the sense that the
+moderator has to pay people to re-post content to the collective, the moderator
+gets paid when people post directly to the collective, the moderator has the
+final say over what content appears on the collective (i.e. they can delete
+posts on the collective).
+
+Collectives are similar in spirit to subreddits on reddit, but are designed to
+solve the problem of moderators that one or more users disagree with.
+Collectives are "subjective" in the sense that a user may see different content
+under the "music" label than someone else, because they are browsing different
+collectives.
 
 ## Community
 
 The purpose of the community plan is to identify who our users are, how to
-communicate with them, and establishing a strategy to service more users.
+communicate with them, and finding and executing a strategy to service more
+users.
 
 [The
 Original
@@ -204,6 +221,10 @@ community?
 3. What is our marketing and growth plan to service our target commities?
 
 ## Business
+
+The purpose of the business plan is identify a strategy for earning money and
+raising money, the operations of the business and hiring, and a legal strategy.
+
 * Profit model
 * Operations
 * Legal
