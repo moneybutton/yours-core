@@ -24,7 +24,7 @@ pretty much everyone working on the project should agree with. It will be most
 useful for educating prospective collaborators about what we are building and
 helping to guide them in choosing what to work on. It should also be a
 collaborative document in the sense that I shouldn't be the only person writing
-it - so please either push minor changes or issues pull requests for major
+it - so please either push minor changes or issue pull requests for major
 changes.
 
 Note that the master plan is not complete and is intended to evolve with time.
