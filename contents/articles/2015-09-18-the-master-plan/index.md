@@ -41,7 +41,7 @@ launch.
 
 Other status updates:
 * Chris pushed some new mockups to
-[dattmedia](https://github.com/dattnetwork/dattmedia)
+[dattmedia](https://github.com/dattnetwork/dattmedia).
 * Over the past two weeks I pushed some minor changes to
 [datt-node](https://github.com/dattnetwork/datt-node), however we still do
 not have a timeline for a prototype.
