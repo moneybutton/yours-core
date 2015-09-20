@@ -5,5 +5,5 @@ node_modules
 /coverage/*
 npm-debug.log
 *~
-public/datt-*.js
-public/tests.js
+browser/datt-*.js
+browser/tests.js
