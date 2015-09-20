@@ -1,0 +1,11 @@
+{
+  "name": "datt-react",
+  "version": "0.0.1",
+  "description": "React front-end for datt.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
