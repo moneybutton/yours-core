@@ -1,9 +1,22 @@
 var React = require('react')
 
 var StatusBox = React.createClass({
+  getInitialState: function () {
+    return {
+      status: 'uninitialized'
+    }
+  },
+  componentDidMount: function () {
+    // TODO: Actually initialized dattnode
+    setTimeout(function () {
+      this.setState({status: 'initialized'})
+    }.bind(this), 1000)
+  },
   render: function () {
     return (
-      <p>dattnode has an unknown status</p>
+      <p>(fake) status of dattnode: {this.state.status}<br/>
+      name: {this.props.propname}
+      </p>
     )
   }
 })
