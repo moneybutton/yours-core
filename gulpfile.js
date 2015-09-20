@@ -23,47 +23,26 @@ if (!process.env.DATT_NODE_JS_BUNDLE_FILE) {
   process.env.DATT_NODE_JS_BUNDLE_FILE = 'datt-node.js'
 }
 
-if (!process.env.DATT_NODE_JS_WORKER_FILE) {
-  process.env.DATT_NODE_JS_WORKER_FILE = 'datt-node-worker.js'
-}
-
-if (!process.env.DATT_NODE_JS_WORKERPOOL_FILE) {
-  process.env.DATT_NODE_JS_WORKERPOOL_FILE = 'datt-node-workerpool.js'
-}
-
 if (!process.env.DATT_NODE_JS_TESTS_FILE) {
   process.env.DATT_NODE_JS_TESTS_FILE = 'datt-node-tests.js'
 }
 
-gulp.task('build-workerpool', function () {
-  return fs.createReadStream(path.join(__dirname, 'node_modules', 'workerpool', 'dist', 'workerpool.js'))
-    .pipe(fs.createWriteStream(path.join(__dirname, 'public', process.env.DATT_NODE_JS_WORKERPOOL_FILE)))
-})
-
-gulp.task('build-worker', ['build-workerpool'], function () {
+gulp.task('build-bundle', function () {
   return browserify({debug: false})
     .transform(envify)
-    .require(require.resolve('./lib/worker.js'), {entry: true})
+    .require(require.resolve('./lib/index.js'), {entry: true})
     .bundle()
-    .pipe(fs.createWriteStream(path.join(__dirname, 'public', process.env.DATT_NODE_JS_WORKER_FILE)))
+    .pipe(fs.createWriteStream(path.join(__dirname, 'browser', process.env.DATT_NODE_JS_BUNDLE_FILE)))
 })
 
-gulp.task('build-bundle', ['build-worker'], function () {
-  return browserify({debug: false})
-    .transform(envify)
-    .require(require.resolve('./index.js'), {entry: true})
-    .bundle()
-    .pipe(fs.createWriteStream(path.join(__dirname, 'public', process.env.DATT_NODE_JS_BUNDLE_FILE)))
-})
-
-gulp.task('build-tests', ['build-worker'], function () {
+gulp.task('build-tests', function () {
   var bundledStream = through()
   q.nfbind(globby)(['./test/*.js']).done(function (entries) {
     browserify({entries: entries, debug: false})
       .transform(envify)
       .bundle()
       .pipe(bundledStream)
-      .pipe(fs.createWriteStream(path.join(__dirname, 'public', process.env.DATT_NODE_JS_TESTS_FILE)))
+      .pipe(fs.createWriteStream(path.join(__dirname, 'browser', process.env.DATT_NODE_JS_TESTS_FILE)))
   })
   return bundledStream
 })

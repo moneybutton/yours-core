@@ -7,7 +7,8 @@
     "build": "./node_modules/.bin/gulp",
     "test": "npm run test-node",
     "test-node": "./node_modules/.bin/gulp test-node",
-    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha"
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
+    "standard": "./node_modules/.bin/standard *.js lib/*.js bin/*.js test/*.js"
   },
   "contributors": [
     {
@@ -66,23 +67,16 @@
   "author": "Datt Developers <developers@datt.co>",
   "license": "MIT",
   "engines": {
-    "node": ">= 0.12.0"
+    "node": ">= 4.0.0"
   },
   "dependencies": {
-    "bitcore": "=0.13.1",
-    "bitcore-mnemonic": "^0.13.2",
-    "bn.js": "^2.0.4",
+    "fullnode": "^0.10.0",
     "express": "^4.13.3",
     "mocha": "^2.2.5",
-    "peer": "^0.2.8",
-    "peerjs": "^0.3.14",
     "pouchdb": "^4.0.1",
     "pouchdb-find": "^0.3.5",
     "q": "^1.4.1",
-    "should": "^7.0.3",
-    "underscore": "^1.8.3",
-    "winston": "^1.0.1",
-    "workerpool": "^1.0.0"
+    "should": "^7.0.3"
   },
   "devDependencies": {
     "browserify": "^11.0.1",
