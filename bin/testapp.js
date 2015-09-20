@@ -6,7 +6,7 @@ var express = require('express')
 var path = require('path')
 var app = express()
 
-app.use(express.static(path.join(__dirname, '../browser')))
+app.use(express.static(path.join(__dirname, '../build')))
 app.use(express.static(path.join(__dirname, '../node_modules')))
 
 var server = app.listen(3000, function () {
