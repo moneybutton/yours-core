@@ -46,9 +46,11 @@ gulp.task('build-tests', function () {
       .add(es6ify.runtime)
       .transform(envify)
       .transform(es6ify.configure(/^(?!.*node_modules(?!\/fullnode\/lib))+.+\.js$/))
+
     for (let file of entries) {
-      b.add(file);
+      b.add(file)
     }
+
     b.bundle()
       .pipe(bundledStream)
       .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_NODE_JS_TESTS_FILE)))
