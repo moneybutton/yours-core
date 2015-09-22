@@ -1,19 +1,20 @@
 /* global it,describe */
-var should = require('should')
-var q = require('q')
-var Privkey = require('fullnode/lib/privkey')
-var Pubkey = require('fullnode/lib/pubkey')
-var BIP32 = require('fullnode/lib/bip32')
-var Hash = require('fullnode/lib/hash')
-var Address = require('fullnode/lib/address')
-var Keypair = require('fullnode/lib/keypair')
-var ECDSA = require('fullnode/lib/ecdsa')
+'use strict'
+let should = require('should')
+let q = require('q')
+let Privkey = require('fullnode/lib/privkey')
+let Pubkey = require('fullnode/lib/pubkey')
+let BIP32 = require('fullnode/lib/bip32')
+let Hash = require('fullnode/lib/hash')
+let Address = require('fullnode/lib/address')
+let Keypair = require('fullnode/lib/keypair')
+let ECDSA = require('fullnode/lib/ecdsa')
 
-var AsyncCrypto = require('../lib/asynccrypto')
-var workerpool = require('workerpool')
+let AsyncCrypto = require('../lib/asynccrypto')
+let workerpool = require('workerpool')
 
 describe('AsyncCrypto', function () {
-  var databuf = new Buffer(50)
+  let databuf = new Buffer(50)
   databuf.fill(0)
 
   describe('AsyncCrypto', function () {
@@ -23,7 +24,7 @@ describe('AsyncCrypto', function () {
       should.exist(AsyncCrypto.pubkeyFromPrivkey)
       should.exist(AsyncCrypto.addressFromPubkey)
       should.exist(AsyncCrypto.sign)
-      var asyncCrypto = new AsyncCrypto()
+      let asyncCrypto = new AsyncCrypto()
       should.exist(asyncCrypto)
       should.exist(asyncCrypto.sha256)
       should.exist(asyncCrypto.pubkeyFromPrivkey)
@@ -32,17 +33,17 @@ describe('AsyncCrypto', function () {
     })
 
     it('should share the same default worker pool', function () {
-      var asyncCrypto = new AsyncCrypto()
-      var asyncCrypto2 = new AsyncCrypto()
+      let asyncCrypto = new AsyncCrypto()
+      let asyncCrypto2 = new AsyncCrypto()
       asyncCrypto2.pool.should.equal(asyncCrypto.pool)
 
-      var pool
+      let pool
       if (!process.browser) {
         pool = workerpool.pool(__dirname + '/worker.js')
       } else {
         pool = workerpool.pool(process.env.DATT_NODE_JS_BASE_URL + process.env.DATT_NODE_JS_WORKER_FILE)
       }
-      var asyncCrypto3 = new AsyncCrypto(pool)
+      let asyncCrypto3 = new AsyncCrypto(pool)
       asyncCrypto3.pool.should.not.equal(asyncCrypto.pool)
       asyncCrypto3.pool.should.equal(pool)
     })
@@ -58,7 +59,7 @@ describe('AsyncCrypto', function () {
 
   describe('@pubkeyFromPrivkey', function () {
     it('should compute the same as fullnode', function () {
-      var privkey = Privkey().fromRandom()
+      let privkey = Privkey().fromRandom()
       return AsyncCrypto.pubkeyFromPrivkey(privkey).then(function (pubkey) {
         pubkey.toString().should.equal(Pubkey().fromPrivkey(privkey).toString())
       })
@@ -67,8 +68,8 @@ describe('AsyncCrypto', function () {
 
   describe('@addressFromPubkey', function () {
     it('should compute the same as fullnode', function () {
-      var privkey = Privkey().fromRandom()
-      var pubkey = Pubkey().fromPrivkey(privkey)
+      let privkey = Privkey().fromRandom()
+      let pubkey = Pubkey().fromPrivkey(privkey)
       return AsyncCrypto.addressFromPubkey(pubkey).then(function (address) {
         address.toString().should.equal(Address().fromPubkey(pubkey).toString())
       })
@@ -77,7 +78,7 @@ describe('AsyncCrypto', function () {
 
   describe('@xkeysFromSeed', function () {
     it('should derive new mnemonic, xprv, xpub', function () {
-      var seedbuf = new Buffer(128 / 8)
+      let seedbuf = new Buffer(128 / 8)
       seedbuf.fill(0)
       return AsyncCrypto.xkeysFromSeed(seedbuf).then(function (obj) {
         obj.mnemonic.should.equal('abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about')
@@ -89,10 +90,10 @@ describe('AsyncCrypto', function () {
 
   describe('@deriveXkeysFromXprv', function () {
     it('should derive new xprv, xpub, address', function () {
-      var seedbuf = new Buffer(128 / 8)
+      let seedbuf = new Buffer(128 / 8)
       seedbuf.fill(0)
-      var xprv = BIP32().fromSeed(seedbuf)
-      var path = "m/44'/0'/0'/0/0"
+      let xprv = BIP32().fromSeed(seedbuf)
+      let path = "m/44'/0'/0'/0/0"
       return AsyncCrypto.deriveXkeysFromXprv(xprv, path).then(function (obj) {
         obj.xprv.toString().should.equal('xprvA4EMaq49eKGKGK2k3kAsiqTowWrNuidQTx5DaYm669TjJUtsEARurRTwXiP1PXsNkxL4pLijwktqb9gSWHccdm92nKDKznNUCSKwvktQLp2')
         obj.xpub.toString().should.equal('xpub6HDhzLb3UgpcUo7D9mht5yQYVYgsKBMFqAzpNwAheUziBHE1mhkAQDnRNyTArZsiyczWpmchy1H6nEzCeLpa7Xm5BGxpbHRP2dKKUR3puTv')
@@ -104,10 +105,10 @@ describe('AsyncCrypto', function () {
   describe('ECDSA', function () {
     describe('@sign', function () {
       it('should compute the same as bitcore', function () {
-        var privkey = Privkey().fromRandom()
-        var hashbuf = Hash.sha256(databuf)
+        let privkey = Privkey().fromRandom()
+        let hashbuf = Hash.sha256(databuf)
         return AsyncCrypto.sign(hashbuf, privkey, 'big').then(function (sig) {
-          var keypair = Keypair().fromPrivkey(privkey)
+          let keypair = Keypair().fromPrivkey(privkey)
           sig.toString().should.equal(ECDSA.sign(hashbuf, keypair, 'big').toString())
         })
       })
@@ -115,9 +116,9 @@ describe('AsyncCrypto', function () {
 
     describe('@verifySignature', function () {
       it('should return true for a valid signature', function () {
-        var hashbuf = Hash.sha256(databuf)
-        var privkey = Privkey().fromRandom()
-        var pubkey = Pubkey().fromPrivkey(privkey)
+        let hashbuf = Hash.sha256(databuf)
+        let privkey = Privkey().fromRandom()
+        let pubkey = Pubkey().fromPrivkey(privkey)
         return AsyncCrypto.sign(hashbuf, privkey, 'big').then(function (sig) {
           return AsyncCrypto.verifySignature(hashbuf, sig, pubkey)
         }).then(function (verified) {
@@ -129,11 +130,11 @@ describe('AsyncCrypto', function () {
       })
 
       it('should return false for an invalid signature', function () {
-        var hashbuf = Hash.sha256(databuf)
-        var privkey = Privkey().fromRandom()
+        let hashbuf = Hash.sha256(databuf)
+        let privkey = Privkey().fromRandom()
 
-        var otherPrivkey = Privkey().fromRandom()
-        var otherPubkey = Pubkey().fromPrivkey(otherPrivkey)
+        let otherPrivkey = Privkey().fromRandom()
+        let otherPubkey = Pubkey().fromPrivkey(otherPrivkey)
 
         return AsyncCrypto.sign(hashbuf, privkey, 'big').then(function (sig) {
           return AsyncCrypto.verifySignature(hashbuf, sig, otherPubkey)
@@ -146,9 +147,9 @@ describe('AsyncCrypto', function () {
       })
 
       it('should reject the promise if any arguments are missing, null, or undefined', function () {
-        var hashbuf = Hash.sha256(databuf)
-        var privkey = Privkey().fromRandom()
-        var pubkey = Pubkey().fromPrivkey(privkey)
+        let hashbuf = Hash.sha256(databuf)
+        let privkey = Privkey().fromRandom()
+        let pubkey = Pubkey().fromPrivkey(privkey)
 
         return AsyncCrypto.sign(hashbuf, privkey, 'big').then(function (sig) {
           return q.allSettled([
