@@ -1,24 +1,27 @@
+var DattNode = require('datt-node')
 var React = require('react')
 
-var StatusBox = React.createClass({
+var dattnode // global dattnode application - the p2p/db/logic of datt
+
+var Index = React.createClass({
   getInitialState: function () {
     return {
       status: 'uninitialized'
     }
   },
   componentDidMount: function () {
-    // TODO: Actually initialized dattnode
-    setTimeout(function () {
+    dattnode = DattNode.create()
+    dattnode.init().then(function () {
       this.setState({status: 'initialized'})
-    }.bind(this), 1000)
+    }.bind(this))
   },
   render: function () {
     return (
-      <p>(fake) status of dattnode: {this.state.status}<br/>
+      <p>status of dattnode: {this.state.status}<br/>
       name: {this.props.propname}
       </p>
     )
   }
 })
 
-module.exports = StatusBox
+module.exports = Index
