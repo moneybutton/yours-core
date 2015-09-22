@@ -71,7 +71,7 @@
   },
   "dependencies": {
     "express": "^4.13.3",
-    "fullnode": "^0.10.0",
+    "fullnode": "git://github.com/ryanxcharles/fullnode.git",
     "mocha": "^2.2.5",
     "pouchdb": "^4.0.1",
     "pouchdb-find": "^0.3.5",
@@ -83,7 +83,7 @@
     "babelify": "^6.3.0",
     "browserify": "^11.0.1",
     "envify": "^3.4.0",
-    "globby": "^2.1.0",
+    "globby": "^3.0.1",
     "gulp": "^3.9.0",
     "gulp-browserify": "^0.5.1",
     "gulp-mocha": "^2.1.3",
