@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var express = require('express')
 var browserify = require('browserify')
 var React = require('react')
