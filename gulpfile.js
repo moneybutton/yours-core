@@ -3,7 +3,7 @@ let q = require('q')
 let gulp = require('gulp')
 let mocha = require('gulp-mocha')
 let through = require('through2')
-let globby = require('globby')
+let glob = require('glob')
 let path = require('path')
 let fs = require('fs')
 let browserify = require('browserify')
@@ -67,21 +67,20 @@ gulp.task('build-bundle', ['build-worker'], function () {
 })
 
 gulp.task('build-tests', ['build-worker'], function () {
-  let bundledStream = through()
-  q.nfbind(globby)(['./test/*.js']).done(function (entries) {
-    let b = browserify({debug: false})
-      .transform(envify)
-      .transform(babelify)
-
-    for (let file of entries) {
-      b.add(file)
-    }
-
-    b.bundle()
-      .pipe(bundledStream)
-      .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_NODE_JS_TESTS_FILE)))
+  return new Promise(function (resolve, reject) {
+    glob('./test/**/*.js', {}, function (err, files) {
+      let b = browserify({debug: true})
+        .transform(envify)
+        .transform(babelify)
+      for (let file of files) {
+        b.add(file)
+      }
+      b.bundle()
+        .on('error', function (err) {reject(err);})
+        .on('end', function () {resolve();})
+        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_NODE_JS_TESTS_FILE)))
+    })
   })
-  return bundledStream
 })
 
 gulp.task('test-node', function () {
