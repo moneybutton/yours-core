@@ -4,10 +4,12 @@ let DB = require('../lib/db')
 let should = require('should')
 
 describe('DB', function () {
+  let db
+
   it('should open a database', function () {
     let name = 'testdatabase'
-    let db = DB(name)
-    return db.initialize().info().then(function (info) {
+    db = DB(name)
+    return db.init().then(function (info) {
       should.exist(info)
     })
   })
