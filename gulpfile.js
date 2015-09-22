@@ -8,7 +8,7 @@ let path = require('path')
 let fs = require('fs')
 let browserify = require('browserify')
 let envify = require('envify')
-let es6ify = require('es6ify')
+let babelify = require('babelify')
 
 // By default, we assume browser-loaded javascript is served from the root
 // directory, "/", of the http server. karma, however, assumes files are in the
@@ -25,27 +25,53 @@ if (!process.env.DATT_NODE_JS_BUNDLE_FILE) {
   process.env.DATT_NODE_JS_BUNDLE_FILE = 'datt-node.js'
 }
 
+if (!process.env.DATT_NODE_JS_WORKER_FILE) {
+  process.env.DATT_NODE_JS_WORKER_FILE = 'datt-node-worker.js'
+}
+
+if (!process.env.DATT_NODE_JS_WORKERPOOL_FILE) {
+  process.env.DATT_NODE_JS_WORKERPOOL_FILE = 'datt-node-workerpool.js'
+}
+
 if (!process.env.DATT_NODE_JS_TESTS_FILE) {
   process.env.DATT_NODE_JS_TESTS_FILE = 'datt-node-tests.js'
 }
 
-gulp.task('build-bundle', function () {
+gulp.task('build-workerpool', function () {
+  return fs.createReadStream(path.join(__dirname, 'node_modules', 'workerpool', 'dist', 'workerpool.js'))
+    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_NODE_JS_WORKERPOOL_FILE)))
+})
+
+gulp.task('build-worker', ['build-workerpool'], function () {
   return browserify({debug: false})
-    .add(es6ify.runtime)
+    // The polyfill needs to be included exactly once per page. We put it in
+    // the worker and in the bundle.
+    .add(require.resolve('babelify/polyfill'))
     .transform(envify)
-    .transform(es6ify.configure(/^(?!.*node_modules(?!\/fullnode\/lib))+.+\.js$/))
+    .transform(babelify)
+    .add(require.resolve('./lib/worker.js'), {entry: true})
+    .bundle()
+    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_NODE_JS_WORKER_FILE)))
+})
+
+gulp.task('build-bundle', ['build-worker'], function () {
+  return browserify({debug: false})
+    // The polyfill needs to be included exactly once per page. We put it in
+    // the worker and in the bundle.
+    .add(require.resolve('babelify/polyfill'))
+    .transform(envify)
+    .transform(babelify)
     .require(require.resolve('./lib/index.js'), {entry: true})
     .bundle()
     .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_NODE_JS_BUNDLE_FILE)))
 })
 
-gulp.task('build-tests', function () {
+gulp.task('build-tests', ['build-worker'], function () {
   let bundledStream = through()
   q.nfbind(globby)(['./test/*.js']).done(function (entries) {
     let b = browserify({debug: false})
-      .add(es6ify.runtime)
       .transform(envify)
-      .transform(es6ify.configure(/^(?!.*node_modules(?!\/fullnode\/lib))+.+\.js$/))
+      .transform(babelify)
 
     for (let file of entries) {
       b.add(file)
