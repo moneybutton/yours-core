@@ -1,8 +1,6 @@
 'use strict'
-let q = require('q')
 let gulp = require('gulp')
 let mocha = require('gulp-mocha')
-let through = require('through2')
 let glob = require('glob')
 let path = require('path')
 let fs = require('fs')
@@ -69,6 +67,10 @@ gulp.task('build-bundle', ['build-worker'], function () {
 gulp.task('build-tests', ['build-worker'], function () {
   return new Promise(function (resolve, reject) {
     glob('./test/**/*.js', {}, function (err, files) {
+      if (err) {
+        reject(err)
+        return
+      }
       let b = browserify({debug: true})
         .transform(envify)
         .transform(babelify)
@@ -76,8 +78,8 @@ gulp.task('build-tests', ['build-worker'], function () {
         b.add(file)
       }
       b.bundle()
-        .on('error', function (err) {reject(err);})
-        .on('end', function () {resolve();})
+        .on('error', function (err) { reject(err) })
+        .on('end', function () { resolve() })
         .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_NODE_JS_TESTS_FILE)))
     })
   })
