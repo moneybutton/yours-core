@@ -558,6 +558,7 @@ Articles and Links
 - http://valme.io/c/gettingstarted/faq/yqqqs/whats-a-sponsored-account (related to allowing mods to change the price of content)
 - http://valme.io/c/gettingstarted/faq/7mqqs/valme-transaction-costs (related to different transaction fees for different actions)
 - http://valme.io/c/gettingstarted/faq/5qqqs/whats-a-modqueue-what-are-moderators-mods (related to flagging/downvote brigades)
+- [RedHat stance on software patents](http://www.redhat.com/legal/patent_policy.html)
 
 ## Brainstorms and thoughts
 
