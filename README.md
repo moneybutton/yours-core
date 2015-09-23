@@ -11,7 +11,7 @@ like, but it has not been implemented yet.
 ```
 var config = {rendezvous_server, db_name}
 
-var dattnode = new DattNode(config)
+var dattnode = DattNode.create(config)
 
 dattnode.init().then()
 
