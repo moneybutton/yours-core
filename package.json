@@ -1,7 +1,7 @@
 {
   "name": "datt",
   "version": "0.0.2",
-  "description": "Community with aligned incentives.",
+  "description": "A community with aligned incentives.",
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/gulp",
@@ -68,6 +68,7 @@
     "pouchdb-find": "^0.3.5",
     "q": "^1.4.1",
     "react": "^0.13.3",
+    "reactify": "^1.1.1",
     "workerpool": "^1.0.0"
   },
   "devDependencies": {

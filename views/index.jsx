@@ -1,5 +1,5 @@
+/* global DattNode */
 'use strict'
-let DattNode = require('../lib')
 let React = require('react')
 
 let dattnode // global dattnode application - the p2p/db/logic of datt
@@ -12,10 +12,8 @@ let Index = React.createClass({
     }
   },
   componentDidMount: function () {
-    console.log('before initializing dattnode')
     dattnode = DattNode.create()
     dattnode.init().then(function () {
-      console.log('after initializing dattnode')
       this.setState({
         status: 'initialized',
         mnemonic: dattnode.user.mnemonic

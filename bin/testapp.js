@@ -12,7 +12,8 @@ app.use(express.static(path.join(__dirname, '../node_modules')))
 var server = app.listen(3000, function () {
   var host = server.address().address
   var port = server.address().port
-  console.log('Run the mocha tests at http://%s:%s/', host, port)
+  console.log('View the app at http://%s:%s/', host, port)
+  console.log('Run the mocha browser tests at http://%s:%s/tests.html', host, port)
 })
 
 module.exports.app = app

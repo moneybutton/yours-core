@@ -7,6 +7,7 @@ let fs = require('fs')
 let browserify = require('browserify')
 let envify = require('envify')
 let babelify = require('babelify')
+let reactify = require('reactify')
 
 // By default, we assume browser-loaded javascript is served from the root
 // directory, "/", of the http server. karma, however, assumes files are in the
@@ -33,6 +34,10 @@ if (!process.env.DATT_NODE_JS_WORKERPOOL_FILE) {
 
 if (!process.env.DATT_NODE_JS_TESTS_FILE) {
   process.env.DATT_NODE_JS_TESTS_FILE = 'datt-node-tests.js'
+}
+
+if (!process.env.DATT_REACT_JS_FILE) {
+  process.env.DATT_REACT_JS_FILE = 'datt-react.js'
 }
 
 gulp.task('build-workerpool', function () {
@@ -62,6 +67,16 @@ gulp.task('build-bundle', ['build-worker'], function () {
     .require(require.resolve('./lib/index.js'), {entry: true})
     .bundle()
     .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_NODE_JS_BUNDLE_FILE)))
+})
+
+gulp.task('build-react', function () {
+  return browserify({debug: false})
+    // Do not include the polyfill - it is already included by datt-node.js
+    .transform(reactify)
+    .transform(babelify)
+    .add(require.resolve('./bin/app.js'), {entry: true})
+    .bundle()
+    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
 })
 
 gulp.task('build-tests', ['build-worker'], function () {
@@ -104,4 +119,4 @@ gulp.task('watch', function () {
   gulp.watch(['./lib/*.js', './test/*.js'], ['build-tests'])
 })
 
-gulp.task('default', ['build-bundle', 'build-tests'])
+gulp.task('default', ['build-react', 'build-bundle', 'build-tests'])
