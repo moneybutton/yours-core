@@ -18,7 +18,11 @@ describe('DattNode', function () {
 
   describe('#init', function () {
     it('should init the dattnode', function () {
-      return dattnode.init()
+      return dattnode.init().then(function () {
+        should.exist(dattnode.db)
+        should.exist(dattnode.user)
+        dattnode.user.keyIsSet().should.equal(true)
+      })
     })
   })
 
