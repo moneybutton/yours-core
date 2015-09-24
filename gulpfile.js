@@ -73,7 +73,7 @@ gulp.task('build-react', function () {
     // Do not include the polyfill - it is already included by datt-node.js
     .transform('reactify')
     .transform(babelify)
-    .add(require.resolve('./views/app.js'), {entry: true})
+    .add(require.resolve('./views/index.js'), {entry: true})
     .bundle()
     .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
 })
