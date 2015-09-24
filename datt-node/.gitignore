@@ -1,0 +1,9 @@
+*.swp
+node_modules
+/dist
+/tmp
+/coverage/*
+npm-debug.log
+*~
+build/datt-*.js
+build/tests.js
