@@ -27,6 +27,9 @@ let Index = React.createClass({
       })
     }.bind(this))
   },
+  propTypes: {
+    propname: React.PropTypes.string
+  },
   render: function () {
     return (
       <div>
@@ -41,6 +44,9 @@ let Index = React.createClass({
 })
 
 let User = React.createClass({
+  propTypes: {
+    mnemonic: React.PropTypes.string
+  },
   render: function () {
     return <p>User mnemonic: {this.props.mnemonic}</p>
   }
