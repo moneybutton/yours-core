@@ -1,26 +1,48 @@
-var DattNode = require('datt-node')
-var React = require('react')
+'use strict'
+let DattNode = require('datt-node')
+let React = require('react')
 
-var dattnode // global dattnode application - the p2p/db/logic of datt
+let dattnode // global dattnode application - the p2p/db/logic of datt
 
-var Index = React.createClass({
+let Index = React.createClass({
   getInitialState: function () {
     return {
-      status: 'uninitialized'
+      status: 'uninitialized',
+      mnemonic: ''
     }
   },
   componentDidMount: function () {
+    console.log('before initializing dattnode')
     dattnode = DattNode.create()
     dattnode.init().then(function () {
-      this.setState({status: 'initialized'})
+      console.log('after initializing dattnode')
+      this.setState({
+        status: 'initialized',
+        mnemonic: dattnode.user.mnemonic
+      })
+    }.bind(this))
+    .catch(function (err) {
+      this.setState({
+        status: 'error initializing: ' + err
+      })
     }.bind(this))
   },
   render: function () {
     return (
-      <p>status of dattnode: {this.state.status}<br/>
-      name: {this.props.propname}
-      </p>
+      <div>
+        <p>
+        status of dattnode: {this.state.status}<br/>
+        name: {this.props.propname}
+        </p>
+        <User mnemonic={this.state.mnemonic}/>
+      </div>
     )
+  }
+})
+
+let User = React.createClass({
+  render: function () {
+    return <p>User mnemonic: {this.props.mnemonic}</p>
   }
 })
 
