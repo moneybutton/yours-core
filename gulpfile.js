@@ -7,7 +7,6 @@ let fs = require('fs')
 let browserify = require('browserify')
 let envify = require('envify')
 let babelify = require('babelify')
-let reactify = require('reactify')
 
 // By default, we assume browser-loaded javascript is served from the root
 // directory, "/", of the http server. karma, however, assumes files are in the
@@ -72,7 +71,7 @@ gulp.task('build-bundle', ['build-worker'], function () {
 gulp.task('build-react', function () {
   return browserify({debug: false})
     // Do not include the polyfill - it is already included by datt-node.js
-    .transform(reactify)
+    .transform('reactify')
     .transform(babelify)
     .add(require.resolve('./views/app.js'), {entry: true})
     .bundle()
