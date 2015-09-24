@@ -1,5 +1,5 @@
 'use strict'
-let DattNode = require('datt-node')
+let DattNode = require('../lib')
 let React = require('react')
 
 let dattnode // global dattnode application - the p2p/db/logic of datt

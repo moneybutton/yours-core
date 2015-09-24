@@ -2,19 +2,18 @@
 /**
  * Basic web app to facilitate running the mocha browser tests without karma.
  */
-"use strict";
-let express = require('express');
-let path = require('path');
-let app = express();
+var express = require('express')
+var path = require('path')
+var app = express()
 
-app.use(express.static(path.join(__dirname, '../browser')));
-app.use(express.static(path.join(__dirname, '../node_modules')));
+app.use(express.static(path.join(__dirname, '../build')))
+app.use(express.static(path.join(__dirname, '../node_modules')))
 
-let server = app.listen(3000, function () {
-  let host = server.address().address;
-  let port = server.address().port;
-  console.log('Run the mocha tests at http://%s:%s/', host, port);
-});
+var server = app.listen(3000, function () {
+  var host = server.address().address
+  var port = server.address().port
+  console.log('Run the mocha tests at http://%s:%s/', host, port)
+})
 
-module.exports.app = app;
-module.exports.server = server;
+module.exports.app = app
+module.exports.server = server
