@@ -9,8 +9,8 @@ let browserify = require('browserify')
 let envify = require('envify')
 let babelify = require('babelify')
 let watch = require('gulp-watch')
-let plumber = require('gulp-plumber')
 let karma = require('gulp-karma')
+let plumber = require('gulp-plumber')
 
 // By default, we assume browser-loaded javascript is served from the root
 // directory, "/", of the http server. karma, however, assumes files are in the
@@ -42,46 +42,74 @@ if (!process.env.DATT_REACT_JS_FILE) {
   process.env.DATT_REACT_JS_FILE = 'datt-react.js'
 }
 
+function build_workerpool () {
+  return new Promise(function (resolve, reject) {
+    fs.createReadStream(path.join(__dirname, 'node_modules', 'workerpool', 'dist', 'workerpool.js'))
+      .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKERPOOL_FILE)))
+      .on('close', function () { resolve() })
+  })
+}
+
 gulp.task('build-workerpool', function () {
-  return fs.createReadStream(path.join(__dirname, 'node_modules', 'workerpool', 'dist', 'workerpool.js'))
-    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKERPOOL_FILE)))
+  return build_workerpool()
 })
+
+function build_worker () {
+  return new Promise(function (resolve, reject) {
+    browserify({debug: false})
+      // The polyfill needs to be included exactly once per page. We put it in
+      // the worker and in the bundle.
+      .add(require.resolve('babelify/polyfill'))
+      .transform(envify)
+      .transform(babelify)
+      .add(require.resolve('./lib/worker.js'), {entry: true})
+      .bundle()
+      .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKER_FILE)))
+      .on('close', function () { resolve() })
+  })
+}
 
 gulp.task('build-worker', ['build-workerpool'], function () {
-  return browserify({debug: false})
-    // The polyfill needs to be included exactly once per page. We put it in
-    // the worker and in the bundle.
-    .add(require.resolve('babelify/polyfill'))
-    .transform(envify)
-    .transform(babelify)
-    .add(require.resolve('./lib/worker.js'), {entry: true})
-    .bundle()
-    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKER_FILE)))
+  return build_worker()
 })
+
+function build_bundle () {
+  return new Promise(function (resolve, reject) {
+    browserify({debug: false})
+      // The polyfill needs to be included exactly once per page. We put it in
+      // the worker and in the bundle.
+      .add(require.resolve('babelify/polyfill'))
+      .transform(envify)
+      .transform(babelify)
+      .require(require.resolve('./lib/index.js'), {entry: true})
+      .bundle()
+      .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_BUNDLE_FILE)))
+      .on('close', function () { resolve() })
+  })
+}
 
 gulp.task('build-bundle', ['build-worker'], function () {
-  return browserify({debug: false})
-    // The polyfill needs to be included exactly once per page. We put it in
-    // the worker and in the bundle.
-    .add(require.resolve('babelify/polyfill'))
-    .transform(envify)
-    .transform(babelify)
-    .require(require.resolve('./lib/index.js'), {entry: true})
-    .bundle()
-    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_BUNDLE_FILE)))
+  return build_bundle()
 })
+
+function build_react () {
+  return new Promise(function (resolve, reject) {
+    browserify({debug: false})
+      // Do not include the polyfill - it is already included by datt-core.js
+      .transform('reactify')
+      .transform(babelify)
+      .add(require.resolve('./views/index.js'), {entry: true})
+      .bundle()
+      .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
+      .on('close', function () { resolve() })
+  })
+}
 
 gulp.task('build-react', function () {
-  return browserify({debug: false})
-    // Do not include the polyfill - it is already included by datt-core.js
-    .transform('reactify')
-    .transform(babelify)
-    .add(require.resolve('./views/index.js'), {entry: true})
-    .bundle()
-    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
+  return build_react()
 })
 
-gulp.task('build-tests', ['build-bundle', 'build-worker'], function () {
+function build_tests () {
   return new Promise(function (resolve, reject) {
     glob('./test/**/*.js', {}, function (err, files) {
       if (err) {
@@ -100,31 +128,54 @@ gulp.task('build-tests', ['build-bundle', 'build-worker'], function () {
         .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_JS_TESTS_FILE)))
     })
   })
+}
+
+gulp.task('build-tests', ['build-bundle', 'build-worker'], function () {
+  return build_tests()
 })
 
-gulp.task('test-node', function () {
-  // This runs the mocha tests, but does not run the js standard tests. To run
-  // both, run "npm run test-node"
+gulp.task('watch-build-tests', function () {
+  watch(['*.js', './views/**/*.js', './views/**/*.jsx', './lib/**/*.js', './test/**/*.js'], function () {
+    console.log('Building workerpool.')
+    build_workerpool().then(function () {
+      console.log('Building worker.')
+      return build_worker()
+    }).then(function () {
+      console.log('Building bundle.')
+      return build_bundle()
+    }).then(function () {
+      console.log('Building tests.')
+      return build_tests()
+    }).then(function () {
+      console.log('Done building.')
+    })
+  })
+})
+
+function test_node (end) {
   return gulp.src(['./test/*.js'])
+    .pipe(plumber()) // keeps gulp from crashing when there is an exception
     .pipe(mocha({reporter: 'dot'}))
     .once('end', function () {
-      process.exit()
+      if (end) {
+        process.exit()
+      }
     })
+}
+
+gulp.task('test-node', function () {
+  return test_node(true)
 })
 
 gulp.task('watch-test-node', function (callback) {
-  // This will watch the lib and test files and will run both the mocha tests
-  // and js standard tests - ideal for working on the logic of the p2p app in
-  // node
-  watch(['./lib/**/*.js', './test/**/*.js'], function () {
-    exec('node_modules/.bin/standard ./lib/**/*.js ./test/**/*.js', {cwd: __dirname}, function (err, stdout, stderr) {
+  // runs the mocha node tests and runs js standard on all the files
+  test_node()
+  watch(['*.js', './views/**/*.js', './views/**/*.jsx', './lib/**/*.js', './test/**/*.js'], function () {
+    exec('node_modules/.bin/standard *.js ./views/**/*.js ./views/**/*.jsx ./lib/**/*.js ./test/**/*.js', {cwd: __dirname}, function (err, stdout, stderr) {
       if (err) {
         console.log(err)
       }
-      console.log(stdout)
-      gulp.src(['./test/*.js'])
-        .pipe(plumber())
-        .pipe(mocha({reporter: 'dot'}))
+      test_node()
     })
   })
 })
