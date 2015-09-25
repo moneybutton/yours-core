@@ -7,6 +7,8 @@ let fs = require('fs')
 let browserify = require('browserify')
 let envify = require('envify')
 let babelify = require('babelify')
+let watch = require('gulp-watch')
+let plumber = require('gulp-plumber')
 
 // By default, we assume browser-loaded javascript is served from the root
 // directory, "/", of the http server. karma, however, assumes files are in the
@@ -107,15 +109,19 @@ gulp.task('test-node', function () {
     })
 })
 
+gulp.task('watch-test-node', function (callback) {
+  watch(['./lib/*.js', './test/*.js'], function () {
+    gulp.src(['./test/*.js'])
+      .pipe(plumber())
+      .pipe(mocha({reporter: 'list'}))
+  })
+})
+
 gulp.task('build-karma-url', function () {
   // karma serves static files, including js files, from /base/
   process.env.DATT_NODE_JS_BASE_URL = '/base/'
 })
 
 gulp.task('build-karma', ['build-karma-url', 'build-tests'])
-
-gulp.task('watch', function () {
-  gulp.watch(['./lib/*.js', './test/*.js'], ['build-tests'])
-})
 
 gulp.task('default', ['build-react', 'build-bundle', 'build-tests'])

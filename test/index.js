@@ -16,6 +16,10 @@ describe('DattNode', function () {
     dattnode = DattNode()
   })
 
+  after(function () {
+    return dattnode.close()
+  })
+
   describe('#init', function () {
     it('should init the dattnode', function () {
       return dattnode.init().then(function () {
