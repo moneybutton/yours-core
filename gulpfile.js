@@ -106,7 +106,7 @@ gulp.task('test-node', function () {
   // This runs the mocha tests, but does not run the js standard tests. To run
   // both, run "npm run test-node"
   return gulp.src(['./test/*.js'])
-    .pipe(mocha({reporter: 'list'}))
+    .pipe(mocha({reporter: 'dot'}))
     .once('end', function () {
       process.exit()
     })
