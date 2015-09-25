@@ -5,11 +5,11 @@ module.exports = function (config) {
     frameworks: ['mocha'],
 
     files: [
-      {pattern: 'datt-node.js', watched: true, included: true, served: true},
-      {pattern: 'datt-node-worker.js', watched: true, included: false, served: true},
-      {pattern: 'datt-node-workerpool.js', watched: true, included: false, served: true},
+      {pattern: 'datt-core.js', watched: true, included: true, served: true},
+      {pattern: 'datt-core-worker.js', watched: true, included: false, served: true},
+      {pattern: 'datt-core-workerpool.js', watched: true, included: false, served: true},
       {pattern: 'datt-react.js', watched: true, included: false, served: true},
-      {pattern: 'datt-node-tests.js'}
+      {pattern: 'datt-tests.js'}
     ],
 
     client: {

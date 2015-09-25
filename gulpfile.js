@@ -16,27 +16,26 @@ let karma = require('gulp-karma')
 // directory, "/", of the http server. karma, however, assumes files are in the
 // "/base/" directory, thus we invented this letiable to allow overriding the
 // directory. If you wish to put your javascript somewhere other than root,
-// specify it by setting this environment letiable before building. karma is
-// disabled for now, but if we ever add it back we will need this. Some people
+// specify it by setting this environment letiable before building. Some people
 // will also need it if they need to put their js in some specific location.
-if (!process.env.DATT_NODE_JS_BASE_URL) {
-  process.env.DATT_NODE_JS_BASE_URL = '/'
+if (!process.env.DATT_JS_BASE_URL) {
+  process.env.DATT_JS_BASE_URL = '/'
 }
 
-if (!process.env.DATT_NODE_JS_BUNDLE_FILE) {
-  process.env.DATT_NODE_JS_BUNDLE_FILE = 'datt-node.js'
+if (!process.env.DATT_CORE_JS_BUNDLE_FILE) {
+  process.env.DATT_CORE_JS_BUNDLE_FILE = 'datt-core.js'
 }
 
-if (!process.env.DATT_NODE_JS_WORKER_FILE) {
-  process.env.DATT_NODE_JS_WORKER_FILE = 'datt-node-worker.js'
+if (!process.env.DATT_CORE_JS_WORKER_FILE) {
+  process.env.DATT_CORE_JS_WORKER_FILE = 'datt-core-worker.js'
 }
 
-if (!process.env.DATT_NODE_JS_WORKERPOOL_FILE) {
-  process.env.DATT_NODE_JS_WORKERPOOL_FILE = 'datt-node-workerpool.js'
+if (!process.env.DATT_CORE_JS_WORKERPOOL_FILE) {
+  process.env.DATT_CORE_JS_WORKERPOOL_FILE = 'datt-core-workerpool.js'
 }
 
-if (!process.env.DATT_NODE_JS_TESTS_FILE) {
-  process.env.DATT_NODE_JS_TESTS_FILE = 'datt-node-tests.js'
+if (!process.env.DATT_JS_TESTS_FILE) {
+  process.env.DATT_JS_TESTS_FILE = 'datt-tests.js'
 }
 
 if (!process.env.DATT_REACT_JS_FILE) {
@@ -45,7 +44,7 @@ if (!process.env.DATT_REACT_JS_FILE) {
 
 gulp.task('build-workerpool', function () {
   return fs.createReadStream(path.join(__dirname, 'node_modules', 'workerpool', 'dist', 'workerpool.js'))
-    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_NODE_JS_WORKERPOOL_FILE)))
+    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKERPOOL_FILE)))
 })
 
 gulp.task('build-worker', ['build-workerpool'], function () {
@@ -57,7 +56,7 @@ gulp.task('build-worker', ['build-workerpool'], function () {
     .transform(babelify)
     .add(require.resolve('./lib/worker.js'), {entry: true})
     .bundle()
-    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_NODE_JS_WORKER_FILE)))
+    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKER_FILE)))
 })
 
 gulp.task('build-bundle', ['build-worker'], function () {
@@ -69,12 +68,12 @@ gulp.task('build-bundle', ['build-worker'], function () {
     .transform(babelify)
     .require(require.resolve('./lib/index.js'), {entry: true})
     .bundle()
-    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_NODE_JS_BUNDLE_FILE)))
+    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_BUNDLE_FILE)))
 })
 
 gulp.task('build-react', function () {
   return browserify({debug: false})
-    // Do not include the polyfill - it is already included by datt-node.js
+    // Do not include the polyfill - it is already included by datt-core.js
     .transform('reactify')
     .transform(babelify)
     .add(require.resolve('./views/index.js'), {entry: true})
@@ -98,7 +97,7 @@ gulp.task('build-tests', ['build-worker'], function () {
       b.bundle()
         .on('error', function (err) { reject(err) })
         .on('end', function () { resolve() })
-        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_NODE_JS_TESTS_FILE)))
+        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_JS_TESTS_FILE)))
     })
   })
 })
@@ -132,7 +131,7 @@ gulp.task('watch-test-node', function (callback) {
 
 gulp.task('build-karma-url', function () {
   // karma serves static files, including js files, from /base/
-  process.env.DATT_NODE_JS_BASE_URL = '/base/'
+  process.env.DATT_JS_BASE_URL = '/base/'
 })
 
 gulp.task('build-karma', ['build-karma-url', 'build-tests'])

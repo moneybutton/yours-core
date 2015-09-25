@@ -41,7 +41,7 @@ describe('AsyncCrypto', function () {
       if (!process.browser) {
         pool = workerpool.pool(__dirname + '/worker.js')
       } else {
-        pool = workerpool.pool(process.env.DATT_NODE_JS_BASE_URL + process.env.DATT_NODE_JS_WORKER_FILE)
+        pool = workerpool.pool(process.env.DATT_JS_BASE_URL + process.env.DATT_CORE_JS_WORKER_FILE)
       }
       let asyncCrypto3 = new AsyncCrypto(pool)
       asyncCrypto3.pool.should.not.equal(asyncCrypto.pool)
