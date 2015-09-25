@@ -81,7 +81,7 @@ gulp.task('build-react', function () {
     .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
 })
 
-gulp.task('build-tests', ['build-worker'], function () {
+gulp.task('build-tests', ['build-bundle', 'build-worker'], function () {
   return new Promise(function (resolve, reject) {
     glob('./test/**/*.js', {}, function (err, files) {
       if (err) {
