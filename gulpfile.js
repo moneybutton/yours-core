@@ -10,6 +10,7 @@ let envify = require('envify')
 let babelify = require('babelify')
 let watch = require('gulp-watch')
 let plumber = require('gulp-plumber')
+let karma = require('gulp-karma')
 
 // By default, we assume browser-loaded javascript is served from the root
 // directory, "/", of the http server. karma, however, assumes files are in the
@@ -135,5 +136,19 @@ gulp.task('build-karma-url', function () {
 })
 
 gulp.task('build-karma', ['build-karma-url', 'build-tests'])
+
+gulp.task('test-karma', ['build-karma'], function () {
+  return gulp.src([])
+    .pipe(karma({
+      configFile: '.karma.conf.js',
+      action: 'run'
+    }))
+    .on('error', function (err) {
+      throw err
+    })
+    .on('end', function () {
+      process.exit()
+    })
+})
 
 gulp.task('default', ['build-react', 'build-bundle', 'build-tests'])
