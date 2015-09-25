@@ -1,5 +1,6 @@
 'use strict'
 let gulp = require('gulp')
+let exec = require('child_process').exec
 let mocha = require('gulp-mocha')
 let glob = require('glob')
 let path = require('path')
@@ -102,6 +103,8 @@ gulp.task('build-tests', ['build-worker'], function () {
 })
 
 gulp.task('test-node', function () {
+  // This runs the mocha tests, but does not run the js standard tests. To run
+  // both, run "npm run test-node"
   return gulp.src(['./test/*.js'])
     .pipe(mocha({reporter: 'list'}))
     .once('end', function () {
@@ -110,10 +113,19 @@ gulp.task('test-node', function () {
 })
 
 gulp.task('watch-test-node', function (callback) {
-  watch(['./lib/*.js', './test/*.js'], function () {
-    gulp.src(['./test/*.js'])
-      .pipe(plumber())
-      .pipe(mocha({reporter: 'list'}))
+  // This will watch the lib and test files and will run both the mocha tests
+  // and js standard tests - ideal for working on the logic of the p2p app in
+  // node
+  watch(['./lib/**/*.js', './test/**/*.js'], function () {
+    exec('node_modules/.bin/standard ./lib/**/*.js ./test/**/*.js', {cwd: __dirname}, function (err, stdout, stderr) {
+      if (err) {
+        console.log(err)
+      }
+      console.log(stdout)
+      gulp.src(['./test/*.js'])
+        .pipe(plumber())
+        .pipe(mocha({reporter: 'dot'}))
+    })
   })
 })
 

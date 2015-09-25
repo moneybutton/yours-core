@@ -1,4 +1,4 @@
-/* global before,describe,it */
+/* global before,describe,it,after */
 'use strict'
 let should = require('should')
 let DattNode = require('../lib')
