@@ -73,7 +73,7 @@ gulp.task('build-worker', ['build-workerpool'], function () {
   return build_worker()
 })
 
-function build_bundle () {
+function build_core () {
   return new Promise(function (resolve, reject) {
     browserify({debug: false})
       // The polyfill needs to be included exactly once per page. We put it in
@@ -88,8 +88,8 @@ function build_bundle () {
   })
 }
 
-gulp.task('build-bundle', ['build-worker'], function () {
-  return build_bundle()
+gulp.task('build-core', ['build-worker'], function () {
+  return build_core()
 })
 
 function build_react () {
@@ -130,7 +130,7 @@ function build_tests () {
   })
 }
 
-gulp.task('build-tests', ['build-bundle', 'build-worker'], function () {
+gulp.task('build-tests', ['build-core', 'build-worker'], function () {
   return build_tests()
 })
 
@@ -141,8 +141,8 @@ gulp.task('watch-build-tests', function () {
       console.log('Building worker.')
       return build_worker()
     }).then(function () {
-      console.log('Building bundle.')
-      return build_bundle()
+      console.log('Building core.')
+      return build_core()
     }).then(function () {
       console.log('Building tests.')
       return build_tests()
@@ -201,4 +201,4 @@ gulp.task('test-karma', ['build-karma'], function () {
     })
 })
 
-gulp.task('default', ['build-react', 'build-bundle', 'build-tests'])
+gulp.task('default', ['build-react', 'build-core', 'build-tests'])
