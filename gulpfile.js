@@ -49,7 +49,7 @@ function build_workerpool () {
   return new Promise(function (resolve, reject) {
     fs.createReadStream(path.join(__dirname, 'node_modules', 'workerpool', 'dist', 'workerpool.js'))
       .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKERPOOL_FILE)))
-      .on('close', function () { resolve() })
+      .on('close', resolve)
   })
 }
 
@@ -68,7 +68,7 @@ function build_worker () {
       .add(require.resolve('./lib/worker.js'), {entry: true})
       .bundle()
       .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKER_FILE)))
-      .on('close', function () { resolve() })
+      .on('close', resolve)
   })
 }
 
@@ -87,7 +87,7 @@ function build_core () {
       .require(require.resolve('./lib/index.js'), {entry: true})
       .bundle()
       .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_BUNDLE_FILE)))
-      .on('close', function () { resolve() })
+      .on('close', resolve)
   })
 }
 
@@ -104,7 +104,7 @@ function build_react () {
       .add(require.resolve('./views/index.js'), {entry: true})
       .bundle()
       .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
-      .on('close', function () { resolve() })
+      .on('close', resolve)
   })
 }
 
@@ -126,8 +126,8 @@ function build_tests () {
         b.add(file)
       }
       b.bundle()
-        .on('error', function (err) { reject(err) })
-        .on('end', function () { resolve() })
+        .on('error', reject)
+        .on('end', resolve)
         .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_JS_TESTS_FILE)))
     })
   })
