@@ -7,7 +7,7 @@
     "build": "./node_modules/.bin/gulp",
     "test": "npm run test-node && npm run test-karma",
     "test-node": "npm run standard && ./node_modules/.bin/gulp test-node",
-    "test-serve": "./node_modules/.bin/gulp test-serve",
+    "serve": "./node_modules/.bin/gulp serve",
     "test-karma": "./node_modules/.bin/gulp test-karma",
     "watch-test-node": "./node_modules/.bin/gulp watch-test-node",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
@@ -98,6 +98,7 @@
     "reactify": "^1.1.1",
     "should": "^7.0.3",
     "standard": "^5.3.1",
-    "through2": "^2.0.0"
+    "through2": "^2.0.0",
+    "watchify": "^3.4.0"
   }
 }

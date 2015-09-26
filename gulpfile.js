@@ -12,8 +12,11 @@ let watch = require('gulp-watch')
 let karma = require('gulp-karma')
 let plumber = require('gulp-plumber')
 let browserSync = require('browser-sync').create()
+let watchify = require('watchify')
 
 let jsfiles = ['*.js', 'bin/*.js', 'views/**/*.js', 'views/**/*.jsx', 'lib/**/*.js', 'test/**/*.js']
+
+let browserifyOpts
 
 // By default, we assume browser-loaded javascript is served from the root
 // directory, "/", of the http server. karma, however, assumes files are in the
@@ -57,9 +60,13 @@ gulp.task('build-workerpool', function () {
   return build_workerpool()
 })
 
+browserifyOpts = {debug: false}
+browserifyOpts = Object.assign({}, watchify.args, browserifyOpts)
+let build_worker_browserify = watchify(browserify(browserifyOpts))
+
 function build_worker () {
   return new Promise(function (resolve, reject) {
-    browserify({debug: false})
+    build_worker_browserify
       // The polyfill needs to be included exactly once per page. We put it in
       // the worker and in the bundle.
       .add(require.resolve('babelify/polyfill'))
@@ -68,7 +75,10 @@ function build_worker () {
       .add(require.resolve('./lib/worker.js'), {entry: true})
       .bundle()
       .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKER_FILE)))
-      .on('close', resolve)
+      .on('close', function () {
+        build_worker_browserify.close()
+        resolve()
+      })
   })
 }
 
@@ -76,9 +86,13 @@ gulp.task('build-worker', ['build-workerpool'], function () {
   return build_worker()
 })
 
+browserifyOpts = {debug: false}
+browserifyOpts = Object.assign({}, watchify.args, browserifyOpts)
+let build_core_browserify = watchify(browserify(browserifyOpts))
+
 function build_core () {
   return new Promise(function (resolve, reject) {
-    browserify({debug: false})
+    build_core_browserify
       // The polyfill needs to be included exactly once per page. We put it in
       // the worker and in the bundle.
       .add(require.resolve('babelify/polyfill'))
@@ -87,7 +101,10 @@ function build_core () {
       .require(require.resolve('./lib/index.js'), {entry: true})
       .bundle()
       .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_BUNDLE_FILE)))
-      .on('close', resolve)
+      .on('close', function () {
+        build_core_browserify.close()
+        resolve()
+      })
   })
 }
 
@@ -95,22 +112,33 @@ gulp.task('build-core', ['build-worker'], function () {
   return build_core()
 })
 
+browserifyOpts = {debug: false}
+browserifyOpts = Object.assign({}, watchify.args, browserifyOpts)
+let build_react_browserify = watchify(browserify(browserifyOpts))
+
 function build_react () {
   return new Promise(function (resolve, reject) {
-    browserify({debug: false})
+    build_react_browserify
       // Do not include the polyfill - it is already included by datt-core.js
       .transform('reactify')
       .transform(babelify)
       .add(require.resolve('./views/index.js'), {entry: true})
       .bundle()
       .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
-      .on('close', resolve)
+      .on('close', function () {
+        build_react_browserify.close()
+        resolve()
+      })
   })
 }
 
 gulp.task('build-react', function () {
   return build_react()
 })
+
+browserifyOpts = {debug: false}
+browserifyOpts = Object.assign({}, watchify.args, browserifyOpts)
+let build_tests_browserify = watchify(browserify(browserifyOpts))
 
 function build_tests () {
   return new Promise(function (resolve, reject) {
@@ -119,16 +147,19 @@ function build_tests () {
         reject(err)
         return
       }
-      let b = browserify({debug: true})
+      build_tests_browserify
         .transform(envify)
         .transform(babelify)
       for (let file of files) {
-        b.add(file)
+        build_tests_browserify.add(file)
       }
-      b.bundle()
-        .on('error', reject)
-        .on('end', resolve)
+      build_tests_browserify.bundle()
         .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_JS_TESTS_FILE)))
+        .on('error', reject)
+        .on('close', function () {
+          build_tests_browserify.close()
+          resolve()
+        })
     })
   })
 }
@@ -211,7 +242,7 @@ gulp.task('build-browsersync', ['build'], function () {
   browserSync.reload()
 })
 
-gulp.task('test-serve', function () {
+gulp.task('serve', ['build'], function () {
   browserSync.init({
     server: {
       baseDir: './build',
