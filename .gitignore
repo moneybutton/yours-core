@@ -7,3 +7,5 @@ npm-debug.log
 *~
 build/datt-*.js
 build/tests.js
+build/mocha.css
+build/mocha.js

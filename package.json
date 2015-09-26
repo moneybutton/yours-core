@@ -7,13 +7,16 @@
     "build": "./node_modules/.bin/gulp",
     "test": "npm run test-node && npm run test-karma",
     "test-node": "npm run standard && ./node_modules/.bin/gulp test-node",
+    "test-serve": "./node_modules/.bin/gulp test-serve",
     "test-karma": "./node_modules/.bin/gulp test-karma",
     "watch-test-node": "./node_modules/.bin/gulp watch-test-node",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
     "standard": "./node_modules/.bin/standard *.js lib/**/*.js bin/**/*.js test/**/*.js views/**/*.js views/**/*.jsx"
   },
   "browserify": {
-    "transform": ["babelify"]
+    "transform": [
+      "babelify"
+    ]
   },
   "contributors": [
     {
@@ -76,6 +79,7 @@
   },
   "devDependencies": {
     "babelify": "^6.3.0",
+    "browser-sync": "^2.9.6",
     "browserify": "^11.1.0",
     "envify": "^3.4.0",
     "express": "^4.13.3",

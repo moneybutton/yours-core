@@ -11,6 +11,9 @@ let babelify = require('babelify')
 let watch = require('gulp-watch')
 let karma = require('gulp-karma')
 let plumber = require('gulp-plumber')
+let browserSync = require('browser-sync').create()
+
+let jsfiles = ['*.js', 'bin/*.js', 'views/**/*.js', 'views/**/*.jsx', 'lib/**/*.js', 'test/**/*.js']
 
 // By default, we assume browser-loaded javascript is served from the root
 // directory, "/", of the http server. karma, however, assumes files are in the
@@ -134,22 +137,30 @@ gulp.task('build-tests', ['build-core', 'build-worker'], function () {
   return build_tests()
 })
 
-gulp.task('watch-build-tests', function () {
-  watch(['*.js', './views/**/*.js', './views/**/*.jsx', './lib/**/*.js', './test/**/*.js'], function () {
-    console.log('Building workerpool.')
-    build_workerpool().then(function () {
-      console.log('Building worker.')
-      return build_worker()
-    }).then(function () {
-      console.log('Building core.')
-      return build_core()
-    }).then(function () {
-      console.log('Building tests.')
-      return build_tests()
-    }).then(function () {
-      console.log('Done building.')
-    })
+gulp.task('build-mocha', function () {
+  // copy the mocha js and css files to our build directory so you can use them
+  // in the tests HTML file
+  let p1 = new Promise(function (resolve, reject) {
+    fs.createReadStream(path.join(__dirname, 'node_modules', 'mocha', 'mocha.js'))
+      .pipe(fs.createWriteStream(path.join(__dirname, 'build', 'mocha.js')))
+      .on('close', resolve)
+      .on('error', reject)
   })
+  let p2 = new Promise(function (resolve, reject) {
+    fs.createReadStream(path.join(__dirname, 'node_modules', 'mocha', 'mocha.css'))
+      .pipe(fs.createWriteStream(path.join(__dirname, 'build', 'mocha.css')))
+      .on('close', resolve)
+      .on('error', reject)
+  })
+  return p1.then(function () {
+    return p2
+  })
+})
+
+gulp.task('build', ['build-react', 'build-core', 'build-tests', 'build-mocha'])
+
+gulp.task('watch-build', ['build'], function () {
+  gulp.watch(jsfiles, ['build'])
 })
 
 function test_node (end) {
@@ -167,13 +178,12 @@ gulp.task('test-node', function () {
   return test_node(true)
 })
 
-gulp.task('watch-test-node', function (callback) {
+gulp.task('watch-test-node', function () {
   // runs the mocha node tests and runs js standard on all the files
-  test_node()
-  watch(['*.js', './views/**/*.js', './views/**/*.jsx', './lib/**/*.js', './test/**/*.js'], function () {
+  watch(jsfiles, function () {
     exec('node_modules/.bin/standard *.js ./views/**/*.js ./views/**/*.jsx ./lib/**/*.js ./test/**/*.js', {cwd: __dirname}, function (err, stdout, stderr) {
       if (err) {
-        console.log(err)
+        console.log(stdout)
       }
       test_node()
     })
@@ -185,7 +195,7 @@ gulp.task('build-karma-url', function () {
   process.env.DATT_JS_BASE_URL = '/base/'
 })
 
-gulp.task('build-karma', ['build-karma-url', 'build-tests'])
+gulp.task('build-karma', ['build-karma-url', 'build'])
 
 gulp.task('test-karma', ['build-karma'], function () {
   return gulp.src([])
@@ -193,12 +203,24 @@ gulp.task('test-karma', ['build-karma'], function () {
       configFile: '.karma.conf.js',
       action: 'run'
     }))
-    .on('error', function (err) {
-      throw err
-    })
-    .on('end', function () {
-      process.exit()
-    })
 })
 
-gulp.task('default', ['build-react', 'build-core', 'build-tests'])
+gulp.task('watch-test-karma', function () {})
+
+gulp.task('build-browsersync', ['build'], function () {
+  browserSync.reload()
+})
+
+gulp.task('test-serve', function () {
+  browserSync.init({
+    server: {
+      baseDir: './build',
+      port: 3000
+    },
+    open: false // don't automatically open browser window
+  })
+
+  gulp.watch(jsfiles, ['build-browsersync'])
+})
+
+gulp.task('default', ['build'])
