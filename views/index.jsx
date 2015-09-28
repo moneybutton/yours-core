@@ -1,4 +1,10 @@
 /* global DattCore */
+/**
+ * Index
+ * =====
+ *
+ * This is the main index page component, i.e. the front-page.
+ */
 'use strict'
 let React = require('react')
 
@@ -26,14 +32,14 @@ let Index = React.createClass({
     }.bind(this))
   },
   propTypes: {
-    propname: React.PropTypes.string
+    apptitle: React.PropTypes.string
   },
   render: function () {
     return (
       <div>
         <p>
         status of dattcore: {this.state.status}<br/>
-        name: {this.props.propname}
+        name: {this.props.apptitle}
         </p>
         <User mnemonic={this.state.mnemonic}/>
       </div>

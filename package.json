@@ -93,6 +93,7 @@
     "gulp-plumber": "^1.0.1",
     "gulp-watch": "^4.3.5",
     "istanbul": "^0.3.19",
+    "jsx-require-extension": "^0.2.0",
     "karma": "^0.13.10",
     "karma-chrome-launcher": "^0.2.0",
     "karma-firefox-launcher": "^0.1.6",

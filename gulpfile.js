@@ -13,8 +13,9 @@ let karma = require('gulp-karma')
 let plumber = require('gulp-plumber')
 let browserSync = require('browser-sync').create()
 let watchify = require('watchify')
+let jsx_require_extension = require('jsx-require-extension')
 
-let jsfiles = ['*.js', 'bin/*.js', 'views/**/*.js', 'views/**/*.jsx', 'lib/**/*.js', 'test/**/*.js']
+let jsfiles = ['*.js', 'bin/*.js', 'views/**/*.js', 'views/**/*.jsx', 'lib/**/*.js', 'test/**/*.js', 'test/**/*.jsx']
 
 let browserifyOpts
 
@@ -142,7 +143,7 @@ let build_tests_browserify = watchify(browserify(browserifyOpts))
 
 function build_tests () {
   return new Promise(function (resolve, reject) {
-    glob('./test/**/*.js', {}, function (err, files) {
+    glob('./test/**/*+(.js|.jsx)', {}, function (err, files) {
       if (err) {
         reject(err)
         return
@@ -195,9 +196,14 @@ gulp.task('watch-build', ['build'], function () {
 })
 
 function test_node (end) {
-  return gulp.src(['./test/*.js'])
+  return gulp.src(['./test/*.js', './test/**/*.js', './test/**/*.jsx'])
     .pipe(plumber()) // keeps gulp from crashing when there is an exception
-    .pipe(mocha({reporter: 'dot'}))
+    .pipe(mocha({
+      reporter: 'dot',
+      compilers: {
+        jsx: jsx_require_extension
+      }
+    }))
     .once('end', function () {
       if (end) {
         process.exit()
