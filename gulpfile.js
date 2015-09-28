@@ -118,7 +118,13 @@ browserifyOpts = Object.assign({}, watchify.args, browserifyOpts)
 let build_react_browserify = watchify(browserify(browserifyOpts))
 
 function build_react () {
-  return new Promise(function (resolve, reject) {
+  let p1 = new Promise(function (resolve, reject) {
+    fs.createReadStream(path.join(__dirname, 'node_modules', 'bootstrap', 'dist', 'css', 'bootstrap.css'))
+      .pipe(fs.createWriteStream(path.join(__dirname, 'build', 'bootstrap.css')))
+      .on('close', resolve)
+      .on('error', reject)
+  })
+  let p2 = new Promise(function (resolve, reject) {
     build_react_browserify
       // Do not include the polyfill - it is already included by datt-core.js
       .transform('reactify')
@@ -130,6 +136,9 @@ function build_react () {
         build_react_browserify.close()
         resolve()
       })
+  })
+  return p1.then(function () {
+    return p2
   })
 }
 

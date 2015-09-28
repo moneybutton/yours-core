@@ -5,7 +5,9 @@ node_modules
 /coverage/*
 npm-debug.log
 *~
+
+build/bootstrap.css
 build/datt-*.js
-build/tests.js
 build/mocha.css
 build/mocha.js
+build/tests.js

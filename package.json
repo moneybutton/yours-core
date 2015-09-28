@@ -82,6 +82,7 @@
   },
   "devDependencies": {
     "babelify": "^6.3.0",
+    "bootstrap": "^3.3.5",
     "browser-sync": "^2.9.6",
     "browserify": "^11.1.0",
     "envify": "^3.4.0",
