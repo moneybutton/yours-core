@@ -16,6 +16,8 @@ let watchify = require('watchify')
 let jsx_require_extension = require('jsx-require-extension')
 
 let jsfiles = ['*.js', 'bin/*.js', 'views/**/*.js', 'views/**/*.jsx', 'lib/**/*.js', 'test/**/*.js', 'test/**/*.jsx']
+let cssfiles = ['build/main.css']
+let allfiles = [].concat(jsfiles).concat(cssfiles)
 
 let browserifyOpts
 
@@ -266,7 +268,7 @@ gulp.task('serve', ['build'], function () {
     open: false // don't automatically open browser window
   })
 
-  gulp.watch(jsfiles, ['build-browsersync'])
+  gulp.watch(allfiles, ['build-browsersync'])
 })
 
 gulp.task('default', ['build'])
