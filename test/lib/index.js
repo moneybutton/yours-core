@@ -1,7 +1,7 @@
 /* global before,describe,it,after */
 'use strict'
 let should = require('should')
-let DattCore = require('../lib')
+let DattCore = require('../../lib')
 
 describe('DattCore', function () {
   let dattcore

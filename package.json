@@ -10,7 +10,7 @@
     "serve": "./node_modules/.bin/gulp serve",
     "test-karma": "./node_modules/.bin/gulp test-karma",
     "watch-test-node": "./node_modules/.bin/gulp watch-test-node",
-    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --compilers .jsx:jsx-require-extension test/**/*.js test/**/*.jsx",
     "standard": "./node_modules/.bin/standard *.js lib/**/*.js bin/**/*.js test/**/*.js views/**/*.js views/**/*.jsx"
   },
   "engines": {
