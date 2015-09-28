@@ -66,7 +66,7 @@ mostly in the past week, to get to a prototype:
 - I spent a huge amount of time getting builds working well for datt. Datt has
   some unusual features that make it difficult to build properly:
 
-  - It is written in ES2105 and therefore requires babelify for browsers.
+  - It is written in ES2015 and therefore requires babelify for browsers.
   - It uses web workers and those require a separate build process with
     separate built files.
   - The 'backend' must both run in node and in a browser.
