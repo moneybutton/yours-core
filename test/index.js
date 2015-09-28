@@ -1,39 +1,39 @@
 /* global before,describe,it,after */
 'use strict'
 let should = require('should')
-let DattNode = require('../lib')
+let DattCore = require('../lib')
 
-describe('DattNode', function () {
-  let dattnode
+describe('DattCore', function () {
+  let dattcore
 
   it('should have these known properties', function () {
-    should.exist(DattNode.AsyncCrypto)
-    should.exist(DattNode.DB)
-    should.exist(DattNode.User)
+    should.exist(DattCore.AsyncCrypto)
+    should.exist(DattCore.DB)
+    should.exist(DattCore.User)
   })
 
   before(function () {
-    dattnode = DattNode()
+    dattcore = DattCore()
   })
 
   after(function () {
-    return dattnode.close()
+    return dattcore.close()
   })
 
   describe('#init', function () {
-    it('should init the dattnode', function () {
-      return dattnode.init().then(function () {
-        should.exist(dattnode.db)
-        should.exist(dattnode.user)
-        dattnode.user.keyIsSet().should.equal(true)
+    it('should init the dattcore', function () {
+      return dattcore.init().then(function () {
+        should.exist(dattcore.db)
+        should.exist(dattcore.user)
+        dattcore.user.keyIsSet().should.equal(true)
       })
     })
   })
 
   describe('@create', function () {
-    it('should create a new dattnode', function () {
-      let dattnode = DattNode.create()
-      should.exist(dattnode)
+    it('should create a new dattcore', function () {
+      let dattcore = DattCore.create()
+      should.exist(dattcore)
     })
   })
 })

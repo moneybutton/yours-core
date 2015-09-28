@@ -1,8 +1,8 @@
-/* global DattNode */
+/* global DattCore */
 'use strict'
 let React = require('react')
 
-let dattnode // global dattnode application - the p2p/db/logic of datt
+let dattcore // global dattcore application - the p2p/db/logic of datt
 
 let Index = React.createClass({
   getInitialState: function () {
@@ -12,11 +12,11 @@ let Index = React.createClass({
     }
   },
   componentDidMount: function () {
-    dattnode = DattNode.create()
-    dattnode.init().then(function () {
+    dattcore = DattCore.create()
+    dattcore.init().then(function () {
       this.setState({
         status: 'initialized',
-        mnemonic: dattnode.user.mnemonic
+        mnemonic: dattcore.user.mnemonic
       })
     }.bind(this))
     .catch(function (err) {
@@ -32,7 +32,7 @@ let Index = React.createClass({
     return (
       <div>
         <p>
-        status of dattnode: {this.state.status}<br/>
+        status of dattcore: {this.state.status}<br/>
         name: {this.props.propname}
         </p>
         <User mnemonic={this.state.mnemonic}/>

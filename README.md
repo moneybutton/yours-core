@@ -6,54 +6,54 @@ in bitcoin.
 
 ----------------------
 
-The below is a hypothetical example of what the interface to dattnode will look
+The below is a hypothetical example of what the interface to dattcore will look
 like, but it has not been implemented yet.
 ```
 var config = {rendezvous_server, db_name}
 
-var dattnode = DattNode.create(config)
+var dattcore = DattCore.create(config)
 
-dattnode.init().then()
+dattcore.init().then()
 
-dattnode.on('error', function (err) {})
+dattcore.on('error', function (err) {})
 
-dattnode.on('payment', function (paymentInfo) {})
+dattcore.on('payment', function (paymentInfo) {})
 
-dattnode.on('comment', function (comment) {})
+dattcore.on('comment', function (comment) {})
 
-dattnode.on('comments', function (comments) {})
+dattcore.on('comments', function (comments) {})
 
-dattnode.on('log', function (logcomment) {})
+dattcore.on('log', function (logcomment) {})
 
-dattnode.connections.on('connection', function (connection) {})
+dattcore.connections.on('connection', function (connection) {})
 
-dattnode.connections.connect(info).then()
+dattcore.connections.connect(info).then()
 
-dattnode.db.getSize().then()
+dattcore.db.getSize().then()
 
-dattnode.walletapp.getBalance().then()
+dattcore.walletapp.getBalance().then()
 
-dattnode.walletapp.wallet.toObject().then()
+dattcore.walletapp.wallet.toObject().then()
 
-dattnode.walletapp.wallet.fromObject(json).then()
+dattcore.walletapp.wallet.fromObject(json).then()
 
-dattnode.walletapp.on('tx', function (tx) {})
+dattcore.walletapp.on('tx', function (tx) {})
 
-dattnode.walletapp.createtx({address, amount}).then()
+dattcore.walletapp.createtx({address, amount}).then()
 
-dattnode.walletapp.signtx(tx).then()
+dattcore.walletapp.signtx(tx).then()
 
-dattnode.walletapp.verifytx(tx).then()
+dattcore.walletapp.verifytx(tx).then()
 
-dattnode.walletapp.sendtx(tx).then()
+dattcore.walletapp.sendtx(tx).then()
 
-dattnode.payComment(commentId).then()
+dattcore.payComment(commentId).then()
 
-dattnode.payUser(userId).then()
+dattcore.payUser(userId).then()
 
-dattnode.authenticate(mnemonic).then()
+dattcore.authenticate(mnemonic).then()
 
-dattnode.setFilter({channel: 'channelname'}).then()
+dattcore.setFilter({channel: 'channelname'}).then()
 
-dattnode.setFilter({minpayment: '0.0001 BTC'}).then()
+dattcore.setFilter({minpayment: '0.0001 BTC'}).then()
 ```
