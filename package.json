@@ -13,6 +13,9 @@
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
     "standard": "./node_modules/.bin/standard *.js lib/**/*.js bin/**/*.js test/**/*.js views/**/*.js views/**/*.jsx"
   },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "browserify": {
     "transform": [
       "babelify"
