@@ -51,8 +51,12 @@ let Index = React.createClass({
             status of dattcore: {this.state.status}
             </p>
           </div>
+
           <div className='col-md-4'>
-            <User mnemonic={this.state.mnemonic}/>
+            <UserBox mnemonic={this.state.mnemonic}/>
+            <BitcoinBox mnemonic={this.state.mnemonic}/>
+            <ContentBox mnemonic={this.state.mnemonic}/>
+            <PeerBox mnemonic={this.state.mnemonic}/>
           </div>
         </div>
       </div>
@@ -60,12 +64,59 @@ let Index = React.createClass({
   }
 })
 
-let User = React.createClass({
+let UserBox = React.createClass({
   propTypes: {
     mnemonic: React.PropTypes.string
   },
   render: function () {
-    return <p>User mnemonic: {this.props.mnemonic}</p>
+    return (
+      <div className='info-box'>
+        <h2>My User</h2>
+        <p>Your mnemonic: {this.props.mnemonic}</p>
+      </div>
+    )
+  }
+})
+
+let BitcoinBox = React.createClass({
+  propTypes: {
+    mnemonic: React.PropTypes.string
+  },
+  render: function () {
+    return (
+      <div className='info-box'>
+        <h2>My Bitcoin</h2>
+        <p>Your mnemonic: {this.props.mnemonic}</p>
+      </div>
+    )
+  }
+})
+
+let ContentBox = React.createClass({
+  propTypes: {
+    mnemonic: React.PropTypes.string
+  },
+  render: function () {
+    return (
+      <div className='info-box'>
+        <h2>My Content</h2>
+        <p>Your mnemonic: {this.props.mnemonic}</p>
+      </div>
+    )
+  }
+})
+
+let PeerBox = React.createClass({
+  propTypes: {
+    mnemonic: React.PropTypes.string
+  },
+  render: function () {
+    return (
+      <div className='info-box'>
+        <h2>My Peers</h2>
+        <p>Your mnemonic: {this.props.mnemonic}</p>
+      </div>
+    )
   }
 })
 

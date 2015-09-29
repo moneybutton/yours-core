@@ -12,3 +12,16 @@ body {
   margin: 0em 0em 0em 1.4em;
   border-width: 0;
 }
+
+.info-box {
+  padding: 0.8em;
+  background-color: #faf8f6;
+  margin-bottom: 0.3em;
+  border-left: 1px solid #eee;
+}
+
+.info-box h2 {
+  margin: 0 0 0.5em 0;
+  font-size: 1.1em;
+  font-weight: bold;
+}
