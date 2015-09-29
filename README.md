@@ -539,6 +539,7 @@ Bitcoin, lightning network, sidechains
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
 Articles and Links
+- ["Apple's commitment to your privacy"](http://www.apple.com/privacy/) - [HN discussion](https://news.ycombinator.com/item?id=10296732)
 - [Medium raises $57 million to better connect content and conversation](https://medium.com/@andydoyle/medium-s-new-funding-round-48437c641e06)
 - [reddit users on their grievances about reddit](https://www.reddit.com/r/Upvoted/comments/3jn7e9/ask_an_admin_vol_6_on_amageddon_blackout_2015_etc/cuqnuyo)
 - [Will there be a distributed HTTP?](https://www.mnot.net/blog/2015/08/18/distributed_http?imm_mid=0d7194&cmp=em-web-na-na-newsltr_20150819) - [HN](https://news.ycombinator.com/item?id=10159873)
