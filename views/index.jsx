@@ -36,12 +36,23 @@ let Index = React.createClass({
   },
   render: function () {
     return (
-      <div>
-        <p>
-        status of dattcore: {this.state.status}<br/>
-        name: {this.props.apptitle}
-        </p>
-        <User mnemonic={this.state.mnemonic}/>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-12'>
+            <h1>{this.props.apptitle}</h1>
+          </div>
+        </div>
+
+        <div className='row'>
+          <div className='col-md-8'>
+            <p>
+            status of dattcore: {this.state.status}
+            </p>
+          </div>
+          <div className='col-md-4'>
+            <User mnemonic={this.state.mnemonic}/>
+          </div>
+        </div>
       </div>
     )
   }

@@ -14,12 +14,21 @@ let plumber = require('gulp-plumber')
 let browserSync = require('browser-sync').create()
 let watchify = require('watchify')
 let jsx_require_extension = require('jsx-require-extension')
+let gutil = require('gulp-util')
 
 let jsfiles = ['*.js', 'bin/*.js', 'views/**/*.js', 'views/**/*.jsx', 'lib/**/*.js', 'test/**/*.js', 'test/**/*.jsx']
 let cssfiles = ['build/main.css']
 let allfiles = [].concat(jsfiles).concat(cssfiles)
 
 let browserifyOpts
+
+// For some weird reason, while watching files, they appear not to exit
+// immediately after noticing they've changed. Thus we set a timeout not to
+// rebuild bundles for a brief period after a file has changed. If this timeout
+// isn't set, there will often be a "file doesn't exist" error while rebuilding
+// bundles that depend on the changed files. At least, that's what happens on
+// Linux - presumably this is a platform issue.
+let watchifytimeout = 1000
 
 // By default, we assume browser-loaded javascript is served from the root
 // directory, "/", of the http server. karma, however, assumes files are in the
@@ -69,21 +78,33 @@ let build_worker_browserify = watchify(browserify(browserifyOpts))
 
 function build_worker () {
   return new Promise(function (resolve, reject) {
-    build_worker_browserify
-      // The polyfill needs to be included exactly once per page. We put it in
-      // the worker and in the bundle.
-      .add(require.resolve('babelify/polyfill'))
-      .transform(envify)
-      .transform(babelify)
-      .add(require.resolve('./lib/worker.js'), {entry: true})
-      .bundle()
-      .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKER_FILE)))
-      .on('close', function () {
-        build_worker_browserify.close()
-        resolve()
-      })
+    if (!build_worker.called) {
+      build_worker_browserify
+        // The polyfill needs to be included exactly once per page. We put it in
+        // the worker and in the bundle.
+        .add(require.resolve('babelify/polyfill'))
+        .transform(envify)
+        .transform(babelify)
+        .add(require.resolve('./lib/worker.js'), {entry: true})
+        .bundle()
+        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKER_FILE)))
+        .once('close', resolve)
+    } else {
+      setTimeout(function () {
+        build_worker_browserify
+          .bundle()
+          .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+          .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKER_FILE)))
+          .once('finish', resolve)
+          .once('error', reject)
+      }, watchifytimeout)
+    }
+    build_worker.called = true
   })
 }
+
+build_worker.called = false
 
 gulp.task('build-worker', ['build-workerpool'], function () {
   return build_worker()
@@ -95,21 +116,35 @@ let build_core_browserify = watchify(browserify(browserifyOpts))
 
 function build_core () {
   return new Promise(function (resolve, reject) {
-    build_core_browserify
-      // The polyfill needs to be included exactly once per page. We put it in
-      // the worker and in the bundle.
-      .add(require.resolve('babelify/polyfill'))
-      .transform(envify)
-      .transform(babelify)
-      .require(require.resolve('./lib/index.js'), {entry: true})
-      .bundle()
-      .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_BUNDLE_FILE)))
-      .on('close', function () {
-        build_core_browserify.close()
-        resolve()
-      })
+    if (!build_core.called) {
+      build_core_browserify
+        .on('error', gutil.log.bind(gutil, 'Unknown Error'))
+        // The polyfill needs to be included exactly once per page. We put it in
+        // the worker and in the bundle.
+        .add(require.resolve('babelify/polyfill'))
+        .transform(envify)
+        .transform(babelify)
+        .require(require.resolve('./lib/index.js'), {entry: true})
+        .bundle()
+        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_BUNDLE_FILE)))
+        .once('close', resolve)
+        .once('error', reject)
+    } else {
+      setTimeout(function () {
+        build_core_browserify
+          .bundle()
+          .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+          .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_BUNDLE_FILE)))
+          .once('finish', resolve)
+          .once('error', reject)
+      }, watchifytimeout)
+    }
+    build_core.called = true
   })
 }
+
+build_core.called = false
 
 gulp.task('build-core', ['build-worker'], function () {
   return build_core()
@@ -127,22 +162,34 @@ function build_react () {
       .on('error', reject)
   })
   let p2 = new Promise(function (resolve, reject) {
-    build_react_browserify
-      // Do not include the polyfill - it is already included by datt-core.js
-      .transform('reactify')
-      .transform(babelify)
-      .add(require.resolve('./views/index.js'), {entry: true})
-      .bundle()
-      .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
-      .on('close', function () {
-        build_react_browserify.close()
-        resolve()
-      })
+    if (!build_react.called) {
+      build_react_browserify
+        // Do not include the polyfill - it is already included by datt-core.js
+        .transform('reactify')
+        .transform(babelify)
+        .add(require.resolve('./views/index.js'), {entry: true})
+        .bundle()
+        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
+        .once('close', resolve)
+    } else {
+      setTimeout(function () {
+        build_react_browserify
+          .bundle()
+          .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+          .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
+          .once('finish', resolve)
+          .once('error', reject)
+      }, watchifytimeout)
+    }
+    build_react.called = true
   })
   return p1.then(function () {
     return p2
   })
 }
+
+build_react.called = false
 
 gulp.task('build-react', function () {
   return build_react()
@@ -154,27 +201,37 @@ let build_tests_browserify = watchify(browserify(browserifyOpts))
 
 function build_tests () {
   return new Promise(function (resolve, reject) {
-    glob('./test/**/*+(.js|.jsx)', {}, function (err, files) {
-      if (err) {
-        reject(err)
-        return
-      }
-      build_tests_browserify
-        .transform(envify)
-        .transform(babelify)
-      for (let file of files) {
-        build_tests_browserify.add(file)
-      }
-      build_tests_browserify.bundle()
-        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_JS_TESTS_FILE)))
-        .on('error', reject)
-        .on('close', function () {
-          build_tests_browserify.close()
-          resolve()
-        })
-    })
+    if (!build_tests.called) {
+      glob('./test/**/*+(.js|.jsx)', {}, function (err, files) {
+        if (err) {
+          reject(err)
+          return
+        }
+        build_tests_browserify
+          .transform(envify)
+          .transform(babelify)
+        for (let file of files) {
+          build_tests_browserify.add(file)
+        }
+        build_tests_browserify.bundle()
+          .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_JS_TESTS_FILE)))
+          .on('error', reject)
+          .on('close', resolve)
+      })
+    } else {
+      setTimeout(function () {
+        build_tests_browserify
+          .bundle()
+          .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_JS_TESTS_FILE)))
+          .on('error', reject)
+          .on('finish', resolve)
+      }, watchifytimeout)
+    }
+    build_tests.called = true
   })
 }
+
+build_tests.called = false
 
 gulp.task('build-tests', ['build-core', 'build-worker'], function () {
   return build_tests()
@@ -202,8 +259,8 @@ gulp.task('build-mocha', function () {
 
 gulp.task('build', ['build-react', 'build-core', 'build-tests', 'build-mocha'])
 
-gulp.task('watch-build', ['build'], function () {
-  gulp.watch(jsfiles, ['build'])
+gulp.task('build-exit', ['build'], function () {
+  process.exit()
 })
 
 function test_node (end) {
@@ -251,6 +308,12 @@ gulp.task('test-karma', ['build-karma'], function () {
       configFile: '.karma.conf.js',
       action: 'run'
     }))
+    .on('error', function () {
+      process.exit(1)
+    })
+    .on('end', function () {
+      process.exit()
+    })
 })
 
 gulp.task('watch-test-karma', function () {})
@@ -271,4 +334,4 @@ gulp.task('serve', ['build'], function () {
   gulp.watch(allfiles, ['build-browsersync'])
 })
 
-gulp.task('default', ['build'])
+gulp.task('default', ['build-exit'])
