@@ -4,8 +4,12 @@ let DB = require('../../lib/db')
 let should = require('should')
 
 describe('DB', function () {
-  let name = 'testdatabase'
+  let name = 'datt-testdatabase'
   let db
+  let doc = {
+    _id: 'test-document-id',
+    data: 'test-data'
+  }
 
   before(function () {
     db = DB(name)
@@ -13,7 +17,7 @@ describe('DB', function () {
   })
 
   after(function () {
-    return db.close()
+    return db.destroy()
   })
 
   describe('#init', function () {
@@ -33,6 +37,29 @@ describe('DB', function () {
       return db.info().then(function (info) {
         should.exist(info)
         should.exist(info.db_name)
+      })
+    })
+  })
+
+  describe('#put', function () {
+    it('should put a piece of data', function () {
+      return db.put(doc)
+    })
+
+    it('should should get an update conflict if inserting again', function () {
+      return db.put(doc)
+        .then(function () {
+          throw new Error('promise should not succeed')
+        }).catch(function () {
+          // expected
+        })
+    })
+  })
+
+  describe('#get', function () {
+    it('should get a piece of data', function () {
+      return db.get(doc._id).then(function (doc) {
+        doc.data.should.equal('test-data')
       })
     })
   })
