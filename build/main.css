@@ -2,6 +2,10 @@ body {
   font-family: 'Open Sans';
 }
 
+.page-header {
+  margin-bottom: 0;
+}
+
 .page-header img {
   float: left;
   width: 2.6em;
@@ -13,11 +17,14 @@ body {
   border-width: 0;
 }
 
-.info-box {
-  padding: 0.8em;
+.side-boxes {
   background-color: #faf8f6;
-  margin-bottom: 0.3em;
   border-left: 1px solid #eee;
+}
+
+.info-box {
+  padding: 1.0em 0.8em 1.0em 0.8em;
+  border-bottom: 1px solid #eee;
 }
 
 .info-box h2 {

@@ -52,11 +52,11 @@ let Index = React.createClass({
             </p>
           </div>
 
-          <div className='col-md-4'>
+          <div className='col-md-4 side-boxes'>
             <UserBox mnemonic={this.state.mnemonic}/>
             <BitcoinBox mnemonic={this.state.mnemonic}/>
-            <ContentBox mnemonic={this.state.mnemonic}/>
-            <PeerBox mnemonic={this.state.mnemonic}/>
+            <ContentBox postsnumber={0}/>
+            <PeerBox peersnumber={0}/>
           </div>
         </div>
       </div>
@@ -94,13 +94,13 @@ let BitcoinBox = React.createClass({
 
 let ContentBox = React.createClass({
   propTypes: {
-    mnemonic: React.PropTypes.string
+    postsnumber: React.PropTypes.number
   },
   render: function () {
     return (
       <div className='info-box'>
         <h2>My Content</h2>
-        <p>Your mnemonic: {this.props.mnemonic}</p>
+        <p>Number of posts: {this.props.postsnumber}</p>
       </div>
     )
   }
@@ -108,13 +108,13 @@ let ContentBox = React.createClass({
 
 let PeerBox = React.createClass({
   propTypes: {
-    mnemonic: React.PropTypes.string
+    peersnumber: React.PropTypes.number
   },
   render: function () {
     return (
       <div className='info-box'>
         <h2>My Peers</h2>
-        <p>Your mnemonic: {this.props.mnemonic}</p>
+        <p>Number of peers: {this.props.peersnumber}</p>
       </div>
     )
   }
