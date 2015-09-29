@@ -38,8 +38,9 @@ let Index = React.createClass({
   render: function () {
     return (
       <div className='container'>
-        <div className='row'>
+        <div className='row page-header'>
           <div className='col-md-12'>
+            <img src='/logo.svg' alt='' />
             <h1>{this.props.apptitle}</h1>
           </div>
         </div>

@@ -1,3 +1,14 @@
 body {
   font-family: 'Open Sans';
 }
+
+.page-header img {
+  float: left;
+  width: 2.6em;
+  height: 2.6em;
+}
+
+.page-header h1 {
+  margin: 0em 0em 0em 1.4em;
+  border-width: 0;
+}
