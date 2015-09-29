@@ -18,7 +18,8 @@ let Index = React.createClass({
     }
   },
   componentDidMount: function () {
-    dattcore = DattCore.create()
+    global.dattcore = DattCore.create()
+    dattcore = global.dattcore
     dattcore.init().then(function () {
       this.setState({
         status: 'initialized',
