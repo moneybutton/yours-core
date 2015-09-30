@@ -14,7 +14,7 @@ let Index = React.createClass({
       mnemonic: ''
     }
   },
-  componentDidMount: function () {
+  componentWillMount: function () {
     let dattcore = this.props.dattcore
     dattcore.init().then(function () {
       this.setState({
@@ -68,6 +68,19 @@ let UserBox = React.createClass({
       newUsername: ''
     }
   },
+  propTypes: {
+    dattcore: React.PropTypes.object,
+    mnemonic: React.PropTypes.string
+  },
+  componentWillMount: function () {
+    let dattcore = this.props.dattcore
+    let username = dattcore.getUserName()
+    console.log('got dattcore username: ' + username)
+    this.setState({
+      username: username,
+      newUsername: username
+    })
+  },
   handleChange: function (e) {
     this.setState({
       newUsername: e.target.value
@@ -81,22 +94,18 @@ let UserBox = React.createClass({
       })
     }.bind(this))
   },
-  propTypes: {
-    dattcore: React.PropTypes.object,
-    mnemonic: React.PropTypes.string
-  },
   render: function () {
     return (
       <div className='info-box'>
         <h2>My User</h2>
         <p>Your mnemonic: {this.props.mnemonic}</p>
-        <p>
-          <span>Your current username: {this.state.username}</span>
-          <span>
-            <input type='text' className='form-control' value={this.state.newUsername} onChange={this.handleChange}/>
+        <p>Your current username: {this.state.username}</p>
+        <div className='input-group'>
+          <input type='text' className='form-control' value={this.state.newUsername} onChange={this.handleChange}/>
+          <span className='input-group-btn'>
             <button className='btn btn-default' onClick={this.handleSubmit}>Set</button>
           </span>
-        </p>
+        </div>
       </div>
     )
   }
