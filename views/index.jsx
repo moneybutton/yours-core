@@ -19,7 +19,7 @@ let Index = React.createClass({
     dattcore.init().then(function () {
       this.setState({
         status: 'initialized',
-        mnemonic: dattcore.user.mnemonic
+        mnemonic: dattcore.getUserMnemonic()
       })
     }.bind(this))
     .catch(function (err) {
@@ -50,7 +50,7 @@ let Index = React.createClass({
           </div>
 
           <div className='col-md-4 side-boxes'>
-            <UserBox mnemonic={this.state.mnemonic}/>
+            <UserBox dattcore={this.props.dattcore} mnemonic={this.state.mnemonic}/>
             <BitcoinBox bitsbalance={0}/>
             <ContentBox postsnumber={0}/>
             <PeerBox peersnumber={0}/>
@@ -62,7 +62,13 @@ let Index = React.createClass({
 })
 
 let UserBox = React.createClass({
+  getInitialState: function () {
+    return {
+      username: ''
+    }
+  },
   propTypes: {
+    dattcore: React.PropTypes.object,
     mnemonic: React.PropTypes.string
   },
   render: function () {
@@ -70,6 +76,7 @@ let UserBox = React.createClass({
       <div className='info-box'>
         <h2>My User</h2>
         <p>Your mnemonic: {this.props.mnemonic}</p>
+        <p>Your username: {this.state.username}</p>
       </div>
     )
   }

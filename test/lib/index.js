@@ -47,9 +47,13 @@ describe('DattCore', function () {
 
   describe('#getUserName', function () {
     it('should get the username', function () {
-      return dattcore.getUserName().then(function (name) {
-        name.length.should.greaterThan(0)
-      })
+      dattcore.getUserName().should.equal('valid_username')
+    })
+  })
+
+  describe('#getUserMnemonic', function () {
+    it('should return the mnemonic', function () {
+      dattcore.getUserMnemonic().should.equal(dattcore.user.mnemonic)
     })
   })
 })
