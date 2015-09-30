@@ -36,4 +36,20 @@ describe('DattCore', function () {
       should.exist(dattcore)
     })
   })
+
+  describe('#setUserName', function () {
+    it('should set the username', function () {
+      return dattcore.setUserName('valid_username').then(function (res) {
+        res.should.equal(dattcore)
+      })
+    })
+  })
+
+  describe('#getUserName', function () {
+    it('should get the username', function () {
+      return dattcore.getUserName().then(function (name) {
+        name.length.should.greaterThan(0)
+      })
+    })
+  })
 })
