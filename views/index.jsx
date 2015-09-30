@@ -86,7 +86,7 @@ let BitcoinBox = React.createClass({
     return (
       <div className='info-box'>
         <h2>My Bitcoin</h2>
-        <p>Your balance: {this.props.bitsbalance}</p>
+        <p>Your balance: {this.props.bitsbalance} bits</p>
         <p><button className='btn btn-default'>Send</button>
         <button className='btn btn-default'>Receive</button></p>
       </div>

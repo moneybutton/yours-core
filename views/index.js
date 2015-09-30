@@ -5,5 +5,5 @@
 let React = require('react')
 let Index = require('./index.jsx')
 
-let index = <Index apptitle='Datt'/>
+let index = <Index apptitle='Datt Prototype'/>
 React.render(index, document.getElementById('container'))
