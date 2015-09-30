@@ -64,8 +64,22 @@ let Index = React.createClass({
 let UserBox = React.createClass({
   getInitialState: function () {
     return {
-      username: ''
+      username: '',
+      newUsername: ''
     }
+  },
+  handleChange: function (e) {
+    this.setState({
+      newUsername: e.target.value
+    })
+  },
+  handleSubmit: function () {
+    let dattcore = this.props.dattcore
+    return dattcore.setUserName(this.state.newUsername).then(function () {
+      this.setState({
+        username: dattcore.getUserName()
+      })
+    }.bind(this))
   },
   propTypes: {
     dattcore: React.PropTypes.object,
@@ -76,7 +90,13 @@ let UserBox = React.createClass({
       <div className='info-box'>
         <h2>My User</h2>
         <p>Your mnemonic: {this.props.mnemonic}</p>
-        <p>Your username: {this.state.username}</p>
+        <p>
+          <span>Your current username: {this.state.username}</span>
+          <span>
+            <input type='text' className='form-control' value={this.state.newUsername} onChange={this.handleChange}/>
+            <button className='btn btn-default' onClick={this.handleSubmit}>Set</button>
+          </span>
+        </p>
       </div>
     )
   }
