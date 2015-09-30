@@ -10,5 +10,5 @@ let Index = require('./index.jsx')
 global.dattcore = DattCore.create()
 let dattcore = global.dattcore
 
-let index = <Index apptitle='Datt Prototype' dattcore={dattcore}/>
+let index = <Index apptitle='Datt Alpha' dattcore={dattcore}/>
 React.render(index, document.getElementById('container'))
