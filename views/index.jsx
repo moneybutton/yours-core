@@ -1,4 +1,3 @@
-/* global DattCore */
 /**
  * Index
  * =====
@@ -8,8 +7,6 @@
 'use strict'
 let React = require('react')
 
-let dattcore // global dattcore application - the p2p/db/logic of datt
-
 let Index = React.createClass({
   getInitialState: function () {
     return {
@@ -18,8 +15,7 @@ let Index = React.createClass({
     }
   },
   componentDidMount: function () {
-    global.dattcore = DattCore.create()
-    dattcore = global.dattcore
+    let dattcore = this.props.dattcore
     dattcore.init().then(function () {
       this.setState({
         status: 'initialized',
@@ -33,7 +29,8 @@ let Index = React.createClass({
     }.bind(this))
   },
   propTypes: {
-    apptitle: React.PropTypes.string
+    apptitle: React.PropTypes.string,
+    dattcore: React.PropTypes.object
   },
   render: function () {
     return (
