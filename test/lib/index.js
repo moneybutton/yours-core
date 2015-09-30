@@ -56,4 +56,13 @@ describe('DattCore', function () {
       dattcore.getUserMnemonic().should.equal(dattcore.user.mnemonic)
     })
   })
+
+  describe('#getLatestBlockInfo', function () {
+    it('should return info', function () {
+      let info = dattcore.getLatestBlockInfo()
+      should.exist(info.idbuf)
+      should.exist(info.idhex)
+      should.exist(info.height)
+    })
+  })
 })
