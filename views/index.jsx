@@ -75,7 +75,6 @@ let UserBox = React.createClass({
   componentWillMount: function () {
     let dattcore = this.props.dattcore
     let username = dattcore.getUserName()
-    console.log('got dattcore username: ' + username)
     this.setState({
       username: username,
       newUsername: username
