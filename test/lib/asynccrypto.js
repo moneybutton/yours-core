@@ -16,6 +16,7 @@ let workerpool = require('workerpool')
 describe('AsyncCrypto', function () {
   let databuf = new Buffer(50)
   databuf.fill(0)
+  let hashbuf = Hash.sha256(databuf)
 
   describe('AsyncCrypto', function () {
     it('should exist', function () {
@@ -102,72 +103,75 @@ describe('AsyncCrypto', function () {
     })
   })
 
-  describe('ECDSA', function () {
-    describe('@sign', function () {
-      it('should compute the same as bitcore', function () {
-        let privkey = Privkey().fromRandom()
-        let hashbuf = Hash.sha256(databuf)
-        return AsyncCrypto.sign(hashbuf, privkey, 'big').then(function (sig) {
-          let keypair = Keypair().fromPrivkey(privkey)
-          sig.toString().should.equal(ECDSA.sign(hashbuf, keypair, 'big').toString())
-        })
+  describe('@sign', function () {
+    it('should compute the same as bitcore', function () {
+      let privkey = Privkey().fromRandom()
+      return AsyncCrypto.sign(hashbuf, privkey, 'big').then(function (sig) {
+        let keypair = Keypair().fromPrivkey(privkey)
+        sig.toString().should.equal(ECDSA.sign(hashbuf, keypair, 'big').toString())
+      })
+    })
+  })
+
+  describe('@verifySignature', function () {
+    it('should return true for a valid signature', function () {
+      let privkey = Privkey().fromRandom()
+      let pubkey = Pubkey().fromPrivkey(privkey)
+      return AsyncCrypto.sign(hashbuf, privkey, 'big').then(function (sig) {
+        return AsyncCrypto.verifySignature(hashbuf, sig, pubkey)
+      }).then(function (verified) {
+        should.exist(verified)
+        verified.should.eql(true)
       })
     })
 
-    describe('@verifySignature', function () {
-      it('should return true for a valid signature', function () {
-        let hashbuf = Hash.sha256(databuf)
-        let privkey = Privkey().fromRandom()
-        let pubkey = Pubkey().fromPrivkey(privkey)
-        return AsyncCrypto.sign(hashbuf, privkey, 'big').then(function (sig) {
-          return AsyncCrypto.verifySignature(hashbuf, sig, pubkey)
-        }).then(function (verified) {
-          should.exist(verified)
-          verified.should.eql(true)
-        }).catch(function (err) {
-          should.fail('Should not throw an error: ' + err + '\n\n ' + err.stack)
-        })
+    it('should return false for an invalid signature', function () {
+      let privkey = Privkey().fromRandom()
+
+      let otherPrivkey = Privkey().fromRandom()
+      let otherPubkey = Pubkey().fromPrivkey(otherPrivkey)
+
+      return AsyncCrypto.sign(hashbuf, privkey, 'big').then(function (sig) {
+        return AsyncCrypto.verifySignature(hashbuf, sig, otherPubkey)
+      }).then(function (verified) {
+        should.exist(verified)
+        verified.should.eql(false)
       })
+    })
 
-      it('should return false for an invalid signature', function () {
-        let hashbuf = Hash.sha256(databuf)
-        let privkey = Privkey().fromRandom()
+    it('should reject the promise if any arguments are missing, null, or undefined', function () {
+      let privkey = Privkey().fromRandom()
+      let pubkey = Pubkey().fromPrivkey(privkey)
 
-        let otherPrivkey = Privkey().fromRandom()
-        let otherPubkey = Pubkey().fromPrivkey(otherPrivkey)
-
-        return AsyncCrypto.sign(hashbuf, privkey, 'big').then(function (sig) {
-          return AsyncCrypto.verifySignature(hashbuf, sig, otherPubkey)
-        }).then(function (verified) {
-          should.exist(verified)
-          verified.should.eql(false)
-        }).catch(function (err) {
-          should.fail('Should not throw an error: ' + err + '\n\n ' + err.stack)
-        })
+      return AsyncCrypto.sign(hashbuf, privkey, 'big').then(function (sig) {
+        return q.allSettled([
+          AsyncCrypto.verifySignature(null, sig, pubkey),
+          AsyncCrypto.verifySignature(undefined, sig, pubkey),
+          AsyncCrypto.verifySignature(hashbuf, null, sig),
+          AsyncCrypto.verifySignature(hashbuf, undefined, sig),
+          AsyncCrypto.verifySignature(hashbuf, sig, null),
+          AsyncCrypto.verifySignature(hashbuf, sig, undefined)
+        ])
+      }).spread(function (nullHash, undefinedHash, nullSig, undefinedSig, nullPubKey, undefinedPubKey) {
+        nullHash.state.should.eql('rejected')
+        undefinedHash.state.should.eql('rejected')
+        nullSig.state.should.eql('rejected')
+        undefinedSig.state.should.eql('rejected')
+        nullPubKey.state.should.eql('rejected')
+        undefinedPubKey.state.should.eql('rejected')
       })
+    })
+  })
 
-      it('should reject the promise if any arguments are missing, null, or undefined', function () {
-        let hashbuf = Hash.sha256(databuf)
-        let privkey = Privkey().fromRandom()
-        let pubkey = Pubkey().fromPrivkey(privkey)
+  describe('@verifyCompactSig', function () {
+    it('should validate this signature', function () {
+      let keypair = Keypair().fromRandom()
+      let sig = ECDSA.sign(hashbuf, keypair)
+      sig = ECDSA.calcrecovery(sig, keypair.pubkey, hashbuf)
 
-        return AsyncCrypto.sign(hashbuf, privkey, 'big').then(function (sig) {
-          return q.allSettled([
-            AsyncCrypto.verifySignature(null, sig, pubkey),
-            AsyncCrypto.verifySignature(undefined, sig, pubkey),
-            AsyncCrypto.verifySignature(hashbuf, null, sig),
-            AsyncCrypto.verifySignature(hashbuf, undefined, sig),
-            AsyncCrypto.verifySignature(hashbuf, sig, null),
-            AsyncCrypto.verifySignature(hashbuf, sig, undefined)
-          ])
-        }).spread(function (nullHash, undefinedHash, nullSig, undefinedSig, nullPubKey, undefinedPubKey) {
-          nullHash.state.should.eql('rejected')
-          undefinedHash.state.should.eql('rejected')
-          nullSig.state.should.eql('rejected')
-          undefinedSig.state.should.eql('rejected')
-          nullPubKey.state.should.eql('rejected')
-          undefinedPubKey.state.should.eql('rejected')
-        })
+      return AsyncCrypto.verifyCompactSig(hashbuf, sig).then(function (obj) {
+        obj.verified.should.equal(true)
+        Buffer.compare(obj.pubkey.toDER(), keypair.pubkey.toDER()).should.equal(0)
       })
     })
   })
