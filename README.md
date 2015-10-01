@@ -539,6 +539,7 @@ Bitcoin, lightning network, sidechains
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
 Articles and Links
+- [Business Insider, Vox, BuzzFeed, Medium: What’s Driving Digital Media’s New Investment Craze](http://www.thewrap.com/business-insider-vox-buzzfeed-medium-whats-driving-digital-medias-new-investment-craze/)
 - [Is TLS fast enough yet? (tldr: yes)](https://istlsfastyet.com/)
 - ["Apple's commitment to your privacy"](http://www.apple.com/privacy/) - [HN discussion](https://news.ycombinator.com/item?id=10296732)
 - [Medium raises $57 million to better connect content and conversation](https://medium.com/@andydoyle/medium-s-new-funding-round-48437c641e06)
