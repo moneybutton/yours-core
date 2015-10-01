@@ -23,7 +23,7 @@ let allfiles = [].concat(jsfiles).concat(cssfiles)
 
 let browserifyOpts
 
-// For some weird reason, while watching files, they appear not to exit
+// For some weird reason, while watching files, they appear not to exist
 // immediately after noticing they've changed. Thus we set a timeout not to
 // rebuild bundles for a brief period after a file has changed. If this timeout
 // isn't set, there will often be a "file doesn't exist" error while rebuilding
