@@ -170,43 +170,4 @@ describe('Msg', function () {
       Msg().fromHex(msghex).isValid().should.equal(true)
     })
   })
-
-  describe('#fromPing', function () {
-    it('should make a ping message', function () {
-      let msg = Msg().fromPing()
-      msg.getCmd().should.equal('ping')
-      msg.databuf.length.should.equal(8)
-    })
-
-    it('should make a ping message with a defined buffer', function () {
-      let databuf = new Buffer([])
-      let msg = Msg().fromPing({checksum: Msg.checksum(databuf), databuf: databuf})
-      msg.getCmd().should.equal('ping')
-      msg.databuf.length.should.equal(0)
-    })
-  })
-
-  describe('#fromPong', function () {
-    it('should make a pong message', function () {
-      let msg = Msg().fromPong()
-      msg.getCmd().should.equal('pong')
-      msg.databuf.length.should.equal(8)
-    })
-
-    it('should make a pong message with a defined buffer', function () {
-      let databuf = new Buffer([])
-      let msg = Msg().fromPong({checksum: Msg.checksum(databuf), databuf: databuf})
-      msg.getCmd().should.equal('pong')
-      msg.databuf.length.should.equal(0)
-    })
-  })
-
-  describe('#fromPongFromPing', function () {
-    it('should make a pong message from a ping message', function () {
-      let msg = Msg().fromPing()
-      msg.getCmd().should.equal('ping')
-      msg = Msg().fromPongFromPing(msg)
-      msg.getCmd().should.equal('pong')
-    })
-  })
 })
