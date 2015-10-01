@@ -7,7 +7,7 @@ let BW = require('fullnode/lib/bw')
 let should = require('should')
 
 describe('Msg', function () {
-  let msghex = '255a484b76657261636b000000000000000000005df6e0e2'
+  let msghex = '255a484b76657261636b00000000000000000000'
   let msgbuf = new Buffer(msghex, 'hex')
   let msg = Msg().fromHex(msghex)
   let msgjson = msg.toJSON()
