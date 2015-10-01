@@ -15,6 +15,7 @@ let browserSync = require('browser-sync').create()
 let watchify = require('watchify')
 let jsx_require_extension = require('jsx-require-extension')
 let gutil = require('gulp-util')
+let q = require('q')
 
 let jsfiles = ['*.js', 'bin/*.js', 'views/**/*.js', 'views/**/*.jsx', 'lib/**/*.js', 'test/**/*.js', 'test/**/*.jsx']
 let cssfiles = ['build/main.css']
@@ -85,7 +86,7 @@ build_worker_browserify
 
 function build_worker () {
   return new Promise(function (resolve, reject) {
-    setTimeout(function () {
+    q.delay(watchifytimeout).then(function () {
       build_worker_browserify
         .bundle()
         .on('error', function (err) {
@@ -95,7 +96,7 @@ function build_worker () {
         .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKER_FILE)))
         .once('finish', resolve)
         .once('error', reject)
-    }, watchifytimeout)
+    })
   })
 }
 
@@ -117,7 +118,7 @@ build_core_browserify
 
 function build_core () {
   return new Promise(function (resolve, reject) {
-    setTimeout(function () {
+    q.delay(watchifytimeout).then(function () {
       build_core_browserify
         .bundle()
         .on('error', function (err) {
@@ -127,7 +128,7 @@ function build_core () {
         .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_BUNDLE_FILE)))
         .once('finish', resolve)
         .once('error', reject)
-    }, watchifytimeout)
+    })
   })
 }
 
@@ -152,7 +153,7 @@ function build_react () {
       .on('error', reject)
   })
   let p2 = new Promise(function (resolve, reject) {
-    setTimeout(function () {
+    q.delay(watchifytimeout).then(function () {
       build_react_browserify
         .bundle()
         .on('error', function (err) {
@@ -162,7 +163,7 @@ function build_react () {
         .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
         .once('finish', resolve)
         .once('error', reject)
-    }, watchifytimeout)
+    })
   })
   return p1.then(function () {
     return p2
@@ -195,7 +196,7 @@ gulp.task('build-tests-prebundle', function (callback) {
 
 function build_tests () {
   return new Promise(function (resolve, reject) {
-    setTimeout(function () {
+    q.delay(watchifytimeout).then(function () {
       build_tests_browserify
         .bundle()
         .on('error', function (err) {
@@ -204,7 +205,7 @@ function build_tests () {
         })
         .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_JS_TESTS_FILE)))
         .on('finish', resolve)
-    }, watchifytimeout)
+    })
   })
 }
 
@@ -261,14 +262,14 @@ gulp.task('test-node', function () {
 gulp.task('watch-test-node', function () {
   // runs the mocha node tests and runs js standard on all the files
   watch(jsfiles, function () {
-    setTimeout(function () {
+    q.delay(watchifytimeout).then(function () {
       exec('node_modules/.bin/standard *.js ./views/**/*.js ./views/**/*.jsx ./lib/**/*.js ./test/**/*.js', {cwd: __dirname}, function (err, stdout, stderr) {
         if (err) {
           console.log(stdout)
         }
         test_node()
       })
-    }, 500)
+    })
   })
 })
 
