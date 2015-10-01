@@ -261,12 +261,14 @@ gulp.task('test-node', function () {
 gulp.task('watch-test-node', function () {
   // runs the mocha node tests and runs js standard on all the files
   watch(jsfiles, function () {
-    exec('node_modules/.bin/standard *.js ./views/**/*.js ./views/**/*.jsx ./lib/**/*.js ./test/**/*.js', {cwd: __dirname}, function (err, stdout, stderr) {
-      if (err) {
-        console.log(stdout)
-      }
-      test_node()
-    })
+    setTimeout(function () {
+      exec('node_modules/.bin/standard *.js ./views/**/*.js ./views/**/*.jsx ./lib/**/*.js ./test/**/*.js', {cwd: __dirname}, function (err, stdout, stderr) {
+        if (err) {
+          console.log(stdout)
+        }
+        test_node()
+      })
+    }, 500)
   })
 })
 
