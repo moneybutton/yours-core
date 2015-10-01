@@ -16,10 +16,12 @@ let Index = React.createClass({
   },
   componentWillMount: function () {
     let dattcore = this.props.dattcore
-    dattcore.init().then(function () {
+    return dattcore.init().then(function () {
+      return dattcore.getUserMnemonic()
+    }).then(function (mnemonic) {
       this.setState({
         status: 'initialized',
-        mnemonic: dattcore.getUserMnemonic()
+        mnemonic: mnemonic
       })
     }.bind(this))
     .catch(function (err) {
@@ -64,8 +66,8 @@ let Index = React.createClass({
 let UserBox = React.createClass({
   getInitialState: function () {
     return {
-      username: '',
-      newUsername: ''
+      userName: '',
+      newUserName: ''
     }
   },
   propTypes: {
@@ -74,22 +76,23 @@ let UserBox = React.createClass({
   },
   componentWillMount: function () {
     let dattcore = this.props.dattcore
-    let username = dattcore.getUserName()
-    this.setState({
-      username: username,
-      newUsername: username
-    })
+    return dattcore.getUserName().then(function (userName) {
+      this.setState({
+        userName: userName,
+        newUserName: userName
+      })
+    }.bind(this))
   },
   handleChange: function (e) {
     this.setState({
-      newUsername: e.target.value
+      newUserName: e.target.value
     })
   },
   handleSubmit: function () {
     let dattcore = this.props.dattcore
-    return dattcore.setUserName(this.state.newUsername).then(function () {
+    return dattcore.setUserName(this.state.newUserName).then(function () {
       this.setState({
-        username: dattcore.getUserName()
+        userName: dattcore.getUserName()
       })
     }.bind(this))
   },
@@ -98,9 +101,9 @@ let UserBox = React.createClass({
       <div className='info-box'>
         <h2>My User</h2>
         <p>Your mnemonic: {this.props.mnemonic}</p>
-        <p>Your current username: {this.state.username}</p>
+        <p>Your current name: {this.state.userName}</p>
         <div className='input-group'>
-          <input type='text' className='form-control' value={this.state.newUsername} onChange={this.handleChange}/>
+          <input type='text' className='form-control' value={this.state.newUserName} onChange={this.handleChange}/>
           <span className='input-group-btn'>
             <button className='btn btn-default' onClick={this.handleSubmit}>Set</button>
           </span>

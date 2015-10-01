@@ -47,22 +47,27 @@ describe('DattCore', function () {
 
   describe('#getUserName', function () {
     it('should get the username', function () {
-      dattcore.getUserName().should.equal('valid_username')
+      return dattcore.getUserName().then(function (userName) {
+        userName.should.equal('valid_username')
+      })
     })
   })
 
   describe('#getUserMnemonic', function () {
     it('should return the mnemonic', function () {
-      dattcore.getUserMnemonic().should.equal(dattcore.user.mnemonic)
+      return dattcore.getUserMnemonic().then(function (mnemonic) {
+        mnemonic.should.equal(dattcore.user.mnemonic)
+      })
     })
   })
 
   describe('#getLatestBlockInfo', function () {
     it('should return info', function () {
-      let info = dattcore.getLatestBlockInfo()
-      should.exist(info.idbuf)
-      should.exist(info.idhex)
-      should.exist(info.height)
+      return dattcore.getLatestBlockInfo().then(function (info) {
+        should.exist(info.idbuf)
+        should.exist(info.idhex)
+        should.exist(info.height)
+      })
     })
   })
 })
