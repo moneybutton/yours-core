@@ -53,7 +53,7 @@ let Index = React.createClass({
 
           <div className='col-md-4 side-boxes'>
             <UserBox dattcore={this.props.dattcore} mnemonic={this.state.mnemonic}/>
-            <BitcoinBox bitsbalance={0}/>
+            <BitcoinBox dattcore={this.props.dattcore} bitsbalance={0}/>
             <ContentBox postsnumber={0}/>
             <PeerBox peersnumber={0}/>
           </div>
@@ -114,8 +114,22 @@ let UserBox = React.createClass({
 })
 
 let BitcoinBox = React.createClass({
+  getInitialState: function () {
+    return {
+      blockheightnum: 0
+    }
+  },
   propTypes: {
-    bitsbalance: React.PropTypes.number
+    bitsbalance: React.PropTypes.number,
+    dattcore: React.PropTypes.object
+  },
+  componentDidMount: function () {
+    let dattcore = this.props.dattcore
+    return dattcore.getLatestBlockInfo().then(function (info) {
+      this.setState({
+        blockheightnum: info.height
+      })
+    }.bind(this))
   },
   render: function () {
     return (
@@ -124,6 +138,7 @@ let BitcoinBox = React.createClass({
         <p>Your balance: {this.props.bitsbalance} bits</p>
         <p><button className='btn btn-default'>Send</button>
         <button className='btn btn-default'>Receive</button></p>
+        <p>Latest block height: {this.state.blockheightnum}</p>
       </div>
     )
   }
