@@ -16,19 +16,19 @@ let Index = React.createClass({
   },
   componentWillMount: function () {
     let dattcore = this.props.dattcore
-    return dattcore.init().then(function () {
+    return dattcore.init().then(() => {
       return dattcore.getUserMnemonic()
-    }).then(function (mnemonic) {
+    }).then(mnemonic => {
       this.setState({
         status: 'initialized',
         mnemonic: mnemonic
       })
-    }.bind(this))
-    .catch(function (err) {
+    })
+    .catch(err => {
       this.setState({
         status: 'error initializing: ' + err
       })
-    }.bind(this))
+    })
   },
   propTypes: {
     apptitle: React.PropTypes.string,
@@ -76,12 +76,12 @@ let UserBox = React.createClass({
   },
   componentWillMount: function () {
     let dattcore = this.props.dattcore
-    return dattcore.getUserName().then(function (userName) {
+    return dattcore.getUserName().then(userName => {
       this.setState({
         userName: userName,
         newUserName: userName
       })
-    }.bind(this))
+    })
   },
   handleChange: function (e) {
     this.setState({
@@ -90,11 +90,11 @@ let UserBox = React.createClass({
   },
   handleSubmit: function () {
     let dattcore = this.props.dattcore
-    return dattcore.setUserName(this.state.newUserName).then(function () {
+    return dattcore.setUserName(this.state.newUserName).then(() => {
       this.setState({
         userName: dattcore.getUserName()
       })
-    }.bind(this))
+    })
   },
   render: function () {
     return (
@@ -125,11 +125,11 @@ let BitcoinBox = React.createClass({
   },
   componentDidMount: function () {
     let dattcore = this.props.dattcore
-    return dattcore.getLatestBlockInfo().then(function (info) {
+    return dattcore.getLatestBlockInfo().then(info => {
       this.setState({
         blockheightnum: info.height
       })
-    }.bind(this))
+    })
   },
   render: function () {
     return (

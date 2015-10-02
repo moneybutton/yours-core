@@ -62,7 +62,7 @@ if (!process.env.DATT_REACT_JS_FILE) {
 }
 
 function build_workerpool () {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     fs.createReadStream(path.join(__dirname, 'node_modules', 'workerpool', 'dist', 'workerpool.js'))
       .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKERPOOL_FILE)))
       .on('close', resolve)
@@ -91,7 +91,7 @@ function set_build_worker_browserify () {
 set_build_worker_browserify()
 
 function build_worker () {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     q.delay(watchifytimeout).then(function () {
       build_worker_browserify
         .bundle()
@@ -131,7 +131,7 @@ function set_build_core_browserify () {
 set_build_core_browserify()
 
 function build_core () {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     q.delay(watchifytimeout).then(function () {
       build_core_browserify
         .bundle()
@@ -168,13 +168,13 @@ function set_build_react_browserify () {
 set_build_react_browserify()
 
 function build_react () {
-  let p1 = new Promise(function (resolve, reject) {
+  let p1 = new Promise((resolve, reject) => {
     fs.createReadStream(path.join(__dirname, 'node_modules', 'bootstrap', 'dist', 'css', 'bootstrap.css'))
       .pipe(fs.createWriteStream(path.join(__dirname, 'build', 'bootstrap.css')))
       .on('close', resolve)
       .on('error', reject)
   })
-  let p2 = new Promise(function (resolve, reject) {
+  let p2 = new Promise((resolve, reject) => {
     q.delay(watchifytimeout).then(function () {
       build_react_browserify
         .bundle()
@@ -203,7 +203,7 @@ browserifyOpts = Object.assign({}, watchify.args, browserifyOpts)
 let build_tests_browserify
 
 function set_build_tests_browserify () {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     glob('./test/**/*+(.js|.jsx)', {}, function (err, files) {
       build_tests_browserify = watchify(browserify(browserifyOpts))
       if (err) {
@@ -226,7 +226,7 @@ gulp.task('build-tests-prebundle', function () {
 })
 
 function build_tests () {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     q.delay(watchifytimeout).then(function () {
       build_tests_browserify
         .bundle()
@@ -252,13 +252,13 @@ gulp.task('build-tests', ['build-tests-prebundle', 'build-core', 'build-worker']
 gulp.task('build-mocha', function () {
   // copy the mocha js and css files to our build directory so you can use them
   // in the tests HTML file
-  let p1 = new Promise(function (resolve, reject) {
+  let p1 = new Promise((resolve, reject) => {
     fs.createReadStream(path.join(__dirname, 'node_modules', 'mocha', 'mocha.js'))
       .pipe(fs.createWriteStream(path.join(__dirname, 'build', 'mocha.js')))
       .on('close', resolve)
       .on('error', reject)
   })
-  let p2 = new Promise(function (resolve, reject) {
+  let p2 = new Promise((resolve, reject) => {
     fs.createReadStream(path.join(__dirname, 'node_modules', 'mocha', 'mocha.css'))
       .pipe(fs.createWriteStream(path.join(__dirname, 'build', 'mocha.css')))
       .on('close', resolve)

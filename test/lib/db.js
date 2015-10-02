@@ -34,7 +34,7 @@ describe('DB', function () {
 
   describe('#info', function () {
     it('should give some info', function () {
-      return db.info().then(function (info) {
+      return db.info().then(info => {
         should.exist(info)
         should.exist(info.db_name)
       })
@@ -48,9 +48,9 @@ describe('DB', function () {
 
     it('should should get an update conflict if inserting again', function () {
       return db.put(doc)
-        .then(function () {
+        .then(() => {
           throw new Error('promise should not succeed')
-        }).catch(function () {
+        }).catch(() => {
           // expected
         })
     })
@@ -58,7 +58,7 @@ describe('DB', function () {
 
   describe('#get', function () {
     it('should get a piece of data', function () {
-      return db.get(doc._id).then(function (doc) {
+      return db.get(doc._id).then((doc) => {
         doc.data.should.equal('test-data')
       })
     })

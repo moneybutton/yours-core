@@ -19,7 +19,7 @@ describe('User', function () {
   describe('#fromRandom', function () {
     it('should make a new user', function () {
       let user = User()
-      return user.fromRandom().then(function (user2) {
+      return user.fromRandom().then((user2) => {
         user.should.equal(user2)
         should.exist(user.mnemonic)
         should.exist(user.masterxprv)
