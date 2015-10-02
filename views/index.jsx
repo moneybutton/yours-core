@@ -92,7 +92,7 @@ let UserBox = React.createClass({
     let dattcore = this.props.dattcore
     return dattcore.setUserName(this.state.newUserName).then(() => {
       this.setState({
-        userName: dattcore.getUserName()
+        userName: this.state.newUserName
       })
     })
   },
