@@ -92,10 +92,10 @@ set_build_worker_browserify()
 
 function build_worker () {
   return new Promise((resolve, reject) => {
-    q.delay(watchifytimeout).then(function () {
+    q.delay(watchifytimeout).then(() => {
       build_worker_browserify
         .bundle()
-        .on('error', function (err) {
+        .on('error', err => {
           gutil.log.bind(gutil, 'Browserify Error')
           build_worker_browserify.close()
           set_build_worker_browserify()
@@ -132,10 +132,10 @@ set_build_core_browserify()
 
 function build_core () {
   return new Promise((resolve, reject) => {
-    q.delay(watchifytimeout).then(function () {
+    q.delay(watchifytimeout).then(() => {
       build_core_browserify
         .bundle()
-        .on('error', function (err) {
+        .on('error', err => {
           gutil.log.bind(gutil, 'Browserify Error')
           build_core_browserify.close()
           set_build_core_browserify()
@@ -148,7 +148,7 @@ function build_core () {
   })
 }
 
-gulp.task('build-core', ['build-worker'], function () {
+gulp.task('build-core', ['build-worker'], () => {
   return build_core()
 })
 
@@ -175,10 +175,10 @@ function build_react () {
       .on('error', reject)
   })
   let p2 = new Promise((resolve, reject) => {
-    q.delay(watchifytimeout).then(function () {
+    q.delay(watchifytimeout).then(() => {
       build_react_browserify
         .bundle()
-        .on('error', function (err) {
+        .on('error', err => {
           gutil.log.bind(gutil, 'Browserify Error')
           build_react_browserify.close()
           set_build_react_browserify()
@@ -204,7 +204,7 @@ let build_tests_browserify
 
 function set_build_tests_browserify () {
   return new Promise((resolve, reject) => {
-    glob('./test/**/*+(.js|.jsx)', {}, function (err, files) {
+    glob('./test/**/*+(.js|.jsx)', {}, (err, files) => {
       build_tests_browserify = watchify(browserify(browserifyOpts))
       if (err) {
         reject(err)
@@ -221,21 +221,21 @@ function set_build_tests_browserify () {
   })
 }
 
-gulp.task('build-tests-prebundle', function () {
+gulp.task('build-tests-prebundle', () => {
   return set_build_tests_browserify()
 })
 
 function build_tests () {
   return new Promise((resolve, reject) => {
-    q.delay(watchifytimeout).then(function () {
+    q.delay(watchifytimeout).then(() => {
       build_tests_browserify
         .bundle()
-        .on('error', function (err) {
+        .on('error', err => {
           gutil.log.bind(gutil, 'Browserify Error')
           build_tests_browserify.close()
           set_build_tests_browserify().then(function () {
             reject(err)
-          }).catch(function (error) {
+          }).catch(error => {
             reject(err + ', ' + error)
           })
         })
@@ -245,11 +245,11 @@ function build_tests () {
   })
 }
 
-gulp.task('build-tests', ['build-tests-prebundle', 'build-core', 'build-worker'], function () {
+gulp.task('build-tests', ['build-tests-prebundle', 'build-core', 'build-worker'], () => {
   return build_tests()
 })
 
-gulp.task('build-mocha', function () {
+gulp.task('build-mocha', () => {
   // copy the mocha js and css files to our build directory so you can use them
   // in the tests HTML file
   let p1 = new Promise((resolve, reject) => {
@@ -264,14 +264,14 @@ gulp.task('build-mocha', function () {
       .on('close', resolve)
       .on('error', reject)
   })
-  return p1.then(function () {
+  return p1.then(() => {
     return p2
   })
 })
 
 gulp.task('build', ['build-react', 'build-core', 'build-tests', 'build-mocha'])
 
-gulp.task('build-exit', ['build'], function () {
+gulp.task('build-exit', ['build'], () => {
   process.exit()
 })
 
@@ -284,22 +284,22 @@ function test_node (end) {
         jsx: jsx_require_extension
       }
     }))
-    .once('end', function () {
+    .once('end', () => {
       if (end) {
         process.exit()
       }
     })
 }
 
-gulp.task('test-node', function () {
+gulp.task('test-node', () => {
   return test_node(true)
 })
 
-gulp.task('watch-test-node', function () {
+gulp.task('watch-test-node', () => {
   // runs the mocha node tests and runs js standard on all the files
   watch(jsfiles, function () {
-    q.delay(watchifytimeout).then(function () {
-      exec('node_modules/.bin/standard *.js ./views/**/*.js ./views/**/*.jsx ./lib/**/*.js ./test/**/*.js', {cwd: __dirname}, function (err, stdout, stderr) {
+    q.delay(watchifytimeout).then(() => {
+      exec('node_modules/.bin/standard *.js ./views/**/*.js ./views/**/*.jsx ./lib/**/*.js ./test/**/*.js', {cwd: __dirname}, (err, stdout, stderr) => {
         if (err) {
           console.log(stdout)
         }
@@ -309,34 +309,34 @@ gulp.task('watch-test-node', function () {
   })
 })
 
-gulp.task('build-karma-url', function () {
+gulp.task('build-karma-url', () => {
   // karma serves static files, including js files, from /base/
   process.env.DATT_JS_BASE_URL = '/base/'
 })
 
 gulp.task('build-karma', ['build-karma-url', 'build'])
 
-gulp.task('test-karma', ['build-karma'], function () {
+gulp.task('test-karma', ['build-karma'], () => {
   return gulp.src([])
     .pipe(karma({
       configFile: '.karma.conf.js',
       action: 'run'
     }))
-    .on('error', function () {
+    .on('error', () => {
       process.exit(1)
     })
-    .on('end', function () {
+    .on('end', () => {
       process.exit()
     })
 })
 
-gulp.task('watch-test-karma', function () {})
+gulp.task('watch-test-karma', () => {})
 
-gulp.task('build-browsersync', ['build'], function () {
+gulp.task('build-browsersync', ['build'], () => {
   browserSync.reload()
 })
 
-gulp.task('serve', ['build'], function () {
+gulp.task('serve', ['build'], () => {
   browserSync.init({
     server: {
       baseDir: './build',
