@@ -24,7 +24,7 @@ describe('User', function () {
         should.exist(user.mnemonic)
         should.exist(user.masterxprv)
         should.exist(user.masterxpub)
-        user.name.should.equal('noname')
+        user.name.should.equal('satoshi')
       })
     })
   })
