@@ -1,14 +1,19 @@
 /* global DattCore */
 /**
- * This front-end entry point only serves to render the index component.
+ * This front-end entry point only serves to render the layout component.
  */
 'use strict'
 let React = require('react')
-let Index = require('./index.jsx')
+let Layout = require('./layout.jsx')
+let os = require('os')
 
-// global dattcore application - the p2p/db/logic of datt
-global.dattcore = DattCore.create()
-let dattcore = global.dattcore
+let config = {
+  dbName: 'datt-development',
+  dbBasePath: os.tmpdir()
+}
 
-let index = <Index apptitle='Datt Alpha' dattcore={dattcore}/>
-React.render(index, document.getElementById('container'))
+// dattcore application - the p2p/db/logic of datt
+let dattcore = DattCore.getGlobal(config)
+
+let layout = <Layout apptitle='Datt Alpha' dattcore={dattcore}/>
+React.render(layout, document.getElementById('container'))
