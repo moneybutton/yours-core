@@ -538,6 +538,7 @@ Bitcoin, lightning network, sidechains
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
 Articles and Links
+- [A protocol for microtransactions (PDF) (Strawpay)](https://www.strawpay.com/docs/stroem-payment-system.pdf)
 - [Japan’s Largest Q&A Platform OKWave Adds Bitcoin Services (OKWave)](https://news.bitcoin.com/japans-largest-qa-platform-okwave-adds-bitcoin-services/)
 - [Blendle: A radical experiment with micropayments in journalism, 365 days later](https://medium.com/on-blendle/blendle-a-radical-experiment-with-micropayments-in-journalism-365-days-later-f3b799022edc)
 - [Business Insider, Vox, BuzzFeed, Medium: What’s Driving Digital Media’s New Investment Craze](http://www.thewrap.com/business-insider-vox-buzzfeed-medium-whats-driving-digital-medias-new-investment-craze/)
