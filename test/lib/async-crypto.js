@@ -10,7 +10,7 @@ let Address = require('fullnode/lib/address')
 let Keypair = require('fullnode/lib/keypair')
 let ECDSA = require('fullnode/lib/ecdsa')
 
-let AsyncCrypto = require('../../lib/asynccrypto')
+let AsyncCrypto = require('../../lib/async-crypto')
 let workerpool = require('workerpool')
 
 describe('AsyncCrypto', function () {
