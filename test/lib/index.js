@@ -66,6 +66,8 @@ describe('DattCore', function () {
       return dattcore.getLatestBlockInfo().then(info => {
         should.exist(info.idbuf)
         should.exist(info.idhex)
+        should.exist(info.hashbuf)
+        should.exist(info.hashhex)
         should.exist(info.height)
       })
     })

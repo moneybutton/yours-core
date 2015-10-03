@@ -113,6 +113,16 @@ describe('AsyncCrypto', function () {
     })
   })
 
+  describe('@signCompact', function () {
+    it('should compute a compact signature', function () {
+      let privkey = Privkey().fromRandom()
+      return AsyncCrypto.signCompact(hashbuf, privkey).then(sig => {
+        should.exist(sig.recovery)
+        should.exist(sig.compressed)
+      })
+    })
+  })
+
   describe('@verifySignature', function () {
     it('should return true for a valid signature', function () {
       let privkey = Privkey().fromRandom()
