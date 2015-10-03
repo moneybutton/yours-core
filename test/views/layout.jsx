@@ -19,11 +19,14 @@ describe('Layout', function () {
   })
 
   before(function () {
+    // Note: All react test files must run dom.before()
     dom.before()
+
     domlayout = TestUtils.renderIntoDocument(<Layout apptitle='Datt' dattcore={dattcore}/>)
   })
 
   after(function () {
+    // Note: All react test files must run dom.after()
     dom.after()
   })
 
