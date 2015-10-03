@@ -28,4 +28,10 @@ describe('Content', function () {
       content.body.should.equal('content body')
     })
   })
+
+  describe('#validate', function () {
+    it('should not throw an error on this known-valid content', function () {
+      Content().fromHex(contenthex).validate()
+    })
+  })
 })
