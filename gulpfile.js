@@ -213,6 +213,7 @@ function set_build_tests_browserify () {
       build_tests_browserify
         .transform(envify)
         .transform(babelify)
+        .ignore('jsdom')
       for (let file of files) {
         build_tests_browserify.add(file)
       }
