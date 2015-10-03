@@ -11,12 +11,12 @@ let BoxUser = React.createClass({
   getInitialState: function () {
     return {
       userName: '',
-      newUserName: ''
+      newUserName: '',
+      userMnemonic: ''
     }
   },
   propTypes: {
-    dattcore: React.PropTypes.object,
-    mnemonic: React.PropTypes.string
+    dattcore: React.PropTypes.object
   },
   componentWillMount: function () {
     let dattcore = this.props.dattcore
@@ -24,6 +24,11 @@ let BoxUser = React.createClass({
       this.setState({
         userName: userName,
         newUserName: userName
+      })
+      return dattcore.getUserMnemonic()
+    }).then(userMnemonic => {
+      this.setState({
+        userMnemonic: userMnemonic
       })
     })
   },
@@ -44,7 +49,7 @@ let BoxUser = React.createClass({
     return (
       <div className='info-box'>
         <h2>My User</h2>
-        <p>Your mnemonic: {this.props.mnemonic}</p>
+        <p>Your mnemonic: {this.state.userMnemonic}</p>
         <p>Your current name: {this.state.userName}</p>
         <div className='input-group'>
           <input type='text' className='form-control' value={this.state.newUserName} onChange={this.handleChange}/>
