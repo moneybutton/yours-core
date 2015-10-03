@@ -16,9 +16,10 @@ let BoxUser = React.createClass({
     }
   },
   propTypes: {
-    dattcore: React.PropTypes.object
+    dattcore: React.PropTypes.object,
+    status: React.PropTypes.string
   },
-  componentWillMount: function () {
+  setStateFromDattcore: function () {
     let dattcore = this.props.dattcore
     return dattcore.getUserName().then(userName => {
       this.setState({
@@ -31,6 +32,12 @@ let BoxUser = React.createClass({
         userMnemonic: userMnemonic
       })
     })
+  },
+  componentWillMount: function () {
+    return this.setStateFromDattcore()
+  },
+  componentWillReceiveProps: function () {
+    return this.setStateFromDattcore()
   },
   handleChange: function (e) {
     this.setState({
