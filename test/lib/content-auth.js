@@ -1,6 +1,7 @@
 /* global describe,it */
 'use strict'
 let ContentAuth = require('../../lib/content-auth')
+let Content = require('../../lib/content')
 let Privkey = require('fullnode/lib/privkey')
 let Address = require('fullnode/lib/address')
 let Keypair = require('fullnode/lib/keypair')
@@ -86,6 +87,34 @@ describe('ContentAuth', function () {
       return contentauth.asyncVerify().then(verified => {
         verified.should.equal(contentauth.verify())
       })
+    })
+  })
+
+  describe('#setContent', function () {
+    it('should set the content', function () {
+      let contentauth = ContentAuth().fromHex(contentauthhex)
+      let content = Content().fromObject({
+        name: 'satoshi',
+        label: 'general',
+        title: 'title',
+        type: 'markdown',
+        body: 'body'
+      })
+      contentauth.setContent(content)
+      contentauth.contentbuf.toString('hex').should.equal(content.toBuffer().toString('hex'))
+    })
+  })
+
+  describe('#getContent', function () {
+    it('should get content', function () {
+      let contentauth = ContentAuth().fromHex(contentauthhex)
+      let content = contentauth.getContent()
+      ;(content instanceof Content).should.equal(true)
+      should.exist(content.name)
+      should.exist(content.label)
+      should.exist(content.title)
+      should.exist(content.type)
+      should.exist(content.body)
     })
   })
 })
