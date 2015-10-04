@@ -64,10 +64,28 @@ describe('ContentAuth', function () {
     })
   })
 
+  describe('#asyncSign', function () {
+    it('should resuld the same as #sign', function () {
+      let contentauth = ContentAuth().fromHex(contentauthhex)
+      return contentauth.asyncSign(keypair).then(sig => {
+        sig.toHex().should.equal(contentauth.sign(keypair).toHex())
+      })
+    })
+  })
+
   describe('#verify', function () {
     it('should sign this value and get the same thing back', function () {
       let contentauth = ContentAuth().fromHex(contentauthhex)
       contentauth.verify().should.equal(true)
+    })
+  })
+
+  describe('#asyncVerify', function () {
+    it('should return the same as #verify', function () {
+      let contentauth = ContentAuth().fromHex(contentauthhex)
+      return contentauth.asyncVerify().then(verified => {
+        verified.should.equal(contentauth.verify())
+      })
     })
   })
 })
