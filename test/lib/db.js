@@ -4,15 +4,13 @@ let DB = require('../../lib/db')
 let should = require('should')
 
 describe('DB', function () {
-  let name = 'datt-testdatabase'
-  let db
+  let db = DB('datt-testdatabase')
   let doc = {
     _id: 'test-document-id',
     data: 'test-data'
   }
 
   before(function () {
-    db = DB(name)
     return db.init()
   })
 
