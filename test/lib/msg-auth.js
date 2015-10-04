@@ -72,6 +72,30 @@ describe('MsgAuth', function () {
     })
   })
 
+  describe('#sign', function () {
+    it('should sign', function () {
+      msgauth.sign(keypair)
+      should.exist(msgauth.contentauth.pubkey)
+      should.exist(msgauth.contentauth.sig)
+    })
+  })
+
+  describe('#asyncSign', function () {
+    it('should sign', function () {
+      return msgauth.asyncSign(keypair).then(msgauth => {
+        should.exist(msgauth.contentauth.pubkey)
+        should.exist(msgauth.contentauth.sig)
+      })
+    })
+  })
+
+  describe('#verify', function () {
+    it('should know this is a valid auth message', function () {
+      let msgauth = MsgAuth().fromHex(msgauthhex)
+      msgauth.verify().should.equal(true)
+    })
+  })
+
   describe('#asyncVerify', function () {
     it('should know this is a valid auth message', function () {
       let msgauth = MsgAuth().fromHex(msgauthhex)
