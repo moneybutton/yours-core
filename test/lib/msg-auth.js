@@ -96,9 +96,9 @@ describe('MsgAuth', function () {
     })
   })
 
-  describe('#validate', function () {
+  describe('#asyncVerify', function () {
     it('should know this is a valid auth message', function () {
-      return msgauth.validate().then(valid => {
+      return msgauth.asyncVerify().then(valid => {
         valid.should.equal(true)
       })
     })
