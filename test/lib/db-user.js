@@ -7,11 +7,11 @@ let should = require('should')
 
 describe('DBUser', function () {
   let db = DB('datt-testdatabase')
-  let user = User().fromRandom()
+  let user
 
   before(function () {
     return db.init().then(() => {
-      return User().fromRandom()
+      return User().asyncFromRandom()
     }).then(_user => {
       user = _user
     })

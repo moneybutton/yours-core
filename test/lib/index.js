@@ -24,8 +24,8 @@ describe('DattCore', function () {
     it('should init the dattcore', function () {
       return dattcore.init().then(() => {
         should.exist(dattcore.db)
-        should.exist(dattcore.user)
-        dattcore.user.keyIsSet().should.equal(true)
+        should.exist(dattcore.coreuser)
+        dattcore.coreuser.user.keyIsSet().should.equal(true)
       })
     })
   })
@@ -56,7 +56,7 @@ describe('DattCore', function () {
   describe('#getUserMnemonic', function () {
     it('should return the mnemonic', function () {
       return dattcore.getUserMnemonic().then(mnemonic => {
-        mnemonic.should.equal(dattcore.user.mnemonic)
+        mnemonic.should.equal(dattcore.coreuser.user.mnemonic)
       })
     })
   })

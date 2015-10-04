@@ -16,10 +16,10 @@ describe('User', function () {
     should.exist(user)
   })
 
-  describe('#fromRandom', function () {
+  describe('#asyncFromRandom', function () {
     it('should make a new user', function () {
       let user = User()
-      return user.fromRandom().then((user2) => {
+      return user.asyncFromRandom().then((user2) => {
         user.should.equal(user2)
         should.exist(user.mnemonic)
         should.exist(user.masterxprv)
