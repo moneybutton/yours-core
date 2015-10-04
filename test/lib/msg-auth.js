@@ -7,31 +7,21 @@ let should = require('should')
 let Privkey = require('fullnode/lib/privkey')
 let BN = require('fullnode/lib/bn')
 let Keypair = require('fullnode/lib/keypair')
-let Hash = require('fullnode/lib/hash')
-let ECDSA = require('fullnode/lib/ecdsa')
-let BW = require('fullnode/lib/bw')
+let Content = require('../../lib/content')
 
 describe('MsgAuth', function () {
   let blockidhex = '00000000000000000e6188a4cc93e3d3244b20bfdef1e9bd9db932e30f3aa2f1'
   let blockhashbuf = BR(new Buffer(blockidhex, 'hex')).readReverse()
   let blockheightnum = 376949
 
-  let msghex = '255a484b61757468000000000000000000000098022f8bde4d1a07209355b4a7250a5c5128e88b84bddc619ab7cba8d569b240efe42014a0030afb0c1bb9a20ef333e31506d1ad256ea8309123d96f7e1c303faa989f4cb8eaa626626671dcad58bb5ac08dbf67227524aad25698ff0f41e05d552526f1a23a0fe332b99dbde9f1debf204b24d3e393cca488610e00000000000000000005c0757b226e616d65223a226d795f6e616d65227d'
-  let msgauthhex = '022f8bde4d1a07209355b4a7250a5c5128e88b84bddc619ab7cba8d569b240efe42014a0030afb0c1bb9a20ef333e31506d1ad256ea8309123d96f7e1c303faa989f4cb8eaa626626671dcad58bb5ac08dbf67227524aad25698ff0f41e05d552526f1a23a0fe332b99dbde9f1debf204b24d3e393cca488610e00000000000000000005c0757b226e616d65223a226d795f6e616d65227d'
+  let msghex = '255a484b61757468000000000000000000000117022f8bde4d1a07209355b4a7250a5c5128e88b84bddc619ab7cba8d569b240efe41fe4951cda585a501935f625b9f2daed6dd9a18d58faeed99ba05483993b88a58101fc00304e70de146c2cb11944e8ae68bbe2258576e95614674bb98f6f4f5930f1a23a0fe332b99dbde9f1debf204b24d3e393cca488610e00000000000000000005c0750000000000000000000000000000000000000000000000000000000000000000000001503054427b004747e8746cddb33b0f7f95a90f89f89fb387cbb67b226e616d65223a226d795f6e616d65222c226c6162656c223a2261757468222c227469746c65223a224920616d206d795f6e616d65222c2274797065223a226d61726b646f776e222c22626f6479223a22227d'
+  let msgauthhex = '022f8bde4d1a07209355b4a7250a5c5128e88b84bddc619ab7cba8d569b240efe41fe4951cda585a501935f625b9f2daed6dd9a18d58faeed99ba05483993b88a58101fc00304e70de146c2cb11944e8ae68bbe2258576e95614674bb98f6f4f5930f1a23a0fe332b99dbde9f1debf204b24d3e393cca488610e00000000000000000005c0750000000000000000000000000000000000000000000000000000000000000000000001503054427b004747e8746cddb33b0f7f95a90f89f89fb387cbb67b226e616d65223a226d795f6e616d65222c226c6162656c223a2261757468222c227469746c65223a224920616d206d795f6e616d65222c2274797065223a226d61726b646f776e222c22626f6479223a22227d'
   let privkey = Privkey().fromBN(BN(5))
   let keypair = Keypair().fromPrivkey(privkey)
-  let sig
-  let jsonbuf = new Buffer(JSON.stringify({name: 'my_name'}))
   let msgauth
 
   before(function () {
-    msgauth = MsgAuth().fromObject({blockhashbuf, blockheightnum, jsonbuf})
-    let databuf = msgauth.getBufForSig()
-    let hashbuf = Hash.sha256(databuf)
-    sig = ECDSA.sign(hashbuf, keypair)
-    sig = ECDSA.calcrecovery(sig, keypair.pubkey, hashbuf)
-    msgauth.pubkey = keypair.pubkey
-    msgauth.sig = sig
+    msgauth = MsgAuth().fromHex(msgauthhex).setName('my_name')
   })
 
   it('should exist', function () {
@@ -42,7 +32,7 @@ describe('MsgAuth', function () {
   describe('#fromHex', function () {
     it('should derive this known auth message', function () {
       let msgauth = MsgAuth().fromHex(msgauthhex)
-      msgauth.pubkey.point.eq(keypair.pubkey.point).should.equal(true)
+      msgauth.contentauth.pubkey.point.eq(keypair.pubkey.point).should.equal(true)
     })
   })
 
@@ -76,28 +66,15 @@ describe('MsgAuth', function () {
   })
 
   describe('#setName', function () {
-    it('should set the same name', function () {
-      msgauth.setName('my_name').toMsg().toHex().should.equal(msghex)
-    })
-
-    it('should set a different name', function () {
-      let msgauth2 = MsgAuth().fromObject(msgauth)
-      msgauth2.setName('my_name_2').toMsg().toHex().should.not.equal(msghex)
-    })
-  })
-
-  describe('#getBufForSig', function () {
-    it('should give blockhashbuf, blockheightnum, jsonbuf', function () {
-      let buf1 = blockhashbuf
-      let buf2 = BW().writeUInt32BE(blockheightnum).toBuffer()
-      let buf3 = jsonbuf
-      let buf = Buffer.concat([buf1, buf2, buf3])
-      Buffer.compare(msgauth.getBufForSig(), buf).should.equal(0)
+    it('should set a name', function () {
+      let content = Content().fromBuffer(msgauth.setName('my_name').contentauth.contentbuf)
+      content.name.should.equal('my_name')
     })
   })
 
   describe('#asyncVerify', function () {
     it('should know this is a valid auth message', function () {
+      let msgauth = MsgAuth().fromHex(msgauthhex)
       return msgauth.asyncVerify().then(valid => {
         valid.should.equal(true)
       })
