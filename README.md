@@ -538,6 +538,7 @@ Bitcoin, lightning network, sidechains
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
 Articles and Links
+- [First, let's get rid of all the bosses. (An article about holocracy at Zappos)](http://www.newrepublic.com/article/122965/can-billion-dollar-corporation-zappos-be-self-organized)
 - [WE Collective (a non-profit reddit competitor) (video)](https://www.youtube.com/watch?v=SPtS4Nffqho&feature=youtu.be)
 - [A protocol for microtransactions (PDF) (Strawpay)](https://www.strawpay.com/docs/stroem-payment-system.pdf)
 - [Japan’s Largest Q&A Platform OKWave Adds Bitcoin Services (OKWave)](https://news.bitcoin.com/japans-largest-qa-platform-okwave-adds-bitcoin-services/)
