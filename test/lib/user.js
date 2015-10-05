@@ -16,6 +16,15 @@ describe('User', function () {
     should.exist(user)
   })
 
+  describe('#fromRandom', function () {
+    it('should create a new user', function () {
+      let user = User().fromRandom()
+      should.exist(user.mnemonic)
+      should.exist(user.masterxprv)
+      should.exist(user.masterxpub)
+    })
+  })
+
   describe('#asyncFromRandom', function () {
     it('should make a new user', function () {
       let user = User()
