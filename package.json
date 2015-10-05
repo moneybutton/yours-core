@@ -82,7 +82,7 @@
   "author": "Ryan X. Charles <ryanxcharles@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "fullnode": "git://github.com/ryanxcharles/fullnode.git",
+    "fullnode": "https://github.com/ryanxcharles/fullnode.git#8277df067b151cb7ce1d730ab698ac4ec46eeab1",
     "pouchdb": "^4.0.1",
     "q": "^1.4.1",
     "react": "^0.13.3",
