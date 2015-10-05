@@ -37,33 +37,33 @@ describe('DattCore', function () {
     })
   })
 
-  describe('#setUserName', function () {
+  describe('#asyncSetUserName', function () {
     it('should set the username', function () {
-      return dattcore.setUserName('valid_username').then(res => {
+      return dattcore.asyncSetUserName('valid_username').then(res => {
         res.should.equal(dattcore)
       })
     })
   })
 
-  describe('#getUserName', function () {
+  describe('#asyncGetUserName', function () {
     it('should get the username', function () {
-      return dattcore.getUserName().then(userName => {
+      return dattcore.asyncGetUserName().then(userName => {
         userName.should.equal('valid_username')
       })
     })
   })
 
-  describe('#getUserMnemonic', function () {
+  describe('#asyncGetUserMnemonic', function () {
     it('should return the mnemonic', function () {
-      return dattcore.getUserMnemonic().then(mnemonic => {
+      return dattcore.asyncGetUserMnemonic().then(mnemonic => {
         mnemonic.should.equal(dattcore.coreuser.user.mnemonic)
       })
     })
   })
 
-  describe('#getLatestBlockInfo', function () {
+  describe('#asyncGetLatestBlockInfo', function () {
     it('should return info', function () {
-      return dattcore.getLatestBlockInfo().then(info => {
+      return dattcore.asyncGetLatestBlockInfo().then(info => {
         should.exist(info.idbuf)
         should.exist(info.idhex)
         should.exist(info.hashbuf)

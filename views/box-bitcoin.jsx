@@ -19,7 +19,7 @@ let BoxBitcoin = React.createClass({
   },
   componentDidMount: function () {
     let dattcore = this.props.dattcore
-    return dattcore.getLatestBlockInfo().then(info => {
+    return dattcore.asyncGetLatestBlockInfo().then(info => {
       this.setState({
         blockheightnum: info.height
       })

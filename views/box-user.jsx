@@ -21,12 +21,12 @@ let BoxUser = React.createClass({
   },
   setStateFromDattcore: function () {
     let dattcore = this.props.dattcore
-    return dattcore.getUserName().then(userName => {
+    return dattcore.asyncGetUserName().then(userName => {
       this.setState({
         userName: userName,
         newUserName: userName
       })
-      return dattcore.getUserMnemonic()
+      return dattcore.asyncGetUserMnemonic()
     }).then(userMnemonic => {
       this.setState({
         userMnemonic: userMnemonic
@@ -46,7 +46,7 @@ let BoxUser = React.createClass({
   },
   handleSubmit: function () {
     let dattcore = this.props.dattcore
-    return dattcore.setUserName(this.state.newUserName).then(() => {
+    return dattcore.asyncSetUserName(this.state.newUserName).then(() => {
       this.setState({
         userName: this.state.newUserName
       })
