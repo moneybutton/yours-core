@@ -45,6 +45,8 @@ describe('DBContentAuth', function () {
       return DBContentAuth(db).save(contentauth).then(_hashbuf => {
         should.exist(_hashbuf)
         hashbuf = _hashbuf
+        Buffer.isBuffer(hashbuf).should.equal(true)
+        hashbuf.length.should.equal(32)
       })
     })
   })
