@@ -53,15 +53,15 @@ let FormNewContent = React.createClass({
         <form>
           <div className='form-group'>
             <label htmlFor='inputTitle'>Title</label>
-            <input type='text' className='form-control' id='inputTitle' placeholder='Title' onChange={this.handleTitleChange}/>
+            <input type='text' className='form-control' id='inputTitle' placeholder='Title' onChange={this.handleTitleChange} value={this.state.inputTitle}/>
           </div>
           <div className='form-group'>
             <label htmlFor='inputLabel'>Label</label>
-            <input type='text' className='form-control' id='inputLabel' placeholder='Label' onChange={this.handleLabelChange}/>
+            <input type='text' className='form-control' id='inputLabel' placeholder='Label' onChange={this.handleLabelChange} value={this.state.inputLabel}/>
           </div>
           <div className='form-group'>
             <label htmlFor='inputBody'>Body</label>
-            <textarea className='form-control' rows='10' id='inputBody' onChange={this.handleBodyChange}></textarea>
+            <textarea className='form-control' rows='10' id='inputBody' onChange={this.handleBodyChange} value={this.state.inputBody}></textarea>
           </div>
           <button type='submit' className='btn btn-default' onClick={this.handleSubmit}>Submit</button>
         </form>
