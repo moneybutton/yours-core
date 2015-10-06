@@ -17,6 +17,14 @@ body {
   border-width: 0;
 }
 
+.author-new-content h2 {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 0 0 0.5em 0;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #eee;
+}
+
 .side-boxes {
   background-color: #faf8f6;
   border-left: 1px solid #eee;

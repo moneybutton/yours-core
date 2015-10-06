@@ -10,6 +10,7 @@ let BoxContent = require('./box-content.jsx')
 let BoxBitcoin = require('./box-bitcoin.jsx')
 let BoxPeer = require('./box-peer.jsx')
 let BoxUser = require('./box-user.jsx')
+let PageFront = require('./page-front.jsx')
 
 let Layout = React.createClass({
   getInitialState: function () {
@@ -49,6 +50,7 @@ let Layout = React.createClass({
             <p>
             status of dattcore: {this.state.dattcore_status}
             </p>
+            <PageFront dattcore={this.props.dattcore} dattcore_status={this.state.dattcore_status}/>
           </div>
 
           <div className='col-md-4 side-boxes'>
