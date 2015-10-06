@@ -116,4 +116,15 @@ describe('DattCore', function () {
       })
     })
   })
+
+  describe('#asyncGetRecentContentAuth', function () {
+    it('should return some content', function () {
+      return dattcore.asyncGetRecentContentAuth().then(contentauths => {
+        contentauths.length.should.greaterThan(0)
+        contentauths.forEach(contentauth => {
+          ;(contentauth instanceof ContentAuth).should.equal(true)
+        })
+      })
+    })
+  })
 })

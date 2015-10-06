@@ -7,6 +7,7 @@
 'use strict'
 let React = require('react')
 let FormNewContent = require('./form-new-content.jsx')
+let ContentList = require('./content-list.jsx')
 
 let PageFront = React.createClass({
   getInitialState: function () {
@@ -19,7 +20,7 @@ let PageFront = React.createClass({
   render: function () {
     return (
       <div>
-        <p>Content here</p>
+        <ContentList dattcore={this.props.dattcore} dattcore_status={this.props.dattcore_status}/>
         <FormNewContent dattcore={this.props.dattcore} dattcore_status={this.props.dattcore_status}/>
       </div>
     )
