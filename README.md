@@ -1,8 +1,9 @@
 Datt
 ====
-Datt is a community with aligned incentives. This application will let you
-connect to the datt p2p network and view and post content and pay and be paid
-in bitcoin.
+Datt is:
+- A community with aligned incentives.
+- A tool for managing content and payments.
+- A decentralized reddit where karma is bitcoin.
 
 ----------------------
 
