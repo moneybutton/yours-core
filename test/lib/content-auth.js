@@ -117,4 +117,13 @@ describe('ContentAuth', function () {
       should.exist(content.body)
     })
   })
+
+  describe('#asyncGetHash', function () {
+    it('should return the hash of the contentauth', function () {
+      let contentauth = ContentAuth().fromHex(contentauthhex)
+      return contentauth.asyncGetHash(contentauth).then(hashbuf => {
+        Buffer.compare(hashbuf, Hash.sha256(contentauth.toBuffer())).should.equal(0)
+      })
+    })
+  })
 })
