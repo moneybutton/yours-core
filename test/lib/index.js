@@ -76,17 +76,6 @@ describe('DattCore', function () {
 
   describe('#asyncNewContentAuth', function () {
     it('should create a new ContentAuth', function () {
-      let title = 'title'
-      let label = 'label'
-      let body = 'body'
-      return dattcore.asyncNewContentAuth(title, label, body).then(contentauth => {
-        ;(contentauth instanceof ContentAuth).should.equal(true)
-      })
-    })
-  })
-
-  describe('#asyncPostContentAuth', function () {
-    it('should create a new ContentAuth', function () {
       let title = 'test title'
       let label = 'testlabel'
       let body = 'test body'
@@ -96,6 +85,34 @@ describe('DattCore', function () {
         content.title.should.equal('test title')
         content.label.should.equal('testlabel')
         content.body.should.equal('test body')
+      })
+    })
+  })
+
+  describe('#asyncPostContentAuth', function () {
+    it('should create a new ContentAuth and then post it', function () {
+      let title = 'test title'
+      let label = 'testlabel'
+      let body = 'test body'
+      return dattcore.asyncNewContentAuth(title, label, body).then(contentauth => {
+        return dattcore.asyncPostContentAuth(contentauth)
+      }).then(hashbuf => {
+        should.exist(hashbuf)
+        Buffer.isBuffer(hashbuf).should.equal(true)
+        hashbuf.length.should.equal(32)
+      })
+    })
+  })
+
+  describe('#asyncPostNewContentAuth', function () {
+    it('should post new content', function () {
+      let title = 'test title'
+      let label = 'testlabel'
+      let body = 'test body'
+      return dattcore.asyncPostNewContentAuth(title, label, body).then(hashbuf => {
+        should.exist(hashbuf)
+        Buffer.isBuffer(hashbuf).should.equal(true)
+        hashbuf.length.should.equal(32)
       })
     })
   })
