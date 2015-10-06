@@ -538,6 +538,7 @@ Bitcoin, lightning network, sidechains
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
 Articles and Links
+- [No Comments Allowed on Reddit’s New News Site ‘Upvoted’](http://www.wired.com/2015/10/no-comments-allowed-reddits-new-news-site-upvoted/?mbid=social_fb)
 - [402: Payment Required](https://medium.com/@humphd/402-payment-required-95bc72f06fcd)
 - [First, let's get rid of all the bosses. (An article about holocracy at Zappos)](http://www.newrepublic.com/article/122965/can-billion-dollar-corporation-zappos-be-self-organized)
 - [WE Collective (a non-profit reddit competitor) (video)](https://www.youtube.com/watch?v=SPtS4Nffqho&feature=youtu.be)
