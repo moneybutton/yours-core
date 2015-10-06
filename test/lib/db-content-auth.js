@@ -59,4 +59,37 @@ describe('DBContentAuth', function () {
       })
     })
   })
+
+  describe('#getAll', function () {
+    it('should return several contentauths after inserting some contentauths', function () {
+      let keypair = Keypair().fromRandom()
+
+      let content1 = Content().fromObject({body: 'test body'})
+      let contentauth1 = ContentAuth().setContent(content1)
+      contentauth1.fromObject({
+        blockhashbuf: blockhashbuf,
+        blockheightnum: blockheightnum
+      })
+      contentauth1.sign(keypair)
+
+      let content2 = Content().fromObject({body: 'test body'})
+      let contentauth2 = ContentAuth().setContent(content2)
+      contentauth2.fromObject({
+        blockhashbuf: blockhashbuf,
+        blockheightnum: blockheightnum
+      })
+      contentauth2.sign(keypair)
+
+      return DBContentAuth(db).save(contentauth1).then(() => {
+        return DBContentAuth(db).save(contentauth2)
+      }).then(() => {
+        return DBContentAuth(db).getAll()
+      }).then(contentauths => {
+        contentauths.length.should.greaterThan(0)
+        for (let contentauth of contentauths) {
+          ;(contentauth instanceof ContentAuth).should.equal(true)
+        }
+      })
+    })
+  })
 })
