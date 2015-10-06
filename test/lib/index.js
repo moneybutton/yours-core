@@ -2,6 +2,7 @@
 'use strict'
 let should = require('should')
 let DattCore = require('../../lib')
+let ContentAuth = require('../../lib/content-auth')
 
 describe('DattCore', function () {
   let dattcore
@@ -69,6 +70,32 @@ describe('DattCore', function () {
         should.exist(info.hashbuf)
         should.exist(info.hashhex)
         should.exist(info.height)
+      })
+    })
+  })
+
+  describe('#asyncNewContentAuth', function () {
+    it('should create a new ContentAuth', function () {
+      let title = 'title'
+      let label = 'label'
+      let body = 'body'
+      return dattcore.asyncNewContentAuth(title, label, body).then(contentauth => {
+        ;(contentauth instanceof ContentAuth).should.equal(true)
+      })
+    })
+  })
+
+  describe('#asyncPostContentAuth', function () {
+    it('should create a new ContentAuth', function () {
+      let title = 'test title'
+      let label = 'testlabel'
+      let body = 'test body'
+      return dattcore.asyncNewContentAuth(title, label, body).then(contentauth => {
+        ;(contentauth instanceof ContentAuth).should.equal(true)
+        let content = contentauth.getContent()
+        content.title.should.equal('test title')
+        content.label.should.equal('testlabel')
+        content.body.should.equal('test body')
       })
     })
   })
