@@ -538,6 +538,10 @@ Bitcoin, lightning network, sidechains
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
 Articles and Links
+- [reddit is working on an entirely new front-page algorithm](http://motherboard.vice.com/read/reddit-admits-its-front-page-is-broken-is-working-on-an-entirely-new-algorithm)
+- [Inside reddit's plan to recover from its epic meltdown](http://www.wired.com/2015/10/reddit-survived-meltdown-can-fix/)
+- [The YC application broken down and translated](https://medium.com/@zreitano/the-yc-application-broken-down-and-translated-e4c0f5235081)
+- [VICE: We're replacing comments with something better](http://motherboard.vice.com/read/im-on-twitter-too)
 - [No Comments Allowed on Reddit’s New News Site ‘Upvoted’](http://www.wired.com/2015/10/no-comments-allowed-reddits-new-news-site-upvoted/?mbid=social_fb)
 - [402: Payment Required](https://medium.com/@humphd/402-payment-required-95bc72f06fcd)
 - [First, let's get rid of all the bosses. (An article about holocracy at Zappos)](http://www.newrepublic.com/article/122965/can-billion-dollar-corporation-zappos-be-self-organized)
