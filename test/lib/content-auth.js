@@ -118,6 +118,16 @@ describe('ContentAuth', function () {
     })
   })
 
+  describe('#setHash', function () {
+    it('should set cachehash', function () {
+      let contentauth = ContentAuth().fromHex(contentauthhex)
+      let hashbuf = Hash.sha256(contentauth.toBuffer())
+      contentauth.setHash(hashbuf)
+      should.exist(contentauth.cachehash)
+      contentauth.cachehash.should.equal(hashbuf)
+    })
+  })
+
   describe('#asyncGetHash', function () {
     it('should return the hash of the contentauth', function () {
       let contentauth = ContentAuth().fromHex(contentauthhex)

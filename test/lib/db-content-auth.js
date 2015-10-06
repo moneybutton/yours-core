@@ -56,6 +56,7 @@ describe('DBContentAuth', function () {
       return DBContentAuth(db).get(hashbuf).then(contentauth => {
         ;(contentauth instanceof ContentAuth).should.equal(true)
         contentauth.getContent().body.should.equal('test body')
+        should.exist(contentauth.cachehash)
       })
     })
   })
@@ -88,6 +89,7 @@ describe('DBContentAuth', function () {
         contentauths.length.should.greaterThan(0)
         for (let contentauth of contentauths) {
           ;(contentauth instanceof ContentAuth).should.equal(true)
+          should.exist(contentauth.cachehash)
         }
       })
     })

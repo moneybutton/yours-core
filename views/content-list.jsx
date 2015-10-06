@@ -10,17 +10,14 @@ let React = require('react')
 let ContentList = React.createClass({
   getInitialState: function () {
     return {
-      contentList: [
-        {key: 'key1', title: 'initial 1'},
-        {key: 'key2', title: 'initial 2'}
-      ]
+      contentList: []
     }
   },
   setStateFromDattcore: function () {
     let dattcore = this.props.dattcore
     return dattcore.asyncGetRecentContentAuth().then(contentauths => {
       let contentList = contentauths.map(contentauth => {
-        let key = contentauth.date.getTime() // TODO: Use hash instead of time
+        let key = contentauth.cachehash.toString('hex')
         let title = contentauth.getContent().title
         return {key, title}
       })

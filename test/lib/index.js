@@ -14,11 +14,11 @@ describe('DattCore', function () {
   })
 
   before(function () {
-    dattcore = DattCore()
+    dattcore = DattCore({dbname: 'datt-testdatabase'})
   })
 
   after(function () {
-    return dattcore.close()
+    return dattcore.db.destroy()
   })
 
   describe('#init', function () {
@@ -123,6 +123,7 @@ describe('DattCore', function () {
         contentauths.length.should.greaterThan(0)
         contentauths.forEach(contentauth => {
           ;(contentauth instanceof ContentAuth).should.equal(true)
+          should.exist(contentauth.cachehash)
         })
       })
     })
