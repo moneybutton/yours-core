@@ -17,6 +17,10 @@ body {
   border-width: 0;
 }
 
+.author-new-content {
+  background-color: #f3f8fa;
+}
+
 .author-new-content h2 {
   font-size: 1.1em;
   font-weight: bold;
