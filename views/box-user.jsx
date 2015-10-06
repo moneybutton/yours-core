@@ -39,9 +39,9 @@ let BoxUser = React.createClass({
   componentWillReceiveProps: function () {
     return this.setStateFromDattcore()
   },
-  handleChange: function (e) {
+  handleChange: function (el) {
     this.setState({
-      newUserName: e.target.value
+      newUserName: el.target.value
     })
   },
   handleSubmit: function () {

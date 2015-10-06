@@ -12,11 +12,15 @@ let PageFront = React.createClass({
   getInitialState: function () {
     return {}
   },
+  propTypes: {
+    dattcore: React.PropTypes.object,
+    dattcore_status: React.PropTypes.string
+  },
   render: function () {
     return (
       <div>
         <p>Content here</p>
-        <FormNewContent/>
+        <FormNewContent dattcore={this.props.dattcore} dattcore_status={this.props.dattcore_status}/>
       </div>
     )
   }
