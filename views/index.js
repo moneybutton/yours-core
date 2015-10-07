@@ -4,6 +4,7 @@
  */
 'use strict'
 let React = require('react')
+let ReactDOM = require('react-dom')
 let Layout = require('./layout.jsx')
 let os = require('os')
 
@@ -16,4 +17,4 @@ let config = {
 let dattcore = DattCore.getGlobal(config)
 
 let layout = <Layout apptitle='Datt' dattcore={dattcore}/>
-React.render(layout, document.getElementById('container'))
+ReactDOM.render(layout, document.getElementById('container'))

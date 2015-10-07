@@ -85,7 +85,8 @@
     "fullnode": "https://github.com/ryanxcharles/fullnode.git#8277df067b151cb7ce1d730ab698ac4ec46eeab1",
     "pouchdb": "^4.0.1",
     "q": "^1.4.1",
-    "react": "^0.13.3",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
     "workerpool": "^1.0.0"
   },
   "devDependencies": {
@@ -110,6 +111,7 @@
     "karma-firefox-launcher": "^0.1.6",
     "karma-mocha": "^0.2.0",
     "mocha": "^2.2.5",
+    "react-addons-test-utils": "^0.14.0",
     "reactify": "^1.1.1",
     "should": "^7.0.3",
     "standard": "^5.3.1",
