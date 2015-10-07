@@ -118,13 +118,23 @@ describe('ContentAuth', function () {
     })
   })
 
-  describe('#setHash', function () {
+  describe('#setCacheHash', function () {
     it('should set cachehash', function () {
       let contentauth = ContentAuth().fromHex(contentauthhex)
       let hashbuf = Hash.sha256(contentauth.toBuffer())
-      contentauth.setHash(hashbuf)
+      contentauth.setCacheHash(hashbuf)
       should.exist(contentauth.cachehash)
       contentauth.cachehash.should.equal(hashbuf)
+    })
+  })
+
+  describe('#getCacheHash', function () {
+    it('should get cachehash', function () {
+      let contentauth = ContentAuth().fromHex(contentauthhex)
+      let hashbuf = Hash.sha256(contentauth.toBuffer())
+      contentauth.setCacheHash(hashbuf)
+      should.exist(contentauth.cachehash)
+      contentauth.getCacheHash().should.equal(hashbuf)
     })
   })
 
