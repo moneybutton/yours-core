@@ -15,5 +15,5 @@ let config = {
 // dattcore application - the p2p/db/logic of datt
 let dattcore = DattCore.getGlobal(config)
 
-let layout = <Layout apptitle='Datt Alpha' dattcore={dattcore}/>
+let layout = <Layout apptitle='Datt' dattcore={dattcore}/>
 React.render(layout, document.getElementById('container'))

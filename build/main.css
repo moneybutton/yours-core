@@ -12,9 +12,23 @@ body {
   height: 2.6em;
 }
 
-.page-header h1 {
-  margin: 0em 0em 0em 1.4em;
-  border-width: 0;
+.content-list {
+  padding: 1.5em 0 0.5em 0;
+}
+
+.content-list .content-list-item {
+  list-style-type: none;
+  display: block;
+  margin: 0 0 1.5em 1.5em;
+}
+
+.content-list .content-list-item h2 {
+  margin: 0;
+  font-size: 1.4em;
+}
+
+.content-list .content-list-item .author-name {
+  font-size: 1.0em;
 }
 
 .author-new-content {
@@ -43,4 +57,13 @@ body {
   margin: 0 0 0.5em 0;
   font-size: 1.1em;
   font-weight: bold;
+}
+
+.page-header h1 {
+  margin: 0em 0em 0em 1.4em;
+  border-width: 0;
+}
+
+.page-footer .version-number {
+  text-align: center;
 }

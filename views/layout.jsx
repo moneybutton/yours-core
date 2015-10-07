@@ -36,6 +36,8 @@ let Layout = React.createClass({
     dattcore: React.PropTypes.object
   },
   render: function () {
+    let dattcore = this.props.dattcore
+    let dattcore_status = this.state.dattcore_status
     return (
       <div className='container'>
         <div className='row page-header'>
@@ -47,17 +49,23 @@ let Layout = React.createClass({
 
         <div className='row'>
           <div className='col-md-8'>
-            <p>
-            status of dattcore: {this.state.dattcore_status}
-            </p>
-            <PageFront dattcore={this.props.dattcore} dattcore_status={this.state.dattcore_status}/>
+            <PageFront dattcore={dattcore} dattcore_status={dattcore_status}/>
           </div>
 
           <div className='col-md-4 side-boxes'>
-            <BoxUser dattcore={this.props.dattcore} dattcore_status={this.state.dattcore_status}/>
-            <BoxBitcoin dattcore={this.props.dattcore} dattcore_status={this.state.dattcore_status} bitsbalance={0}/>
+            <BoxUser dattcore={dattcore} dattcore_status={dattcore_status}/>
+            <BoxBitcoin dattcore={dattcore} dattcore_status={dattcore_status} bitsbalance={0}/>
             <BoxContent postsnumber={0}/>
             <BoxPeer peersnumber={0}/>
+          </div>
+        </div>
+
+        <div className='row page-footer'>
+          <div className='col-md-12'>
+            <div className='version-number'>
+              <p>Status of dattcore: {dattcore_status}</p>
+              <p>Datt v{dattcore.version}</p>
+            </div>
           </div>
         </div>
       </div>
