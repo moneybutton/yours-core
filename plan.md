@@ -499,3 +499,4 @@ enable reaching the most users with the easiest-to-use application with the
 littlest engineering effort.
 
 ## References
+- [Cleff's open-source employee handbook focused on inclusion](https://github.com/clef/handbook)
