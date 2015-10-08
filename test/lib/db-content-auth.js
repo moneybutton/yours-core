@@ -28,7 +28,7 @@ describe('DBContentAuth', function () {
     should.exist(DBContentAuth())
   })
 
-  describe('#save', function () {
+  describe('#asyncSave', function () {
     it('should save a new piece of content', function () {
       // Note: You can't save the same piece of content more than once, but the
       // test database is reused. We are being sure to create a random key,
@@ -42,7 +42,7 @@ describe('DBContentAuth', function () {
         blockheightnum: blockheightnum
       })
       contentauth.sign(keypair)
-      return DBContentAuth(db).save(contentauth).then(_hashbuf => {
+      return DBContentAuth(db).asyncSave(contentauth).then(_hashbuf => {
         should.exist(_hashbuf)
         hashbuf = _hashbuf
         Buffer.isBuffer(hashbuf).should.equal(true)
@@ -51,9 +51,9 @@ describe('DBContentAuth', function () {
     })
   })
 
-  describe('#get', function () {
+  describe('#asyncGet', function () {
     it('should be able to get a contentauth we previously inserted', function () {
-      return DBContentAuth(db).get(hashbuf).then(contentauth => {
+      return DBContentAuth(db).asyncGet(hashbuf).then(contentauth => {
         ;(contentauth instanceof ContentAuth).should.equal(true)
         contentauth.getContent().body.should.equal('test body')
         should.exist(contentauth.cachehash)
@@ -61,7 +61,7 @@ describe('DBContentAuth', function () {
     })
   })
 
-  describe('#getAll', function () {
+  describe('#asyncGetAll', function () {
     it('should return several contentauths after inserting some contentauths', function () {
       let keypair = Keypair().fromRandom()
 
@@ -81,10 +81,10 @@ describe('DBContentAuth', function () {
       })
       contentauth2.sign(keypair)
 
-      return DBContentAuth(db).save(contentauth1).then(() => {
-        return DBContentAuth(db).save(contentauth2)
+      return DBContentAuth(db).asyncSave(contentauth1).then(() => {
+        return DBContentAuth(db).asyncSave(contentauth2)
       }).then(() => {
-        return DBContentAuth(db).getAll()
+        return DBContentAuth(db).asyncGetAll()
       }).then(contentauths => {
         contentauths.length.should.greaterThan(0)
         for (let contentauth of contentauths) {

@@ -27,21 +27,21 @@ describe('DBUser', function () {
     should.exist(DBUser(db, user))
   })
 
-  describe('#save', function () {
+  describe('#asyncSave', function () {
     it('should save a dbuser', function () {
       let dbuser = DBUser(db, user)
-      return dbuser.save().then(() => {
+      return dbuser.asyncSave().then(() => {
         dbuser.user.mnemonic.should.equal(user.mnemonic)
       })
     })
   })
 
-  describe('#get', function () {
+  describe('#asyncGet', function () {
     it('should get a dbuser', function () {
       let dbuser = DBUser(db, user)
-      return dbuser.save().then(() => {
+      return dbuser.asyncSave().then(() => {
         dbuser.user.mnemonic.should.equal(user.mnemonic)
-        return DBUser(db).get()
+        return DBUser(db).asyncGet()
       }).then(user => {
         should.exist(user)
         user.mnemonic.should.equal(dbuser.user.mnemonic)

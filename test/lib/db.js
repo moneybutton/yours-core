@@ -54,9 +54,9 @@ describe('DB', function () {
     })
   })
 
-  describe('#get', function () {
+  describe('#asyncGet', function () {
     it('should get a piece of data', function () {
-      return db.get(doc._id).then((doc) => {
+      return db.asyncGet(doc._id).then((doc) => {
         doc.data.should.equal('test-data')
       })
     })
