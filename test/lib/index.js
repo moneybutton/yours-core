@@ -18,12 +18,12 @@ describe('DattCore', function () {
   })
 
   after(function () {
-    return dattcore.db.destroy()
+    return dattcore.db.asyncDestroy()
   })
 
-  describe('#init', function () {
+  describe('#asyncInitialize', function () {
     it('should init the dattcore', function () {
-      return dattcore.init().then(() => {
+      return dattcore.asyncInitialize().then(() => {
         should.exist(dattcore.db)
         should.exist(dattcore.coreuser)
         dattcore.coreuser.user.keyIsSet().should.equal(true)

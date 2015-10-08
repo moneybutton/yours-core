@@ -10,7 +10,7 @@ describe('DBUser', function () {
   let user
 
   before(function () {
-    return db.init().then(() => {
+    return db.asyncInitialize().then(() => {
       return User().asyncFromRandom()
     }).then(_user => {
       user = _user
@@ -18,7 +18,7 @@ describe('DBUser', function () {
   })
 
   after(function () {
-    return db.destroy()
+    return db.asyncDestroy()
   })
 
   it('should exist', function () {

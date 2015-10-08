@@ -20,7 +20,7 @@ let Layout = React.createClass({
   },
   componentWillMount: function () {
     let dattcore = this.props.dattcore
-    return dattcore.init().then(() => {
+    return dattcore.asyncInitialize().then(() => {
       this.setState({
         dattcore_status: 'initialized'
       })

@@ -14,11 +14,11 @@ describe('CoreUser', function () {
   let blockheightnum = 376949
 
   before(function () {
-    return db.init()
+    return db.asyncInitialize()
   })
 
   after(function () {
-    return db.destroy()
+    return db.asyncDestroy()
   })
 
   it('should exist', function () {
@@ -26,9 +26,9 @@ describe('CoreUser', function () {
     should.exist(CoreUser())
   })
 
-  describe('#init', function () {
+  describe('#asyncInitialize', function () {
     it('should initialize a new user', function () {
-      return coreuser.init().then(coreuser => {
+      return coreuser.asyncInitialize().then(coreuser => {
         coreuser.user.name.should.equal('satoshi')
         coreuser.dbuser.user.name.should.equal('satoshi')
         should.exist(coreuser.user.mnemonic)

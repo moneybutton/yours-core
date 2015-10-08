@@ -1,4 +1,4 @@
-/* global describe,it */
+/* global describe,it,before,after */
 'use strict'
 let should = require('should')
 let Layout = require('../../views/layout.jsx')

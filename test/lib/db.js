@@ -11,16 +11,16 @@ describe('DB', function () {
   }
 
   before(function () {
-    return db.init()
+    return db.asyncInitialize()
   })
 
   after(function () {
-    return db.destroy()
+    return db.asyncDestroy()
   })
 
-  describe('#init', function () {
+  describe('#asyncInitialize', function () {
     it('should exist', function () {
-      should.exist(db.init)
+      should.exist(db.asyncInitialize)
     })
   })
 

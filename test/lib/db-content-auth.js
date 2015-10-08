@@ -16,11 +16,11 @@ describe('DBContentAuth', function () {
   let db = DB('datt-testdatabase')
 
   before(function () {
-    return db.init()
+    return db.asyncInitialize()
   })
 
   after(function () {
-    return db.destroy()
+    return db.asyncDestroy()
   })
 
   it('should exist', function () {
