@@ -538,6 +538,7 @@ Bitcoin, lightning network, sidechains
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
 Articles and Links
+- [Decentralized reputation in OpenBazaar](https://blog.openbazaar.org/decentralized-reputation-in-openbazaar/)
 - [Freestart collisions for sha-1 - means a real collision is around the corner. We use sha-256 for hashes, and so does bitcoin, however we do use git, whish uses sha-1](https://sites.google.com/site/itstheshappening/)
 - [Clef: Our work to raise the baseline for inclusive policies at early stage companies](https://medium.com/two-factor-authenticity/open-sourcing-the-clef-handbook-edd658e4ce5e)
 - [reddit is working on an entirely new front-page algorithm](http://motherboard.vice.com/read/reddit-admits-its-front-page-is-broken-is-working-on-an-entirely-new-algorithm)
