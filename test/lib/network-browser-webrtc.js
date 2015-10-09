@@ -23,9 +23,7 @@ describe('NetworkBrowserWebRTC', function () {
     })
 
     after(function () {
-      let p = network.asyncWhenClosed()
       network.close()
-      return p
     })
 
     it('should initialize', function () {
@@ -40,17 +38,6 @@ describe('NetworkBrowserWebRTC', function () {
       return network.asyncInitialize().then(() => {
         network.close()
         should.not.exist(network.peerjs)
-      })
-    })
-  })
-
-  describe('#asyncWhenClosed', function () {
-    it('should resolve when the network is closed', function () {
-      let network = Network()
-      return network.asyncInitialize().then(() => {
-        let p = network.asyncWhenClosed()
-        network.close()
-        return p
       })
     })
   })
