@@ -318,6 +318,7 @@ gulp.task('build-karma-url', () => {
 gulp.task('build-karma', ['build-karma-url', 'build'])
 
 gulp.task('test-karma', ['build-karma'], () => {
+  let server = require(path.join(__dirname, 'bin', 'testapp')).server
   return gulp.src([])
     .pipe(karma({
       configFile: '.karma.conf.js',
@@ -327,6 +328,7 @@ gulp.task('test-karma', ['build-karma'], () => {
       process.exit(1)
     })
     .on('end', () => {
+      server.close()
       process.exit()
     })
 })
@@ -338,11 +340,12 @@ gulp.task('build-browsersync', ['build'], () => {
 })
 
 gulp.task('serve', ['build'], () => {
+  require(path.join(__dirname, 'bin', 'testapp')).server
+  let port = 3040
+  console.log('browser-sync proxy on port ' + port)
   browserSync.init({
-    server: {
-      baseDir: './build',
-      port: 3000
-    },
+    port: port,
+    proxy: 'http://localhost:3030',
     open: false // don't automatically open browser window
   })
 
