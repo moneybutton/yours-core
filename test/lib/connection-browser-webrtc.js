@@ -1,7 +1,6 @@
 /* global describe,it */
 'use strict'
 let Connection
-let PeerJS
 let Msg = require('../../lib/msg')
 let sinon = require('sinon')
 let should = require('should')
