@@ -36,7 +36,7 @@ let ContentList = React.createClass({
   },
   propTypes: {
     dattcore: React.PropTypes.object,
-    dattcore_status: React.PropTypes.string
+    dattcoreStatus: React.PropTypes.string
   },
   render: function () {
     let contentList = this.state.contentList.map(obj => {

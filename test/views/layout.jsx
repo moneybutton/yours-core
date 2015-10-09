@@ -30,7 +30,7 @@ describe('Layout', function () {
   describe('#getInitialState', function () {
     it('should return this known state', function () {
       let domlayout = TestUtils.renderIntoDocument(layout)
-      domlayout.getInitialState().dattcore_status.should.equal('uninitialized')
+      domlayout.getInitialState().dattcoreStatus.should.equal('uninitialized')
     })
   })
 
@@ -46,7 +46,7 @@ describe('Layout', function () {
     it('should initialize dattcore', function () {
       let domlayout = TestUtils.renderIntoDocument(layout)
       return domlayout.componentWillMount().then(() => {
-        domlayout.state.dattcore_status.should.equal('initialized')
+        domlayout.state.dattcoreStatus.should.equal('initialized')
       })
     })
   })

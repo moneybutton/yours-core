@@ -15,19 +15,19 @@ let PageFront = require('./page-front.jsx')
 let Layout = React.createClass({
   getInitialState: function () {
     return {
-      dattcore_status: 'uninitialized'
+      dattcoreStatus: 'uninitialized'
     }
   },
   componentWillMount: function () {
     let dattcore = this.props.dattcore
     return dattcore.asyncInitialize().then(() => {
       this.setState({
-        dattcore_status: 'initialized'
+        dattcoreStatus: 'initialized'
       })
     })
     .catch(err => {
       this.setState({
-        dattcore_status: 'error initializing: ' + err
+        dattcoreStatus: 'error initializing: ' + err
       })
     })
   },
@@ -37,7 +37,7 @@ let Layout = React.createClass({
   },
   render: function () {
     let dattcore = this.props.dattcore
-    let dattcore_status = this.state.dattcore_status
+    let dattcoreStatus = this.state.dattcoreStatus
     return (
       <div className='container'>
         <div className='row page-header'>
@@ -49,12 +49,12 @@ let Layout = React.createClass({
 
         <div className='row'>
           <div className='col-md-8'>
-            <PageFront dattcore={dattcore} dattcore_status={dattcore_status}/>
+            <PageFront dattcore={dattcore} dattcoreStatus={dattcoreStatus}/>
           </div>
 
           <div className='col-md-4 side-boxes'>
-            <BoxUser dattcore={dattcore} dattcore_status={dattcore_status}/>
-            <BoxBitcoin dattcore={dattcore} dattcore_status={dattcore_status} bitsbalance={0}/>
+            <BoxUser dattcore={dattcore} dattcoreStatus={dattcoreStatus}/>
+            <BoxBitcoin dattcore={dattcore} dattcoreStatus={dattcoreStatus} bitsbalance={0}/>
             <BoxContent postsnumber={0}/>
             <BoxPeer peersnumber={0}/>
           </div>
@@ -63,7 +63,7 @@ let Layout = React.createClass({
         <div className='row page-footer'>
           <div className='col-md-12'>
             <div className='version-number'>
-              <p>Status of dattcore: {dattcore_status}</p>
+              <p>Status of dattcore: {dattcoreStatus}</p>
               <p>Datt v{dattcore.version}</p>
             </div>
           </div>
