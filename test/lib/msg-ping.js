@@ -36,4 +36,15 @@ describe('MsgPing', function () {
       Buffer.compare(msg.databuf, msgping.databuf).should.equal(0)
     })
   })
+
+  describe('#isValid', function () {
+    it('should know 8 bytes is valid and 9 bytes is invalid', function () {
+      let buf1 = new Buffer(8)
+      buf1.fill(0)
+      MsgPing(buf1).isValid().should.equal(true)
+      let buf2 = new Buffer(9)
+      buf2.fill(0)
+      MsgPing(buf2).isValid().should.equal(false)
+    })
+  })
 })

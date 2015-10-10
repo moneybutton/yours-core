@@ -2,6 +2,7 @@
 'use strict'
 let Connection
 let Msg = require('../../lib/msg')
+let MsgPing = require('../../lib/msg-ping')
 let sinon = require('sinon')
 let should = require('should')
 
@@ -63,6 +64,17 @@ describe('ConnectionBrowserWebRTC', function () {
       connection.close()
       connection.peerjsConnection.close.calledOnce.should.equal(true)
       connection.onClose.calledOnce.should.equal(true)
+    })
+  })
+
+  describe('#handlePing', function () {
+    it('should produce a pong and send it', function () {
+      let ping = MsgPing().fromRandom()
+      let connection = Connection()
+      connection.sendMsg = sinon.spy()
+      connection.handlePing(ping.toMsg())
+      ;(connection.sendMsg.getCall(0).args[0] instanceof Msg).should.equal(true)
+      Buffer.compare(connection.sendMsg.getCall(0).args[0].databuf, ping.toMsg().databuf).should.equal(0)
     })
   })
 })
