@@ -5,6 +5,7 @@ Datt is:
 - A tool for managing content and payments.
 - A decentralized reddit where karma is bitcoin.
 - A solution to the incentives problem of social media.
+- A way for anybody to earn or pay money for quality content.
 
 Datt is currently undergoing development and has not reached prototype stage.
 
