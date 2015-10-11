@@ -2,12 +2,13 @@ Datt
 ====
 Datt is:
 - A community with aligned incentives.
+- A way to pay and be paid for content.
 - A tool for managing content and payments.
 - A decentralized reddit where karma is bitcoin.
 - A solution to the incentives problem of social media.
-- A way for anybody to earn or pay money for quality content.
 
-Datt is currently undergoing development and has not reached prototype stage.
+Datt is currently undergoing heavy development. [Our issues are tracked on
+GitHub.](https://github.com/dattnetwork/datt/issues).
 
 ---------------------
 
