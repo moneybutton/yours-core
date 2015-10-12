@@ -538,6 +538,7 @@ Bitcoin, lightning network, sidechains
 - [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
 
 Articles and Links
+- [Hi, We're Stem: Imagine a world where you, as a creator, can consistently get paid for your work with clarity.](https://medium.com/@stem/hi-we-re-stem-63a05d637321)
 - [Taking Medium To The Next Level - Medium proposes to make sure money flows back to content creators](https://medium.com/the-story/taking-medium-to-the-next-level-cb7f223fad86)
 - [Decentralized reputation in OpenBazaar](https://blog.openbazaar.org/decentralized-reputation-in-openbazaar/)
 - [Freestart collisions for sha-1 - means a real collision is around the corner. We use sha-256 for hashes, and so does bitcoin, however we do use git, whish uses sha-1](https://sites.google.com/site/itstheshappening/)
