@@ -8,7 +8,7 @@ Datt is:
 - A solution to the incentives problem of social media.
 
 Datt is currently undergoing heavy development. [Our issues are tracked on
-GitHub.](https://github.com/dattnetwork/datt/issues).
+GitHub](https://github.com/dattnetwork/datt/issues).
 
 ---------------------
 
