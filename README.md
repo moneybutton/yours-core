@@ -478,6 +478,7 @@ Related projects
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
 - [PolderCast - decentralized social media, but where users store only content they are interested in (PDF)](http://liamz.co/wp-content/uploads/2015/03/Computer-Science-Extended-Essay_Liam-Edwards-Playne.pdf) - [Paper describing PolderCast (PDF)](http://acropolis.cs.vu.nl/~spyros/www/papers/PolderCast.pdf) - [BitWeav - microblogging system based on PolderCast](http://liamz.co/wp-content/uploads/2015/03/whitepaper.pdf)
 - [Kudos: peer-to-peer discussion system based on social voting](http://www.slideshare.net/lmatteis/kudos-a-peertopeer-discussion-system-based-on-social-voting) - [HN Discussion](https://news.ycombinator.com/item?id=10391996)
+- [NNTP - the protocol behind Usenet](https://en.wikipedia.org/wiki/Network_News_Transfer_Protocol)
 - [HoneyLedger: Better payments for content-creators and fans](http://honeyledger.com/)
 - [Urbit: Full-stack decentralized computing](http://urbit.org/preview/~2015.9.25)
 - [Protip attempts to redefine internet tipping with bitcoin micropayments](http://bravenewcoin.com/news/protip-attempts-to-redefine-internet-tipping-with-bitcoin-micropayments/)
