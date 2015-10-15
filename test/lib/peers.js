@@ -2,6 +2,12 @@
 'use strict'
 let Peers = require('../../lib/peers')
 let MsgPing = require('../../lib/msg-ping')
+let Address = require('fullnode/lib/address')
+let Content = require('../../lib/content')
+let ContentAuth = require('../../lib/content-auth')
+let MsgContentAuth = require('../../lib/msg-content-auth')
+let BR = require('fullnode/lib/br')
+let Keypair = require('fullnode/lib/keypair')
 let spawn = require('../../lib/spawn')
 let should = require('should')
 
@@ -18,6 +24,10 @@ describe('Peers', function () {
   } else {
     Network = require('../../lib/network-node-socket')
   }
+
+  let blockidhex = '00000000000000000e6188a4cc93e3d3244b20bfdef1e9bd9db932e30f3aa2f1'
+  let blockhashbuf = BR(new Buffer(blockidhex, 'hex')).readReverse()
+  let blockheightnum = 376949
 
   it('should exist', function () {
     should.exist(Peers)
@@ -58,6 +68,35 @@ describe('Peers', function () {
             msg.getCmd().should.equal('pong')
             resolve()
           })
+          peers.broadcastMsg(msg)
+        })
+      })
+    })
+
+    it('should send contentauth', function () {
+      return spawn(function *() {
+        let content = Content().fromObject({
+          title: 'test title',
+          body: 'test body'
+        })
+        let keypair = Keypair().fromRandom()
+        let address = Address().fromPubkey(keypair.pubkey)
+        let contentauth = ContentAuth().setContent(content)
+        contentauth.fromObject({
+          blockhashbuf: blockhashbuf,
+          blockheightnum: blockheightnum,
+          address: address
+        })
+        contentauth.sign(keypair)
+
+        // assume connection to network2 has already been made
+        yield new Promise((resolve, reject) => {
+          network2.connections[0].on('msg', msg => {
+            let msgcontentauth = MsgContentAuth().fromMsg(msg)
+            ;(msgcontentauth.contentauth instanceof ContentAuth).should.equal(true)
+            resolve()
+          })
+          let msg = MsgContentAuth().fromContentAuth(contentauth).toMsg()
           peers.broadcastMsg(msg)
         })
       })
