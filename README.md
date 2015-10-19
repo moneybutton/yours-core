@@ -3,6 +3,9 @@ Datt Documentation
 Datt is a community, business, product and technology. The dattdocs repo is to
 store documentation on all of these aspects of Datt.
 
+For a basic outline of the project, see the
+[plan](https://github.com/dattnetwork/dattdocs/blob/master/plan.md).
+
 ## Log
 
 During the very early stages of Datt, a log of events was kept here. The log
