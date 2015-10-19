@@ -9,8 +9,8 @@ let app = express()
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../static')))
 app.post('/', (req, res) => {
-  let str = JSON.stringify(req.body)
-  fs.appendFile('./landing-page-form-submit.dat', str, (err) => {
+  let str = JSON.stringify(req.body) + "\n"
+  fs.appendFile(path.join(__dirname, 'landing-page-form-submit.dat'), str, (err) => {
     console.log(str)
     if (err) {
       console.log('error on form submit: ' + err)
