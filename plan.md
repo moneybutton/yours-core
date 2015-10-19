@@ -470,14 +470,8 @@ cryptography modules in node and web crypto in a browser.
 
 Our repositories are:
 
-* [datt.ui](https://github.com/dattnetwork/datt.ui): a front-end written in
-Ember
-* [datt-node](https://github.com/dattnetwork/datt-node): the back-end written
-in isomorphic javascript (i.e., javascript that runs both in node and a
-browser, including the database and network connections - this is where the
-datt p2p protocol lives)
-* [datt](https://github.com/dattnetwork/datt): a repo that combines the
-back-end and front-end
+The main repository for datt is at
+[github.com/dattnetwork/datt](https://github.com/dattnetwork/datt).
 
 ### Peer-to-Peer Protocol
 
@@ -497,6 +491,3 @@ mainstream audience. We will make money by using the app ourselves as a content
 producer, curator, and moderator. Our technology is based on javascript to
 enable reaching the most users with the easiest-to-use application with the
 littlest engineering effort.
-
-## References
-- [Cleff's open-source employee handbook focused on inclusion](https://github.com/clef/handbook)
