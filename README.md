@@ -7,6 +7,20 @@ store documentation on all of these aspects of Datt.
   [general/plan.md](https://github.com/dattnetwork/dattdocs/blob/master/general/plan.md).
 - For an updated list of relevant links and resources outside of Datt, see
   [general/links.md](https://github.com/dattnetwork/dattdocs/blob/master/general/links.md).
+- Business documents:
+  [business](https://github.com/dattnetwork/dattdocs/tree/master/business)
+- Community documents:
+  [community](https://github.com/dattnetwork/dattdocs/tree/master/community)
+- Product documents:
+  [product](https://github.com/dattnetwork/dattdocs/tree/master/product)
+- Technology documents:
+  [technology](https://github.com/dattnetwork/dattdocs/tree/master/technology)
+- General documents (some combination of business, community, product,
+  technology):
+  [general](https://github.com/dattnetwork/dattdocs/tree/master/general)
+- For an archive of external documents (created outside of dattdocs), including
+  an archive of our Slack group, see
+  [archive](https://github.com/dattnetwork/dattdocs/tree/master/archive)
 
 ## Log
 
