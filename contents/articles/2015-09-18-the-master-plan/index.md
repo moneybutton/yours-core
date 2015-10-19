@@ -17,7 +17,7 @@ plans, community plans, product plans and technology plans, but some of them
 were mutually incompatible and there was no coherent unified vision of all of
 them. So I've now merged our plans into one giant (incomplete, alpha, but
 logically consistent) [Master Plan for
-Datt](https://github.com/dattnetwork/dattdocs/blob/master/general/plan.md).
+Datt](https://github.com/dattnetwork/dattdocs/blob/9591397306c8542fedbcda8dfe970a2100efab19/general/plan.md).
 
 Ultimately, the master plan should be an overview of the entire project that
 pretty much everyone working on the project should agree with. It will be most
