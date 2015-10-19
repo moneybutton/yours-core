@@ -14,5 +14,5 @@ During the very early stages of Datt, a log of events was kept here, in the
 "log" section of the dattdocs README. The log has since been moved to the blog
 at [blog.datt.co](http://blog.datt.co). The GitHub repository for the blog is
 at [github.com/dattnetwork/dattblog](https://github.com/dattnetwork/dattblog).
-Since the log has been linked externally to this section on the the repo on
-GitHub, we retain this section here so as to not break the external links.
+Since the log has been linked externally to this section on the repo on GitHub,
+we retain this section here so as to not break the external links.
