@@ -1,0 +1,264 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video
+  background transparent
+  border 0
+  font-size 100%
+  margin 0
+  outline 0
+  padding 0
+  vertical-align baseline
+
+body
+  line-height 1
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section
+  display block
+
+nav ul
+  list-style none
+
+blockquote, q
+  quotes none
+
+blockquote:before, blockquote:after,
+q:before, q:after
+  content ''
+  content none
+
+a
+  background transparent
+  font-size 100%
+  margin 0
+  padding 0
+  vertical-align baseline
+
+/* change colours to suit your needs */
+ins
+    background-color #ff9
+    color #000
+    text-decoration none
+
+/* change colours to suit your needs */
+mark
+  background-color #ff9
+  color #000
+  font-style italic
+  font-weight 600
+
+del
+  text-decoration line-through
+
+abbr[title], dfn[title]
+  border-bottom 1px dotted
+  cursor help
+
+table
+  border-collapse collapse
+  border-spacing 0
+
+/* change border colour to suit your needs */
+hr
+  border 0
+  border-top 1px solid #ccc
+  display block
+  height 1px
+  margin 1em 0
+  padding 0
+
+input, select
+  vertical-align middle
+
+p.chromeframe
+  padding 20px
+  font-weight 600
+  text-align center
+
+html
+  box-sizing border-box
+
+*, *:before, *:after
+  box-sizing inherit
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+
+strong
+  font-weight 600
+
+#menu
+  position fixed
+  top 0
+  width 100%
+  text-align left
+  line-height 20px
+  z-index 999
+  padding 30px
+  user-select none
+  a
+    text-decoration none
+  .menu
+    float right
+    line-height 20px
+    a
+      text-decoration none
+      margin 0 0 0 20px
+
+  img
+    display inline-block
+    position relative
+    top 5px
+    height 20px
+    margin 0 10px 0 0
+    width auto
+
+body
+  background #333333
+  padding 0
+  text-align center
+  font-family: 'Open Sans', sans-serif;
+  font-weight 300
+  font-size 16px
+  line-height 28px
+  color white
+
+a
+  color white
+  font-weight 600
+  display inline-block
+  margin 0 5px 0 0
+  &:hover
+    color #0099ff
+
+p.footer
+  padding-top 30px
+  font-size 12px
+
+form
+  max-width 600px
+  margin 0 auto 1em
+  position relative
+  input
+    appearance none
+    background white
+    color #333333
+    padding 10px
+    font-family: 'Open Sans', sans-serif
+    font-size 14px
+    display block
+    border-radius 0
+    margin-bottom 5px
+    width 100%
+    border none
+    outline none
+    box-shadow none
+    &[type='submit']
+      background #aaaaaa
+      font-weight 600
+      color white
+      cursor pointer
+      &:hover
+        background #0099ff
+
+img#datt
+  display block
+  margin 0 auto 30px
+  width 50%
+  max-width 150px
+
+a.button
+  background white
+  color #333333
+  padding 5px 20px
+  margin-bottom 1em
+  text-decoration none
+  i
+    margin 0 5px 0 0
+  &:hover
+    color #0099ff
+
+.question
+  margin 0 auto 5px
+  border 1px solid white
+  transform translate3d(0,0,0)
+  max-width 600px
+  &:last-of-type
+    margin-bottom 1em
+  .answer
+    height 0
+    transition height .3s ease
+    overflow hidden
+  p
+    padding 10px
+  span
+    text-transform uppercase
+    font-weight 600
+    user-select none
+    cursor pointer
+    display block
+    color #333333
+    padding 0 10px
+    background white
+    &:hover
+      color #0099ff
+
+.screen.hero
+  background url(../images/night-sky.jpg)
+  background-size cover
+  background-position center top
+  background-attachment fixed
+
+.screen#press
+  .links
+    margin auto
+    a
+      display inline-block
+      border-bottom 1px solid white
+      padding 2px 0
+      text-decoration none
+      &:hover
+        border-color #0099ff
+
+.screen
+  display table
+  width 100%
+  height 100%
+  padding 10px 0
+  .cell
+    padding 10px
+    opacity 0
+    display table-cell
+    vertical-align middle
+
+  p
+    max-width 700px
+    margin 0 auto 1em
+    &:last-of-type
+      margin-bottom 0
+
+h1
+  font-size 20px
+  font-weight 600
+
+h2
+  font-size 18px
+  margin-bottom 1em
+  font-weight 600
+
+@media (max-width: 600px)
+  .screen.hero
+    background-attachment scroll !important
+  #menu
+    position absolute !important
+    padding 20px !important
+  .menu
+    display none !important
