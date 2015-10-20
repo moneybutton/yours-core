@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [How society will be transformed by cryptoeconomics](https://medium.com/@noahthorp/how-society-will-be-transformed-by-crypto-economics-b02b6765ca8c#.y3q60suvx)
 - [What the Flux!? Let's Redux](https://blog.andyet.com/2015/08/06/what-the-flux-lets-redux)
 - [The viability of js frameworks on mobile](https://joreteg.com/blog/viability-of-js-frameworks-on-mobile)
 - [Why Twitter's Dying (And What You Can Learn From It)](https://medium.com/bad-words/why-twitter-s-dying-and-what-you-can-learn-from-it-9ed233e37974)
