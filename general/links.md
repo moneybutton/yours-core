@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Why Twitter's Dying (And What You Can Learn From It)](https://medium.com/bad-words/why-twitter-s-dying-and-what-you-can-learn-from-it-9ed233e37974)
 - [How is the NSA breaking so much crypto?](https://freedom-to-tinker.com/blog/haldermanheninger/how-is-nsa-breaking-so-much-crypto/)
 - [Hi, We're Stem: Imagine a world where you, as a creator, can consistently get paid for your work with clarity.](https://medium.com/@stem/hi-we-re-stem-63a05d637321)
 - [Taking Medium To The Next Level - Medium proposes to make sure money flows back to content creators](https://medium.com/the-story/taking-medium-to-the-next-level-cb7f223fad86)
