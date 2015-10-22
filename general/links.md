@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+_ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-to-pay-for-youtube-1737829631)
 - [How society will be transformed by cryptoeconomics](https://medium.com/@noahthorp/how-society-will-be-transformed-by-crypto-economics-b02b6765ca8c#.y3q60suvx)
 - [What the Flux!? Let's Redux](https://blog.andyet.com/2015/08/06/what-the-flux-lets-redux)
 - [The viability of js frameworks on mobile](https://joreteg.com/blog/viability-of-js-frameworks-on-mobile)
