@@ -33,7 +33,7 @@ others.
 
 ## Values
 
-Our plans did not come out of thin air, but are guided by our values.
+Our plans are guided by our values.
 
 ### Transparency
 
@@ -78,8 +78,7 @@ Our goal is to solve the incentives problem of social media so that users get
 financially rewarded for their work producing, curating and moderating content,
 and companies can earn money not by selling their users' private information
 but by participating in the system as equals. We are doing this by creating a
-web-first, mobile-second decentralized social media app that leverages bitcoin
-for p2p payments.
+decentralized social media app that leverages bitcoin for p2p payments.
 
 With most social media apps, the users are the product and the customers are
 advertisers, which is a moral hazard and conflict of interest. With Datt, the
@@ -391,10 +390,11 @@ need to pay the Datt user if they want to post content to the homepage.
 It will also be possible to build in a (voluntary) cut of payments to each
 payment that occurs in the app, which the users would be able to turn off if
 they want. However, that is probably not nececssary at first. We can also build
-value-added products and services, such as, say, avatar hosting for $1. Both of
-these strategies are probably less effective than simply using the app
-ourselves, so we should avoid building in those features until a later date
-when we have the resources to do it without distracting from our main focus.
+value-added products and services, such as, say, avatar hosting for $1, or
+reputation filtering for a monthly fee. Both of these strategies are probably
+less effective than simply using the app ourselves, so we should avoid building
+in those features until a later date when we have the resources to do it
+without distracting from our main focus.
 
 In summary, our business plan is to: 1) Mainain moral authority so the users
 actually want to pay us, 2) Be a content producer, curator, and moderator on
