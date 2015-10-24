@@ -242,8 +242,7 @@ footer .copy a.button {
   text-decoration: none;
 }
 .archive li:not(:last-child) {
-	border-bottom: 1px solid #d2d2d2;
-	margin-bottom: -1px;
+  margin-bottom: -1px;
 }
 
 .archive a.last, .archive span.last {
@@ -252,9 +251,9 @@ footer .copy a.button {
 }
 
 .archive a {
+  border-bottom: 1px solid #d2d2d2;
   width: 21em;
-  text-indent: 1em;
-  white-space: nowrap;
+  padding-left: 1em;
 }
 
 .archive .year-label,
