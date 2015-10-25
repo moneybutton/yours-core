@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Medium's tech stack (based on node.js](https://medium.com/medium-eng/the-stack-that-helped-medium-drive-2-6-millennia-of-reading-time-e56801f7c492#.dzs8bttfk)
 - [IPFS introduction by example](http://whatdoesthequantsay.com/2015/09/13/ipfs-introduction-by-example/)
 - [Decentralized Identity and Content Attribution: We Need a Specification](http://continuations.com/post/131886701965/decentralized-identity-and-content-attribution-we)
 _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-to-pay-for-youtube-1737829631)
