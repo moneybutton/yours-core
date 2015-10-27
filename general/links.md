@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Zype Raises $1.6M To Help Publishers Build Their Video Business](http://techcrunch.com/2015/10/27/zype-seed-funding/)
 - [Medium's tech stack (based on node.js](https://medium.com/medium-eng/the-stack-that-helped-medium-drive-2-6-millennia-of-reading-time-e56801f7c492#.dzs8bttfk)
 - [IPFS introduction by example](http://whatdoesthequantsay.com/2015/09/13/ipfs-introduction-by-example/)
 - [Decentralized Identity and Content Attribution: We Need a Specification](http://continuations.com/post/131886701965/decentralized-identity-and-content-attribution-we)
