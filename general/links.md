@@ -61,6 +61,7 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [crypti - decentralized app system](https://crypti.me/)
 - [Iris: Decentralized cloud messaging](http://bravenewgeek.com/iris-decentralized-cloud-messaging/) - [Paper](http://www.comsis.org/archive.php?show=ppr475-1307)
 - [sato.sh - like reddit but where tipping is bitcoin](https://sato.sh/)
 - [PolderCast - decentralized social media, but where users store only content they are interested in (PDF)](http://liamz.co/wp-content/uploads/2015/03/Computer-Science-Extended-Essay_Liam-Edwards-Playne.pdf) - [Paper describing PolderCast (PDF)](http://acropolis.cs.vu.nl/~spyros/www/papers/PolderCast.pdf) - [BitWeav - microblogging system based on PolderCast](http://liamz.co/wp-content/uploads/2015/03/whitepaper.pdf)
