@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [So, Tsu Me: Why Facebook Is Terrified of This Virtually Unknown Competitor and What It Could Mean For the Future of the Internet](http://www.huffingtonpost.com/david-fagin/so-tsu-me-why-facebook-is_b_8328524.html)
 - [Zype Raises $1.6M To Help Publishers Build Their Video Business](http://techcrunch.com/2015/10/27/zype-seed-funding/)
 - [Medium's tech stack (based on node.js](https://medium.com/medium-eng/the-stack-that-helped-medium-drive-2-6-millennia-of-reading-time-e56801f7c492#.dzs8bttfk)
 - [IPFS introduction by example](http://whatdoesthequantsay.com/2015/09/13/ipfs-introduction-by-example/)
@@ -61,6 +62,7 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [Tsu: social network that shares ad revenue with creators](http://www.tsu.co/)
 - [crypti - decentralized app system](https://crypti.me/)
 - [Iris: Decentralized cloud messaging](http://bravenewgeek.com/iris-decentralized-cloud-messaging/) - [Paper](http://www.comsis.org/archive.php?show=ppr475-1307)
 - [sato.sh - like reddit but where tipping is bitcoin](https://sato.sh/)
