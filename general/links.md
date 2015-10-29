@@ -166,3 +166,4 @@ Press for Datt
 - [CoinDesk: inside the movement to build a bitcoin-powered reddit](http://www.coindesk.com/datt-decentralized-reddit-bitcoin/)
 - [r/bitcoin thread about the CoinDesk article](https://www.reddit.com/r/Bitcoin/comments/3j79li/inside_the_movement_to_build_a_bitcoinpowered/)
 - [Interview with Money & Tech](http://moneyandtech.com/ryan-x-charles-reddit/)
+- [2015-10-29 CoinJournal: Public Launch of Bitcoin-Powered, Decentralized Reddit Alternative Possible in March](http://coinjournal.net/public-launch-of-bitcoin-powered-decentralized-reddit-alternative-possible-in-march/)
