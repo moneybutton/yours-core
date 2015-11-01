@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [up2pp:// - The “http://” of Peer to Peer networking needs to exist](https://medium.com/@gubatron/up2pp-the-http-of-peer-to-peer-networking-needs-to-exist-da0332e8b495#.wnjk5g1ay)
 - [So, Tsu Me: Why Facebook Is Terrified of This Virtually Unknown Competitor and What It Could Mean For the Future of the Internet](http://www.huffingtonpost.com/david-fagin/so-tsu-me-why-facebook-is_b_8328524.html)
 - [Zype Raises $1.6M To Help Publishers Build Their Video Business](http://techcrunch.com/2015/10/27/zype-seed-funding/)
 - [Medium's tech stack (based on node.js](https://medium.com/medium-eng/the-stack-that-helped-medium-drive-2-6-millennia-of-reading-time-e56801f7c492#.dzs8bttfk)
