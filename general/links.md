@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [LBRY: https://news.bitcoin.com/lbry-decentralized-sharing-platform/](https://news.bitcoin.com/lbry-decentralized-sharing-platform/)
 - [up2pp:// - The “http://” of Peer to Peer networking needs to exist](https://medium.com/@gubatron/up2pp-the-http-of-peer-to-peer-networking-needs-to-exist-da0332e8b495#.wnjk5g1ay)
 - [So, Tsu Me: Why Facebook Is Terrified of This Virtually Unknown Competitor and What It Could Mean For the Future of the Internet](http://www.huffingtonpost.com/david-fagin/so-tsu-me-why-facebook-is_b_8328524.html)
 - [Zype Raises $1.6M To Help Publishers Build Their Video Business](http://techcrunch.com/2015/10/27/zype-seed-funding/)
