@@ -96,6 +96,17 @@ describe('Peers', function () {
         successes.should.equal(0)
       })
     })
+
+    it('should be able to connect to 1 peers', function () {
+      return spawn(function *() {
+        // Note: We are relying on the global peers object which already has a
+        // connection.
+        let json = peers.toJSON()
+        peers.close()
+        let successes = yield peers.asyncConnectManyFromJSON(json)
+        successes.should.equal(1)
+      })
+    })
   })
 
   describe('#asyncConnectMany', function () {
