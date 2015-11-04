@@ -82,8 +82,7 @@
   "author": "Ryan X. Charles <ryanxcharles@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "browserify": "^12.0.1",
-    "fullnode": "^0.11.1",
+    "fullnode": "^0.11.2",
     "peer": "^0.2.8",
     "peerjs": "^0.3.14",
     "pouchdb": "^5.1.0",
