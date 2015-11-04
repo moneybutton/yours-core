@@ -56,6 +56,57 @@ describe('Peers', function () {
     })
   })
 
+  describe('#toJSON', function () {
+    it('should return empty list for new peers', function () {
+      let json = Peers().toJSON()
+      json.length.should.equal(0)
+      Array.isArray(json).should.equal(true)
+    })
+
+    it('should return a list if we are already connected somewhere', function () {
+      // Note: We are relying on the global peers object which already has a
+      // connection.
+      let json = peers.toJSON()
+      json.length.should.equal(1)
+      Array.isArray(json).should.equal(true)
+    })
+  })
+
+  describe('@connectionInfosFromJSON', function () {
+    it('should return empty list for empty JSON array', function () {
+      let connectionInfos = Peers.connectionInfosFromJSON([])
+      connectionInfos.length.should.equal(0)
+      Array.isArray(connectionInfos).should.equal(true)
+    })
+
+    it('should return list for real JSON array', function () {
+      // Note: We are relying on the global peers object which already has a
+      // connection.
+      let json = peers.toJSON()
+      let connectionInfos = Peers.connectionInfosFromJSON(json)
+      connectionInfos.length.should.equal(1)
+      Array.isArray(connectionInfos).should.equal(true)
+    })
+  })
+
+  describe('#asyncConnectManyFromJSON', function () {
+    it('should be able to connect to 0 peers', function () {
+      return spawn(function *() {
+        let successes = yield peers.asyncConnectManyFromJSON([])
+        successes.should.equal(0)
+      })
+    })
+  })
+
+  describe('#asyncConnectMany', function () {
+    it('should be able to connect to 0 peers', function () {
+      return spawn(function *() {
+        let successes = yield peers.asyncConnectMany([])
+        successes.should.equal(0)
+      })
+    })
+  })
+
   describe('#broadcastMsg', function () {
     it('should send ping and get pong', function () {
       return spawn(function *() {
