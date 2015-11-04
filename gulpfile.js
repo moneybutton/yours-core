@@ -82,9 +82,9 @@ function set_build_worker_browserify () {
   build_worker_browserify
     // The polyfill needs to be included exactly once per page. We put it in
     // the worker and in the bundle.
-    .add(require.resolve('babelify/polyfill'))
+    .add(require.resolve('babel-polyfill'))
     .transform(envify)
-    .transform(babelify)
+    .transform(babelify, {presets: ['es2015', 'react']})
     .add(require.resolve('./lib/worker.js'), {entry: true})
 }
 
@@ -122,9 +122,9 @@ function set_build_core_browserify () {
     .on('error', gutil.log.bind(gutil, 'Unknown Error'))
     // The polyfill needs to be included exactly once per page. We put it in
     // the worker and in the bundle.
-    .add(require.resolve('babelify/polyfill'))
+    .add(require.resolve('babel-polyfill'))
     .transform(envify)
-    .transform(babelify)
+    .transform(babelify, {presets: ['es2015', 'react']})
     .require(require.resolve('./lib/index.js'), {entry: true})
 }
 
@@ -161,7 +161,7 @@ function set_build_react_browserify () {
   build_react_browserify
     // Do not include the polyfill - it is already included by datt-core.js
     .transform('reactify')
-    .transform(babelify)
+    .transform(babelify, {presets: ['es2015', 'react']})
     .add(require.resolve('./views/index.js'), {entry: true})
 }
 
@@ -212,7 +212,7 @@ function set_build_tests_browserify () {
       }
       build_tests_browserify
         .transform(envify)
-        .transform(babelify)
+        .transform(babelify, {presets: ['es2015', 'react']})
         .ignore('jsdom')
       for (let file of files) {
         build_tests_browserify.add(file)
