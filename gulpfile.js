@@ -11,11 +11,18 @@ let babelify = require('babelify')
 let watch = require('gulp-watch')
 let karma = require('gulp-karma')
 let plumber = require('gulp-plumber')
-let browserSync = require('browser-sync').create()
+let browserSyncCreator = require('browser-sync')
 let watchify = require('watchify')
 let jsx_require_extension = require('jsx-require-extension')
 let gutil = require('gulp-util')
 let q = require('q')
+let testapp = require('./bin/testapp')
+
+let browserSync3040 = browserSyncCreator.create()
+let browserSync3041 = browserSyncCreator.create()
+let browserSync3042 = browserSyncCreator.create()
+let browserSync3043 = browserSyncCreator.create()
+let browserSync3044 = browserSyncCreator.create()
 
 let jsfiles = ['*.js', 'bin/*.js', 'views/**/*.js', 'views/**/*.jsx', 'lib/**/*.js', 'test/**/*.js', 'test/**/*.jsx']
 let cssfiles = ['build/main.css']
@@ -318,7 +325,8 @@ gulp.task('build-karma-url', () => {
 gulp.task('build-karma', ['build-karma-url', 'build'])
 
 gulp.task('test-karma', ['build-karma'], () => {
-  let server = require(path.join(__dirname, 'bin', 'testapp')).server
+  let rendezvousServer = testapp.createRendezvousServer(3031)
+  let appServer = testapp.createAppServer(3030)
   return gulp.src([])
     .pipe(karma({
       configFile: '.karma.conf.js',
@@ -328,7 +336,8 @@ gulp.task('test-karma', ['build-karma'], () => {
       process.exit(1)
     })
     .on('end', () => {
-      server.close()
+      rendezvousServer.close()
+      appServer.close()
       process.exit()
     })
 })
@@ -336,15 +345,59 @@ gulp.task('test-karma', ['build-karma'], () => {
 gulp.task('watch-test-karma', () => {})
 
 gulp.task('build-browsersync', ['build'], () => {
-  browserSync.reload()
+  browserSync3040.reload()
+  browserSync3041.reload()
+  browserSync3042.reload()
+  browserSync3043.reload()
+  browserSync3044.reload()
 })
 
 gulp.task('serve', ['build'], () => {
-  require(path.join(__dirname, 'bin', 'testapp')).server
-  let port = 3040
+  testapp.createRendezvousServer(3031)
+  testapp.createAppServer(3030)
+  let port
+
+  port = 3040
   console.log('browser-sync proxy on port ' + port)
-  browserSync.init({
+  browserSync3040.init({
     port: port,
+    ui: false,
+    proxy: 'http://localhost:3030',
+    open: false // don't automatically open browser window
+  })
+
+  port = 3041
+  console.log('browser-sync proxy on port ' + port)
+  browserSync3041.init({
+    port: port,
+    ui: false,
+    proxy: 'http://localhost:3030',
+    open: false // don't automatically open browser window
+  })
+
+  port = 3042
+  console.log('browser-sync proxy on port ' + port)
+  browserSync3042.init({
+    port: port,
+    ui: false,
+    proxy: 'http://localhost:3030',
+    open: false // don't automatically open browser window
+  })
+
+  port = 3043
+  console.log('browser-sync proxy on port ' + port)
+  browserSync3043.init({
+    port: port,
+    ui: false,
+    proxy: 'http://localhost:3030',
+    open: false // don't automatically open browser window
+  })
+
+  port = 3044
+  console.log('browser-sync proxy on port ' + port)
+  browserSync3044.init({
+    port: port,
+    ui: false,
     proxy: 'http://localhost:3030',
     open: false // don't automatically open browser window
   })
