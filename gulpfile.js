@@ -355,52 +355,19 @@ gulp.task('build-browsersync', ['build'], () => {
 gulp.task('serve', ['build'], () => {
   testapp.createRendezvousServer(3031)
   testapp.createAppServer(3030)
-  let port
 
-  port = 3040
-  console.log('browser-sync proxy on port ' + port)
-  browserSync3040.init({
-    port: port,
+  let config = {
     ui: false,
     proxy: 'http://localhost:3030',
     open: false // don't automatically open browser window
-  })
+  }
 
-  port = 3041
-  console.log('browser-sync proxy on port ' + port)
-  browserSync3041.init({
-    port: port,
-    ui: false,
-    proxy: 'http://localhost:3030',
-    open: false // don't automatically open browser window
-  })
-
-  port = 3042
-  console.log('browser-sync proxy on port ' + port)
-  browserSync3042.init({
-    port: port,
-    ui: false,
-    proxy: 'http://localhost:3030',
-    open: false // don't automatically open browser window
-  })
-
-  port = 3043
-  console.log('browser-sync proxy on port ' + port)
-  browserSync3043.init({
-    port: port,
-    ui: false,
-    proxy: 'http://localhost:3030',
-    open: false // don't automatically open browser window
-  })
-
-  port = 3044
-  console.log('browser-sync proxy on port ' + port)
-  browserSync3044.init({
-    port: port,
-    ui: false,
-    proxy: 'http://localhost:3030',
-    open: false // don't automatically open browser window
-  })
+  console.log('browser-sync proxy on ports 3040 - 3044')
+  browserSync3040.init(Object.assign({port: 3040}, config))
+  browserSync3041.init(Object.assign({port: 3041}, config))
+  browserSync3042.init(Object.assign({port: 3042}, config))
+  browserSync3043.init(Object.assign({port: 3043}, config))
+  browserSync3044.init(Object.assign({port: 3044}, config))
 
   gulp.watch(allfiles, ['build-browsersync'])
 })
