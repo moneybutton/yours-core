@@ -18,11 +18,12 @@ let gutil = require('gulp-util')
 let q = require('q')
 let testapp = require('./bin/testapp')
 
-let browserSync3040 = browserSyncCreator.create()
-let browserSync3041 = browserSyncCreator.create()
-let browserSync3042 = browserSyncCreator.create()
-let browserSync3043 = browserSyncCreator.create()
-let browserSync3044 = browserSyncCreator.create()
+let browserSyncs = []
+browserSyncs['3040'] = browserSyncCreator.create()
+browserSyncs['3041'] = browserSyncCreator.create()
+browserSyncs['3042'] = browserSyncCreator.create()
+browserSyncs['3043'] = browserSyncCreator.create()
+browserSyncs['3044'] = browserSyncCreator.create()
 
 let jsfiles = ['*.js', 'bin/*.js', 'views/**/*.js', 'views/**/*.jsx', 'lib/**/*.js', 'test/**/*.js', 'test/**/*.jsx']
 let cssfiles = ['build/main.css']
@@ -345,11 +346,11 @@ gulp.task('test-karma', ['build-karma'], () => {
 gulp.task('watch-test-karma', () => {})
 
 gulp.task('build-browsersync', ['build'], () => {
-  browserSync3040.reload()
-  browserSync3041.reload()
-  browserSync3042.reload()
-  browserSync3043.reload()
-  browserSync3044.reload()
+  browserSyncs['3040'].reload()
+  browserSyncs['3041'].reload()
+  browserSyncs['3042'].reload()
+  browserSyncs['3043'].reload()
+  browserSyncs['3044'].reload()
 })
 
 gulp.task('serve', ['build'], () => {
@@ -363,11 +364,11 @@ gulp.task('serve', ['build'], () => {
   }
 
   console.log('browser-sync proxy on ports 3040 - 3044')
-  browserSync3040.init(Object.assign({port: 3040}, config))
-  browserSync3041.init(Object.assign({port: 3041}, config))
-  browserSync3042.init(Object.assign({port: 3042}, config))
-  browserSync3043.init(Object.assign({port: 3043}, config))
-  browserSync3044.init(Object.assign({port: 3044}, config))
+  browserSyncs['3040'].init(Object.assign({port: 3040}, config))
+  browserSyncs['3041'].init(Object.assign({port: 3041}, config))
+  browserSyncs['3042'].init(Object.assign({port: 3042}, config))
+  browserSyncs['3043'].init(Object.assign({port: 3043}, config))
+  browserSyncs['3044'].init(Object.assign({port: 3044}, config))
 
   gulp.watch(allfiles, ['build-browsersync'])
 })
