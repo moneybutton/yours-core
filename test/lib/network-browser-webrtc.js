@@ -3,6 +3,7 @@
 let Network
 let should = require('should')
 let MsgPing = require('../../lib/msg-ping')
+let MsgPong = require('../../lib/msg-pong')
 let spawn = require('../../lib/spawn')
 
 describe('NetworkBrowserWebRTC', function () {
@@ -53,10 +54,11 @@ describe('NetworkBrowserWebRTC', function () {
         yield network1.asyncInitialize()
         yield network2.asyncInitialize()
         let connectionInfo = network2.getConnectionInfo()
-        let connection
+        let connection1, connection2
         try {
-          connection = yield network1.asyncConnect(connectionInfo)
-          should.exist(connection)
+          connection1 = yield network1.asyncConnect(connectionInfo)
+          connection2 = network2.connections[0]
+          should.exist(connection1)
         } catch (error) {
           network1.close()
           network2.close()
@@ -64,11 +66,17 @@ describe('NetworkBrowserWebRTC', function () {
         }
         let msgPing = MsgPing().fromRandom()
         yield new Promise((resolve, reject) => {
-          connection.on('msg', (msg) => {
+          connection1.on('msg', (msg) => {
             msg.getCmd().should.equal('pong')
             resolve()
           })
-          connection.sendMsg(msgPing.toMsg())
+          connection2.on('msg', (msg) => {
+            msg.getCmd().should.equal('ping')
+            let msgPing = MsgPing().fromMsg(msg)
+            let msgPong = MsgPong().fromMsgPing(msgPing)
+            connection2.sendMsg(msgPong.toMsg())
+          })
+          connection1.sendMsg(msgPing.toMsg())
         })
         network1.close()
         network2.close()

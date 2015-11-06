@@ -1,7 +1,6 @@
 /* global describe,it,before,after */
 'use strict'
 let Peers = require('../../lib/peers')
-let MsgPing = require('../../lib/msg-ping')
 let Address = require('fullnode/lib/address')
 let Content = require('../../lib/content')
 let ContentAuth = require('../../lib/content-auth')
@@ -40,7 +39,9 @@ describe('Peers', function () {
   })
 
   after(function () {
-    network2.close()
+    if (network2) {
+      network2.close()
+    }
     peers.close()
   })
 
@@ -99,11 +100,15 @@ describe('Peers', function () {
 
     it('should be able to connect to 1 peers', function () {
       return spawn(function *() {
-        // Note: We are relying on the global peers object which already has a
-        // connection.
+        let peers = Peers()
+        yield peers.asyncInitialize()
+        let network = Network()
+        yield network.asyncInitialize()
+        yield peers.asyncConnect(network.getConnectionInfo())
+        let peers2 = Peers()
+        yield peers2.asyncInitialize()
         let json = peers.toJSON()
-        peers.close()
-        let successes = yield peers.asyncConnectManyFromJSON(json)
+        let successes = yield peers2.asyncConnectManyFromJSON(json)
         successes.should.equal(1)
       })
     })
@@ -119,22 +124,6 @@ describe('Peers', function () {
   })
 
   describe('#broadcastMsg', function () {
-    it('should send ping and get pong', function () {
-      return spawn(function *() {
-        let msgPing = MsgPing().fromRandom()
-        let msg = msgPing.toMsg()
-        let network1 = peers.networks.webrtc // TODO: Test should work in node also
-        let connection = network1.connections[0]
-        yield new Promise((resolve, reject) => {
-          connection.once('msg', msg => {
-            msg.getCmd().should.equal('pong')
-            resolve()
-          })
-          peers.broadcastMsg(msg)
-        })
-      })
-    })
-
     it('should send contentauth', function () {
       return spawn(function *() {
         let content = Content().fromObject({
