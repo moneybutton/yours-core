@@ -3,6 +3,8 @@
 let should = require('should')
 let DattCore = require('../../lib')
 let ContentAuth = require('../../lib/content-auth')
+let sinon = require('sinon')
+let spawn = require('../../lib/spawn')
 
 describe('DattCore', function () {
   let dattcore
@@ -14,11 +16,13 @@ describe('DattCore', function () {
   })
 
   before(function () {
-    dattcore = DattCore({dbname: 'datt-testdatabase'})
+    dattcore = DattCore.create({dbname: 'datt-testdatabase'})
   })
 
   after(function () {
-    return dattcore.db.asyncDestroy()
+    return spawn(function *() {
+      yield dattcore.db.asyncDestroy()
+    })
   })
 
   describe('#asyncInitialize', function () {
@@ -126,6 +130,34 @@ describe('DattCore', function () {
           should.exist(contentauth.cachehash)
         })
       })
+    })
+  })
+
+  describe('#monitorCorePeers', function () {
+    it('should call corepeers.on', function () {
+      let dattcore = DattCore({dbname: 'datt-temp'})
+      dattcore.corepeers = {}
+      dattcore.corepeers.on = sinon.spy()
+      dattcore.monitorCorePeers()
+      dattcore.corepeers.on.called.should.equal(true)
+    })
+  })
+
+  describe('#handlePeersConnection', function () {
+    it('should emit peers-connection', function () {
+      let dattcore = DattCore({dbname: 'datt-temp'})
+      dattcore.emit = sinon.spy()
+      dattcore.handlePeersConnection('hello')
+      dattcore.emit.calledWith('peers-connection', 'hello').should.equal(true)
+    })
+  })
+
+  describe('#asyncHandlePeersContentAuth', function () {
+    it('should emit peers-content-auth', function () {
+      let dattcore = DattCore({dbname: 'datt-temp'})
+      dattcore.emit = sinon.spy()
+      dattcore.handlePeersContentAuth('hello')
+      dattcore.emit.calledWith('peers-content-auth', 'hello').should.equal(true)
     })
   })
 })
