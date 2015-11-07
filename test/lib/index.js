@@ -3,6 +3,7 @@
 let should = require('should')
 let DattCore = require('../../lib')
 let ContentAuth = require('../../lib/content-auth')
+let MsgPing = require('../../lib/msg-ping')
 let sinon = require('sinon')
 let spawn = require('../../lib/spawn')
 
@@ -158,6 +159,17 @@ describe('DattCore', function () {
       dattcore.emit = sinon.spy()
       dattcore.handlePeersContentAuth('hello')
       dattcore.emit.calledWith('peers-content-auth', 'hello').should.equal(true)
+    })
+  })
+
+  describe('#broadcastMsg', function () {
+    it('should call corepeers.broadcastMsg', function () {
+      let dattcore = DattCore({dbname: 'datt-temp'})
+      dattcore.corepeers = {}
+      dattcore.corepeers.broadcastMsg = sinon.spy()
+      let msg = MsgPing().fromRandom()
+      dattcore.broadcastMsg(msg)
+      dattcore.corepeers.broadcastMsg.calledWith(msg).should.equal(true)
     })
   })
 })
