@@ -28,7 +28,8 @@ describe('DattCore', function () {
 
   describe('#asyncInitialize', function () {
     it('should init the dattcore', function () {
-      return dattcore.asyncInitialize().then(() => {
+      return spawn(function *() {
+        yield dattcore.asyncInitialize()
         should.exist(dattcore.db)
         should.exist(dattcore.coreuser)
         dattcore.coreuser.user.keyIsSet().should.equal(true)
@@ -45,7 +46,8 @@ describe('DattCore', function () {
 
   describe('#asyncSetUserName', function () {
     it('should set the username', function () {
-      return dattcore.asyncSetUserName('valid_username').then(res => {
+      return spawn(function *() {
+        let res = yield dattcore.asyncSetUserName('valid_username')
         res.should.equal(dattcore)
       })
     })
@@ -53,7 +55,8 @@ describe('DattCore', function () {
 
   describe('#asyncGetUserName', function () {
     it('should get the username', function () {
-      return dattcore.asyncGetUserName().then(userName => {
+      return spawn(function *() {
+        let userName = yield dattcore.asyncGetUserName()
         userName.should.equal('valid_username')
       })
     })
@@ -61,7 +64,8 @@ describe('DattCore', function () {
 
   describe('#asyncGetUserMnemonic', function () {
     it('should return the mnemonic', function () {
-      return dattcore.asyncGetUserMnemonic().then(mnemonic => {
+      return spawn(function *() {
+        let mnemonic = yield dattcore.asyncGetUserMnemonic()
         mnemonic.should.equal(dattcore.coreuser.user.mnemonic)
       })
     })
@@ -69,7 +73,8 @@ describe('DattCore', function () {
 
   describe('#asyncGetLatestBlockInfo', function () {
     it('should return info', function () {
-      return dattcore.asyncGetLatestBlockInfo().then(info => {
+      return spawn(function *() {
+        let info = yield dattcore.asyncGetLatestBlockInfo()
         should.exist(info.idbuf)
         should.exist(info.idhex)
         should.exist(info.hashbuf)
@@ -81,10 +86,11 @@ describe('DattCore', function () {
 
   describe('#asyncNewContentAuth', function () {
     it('should create a new ContentAuth', function () {
-      let title = 'test title'
-      let label = 'testlabel'
-      let body = 'test body'
-      return dattcore.asyncNewContentAuth(title, label, body).then(contentauth => {
+      return spawn(function *() {
+        let title = 'test title'
+        let label = 'testlabel'
+        let body = 'test body'
+        let contentauth = yield dattcore.asyncNewContentAuth(title, label, body)
         ;(contentauth instanceof ContentAuth).should.equal(true)
         let content = contentauth.getContent()
         content.title.should.equal('test title')
@@ -96,12 +102,12 @@ describe('DattCore', function () {
 
   describe('#asyncPostContentAuth', function () {
     it('should create a new ContentAuth and then post it', function () {
-      let title = 'test title'
-      let label = 'testlabel'
-      let body = 'test body'
-      return dattcore.asyncNewContentAuth(title, label, body).then(contentauth => {
-        return dattcore.asyncPostContentAuth(contentauth)
-      }).then(hashbuf => {
+      return spawn(function *() {
+        let title = 'test title'
+        let label = 'testlabel'
+        let body = 'test body'
+        let contentauth = yield dattcore.asyncNewContentAuth(title, label, body)
+        let hashbuf = yield dattcore.asyncPostContentAuth(contentauth)
         should.exist(hashbuf)
         Buffer.isBuffer(hashbuf).should.equal(true)
         hashbuf.length.should.equal(32)
@@ -111,10 +117,11 @@ describe('DattCore', function () {
 
   describe('#asyncPostNewContentAuth', function () {
     it('should post new content', function () {
-      let title = 'test title'
-      let label = 'testlabel'
-      let body = 'test body'
-      return dattcore.asyncPostNewContentAuth(title, label, body).then(hashbuf => {
+      return spawn(function *() {
+        let title = 'test title'
+        let label = 'testlabel'
+        let body = 'test body'
+        let hashbuf = yield dattcore.asyncPostNewContentAuth(title, label, body)
         should.exist(hashbuf)
         Buffer.isBuffer(hashbuf).should.equal(true)
         hashbuf.length.should.equal(32)
@@ -124,7 +131,8 @@ describe('DattCore', function () {
 
   describe('#asyncGetRecentContentAuth', function () {
     it('should return some content', function () {
-      return dattcore.asyncGetRecentContentAuth().then(contentauths => {
+      return spawn(function *() {
+        let contentauths = yield dattcore.asyncGetRecentContentAuth()
         contentauths.length.should.greaterThan(0)
         contentauths.forEach(contentauth => {
           ;(contentauth instanceof ContentAuth).should.equal(true)
