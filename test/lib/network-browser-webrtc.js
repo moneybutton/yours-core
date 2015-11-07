@@ -83,4 +83,16 @@ describe('NetworkBrowserWebRTC', function () {
       })
     })
   })
+
+  describe('#getAllPeers', function () {
+    it('should return a list of peers', function () {
+      return spawn(function *() {
+        let network = Network()
+        yield network.asyncInitialize()
+        let peers = yield network.asyncGetAllPeers()
+        peers.length.should.greaterThan(0)
+        console.log(peers)
+      })
+    })
+  })
 })

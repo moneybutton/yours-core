@@ -14,7 +14,7 @@ function createRendezvousServer (port) {
     let port = server.address().port
     console.log('View the rendezvous server at http://%s:%s/', host, port)
   })
-  app.use('/', ExpressPeerServer(server, {debug: true}))
+  app.use('/', ExpressPeerServer(server, {debug: true, allow_discovery: true}))
   return server
 }
 
