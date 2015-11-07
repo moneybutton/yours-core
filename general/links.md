@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Brian of Coinbase suggesting everyone on r/bitcoin migrate to r/btc because of censorship on r/bitcoin](https://www.reddit.com/r/Bitcoin/comments/3rufww/what_do_people_think_about_unsubscribing_from/) - [see also his tweet](https://twitter.com/brian_armstrong/status/662817100969308160)
 - [Sam Altman: Startup Playbook](http://playbook.samaltman.com/)
 - [LBRY: https://news.bitcoin.com/lbry-decentralized-sharing-platform/](https://news.bitcoin.com/lbry-decentralized-sharing-platform/)
 - [up2pp:// - The “http://” of Peer to Peer networking needs to exist](https://medium.com/@gubatron/up2pp-the-http-of-peer-to-peer-networking-needs-to-exist-da0332e8b495#.wnjk5g1ay)
