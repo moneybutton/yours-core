@@ -38,7 +38,6 @@ describe('CorePeers', function () {
       return
     }
     it('should be able to connect to another node and exchange ping/pong', function () {
-      this.timeout(3000)
       return spawn(function *() {
         let corepeers1 = CorePeers()
         yield corepeers1.asyncInitialize()
