@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Chris Dixon tweets about r/bitcoin -> r/btc](https://twitter.com/cdixon/status/663216232888410112)
 - [Brian of Coinbase suggesting everyone on r/bitcoin migrate to r/btc because of censorship on r/bitcoin](https://www.reddit.com/r/Bitcoin/comments/3rufww/what_do_people_think_about_unsubscribing_from/) - [see also his tweet](https://twitter.com/brian_armstrong/status/662817100969308160)
 - [Sam Altman: Startup Playbook](http://playbook.samaltman.com/)
 - [LBRY: https://news.bitcoin.com/lbry-decentralized-sharing-platform/](https://news.bitcoin.com/lbry-decentralized-sharing-platform/)
