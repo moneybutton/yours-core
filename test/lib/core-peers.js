@@ -43,11 +43,11 @@ describe('CorePeers', function () {
         yield corepeers1.asyncInitialize()
         let corepeers2 = CorePeers()
         yield corepeers2.asyncInitialize()
-        // let connectionInfo1 = corepeers1.peers.networks.webrtc.getConnectionInfo()
-        let connectionInfo2 = corepeers2.peers.networks.webrtc.getConnectionInfo()
+        // let connectionInfo1 = corepeers1.peers.networksWebRTC.getConnectionInfo()
+        let connectionInfo2 = corepeers2.peers.networkWebRTC.getConnectionInfo()
         yield corepeers1.asyncConnect(connectionInfo2)
-        corepeers1.peers.networks.webrtc.connections.length.should.equal(1)
-        corepeers2.peers.networks.webrtc.connections.length.should.equal(1)
+        corepeers1.peers.networkWebRTC.connections.length.should.equal(1)
+        corepeers2.peers.networkWebRTC.connections.length.should.equal(1)
         yield new Promise((resolve, reject) => {
           let msgPing = MsgPing().fromRandom()
           corepeers1.on('msg', obj => {
