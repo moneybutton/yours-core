@@ -1,6 +1,6 @@
 {
   "name": "datt",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A community with aligned incentives.",
   "main": "index.js",
   "scripts": {
