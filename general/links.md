@@ -176,3 +176,4 @@ Press for Datt
 - [Interview with Money & Tech](http://moneyandtech.com/ryan-x-charles-reddit/)
 - [2015-10-29 CoinJournal: Public Launch of Bitcoin-Powered, Decentralized Reddit Alternative Possible in March](http://coinjournal.net/public-launch-of-bitcoin-powered-decentralized-reddit-alternative-possible-in-march/)
 - [2015-10-29 r/bitcoin thread on the article from CoinJournal](https://www.reddit.com/r/Bitcoin/comments/3qr99v/public_launch_of_bitcoinpowered_decentralized/)
+- [2015-11-08 Inside Bitcoins: Datt Combines Social Media with Bitcoin-Powered Incentives (Kyle Torpey)](http://insidebitcoins.com/news/datt-combines-social-media-with-bitcoin-powered-incentives/35619)
