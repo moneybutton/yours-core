@@ -15,15 +15,18 @@ let PageFront = require('./page-front.jsx')
 let Layout = React.createClass({
   getInitialState: function () {
     return {
-      dattcoreStatus: 'uninitialized'
+      dattcoreStatus: 'uninitialized',
+      numActiveConnections: 0
     }
   },
+
   componentWillMount: function () {
     let dattcore = this.props.dattcore
     return dattcore.asyncInitialize().then(() => {
       this.setState({
         dattcoreStatus: 'initialized'
       })
+      this.monitorDattCore()
     })
     .catch(err => {
       this.setState({
@@ -31,13 +34,30 @@ let Layout = React.createClass({
       })
     })
   },
+
   propTypes: {
     apptitle: React.PropTypes.string,
     dattcore: React.PropTypes.object
   },
+
+  monitorDattCore: function () {
+    let dattcore = this.props.dattcore
+    dattcore.on('peers-connection', this.handlePeersConnection)
+  },
+
+  handlePeersConnection: function () {
+    let dattcore = this.props.dattcore
+    return dattcore.asyncNumActiveConnections().then(n => {
+      this.setState({
+        numActiveConnections: n
+      })
+    })
+  },
+
   render: function () {
     let dattcore = this.props.dattcore
     let dattcoreStatus = this.state.dattcoreStatus
+    let numActiveConnections = this.state.numActiveConnections
     return (
       <div className='container'>
         <div className='row page-header'>
@@ -56,7 +76,7 @@ let Layout = React.createClass({
             <BoxUser dattcore={dattcore} dattcoreStatus={dattcoreStatus}/>
             <BoxBitcoin dattcore={dattcore} dattcoreStatus={dattcoreStatus} bitsbalance={0}/>
             <BoxContent postsnumber={0}/>
-            <BoxPeer peersnumber={0}/>
+            <BoxPeer peersnumber={numActiveConnections}/>
           </div>
         </div>
 
