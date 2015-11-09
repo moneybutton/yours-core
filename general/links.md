@@ -3,6 +3,8 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [A pseudonymous trust system for a decentralized anonymous marketplace (Greg Slepak proposes that we use this as a way to algorithmically rank posts according to a computed trust value)](https://gist.github.com/dionyziz/e3b296861175e0ebea4b)
+- [Please stop writing secure messaging tools. (tldr: Also write other kinds of secure tools)](http://dymaxion.org/essays/pleasestop.html)
 - [Chris Dixon tweets about r/bitcoin -> r/btc](https://twitter.com/cdixon/status/663216232888410112)
 - [Brian of Coinbase suggesting everyone on r/bitcoin migrate to r/btc because of censorship on r/bitcoin](https://www.reddit.com/r/Bitcoin/comments/3rufww/what_do_people_think_about_unsubscribing_from/) - [see also his tweet](https://twitter.com/brian_armstrong/status/662817100969308160)
 - [Sam Altman: Startup Playbook](http://playbook.samaltman.com/)
