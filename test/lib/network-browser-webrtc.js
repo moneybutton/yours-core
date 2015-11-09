@@ -84,12 +84,12 @@ describe('NetworkBrowserWebRTC', function () {
     })
   })
 
-  describe('#asyncGetAllWebRTCPeers', function () {
+  describe('#asyncGetAllWebRTCPeerIDs', function () {
     it('should return a list of peers', function () {
       return spawn(function *() {
         let network = Network()
         yield network.asyncInitialize()
-        let peers = yield network.asyncGetAllWebRTCPeers()
+        let peers = yield network.asyncGetAllWebRTCPeerIDs()
         peers.length.should.greaterThan(0)
         console.log(peers)
       })

@@ -7,6 +7,7 @@ let ContentAuth = require('../../lib/content-auth')
 let MsgContentAuth = require('../../lib/msg-content-auth')
 let BR = require('fullnode/lib/br')
 let Keypair = require('fullnode/lib/keypair')
+let sinon = require('sinon')
 let spawn = require('../../lib/spawn')
 let should = require('should')
 
@@ -120,6 +121,45 @@ describe('Peers', function () {
         let successes = yield peers.asyncConnectMany([])
         successes.should.equal(0)
       })
+    })
+  })
+
+  describe('#asyncDiscoverAndConnect', function () {
+    it('should reject if peers is not initialized', function () {
+      return spawn(function *() {
+        let peers = Peers()
+        let errors = 0
+        try {
+          yield peers.asyncDiscoverAndConnect()
+        } catch (err) {
+          errors++
+        }
+        errors.should.equal(1)
+      })
+    })
+
+    if (!process.browser) {
+      // TODO: Enable this part again once we add node network support
+      return
+    }
+    it('should call asyncConnectMany when networkWebRTC is set', function () {
+      return spawn(function *() {
+        let peers = Peers()
+        peers.networkWebRTC = {}
+        peers.networkWebRTC.asyncGetAllWebRTCPeerIDs = () => []
+        peers.asyncConnectMany = sinon.spy()
+        yield peers.asyncDiscoverAndConnect()
+        peers.asyncConnectMany.calledOnce.should.equal(true)
+      })
+    })
+  })
+
+  describe('#numActiveConnections', function () {
+    it('should return length of connections', function () {
+      // TODO: This test will need to be updated once we add web socket support
+      let peers = Peers()
+      peers.networkWebRTC = {connections: []}
+      peers.numActiveConnections().should.equal(0)
     })
   })
 

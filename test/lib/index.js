@@ -170,6 +170,18 @@ describe('DattCore', function () {
     })
   })
 
+  describe('#asyncNumActiveConnections', function () {
+    it('should call corepeers numActiveConnections', function () {
+      return spawn(function *() {
+        let dattcore = DattCore({dbname: 'datt-temp'})
+        dattcore.corepeers = {}
+        dattcore.corepeers.numActiveConnections = sinon.spy()
+        yield dattcore.asyncNumActiveConnections()
+        dattcore.corepeers.numActiveConnections.calledOnce.should.equal(true)
+      })
+    })
+  })
+
   describe('#broadcastMsg', function () {
     it('should call corepeers.broadcastMsg', function () {
       let dattcore = DattCore({dbname: 'datt-temp'})

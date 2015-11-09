@@ -62,4 +62,26 @@ describe('CorePeers', function () {
       })
     })
   })
+
+  describe('#numActiveConnections', function () {
+    it('should call peers.numActiveConnections', function () {
+      let corepeers = CorePeers()
+      corepeers.peers = {}
+      corepeers.peers.numActiveConnections = sinon.spy()
+      corepeers.numActiveConnections()
+      corepeers.peers.numActiveConnections.calledOnce.should.equal(true)
+    })
+  })
+
+  describe('#asyncDiscoverAndConnect', function () {
+    it('should call peers.asyncDiscoverAndConnect', function () {
+      return spawn(function *() {
+        let corepeers = CorePeers()
+        corepeers.peers = {}
+        corepeers.peers.asyncDiscoverAndConnect = sinon.spy()
+        yield corepeers.asyncDiscoverAndConnect()
+        corepeers.peers.asyncDiscoverAndConnect.calledOnce.should.equal(true)
+      })
+    })
+  })
 })
