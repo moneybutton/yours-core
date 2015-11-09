@@ -354,7 +354,12 @@ gulp.task('build-browsersync', ['build'], () => {
 })
 
 gulp.task('serve', ['build'], () => {
-  testapp.createRendezvousServer(3031)
+  // Create two rendezvous servers, one for the tests and one for the UI, so
+  // that network connections do not overlap
+  testapp.createRendezvousServer(3031) // For the tests (i.e., localhost:3040/tests.html)
+  testapp.createRendezvousServer(3032) // For the UI (i.e., localhost:3040)
+
+  // One app server, that delivers the app and the tests file
   testapp.createAppServer(3030)
 
   let config = {

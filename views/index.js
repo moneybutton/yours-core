@@ -10,7 +10,12 @@ let os = require('os')
 
 let config = {
   dbName: 'datt-development',
-  dbBasePath: os.tmpdir()
+  dbBasePath: os.tmpdir(),
+  rendezvous: {
+    host: 'localhost',
+    port: 3032,
+    path: '/'
+  }
 }
 
 // dattcore application - the p2p/db/logic of datt
