@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [EigenTrust++: Attack Resilient Trust Management (PDF) (also recommended by Greg Slepak)](http://www.cc.gatech.edu/~lingliu/papers/2012/XinxinFan-EigenTrust++.pdf)
 - [A pseudonymous trust system for a decentralized anonymous marketplace (Greg Slepak proposes that we use this as a way to algorithmically rank posts according to a computed trust value)](https://gist.github.com/dionyziz/e3b296861175e0ebea4b)
 - [Please stop writing secure messaging tools. (tldr: Also write other kinds of secure tools)](http://dymaxion.org/essays/pleasestop.html)
 - [Chris Dixon tweets about r/bitcoin -> r/btc](https://twitter.com/cdixon/status/663216232888410112)
