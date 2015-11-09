@@ -170,6 +170,7 @@ Press for Datt
 - [Yishan's thoughts on a decentralized reddit](https://www.reddit.com/r/Bitcoin/comments/3ckf7u/ryan_x_charles_is_building_a_decentralized_reddit/csxsm1w)
 - [miningpool.co.uk has an article](http://www.miningpool.co.uk/interview-with-former-reddit-cryptocurrency-engineer-ryan-x-charles/)
 - [article in cointelegraph](http://cointelegraph.com/news/114785/ryan-x-charles-is-building-a-decentralized-reddit-and-would-love-collaborators)
+- [A second article in CoinTelegraph that mentions Datt and Ryan X. Charles](http://cointelegraph.com/news/115053/how-an-australian-teen-nearly-created-a-decentralized-reddit-in-1997)
 - [cryptocoins news article](https://www.cryptocoinsnews.com/former-reddit-cryptocurrency-engineer-decentralization-future/)
 - [ZapChain decentralization summit](https://www.zapchain.com/a/W7M8nphtCU)
 - [ZapChain article that quotes the summit](https://www.zapchain.com/a/5btVKjkZls)
