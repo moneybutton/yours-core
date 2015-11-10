@@ -50,8 +50,9 @@ http://localhost:3040/
 ```
 
 The file layout is as follows:
-- core/ - the application logic
-- react/ - the React front-end
-- test/core/ - tests for application logic
-- test/react/ - tests for React front-end
+- core/ - dattcore - the "core" logic used in servers and clients
+- react/ - dattreact - the React front-end
+- util/ - general utilities used in both dattcore and dattreact
+- test/core/ - tests for dattcore
+- test/react/ - tests for dattreact
 - build/ - built files and static files for the browser
