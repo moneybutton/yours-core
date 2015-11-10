@@ -14,7 +14,7 @@ let Pubkey = require('fullnode/lib/pubkey')
 let Sig = require('fullnode/lib/sig')
 let Struct = require('fullnode/lib/struct')
 let q = require('q')
-let spawn = require('./spawn')
+let spawn = require('../util/spawn')
 let workerpool = require('workerpool')
 
 let defaultPool

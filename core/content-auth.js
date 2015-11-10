@@ -24,7 +24,7 @@ let Keypair = require('fullnode/lib/keypair')
 let Pubkey = require('fullnode/lib/pubkey')
 let Sig = require('fullnode/lib/sig')
 let Struct = require('fullnode/lib/struct')
-let spawn = require('./spawn')
+let spawn = require('../util/spawn')
 
 /**
  * Note that the signature must be compact, meaning it has a recovery factor

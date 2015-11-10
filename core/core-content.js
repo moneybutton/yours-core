@@ -16,7 +16,7 @@ let DBContentAuth = require('./db-content-auth')
 let Struct = require('fullnode/lib/struct')
 let Keypair = require('fullnode/lib/keypair')
 let EventEmitter = require('events')
-let spawn = require('./spawn')
+let spawn = require('../util/spawn')
 
 function CoreContent (db) {
   if (!(this instanceof CoreContent)) {

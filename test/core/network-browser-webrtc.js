@@ -4,7 +4,7 @@ let Network
 let should = require('should')
 let MsgPing = require('../../core/msg-ping')
 let MsgPong = require('../../core/msg-pong')
-let spawn = require('../../core/spawn')
+let spawn = require('../../util/spawn')
 
 describe('NetworkBrowserWebRTC', function () {
   // Browser-only code shouldn't be tested in node

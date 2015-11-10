@@ -8,7 +8,7 @@ let MsgContentAuth = require('../../core/msg-content-auth')
 let BR = require('fullnode/lib/br')
 let Keypair = require('fullnode/lib/keypair')
 let sinon = require('sinon')
-let spawn = require('../../core/spawn')
+let spawn = require('../../util/spawn')
 let should = require('should')
 
 describe('Peers', function () {

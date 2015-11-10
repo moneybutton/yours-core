@@ -14,7 +14,7 @@ let DBUser = require('./db-user')
 let MsgAuth = require('./msg-auth')
 let Struct = require('fullnode/lib/struct')
 let AsyncCrypto = require('./async-crypto')
-let spawn = require('./spawn')
+let spawn = require('../util/spawn')
 
 function CoreUser (db, dbuser, user) {
   if (!(this instanceof CoreUser)) {

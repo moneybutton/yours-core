@@ -7,7 +7,7 @@ let MsgPing = require('../../core/msg-ping')
 let MsgPong = require('../../core/msg-pong')
 let should = require('should')
 let sinon = require('sinon')
-let spawn = require('../../core/spawn')
+let spawn = require('../../util/spawn')
 
 describe('CorePeers', function () {
   it('should exist', function () {

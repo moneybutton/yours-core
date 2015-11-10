@@ -7,7 +7,7 @@
  */
 'use strict'
 let Struct = require('fullnode/lib/struct')
-let spawn = require('./spawn')
+let spawn = require('../util/spawn')
 
 function DBPeers (db, peers) {
   if (!(this instanceof DBPeers)) {

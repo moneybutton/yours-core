@@ -11,7 +11,7 @@
 'use strict'
 let Struct = require('fullnode/lib/struct')
 let Msg = require('./msg')
-let spawn = require('./spawn')
+let spawn = require('../util/spawn')
 let EventEmitter = require('events')
 
 let Connection = function ConnectionBrowserWebRTC (peerjsConnection) {

@@ -5,7 +5,7 @@ let DattCore = require('../../core')
 let ContentAuth = require('../../core/content-auth')
 let MsgPing = require('../../core/msg-ping')
 let sinon = require('sinon')
-let spawn = require('../../core/spawn')
+let spawn = require('../../util/spawn')
 
 describe('DattCore', function () {
   let dattcore

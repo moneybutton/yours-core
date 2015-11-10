@@ -31,7 +31,7 @@ let MsgContentAuth = require('./msg-content-auth')
 let Struct = require('fullnode/lib/struct')
 let User = require('./user')
 let pkg = require('../package')
-let spawn = require('./spawn')
+let spawn = require('../util/spawn')
 
 function DattCore (config, db, corebitcoin, corecontent, corepeers, coreuser) {
   if (!(this instanceof DattCore)) {

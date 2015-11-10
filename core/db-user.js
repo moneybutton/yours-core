@@ -8,7 +8,7 @@
 'use strict'
 let User = require('./user')
 let Struct = require('fullnode/lib/struct')
-let spawn = require('./spawn')
+let spawn = require('../util/spawn')
 
 function DBUser (db, user) {
   if (!(this instanceof DBUser)) {

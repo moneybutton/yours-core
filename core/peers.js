@@ -19,7 +19,7 @@ let Constants = require('./constants')
 let EventEmitter = require('events')
 let NetworkWebRTC = require('./network-webrtc')
 let Struct = require('fullnode/lib/struct')
-let spawn = require('./spawn')
+let spawn = require('../util/spawn')
 
 function Peers (config, networkWebRTC, networkSocket) {
   if (!(this instanceof Peers)) {

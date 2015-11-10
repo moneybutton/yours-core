@@ -4,7 +4,7 @@ let DB = require('../../core/db')
 let DBPeers = require('../../core/db-peers')
 let Peers = require('../../core/peers')
 let should = require('should')
-let spawn = require('../../core/spawn')
+let spawn = require('../../util/spawn')
 
 describe('DBPeers', function () {
   let db = DB('datt-testdatabase')

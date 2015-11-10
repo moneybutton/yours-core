@@ -9,7 +9,7 @@ let Keypair = require('fullnode/lib/keypair')
 let Privkey = require('fullnode/lib/privkey')
 let Pubkey = require('fullnode/lib/pubkey')
 let should = require('should')
-let spawn = require('../../core/spawn')
+let spawn = require('../../util/spawn')
 let workerpool = require('workerpool')
 
 describe('AsyncCrypto', function () {
