@@ -1,6 +1,6 @@
 /* global describe,it */
 'use strict'
-let User = require('../../lib/user')
+let User = require('../../core/user')
 let should = require('should')
 
 describe('User', function () {

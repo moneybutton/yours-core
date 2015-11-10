@@ -1,8 +1,8 @@
 /* global describe,it */
 'use strict'
 let should = require('should')
-let MsgPing = require('../../lib/msg-ping')
-let Msg = require('../../lib/msg')
+let MsgPing = require('../../core/msg-ping')
+let Msg = require('../../core/msg')
 let Random = require('fullnode/lib/random')
 
 describe('MsgPing', function () {

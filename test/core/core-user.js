@@ -1,9 +1,9 @@
 /* global describe,it,before,after */
 'use strict'
-let DB = require('../../lib/db')
-let CoreUser = require('../../lib/core-user')
+let DB = require('../../core/db')
+let CoreUser = require('../../core/core-user')
 let should = require('should')
-let MsgAuth = require('../../lib/msg-auth')
+let MsgAuth = require('../../core/msg-auth')
 let BR = require('fullnode/lib/br')
 
 describe('CoreUser', function () {

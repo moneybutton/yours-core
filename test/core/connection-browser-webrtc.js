@@ -1,7 +1,7 @@
 /* global describe,it */
 'use strict'
 let Connection
-let Msg = require('../../lib/msg')
+let Msg = require('../../core/msg')
 let sinon = require('sinon')
 let should = require('should')
 
@@ -11,7 +11,7 @@ describe('ConnectionBrowserWebRTC', function () {
     return
   }
 
-  Connection = require('../../lib/connection-browser-webrtc')
+  Connection = require('../../core/connection-browser-webrtc')
 
   it('should exist', function () {
     should.exist(Connection)

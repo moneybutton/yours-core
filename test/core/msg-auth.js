@@ -1,13 +1,13 @@
 /* global describe,it,before */
 'use strict'
-let MsgAuth = require('../../lib/msg-auth')
-let Msg = require('../../lib/msg')
+let MsgAuth = require('../../core/msg-auth')
+let Msg = require('../../core/msg')
 let BR = require('fullnode/lib/br')
 let should = require('should')
 let Privkey = require('fullnode/lib/privkey')
 let BN = require('fullnode/lib/bn')
 let Keypair = require('fullnode/lib/keypair')
-let Content = require('../../lib/content')
+let Content = require('../../core/content')
 
 describe('MsgAuth', function () {
   let blockidhex = '00000000000000000e6188a4cc93e3d3244b20bfdef1e9bd9db932e30f3aa2f1'

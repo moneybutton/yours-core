@@ -50,8 +50,8 @@ http://localhost:3040/
 ```
 
 The file layout is as follows:
-- lib/ - the application logic
-- views/ - the React front-end
-- test/lib/ - tests for application logic
-- test/views/ - tests for React front-end
+- core/ - the application logic
+- react/ - the React front-end
+- test/core/ - tests for application logic
+- test/react/ - tests for React front-end
 - build/ - built files and static files for the browser

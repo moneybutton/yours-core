@@ -1,10 +1,10 @@
 /* global describe,it,before,after */
 'use strict'
-let User = require('../../lib/user')
-let DB = require('../../lib/db')
-let ContentAuth = require('../../lib/content-auth')
-let CoreContent = require('../../lib/core-content')
-let CoreBitcoin = require('../../lib/core-bitcoin')
+let User = require('../../core/user')
+let DB = require('../../core/db')
+let ContentAuth = require('../../core/content-auth')
+let CoreContent = require('../../core/core-content')
+let CoreBitcoin = require('../../core/core-bitcoin')
 let should = require('should')
 let Address = require('fullnode/lib/address')
 

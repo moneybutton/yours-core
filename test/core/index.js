@@ -1,11 +1,11 @@
 /* global before,describe,it,after */
 'use strict'
 let should = require('should')
-let DattCore = require('../../lib')
-let ContentAuth = require('../../lib/content-auth')
-let MsgPing = require('../../lib/msg-ping')
+let DattCore = require('../../core')
+let ContentAuth = require('../../core/content-auth')
+let MsgPing = require('../../core/msg-ping')
 let sinon = require('sinon')
-let spawn = require('../../lib/spawn')
+let spawn = require('../../core/spawn')
 
 describe('DattCore', function () {
   let dattcore

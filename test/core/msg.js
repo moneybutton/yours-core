@@ -1,7 +1,7 @@
 /* global describe,it */
 'use strict'
-let Constants = require('../../lib/constants')
-let Msg = require('../../lib/msg')
+let Constants = require('../../core/constants')
+let Msg = require('../../core/msg')
 let BR = require('fullnode/lib/br')
 let BW = require('fullnode/lib/bw')
 let should = require('should')

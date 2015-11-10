@@ -1,7 +1,7 @@
 /* global it,describe */
 'use strict'
 let Address = require('fullnode/lib/address')
-let AsyncCrypto = require('../../lib/async-crypto')
+let AsyncCrypto = require('../../core/async-crypto')
 let BIP32 = require('fullnode/lib/bip32')
 let ECDSA = require('fullnode/lib/ecdsa')
 let Hash = require('fullnode/lib/hash')
@@ -9,7 +9,7 @@ let Keypair = require('fullnode/lib/keypair')
 let Privkey = require('fullnode/lib/privkey')
 let Pubkey = require('fullnode/lib/pubkey')
 let should = require('should')
-let spawn = require('../../lib/spawn')
+let spawn = require('../../core/spawn')
 let workerpool = require('workerpool')
 
 describe('AsyncCrypto', function () {

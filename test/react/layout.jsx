@@ -1,7 +1,7 @@
 /* global describe,it,before,after */
 'use strict'
 let should = require('should')
-let Layout = require('../../views/layout.jsx')
+let Layout = require('../../react/layout.jsx')
 let TestUtils = require('react-addons-test-utils')
 let React = require('react')
 let dattcore = require('./dattcore')

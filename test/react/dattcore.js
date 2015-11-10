@@ -3,7 +3,7 @@
  * same database connection and p2p connections.
  */
 'use strict'
-let DattCore = require('../../lib')
+let DattCore = require('../../core')
 let config = {
   dbName: 'datt-test-react'
 }

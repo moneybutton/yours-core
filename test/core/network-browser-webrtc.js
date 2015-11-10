@@ -2,9 +2,9 @@
 'use strict'
 let Network
 let should = require('should')
-let MsgPing = require('../../lib/msg-ping')
-let MsgPong = require('../../lib/msg-pong')
-let spawn = require('../../lib/spawn')
+let MsgPing = require('../../core/msg-ping')
+let MsgPong = require('../../core/msg-pong')
+let spawn = require('../../core/spawn')
 
 describe('NetworkBrowserWebRTC', function () {
   // Browser-only code shouldn't be tested in node
@@ -12,7 +12,7 @@ describe('NetworkBrowserWebRTC', function () {
     return
   }
 
-  Network = require('../../lib/network-browser-webrtc')
+  Network = require('../../core/network-browser-webrtc')
 
   it('should exist', function () {
     should.exist(Network)

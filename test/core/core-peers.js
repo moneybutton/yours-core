@@ -1,13 +1,13 @@
 /* global describe,it */
 'use strict'
-let ContentAuth = require('../../lib/content-auth')
-let CorePeers = require('../../lib/core-peers')
-let MsgContentAuth = require('../../lib/msg-content-auth')
-let MsgPing = require('../../lib/msg-ping')
-let MsgPong = require('../../lib/msg-pong')
+let ContentAuth = require('../../core/content-auth')
+let CorePeers = require('../../core/core-peers')
+let MsgContentAuth = require('../../core/msg-content-auth')
+let MsgPing = require('../../core/msg-ping')
+let MsgPong = require('../../core/msg-pong')
 let should = require('should')
 let sinon = require('sinon')
-let spawn = require('../../lib/spawn')
+let spawn = require('../../core/spawn')
 
 describe('CorePeers', function () {
   it('should exist', function () {

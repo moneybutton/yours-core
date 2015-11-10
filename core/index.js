@@ -13,7 +13,7 @@
  * A word on architecture of this file: This file, dattcore, is intended to be
  * a window into the p2p connections and database. It is NOT intended to host
  * application logic - but just provide an API to the code contained in other
- * files in lib/*.js. If the methods here have too many lines of code and
+ * files in core/*.js. If the methods here have too many lines of code and
  * access the database and peers, something has gone wrong. All methods here
  * should be very simple and only access other objects/methods from other
  * files.

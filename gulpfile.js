@@ -25,7 +25,7 @@ browserSyncs['3042'] = browserSyncCreator.create()
 browserSyncs['3043'] = browserSyncCreator.create()
 browserSyncs['3044'] = browserSyncCreator.create()
 
-let jsfiles = ['*.js', 'bin/*.js', 'views/**/*.js', 'views/**/*.jsx', 'lib/**/*.js', 'test/**/*.js', 'test/**/*.jsx']
+let jsfiles = ['*.js', 'bin/*.js', 'react/**/*.js', 'react/**/*.jsx', 'core/**/*.js', 'test/**/*.js', 'test/**/*.jsx']
 let cssfiles = ['build/main.css']
 let allfiles = [].concat(jsfiles).concat(cssfiles)
 
@@ -93,7 +93,7 @@ function set_build_worker_browserify () {
     .add(require.resolve('babel-polyfill'))
     .transform(envify)
     .transform(babelify, {presets: ['es2015', 'react']})
-    .add(require.resolve('./lib/worker.js'), {entry: true})
+    .add(require.resolve('./core/worker.js'), {entry: true})
 }
 
 set_build_worker_browserify()
@@ -133,7 +133,7 @@ function set_build_core_browserify () {
     .add(require.resolve('babel-polyfill'))
     .transform(envify)
     .transform(babelify, {presets: ['es2015', 'react']})
-    .require(require.resolve('./lib/index.js'), {entry: true})
+    .require(require.resolve('./core/index.js'), {entry: true})
 }
 
 set_build_core_browserify()
@@ -170,7 +170,7 @@ function set_build_react_browserify () {
     // Do not include the polyfill - it is already included by datt-core.js
     .transform('reactify')
     .transform(babelify, {presets: ['es2015', 'react']})
-    .add(require.resolve('./views/index.js'), {entry: true})
+    .add(require.resolve('./react/index.js'), {entry: true})
 }
 
 set_build_react_browserify()
@@ -308,7 +308,7 @@ gulp.task('watch-test-node', () => {
   // runs the mocha node tests and runs js standard on all the files
   watch(jsfiles, function () {
     q.delay(watchifytimeout).then(() => {
-      exec('node_modules/.bin/standard *.js ./views/**/*.js ./views/**/*.jsx ./lib/**/*.js ./test/**/*.js', {cwd: __dirname}, (err, stdout, stderr) => {
+      exec('node_modules/.bin/standard *.js ./react/**/*.js ./react/**/*.jsx ./core/**/*.js ./test/**/*.js', {cwd: __dirname}, (err, stdout, stderr) => {
         if (err) {
           console.log(stdout)
         }

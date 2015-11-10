@@ -1,6 +1,6 @@
 /* global describe,it */
 'use strict'
-let CoreBitcoin = require('../../lib/core-bitcoin')
+let CoreBitcoin = require('../../core/core-bitcoin')
 let should = require('should')
 
 describe('CoreBitcoin', function () {

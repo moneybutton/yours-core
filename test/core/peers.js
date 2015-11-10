@@ -1,14 +1,14 @@
 /* global describe,it,before,after */
 'use strict'
-let Peers = require('../../lib/peers')
+let Peers = require('../../core/peers')
 let Address = require('fullnode/lib/address')
-let Content = require('../../lib/content')
-let ContentAuth = require('../../lib/content-auth')
-let MsgContentAuth = require('../../lib/msg-content-auth')
+let Content = require('../../core/content')
+let ContentAuth = require('../../core/content-auth')
+let MsgContentAuth = require('../../core/msg-content-auth')
 let BR = require('fullnode/lib/br')
 let Keypair = require('fullnode/lib/keypair')
 let sinon = require('sinon')
-let spawn = require('../../lib/spawn')
+let spawn = require('../../core/spawn')
 let should = require('should')
 
 describe('Peers', function () {
@@ -20,9 +20,9 @@ describe('Peers', function () {
   let peers
   let Network, network2
   if (process.browser) {
-    Network = require('../../lib/network-browser-webrtc')
+    Network = require('../../core/network-browser-webrtc')
   } else {
-    Network = require('../../lib/network-node-socket')
+    Network = require('../../core/network-node-socket')
   }
 
   let blockidhex = '00000000000000000e6188a4cc93e3d3244b20bfdef1e9bd9db932e30f3aa2f1'

@@ -1,10 +1,10 @@
 /* global describe,it,before,after */
 'use strict'
-let DB = require('../../lib/db')
-let DBPeers = require('../../lib/db-peers')
-let Peers = require('../../lib/peers')
+let DB = require('../../core/db')
+let DBPeers = require('../../core/db-peers')
+let Peers = require('../../core/peers')
 let should = require('should')
-let spawn = require('../../lib/spawn')
+let spawn = require('../../core/spawn')
 
 describe('DBPeers', function () {
   let db = DB('datt-testdatabase')

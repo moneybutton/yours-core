@@ -1,9 +1,9 @@
 /* global describe,it */
 'use strict'
-let MsgContentAuth = require('../../lib/msg-content-auth')
-let Msg = require('../../lib/msg')
+let MsgContentAuth = require('../../core/msg-content-auth')
+let Msg = require('../../core/msg')
 let Hash = require('fullnode/lib/hash')
-let ContentAuth = require('../../lib/content-auth')
+let ContentAuth = require('../../core/content-auth')
 let should = require('should')
 
 describe('MsgContentAuth', function () {

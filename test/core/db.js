@@ -1,6 +1,6 @@
 /* global describe,it,before,after */
 'use strict'
-let DB = require('../../lib/db')
+let DB = require('../../core/db')
 let should = require('should')
 
 describe('DB', function () {
