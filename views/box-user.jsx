@@ -15,10 +15,12 @@ let BoxUser = React.createClass({
       userMnemonic: ''
     }
   },
+
   propTypes: {
     dattcore: React.PropTypes.object,
     status: React.PropTypes.string
   },
+
   setStateFromDattcore: function () {
     let dattcore = this.props.dattcore
     return dattcore.asyncGetUserName().then(userName => {
@@ -33,17 +35,21 @@ let BoxUser = React.createClass({
       })
     })
   },
+
   componentWillMount: function () {
     return this.setStateFromDattcore()
   },
+
   componentWillReceiveProps: function () {
     return this.setStateFromDattcore()
   },
+
   handleChange: function (el) {
     this.setState({
       newUserName: el.target.value
     })
   },
+
   handleSubmit: function () {
     let dattcore = this.props.dattcore
     return dattcore.asyncSetUserName(this.state.newUserName).then(() => {
@@ -52,6 +58,7 @@ let BoxUser = React.createClass({
       })
     })
   },
+
   render: function () {
     return (
       <div className='info-box'>

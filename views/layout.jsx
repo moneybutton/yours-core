@@ -5,12 +5,13 @@
  * This is the main layout component which frames every page.
  */
 'use strict'
-let React = require('react')
-let BoxContent = require('./box-content.jsx')
 let BoxBitcoin = require('./box-bitcoin.jsx')
+let BoxContent = require('./box-content.jsx')
+let BoxDeveloper = require('./box-developer.jsx')
 let BoxPeer = require('./box-peer.jsx')
 let BoxUser = require('./box-user.jsx')
 let PageFront = require('./page-front.jsx')
+let React = require('react')
 
 let Layout = React.createClass({
   getInitialState: function () {
@@ -77,6 +78,7 @@ let Layout = React.createClass({
             <BoxBitcoin dattcore={dattcore} dattcoreStatus={dattcoreStatus} bitsbalance={0}/>
             <BoxContent postsnumber={0}/>
             <BoxPeer peersnumber={numActiveConnections}/>
+            <BoxDeveloper dattcore={dattcore}/>
           </div>
         </div>
 
