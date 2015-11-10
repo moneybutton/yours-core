@@ -47,7 +47,7 @@ describe('CorePeers', function () {
         yield corepeers.asyncHandleMsgContentAuth({msg})
         corepeers.db.put.calledOnce.should.equal(true)
         corepeers.emit.calledOnce.should.equal(true)
-        corepeers.emit.getCall(0).args[0].should.equal('peers-content-auth')
+        corepeers.emit.getCall(0).args[0].should.equal('content-auth')
       })
     })
   })

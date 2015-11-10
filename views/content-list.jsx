@@ -13,7 +13,8 @@ let ContentList = React.createClass({
       contentList: []
     }
   },
-  setStateFromDattcore: function () {
+
+  setStateFromDattCore: function () {
     let dattcore = this.props.dattcore
     return dattcore.asyncGetRecentContentAuth().then(contentauths => {
       let contentList = contentauths.map(contentauth => {
@@ -28,16 +29,35 @@ let ContentList = React.createClass({
       this.setState({contentList})
     })
   },
+
   componentWillMount: function () {
-    return this.setStateFromDattcore()
+    this.monitorDattCore()
+    return this.setStateFromDattCore()
   },
+
   componentWillReceiveProps: function () {
-    return this.setStateFromDattcore()
+    return this.setStateFromDattCore()
   },
+
+  monitorDattCore: function () {
+    let dattcore = this.props.dattcore
+    dattcore.on('peers-content-auth', this.handlePeersContentAuth)
+    dattcore.on('content-content-auth', this.handleContentContentAuth)
+  },
+
+  handlePeersContentAuth: function () {
+    return this.setStateFromDattCore()
+  },
+
+  handleContentContentAuth: function () {
+    return this.setStateFromDattCore()
+  },
+
   propTypes: {
     dattcore: React.PropTypes.object,
     dattcoreStatus: React.PropTypes.string
   },
+
   render: function () {
     let contentList = this.state.contentList.map(obj => {
       return (
