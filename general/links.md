@@ -72,6 +72,7 @@ Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
 - [LBRY: Combining bittorrent and a new cryptocurrency for sharing media and being paid](http://lbry.io/)
+- [Credence is a practical distributed reputation system, designed to counteract content pollution in peer-to-peer filesharing systems.](http://credence-p2p.org/)
 - [Tsu: social network that shares ad revenue with creators](http://www.tsu.co/)
 - [crypti - decentralized app system](https://crypti.me/)
 - [Iris: Decentralized cloud messaging](http://bravenewgeek.com/iris-decentralized-cloud-messaging/) - [Paper](http://www.comsis.org/archive.php?show=ppr475-1307)
