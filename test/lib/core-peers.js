@@ -1,11 +1,13 @@
 /* global describe,it */
 'use strict'
+let ContentAuth = require('../../lib/content-auth')
 let CorePeers = require('../../lib/core-peers')
+let MsgContentAuth = require('../../lib/msg-content-auth')
 let MsgPing = require('../../lib/msg-ping')
 let MsgPong = require('../../lib/msg-pong')
-let spawn = require('../../lib/spawn')
 let should = require('should')
 let sinon = require('sinon')
+let spawn = require('../../lib/spawn')
 
 describe('CorePeers', function () {
   it('should exist', function () {
@@ -29,6 +31,24 @@ describe('CorePeers', function () {
       corepeers.handleMsgPing(obj)
       connection.sendMsg.calledOnce.should.equal(true)
       connection.sendMsg.getCall(0).args[0].toHex().should.equal(msgPong.toMsg().toHex())
+    })
+  })
+
+  describe('asyncHandleMsgContentAuth', function () {
+    it('should emit peers-content-auth on valid content-auth', function () {
+      return spawn(function *() {
+        let contentauthhex = '022f8bde4d1a07209355b4a7250a5c5128e88b84bddc619ab7cba8d569b240efe41f04b47a4636d379788e73dc9d2a048966ce7b79c576c8e6e994af10d3fa6a47ce3ddaed3a9b02d2e8e19c6305a0433fb5aa93f6f2a8cd86cdad8b2a30030216a8f1a23a0fe332b99dbde9f1debf204b24d3e393cca488610e00000000000000000005c0750000000000000000000000000000000000000000000000000000000000000000000001503054427b004747e8746cddb33b0f7f95a90f89f89fb387cbb67b226e616d65223a226d796e616d65222c226c6162656c223a226d796c6162656c222c227469746c65223a22636f6e74656e74207469746c65222c2274797065223a226d61726b646f776e222c22626f6479223a22636f6e74656e7420626f6479227d'
+        let contentauth = ContentAuth().fromHex(contentauthhex)
+        let msg = MsgContentAuth().fromContentAuth(contentauth).toMsg()
+        let corepeers = CorePeers()
+        corepeers.db = {}
+        corepeers.db.put = sinon.spy()
+        corepeers.emit = sinon.spy()
+        yield corepeers.asyncHandleMsgContentAuth({msg})
+        corepeers.db.put.calledOnce.should.equal(true)
+        corepeers.emit.calledOnce.should.equal(true)
+        corepeers.emit.getCall(0).args[0].should.equal('peers-content-auth')
+      })
     })
   })
 
