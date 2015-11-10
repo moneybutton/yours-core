@@ -22,8 +22,8 @@ let PageFront = React.createClass({
   render: function () {
     return (
       <div>
-        <ContentList dattcore={this.props.dattcore} dattcoreStatus={this.props.dattcoreStatus}/>
-        <FormNewContent dattcore={this.props.dattcore} dattcoreStatus={this.props.dattcoreStatus}/>
+        <ContentList dattcore={this.props.dattcore}/>
+        <FormNewContent dattcore={this.props.dattcore}/>
       </div>
     )
   }

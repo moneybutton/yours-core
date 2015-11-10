@@ -11,6 +11,7 @@ let BoxContent = React.createClass({
   propTypes: {
     postsnumber: React.PropTypes.number
   },
+
   render: function () {
     return (
       <div className='info-box'>

@@ -13,10 +13,12 @@ let BoxBitcoin = React.createClass({
       blockheightnum: 0
     }
   },
+
   propTypes: {
     bitsbalance: React.PropTypes.number,
     dattcore: React.PropTypes.object
   },
+
   componentDidMount: function () {
     let dattcore = this.props.dattcore
     return dattcore.asyncGetLatestBlockInfo().then(info => {
@@ -25,6 +27,7 @@ let BoxBitcoin = React.createClass({
       })
     })
   },
+
   render: function () {
     return (
       <div className='info-box'>

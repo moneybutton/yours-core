@@ -70,12 +70,12 @@ let Layout = React.createClass({
 
         <div className='row'>
           <div className='col-md-8'>
-            <PageFront dattcore={dattcore} dattcoreStatus={dattcoreStatus}/>
+            <PageFront dattcore={dattcore}/>
           </div>
 
           <div className='col-md-4 side-boxes'>
-            <BoxUser dattcore={dattcore} dattcoreStatus={dattcoreStatus}/>
-            <BoxBitcoin dattcore={dattcore} dattcoreStatus={dattcoreStatus} bitsbalance={0}/>
+            <BoxUser dattcore={dattcore}/>
+            <BoxBitcoin dattcore={dattcore} bitsbalance={0}/>
             <BoxContent postsnumber={0}/>
             <BoxPeer peersnumber={numActiveConnections}/>
             <BoxDeveloper dattcore={dattcore}/>

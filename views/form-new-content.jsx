@@ -18,8 +18,7 @@ let FormNewContent = React.createClass({
     }
   },
   propTypes: {
-    dattcore: React.PropTypes.object,
-    dattcoreStatus: React.PropTypes.string
+    dattcore: React.PropTypes.object
   },
   handleTitleChange: function (el) {
     this.setState({

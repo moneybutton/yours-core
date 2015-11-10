@@ -17,8 +17,7 @@ let BoxUser = React.createClass({
   },
 
   propTypes: {
-    dattcore: React.PropTypes.object,
-    status: React.PropTypes.string
+    dattcore: React.PropTypes.object
   },
 
   setStateFromDattcore: function () {

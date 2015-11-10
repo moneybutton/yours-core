@@ -54,8 +54,7 @@ let ContentList = React.createClass({
   },
 
   propTypes: {
-    dattcore: React.PropTypes.object,
-    dattcoreStatus: React.PropTypes.string
+    dattcore: React.PropTypes.object
   },
 
   render: function () {
