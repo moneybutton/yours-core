@@ -92,7 +92,7 @@ function set_build_worker_browserify () {
     // the worker and in the bundle.
     .add(require.resolve('babel-polyfill'))
     .transform(envify)
-    .transform(babelify, {presets: ['es2015', 'react']})
+    .transform(babelify, {presets: ['es2015', 'react'], sourceMaps: false})
     .add(require.resolve('./core/worker.js'), {entry: true})
 }
 
@@ -132,7 +132,7 @@ function set_build_core_browserify () {
     // the worker and in the bundle.
     .add(require.resolve('babel-polyfill'))
     .transform(envify)
-    .transform(babelify, {presets: ['es2015', 'react']})
+    .transform(babelify, {presets: ['es2015', 'react'], sourceMaps: false})
     .require(require.resolve('./core/index.js'), {entry: true})
 }
 
@@ -169,7 +169,7 @@ function set_build_react_browserify () {
   build_react_browserify
     // Do not include the polyfill - it is already included by datt-core.js
     .transform('reactify')
-    .transform(babelify, {presets: ['es2015', 'react']})
+    .transform(babelify, {presets: ['es2015', 'react'], sourceMaps: false})
     .add(require.resolve('./react/index.js'), {entry: true})
 }
 
@@ -220,7 +220,7 @@ function set_build_tests_browserify () {
       }
       build_tests_browserify
         .transform(envify)
-        .transform(babelify, {presets: ['es2015', 'react']})
+        .transform(babelify, {presets: ['es2015', 'react'], sourceMaps: false})
         .ignore('jsdom')
       for (let file of files) {
         build_tests_browserify.add(file)
