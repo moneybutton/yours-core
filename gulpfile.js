@@ -13,7 +13,6 @@ let karma = require('gulp-karma')
 let plumber = require('gulp-plumber')
 let browserSyncCreator = require('browser-sync')
 let watchify = require('watchify')
-let jsx_require_extension = require('jsx-require-extension')
 let gutil = require('gulp-util')
 let q = require('q')
 let testapp = require('./bin/testapp')
@@ -290,7 +289,7 @@ function test_node (end) {
     .pipe(mocha({
       reporter: 'dot',
       compilers: {
-        jsx: jsx_require_extension
+        jsx: require('babel-core/register')
       }
     }))
     .once('end', () => {
