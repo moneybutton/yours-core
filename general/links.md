@@ -3,6 +3,8 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [The Netflix stack - interesting look at a service that has to scale enormously](http://highscalability.com/blog/2015/11/9/a-360-degree-view-of-the-entire-netflix-stack.html)
+- [How Facebook is stealing billions of views - relevant to the issue of people stealing others' work](https://www.youtube.com/watch?v=t7tA3NNKF0Q&feature=youtu.be)
 - [Mine wants to identify every image on the internet. (uses the blockchain - perhaps similar tech could be used to classify content on datt)](http://www.mine.nyc/)
 - [EigenTrust++: Attack Resilient Trust Management (PDF) (also recommended by Greg Slepak)](http://www.cc.gatech.edu/~lingliu/papers/2012/XinxinFan-EigenTrust++.pdf)
 - [A pseudonymous trust system for a decentralized anonymous marketplace (Greg Slepak proposes that we use this as a way to algorithmically rank posts according to a computed trust value)](https://gist.github.com/dionyziz/e3b296861175e0ebea4b)
@@ -108,6 +110,7 @@ Related projects
 - [sia - decentralized storage that integrates payments - sounds similar to ipfs](https://bitcointalk.org/index.php?topic=1060294.0)
 - [Kudos: A Peer-to-Peer Discussion System Based on Social Voting (PDF)](http://lucaa.org/docs/kudos.pdf)
 - [Peer Tracks - tokens for music, allows people to be rewarded for finding good music](http://peertracks.com/)
+- [Witcoin - the original "reddit, but with bitcoin"](https://en.bitcoin.it/wiki/Witcoin)
 
 Tools
 -----
