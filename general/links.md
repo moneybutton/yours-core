@@ -3,6 +3,8 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [The 12 Factor App - great info on how to build software that works well as a service](http://12factor.net/)
+- [Heroku: 10 habits of a happy node hacker - useful tips for managing a node project from Heroku](http://blog.heroku.com/archives/2015/11/10/node-habits-2016)
 - [The Netflix stack - interesting look at a service that has to scale enormously](http://highscalability.com/blog/2015/11/9/a-360-degree-view-of-the-entire-netflix-stack.html)
 - [How Facebook is stealing billions of views - relevant to the issue of people stealing others' work](https://www.youtube.com/watch?v=t7tA3NNKF0Q&feature=youtu.be)
 - [Mine wants to identify every image on the internet. (uses the blockchain - perhaps similar tech could be used to classify content on datt)](http://www.mine.nyc/)
