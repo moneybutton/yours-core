@@ -49,6 +49,16 @@ function deriveXkeysFromXprvHex (xprvhex, path) {
   }
 }
 
+function deriveXkeysFromXpubHex (xpubhex, path) {
+  let xpub = BIP32().fromHex(xpubhex)
+  xpub = xpub.derive(path)
+  let address = Address().fromPubkey(xpub.pubkey)
+  return {
+    xpub: xpub.toHex(),
+    address: address.toHex()
+  }
+}
+
 function sign (hashhex, privkeyHex, endian) {
   let hash = new Buffer(hashhex, 'hex')
   let privkey = Privkey().fromHex(privkeyHex)
@@ -95,6 +105,7 @@ let f = {
   addressHexFromPubkeyHex,
   xkeysFromEntropyHex,
   deriveXkeysFromXprvHex,
+  deriveXkeysFromXpubHex,
   sign,
   signCompact,
   verifySignature,

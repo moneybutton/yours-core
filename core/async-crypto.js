@@ -121,6 +121,21 @@ AsyncCrypto.prototype.deriveXkeysFromXprv = function (xprv, path) {
 }
 
 /**
+ * Given an xpub (extended public key), derive the path to a new xpub and its
+ * corresponding xpub and address (see BIP 32). TODO: Send buffers instead of
+ * hex/JSON.
+ */
+AsyncCrypto.prototype.deriveXkeysFromXpub = function (xpub, path) {
+  return spawn(function *() {
+    let xpubhex = xpub.toHex()
+    let obj = yield q(this.pool.exec('deriveXkeysFromXpubHex', [xpubhex, path]))
+    xpub = BIP32().fromHex(obj.xpub)
+    let address = Address().fromHex(obj.address)
+    return {xpub, address}
+  }.bind(this))
+}
+
+/**
  * Given a hash (32 byte buffer), privkey, and endian (either 'little' or
  * 'big', default 'big'), compute the Signature (using ECDSA). Returns a
  * fullnode Signature object. TODO: Send buffers instead of hex/JSON.

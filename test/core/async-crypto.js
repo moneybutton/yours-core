@@ -107,6 +107,23 @@ describe('AsyncCrypto', function () {
     })
   })
 
+  describe('@deriveXkeysFromXpub', function () {
+    it('should derive new xpub and address', function () {
+      return spawn(function *() {
+        let seedbuf = new Buffer(128 / 8)
+        seedbuf.fill(0)
+        let xprv = BIP32().fromSeed(seedbuf)
+        let path = "m/44'/0'/0'"
+        let obj = yield AsyncCrypto.deriveXkeysFromXprv(xprv, path)
+        let xpub = obj.xpub
+        path = 'm/0/0'
+        obj = yield AsyncCrypto.deriveXkeysFromXpub(xpub, path)
+        obj.xpub.toString().should.equal('xpub6HDhzLb3UgpcUo7D9mht5yQYVYgsKBMFqAzpNwAheUziBHE1mhkAQDnRNyTArZsiyczWpmchy1H6nEzCeLpa7Xm5BGxpbHRP2dKKUR3puTv')
+        obj.address.toString().should.equal('1CwgwxqUVapWbgk6ssLruv9eHxHe6LvCe6')
+      })
+    })
+  })
+
   describe('@sign', function () {
     it('should compute the same as bitcore', function () {
       return spawn(function *() {
