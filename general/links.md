@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [One Cash: With One Cash, Tip $1 To People You Love, Or Make It Rain](http://techcrunch.com/2015/11/12/with-one-cash-tip-1-to-people-you-love-or-make-it-rain/)
 - [The 12 Factor App - great info on how to build software that works well as a service](http://12factor.net/)
 - [Heroku: 10 habits of a happy node hacker - useful tips for managing a node project from Heroku](http://blog.heroku.com/archives/2015/11/10/node-habits-2016)
 - [The Netflix stack - interesting look at a service that has to scale enormously](http://highscalability.com/blog/2015/11/9/a-360-degree-view-of-the-entire-netflix-stack.html)
