@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Death by a thousand likes: How Facebook and Twitter are killing the open web](http://qz.com/545048/death-by-a-thousand-likes-how-facebook-and-twitter-are-killing-the-open-web/)
 - [One Cash: With One Cash, Tip $1 To People You Love, Or Make It Rain](http://techcrunch.com/2015/11/12/with-one-cash-tip-1-to-people-you-love-or-make-it-rain/)
 - [The 12 Factor App - great info on how to build software that works well as a service](http://12factor.net/)
 - [Heroku: 10 habits of a happy node hacker - useful tips for managing a node project from Heroku](http://blog.heroku.com/archives/2015/11/10/node-habits-2016)
