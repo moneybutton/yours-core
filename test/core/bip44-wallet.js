@@ -1,6 +1,7 @@
 /* global describe,it */
 'use strict'
 let BIP44Wallet = require('../../core/bip44-wallet')
+let BIP44Account = require('../../core/bip44-account')
 let should = require('should')
 let spawn = require('../../util/spawn')
 
@@ -22,6 +23,18 @@ describe('BIP44Wallet', function () {
         entropybuf.fill(0)
         bip44wallet = yield BIP44Wallet().asyncFromRandom(entropybuf)
         bip44wallet.mnemonic.toString().should.equal('abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about')
+      })
+    })
+  })
+
+  describe('#getPrivateAccount', function () {
+    it('should generate a random wallet', function () {
+      return spawn(function *() {
+        let bip44wallet = yield BIP44Wallet().asyncFromRandom()
+        let bip44account = bip44wallet.getPrivateAccount(0)
+        ;(bip44account instanceof BIP44Account).should.equal(true)
+        bip44account = bip44wallet.getPrivateAccount(1)
+        ;(bip44account instanceof BIP44Account).should.equal(true)
       })
     })
   })

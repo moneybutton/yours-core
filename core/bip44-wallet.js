@@ -7,6 +7,7 @@
  */
 'use strict'
 let AsyncCrypto = require('./async-crypto')
+let BIP44Account = require('./bip44-account')
 let Struct = require('fullnode/lib/struct')
 let spawn = require('../util/spawn')
 let Random = require('fullnode/lib/random')
@@ -41,6 +42,17 @@ BIP44Wallet.prototype.asyncFromRandom = function (entropybuf) {
     this.masterxpub = keys.xpub
     return this
   }.bind(this))
+}
+
+BIP44Wallet.prototype.getPrivateAccount = function (index) {
+  if (typeof index !== 'number') {
+    throw new Error('index must be a small integer greater than or equal to 0')
+  }
+  let account = this.bip44accounts[index]
+  if (!account) {
+    account = this.bip44accounts[index] = BIP44Account(this.masterxprv)
+  }
+  return account
 }
 
 module.exports = BIP44Wallet
