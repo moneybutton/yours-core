@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [How to use Rust with Node when performance matters](https://blog.risingstack.com/how-to-use-rust-with-node-when-performance-matters/)
 - ['Freebooters' Are Stealing Videos from YouTube and Reposting Them to Facebook](http://motherboard.vice.com/read/freebooters-are-stealing-videos-from-youtube-and-reposting-them-to-facebook?utm_source=mbtwitter)
 - [Death by a thousand likes: How Facebook and Twitter are killing the open web](http://qz.com/545048/death-by-a-thousand-likes-how-facebook-and-twitter-are-killing-the-open-web/)
 - [One Cash: With One Cash, Tip $1 To People You Love, Or Make It Rain](http://techcrunch.com/2015/11/12/with-one-cash-tip-1-to-people-you-love-or-make-it-rain/)
