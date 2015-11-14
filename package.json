@@ -16,7 +16,7 @@
     "standard": "./node_modules/.bin/standard *.js core/**/*.js bin/**/*.js test/**/*.js react/**/*.js react/**/*.jsx"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=4.2.0"
   },
   "browserify": {
     "transform": [
