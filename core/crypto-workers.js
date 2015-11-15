@@ -1,8 +1,8 @@
 /**
- * AsyncCrypto
+ * CryptoWorkers
  * ===========
  *
- * AsyncCrypto is a module for doing cryptography with an asynchronous
+ * CryptoWorkers is a module for doing cryptography with an asynchronous
  * interface with web workers (browser) or child process forks (node). It uses
  * the workerpool module to automatically manage the workers with an interface
  * isomorphic between node and a browser (i.e., it works in both).
@@ -18,15 +18,15 @@ let spawn = require('../util/spawn')
 let workerpool = require('workerpool')
 
 let defaultPool
-let asyncCrypto
+let cryptoWorkers
 
-function AsyncCrypto (pool) {
-  if (!(this instanceof AsyncCrypto)) {
-    return new AsyncCrypto(pool)
+function CryptoWorkers (pool) {
+  if (!(this instanceof CryptoWorkers)) {
+    return new CryptoWorkers(pool)
   }
   if (!pool) {
     if (!defaultPool) {
-      // Cache global worker pool, so if you create a new asyncCrypto instance
+      // Cache global worker pool, so if you create a new cryptoWorkers instance
       // it will use the global worker pool by default.
       if (!process.browser) {
         defaultPool = workerpool.pool(__dirname + '/worker.js')
@@ -39,8 +39,8 @@ function AsyncCrypto (pool) {
   this.fromObject({pool})
 }
 
-AsyncCrypto.prototype = Object.create(Struct.prototype)
-AsyncCrypto.prototype.constructor = AsyncCrypto
+CryptoWorkers.prototype = Object.create(Struct.prototype)
+CryptoWorkers.prototype.constructor = CryptoWorkers
 
 /**
  * The sha256 hash (buffer) of data (buffer). Note that we convert the data to
@@ -48,7 +48,7 @@ AsyncCrypto.prototype.constructor = AsyncCrypto
  * rewrite tranmission to copy (node) or transfer (browser) a buffer rather
  * than a hex string.
  */
-AsyncCrypto.prototype.sha256 = function sha256 (databuf) {
+CryptoWorkers.prototype.asyncSha256 = function sha256 (databuf) {
   return spawn(function *() {
     let datahex = databuf.toString('hex')
     let hashhex = yield q(this.pool.exec('sha256', [datahex]))
@@ -62,7 +62,7 @@ AsyncCrypto.prototype.sha256 = function sha256 (databuf) {
  * privkey to the worker and to send back the buffer form of the pubkey,
  * rather than copying JSON data.
  */
-AsyncCrypto.prototype.pubkeyFromPrivkey = function (privkey) {
+CryptoWorkers.prototype.asyncPubkeyFromPrivkey = function (privkey) {
   return spawn(function *() {
     let privkeyHex = privkey.toHex()
     let pubkeyHex = yield q(this.pool.exec('pubkeyHexFromPrivkeyHex', [privkeyHex]))
@@ -75,7 +75,7 @@ AsyncCrypto.prototype.pubkeyFromPrivkey = function (privkey) {
  * Derive an address from a public key in a worker. TODO: For speed, replace
  * transmission code with buffers rather than JSON.
  */
-AsyncCrypto.prototype.addressFromPubkey = function (pubkey) {
+CryptoWorkers.prototype.asyncAddressFromPubkey = function (pubkey) {
   return spawn(function *() {
     let pubkeyHex = pubkey.toHex()
     let addressHex = yield q(this.pool.exec('addressHexFromPubkeyHex', [pubkeyHex]))
@@ -89,7 +89,7 @@ AsyncCrypto.prototype.addressFromPubkey = function (pubkey) {
  * public key from that entropy. TODO: Instead of sending hex or JSON to/from
  * the worker, send buffers to/from.
  */
-AsyncCrypto.prototype.xkeysFromEntropy = function (entropybuf) {
+CryptoWorkers.prototype.asyncXkeysFromEntropy = function (entropybuf) {
   return spawn(function *() {
     let entropyhex = entropybuf.toString('hex')
     let obj = yield q(this.pool.exec('xkeysFromEntropyHex', [entropyhex]))
@@ -109,7 +109,7 @@ AsyncCrypto.prototype.xkeysFromEntropy = function (entropybuf) {
  * corresponding xpub and address (see BIP 32). TODO: Send buffers instead of
  * hex/JSON.
  */
-AsyncCrypto.prototype.deriveXkeysFromXprv = function (xprv, path) {
+CryptoWorkers.prototype.asyncDeriveXkeysFromXprv = function (xprv, path) {
   return spawn(function *() {
     let xprvhex = xprv.toHex()
     let obj = yield q(this.pool.exec('deriveXkeysFromXprvHex', [xprvhex, path]))
@@ -125,7 +125,7 @@ AsyncCrypto.prototype.deriveXkeysFromXprv = function (xprv, path) {
  * corresponding xpub and address (see BIP 32). TODO: Send buffers instead of
  * hex/JSON.
  */
-AsyncCrypto.prototype.deriveXkeysFromXpub = function (xpub, path) {
+CryptoWorkers.prototype.asyncDeriveXkeysFromXpub = function (xpub, path) {
   return spawn(function *() {
     let xpubhex = xpub.toHex()
     let obj = yield q(this.pool.exec('deriveXkeysFromXpubHex', [xpubhex, path]))
@@ -140,7 +140,7 @@ AsyncCrypto.prototype.deriveXkeysFromXpub = function (xpub, path) {
  * 'big', default 'big'), compute the Signature (using ECDSA). Returns a
  * fullnode Signature object. TODO: Send buffers instead of hex/JSON.
  */
-AsyncCrypto.prototype.sign = function (hash, privkey, endian) {
+CryptoWorkers.prototype.asyncSign = function (hash, privkey, endian) {
   return spawn(function *() {
     let hashhex = hash.toString('hex')
     let privkeyHex = privkey.toHex()
@@ -154,7 +154,7 @@ AsyncCrypto.prototype.sign = function (hash, privkey, endian) {
  * "compressed" properties that allow the signature to be converted into a
  * compact binary format.
  */
-AsyncCrypto.prototype.signCompact = function (hashbuf, privkey) {
+CryptoWorkers.prototype.asyncSignCompact = function (hashbuf, privkey) {
   return spawn(function *() {
     let hashhex = hashbuf.toString('hex')
     let privkeyHex = privkey.toHex()
@@ -167,7 +167,7 @@ AsyncCrypto.prototype.signCompact = function (hashbuf, privkey) {
  * Use ECDSA to verify if the signature is valid, i.e. it corresponds to the
  * hash and public key. TODO: Send buffers instead of hex/JSON.
  */
-AsyncCrypto.prototype.verifySignature = function verifySignature (hash, signature, pubkey) {
+CryptoWorkers.prototype.asyncVerifySignature = function verifySignature (hash, signature, pubkey) {
   return spawn(function *() {
     if (!hash || !signature || !pubkey) {
       throw new Error('verifySignature takes 3 arguments: hash, signature, and pubkey')
@@ -188,7 +188,7 @@ AsyncCrypto.prototype.verifySignature = function verifySignature (hash, signatur
  *
  * TODO: Send buffers instead of hex/JSON
  */
-AsyncCrypto.prototype.verifyCompactSig = function (hashbuf, sig) {
+CryptoWorkers.prototype.asyncVerifyCompactSig = function (hashbuf, sig) {
   return spawn(function *() {
     if (sig.recovery === undefined || sig.compressed === undefined) {
       throw new Error('verifyCompactSig takes a compact signature only')
@@ -203,12 +203,12 @@ AsyncCrypto.prototype.verifyCompactSig = function (hashbuf, sig) {
   }.bind(this))
 }
 
-asyncCrypto = new AsyncCrypto()
-for (let method in AsyncCrypto.prototype) {
+cryptoWorkers = new CryptoWorkers()
+for (let method in CryptoWorkers.prototype) {
   // This javascript wizardry makes it possible to use methods like
-  // AsyncCrypto.sha256 that will re-use the same global asyncCrypto object for
+  // CryptoWorkers.asyncSha256 that will re-use the same global cryptoWorkers object for
   // convenience
-  AsyncCrypto[method] = AsyncCrypto.prototype[method].bind(asyncCrypto)
+  CryptoWorkers[method] = CryptoWorkers.prototype[method].bind(cryptoWorkers)
 }
 
-module.exports = AsyncCrypto
+module.exports = CryptoWorkers

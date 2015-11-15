@@ -6,7 +6,7 @@
  * xprv and derive the different "accounts" of BIP44.
  */
 'use strict'
-let AsyncCrypto = require('./async-crypto')
+let CryptoWorkers = require('./crypto-workers')
 let BIP44Account = require('./bip44-account')
 let Struct = require('fullnode/lib/struct')
 let spawn = require('../util/spawn')
@@ -36,7 +36,7 @@ BIP44Wallet.prototype.asyncFromRandom = function (entropybuf) {
     if (entropybuf.length !== 128 / 8 && entropybuf.length !== 256 / 8) {
       throw new Error('entropybuf must be 128 bits of 256 bits')
     }
-    let keys = yield AsyncCrypto.xkeysFromEntropy(entropybuf)
+    let keys = yield CryptoWorkers.asyncXkeysFromEntropy(entropybuf)
     this.mnemonic = keys.mnemonic
     this.masterxprv = keys.xprv
     this.masterxpub = keys.xpub

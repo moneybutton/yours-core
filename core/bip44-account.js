@@ -9,7 +9,7 @@
  */
 'use strict'
 let Struct = require('fullnode/lib/struct')
-let AsyncCrypto = require('./async-crypto')
+let CryptoWorkers = require('./crypto-workers')
 let spawn = require('../util/spawn')
 
 function BIP44Account (bip32, addrindex, changeindex, keymap) {
@@ -45,9 +45,9 @@ BIP44Account.prototype.asyncDeriveKeysFromPath = function (path) {
       return keys
     }
     if (this.bip32.isPrivate()) {
-      keys = yield AsyncCrypto.deriveXkeysFromXprv(this.bip32, path)
+      keys = yield CryptoWorkers.asyncDeriveXkeysFromXprv(this.bip32, path)
     } else {
-      keys = yield AsyncCrypto.deriveXkeysFromXpub(this.bip32, path)
+      keys = yield CryptoWorkers.asyncDeriveXkeysFromXpub(this.bip32, path)
     }
     this.keymap.set(path, keys)
     return keys

@@ -37,7 +37,7 @@ MsgAuth.prototype.initialize = function () {
   * Note that this method and the corresponding method of fromBuffer are slow
   * because of the pubkey .fromDER method, which operates on compressed
   * public keys. They should not be used when we don't want to block. TODO:
-  * Create asynchronous versions of these somehow using AsyncCrypto.
+  * Create asynchronous versions of these somehow using CryptoWorkers.
   */
 MsgAuth.prototype.fromBR = function (br) {
   this.contentauth.fromBR(br)

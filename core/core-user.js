@@ -13,7 +13,7 @@ let User = require('./user')
 let DBUser = require('./db-user')
 let MsgAuth = require('./msg-auth')
 let Struct = require('fullnode/lib/struct')
-let AsyncCrypto = require('./async-crypto')
+let CryptoWorkers = require('./crypto-workers')
 let spawn = require('../util/spawn')
 
 function CoreUser (db, dbuser, user) {
@@ -72,9 +72,9 @@ CoreUser.prototype.asyncGetMsgAuth = function (blockhashbuf, blockheightnum) {
   msgauth.setBlockInfo(blockhashbuf, blockheightnum)
   msgauth.setName(this.user.name)
   let buf = msgauth.getBufForSig()
-  return AsyncCrypto.sha256(buf).then((hashbuf) => {
+  return CryptoWorkers.asyncSha256(buf).then((hashbuf) => {
     let privkey = this.user.masterxprv.privkey
-    return AsyncCrypto.signCompact(hashbuf, privkey)
+    return CryptoWorkers.asyncSignCompact(hashbuf, privkey)
   }).then(sig => {
     msgauth.contentauth.fromObject({
       pubkey: this.user.masterxprv.pubkey,

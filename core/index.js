@@ -19,7 +19,7 @@
  * files.
  */
 'use strict'
-let AsyncCrypto = require('./async-crypto')
+let CryptoWorkers = require('./crypto-workers')
 let CoreBitcoin = require('./core-bitcoin')
 let CoreContent = require('./core-content')
 let CorePeers = require('./core-peers')
@@ -45,7 +45,7 @@ DattCore.prototype = Object.create(Struct.prototype)
 DattCore.prototype.constructor = Struct.prototype.constructor
 Object.assign(DattCore.prototype, EventEmitter.prototype)
 
-DattCore.AsyncCrypto = AsyncCrypto
+DattCore.CryptoWorkers = CryptoWorkers
 DattCore.CoreBitcoin = CoreBitcoin
 DattCore.CoreContent = CoreContent
 DattCore.CoreUser = CoreUser
@@ -206,7 +206,7 @@ DattCore.prototype.asyncNewContentAuth = function (title, label, body) {
     // done by either CoreUser or CoreBitcoin.
     let privkey = this.coreuser.user.masterxprv.privkey
     let pubkey = this.coreuser.user.masterxprv.pubkey
-    let address = yield AsyncCrypto.addressFromPubkey(pubkey)
+    let address = yield CryptoWorkers.asyncAddressFromPubkey(pubkey)
     let info = yield this.asyncGetLatestBlockInfo()
     let blockhashbuf = info.hashbuf
     let blockheightnum = info.height

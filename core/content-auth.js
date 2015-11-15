@@ -14,7 +14,7 @@
  */
 'use strict'
 let Address = require('fullnode/lib/address')
-let AsyncCrypto = require('./async-crypto')
+let CryptoWorkers = require('./crypto-workers')
 let BN = require('fullnode/lib/bn')
 let BW = require('fullnode/lib/bw')
 let Content = require('./content')
@@ -122,8 +122,8 @@ ContentAuth.prototype.sign = function (keypair) {
  * it offloads the cryptography to workers.
  */
 ContentAuth.prototype.asyncSign = function (keypair) {
-  return AsyncCrypto.sha256(this.getBufForSig()).then(hashbuf => {
-    return AsyncCrypto.signCompact(hashbuf, keypair.privkey)
+  return CryptoWorkers.asyncSha256(this.getBufForSig()).then(hashbuf => {
+    return CryptoWorkers.asyncSignCompact(hashbuf, keypair.privkey)
   }).then(sig => {
     this.sig = sig
     this.pubkey = keypair.pubkey
@@ -160,8 +160,8 @@ ContentAuth.prototype.verify = function () {
 
 ContentAuth.prototype.asyncVerify = function () {
   return spawn(function *() {
-    let hashbuf = yield AsyncCrypto.sha256(this.getBufForSig())
-    let info = yield AsyncCrypto.verifyCompactSig(hashbuf, this.sig)
+    let hashbuf = yield CryptoWorkers.asyncSha256(this.getBufForSig())
+    let info = yield CryptoWorkers.asyncVerifyCompactSig(hashbuf, this.sig)
     return info.verified && (info.pubkey.point.eq(this.pubkey.point))
   }.bind(this))
 }
@@ -232,7 +232,7 @@ ContentAuth.prototype.asyncGetHash = function () {
   if (this.cachehash) {
     return Promise.resolve(this.cachehash)
   } else {
-    return AsyncCrypto.sha256(buf).then(hashbuf => {
+    return CryptoWorkers.asyncSha256(buf).then(hashbuf => {
       this.setCacheHash(hashbuf)
       return hashbuf
     })

@@ -11,7 +11,7 @@ describe('DattCore', function () {
   let dattcore
 
   it('should have these known properties', function () {
-    should.exist(DattCore.AsyncCrypto)
+    should.exist(DattCore.CryptoWorkers)
     should.exist(DattCore.DB)
     should.exist(DattCore.User)
   })

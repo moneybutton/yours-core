@@ -17,7 +17,7 @@
  * let user = User().fromJSON(json)
  */
 'use strict'
-let AsyncCrypto = require('./async-crypto')
+let CryptoWorkers = require('./crypto-workers')
 let BIP32 = require('fullnode/lib/bip32')
 let BIP39 = require('fullnode/lib/bip39')
 let Random = require('fullnode/lib/random')
@@ -64,7 +64,7 @@ User.prototype.asyncFromRandom = function () {
   // remember in the form of a mnemonic
   let entropybuf = Random.getRandomBuffer(128 / 8)
 
-  return AsyncCrypto.xkeysFromEntropy(entropybuf).then(obj => {
+  return CryptoWorkers.asyncXkeysFromEntropy(entropybuf).then(obj => {
     this.mnemonic = obj.mnemonic
     this.masterxprv = obj.xprv
     this.masterxpub = obj.xpub
