@@ -55,4 +55,11 @@ BIP44Wallet.prototype.getPrivateAccount = function (index) {
   return account
 }
 
+BIP44Wallet.prototype.asyncGetNewAddress = function (accountIndex) {
+  return spawn(function *() {
+    let account = this.getPrivateAccount(accountIndex)
+    return account.asyncGetNextAddressKeys().address
+  })
+}
+
 module.exports = BIP44Wallet

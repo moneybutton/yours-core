@@ -54,12 +54,27 @@ BIP44Account.prototype.asyncDeriveKeysFromPath = function (path) {
   }.bind(this))
 }
 
+BIP44Account.prototype.asyncGetAddressKeys = function (addrindex) {
+  return spawn(function *() {
+    let path = 'm/0/' + addrindex
+    let keys = yield this.asyncDeriveKeysFromPath(path)
+    return keys
+  }.bind(this))
+}
+
 BIP44Account.prototype.asyncGetNextAddressKeys = function () {
   return spawn(function *() {
     let addrindex = this.addrindex + 1
-    let path = 'm/0/' + addrindex
-    let keys = yield this.asyncDeriveKeysFromPath(path)
+    let keys = yield this.asyncGetAddressKeys(addrindex)
     this.addrindex = addrindex
+    return keys
+  }.bind(this))
+}
+
+BIP44Account.prototype.asyncGetChangeKeys = function (changeindex) {
+  return spawn(function *() {
+    let path = 'm/0/' + changeindex
+    let keys = yield this.asyncDeriveKeysFromPath(path)
     return keys
   }.bind(this))
 }
@@ -67,8 +82,7 @@ BIP44Account.prototype.asyncGetNextAddressKeys = function () {
 BIP44Account.prototype.asyncGetNextChangeKeys = function () {
   return spawn(function *() {
     let changeindex = this.changeindex + 1
-    let path = 'm/1/' + changeindex
-    let keys = yield this.asyncDeriveKeysFromPath(path)
+    let keys = yield this.asyncGetChangeKeys(changeindex)
     this.changeindex = changeindex
     return keys
   }.bind(this))

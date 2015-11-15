@@ -41,6 +41,19 @@ describe('BIP44Account', function () {
     })
   })
 
+  describe('#asyncGetAddressKeys', function () {
+    it('should derive next address', function () {
+      return spawn(function *() {
+        let bip32 = BIP32().fromRandom()
+        let bip44account = BIP44Account(bip32)
+        let keys = yield bip44account.asyncGetAddressKeys(0)
+        should.exist(keys.xprv)
+        should.exist(keys.xpub)
+        should.exist(keys.address)
+      })
+    })
+  })
+
   describe('#asyncGetNextAddressKeys', function () {
     it('should derive next address', function () {
       return spawn(function *() {
@@ -52,6 +65,19 @@ describe('BIP44Account', function () {
         should.exist(keys.address)
         let keys2 = yield bip44account.asyncGetNextAddressKeys()
         keys2.xprv.toString().should.not.equal(keys.xprv.toString())
+      })
+    })
+  })
+
+  describe('#asyncGetChangeKeys', function () {
+    it('should derive next address', function () {
+      return spawn(function *() {
+        let bip32 = BIP32().fromRandom()
+        let bip44account = BIP44Account(bip32)
+        let keys = yield bip44account.asyncGetChangeKeys(0)
+        should.exist(keys.xprv)
+        should.exist(keys.xpub)
+        should.exist(keys.address)
       })
     })
   })
