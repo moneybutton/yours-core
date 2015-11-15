@@ -195,3 +195,4 @@ Press for Datt
 - [2015-11-08: Inside Bitcoins: Datt Combines Social Media with Bitcoin-Powered Incentives (Kyle Torpey)](http://insidebitcoins.com/news/datt-combines-social-media-with-bitcoin-powered-incentives/35619)
 - [2015-11-09: Bitcoin Magazine: Former Reddit Cryptocurrency Engineer Explains How His Decentralized, Bitcoin-Powered Social Media Platform Will Work](https://bitcoinmagazine.com/articles/former-reddit-cryptocurrency-engineer-explains-how-his-decentralized-bitcoin-powered-social-media-platform-will-work-1447091607)
 - [2015-11-12: 8btc has an article in Chinese about Datt](http://www.8btc.com/reddit-datt)
+- [2015-11-15: The Merkle: Turkey Blocks Reddit Access – Decentralized Social Networks Are Needed](http://themerkle.com/news/turkey-blocks-reddit-access-decentralized-social-networks-are-needed/)
