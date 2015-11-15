@@ -79,6 +79,7 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [Synero - decentralized social media with integrated payments using their own coin](http://www.synereo.com/)
 - [Fabriq - a decentralized reddit based on Ethereum](https://github.com/ckeenan/fabriq) - [see also Chris Keenan's tweet](https://twitter.com/j32804/status/664811118028849152)
 - [LBRY: Combining bittorrent and a new cryptocurrency for sharing media and being paid](http://lbry.io/)
 - [Credence is a practical distributed reputation system, designed to counteract content pollution in peer-to-peer filesharing systems.](http://credence-p2p.org/)
