@@ -3,6 +3,9 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Companies Target Journalists With Ads on Facebook](http://www.wsj.com/articles/companies-target-journalists-with-ads-on-facebook-1447664403)
+- [Facebook and the Media Have an Increasingly Landlord-Tenant Style Relationship](http://fortune.com/2015/11/09/facebook-media/)
+- [Chris Dixon: Lessons from the PC gaming industry](https://medium.com/@cdixon/lessons-from-the-pc-video-game-industry-3350bb7713de)
 - [How to use Rust with Node when performance matters](https://blog.risingstack.com/how-to-use-rust-with-node-when-performance-matters/)
 - ['Freebooters' Are Stealing Videos from YouTube and Reposting Them to Facebook](http://motherboard.vice.com/read/freebooters-are-stealing-videos-from-youtube-and-reposting-them-to-facebook?utm_source=mbtwitter)
 - [Death by a thousand likes: How Facebook and Twitter are killing the open web](http://qz.com/545048/death-by-a-thousand-likes-how-facebook-and-twitter-are-killing-the-open-web/)
