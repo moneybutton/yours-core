@@ -3,7 +3,7 @@
 let BIP44Account = require('../../core/bip44-account')
 let BIP32 = require('fullnode/lib/bip32')
 let should = require('should')
-let spawn = require('../../util/spawn')
+let asink = require('asink')
 
 describe('BIP44Account', function () {
   it('should exist', function () {
@@ -24,7 +24,7 @@ describe('BIP44Account', function () {
 
   describe('#asyncDeriveKeysFromPath', function () {
     it('should derive keys', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let bip32 = BIP32().fromRandom()
         let bip44account = BIP44Account(bip32)
         let keys = yield bip44account.asyncDeriveKeysFromPath('m/0')
@@ -43,7 +43,7 @@ describe('BIP44Account', function () {
 
   describe('#asyncGetAddressKeys', function () {
     it('should derive next address', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let bip32 = BIP32().fromRandom()
         let bip44account = BIP44Account(bip32)
         let keys = yield bip44account.asyncGetAddressKeys(0)
@@ -56,7 +56,7 @@ describe('BIP44Account', function () {
 
   describe('#asyncGetNextAddressKeys', function () {
     it('should derive next address', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let bip32 = BIP32().fromRandom()
         let bip44account = BIP44Account(bip32)
         let keys = yield bip44account.asyncGetNextAddressKeys()
@@ -71,7 +71,7 @@ describe('BIP44Account', function () {
 
   describe('#asyncGetChangeKeys', function () {
     it('should derive next address', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let bip32 = BIP32().fromRandom()
         let bip44account = BIP44Account(bip32)
         let keys = yield bip44account.asyncGetChangeKeys(0)
@@ -84,7 +84,7 @@ describe('BIP44Account', function () {
 
   describe('#asyncGetNextChangeKeys', function () {
     it('should derive next address', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let bip32 = BIP32().fromRandom()
         let bip44account = BIP44Account(bip32)
         let keys = yield bip44account.asyncGetNextChangeKeys()

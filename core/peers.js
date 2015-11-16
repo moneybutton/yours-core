@@ -19,7 +19,7 @@ let Constants = require('./constants')
 let EventEmitter = require('events')
 let NetworkWebRTC = require('./network-webrtc')
 let Struct = require('fullnode/lib/struct')
-let spawn = require('../util/spawn')
+let asink = require('asink')
 
 function Peers (config, networkWebRTC, networkSocket) {
   if (!(this instanceof Peers)) {
@@ -45,7 +45,7 @@ Peers.prototype.initialize = function () {
  * automatically begin establishing connections.
  */
 Peers.prototype.asyncInitialize = function () {
-  return spawn(function *() {
+  return asink(function *() {
     // TODO: Also support socket connections
     // TODO: Also support web RTC in node
     // TODO: Support multiple different WebRTC rendezvous servers
@@ -137,7 +137,7 @@ Peers.prototype.asyncConnectManyFromJSON = function (json) {
  * able to connect to.
  */
 Peers.prototype.asyncConnectMany = function (connectionInfos) {
-  return spawn(function *() { //eslint-disable-line
+  return asink(function *() { //eslint-disable-line
     let successes = 0
     for (let connectionInfo of connectionInfos) {
       try {
@@ -151,7 +151,7 @@ Peers.prototype.asyncConnectMany = function (connectionInfos) {
 }
 
 Peers.prototype.asyncConnect = function (connectionInfo) {
-  return spawn(function *() {
+  return asink(function *() {
     let type = connectionInfo.getType()
     let network
     if (type === 'webrtc') {
@@ -177,7 +177,7 @@ Peers.prototype.asyncConnect = function (connectionInfo) {
  * 8.
  */
 Peers.prototype.asyncDiscoverAndConnect = function () {
-  return spawn(function *() {
+  return asink(function *() {
     let connectionInfos = []
     if (this.networkWebRTC) {
       let peerids = yield this.networkWebRTC.asyncGetAllWebRTCPeerIDs()

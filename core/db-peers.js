@@ -7,7 +7,7 @@
  */
 'use strict'
 let Struct = require('fullnode/lib/struct')
-let spawn = require('../util/spawn')
+let asink = require('asink')
 
 function DBPeers (db, peers) {
   if (!(this instanceof DBPeers)) {
@@ -24,7 +24,7 @@ DBPeers.prototype.constructor = DBPeers
  * can connect to the same peers as before without having to do peer discovery.
  */
 DBPeers.prototype.asyncSave = function (peers) {
-  return spawn(function *() {
+  return asink(function *() {
     if (!peers) {
       peers = this.peers
     }

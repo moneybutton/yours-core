@@ -16,7 +16,7 @@ let DBContentAuth = require('./db-content-auth')
 let Struct = require('fullnode/lib/struct')
 let Keypair = require('fullnode/lib/keypair')
 let EventEmitter = require('events')
-let spawn = require('../util/spawn')
+let asink = require('asink')
 
 function CoreContent (db) {
   if (!(this instanceof CoreContent)) {
@@ -51,7 +51,7 @@ CoreContent.prototype.asyncNewContentAuth = function (pubkey, privkey, address, 
  * Save a contentauth to the db. Does not broadcast the contentauth.
  */
 CoreContent.prototype.asyncPostContentAuth = function (contentauth) {
-  return spawn(function *() {
+  return asink(function *() {
     let res = yield DBContentAuth(this.db).asyncSave(contentauth)
     this.emit('content-auth', contentauth)
     return res
@@ -63,7 +63,7 @@ CoreContent.prototype.asyncPostContentAuth = function (contentauth) {
  * TODO: Should this also broadcast to the peers?
  */
 CoreContent.prototype.asyncPostNewContentAuth = function (pubkey, privkey, address, name, label, title, body, blockhashbuf, blockheightnum) {
-  return spawn(function *() {
+  return asink(function *() {
     let contentauth = yield this.asyncNewContentAuth(pubkey, privkey, address, name, label, title, body, blockhashbuf, blockheightnum)
     return this.asyncPostContentAuth(contentauth)
   }.bind(this))

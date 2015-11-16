@@ -84,6 +84,7 @@
   "author": "Ryan X. Charles <ryanxcharles@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "asink": "1.0.0",
     "fullnode": "0.11.3",
     "peer": "0.2.8",
     "peerjs": "0.3.14",

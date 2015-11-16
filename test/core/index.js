@@ -5,7 +5,7 @@ let DattCore = require('../../core')
 let ContentAuth = require('../../core/content-auth')
 let MsgPing = require('../../core/msg-ping')
 let sinon = require('sinon')
-let spawn = require('../../util/spawn')
+let asink = require('asink')
 
 describe('DattCore', function () {
   let dattcore
@@ -21,14 +21,14 @@ describe('DattCore', function () {
   })
 
   after(function () {
-    return spawn(function *() {
+    return asink(function *() {
       yield dattcore.db.asyncDestroy()
     })
   })
 
   describe('#asyncInitialize', function () {
     it('should init the dattcore', function () {
-      return spawn(function *() {
+      return asink(function *() {
         yield dattcore.asyncInitialize()
         should.exist(dattcore.db)
         should.exist(dattcore.coreuser)
@@ -46,7 +46,7 @@ describe('DattCore', function () {
 
   describe('#asyncSetUserName', function () {
     it('should set the username', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let res = yield dattcore.asyncSetUserName('valid_username')
         res.should.equal(dattcore)
       })
@@ -55,7 +55,7 @@ describe('DattCore', function () {
 
   describe('#asyncGetUserName', function () {
     it('should get the username', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let userName = yield dattcore.asyncGetUserName()
         userName.should.equal('valid_username')
       })
@@ -64,7 +64,7 @@ describe('DattCore', function () {
 
   describe('#asyncGetUserMnemonic', function () {
     it('should return the mnemonic', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let mnemonic = yield dattcore.asyncGetUserMnemonic()
         mnemonic.should.equal(dattcore.coreuser.user.mnemonic)
       })
@@ -73,7 +73,7 @@ describe('DattCore', function () {
 
   describe('#asyncGetLatestBlockInfo', function () {
     it('should return info', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let info = yield dattcore.asyncGetLatestBlockInfo()
         should.exist(info.idbuf)
         should.exist(info.idhex)
@@ -86,7 +86,7 @@ describe('DattCore', function () {
 
   describe('#asyncNewContentAuth', function () {
     it('should create a new ContentAuth', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let title = 'test title'
         let label = 'testlabel'
         let body = 'test body'
@@ -102,7 +102,7 @@ describe('DattCore', function () {
 
   describe('#asyncPostContentAuth', function () {
     it('should create a new ContentAuth and then post it', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let title = 'test title'
         let label = 'testlabel'
         let body = 'test body'
@@ -117,7 +117,7 @@ describe('DattCore', function () {
 
   describe('#asyncPostNewContentAuth', function () {
     it('should post new content', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let title = 'test title'
         let label = 'testlabel'
         let body = 'test body'
@@ -131,7 +131,7 @@ describe('DattCore', function () {
 
   describe('#asyncGetRecentContentAuth', function () {
     it('should return some content', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let contentauths = yield dattcore.asyncGetRecentContentAuth()
         contentauths.length.should.greaterThan(0)
         contentauths.forEach(contentauth => {
@@ -172,7 +172,7 @@ describe('DattCore', function () {
 
   describe('#asyncNumActiveConnections', function () {
     it('should call corepeers numActiveConnections', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let dattcore = DattCore({dbname: 'datt-temp'})
         dattcore.corepeers = {}
         dattcore.corepeers.numActiveConnections = sinon.spy()

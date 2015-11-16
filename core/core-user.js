@@ -14,7 +14,7 @@ let DBUser = require('./db-user')
 let MsgAuth = require('./msg-auth')
 let Struct = require('fullnode/lib/struct')
 let CryptoWorkers = require('./crypto-workers')
-let spawn = require('../util/spawn')
+let asink = require('asink')
 
 function CoreUser (db, dbuser, user) {
   if (!(this instanceof CoreUser)) {
@@ -37,7 +37,7 @@ CoreUser.prototype.initialize = function () {
  * user.
  */
 CoreUser.prototype.asyncInitialize = function () {
-  return spawn(function *() {
+  return asink(function *() {
     this.dbuser = DBUser(this.db)
     try {
       this.user = yield this.dbuser.asyncGet()

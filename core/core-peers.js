@@ -16,7 +16,7 @@ let MsgPing = require('./msg-ping')
 let MsgPong = require('./msg-pong')
 let Peers = require('./peers')
 let Struct = require('fullnode/lib/struct')
-let spawn = require('../util/spawn')
+let asink = require('asink')
 
 function CorePeers (config, db, dbpeers, peers) {
   if (!(this instanceof CorePeers)) {
@@ -38,7 +38,7 @@ CorePeers.prototype.initialize = function () {
 }
 
 CorePeers.prototype.asyncInitialize = function () {
-  return spawn(function *() {
+  return asink(function *() {
     this.peers = Peers(this.config)
     yield this.peers.asyncInitialize()
     this.monitorPeers()
@@ -50,7 +50,7 @@ CorePeers.prototype.asyncInitialize = function () {
  * Reconnect to peers from DB.
  */
 CorePeers.prototype.asyncReconnectDBPeers = function () {
-  return spawn(function *() {
+  return asink(function *() {
     let peersJSON
     try {
       peersJSON = yield this.dbpeers.asyncGetJSON()
@@ -104,7 +104,7 @@ CorePeers.prototype.handleDisconnected = function () {
  * validated the message type. CorePeers is responsible for validating those.
  */
 CorePeers.prototype.asyncHandleMsg = function (obj) {
-  return spawn(function *() {
+  return asink(function *() {
     // TODO: This is where validating and processing most messages should occur.
     // Emit all network message objects so that a listener can see all messages
     // if desired.
@@ -162,7 +162,7 @@ CorePeers.prototype.handleMsgPong = function (obj) {
 }
 
 CorePeers.prototype.asyncHandleMsgContentAuth = function (obj) {
-  return spawn(function *() {
+  return asink(function *() {
     // TODO: We should probably check to see if the content is already in the
     // db before validating it.
     let msg = obj.msg

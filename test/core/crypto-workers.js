@@ -9,7 +9,7 @@ let Keypair = require('fullnode/lib/keypair')
 let Privkey = require('fullnode/lib/privkey')
 let Pubkey = require('fullnode/lib/pubkey')
 let should = require('should')
-let spawn = require('../../util/spawn')
+let asink = require('asink')
 let workerpool = require('workerpool')
 
 describe('CryptoWorkers', function () {
@@ -51,7 +51,7 @@ describe('CryptoWorkers', function () {
 
   describe('@sha256', function () {
     it('should compute the same as fullnode', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let buf = yield CryptoWorkers.asyncSha256(databuf)
         buf.compare(Hash.sha256(databuf)).should.equal(0)
       })
@@ -60,7 +60,7 @@ describe('CryptoWorkers', function () {
 
   describe('@pubkeyFromPrivkey', function () {
     it('should compute the same as fullnode', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let privkey = Privkey().fromRandom()
         let pubkey = yield CryptoWorkers.asyncPubkeyFromPrivkey(privkey)
         pubkey.toString().should.equal(Pubkey().fromPrivkey(privkey).toString())
@@ -70,7 +70,7 @@ describe('CryptoWorkers', function () {
 
   describe('@addressFromPubkey', function () {
     it('should compute the same as fullnode', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let privkey = Privkey().fromRandom()
         let pubkey = Pubkey().fromPrivkey(privkey)
         let address = yield CryptoWorkers.asyncAddressFromPubkey(pubkey)
@@ -81,7 +81,7 @@ describe('CryptoWorkers', function () {
 
   describe('@xkeysFromEntropy', function () {
     it('should derive new mnemonic, xprv, xpub', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let seedbuf = new Buffer(128 / 8)
         seedbuf.fill(0)
         let obj = yield CryptoWorkers.asyncXkeysFromEntropy(seedbuf)
@@ -94,7 +94,7 @@ describe('CryptoWorkers', function () {
 
   describe('@deriveXkeysFromXprv', function () {
     it('should derive new xprv, xpub, address', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let seedbuf = new Buffer(128 / 8)
         seedbuf.fill(0)
         let xprv = BIP32().fromSeed(seedbuf)
@@ -109,7 +109,7 @@ describe('CryptoWorkers', function () {
 
   describe('@deriveXkeysFromXpub', function () {
     it('should derive new xpub and address', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let seedbuf = new Buffer(128 / 8)
         seedbuf.fill(0)
         let xprv = BIP32().fromSeed(seedbuf)
@@ -126,7 +126,7 @@ describe('CryptoWorkers', function () {
 
   describe('@sign', function () {
     it('should compute the same as bitcore', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let privkey = Privkey().fromRandom()
         let sig = yield CryptoWorkers.asyncSign(hashbuf, privkey, 'big')
         let keypair = Keypair().fromPrivkey(privkey)
@@ -137,7 +137,7 @@ describe('CryptoWorkers', function () {
 
   describe('@signCompact', function () {
     it('should compute a compact signature', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let privkey = Privkey().fromRandom()
         let sig = yield CryptoWorkers.asyncSignCompact(hashbuf, privkey)
         should.exist(sig.recovery)
@@ -148,7 +148,7 @@ describe('CryptoWorkers', function () {
 
   describe('@verifySignature', function () {
     it('should return true for a valid signature', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let privkey = Privkey().fromRandom()
         let pubkey = Pubkey().fromPrivkey(privkey)
         let sig = yield CryptoWorkers.asyncSign(hashbuf, privkey, 'big')
@@ -159,7 +159,7 @@ describe('CryptoWorkers', function () {
     })
 
     it('should return false for an invalid signature', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let privkey = Privkey().fromRandom()
         let otherPrivkey = Privkey().fromRandom()
         let otherPubkey = Pubkey().fromPrivkey(otherPrivkey)
@@ -171,7 +171,7 @@ describe('CryptoWorkers', function () {
     })
 
     it('should reject the promise if any arguments are missing, null, or undefined', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let privkey = Privkey().fromRandom()
         let pubkey = Pubkey().fromPrivkey(privkey)
         let sig = yield CryptoWorkers.asyncSign(hashbuf, privkey, 'big')
@@ -217,7 +217,7 @@ describe('CryptoWorkers', function () {
 
   describe('@verifyCompactSig', function () {
     it('should validate this signature', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let keypair = Keypair().fromRandom()
         let sig = ECDSA.sign(hashbuf, keypair)
         sig = ECDSA.calcrecovery(sig, keypair.pubkey, hashbuf)

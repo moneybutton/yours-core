@@ -4,7 +4,7 @@ let DB = require('../../core/db')
 let DBPeers = require('../../core/db-peers')
 let Peers = require('../../core/peers')
 let should = require('should')
-let spawn = require('../../util/spawn')
+let asink = require('asink')
 
 describe('DBPeers', function () {
   let db = DB('datt-testdatabase')
@@ -26,7 +26,7 @@ describe('DBPeers', function () {
 
   describe('#asyncGetJSON', function () {
     it('should reject if peers doesnt exist', function () {
-      return spawn(function *() {
+      return asink(function *() {
         try {
           yield DBPeers(db).asyncGetJSON()
         } catch (err) {
@@ -41,7 +41,7 @@ describe('DBPeers', function () {
 
   describe('#asyncSave', function () {
     it('should save a peers object with no connections', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let peers = Peers()
         let res = yield DBPeers(db).asyncSave(peers)
         should.exist(res)

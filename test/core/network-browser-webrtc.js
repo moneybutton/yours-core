@@ -4,7 +4,7 @@ let Network
 let should = require('should')
 let MsgPing = require('../../core/msg-ping')
 let MsgPong = require('../../core/msg-pong')
-let spawn = require('../../util/spawn')
+let asink = require('asink')
 
 describe('NetworkBrowserWebRTC', function () {
   // Browser-only code shouldn't be tested in node
@@ -48,7 +48,7 @@ describe('NetworkBrowserWebRTC', function () {
 
   describe('#asyncConnect', function () {
     it('should connect to another listener running in this same process and exchange ping/pong', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let network1 = Network()
         let network2 = Network()
         yield network1.asyncInitialize()
@@ -86,7 +86,7 @@ describe('NetworkBrowserWebRTC', function () {
 
   describe('#asyncGetAllWebRTCPeerIDs', function () {
     it('should return a list of peers', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let network = Network()
         yield network.asyncInitialize()
         let peers = yield network.asyncGetAllWebRTCPeerIDs()

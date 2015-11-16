@@ -9,7 +9,7 @@
 let CryptoWorkers = require('./crypto-workers')
 let BIP44Account = require('./bip44-account')
 let Struct = require('fullnode/lib/struct')
-let spawn = require('../util/spawn')
+let asink = require('asink')
 let Random = require('fullnode/lib/random')
 
 function BIP44Wallet (mnemonic, masterxprv, masterxpub, bip44accounts) {
@@ -29,7 +29,7 @@ BIP44Wallet.prototype.initialize = function () {
 }
 
 BIP44Wallet.prototype.asyncFromRandom = function (entropybuf) {
-  return spawn(function *() {
+  return asink(function *() {
     if (!entropybuf) {
       entropybuf = Random.getRandomBuffer(128 / 8)
     }
@@ -56,7 +56,7 @@ BIP44Wallet.prototype.getPrivateAccount = function (index) {
 }
 
 BIP44Wallet.prototype.asyncGetNewAddress = function (accountIndex) {
-  return spawn(function *() {
+  return asink(function *() {
     let account = this.getPrivateAccount(accountIndex)
     return account.asyncGetNextAddressKeys().address
   })

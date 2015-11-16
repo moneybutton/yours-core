@@ -31,7 +31,7 @@ let MsgContentAuth = require('./msg-content-auth')
 let Struct = require('fullnode/lib/struct')
 let User = require('./user')
 let pkg = require('../package')
-let spawn = require('../util/spawn')
+let asink = require('asink')
 
 function DattCore (config, db, corebitcoin, corecontent, corepeers, coreuser) {
   if (!(this instanceof DattCore)) {
@@ -67,7 +67,7 @@ DattCore.prototype.initialize = function () {
  * connections. Run this to turn dattcore on.
  */
 DattCore.prototype.asyncInitialize = function () {
-  return spawn(function *() {
+  return asink(function *() {
     if (!this.db) {
       let name = this.config.dbName
       let basePath = this.config.dbBasePath
@@ -94,7 +94,7 @@ DattCore.prototype.asyncInitialize = function () {
     // Nonetheless, we do still want to kick off the network connection
     // initialization here - we just don't want to wait for it to finish before
     // resolving.
-    spawn(function *() {
+    asink(function *() {
       yield this.corepeers.asyncInitialize()
       if (process.browser) {
         // TODO: Re-enable for node after network connections for node are
@@ -147,7 +147,7 @@ DattCore.getGlobal = function (config) {
  */
 
 DattCore.prototype.asyncSetUserName = function (name) {
-  return spawn(function *() {
+  return asink(function *() {
     let info = yield this.asyncGetLatestBlockInfo()
     let blockhashbuf = info.hashbuf
     let blockheightnum = info.blockheightnum
@@ -200,7 +200,7 @@ DattCore.prototype.handleContentContentAuth = function (contentauth) {
  * Creates new ContentAuth, but does not save or broadcast it.
  */
 DattCore.prototype.asyncNewContentAuth = function (title, label, body) {
-  return spawn(function *() {
+  return asink(function *() {
     // TODO: Should not use the user's master key for the address. We should
     // generate a new address for each new use. That is something that can be
     // done by either CoreUser or CoreBitcoin.
@@ -220,7 +220,7 @@ DattCore.prototype.asyncNewContentAuth = function (title, label, body) {
  * broadcasts it to your peers.
  */
 DattCore.prototype.asyncPostContentAuth = function (contentauth) {
-  return spawn(function *() {
+  return asink(function *() {
     let msg = MsgContentAuth().fromContentAuth(contentauth).toMsg()
     this.broadcastMsg(msg)
     return this.corecontent.asyncPostContentAuth(contentauth)
@@ -231,7 +231,7 @@ DattCore.prototype.asyncPostContentAuth = function (contentauth) {
  * The simplest way to post new data.
  */
 DattCore.prototype.asyncPostNewContentAuth = function (title, label, body) {
-  return spawn(function *() {
+  return asink(function *() {
     let contentauth = yield this.asyncNewContentAuth(title, label, body)
     return this.asyncPostContentAuth(contentauth)
   }.bind(this))

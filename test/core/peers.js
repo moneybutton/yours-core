@@ -8,7 +8,7 @@ let MsgContentAuth = require('../../core/msg-content-auth')
 let BR = require('fullnode/lib/br')
 let Keypair = require('fullnode/lib/keypair')
 let sinon = require('sinon')
-let spawn = require('../../util/spawn')
+let asink = require('asink')
 let should = require('should')
 
 describe('Peers', function () {
@@ -48,7 +48,7 @@ describe('Peers', function () {
 
   describe('#asyncConnect', function () {
     it('should be able to connect to a peer in the same process', function () {
-      return spawn(function *() {
+      return asink(function *() {
         network2 = Network()
         yield network2.asyncInitialize()
         let pair = yield peers.asyncConnect(network2.getConnectionInfo())
@@ -93,14 +93,14 @@ describe('Peers', function () {
 
   describe('#asyncConnectManyFromJSON', function () {
     it('should be able to connect to 0 peers', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let successes = yield peers.asyncConnectManyFromJSON([])
         successes.should.equal(0)
       })
     })
 
     it('should be able to connect to 1 peers', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let peers = Peers()
         yield peers.asyncInitialize()
         let network = Network()
@@ -117,7 +117,7 @@ describe('Peers', function () {
 
   describe('#asyncConnectMany', function () {
     it('should be able to connect to 0 peers', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let successes = yield peers.asyncConnectMany([])
         successes.should.equal(0)
       })
@@ -126,7 +126,7 @@ describe('Peers', function () {
 
   describe('#asyncDiscoverAndConnect', function () {
     it('should reject if peers is not initialized', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let peers = Peers()
         let errors = 0
         try {
@@ -143,7 +143,7 @@ describe('Peers', function () {
       return
     }
     it('should call asyncConnectMany when networkWebRTC is set', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let peers = Peers()
         peers.networkWebRTC = {}
         peers.networkWebRTC.asyncGetAllWebRTCPeerIDs = () => []
@@ -165,7 +165,7 @@ describe('Peers', function () {
 
   describe('#broadcastMsg', function () {
     it('should send contentauth', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let content = Content().fromObject({
           title: 'test title',
           body: 'test body'

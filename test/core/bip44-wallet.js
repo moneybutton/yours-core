@@ -3,7 +3,7 @@
 let BIP44Wallet = require('../../core/bip44-wallet')
 let BIP44Account = require('../../core/bip44-account')
 let should = require('should')
-let spawn = require('../../util/spawn')
+let asink = require('asink')
 
 describe('BIP44Wallet', function () {
   it('should exist', function () {
@@ -13,7 +13,7 @@ describe('BIP44Wallet', function () {
 
   describe('#asyncFromRandom', function () {
     it('should generate a random wallet', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let bip44wallet = yield BIP44Wallet().asyncFromRandom()
         should.exist(bip44wallet.mnemonic)
         should.exist(bip44wallet.masterxprv)
@@ -29,7 +29,7 @@ describe('BIP44Wallet', function () {
 
   describe('#getPrivateAccount', function () {
     it('should generate a random wallet', function () {
-      return spawn(function *() {
+      return asink(function *() {
         let bip44wallet = yield BIP44Wallet().asyncFromRandom()
         let bip44account = bip44wallet.getPrivateAccount(0)
         ;(bip44account instanceof BIP44Account).should.equal(true)

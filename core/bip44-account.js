@@ -10,7 +10,7 @@
 'use strict'
 let Struct = require('fullnode/lib/struct')
 let CryptoWorkers = require('./crypto-workers')
-let spawn = require('../util/spawn')
+let asink = require('asink')
 
 function BIP44Account (bip32, addrindex, changeindex, keymap) {
   if (!(this instanceof BIP44Account)) {
@@ -35,7 +35,7 @@ BIP44Account.prototype.isPrivate = function () {
 }
 
 BIP44Account.prototype.asyncDeriveKeysFromPath = function (path) {
-  return spawn(function *() {
+  return asink(function *() {
     if (!path) {
       throw new Error('must specify path - see bip32 specification for format')
     }
@@ -55,7 +55,7 @@ BIP44Account.prototype.asyncDeriveKeysFromPath = function (path) {
 }
 
 BIP44Account.prototype.asyncGetAddressKeys = function (addrindex) {
-  return spawn(function *() {
+  return asink(function *() {
     let path = 'm/0/' + addrindex
     let keys = yield this.asyncDeriveKeysFromPath(path)
     return keys
@@ -63,7 +63,7 @@ BIP44Account.prototype.asyncGetAddressKeys = function (addrindex) {
 }
 
 BIP44Account.prototype.asyncGetNextAddressKeys = function () {
-  return spawn(function *() {
+  return asink(function *() {
     let addrindex = this.addrindex + 1
     let keys = yield this.asyncGetAddressKeys(addrindex)
     this.addrindex = addrindex
@@ -72,7 +72,7 @@ BIP44Account.prototype.asyncGetNextAddressKeys = function () {
 }
 
 BIP44Account.prototype.asyncGetChangeKeys = function (changeindex) {
-  return spawn(function *() {
+  return asink(function *() {
     let path = 'm/0/' + changeindex
     let keys = yield this.asyncDeriveKeysFromPath(path)
     return keys
@@ -80,7 +80,7 @@ BIP44Account.prototype.asyncGetChangeKeys = function (changeindex) {
 }
 
 BIP44Account.prototype.asyncGetNextChangeKeys = function () {
-  return spawn(function *() {
+  return asink(function *() {
     let changeindex = this.changeindex + 1
     let keys = yield this.asyncGetChangeKeys(changeindex)
     this.changeindex = changeindex

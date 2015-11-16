@@ -24,7 +24,7 @@ let Keypair = require('fullnode/lib/keypair')
 let Pubkey = require('fullnode/lib/pubkey')
 let Sig = require('fullnode/lib/sig')
 let Struct = require('fullnode/lib/struct')
-let spawn = require('../util/spawn')
+let asink = require('asink')
 
 /**
  * Note that the signature must be compact, meaning it has a recovery factor
@@ -159,7 +159,7 @@ ContentAuth.prototype.verify = function () {
 }
 
 ContentAuth.prototype.asyncVerify = function () {
-  return spawn(function *() {
+  return asink(function *() {
     let hashbuf = yield CryptoWorkers.asyncSha256(this.getBufForSig())
     let info = yield CryptoWorkers.asyncVerifyCompactSig(hashbuf, this.sig)
     return info.verified && (info.pubkey.point.eq(this.pubkey.point))
@@ -170,7 +170,7 @@ ContentAuth.prototype.asyncVerify = function () {
  * Same as asyncVerify, except rejects upon failure.
  */
 ContentAuth.prototype.asyncValidate = function () {
-  return spawn(function *() {
+  return asink(function *() {
     let verified = yield this.asyncVerify()
     if (verified) {
       return

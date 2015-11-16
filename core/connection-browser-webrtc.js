@@ -11,7 +11,7 @@
 'use strict'
 let Struct = require('fullnode/lib/struct')
 let Msg = require('./msg')
-let spawn = require('../util/spawn')
+let asink = require('asink')
 let EventEmitter = require('events')
 
 let Connection = function ConnectionBrowserWebRTC (peerjsConnection) {
@@ -33,7 +33,7 @@ Connection.prototype.monitor = function () {
 }
 
 Connection.prototype.asyncHandleData = function (data) {
-  return spawn(function *() {
+  return asink(function *() {
     let buf = new Buffer(new Uint8Array(data))
     let msg
     try {

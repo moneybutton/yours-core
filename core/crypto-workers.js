@@ -14,7 +14,7 @@ let Pubkey = require('fullnode/lib/pubkey')
 let Sig = require('fullnode/lib/sig')
 let Struct = require('fullnode/lib/struct')
 let q = require('q')
-let spawn = require('../util/spawn')
+let asink = require('asink')
 let workerpool = require('workerpool')
 
 let defaultPool
@@ -49,7 +49,7 @@ CryptoWorkers.prototype.constructor = CryptoWorkers
  * than a hex string.
  */
 CryptoWorkers.prototype.asyncSha256 = function sha256 (databuf) {
-  return spawn(function *() {
+  return asink(function *() {
     let datahex = databuf.toString('hex')
     let hashhex = yield q(this.pool.exec('sha256', [datahex]))
     return new Buffer(hashhex, 'hex')
@@ -63,7 +63,7 @@ CryptoWorkers.prototype.asyncSha256 = function sha256 (databuf) {
  * rather than copying JSON data.
  */
 CryptoWorkers.prototype.asyncPubkeyFromPrivkey = function (privkey) {
-  return spawn(function *() {
+  return asink(function *() {
     let privkeyHex = privkey.toHex()
     let pubkeyHex = yield q(this.pool.exec('pubkeyHexFromPrivkeyHex', [privkeyHex]))
     let pubkey = Pubkey().fromDER(new Buffer(pubkeyHex, 'hex'))
@@ -76,7 +76,7 @@ CryptoWorkers.prototype.asyncPubkeyFromPrivkey = function (privkey) {
  * transmission code with buffers rather than JSON.
  */
 CryptoWorkers.prototype.asyncAddressFromPubkey = function (pubkey) {
-  return spawn(function *() {
+  return asink(function *() {
     let pubkeyHex = pubkey.toHex()
     let addressHex = yield q(this.pool.exec('addressHexFromPubkeyHex', [pubkeyHex]))
     return Address().fromHex(addressHex)
@@ -90,7 +90,7 @@ CryptoWorkers.prototype.asyncAddressFromPubkey = function (pubkey) {
  * the worker, send buffers to/from.
  */
 CryptoWorkers.prototype.asyncXkeysFromEntropy = function (entropybuf) {
-  return spawn(function *() {
+  return asink(function *() {
     let entropyhex = entropybuf.toString('hex')
     let obj = yield q(this.pool.exec('xkeysFromEntropyHex', [entropyhex]))
     let mnemonic = obj.mnemonic
@@ -110,7 +110,7 @@ CryptoWorkers.prototype.asyncXkeysFromEntropy = function (entropybuf) {
  * hex/JSON.
  */
 CryptoWorkers.prototype.asyncDeriveXkeysFromXprv = function (xprv, path) {
-  return spawn(function *() {
+  return asink(function *() {
     let xprvhex = xprv.toHex()
     let obj = yield q(this.pool.exec('deriveXkeysFromXprvHex', [xprvhex, path]))
     xprv = BIP32().fromHex(obj.xprv)
@@ -126,7 +126,7 @@ CryptoWorkers.prototype.asyncDeriveXkeysFromXprv = function (xprv, path) {
  * hex/JSON.
  */
 CryptoWorkers.prototype.asyncDeriveXkeysFromXpub = function (xpub, path) {
-  return spawn(function *() {
+  return asink(function *() {
     let xpubhex = xpub.toHex()
     let obj = yield q(this.pool.exec('deriveXkeysFromXpubHex', [xpubhex, path]))
     xpub = BIP32().fromHex(obj.xpub)
@@ -141,7 +141,7 @@ CryptoWorkers.prototype.asyncDeriveXkeysFromXpub = function (xpub, path) {
  * fullnode Signature object. TODO: Send buffers instead of hex/JSON.
  */
 CryptoWorkers.prototype.asyncSign = function (hash, privkey, endian) {
-  return spawn(function *() {
+  return asink(function *() {
     let hashhex = hash.toString('hex')
     let privkeyHex = privkey.toHex()
     let sighex = yield q(this.pool.exec('sign', [hashhex, privkeyHex, endian]))
@@ -155,7 +155,7 @@ CryptoWorkers.prototype.asyncSign = function (hash, privkey, endian) {
  * compact binary format.
  */
 CryptoWorkers.prototype.asyncSignCompact = function (hashbuf, privkey) {
-  return spawn(function *() {
+  return asink(function *() {
     let hashhex = hashbuf.toString('hex')
     let privkeyHex = privkey.toHex()
     let sighex = yield q(this.pool.exec('signCompact', [hashhex, privkeyHex]))
@@ -168,7 +168,7 @@ CryptoWorkers.prototype.asyncSignCompact = function (hashbuf, privkey) {
  * hash and public key. TODO: Send buffers instead of hex/JSON.
  */
 CryptoWorkers.prototype.asyncVerifySignature = function verifySignature (hash, signature, pubkey) {
-  return spawn(function *() {
+  return asink(function *() {
     if (!hash || !signature || !pubkey) {
       throw new Error('verifySignature takes 3 arguments: hash, signature, and pubkey')
     }
@@ -189,7 +189,7 @@ CryptoWorkers.prototype.asyncVerifySignature = function verifySignature (hash, s
  * TODO: Send buffers instead of hex/JSON
  */
 CryptoWorkers.prototype.asyncVerifyCompactSig = function (hashbuf, sig) {
-  return spawn(function *() {
+  return asink(function *() {
     if (sig.recovery === undefined || sig.compressed === undefined) {
       throw new Error('verifyCompactSig takes a compact signature only')
     }

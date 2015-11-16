@@ -8,7 +8,7 @@
 'use strict'
 let User = require('./user')
 let Struct = require('fullnode/lib/struct')
-let spawn = require('../util/spawn')
+let asink = require('asink')
 
 function DBUser (db, user) {
   if (!(this instanceof DBUser)) {
@@ -21,7 +21,7 @@ DBUser.prototype = Object.create(Struct.prototype)
 DBUser.prototype.constructor = DBUser
 
 DBUser.prototype.asyncSave = function (user) {
-  return spawn(function *() {
+  return asink(function *() {
     if (!user) {
       user = this.user
     }
