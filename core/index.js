@@ -85,6 +85,7 @@ DattCore.prototype.asyncInitialize = function () {
 
     yield this.db.asyncInitialize()
     yield this.coreuser.asyncInitialize()
+    this.corebitcoin.fromUser(this.coreuser.user)
 
     // Note: We do not want to wait for the network connections to be
     // established before considering the app to be "initialized", thus we do
@@ -181,6 +182,14 @@ DattCore.prototype.asyncGetLatestBlockInfo = function () {
   return this.corebitcoin.asyncGetLatestBlockInfo()
 }
 
+DattCore.prototype.asyncGetNewAddress = function () {
+  return this.corebitcoin.asyncGetNewAddress()
+}
+
+DattCore.prototype.asyncGetNewChangeAddress = function () {
+  return this.corebitcoin.asyncGetNewChangeAddress()
+}
+
 /**
  * Content
  * -------
@@ -206,7 +215,7 @@ DattCore.prototype.asyncNewContentAuth = function (title, label, body) {
     // done by either CoreUser or CoreBitcoin.
     let privkey = this.coreuser.user.masterxprv.privkey
     let pubkey = this.coreuser.user.masterxprv.pubkey
-    let address = yield CryptoWorkers.asyncAddressFromPubkey(pubkey)
+    let address = yield this.asyncGetNewAddress()
     let info = yield this.asyncGetLatestBlockInfo()
     let blockhashbuf = info.hashbuf
     let blockheightnum = info.height

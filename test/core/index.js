@@ -1,11 +1,12 @@
 /* global before,describe,it,after */
 'use strict'
-let should = require('should')
-let DattCore = require('../../core')
+let Address = require('fullnode/lib/address')
 let ContentAuth = require('../../core/content-auth')
+let DattCore = require('../../core')
 let MsgPing = require('../../core/msg-ping')
-let sinon = require('sinon')
 let asink = require('asink')
+let should = require('should')
+let sinon = require('sinon')
 
 describe('DattCore', function () {
   let dattcore
@@ -80,6 +81,30 @@ describe('DattCore', function () {
         should.exist(info.hashbuf)
         should.exist(info.hashhex)
         should.exist(info.height)
+      })
+    })
+  })
+
+  describe('#asyncGetNewAddress', function () {
+    it('should return new addresses', function () {
+      return asink(function *() {
+        let address1 = yield dattcore.asyncGetNewAddress()
+        let address2 = yield dattcore.asyncGetNewAddress()
+        ;(address1 instanceof Address).should.equal(true)
+        ;(address2 instanceof Address).should.equal(true)
+        address1.toString().should.not.equal(address2.toString())
+      })
+    })
+  })
+
+  describe('#asyncGetNewChangeAddress', function () {
+    it('should return new addresses', function () {
+      return asink(function *() {
+        let address1 = yield dattcore.asyncGetNewChangeAddress()
+        let address2 = yield dattcore.asyncGetNewChangeAddress()
+        ;(address1 instanceof Address).should.equal(true)
+        ;(address2 instanceof Address).should.equal(true)
+        address1.toString().should.not.equal(address2.toString())
       })
     })
   })

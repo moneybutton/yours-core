@@ -18,7 +18,7 @@ function BIP44Wallet (mnemonic, masterxprv, masterxpub, bip44accounts) {
     return new BIP44Wallet(mnemonic, masterxprv, masterxpub, bip44accounts)
   }
   this.initialize()
-  this.fromObject(mnemonic, masterxprv, masterxpub, bip44accounts)
+  this.fromObject({mnemonic, masterxprv, masterxpub, bip44accounts})
 }
 
 BIP44Wallet.prototype = Object.create(Struct.prototype)

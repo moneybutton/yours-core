@@ -17,11 +17,12 @@
  * let user = User().fromJSON(json)
  */
 'use strict'
-let CryptoWorkers = require('./crypto-workers')
 let BIP32 = require('fullnode/lib/bip32')
 let BIP39 = require('fullnode/lib/bip39')
+let CryptoWorkers = require('./crypto-workers')
 let Random = require('fullnode/lib/random')
 let Struct = require('fullnode/lib/struct')
+let asink = require('asink')
 
 function User (mnemonic, masterxprv, masterxpub, name) {
   if (!(this instanceof User)) {
@@ -59,17 +60,18 @@ User.prototype.fromRandom = function () {
  * i.e. a new mnemonic, masterxprv and masterxpub.
  */
 User.prototype.asyncFromRandom = function () {
-  // 128 bits is the shortest about of entropy that can't be cracked even
-  // (hypothetically) by the NSA, while also being relatively easy to
-  // remember in the form of a mnemonic
-  let entropybuf = Random.getRandomBuffer(128 / 8)
+  return asink(function *() {
+    // 128 bits is the shortest about of entropy that can't be cracked even
+    // (hypothetically) by the NSA, while also being relatively easy to
+    // remember in the form of a mnemonic
+    let entropybuf = Random.getRandomBuffer(128 / 8)
 
-  return CryptoWorkers.asyncXkeysFromEntropy(entropybuf).then(obj => {
+    let obj = yield CryptoWorkers.asyncXkeysFromEntropy(entropybuf)
     this.mnemonic = obj.mnemonic
     this.masterxprv = obj.xprv
     this.masterxpub = obj.xpub
     return this
-  })
+  }.bind(this))
 }
 
 User.prototype.fromJSON = function (json) {
