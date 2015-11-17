@@ -11,6 +11,30 @@ describe('BIP44Account', function () {
     should.exist(BIP44Account())
   })
 
+  describe('#asyncFromMasterXprvPrivate', function () {
+    it('should derive this known bip32', function () {
+      return asink(function *() {
+        let seedbuf = new Buffer(128 / 8)
+        seedbuf.fill(0)
+        let bip32 = BIP32().fromSeed(seedbuf)
+        let bip44account = yield BIP44Account().asyncFromMasterXprvPrivate(bip32, 0)
+        bip44account.bip32.toString().should.equal('xprv9xyY3BxueQiNtW3y1nu26cGxjXV42TAyXFEE31TV2ejPvnb2ncvT4R7vAHDtbJRAhounY1VDVJLnYfqn6WyUASd27DjySS1DWbTaeEhDEVU')
+      })
+    })
+  })
+
+  describe('#asyncFromMasterXprvPublic', function () {
+    it('should derive this known bip32', function () {
+      return asink(function *() {
+        let seedbuf = new Buffer(128 / 8)
+        seedbuf.fill(0)
+        let bip32 = BIP32().fromSeed(seedbuf)
+        let bip44account = yield BIP44Account().asyncFromMasterXprvPublic(bip32, 0)
+        bip44account.bip32.toString().should.equal('xpub6BxtShVoUnGg6z8S7pS2TkDhHZKYRutptU9pqPs6azGNoavBLAEhcDSQ1YwynAShE2c44ShKzAAxoAa1gwtHgaks6DYTiUzyZAp4qDf4czA')
+      })
+    })
+  })
+
   describe('#isPrivate', function () {
     it('should know if the bip32 does or does not have the privkey', function () {
       let bip32 = BIP32().fromRandom()

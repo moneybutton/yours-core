@@ -30,6 +30,34 @@ BIP44Account.prototype.initialize = function () {
   return this
 }
 
+BIP44Account.prototype.asyncFromMasterXprvPrivate = function (bip32, accountindex) {
+  return asink(function *() {
+    if (!(accountindex >= 0 && accountindex < Math.pow(2, 31))) {
+      throw new Error('accountindex must be a valid non-hardened integer greater than 0')
+    }
+    // TODO: Support testnet, which has a 1 for the coin type
+    let path = "m/44'/0'/" + accountindex + "'"
+    let keys = yield CryptoWorkers.asyncDeriveXkeysFromXprv(bip32, path)
+    bip32 = keys.xprv
+    this.fromObject({bip32})
+    return this
+  }.bind(this))
+}
+
+BIP44Account.prototype.asyncFromMasterXprvPublic = function (bip32, accountindex) {
+  return asink(function *() {
+    if (!(accountindex >= 0 && accountindex < Math.pow(2, 31))) {
+      throw new Error('accountindex must be a valid non-hardened integer greater than 0')
+    }
+    // TODO: Support testnet, which has a 1 for the coin type
+    let path = "m/44'/0'/" + accountindex + "'"
+    let keys = yield CryptoWorkers.asyncDeriveXkeysFromXprv(bip32, path)
+    bip32 = keys.xpub
+    this.fromObject({bip32})
+    return this
+  }.bind(this))
+}
+
 BIP44Account.prototype.isPrivate = function () {
   return this.bip32.isPrivate()
 }
