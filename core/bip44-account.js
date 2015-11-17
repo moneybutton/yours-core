@@ -101,7 +101,7 @@ BIP44Account.prototype.asyncGetNextAddressKeys = function () {
 
 BIP44Account.prototype.asyncGetChangeKeys = function (changeindex) {
   return asink(function *() {
-    let path = 'm/0/' + changeindex
+    let path = 'm/1/' + changeindex
     let keys = yield this.asyncDeriveKeysFromPath(path)
     return keys
   }.bind(this))

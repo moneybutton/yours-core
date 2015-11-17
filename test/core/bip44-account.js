@@ -117,6 +117,8 @@ describe('BIP44Account', function () {
         should.exist(keys.address)
         let keys2 = yield bip44account.asyncGetNextChangeKeys()
         keys2.xprv.toString().should.not.equal(keys.xprv.toString())
+        let keys3 = yield bip44account.asyncGetNextAddressKeys()
+        keys3.xprv.toString().should.not.equal(keys.xprv.toString())
       })
     })
   })
