@@ -6,11 +6,12 @@
  * xprv and derive the different "accounts" of BIP44.
  */
 'use strict'
-let CryptoWorkers = require('./crypto-workers')
+let BIP32 = require('fullnode/lib/bip32')
 let BIP44Account = require('./bip44-account')
+let CryptoWorkers = require('./crypto-workers')
+let Random = require('fullnode/lib/random')
 let Struct = require('fullnode/lib/struct')
 let asink = require('asink')
-let Random = require('fullnode/lib/random')
 
 function BIP44Wallet (mnemonic, masterxprv, masterxpub, bip44accounts) {
   if (!(this instanceof BIP44Wallet)) {
@@ -42,6 +43,40 @@ BIP44Wallet.prototype.asyncFromRandom = function (entropybuf) {
     this.masterxpub = keys.xpub
     return this
   }.bind(this))
+}
+
+BIP44Wallet.prototype.toJSON = function () {
+  let json = {}
+  json.mnemonic = this.mnemonic
+
+  // TODO: Replace with proper non-blocking method
+  json.masterxprv = this.masterxprv.toHex()
+
+  // TODO: Replace with proper non-blocking method
+  json.masterxpub = this.masterxpub.toHex()
+
+  json.bip44accounts = {}
+  this.bip44accounts.forEach((bip44account, index) => {
+    json.bip44accounts[index] = bip44account.toJSON()
+  })
+
+  return json
+}
+
+BIP44Wallet.prototype.fromJSON = function (json) {
+  this.mnemonic = json.mnemonic
+
+  // TODO: Replace with proper non-blocking method
+  this.masterxprv = BIP32().fromHex(json.masterxprv)
+
+  // TODO: Replace with proper non-blocking method
+  this.masterxpub = BIP32().fromHex(json.masterxpub)
+
+  this.bip44accounts = new Map()
+  Object.keys(json.bip44accounts).forEach((path) => {
+    this.bip44accounts.set(path, BIP44Account().fromJSON(json.bip44accounts[path]))
+  })
+  return this
 }
 
 BIP44Wallet.prototype.asyncGetPrivateAccount = function (index) {

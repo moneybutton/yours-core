@@ -28,6 +28,39 @@ describe('BIP44Wallet', function () {
     })
   })
 
+  describe('#toJSON', function () {
+    it('should convert to JSON', function () {
+      return asink(function *() {
+        let bip44wallet = yield BIP44Wallet().asyncFromRandom()
+        yield bip44wallet.asyncGetNewAddress(0)
+        yield bip44wallet.asyncGetNewAddress(0)
+        let json = bip44wallet.toJSON()
+        should.exist(json.mnemonic)
+        should.exist(json.masterxprv)
+        should.exist(json.masterxpub)
+        should.exist(json.bip44accounts)
+        Object.keys(json.bip44accounts).length.should.greaterThan(0)
+      })
+    })
+  })
+
+  describe('#fromJSON', function () {
+    it('should round trip with .toJSON', function () {
+      return asink(function *() {
+        let bip44wallet = yield BIP44Wallet().asyncFromRandom()
+        yield bip44wallet.asyncGetNewAddress(0)
+        yield bip44wallet.asyncGetNewAddress(0)
+        let json = bip44wallet.toJSON()
+        let bip44wallet2 = BIP44Wallet().fromJSON(json)
+        should.exist(bip44wallet2.mnemonic)
+        should.exist(bip44wallet2.masterxprv)
+        should.exist(bip44wallet2.masterxpub)
+        should.exist(bip44wallet2.bip44accounts)
+        bip44wallet2.bip44accounts.size.should.greaterThan(0)
+      })
+    })
+  })
+
   describe('#asyncGetPrivateAccount', function () {
     it('should generate a random wallet', function () {
       return asink(function *() {
