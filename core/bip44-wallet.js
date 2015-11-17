@@ -24,7 +24,7 @@ BIP44Wallet.prototype = Object.create(Struct.prototype)
 BIP44Wallet.prototype.constructor = BIP44Wallet
 
 BIP44Wallet.prototype.initialize = function () {
-  this.bip44accounts = []
+  this.bip44accounts = new Map()
   return this
 }
 
@@ -44,22 +44,31 @@ BIP44Wallet.prototype.asyncFromRandom = function (entropybuf) {
   }.bind(this))
 }
 
-BIP44Wallet.prototype.getPrivateAccount = function (index) {
-  if (typeof index !== 'number') {
-    throw new Error('index must be a small integer greater than or equal to 0')
-  }
-  let account = this.bip44accounts[index]
-  if (!account) {
-    account = this.bip44accounts[index] = BIP44Account(this.masterxprv)
-  }
-  return account
+BIP44Wallet.prototype.asyncGetPrivateAccount = function (index) {
+  return asink(function *() {
+    let account = this.bip44accounts.get(index)
+    if (!account) {
+      account = yield BIP44Account().asyncFromMasterXprvPrivate(this.masterxprv, index)
+      this.bip44accounts.set(index, account)
+    }
+    return account
+  }.bind(this))
 }
 
-BIP44Wallet.prototype.asyncGetNewAddress = function (accountIndex) {
+BIP44Wallet.prototype.asyncGetNewAddress = function (accountindex) {
   return asink(function *() {
-    let account = this.getPrivateAccount(accountIndex)
-    return account.asyncGetNextAddressKeys().address
-  })
+    let account = yield this.asyncGetPrivateAccount(accountindex)
+    let keys = yield account.asyncGetNextAddressKeys()
+    return keys.address
+  }.bind(this))
+}
+
+BIP44Wallet.prototype.asyncGetNewChangeAddress = function (accountindex) {
+  return asink(function *() {
+    let account = yield this.asyncGetPrivateAccount(accountindex)
+    let keys = yield account.asyncGetNextChangeKeys()
+    return keys.address
+  }.bind(this))
 }
 
 module.exports = BIP44Wallet

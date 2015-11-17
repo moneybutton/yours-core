@@ -1,9 +1,10 @@
 /* global describe,it */
 'use strict'
-let BIP44Wallet = require('../../core/bip44-wallet')
+let Address = require('fullnode/lib/address')
 let BIP44Account = require('../../core/bip44-account')
-let should = require('should')
+let BIP44Wallet = require('../../core/bip44-wallet')
 let asink = require('asink')
+let should = require('should')
 
 describe('BIP44Wallet', function () {
   it('should exist', function () {
@@ -27,14 +28,34 @@ describe('BIP44Wallet', function () {
     })
   })
 
-  describe('#getPrivateAccount', function () {
+  describe('#asyncGetPrivateAccount', function () {
     it('should generate a random wallet', function () {
       return asink(function *() {
         let bip44wallet = yield BIP44Wallet().asyncFromRandom()
-        let bip44account = bip44wallet.getPrivateAccount(0)
+        let bip44account = yield bip44wallet.asyncGetPrivateAccount(0)
         ;(bip44account instanceof BIP44Account).should.equal(true)
-        bip44account = bip44wallet.getPrivateAccount(1)
+        bip44account = yield bip44wallet.asyncGetPrivateAccount(1)
         ;(bip44account instanceof BIP44Account).should.equal(true)
+      })
+    })
+  })
+
+  describe('#asyncGetNewAddress', function () {
+    it('should return a new address', function () {
+      return asink(function *() {
+        let bip44wallet = yield BIP44Wallet().asyncFromRandom()
+        let address = yield bip44wallet.asyncGetNewAddress(0)
+        ;(address instanceof Address).should.equal(true)
+      })
+    })
+  })
+
+  describe('#asyncGetNewChangeAddress', function () {
+    it('should return a new address', function () {
+      return asink(function *() {
+        let bip44wallet = yield BIP44Wallet().asyncFromRandom()
+        let address = yield bip44wallet.asyncGetNewChangeAddress(0)
+        ;(address instanceof Address).should.equal(true)
       })
     })
   })
