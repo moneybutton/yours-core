@@ -8,8 +8,10 @@
  * derive public keys and addresses.
  */
 'use strict'
-let Struct = require('fullnode/lib/struct')
+let Address = require('fullnode/lib/address')
+let BIP32 = require('fullnode/lib/bip32')
 let CryptoWorkers = require('./crypto-workers')
+let Struct = require('fullnode/lib/struct')
 let asink = require('asink')
 
 function BIP44Account (bip32, addrindex, changeindex, keymap) {
@@ -56,6 +58,58 @@ BIP44Account.prototype.asyncFromMasterXprvPublic = function (bip32, accountindex
     this.fromObject({bip32})
     return this
   }.bind(this))
+}
+
+BIP44Account.prototype.toJSON = function () {
+  let json = {}
+  json.addrindex = this.addrindex
+  json.changeindex = this.changeindex
+
+  // TODO: Replace with proper non-blocking method
+  json.bip32 = this.bip32.toHex()
+
+  json.keymap = {}
+  this.keymap.forEach((keys, path) => {
+    json.keymap[path] = {}
+
+    if (this.isPrivate()) {
+      // TODO: Replace with proper non-blocking method
+      json.keymap[path].xprv = keys.xprv.toHex()
+    }
+
+    // TODO: Replace with proper non-blocking method
+    json.keymap[path].xpub = keys.xpub.toHex()
+
+    json.keymap[path].address = keys.address.toHex()
+  })
+
+  return json
+}
+
+BIP44Account.prototype.fromJSON = function (json) {
+  this.addrindex = json.addrindex
+  this.changeindex = json.changeindex
+
+  // TODO: Replace with proper non-blocking method
+  this.bip32 = BIP32().fromHex(json.bip32)
+
+  this.keymap = new Map()
+  Object.keys(json.keymap).forEach((path) => {
+    let keys = json.keymap[path]
+    let xprv
+
+    if (keys.xprv) {
+      // TODO: Replace with proper non-blocking method
+      xprv = BIP32().fromHex(keys.xprv)
+    }
+
+    // TODO: Replace with proper non-blocking method
+    let xpub = BIP32().fromHex(keys.xpub)
+
+    let address = Address().fromHex(keys.address)
+    this.keymap.set(path, {xprv, xpub, address})
+  })
+  return this
 }
 
 BIP44Account.prototype.isPrivate = function () {

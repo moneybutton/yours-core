@@ -35,6 +35,43 @@ describe('BIP44Account', function () {
     })
   })
 
+  describe('#toJSON', function () {
+    it('should return this known json', function () {
+      return asink(function *() {
+        let seedbuf = new Buffer(128 / 8)
+        seedbuf.fill(0)
+        let bip32 = BIP32().fromSeed(seedbuf)
+        let bip44account = BIP44Account(bip32)
+        yield bip44account.asyncGetNextChangeKeys()
+        yield bip44account.asyncGetNextAddressKeys()
+        yield bip44account.asyncGetNextAddressKeys()
+        let json = bip44account.toJSON()
+        json.addrindex.should.equal(1)
+        json.changeindex.should.equal(0)
+        Object.keys(json.keymap).length.should.equal(3)
+      })
+    })
+  })
+
+  describe('#fromJSON', function () {
+    it('should do a round trip with toJSON', function () {
+      return asink(function *() {
+        let seedbuf = new Buffer(128 / 8)
+        seedbuf.fill(0)
+        let bip32 = BIP32().fromSeed(seedbuf)
+        let bip44account = BIP44Account(bip32)
+        yield bip44account.asyncGetNextChangeKeys()
+        yield bip44account.asyncGetNextAddressKeys()
+        yield bip44account.asyncGetNextAddressKeys()
+        let json = bip44account.toJSON()
+        let bip44account2 = BIP44Account().fromJSON(json)
+        bip44account.addrindex.should.equal(bip44account2.addrindex)
+        bip44account.changeindex.should.equal(bip44account2.changeindex)
+        bip44account.keymap.size.should.equal(bip44account2.keymap.size)
+      })
+    })
+  })
+
   describe('#isPrivate', function () {
     it('should know if the bip32 does or does not have the privkey', function () {
       let bip32 = BIP32().fromRandom()
