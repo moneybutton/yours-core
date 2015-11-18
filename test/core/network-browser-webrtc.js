@@ -38,8 +38,9 @@ describe('NetworkBrowserWebRTC', function () {
 
   describe('#close', function () {
     it('should remove the peerjs object', function () {
-      let network = Network()
-      return network.asyncInitialize().then(() => {
+      return asink(function *() {
+        let network = Network()
+        yield network.asyncInitialize()
         network.close()
         should.not.exist(network.peerjs)
       })

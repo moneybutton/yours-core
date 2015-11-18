@@ -1,11 +1,12 @@
 /* global describe,it,before,after */
 'use strict'
-let should = require('should')
 let Layout = require('../../react/layout.jsx')
-let TestUtils = require('react-addons-test-utils')
 let React = require('react')
+let TestUtils = require('react-addons-test-utils')
+let asink = require('asink')
 let dattcore = require('./dattcore')
 let dom = require('./dom')
+let should = require('should')
 
 describe('Layout', function () {
   let layout = <Layout apptitle='Datt' dattcore={dattcore}/>
@@ -44,8 +45,9 @@ describe('Layout', function () {
 
   describe.skip('#componentWillMount', function () {
     it('should initialize dattcore', function () {
-      let domlayout = TestUtils.renderIntoDocument(layout)
-      return domlayout.componentWillMount().then(() => {
+      return asink(function *() {
+        let domlayout = TestUtils.renderIntoDocument(layout)
+        yield domlayout.componentWillMount()
         domlayout.state.dattcoreStatus.should.equal('initialized')
       })
     })

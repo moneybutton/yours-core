@@ -1,12 +1,13 @@
 /* global describe,it,before,after */
 'use strict'
-let User = require('../../core/user')
-let DB = require('../../core/db')
-let ContentAuth = require('../../core/content-auth')
-let CoreContent = require('../../core/core-content')
-let CoreBitcoin = require('../../core/core-bitcoin')
-let should = require('should')
 let Address = require('fullnode/lib/address')
+let ContentAuth = require('../../core/content-auth')
+let CoreBitcoin = require('../../core/core-bitcoin')
+let CoreContent = require('../../core/core-content')
+let DB = require('../../core/db')
+let User = require('../../core/user')
+let asink = require('asink')
+let should = require('should')
 
 describe('CoreContent', function () {
   let contentauth
@@ -32,16 +33,15 @@ describe('CoreContent', function () {
 
   describe('#asyncNewContentAuth', function () {
     it('should get a new contentauth', function () {
-      let corecontent = CoreContent(db)
-      let privkey = user.masterxprv.privkey
-      let pubkey = user.masterxprv.pubkey
-      let address = Address().fromPubkey(pubkey)
-      return CoreBitcoin(db).asyncGetLatestBlockInfo().then(info => {
+      return asink(function *() {
+        let corecontent = CoreContent(db)
+        let privkey = user.masterxprv.privkey
+        let pubkey = user.masterxprv.pubkey
+        let address = Address().fromPubkey(pubkey)
+        let info = yield CoreBitcoin(db).asyncGetLatestBlockInfo()
         let blockhashbuf = info.hashbuf
         let blockheightnum = info.height
-        return corecontent.asyncNewContentAuth(pubkey, privkey, address, user.name, 'general', 'title', 'body', blockhashbuf, blockheightnum)
-      }).then(_contentauth => {
-        contentauth = _contentauth
+        contentauth = yield corecontent.asyncNewContentAuth(pubkey, privkey, address, user.name, 'general', 'title', 'body', blockhashbuf, blockheightnum)
         ;(contentauth instanceof ContentAuth).should.equal(true)
         let content = contentauth.getContent()
         content.name.should.equal(user.name)
@@ -59,15 +59,15 @@ describe('CoreContent', function () {
 
   describe('#asyncPostNewContentAuth', function () {
     it('should post a new contentauth', function () {
-      let corecontent = CoreContent(db)
-      let privkey = user.masterxprv.privkey
-      let pubkey = user.masterxprv.pubkey
-      let address = Address().fromPubkey(pubkey)
-      return CoreBitcoin(db).asyncGetLatestBlockInfo().then(info => {
+      return asink(function *() {
+        let corecontent = CoreContent(db)
+        let privkey = user.masterxprv.privkey
+        let pubkey = user.masterxprv.pubkey
+        let address = Address().fromPubkey(pubkey)
+        let info = yield CoreBitcoin(db).asyncGetLatestBlockInfo()
         let blockhashbuf = info.hashbuf
         let blockheightnum = info.height
-        return corecontent.asyncPostNewContentAuth(pubkey, privkey, address, user.name, 'general', 'title', 'body', blockhashbuf, blockheightnum)
-      }).then(hashbuf => {
+        let hashbuf = yield corecontent.asyncPostNewContentAuth(pubkey, privkey, address, user.name, 'general', 'title', 'body', blockhashbuf, blockheightnum)
         should.exist(hashbuf)
         Buffer.isBuffer(hashbuf).should.equal(true)
       })
@@ -76,17 +76,17 @@ describe('CoreContent', function () {
 
   describe('#asyncGetRecentContentAuth', function () {
     it('should get some contentauths after inserting some', function () {
-      let corecontent = CoreContent(db)
-      let privkey = user.masterxprv.privkey
-      let pubkey = user.masterxprv.pubkey
-      let address = Address().fromPubkey(pubkey)
-      return CoreBitcoin(db).asyncGetLatestBlockInfo().then(info => {
+      return asink(function *() {
+        let corecontent = CoreContent(db)
+        let privkey = user.masterxprv.privkey
+        let pubkey = user.masterxprv.pubkey
+        let address = Address().fromPubkey(pubkey)
+        let info = yield CoreBitcoin(db).asyncGetLatestBlockInfo()
         let blockhashbuf = info.hashbuf
         let blockheightnum = info.height
-        return corecontent.asyncPostNewContentAuth(pubkey, privkey, address, user.name, 'general', 'title', 'body', blockhashbuf, blockheightnum)
-      }).then(hashbuf => {
-        return corecontent.asyncGetRecentContentAuth()
-      }).then(contentauths => {
+        let hashbuf = yield corecontent.asyncPostNewContentAuth(pubkey, privkey, address, user.name, 'general', 'title', 'body', blockhashbuf, blockheightnum)
+        should.exist(hashbuf)
+        let contentauths = yield corecontent.asyncGetRecentContentAuth()
         contentauths.length.should.greaterThan(0)
         for (let contentauth of contentauths) {
           ;(contentauth instanceof ContentAuth).should.equal(true)

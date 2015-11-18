@@ -1,10 +1,11 @@
 /* global describe,it,before,after */
 'use strict'
-let DB = require('../../core/db')
-let CoreUser = require('../../core/core-user')
-let should = require('should')
-let MsgAuth = require('../../core/msg-auth')
 let BR = require('fullnode/lib/br')
+let CoreUser = require('../../core/core-user')
+let DB = require('../../core/db')
+let MsgAuth = require('../../core/msg-auth')
+let asink = require('asink')
+let should = require('should')
 
 describe('CoreUser', function () {
   let db = DB('datt-testdatabase')
@@ -28,7 +29,8 @@ describe('CoreUser', function () {
 
   describe('#asyncInitialize', function () {
     it('should initialize a new user', function () {
-      return coreuser.asyncInitialize().then(coreuser => {
+      return asink(function *() {
+        yield coreuser.asyncInitialize()
         coreuser.user.name.should.equal('satoshi')
         coreuser.dbuser.user.name.should.equal('satoshi')
         should.exist(coreuser.user.mnemonic)
@@ -40,8 +42,9 @@ describe('CoreUser', function () {
 
   describe('#asyncSetName', function () {
     it('should set the name to a new name', function () {
-      let name = 'newname'
-      return coreuser.asyncSetName(name).then(coreuser => {
+      return asink(function *() {
+        let name = 'newname'
+        yield coreuser.asyncSetName(name)
         coreuser.user.name.should.equal(name)
         coreuser.dbuser.user.name.should.equal(name)
       })
@@ -50,10 +53,10 @@ describe('CoreUser', function () {
 
   describe('#asyncGetMsgAuth', function () {
     it('should return a valid msgauth', function () {
-      return coreuser.asyncGetMsgAuth(blockhashbuf, blockheightnum).then(msgauth => {
+      return asink(function *() {
+        let msgauth = yield coreuser.asyncGetMsgAuth(blockhashbuf, blockheightnum)
         ;(msgauth instanceof MsgAuth).should.equal(true)
-        return msgauth.asyncVerify()
-      }).then(verified => {
+        let verified = yield msgauth.asyncVerify()
         verified.should.equal(true)
       })
     })

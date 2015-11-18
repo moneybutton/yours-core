@@ -68,8 +68,9 @@ describe('ContentAuth', function () {
 
   describe('#asyncSign', function () {
     it('should resuld the same as #sign', function () {
-      let contentauth = ContentAuth().fromHex(contentauthhex)
-      return contentauth.asyncSign(keypair).then(sig => {
+      return asink(function *() {
+        let contentauth = ContentAuth().fromHex(contentauthhex)
+        let sig = yield contentauth.asyncSign(keypair)
         sig.toHex().should.equal(contentauth.sign(keypair).toHex())
       })
     })
@@ -157,8 +158,9 @@ describe('ContentAuth', function () {
 
   describe('#asyncGetHash', function () {
     it('should return the hash of the contentauth', function () {
-      let contentauth = ContentAuth().fromHex(contentauthhex)
-      return contentauth.asyncGetHash(contentauth).then(hashbuf => {
+      return asink(function *() {
+        let contentauth = ContentAuth().fromHex(contentauthhex)
+        let hashbuf = yield contentauth.asyncGetHash(contentauth)
         Buffer.compare(hashbuf, Hash.sha256(contentauth.toBuffer())).should.equal(0)
       })
     })

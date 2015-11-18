@@ -1,6 +1,7 @@
 /* global describe,it */
 'use strict'
 let User = require('../../core/user')
+let asink = require('asink')
 let should = require('should')
 
 describe('User', function () {
@@ -27,8 +28,9 @@ describe('User', function () {
 
   describe('#asyncFromRandom', function () {
     it('should make a new user', function () {
-      let user = User()
-      return user.asyncFromRandom().then((user2) => {
+      return asink(function *() {
+        let user = User()
+        let user2 = yield user.asyncFromRandom()
         user.should.equal(user2)
         should.exist(user.mnemonic)
         should.exist(user.masterxprv)

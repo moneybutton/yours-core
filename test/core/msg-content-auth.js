@@ -1,9 +1,10 @@
 /* global describe,it */
 'use strict'
-let MsgContentAuth = require('../../core/msg-content-auth')
-let Msg = require('../../core/msg')
-let Hash = require('fullnode/lib/hash')
 let ContentAuth = require('../../core/content-auth')
+let Hash = require('fullnode/lib/hash')
+let Msg = require('../../core/msg')
+let MsgContentAuth = require('../../core/msg-content-auth')
+let asink = require('asink')
 let should = require('should')
 
 describe('MsgContentAuth', function () {
@@ -43,7 +44,8 @@ describe('MsgContentAuth', function () {
 
   describe('#asyncFromContentAuth', function () {
     it('should get a msgcontentauth from contentauth', function () {
-      return MsgContentAuth().asyncFromContentAuth(contentauth).then(msgcontentauth => {
+      return asink(function *() {
+        let msgcontentauth = yield MsgContentAuth().asyncFromContentAuth(contentauth)
         msgcontentauth.hashbuf.toString('hex').should.equal(contentauth.getHash().toString('hex'))
       })
     })

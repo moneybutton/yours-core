@@ -3,6 +3,7 @@
 let Connection
 let Msg = require('../../core/msg')
 let sinon = require('sinon')
+let asink = require('asink')
 let should = require('should')
 
 describe('ConnectionBrowserWebRTC', function () {
@@ -20,11 +21,12 @@ describe('ConnectionBrowserWebRTC', function () {
 
   describe('#asyncHandleData', function () {
     it('should parse this valid message', function () {
-      let msghex = '255a484b76657261636b00000000000000000000'
-      let msg = Msg().fromHex(msghex)
-      let connection = Connection()
-      connection.emit = sinon.spy()
-      return connection.asyncHandleData(msg.toBuffer()).then(msg => {
+      return asink(function *() {
+        let msghex = '255a484b76657261636b00000000000000000000'
+        let msg = Msg().fromHex(msghex)
+        let connection = Connection()
+        connection.emit = sinon.spy()
+        msg = yield connection.asyncHandleData(msg.toBuffer())
         ;(msg instanceof Msg).should.equal(true)
         msg.isValid().should.equal(true)
         connection.emit.calledWith('msg', msg).should.equal(true)

@@ -1,6 +1,7 @@
 /* global describe,it,before,after */
 'use strict'
 let DB = require('../../core/db')
+let asink = require('asink')
 let should = require('should')
 
 describe('DB', function () {
@@ -32,7 +33,8 @@ describe('DB', function () {
 
   describe('#info', function () {
     it('should give some info', function () {
-      return db.info().then(info => {
+      return asink(function *() {
+        let info = yield db.info()
         should.exist(info)
         should.exist(info.db_name)
       })
@@ -45,19 +47,23 @@ describe('DB', function () {
     })
 
     it('should should get an update conflict if inserting again', function () {
-      return db.put(doc)
-        .then(() => {
-          throw new Error('promise should not succeed')
-        }).catch(() => {
-          // expected
-        })
+      return asink(function *() {
+        let errors = 0
+        try {
+          yield db.put(doc)
+        } catch (err) {
+          errors++
+        }
+        errors.should.equal(1)
+      })
     })
   })
 
   describe('#asyncGet', function () {
     it('should get a piece of data', function () {
-      return db.asyncGet(doc._id).then((doc) => {
-        doc.data.should.equal('test-data')
+      return asink(function *() {
+        let doc2 = yield db.asyncGet(doc._id)
+        doc2.data.should.equal('test-data')
       })
     })
   })

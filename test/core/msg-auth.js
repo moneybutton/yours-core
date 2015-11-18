@@ -1,13 +1,14 @@
 /* global describe,it,before */
 'use strict'
-let MsgAuth = require('../../core/msg-auth')
-let Msg = require('../../core/msg')
-let BR = require('fullnode/lib/br')
-let should = require('should')
-let Privkey = require('fullnode/lib/privkey')
 let BN = require('fullnode/lib/bn')
-let Keypair = require('fullnode/lib/keypair')
+let BR = require('fullnode/lib/br')
 let Content = require('../../core/content')
+let Keypair = require('fullnode/lib/keypair')
+let Msg = require('../../core/msg')
+let MsgAuth = require('../../core/msg-auth')
+let Privkey = require('fullnode/lib/privkey')
+let asink = require('asink')
+let should = require('should')
 
 describe('MsgAuth', function () {
   let blockidhex = '00000000000000000e6188a4cc93e3d3244b20bfdef1e9bd9db932e30f3aa2f1'
@@ -82,7 +83,8 @@ describe('MsgAuth', function () {
 
   describe('#asyncSign', function () {
     it('should sign', function () {
-      return msgauth.asyncSign(keypair).then(msgauth => {
+      return asink(function *() {
+        msgauth = yield msgauth.asyncSign(keypair)
         should.exist(msgauth.contentauth.pubkey)
         should.exist(msgauth.contentauth.sig)
       })
@@ -98,8 +100,9 @@ describe('MsgAuth', function () {
 
   describe('#asyncVerify', function () {
     it('should know this is a valid auth message', function () {
-      let msgauth = MsgAuth().fromHex(msgauthhex)
-      return msgauth.asyncVerify().then(valid => {
+      return asink(function *() {
+        let msgauth = MsgAuth().fromHex(msgauthhex)
+        let valid = yield msgauth.asyncVerify()
         valid.should.equal(true)
       })
     })
