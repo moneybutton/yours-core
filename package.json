@@ -134,7 +134,7 @@
     "reactify": "1.1.1",
     "should": "7.1.1",
     "sinon": "1.17.2",
-    "standard": "5.4.0",
+    "standard": "5.4.1",
     "through2": "2.0.0",
     "watchify": "3.6.1"
   }
