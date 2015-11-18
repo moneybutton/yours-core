@@ -6,10 +6,11 @@
  * authenticated content to a peer.
  */
 'use strict'
-let Msg = require('./msg')
-let ContentAuth = require('./content-auth')
-let Struct = require('fullnode/lib/struct')
 let BW = require('fullnode/lib/bw')
+let ContentAuth = require('./content-auth')
+let Msg = require('./msg')
+let Struct = require('fullnode/lib/struct')
+let asink = require('asink')
 
 function MsgContentAuth (hashbuf, contentauth) {
   if (!(this instanceof MsgContentAuth)) {
@@ -50,11 +51,12 @@ MsgContentAuth.prototype.fromContentAuth = function (contentauth) {
  * Non-blocking fromContentAuth - safe to use in main thread.
  */
 MsgContentAuth.prototype.asyncFromContentAuth = function (contentauth) {
-  return contentauth.asyncGetHash().then(hashbuf => {
+  return asink(function *() {
+    let hashbuf = yield contentauth.asyncGetHash()
     this.hashbuf = hashbuf
     this.contentauth = contentauth
     return this
-  })
+  }.bind(this))
 }
 
 MsgContentAuth.prototype.fromMsg = function (msg) {

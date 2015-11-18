@@ -122,13 +122,13 @@ ContentAuth.prototype.sign = function (keypair) {
  * it offloads the cryptography to workers.
  */
 ContentAuth.prototype.asyncSign = function (keypair) {
-  return CryptoWorkers.asyncSha256(this.getBufForSig()).then(hashbuf => {
-    return CryptoWorkers.asyncSignCompact(hashbuf, keypair.privkey)
-  }).then(sig => {
+  return asink(function *() {
+    let hashbuf = yield CryptoWorkers.asyncSha256(this.getBufForSig())
+    let sig = yield CryptoWorkers.asyncSignCompact(hashbuf, keypair.privkey)
     this.sig = sig
     this.pubkey = keypair.pubkey
     return this
-  })
+  }.bind(this))
 }
 
 /**
@@ -228,15 +228,16 @@ ContentAuth.prototype.getHash = function () {
  * Either compute the hash and return it, or, if cached, return the cache.
  */
 ContentAuth.prototype.asyncGetHash = function () {
-  let buf = this.toBuffer()
-  if (this.cachehash) {
-    return Promise.resolve(this.cachehash)
-  } else {
-    return CryptoWorkers.asyncSha256(buf).then(hashbuf => {
+  return asink(function *() {
+    let buf = this.toBuffer()
+    if (this.cachehash) {
+      return Promise.resolve(this.cachehash)
+    } else {
+      let hashbuf = yield CryptoWorkers.asyncSha256(buf)
       this.setCacheHash(hashbuf)
       return hashbuf
-    })
-  }
+    }
+  }.bind(this))
 }
 
 module.exports = ContentAuth

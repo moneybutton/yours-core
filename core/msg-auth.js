@@ -11,10 +11,11 @@
  * "contentauth".
  */
 'use strict'
+let Content = require('./content')
+let ContentAuth = require('./content-auth')
 let Msg = require('./msg')
 let Struct = require('fullnode/lib/struct')
-let ContentAuth = require('./content-auth')
-let Content = require('./content')
+let asink = require('asink')
 
 function MsgAuth (contentauth) {
   if (!(this instanceof MsgAuth)) {
@@ -92,9 +93,10 @@ MsgAuth.prototype.sign = function (keypair) {
  * Asynchronous sign. Safe to use in the main thread.
  */
 MsgAuth.prototype.asyncSign = function (keypair) {
-  return this.contentauth.asyncSign(keypair).then(() => {
+  return asink(function *() {
+    yield this.contentauth.asyncSign(keypair)
     return this
-  })
+  }.bind(this))
 }
 
 /**

@@ -9,11 +9,11 @@
  * database, i.e. the current user.
  */
 'use strict'
-let User = require('./user')
+let CryptoWorkers = require('./crypto-workers')
 let DBUser = require('./db-user')
 let MsgAuth = require('./msg-auth')
 let Struct = require('fullnode/lib/struct')
-let CryptoWorkers = require('./crypto-workers')
+let User = require('./user')
 let asink = require('asink')
 
 function CoreUser (db, dbuser, user) {
@@ -53,14 +53,17 @@ CoreUser.prototype.asyncInitialize = function () {
 }
 
 CoreUser.prototype.asyncSetName = function (name) {
-  // TODO: Handle the case where we set the name in memory, but saving to disk
-  // fails.
-  try {
-    this.user.setName(name)
-  } catch (err) {
-    return Promise.reject(err)
-  }
-  return this.dbuser.asyncSave(this.user).then(() => this)
+  return asink(function *() {
+    // TODO: Handle the case where we set the name in memory, but saving to disk
+    // fails.
+    try {
+      this.user.setName(name)
+    } catch (err) {
+      return Promise.reject(err)
+    }
+    yield this.dbuser.asyncSave(this.user)
+    return this
+  }.bind(this))
 }
 
 /**
@@ -68,20 +71,20 @@ CoreUser.prototype.asyncSetName = function (name) {
  * content to your peers declaring what your name is. This gets that message.
  */
 CoreUser.prototype.asyncGetMsgAuth = function (blockhashbuf, blockheightnum) {
-  let msgauth = MsgAuth()
-  msgauth.setBlockInfo(blockhashbuf, blockheightnum)
-  msgauth.setName(this.user.name)
-  let buf = msgauth.getBufForSig()
-  return CryptoWorkers.asyncSha256(buf).then((hashbuf) => {
+  return asink(function *() {
+    let msgauth = MsgAuth()
+    msgauth.setBlockInfo(blockhashbuf, blockheightnum)
+    msgauth.setName(this.user.name)
+    let buf = msgauth.getBufForSig()
+    let hashbuf = yield CryptoWorkers.asyncSha256(buf)
     let privkey = this.user.masterxprv.privkey
-    return CryptoWorkers.asyncSignCompact(hashbuf, privkey)
-  }).then(sig => {
+    let sig = yield CryptoWorkers.asyncSignCompact(hashbuf, privkey)
     msgauth.contentauth.fromObject({
       pubkey: this.user.masterxprv.pubkey,
       sig: sig
     })
     return msgauth
-  })
+  }.bind(this))
 }
 
 module.exports = CoreUser
