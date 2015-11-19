@@ -1,4 +1,5 @@
-# Datt Blog
+Datt Blog
+=========
 
 We use Wintersmith to manage the blog. To add a blog post, create a new article
 in the contents/articles folder, use "wintersmith preview" to make sure it
