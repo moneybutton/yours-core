@@ -1,0 +1,202 @@
+Links, Resources and Related Projects
+=====================================
+
+Articles and Links
+------------------
+- [Companies Target Journalists With Ads on Facebook](http://www.wsj.com/articles/companies-target-journalists-with-ads-on-facebook-1447664403)
+- [Facebook and the Media Have an Increasingly Landlord-Tenant Style Relationship](http://fortune.com/2015/11/09/facebook-media/)
+- [Chris Dixon: Lessons from the PC gaming industry](https://medium.com/@cdixon/lessons-from-the-pc-video-game-industry-3350bb7713de)
+- [How to use Rust with Node when performance matters](https://blog.risingstack.com/how-to-use-rust-with-node-when-performance-matters/)
+- ['Freebooters' Are Stealing Videos from YouTube and Reposting Them to Facebook](http://motherboard.vice.com/read/freebooters-are-stealing-videos-from-youtube-and-reposting-them-to-facebook?utm_source=mbtwitter)
+- [Death by a thousand likes: How Facebook and Twitter are killing the open web](http://qz.com/545048/death-by-a-thousand-likes-how-facebook-and-twitter-are-killing-the-open-web/)
+- [One Cash: With One Cash, Tip $1 To People You Love, Or Make It Rain](http://techcrunch.com/2015/11/12/with-one-cash-tip-1-to-people-you-love-or-make-it-rain/)
+- [The 12 Factor App - great info on how to build software that works well as a service](http://12factor.net/)
+- [Heroku: 10 habits of a happy node hacker - useful tips for managing a node project from Heroku](http://blog.heroku.com/archives/2015/11/10/node-habits-2016)
+- [The Netflix stack - interesting look at a service that has to scale enormously](http://highscalability.com/blog/2015/11/9/a-360-degree-view-of-the-entire-netflix-stack.html)
+- [How Facebook is stealing billions of views - relevant to the issue of people stealing others' work](https://www.youtube.com/watch?v=t7tA3NNKF0Q&feature=youtu.be)
+- [Mine wants to identify every image on the internet. (uses the blockchain - perhaps similar tech could be used to classify content on datt)](http://www.mine.nyc/)
+- [EigenTrust++: Attack Resilient Trust Management (PDF) (also recommended by Greg Slepak)](http://www.cc.gatech.edu/~lingliu/papers/2012/XinxinFan-EigenTrust++.pdf)
+- [A pseudonymous trust system for a decentralized anonymous marketplace (Greg Slepak proposes that we use this as a way to algorithmically rank posts according to a computed trust value)](https://gist.github.com/dionyziz/e3b296861175e0ebea4b)
+- [Please stop writing secure messaging tools. (tldr: Also write other kinds of secure tools)](http://dymaxion.org/essays/pleasestop.html)
+- [Chris Dixon tweets about r/bitcoin -> r/btc](https://twitter.com/cdixon/status/663216232888410112)
+- [Brian of Coinbase suggesting everyone on r/bitcoin migrate to r/btc because of censorship on r/bitcoin](https://www.reddit.com/r/Bitcoin/comments/3rufww/what_do_people_think_about_unsubscribing_from/) - [see also his tweet](https://twitter.com/brian_armstrong/status/662817100969308160)
+- [Sam Altman: Startup Playbook](http://playbook.samaltman.com/)
+- [LBRY: https://news.bitcoin.com/lbry-decentralized-sharing-platform/](https://news.bitcoin.com/lbry-decentralized-sharing-platform/)
+- [up2pp:// - The “http://” of Peer to Peer networking needs to exist](https://medium.com/@gubatron/up2pp-the-http-of-peer-to-peer-networking-needs-to-exist-da0332e8b495#.wnjk5g1ay)
+- [So, Tsu Me: Why Facebook Is Terrified of This Virtually Unknown Competitor and What It Could Mean For the Future of the Internet](http://www.huffingtonpost.com/david-fagin/so-tsu-me-why-facebook-is_b_8328524.html)
+- [Zype Raises $1.6M To Help Publishers Build Their Video Business](http://techcrunch.com/2015/10/27/zype-seed-funding/)
+- [Medium's tech stack (based on node.js](https://medium.com/medium-eng/the-stack-that-helped-medium-drive-2-6-millennia-of-reading-time-e56801f7c492#.dzs8bttfk)
+- [IPFS introduction by example](http://whatdoesthequantsay.com/2015/09/13/ipfs-introduction-by-example/)
+- [Decentralized Identity and Content Attribution: We Need a Specification](http://continuations.com/post/131886701965/decentralized-identity-and-content-attribution-we)
+_ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-to-pay-for-youtube-1737829631)
+- [How society will be transformed by cryptoeconomics](https://medium.com/@noahthorp/how-society-will-be-transformed-by-crypto-economics-b02b6765ca8c#.y3q60suvx)
+- [What the Flux!? Let's Redux](https://blog.andyet.com/2015/08/06/what-the-flux-lets-redux)
+- [The viability of js frameworks on mobile](https://joreteg.com/blog/viability-of-js-frameworks-on-mobile)
+- [Why Twitter's Dying (And What You Can Learn From It)](https://medium.com/bad-words/why-twitter-s-dying-and-what-you-can-learn-from-it-9ed233e37974)
+- [How is the NSA breaking so much crypto?](https://freedom-to-tinker.com/blog/haldermanheninger/how-is-nsa-breaking-so-much-crypto/)
+- [Hi, We're Stem: Imagine a world where you, as a creator, can consistently get paid for your work with clarity.](https://medium.com/@stem/hi-we-re-stem-63a05d637321)
+- [Taking Medium To The Next Level - Medium proposes to make sure money flows back to content creators](https://medium.com/the-story/taking-medium-to-the-next-level-cb7f223fad86)
+- [Decentralized reputation in OpenBazaar](https://blog.openbazaar.org/decentralized-reputation-in-openbazaar/)
+- [Freestart collisions for sha-1 - means a real collision is around the corner. We use sha-256 for hashes, and so does bitcoin, however we do use git, whish uses sha-1](https://sites.google.com/site/itstheshappening/)
+- [Clef's open-source employee handbook focused on inclusion](https://github.com/clef/handbook)
+- [Clef: Our work to raise the baseline for inclusive policies at early stage companies](https://medium.com/two-factor-authenticity/open-sourcing-the-clef-handbook-edd658e4ce5e)
+- [reddit is working on an entirely new front-page algorithm](http://motherboard.vice.com/read/reddit-admits-its-front-page-is-broken-is-working-on-an-entirely-new-algorithm)
+- [Inside reddit's plan to recover from its epic meltdown](http://www.wired.com/2015/10/reddit-survived-meltdown-can-fix/)
+- [The YC application broken down and translated](https://medium.com/@zreitano/the-yc-application-broken-down-and-translated-e4c0f5235081)
+- [VICE: We're replacing comments with something better](http://motherboard.vice.com/read/im-on-twitter-too)
+- [No Comments Allowed on Reddit’s New News Site ‘Upvoted’](http://www.wired.com/2015/10/no-comments-allowed-reddits-new-news-site-upvoted/?mbid=social_fb)
+- [402: Payment Required](https://medium.com/@humphd/402-payment-required-95bc72f06fcd)
+- [First, let's get rid of all the bosses. (An article about holocracy at Zappos)](http://www.newrepublic.com/article/122965/can-billion-dollar-corporation-zappos-be-self-organized)
+- [WE Collective (a non-profit reddit competitor) (video)](https://www.youtube.com/watch?v=SPtS4Nffqho&feature=youtu.be)
+- [A protocol for microtransactions (PDF) (Strawpay)](https://www.strawpay.com/docs/stroem-payment-system.pdf)
+- [Japan’s Largest Q&A Platform OKWave Adds Bitcoin Services (OKWave)](https://news.bitcoin.com/japans-largest-qa-platform-okwave-adds-bitcoin-services/)
+- [Blendle: A radical experiment with micropayments in journalism, 365 days later](https://medium.com/on-blendle/blendle-a-radical-experiment-with-micropayments-in-journalism-365-days-later-f3b799022edc)
+- [Business Insider, Vox, BuzzFeed, Medium: What’s Driving Digital Media’s New Investment Craze](http://www.thewrap.com/business-insider-vox-buzzfeed-medium-whats-driving-digital-medias-new-investment-craze/)
+- [Is TLS fast enough yet? (tldr: yes)](https://istlsfastyet.com/)
+- ["Apple's commitment to your privacy"](http://www.apple.com/privacy/) - [HN discussion](https://news.ycombinator.com/item?id=10296732)
+- [Medium raises $57 million to better connect content and conversation](https://medium.com/@andydoyle/medium-s-new-funding-round-48437c641e06)
+- [reddit users on their grievances about reddit](https://www.reddit.com/r/Upvoted/comments/3jn7e9/ask_an_admin_vol_6_on_amageddon_blackout_2015_etc/cuqnuyo)
+- [Will there be a distributed HTTP?](https://www.mnot.net/blog/2015/08/18/distributed_http?imm_mid=0d7194&cmp=em-web-na-na-newsltr_20150819) - [HN](https://news.ycombinator.com/item?id=10159873)
+- [Google Votes: A Liquid Democracy Experiment on a Corporate Social Network (PDF)](http://www.tdcommons.org/cgi/viewcontent.cgi?article=1092&context=dpubs_series)
+- [The internet's own Magna Carta](http://www.renderingwithstyle.com/post/127493183563/the-internets-own-magna-carta)
+- [Locking the Web Open - a call for a distributed web](http://brewster.kahle.org/2015/08/11/locking-the-web-open-a-call-for-a-distributed-web-2/)
+- ["Projects and Companies" by Sam Altman](http://blog.samaltman.com/projects-and-companies)
+- [The WeChat wallet](https://a16z.com/2015/08/06/wechat-china-mobile-first/)
+- [It's time to build the private web - need encryption by default](http://kernelmag.dailydot.com/issue-sections/staff-editorials/13919/private-web-encryption-is-a-basic-human-right/)
+- [Meta on hardforking - mods censors a post about Bitcoin XT](https://www.reddit.com/r/Bitcoin/comments/3gdad5/meta_on_hardforking_if_bitcoin_is_so_vulnerable/)
+- [Mutually Assured Content](http://www.theawl.com/2015/07/in-no-charts)
+- [Don't display negative karma](http://www.raphkoster.com/2009/10/07/building-web-reputation-systems-the-blog-the-dollhouse-mafia-or-dont-display-negative-karma/)
+- [Rating Systems - Christopher Allen](http://www.lifewithalacrity.com/2005/12/collective_choi.html)
+- [Dunbar, Altruistic Punishment, and Meta-Moderation - Christopher Allen](http://www.lifewithalacrity.com/2005/03/dunbar_altruist.html)
+- [The Web We Have to Save](https://medium.com/matter/the-web-we-have-to-save-2eb1fe15a426)
+- [The Cryptographic Doom Principle - you should always encrypt then mac - validate mac before decrypting data](http://www.thoughtcrime.org/blog/the-cryptographic-doom-principle/)
+- [Web RTC STUN and TURN](http://www.html5rocks.com/en/tutorials/webrtc/infrastructure/)
+- [valme: general business model ideas](https://valme.io/c/journal/c_prompt/f5qqs/an-open-letter-to-steve-huffman-reddits-new-ceo-with-an-offer-to-exchange-values)
+- [valme: related to downvoting](http://valme.io/c/gettingstarted/faq/nqqqs/why-does-it-cost-1-karma-to-upvote-but-2-to-downvote)
+- [valme: related to allowing mods to change the price of content](http://valme.io/c/gettingstarted/faq/yqqqs/whats-a-sponsored-account)
+- [valme: related to different transaction fees for different actions](http://valme.io/c/gettingstarted/faq/7mqqs/valme-transaction-costs)
+- [valme: related to flagging/downvote brigades](http://valme.io/c/gettingstarted/faq/5qqqs/whats-a-modqueue-what-are-moderators-mods)
+- [RedHat stance on software patents](http://www.redhat.com/legal/patent_policy.html)
+- [UX Methods &amp; Design](http://uxdesign.cc/ux-methods-deliverables/) - UX/UI design cheatsheet
+
+Related projects
+----------------
+- [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [Synero - decentralized social media with integrated payments using their own coin](http://www.synereo.com/)
+- [Fabriq - a decentralized reddit based on Ethereum](https://github.com/ckeenan/fabriq) - [see also Chris Keenan's tweet](https://twitter.com/j32804/status/664811118028849152)
+- [LBRY: Combining bittorrent and a new cryptocurrency for sharing media and being paid](http://lbry.io/)
+- [Credence is a practical distributed reputation system, designed to counteract content pollution in peer-to-peer filesharing systems.](http://credence-p2p.org/)
+- [Tsu: social network that shares ad revenue with creators](http://www.tsu.co/)
+- [crypti - decentralized app system](https://crypti.me/)
+- [Iris: Decentralized cloud messaging](http://bravenewgeek.com/iris-decentralized-cloud-messaging/) - [Paper](http://www.comsis.org/archive.php?show=ppr475-1307)
+- [sato.sh - like reddit but where tipping is bitcoin](https://sato.sh/)
+- [PolderCast - decentralized social media, but where users store only content they are interested in (PDF)](http://liamz.co/wp-content/uploads/2015/03/Computer-Science-Extended-Essay_Liam-Edwards-Playne.pdf) - [Paper describing PolderCast (PDF)](http://acropolis.cs.vu.nl/~spyros/www/papers/PolderCast.pdf) - [BitWeav - microblogging system based on PolderCast](http://liamz.co/wp-content/uploads/2015/03/whitepaper.pdf)
+- [Kudos: peer-to-peer discussion system based on social voting](http://www.slideshare.net/lmatteis/kudos-a-peertopeer-discussion-system-based-on-social-voting) - [HN Discussion](https://news.ycombinator.com/item?id=10391996)
+- [NNTP - the protocol behind Usenet](https://en.wikipedia.org/wiki/Network_News_Transfer_Protocol)
+- [HoneyLedger: Better payments for content-creators and fans](http://honeyledger.com/)
+- [Urbit: Full-stack decentralized computing](http://urbit.org/preview/~2015.9.25)
+- [Protip attempts to redefine internet tipping with bitcoin micropayments](http://bravenewcoin.com/news/protip-attempts-to-redefine-internet-tipping-with-bitcoin-micropayments/)
+- [Beacon Reader - crowdfunding journalism](http://www.beaconreader.com/)
+- [Changetip Tipworthy - post content and tip each other](https://www.changetip.com/tipworthy)
+- [Ello - their manifesto is highly relevant](https://ello.co/wtf/about/ello-manifesto/)
+- [Planet Awesome](http://planetawesome.org/)
+- [Blockstack](https://github.com/blockstack) - naming, identity, storage
+- [nntpchan](https://github.com/majestrate/nntpchan) - a decentralized image board with opt-in moderation
+- [aether](http://getaether.net/)
+- [empeopled](https://empeopled.com)
+- [colony](http://colony.io)
+- [backfeed](backfeed.cc)
+- [Lazooz](http://lazooz.org/)
+- [Decent](http://www.decent.ch/)
+- [Qora](http://qora.co.in:9090/index/main.html)
+- [Tent - decentralized, users own their content](https://tent.io/docs)
+- [BitTess - p2p website](https://github.com/BitTess/BitTess)
+- [MediaGoblin - GNU's decentralized social media app](http://mediagoblin.org/)
+- [Patchwork - based on scuttlebutt](https://github.com/ssbc/patchwork)
+- [a bunch of "alternative internet" links](https://redecentralize.github.io/alternative-internet/)
+- [cryptosphere, built in ruby, seems similar](https://github.com/cryptosphere/cryptosphere)
+- [Alexandria - blocktech.com - uses ipfs](http://blocktech.com/)
+- [zeronet - based on bitcoin cryptography and bittorrent](http://zeronet.io/)
+- [ipfs - decentalized storage - permanent web - global DHT](https://github.com/ipfs/ipfs)
+- [sia - decentralized storage that integrates payments - sounds similar to ipfs](https://bitcointalk.org/index.php?topic=1060294.0)
+- [Kudos: A Peer-to-Peer Discussion System Based on Social Voting (PDF)](http://lucaa.org/docs/kudos.pdf)
+- [Peer Tracks - tokens for music, allows people to be rewarded for finding good music](http://peertracks.com/)
+- [Witcoin - the original "reddit, but with bitcoin"](https://en.bitcoin.it/wiki/Witcoin)
+
+Tools
+-----
+- [PeerJS](http://peerjs.com/) - Easy WebRTC
+- [Simple Peer - easy Web RTC, works in node via wrtc](https://github.com/feross/simple-peer)
+- [FreedomJS](http://www.freedomjs.org/) - Another Easy WebRTC
+- [GUN.js](http://gun.js.org/) - NoDB High replication memcache
+- [PouchDB](http://pouchdb.com/) - A clientside CouchDB-like database that syncs when online with a CouchDB server
+- [WebTorrent](https://github.com/feross/webtorrent) - Torrent, for HTML5
+- [MaidSafe](http://maidsafe.net/) - A blockchained coin/storage
+- [BitcoinJS](http://bitcoinjs.org/) - Bitcoin's JS Swiss knife
+- [Coinspark](http://coinspark.org/) - Smart contracts on the blockchain (non-js)
+- [Codius](https://codius.org/) - Smart contracts on the blockchain (js)
+- [Key-hq](https://www.npmjs.com/package/key-hq) - BIP32 compliant HD keychain
+- [Bitcore](https://github.com/bitpay/bitcore) - bitpay's javascript implementation of bitcoin
+- [bcoin](https://github.com/indutny/bcoin) - chjj's implementation - has SPV support in node
+- [fullnode](https://github.com/ryanxcharles/fullnode) - ryanxcharles's implementation - similar codebase to bitcore, but monolithic, and written in ES 2015
+- [webcoin](https://github.com/mappum/webcoin) - an SPV node that works in a browser, based on bitcore
+- [Bitmessage](https://bitmessage.org/wiki/Main_Page) - Blockchain specifically dedicated to messaging, think SPV client but with messages, anonymous identities and proof of work message requirement (non-js).
+- [NPM Bitmessage](https://www.npmjs.com/package/bitmessage) - Bitmessage Node.js implementation supporting browserify, alpha quality, still no outgoing connection on browser.
+- [Bitmessage-node](https://github.com/RexMorgan/bitmessage-node) - Bitmessage API library, piggybacks on native Bitmessage installation
+- [BitID](https://github.com/bitid/bitid) - Public key based authentication using Bitcoin Wallets facilities
+- [Blockstack](http://blockstack.org/) - Very similar project to Datt
+- [Ephemeral](https://github.com/losvedir/ephemeral2) - Ephemeral content stored only by the viewers of it
+- [rupy - a distributed database for the web](https://github.com/tinspin/rupy)
+
+Bitcoin, lightning network, sidechains
+--------------------------------------
+- [Experimental lightning node in python](https://github.com/hashplex/Lightning)
+- [Amiko pay - something very much like the lightning network implemented in python, distinct from the hashplex one](https://github.com/cornwarecjp/amiko-pay)
+- [Thunder Network - a more near-term solution for our micropayments problem, already implemented in Java](http://thunder.network/)
+- [A fast and scalable network with bitcoin micropayment channels (PDF)](http://www.researchgate.net/profile/Christian_Decker5/publication/277991245_A_Fast_and_Scalable_Payment_Network_with_Bitcoin_Duplex_Micropayment_Channels/links/55780a4e08aeb6d8c01cf2d0.pdf) - not lightning, but similar
+- [Lightning implementation on elements sidechain](https://github.com/ElementsProject/lightning)
+
+External documents generated by contributors
+--------------------------------------------
+- [Ryan and Dan's map of the space of actions, actors and whether/how much to pay](https://docs.google.com/document/d/1tGbSExNSsTXhNv9TtPC4Mcg3bY4oEGk5Nr2Eibp4Uz4/edit)
+- [Darren's marketing plan](https://docs.google.com/document/d/1n61bW6JYmzLP0BQQUsFmVj5ilHKZ2S4QBAewKuH6xjo/edit)
+- [Datt Goals over 4 years - generated Aug. 22, 2015](https://docs.google.com/document/d/1C9FNbS8GlQ6z5wwNXT2NsbWXPmSTDyVkl4MUmv6h770/edit)
+- [Brad's "BRATT" - alternative focus on content creators at expense of mods](https://docs.google.com/presentation/d/1rhJgpqig4OGiaiyRyiaRPFIPPRXQaIDvcHeuZJr0pFI/edit#slide=id.ga539ea70f_0_71)
+- [Brad's business-focused mockups](https://docs.google.com/presentation/d/1SlSlpEtZWa6g3jddrFdpY0hL9W8YePWItrOV0W4bPyc/edit#slide=id.g63d6e66a7_0_200)
+- [Brad's overview of the amount of money earned by participants for shared revenue](https://docs.google.com/spreadsheets/d/16vtDV3Ot4lrr2twpUS8Sqgg4OrJ2KIrnQwsuppy56sI/edit#gid=1827203914)
+- [Paul's reward allocation model](https://docs.google.com/spreadsheets/d/19mUSGUwLukbskz5dIj1QXM0rAPmCBrbXZeLz908LfmU/edit#gid=1936031705)
+- [Paul's DATT Concepts & Principles](https://docs.google.com/document/d/1AEHdOlQMyyuZ3U0a1BOcZtX8kAPWZynFVx9r21NPtiE/edit#)
+- [aramkris view of Business Model - Updated post the hackathon] (https://github.com/dattnetwork/dattdocs/blob/master/DATTmodel3.md)
+- [aramkris view of shared revenue - Updated post the hackathon] (https://docs.google.com/spreadsheets/d/1_M0KyHaBJqUIOl4KDZYYpE3gSyq8XhAQEy1csPABiHw/edit?usp=sharing )
+- [aramkris - Business thoughts: Misc](https://docs.google.com/document/d/1vhLrVlBu7_l_xgXkUs9HCWd4nOuh9G4TagO2zjU9Gys/edit?usp=sharing)
+- [aramkris - business plan](https://docs.google.com/document/d/1k1bH3woxXLAH6glqEnsNZNyxCxnShVXD7moNsNGME54/edit)
+
+Press for Datt
+--------------
+- [2015-07-05: Fix reddit with bitcoin.](https://medium.com/@ryanxcharles/fix-reddit-with-bitcoin-7da3f85fb9ba)
+- [2015-07-05: re/code: The next reddit will likely be built on the bitcoin blockchain](http://recode.net/2015/07/05/fred-wilson-the-next-reddit-will-likely-be-built-on-the-bitcoin-blockchain/)
+- [2015-07-06: Business Insider: The next Reddit could be based on bitcoin and impossible to censor](http://www.businessinsider.com/fred-wilson-blockchain-reddit-openbazaar-uncensorable-2015-7)
+- [2015-07-06: Cryptocoins News: Former Reddit Cryptocurrency Engineer: Decentralization is the Future](https://www.cryptocoinsnews.com/former-reddit-cryptocurrency-engineer-decentralization-future/)
+- [2015-07-06: Hacker News thread on "Fix reddit with bitcoin"](https://news.ycombinator.com/item?id=9836677)
+- [2015-07-06: The Next Web: reddit came close to being decentralized last year](http://thenextweb.com/insider/2015/07/06/reddit-came-close-to-becoming-decentralized-last-year/)
+- [2015-07-06: Wired: This Man Says He Can Save Reddit With the Spirit of Bitcoin](http://www.wired.com/2015/07/reddit-blockchain-decentralized-internet/)
+- [2015-07-06: hacked.com: Angered over Redditgate, users want a Decentralized alternative to Reddit](https://hacked.com/angered-redditgate-users-want-decentralized-alternative-reddit/)
+- [2015-07-08: CoinTelegraph: Ryan X. Charles Is Building a Decentralized Reddit, and ‘Would Love Collaborators’](http://cointelegraph.com/news/114785/ryan-x-charles-is-building-a-decentralized-reddit-and-would-love-collaborators)
+- [2015-07-13: CoinJournal: Interview With Former Reddit Cryptocurrency Engineer, Ryan X Charles](http://coinjournal.net/interview-with-former-reddit-cryptocurrency-engineer-ryan-x-charles/)
+- [2015-07-14: CoinSpeaker: ‘Blockchain is a Huge Opportunity to Save Reddit Community,’ Says Ryan X. Charles](http://www.coinspeaker.com/2015/07/14/the-blockchain-is-a-huge-opportunity-to-save-reddit-community-says-ryan-x-charles-10683/)
+- [2015-07-15: /r/bitcoin thread on "Fix reddit with bitcoin"](https://www.reddit.com/r/Bitcoin/comments/3c9bw1/fix_reddit_with_bitcoin_ryan_x_charles/)
+- [2015-07-15: Yishan's thoughts on a decentralized reddit](https://www.reddit.com/r/Bitcoin/comments/3ckf7u/ryan_x_charles_is_building_a_decentralized_reddit/csxsm1w)
+- [2015-07-15: Zapchain reposted the article "Fix reddit with bitcoin" with very good engagement](https://www.zapchain.com/a/1GVIzt8bnL)
+- [2015-07-31: hacked.com: Former Reddit Cryptocurrency Engineer Hosts Hackathon For Reddit Alternative](https://hacked.com/former-reddit-cryptocurrency-engineer-hosts-hackathon-reddit-alternative-decentralize-things/)
+- [2015-08-04: CoinTelegraph: How an Australian Teen Nearly Created a Decentralized Reddit in 1997 (Op-Ed)](http://cointelegraph.com/news/115053/how-an-australian-teen-nearly-created-a-decentralized-reddit-in-1997)
+- [2015-08-15: ZapChain article that quotes the summit](https://www.zapchain.com/a/5btVKjkZls)
+- [2015-08-15: ZapChain decentralization summit](https://www.zapchain.com/a/W7M8nphtCU)
+- [2015-08-31: Ryan X. Charles Interview with Money & Tech](http://moneyandtech.com/ryan-x-charles-reddit/)
+- [2015-09-01: /r/bitcoin thread about the CoinDesk article](https://www.reddit.com/r/Bitcoin/comments/3j79li/inside_the_movement_to_build_a_bitcoinpowered/)
+- [2015-09-01: CoinDesk: Inside the movement to build a bitcoin-powered reddit](http://www.coindesk.com/datt-decentralized-reddit-bitcoin/)
+- [2015-10-29: /r/bitcoin thread on the article from CoinJournal](https://www.reddit.com/r/Bitcoin/comments/3qr99v/public_launch_of_bitcoinpowered_decentralized/)
+- [2015-10-29: CoinJournal: Public Launch of Bitcoin-Powered, Decentralized Reddit Alternative Possible in March](http://coinjournal.net/public-launch-of-bitcoin-powered-decentralized-reddit-alternative-possible-in-march/)
+- [2015-11-08: Inside Bitcoins: Datt Combines Social Media with Bitcoin-Powered Incentives (Kyle Torpey)](http://insidebitcoins.com/news/datt-combines-social-media-with-bitcoin-powered-incentives/35619)
+- [2015-11-09: Bitcoin Magazine: Former Reddit Cryptocurrency Engineer Explains How His Decentralized, Bitcoin-Powered Social Media Platform Will Work](https://bitcoinmagazine.com/articles/former-reddit-cryptocurrency-engineer-explains-how-his-decentralized-bitcoin-powered-social-media-platform-will-work-1447091607)
+- [2015-11-12: 8btc has an article in Chinese about Datt](http://www.8btc.com/reddit-datt)
+- [2015-11-15: The Merkle: Turkey Blocks Reddit Access – Decentralized Social Networks Are Needed](http://themerkle.com/news/turkey-blocks-reddit-access-decentralized-social-networks-are-needed/)

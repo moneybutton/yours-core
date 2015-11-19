@@ -1,0 +1,43 @@
+@startuml
+title Datt startup flow
+actor User as U
+box "Client" #LightGrey
+	participant "P2P Node" as C
+end box
+	participant D as "datt.co"
+box "Peer N" #LightGrey
+	participant N as "P2P Node"
+	participant FN as "Full Node"
+end box
+
+U -> C: Opens Datt
+C -> D: Give me website
+D -> C: HTML/JS/CSS* 
+note right of D: "Option: give frontpage content hashes"
+C -> C: Datt app start locally (JS)
+C -> D: Give me peers (Bootstrap Nodes)
+D -> C: [Peer1, Peer2, ...]
+note right of N: "User is not logged in,\n so no identity to announce yet"
+C -> N: Give me recent listings (Bootstrap Collectives)
+N -> C: 10 most popular hashes + metadata
+C -> C: Choose hashes to request based on client filters
+C -> N: Give me HASH 1ae5b18...
+C -> N: Give me HASH 8bac321...
+N -> C: CONTENT msg 1ae5b18: Ryan X Charles says... + symmetric keys
+N -> C: CONTENT msg 8bac321: Paul says... + symmetric keys
+C -> U: Display of listing titles and metadata
+newpage Browsing content
+U -> C: Click on listing title to view CONTENT msg 1ae5b18
+C -> C: Decrypt CONTENT msg 1ae5b18
+C -> U: Display of CONTENT msg 1ae5b18
+note right of N: "Client requests comments in background"
+C -> N: Give me CONTENT for PARENT msg 1ae5b18
+N -> C: 100 comment hashes + metadata + keys
+N -> C: CONTENT msg 3b5ce23527: go1dfish says...
+N -> C: CONTENT msg e3034aadcb: willy says...
+C -> C: Choose comments to decrypt based on client filters
+loop
+	C -> C: Decrypt comments
+end
+C -> U: Display of comments beneath CONTENT msg 1ae5b18
+@enduml

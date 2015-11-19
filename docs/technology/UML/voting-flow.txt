@@ -1,0 +1,50 @@
+@startuml
+title Datt voting flow
+actor User as U
+box "Client C" #LightGrey
+	participant "Client UI" as CUI
+	participant "SPV Node" as CS
+end box
+box "Peer N" #LightGrey
+	participant N as "P2P Node"
+	participant FN as "Full Node"
+end box
+participant "Bitcoin Network" as B
+box "Client D" #LightGrey
+	participant DS as "SPV Node"
+	participant DUI as "Client UI"
+end box
+actor Contributor as OP
+
+U -> CUI: Clicks to up vote \nCONTENT msg 1ae5b18
+CUI -> CS: BitcoinAddress for \nCONTENT msg 1ae5b18
+CS -> CS: Get unspent outputs
+note right of N: More detailed Payment Channel flow in ""tobewritten.txt""
+group Payment Channel creation/funding (if required)
+	CS -> FN: Initiate new payment channel[0]
+	FN -> DS: Initiate new payment channel[1]
+	FN -> CS: Confirm payment channel creation
+	CS -> B: TX commit funds to payment channel[0] \nwith value 5*vote amount
+	FN -> B: TX commit funds to payment channel[1] \nwith value 50*vote amount
+end
+CS -> CUI: Updated Balance
+CUI -> U: Display confirmation of vote
+group Payment Channel incremental transaction
+	DS -> FN: Return transaction \nincremented by vote amount
+	FN -> CS: Return transaction \nincremented by vote amount
+	CS -> FN: Signed transaction
+	FN -> DS: Signed transaction
+end
+DUI -> OP: Display notification of vote
+...
+group Payment Channel closing (after time/value threshold)
+	FN -> B: Closing channel and committing to blockchain
+	FN -> DS: Signal channel closed
+	DS -> B: Closing channel and committing to blockchain
+end
+B -> CS: TX Outputs
+CS -> CUI: Updated Balance
+B -> DS: TX Outputs
+DS -> DUI: Updated Balance
+
+@enduml
