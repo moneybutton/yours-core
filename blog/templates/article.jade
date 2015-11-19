@@ -1,0 +1,31 @@
+
+extends layout
+
+block append vars
+  - bodyclass = 'article-detail'
+
+block prepend title
+  | #{ page.title + ' - '}
+
+block header
+  include author
+  a(href='/')
+    img(src='/img/datt_logo.svg')
+  h1= page.title
+  p.author
+    mixin author(page.metadata.author)
+    br
+    span= moment.utc(page.metadata.date).format('MMMM DD, YYYY')
+
+block content
+  article.article
+    section.content!= typogr(page.html).typogrify()
+
+block prepend footer
+  hr
+  div.opensourceblog
+    | Want to write a blog post on the Datt Blog? 
+    a(href='https://github.com/dattnetwork/dattblog') Issue a PR to our open-source blog repo.
+  hr
+  div.nav
+    a(href=contents.index.url) « Datt Blog

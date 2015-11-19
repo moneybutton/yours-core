@@ -1,0 +1,8 @@
+
+mixin author(authorName)
+  - var author = contents.authors[authorName + '.json'];
+  span.author
+    if author
+      a(href='https://twitter.com/' + author.metadata.twitter)= author.metadata.name
+    else
+      = authorName
