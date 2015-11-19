@@ -1,0 +1,16 @@
+{
+  "name": "datt.co",
+  "version": "0.1.0",
+  "description": "datt.co",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ryan X. Charles",
+  "license": "MIT"
+}
