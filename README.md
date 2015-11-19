@@ -52,9 +52,13 @@ http://localhost:3040/
 ```
 
 The file layout is as follows:
-- core/ - dattcore - the "core" logic used in servers and clients
-- react/ - dattreact - the React front-end
-- util/ - general utilities used in both dattcore and dattreact
-- test/core/ - tests for dattcore
-- test/react/ - tests for dattreact
-- build/ - built files and static files for the browser
+- blog/ - The blog content and source.
+- build/ - Static files and build files for the browser.
+- core/ - dattcore - The "core" logic used in servers and clients.
+- docs/ - Documentation on business, product, community, technology.
+- ember/ - The Ember UI, currently unmaintained.
+- landing/ - The landing page content and source.
+- media/ - Logos, mockups, and template HTML.
+- react/ - dattreact - The React front-end.
+- test/core/ - Tests for dattcore
+- test/react/ - Tests for dattreact
