@@ -52,6 +52,7 @@ http://localhost:3040/
 ```
 
 The file layout is as follows:
+- bin/ - Executable files, particularly for running the app servers.
 - blog/ - The blog content and source.
 - build/ - Static files and build files for the browser.
 - core/ - dattcore - The "core" logic used in servers and clients.
