@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Phuc Dat Bich: Man posts passport to Facebook to prove his name is real](http://timesofindia.indiatimes.com/world/mad-mad-world/Phuc-Dat-Bich-Man-posts-passport-to-Facebook-to-prove-his-name-is-real/articleshow/49860844.cms)
 - [Companies Target Journalists With Ads on Facebook](http://www.wsj.com/articles/companies-target-journalists-with-ads-on-facebook-1447664403)
 - [Facebook and the Media Have an Increasingly Landlord-Tenant Style Relationship](http://fortune.com/2015/11/09/facebook-media/)
 - [Chris Dixon: Lessons from the PC gaming industry](https://medium.com/@cdixon/lessons-from-the-pc-video-game-industry-3350bb7713de)
@@ -104,7 +105,7 @@ Related projects
 - [Blockstack](https://github.com/blockstack) - naming, identity, storage
 - [nntpchan](https://github.com/majestrate/nntpchan) - a decentralized image board with opt-in moderation
 - [aether](http://getaether.net/)
-- [empeopled](https://empeopled.com)
+- [Empeopled](https://empeopled.com) - Bitcoin payments for good content - [See their FAQ](https://empeopled.com/faq)
 - [colony](http://colony.io)
 - [backfeed](backfeed.cc)
 - [Lazooz](http://lazooz.org/)
