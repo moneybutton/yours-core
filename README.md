@@ -1,20 +1,15 @@
 Datt
 ====
-Datt is:
-- A community with aligned incentives.
-- A way to pay and be paid for content.
-- A tool for managing content and payments.
-- A solution to the incentives problem of social media.
-
-Datt is currently undergoing heavy development. [Our issues are tracked on
-GitHub](https://github.com/dattnetwork/datt/issues). You can also find a
-significant amount of draft documentation on
-[dattdocs](https://github.com/dattnetwork/dattdocs).
+Datt is a decentralized community platform with integrated payments, a way to
+pay for and be paid for content, a solution to the incentives problem of social
+media, and an app that runs in node.js and web browsers. Datt is currently
+undergoing heavy development and has not yet reached alpha. [Our issues are
+tracked on GitHub](https://github.com/dattnetwork/datt/issues).
 
 ---------------------
 
-To develop on Datt, first clone this repo, then ensure you are running node 4,
-then run:
+To develop on Datt, first clone this repo, then ensure you are running node
+4.2, then run:
 ```
 npm install
 ```
