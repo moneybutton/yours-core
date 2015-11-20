@@ -54,13 +54,14 @@ Or access the app itself at:
 http://localhost:3040/
 ```
 
-The app makes use of IndexedDB in a browser. Each "domain" has its own
-IndexedDB. This means if you run the app on a different port, you get a
-different database and p2p connections. This makes it easy to test the p2p
-properties of Datt if you simply deliver the same app from different ports. To
-facilitate this, the ports 3040 - 3044 are all assigned to simply deliver the
-app. So feel free to open up these other ports to see the same app but with a
-different user, content, and p2p connections:
+The app makes use of IndexedDB and Web RTC in a browser. Each "domain" has its
+own IndexedDB and p2p connections. This means if you run the app on a different
+port, it's as though you're running the app as a different person from a
+different computer. This makes it easy to test the p2p properties of Datt if
+you simply deliver the same app from different ports. To facilitate this, the
+ports 3040 - 3044 are all assigned to simply deliver the app. So feel free to
+open up these other ports to see the same app but with a different user,
+content, and p2p connections:
 ```
 http://localhost:3040/
 http://localhost:3041/
