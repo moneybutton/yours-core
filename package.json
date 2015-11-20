@@ -89,8 +89,24 @@
       "email": "willy@entropi.info"
     },
     {
-      "name": "halseth",
+      "name": "Johan Halseth",
       "email": "johanth@gmail.com"
+    },
+    {
+      "name": "Omar Mashaal",
+      "email": "omar@teacups.io"
+    },
+    {
+      "name": "Chris Marie Hamilton",
+      "email": "cmhamilton2.718@gmail.com"
+    },
+    {
+      "name": "Kyle Torpey",
+      "email": "kyletorpey@users.noreply.github.com"
+    },
+    {
+      "name": "Ramki",
+      "email": "aramkris@gmail.com"
     }
   ],
   "author": "Ryan X. Charles <ryanxcharles@gmail.com>",
