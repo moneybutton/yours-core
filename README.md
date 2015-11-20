@@ -1,31 +1,39 @@
 Datt
 ====
-Datt is a decentralized community platform with integrated payments, a way to
-pay for and be paid for content, a solution to the incentives problem of social
-media, and an app that runs in node.js and web browsers. Datt is currently
-undergoing heavy development and has not yet reached alpha. [Our issues are
-tracked on GitHub](https://github.com/dattnetwork/datt/issues).
+Datt is a node.js and web browser app for decentralized content sharing with
+integrated payments. It is currently undergoing heavy development and has not
+yet reached alpha. [Our issues are tracked on
+GitHub](https://github.com/dattnetwork/datt/issues). Check out the
+[blog](http://blog.datt.co) or [twitter](https://twitter.com/dattnetwork) to
+stay up-to-date on progress.
 
----------------------
-
-To develop on Datt, first clone this repo, then ensure you are running node
-4.2, then run:
+How To Test And Develop Datt
+----------------------------
+Datt can be built and run on Linux. It is not tested on Mac or Windows, but
+should work with minimal or no changes on those platforms. To help program the
+Datt application, first be sure you are running node 4.2:
 ```
+> node --version
+v4.2.1
+```
+Then clone this repo:
+```
+git clone https://github.com/dattnetwork/datt.git
+```
+Then install the dependencies:
+```
+cd datt
 npm install
 ```
-From inside the repo.
-
 To run all of Datt tests:
 ```
 npm test
 ```
-
-To run only the node tests:
+You may wish to run the node tests while you edit files:
 ```
 npm run watch-test-node
 ```
-
-Then save a file and the tests will run.
+...then save a file and the tests will run.
 
 To run only the browser tests:
 ```
@@ -46,15 +54,34 @@ Or access the app itself at:
 http://localhost:3040/
 ```
 
-The file layout is as follows:
+The app makes use of IndexedDB in a browser. Each "domain" has its own
+IndexedDB. This means if you run the app on a different port, you get a
+different database and p2p connections. This makes it easy to test the p2p
+properties of Datt if you simply deliver the same app from different ports. To
+facilitate this, the ports 3040 - 3044 are all assigned to simply deliver the
+app. So feel free to open up these other ports to see the same app but with a
+different user, content, and p2p connections:
+```
+http://localhost:3040/
+http://localhost:3041/
+http://localhost:3042/
+http://localhost:3043/
+http://localhost:3044/
+```
+
+Folder Layout
+-------------
+This repo contains both the main datt application as well as the landing page,
+blog, documentation, mockups and other media, and a second unfinished UI. The
+folders are as follows:
 - bin/ - Executable files, particularly for running the app servers.
 - blog/ - The blog content and source.
 - build/ - Static files and build files for the browser.
-- core/ - dattcore - The "core" logic used in servers and clients.
+- core/ - The core logic of p2p, database and API used in servers and clients.
 - docs/ - Documentation on business, product, community, technology.
 - ember/ - The Ember UI, currently unmaintained.
 - landing/ - The landing page content and source.
 - media/ - Logos, mockups, and template HTML.
 - react/ - dattreact - The React front-end.
-- test/core/ - Tests for dattcore
-- test/react/ - Tests for dattreact
+- test/core/ - Tests for dattcore.
+- test/react/ - Tests for dattreact.
