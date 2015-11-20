@@ -85,7 +85,8 @@ DattCore.prototype.asyncInitialize = function () {
 
     yield this.db.asyncInitialize()
     yield this.coreuser.asyncInitialize()
-    this.corebitcoin.fromUser(this.coreuser.user)
+    // this.corebitcoin.fromUser(this.coreuser.user)
+    yield this.corebitcoin.asyncInitialize(this.coreuser.user)
 
     // Note: We do not want to wait for the network connections to be
     // established before considering the app to be "initialized", thus we do

@@ -11,20 +11,41 @@
  */
 'use strict'
 let BIP44Wallet = require('./bip44-wallet')
+let User = require('./user')
 let BR = require('fullnode/lib/br')
+let DBBIP44Wallet = require('./db-bip44-wallet')
 let Struct = require('fullnode/lib/struct')
 let asink = require('asink')
 
 // TODO: Also create and require db-bip44-wallet
-function CoreBitcoin (db, bip44wallet) {
+function CoreBitcoin (db, dbbip44wallet, bip44wallet) {
   if (!(this instanceof CoreBitcoin)) {
-    return new CoreBitcoin(db, bip44wallet)
+    return new CoreBitcoin(db, dbbip44wallet, bip44wallet)
   }
-  this.fromObject({db, bip44wallet})
+  this.fromObject({db, dbbip44wallet, bip44wallet})
 }
 
 CoreBitcoin.prototype = Object.create(Struct.prototype)
 CoreBitcoin.prototype.constructor = CoreBitcoin
+
+CoreBitcoin.prototype.asyncInitialize = function (user) {
+  return asink(function *() {
+    try {
+      this.bip44wallet = yield DBBIP44Wallet(this.db).asyncGet()
+    } catch (err) {
+      if (err.message === 'missing') {
+        if (!user) {
+          user = yield User().asyncFromRandom()
+        }
+        this.fromUser(user)
+      } else {
+        throw new Error('error initializing core-bitcoin: ' + err)
+      }
+    }
+    this.dbbip44wallet = DBBIP44Wallet(this.db, this.bip44wallet)
+    return this
+  }.bind(this))
+}
 
 CoreBitcoin.prototype.asyncFromRandom = function () {
   return asink(function *() {
@@ -51,7 +72,9 @@ CoreBitcoin.prototype.asyncGetLatestBlockInfo = function () {
 CoreBitcoin.prototype.asyncGetNewAddress = function () {
   return asink(function *() {
     let address = yield this.bip44wallet.asyncGetNewAddress(0)
-    // TODO: Save wallet to db at this point
+    // TODO: Shouldn't save entire database here - should just save new address
+    // and keys
+    yield this.dbbip44wallet.asyncSave(this.bip44wallet)
     return address
   }.bind(this))
 }
@@ -59,7 +82,9 @@ CoreBitcoin.prototype.asyncGetNewAddress = function () {
 CoreBitcoin.prototype.asyncGetNewChangeAddress = function () {
   return asink(function *() {
     let address = yield this.bip44wallet.asyncGetNewChangeAddress(0)
-    // TODO: Save wallet to db at this point
+    // TODO: Shouldn't save entire database here - should just save new address
+    // and keys
+    yield this.dbbip44wallet.asyncSave(this.bip44wallet)
     return address
   }.bind(this))
 }

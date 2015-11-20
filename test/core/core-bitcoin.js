@@ -1,12 +1,27 @@
-/* global describe,it */
+/* global describe,it,before,after */
 'use strict'
-let CoreBitcoin = require('../../core/core-bitcoin')
 let Address = require('fullnode/lib/address')
+let CoreBitcoin = require('../../core/core-bitcoin')
+let DB = require('../../core/db')
 let User = require('../../core/user')
 let asink = require('asink')
 let should = require('should')
 
 describe('CoreBitcoin', function () {
+  let db = DB('datt-testdatabase')
+  let corebitcoin = CoreBitcoin(db)
+
+  before(function () {
+    return asink(function *() {
+      yield db.asyncInitialize()
+      yield corebitcoin.asyncInitialize()
+    })
+  })
+
+  after(function () {
+    return db.asyncDestroy()
+  })
+
   it('should exist', function () {
     should.exist(CoreBitcoin)
     should.exist(CoreBitcoin())
@@ -28,7 +43,6 @@ describe('CoreBitcoin', function () {
   describe('#asyncGetNewAddress', function () {
     it('should get a new address', function () {
       return asink(function *() {
-        let corebitcoin = yield CoreBitcoin().asyncFromRandom()
         let address = yield corebitcoin.asyncGetNewAddress()
         ;(address instanceof Address).should.equal(true)
       })
@@ -38,7 +52,6 @@ describe('CoreBitcoin', function () {
   describe('#asyncGetNewChangeAddress', function () {
     it('should get a new address', function () {
       return asink(function *() {
-        let corebitcoin = yield CoreBitcoin().asyncFromRandom()
         let address = yield corebitcoin.asyncGetNewChangeAddress()
         ;(address instanceof Address).should.equal(true)
       })
@@ -48,7 +61,6 @@ describe('CoreBitcoin', function () {
   describe('#asyncGetLatestBlockInfo', function () {
     it('should return block info', function () {
       return asink(function *() {
-        let corebitcoin = CoreBitcoin()
         let info = yield corebitcoin.asyncGetLatestBlockInfo()
         should.exist(info.idbuf)
         should.exist(info.idhex)
