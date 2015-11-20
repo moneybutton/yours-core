@@ -1,7 +1,7 @@
 .gitignore
 blog
 coverage
-docs
+docs/archive
 ember
 landing
 media
