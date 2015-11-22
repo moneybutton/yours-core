@@ -1,4 +1,4 @@
-/* global DattCore */
+/* global DattCore,window */
 /**
  * This front-end entry point only serves to render the layout component.
  */
@@ -11,6 +11,7 @@ let os = require('os')
 let config = {
   dbName: 'datt-development',
   dbBasePath: os.tmpdir(),
+  blockchainAPIURI: process.browser ? window.location.origin + '/blockchain-api/' : 'http://localhost:3030/blockchain-api/',
   rendezvous: {
     host: 'localhost',
     port: 3032,

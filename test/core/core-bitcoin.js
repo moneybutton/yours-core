@@ -9,7 +9,7 @@ let should = require('should')
 
 describe('CoreBitcoin', function () {
   let db = DB('datt-testdatabase')
-  let corebitcoin = CoreBitcoin(db)
+  let corebitcoin = CoreBitcoin(undefined, db)
 
   before(function () {
     return asink(function *() {

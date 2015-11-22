@@ -18,7 +18,7 @@ describe('DattCore', function () {
   })
 
   before(function () {
-    dattcore = DattCore.create({dbname: 'datt-testdatabase'})
+    dattcore = DattCore.create()
   })
 
   after(function () {

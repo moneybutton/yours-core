@@ -21,6 +21,10 @@ module.exports = function (config) {
 
     browsers: ['Firefox'],
 
-    singleRun: true
+    singleRun: true,
+
+    proxies: {
+      '/blockchain-api': 'http://localhost:3030/blockchain-api'
+    }
   })
 }

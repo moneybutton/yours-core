@@ -13,20 +13,28 @@
 let BIP44Wallet = require('./bip44-wallet')
 let User = require('./user')
 let BR = require('fullnode/lib/br')
+let request = require('request')
 let DBBIP44Wallet = require('./db-bip44-wallet')
 let Struct = require('fullnode/lib/struct')
+let Constants = require('./constants')
 let asink = require('asink')
 
 // TODO: Also create and require db-bip44-wallet
-function CoreBitcoin (db, dbbip44wallet, bip44wallet) {
+function CoreBitcoin (blockchainAPIURI, db, dbbip44wallet, bip44wallet) {
   if (!(this instanceof CoreBitcoin)) {
-    return new CoreBitcoin(db, dbbip44wallet, bip44wallet)
+    return new CoreBitcoin(blockchainAPIURI, db, dbbip44wallet, bip44wallet)
   }
-  this.fromObject({db, dbbip44wallet, bip44wallet})
+  this.initialize()
+  this.fromObject({blockchainAPIURI, db, dbbip44wallet, bip44wallet})
 }
 
 CoreBitcoin.prototype = Object.create(Struct.prototype)
 CoreBitcoin.prototype.constructor = CoreBitcoin
+
+CoreBitcoin.prototype.initialize = function () {
+  this.blockchainAPIURI = Constants.blockchainAPIURI
+  return this
+}
 
 CoreBitcoin.prototype.asyncInitialize = function (user) {
   return asink(function *() {
@@ -61,12 +69,32 @@ CoreBitcoin.prototype.fromUser = function (user) {
 }
 
 CoreBitcoin.prototype.asyncGetLatestBlockInfo = function () {
-  let idhex = '000000000000000010bf939fcce01f8f896d107febe519de2ebc75a4a29fef11'
-  let idbuf = new Buffer(idhex, 'hex')
-  let hashbuf = BR(idbuf).readReverse()
-  let hashhex = hashbuf.toString('hex')
-  let height = 376894
-  return Promise.resolve({idbuf, idhex, hashbuf, hashhex, height})
+  return asink(function *() { //eslint-disable-line
+    let info = yield new Promise((resolve, reject) => {
+      request(this.blockchainAPIURI + 'status?q=getInfo', function (error, response, body) {
+        if (error || response.statusCode !== 200) {
+          return reject(new Error('getting latest block info: ' + error))
+        }
+        resolve(body)
+      })
+    })
+    info = JSON.parse(info)
+    let height = info.info.blocks
+    let blockinfo = yield new Promise((resolve, reject) => {
+      request(this.blockchainAPIURI + 'block-index/' + height, function (error, response, body) {
+        if (error || response.statusCode !== 200) {
+          return reject(new Error('getting latest block info: ' + error))
+        }
+        resolve(body)
+      })
+    })
+    blockinfo = JSON.parse(blockinfo)
+    let idhex = blockinfo.blockHash
+    let idbuf = new Buffer(idhex, 'hex')
+    let hashbuf = BR(idbuf).readReverse()
+    let hashhex = hashbuf.toString('hex')
+    return {idbuf, idhex, hashbuf, hashhex, height}
+  }.bind(this))
 }
 
 CoreBitcoin.prototype.asyncGetNewAddress = function () {

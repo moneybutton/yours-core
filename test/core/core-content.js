@@ -38,7 +38,7 @@ describe('CoreContent', function () {
         let privkey = user.masterxprv.privkey
         let pubkey = user.masterxprv.pubkey
         let address = Address().fromPubkey(pubkey)
-        let info = yield CoreBitcoin(db).asyncGetLatestBlockInfo()
+        let info = yield CoreBitcoin(undefined, db).asyncGetLatestBlockInfo()
         let blockhashbuf = info.hashbuf
         let blockheightnum = info.height
         contentauth = yield corecontent.asyncNewContentAuth(pubkey, privkey, address, user.name, 'general', 'title', 'body', blockhashbuf, blockheightnum)
@@ -64,7 +64,7 @@ describe('CoreContent', function () {
         let privkey = user.masterxprv.privkey
         let pubkey = user.masterxprv.pubkey
         let address = Address().fromPubkey(pubkey)
-        let info = yield CoreBitcoin(db).asyncGetLatestBlockInfo()
+        let info = yield CoreBitcoin(undefined, db).asyncGetLatestBlockInfo()
         let blockhashbuf = info.hashbuf
         let blockheightnum = info.height
         let hashbuf = yield corecontent.asyncPostNewContentAuth(pubkey, privkey, address, user.name, 'general', 'title', 'body', blockhashbuf, blockheightnum)
@@ -81,7 +81,7 @@ describe('CoreContent', function () {
         let privkey = user.masterxprv.privkey
         let pubkey = user.masterxprv.pubkey
         let address = Address().fromPubkey(pubkey)
-        let info = yield CoreBitcoin(db).asyncGetLatestBlockInfo()
+        let info = yield CoreBitcoin(undefined, db).asyncGetLatestBlockInfo()
         let blockhashbuf = info.hashbuf
         let blockheightnum = info.height
         let hashbuf = yield corecontent.asyncPostNewContentAuth(pubkey, privkey, address, user.name, 'general', 'title', 'body', blockhashbuf, blockheightnum)

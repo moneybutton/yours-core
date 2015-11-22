@@ -74,7 +74,7 @@ DattCore.prototype.asyncInitialize = function () {
       this.db = DB(name, basePath)
     }
 
-    this.corebitcoin = CoreBitcoin(this.db)
+    this.corebitcoin = CoreBitcoin(this.config.blockchainAPIURI, this.db)
     this.corecontent = CoreContent(this.db)
     this.coreuser = CoreUser(this.db)
     this.corepeers = CorePeers({rendezvous: this.config.rendezvous}, this.db)
