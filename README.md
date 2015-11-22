@@ -78,11 +78,12 @@ folders are as follows:
 - bin/ - Executable files, particularly for running the app servers.
 - blog/ - The blog content and source.
 - build/ - Static files and build files for the browser.
-- core/ - The core logic of p2p, database and API used in servers and clients.
+- core/ - dattcore - The core logic of p2p, database and API.
 - docs/ - Documentation on business, product, community, technology.
 - ember/ - The Ember UI, currently unmaintained.
 - landing/ - The landing page content and source.
 - media/ - Logos, mockups, and template HTML.
 - react/ - dattreact - The React front-end.
+- serever/ - The Datt servers: app server and rendezvous server.
 - test/core/ - Tests for dattcore.
 - test/react/ - Tests for dattreact.

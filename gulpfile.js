@@ -15,7 +15,8 @@ let browserSyncCreator = require('browser-sync')
 let watchify = require('watchify')
 let gutil = require('gulp-util')
 let q = require('q')
-let testapp = require('./bin/testapp')
+let createRendezvousServer = require('./server/rendezvous').createRendezvousServer
+let createAppServer = require('./server/app').createAppServer
 
 let browserSyncs = []
 browserSyncs['3040'] = browserSyncCreator.create()
@@ -325,8 +326,8 @@ gulp.task('build-karma-url', () => {
 gulp.task('build-karma', ['build-karma-url', 'build'])
 
 gulp.task('test-karma', ['build-karma'], () => {
-  let rendezvousServer = testapp.createRendezvousServer(3031)
-  let appServer = testapp.createAppServer(3030)
+  let rendezvousServer = createRendezvousServer(3031)
+  let appServer = createAppServer(3030)
   return gulp.src([])
     .pipe(karma({
       configFile: '.karma.conf.js',
@@ -355,11 +356,11 @@ gulp.task('build-browsersync', ['build'], () => {
 gulp.task('serve', ['build'], () => {
   // Create two rendezvous servers, one for the tests and one for the UI, so
   // that network connections do not overlap
-  testapp.createRendezvousServer(3031) // For the tests (i.e., localhost:3040/tests.html)
-  testapp.createRendezvousServer(3032) // For the UI (i.e., localhost:3040)
+  createRendezvousServer(3031) // For the tests (i.e., localhost:3040/tests.html)
+  createRendezvousServer(3032) // For the UI (i.e., localhost:3040)
 
   // One app server, that delivers the app and the tests file
-  testapp.createAppServer(3030)
+  createAppServer(3030)
 
   let config = {
     ui: false,
