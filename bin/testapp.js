@@ -3,9 +3,10 @@
  * Basic server for loading the app or running the mocha browser tests.
  */
 'use strict'
+let ExpressPeerServer = require('peer').ExpressPeerServer
 let express = require('express')
 let path = require('path')
-let ExpressPeerServer = require('peer').ExpressPeerServer
+let requestProxy = require('express-request-proxy')
 
 function createRendezvousServer (port) {
   let app = express()
@@ -20,6 +21,12 @@ function createRendezvousServer (port) {
 
 function createAppServer (port) {
   let app = express()
+  app.get('/blockchain-api/:anything', requestProxy({
+    url: 'https://insight.bitpay.com/api/:anything' // TODO: support testnet; use environment variable
+  }))
+  app.post('/blockchain-api/:anything', requestProxy({
+    url: 'https://insight.bitpay.com/api/:anything' // TODO: support testnet; use environment variable
+  }))
   app.use(express.static(path.join(__dirname, '../build')))
   let server = app.listen(port, function () {
     let host = server.address().address
