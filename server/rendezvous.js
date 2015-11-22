@@ -13,7 +13,6 @@
 'use strict'
 let ExpressPeerServer = require('peer').ExpressPeerServer
 let express = require('express')
-let path = require('path')
 
 module.exports.createRendezvousServer = function createRendezvousServer (port) {
   let app = express()

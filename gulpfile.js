@@ -308,7 +308,7 @@ gulp.task('watch-test-node', () => {
   // runs the mocha node tests and runs js standard on all the files
   watch(jsfiles, function () {
     q.delay(watchifytimeout).then(() => {
-      exec('node_modules/.bin/standard *.js ./react/**/*.js ./react/**/*.jsx ./core/**/*.js ./test/**/*.js', {cwd: __dirname}, (err, stdout, stderr) => {
+      exec('node_modules/.bin/standard *.js ./server/**/*.js ./react/**/*.js ./react/**/*.jsx ./core/**/*.js ./test/**/*.js', {cwd: __dirname}, (err, stdout, stderr) => {
         if (err) {
           console.log(stdout)
         }
