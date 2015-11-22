@@ -92,7 +92,6 @@ describe('NetworkBrowserWebRTC', function () {
         yield network.asyncInitialize()
         let peers = yield network.asyncGetAllWebRTCPeerIDs()
         peers.length.should.greaterThan(0)
-        console.log(peers)
       })
     })
   })
