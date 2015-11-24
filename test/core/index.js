@@ -7,6 +7,7 @@ let MsgPing = require('../../core/msg-ping')
 let asink = require('asink')
 let should = require('should')
 let sinon = require('sinon')
+let mocks = require('./mocks')
 
 describe('DattCore', function () {
   let dattcore
@@ -19,6 +20,12 @@ describe('DattCore', function () {
 
   before(function () {
     dattcore = DattCore.create()
+
+    // Some methods like asyncSetUserName and asyncNewContentAuth use the
+    // method asyncGetLatestBlockInfo, howevever that method makes a call over
+    // the internet by default. It is better to mock up that method and not
+    // make that call to speed up the tests.
+    dattcore.asyncGetLatestBlockInfo = mocks.asyncGetLatestBlockInfo
   })
 
   after(function () {
