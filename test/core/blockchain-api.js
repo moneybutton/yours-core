@@ -11,7 +11,8 @@ describe('BlockchainAPI', function () {
   })
 
   describe('#asyncGetLatestBlockInfo', function () {
-    it('should make a real request and get the latest block info', function () {
+    it('should make a real request and get the latest block info (if this test times out, it could be that the public Insight server is down)', function () {
+      this.timeout(5000)
       return asink(function *() {
         let info = yield BlockchainAPI().asyncGetLatestBlockInfo()
         should.exist(info.idbuf)

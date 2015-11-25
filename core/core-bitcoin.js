@@ -22,17 +22,14 @@ function CoreBitcoin (blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockcha
   if (!(this instanceof CoreBitcoin)) {
     return new CoreBitcoin(blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockchainAPI)
   }
-  this.initialize()
   this.fromObject({blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockchainAPI})
-  this.blockchainAPI = BlockchainAPI(this.blockchainAPIURI)
+  if (!blockchainAPI) {
+    this.blockchainAPI = BlockchainAPI(this.blockchainAPIURI)
+  }
 }
 
 CoreBitcoin.prototype = Object.create(Struct.prototype)
 CoreBitcoin.prototype.constructor = CoreBitcoin
-
-CoreBitcoin.prototype.initialize = function () {
-  return this
-}
 
 CoreBitcoin.prototype.asyncInitialize = function (user) {
   return asink(function *() {

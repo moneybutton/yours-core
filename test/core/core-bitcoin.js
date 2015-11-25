@@ -6,6 +6,7 @@ let DB = require('../../core/db')
 let User = require('../../core/user')
 let asink = require('asink')
 let should = require('should')
+let sinon = require('sinon')
 
 describe('CoreBitcoin', function () {
   let db = DB('datt-testdatabase')
@@ -59,14 +60,12 @@ describe('CoreBitcoin', function () {
   })
 
   describe('#asyncGetLatestBlockInfo', function () {
-    it('should return block info', function () {
+    it('should call blockchainAPI.asyncGetLatestBlockInfo', function () {
       return asink(function *() {
-        let info = yield corebitcoin.asyncGetLatestBlockInfo()
-        should.exist(info.idbuf)
-        should.exist(info.idhex)
-        should.exist(info.hashbuf)
-        should.exist(info.hashhex)
-        should.exist(info.height)
+        let corebitcoin = CoreBitcoin()
+        corebitcoin.blockchainAPI.asyncGetLatestBlockInfo = sinon.spy()
+        yield corebitcoin.asyncGetLatestBlockInfo()
+        corebitcoin.blockchainAPI.asyncGetLatestBlockInfo.calledOnce.should.equal(true)
       })
     })
   })
