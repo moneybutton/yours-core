@@ -21,12 +21,13 @@ let ContentList = React.createClass({
       let contentauths = yield dattcore.asyncGetRecentContentAuth()
       let contentList = contentauths.map(contentauth => {
         let key = contentauth.cachehash.toString('hex')
+        let address = contentauth.address.toHex()
         let content = contentauth.getContent()
         let title = content.title
         let label = content.label
         let name = content.name
         let body = content.body
-        return {key, title, name, label, body}
+        return {key, address, title, name, label, body}
       })
       this.setState({contentList})
     }.bind(this))
@@ -66,7 +67,7 @@ let ContentList = React.createClass({
           <h2>
             <a href='#'>{obj.title}</a>
           </h2>
-          <div className='author-name'>{obj.name}</div>
+          <div className='author-name'>{obj.name} | {obj.address}</div>
         </li>
       )
     })
