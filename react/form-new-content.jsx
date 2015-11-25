@@ -68,7 +68,7 @@ let FormNewContent = React.createClass({
           </div>
           <div className='form-group'>
             <label htmlFor='inputBody'>Body</label>
-            <textarea className='form-control' rows='10' id='inputBody' onChange={this.handleBodyChange} value={this.state.inputBody}></textarea>
+            <textarea className='form-control' rows='5' id='inputBody' onChange={this.handleBodyChange} value={this.state.inputBody}></textarea>
           </div>
           <button type='submit' className='btn btn-default' onClick={this.handleSubmit}>Submit</button>
         </form>
