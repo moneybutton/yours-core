@@ -42,7 +42,7 @@ function DattCore (config, db, corebitcoin, corecontent, corepeers, coreuser) {
 }
 
 DattCore.prototype = Object.create(Struct.prototype)
-DattCore.prototype.constructor = Struct.prototype.constructor
+DattCore.prototype.constructor = DattCore
 Object.assign(DattCore.prototype, EventEmitter.prototype)
 
 DattCore.CryptoWorkers = CryptoWorkers
