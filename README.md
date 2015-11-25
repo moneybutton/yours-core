@@ -91,7 +91,7 @@ folders are as follows:
 Environment Variables
 ---------------------
 - `DATT_JS_BASE_URL` - Default "/". The public-facing URL where the javascript
-  files are hosted, usually either "/" or "/js/"
+  files are hosted, usually either "/" or "/js/".
 - `DATT_CORE_JS_BUNDLE_FILE` - Default "datt-core.js". The dattcore bundle
   file.
 - `DATT_CORE_JS_WORKER_FILE` - Default "datt-core-worker.js". The dattcore

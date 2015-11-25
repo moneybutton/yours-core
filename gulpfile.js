@@ -1,22 +1,23 @@
 'use strict'
-let gulp = require('gulp')
-let exec = require('child_process').exec
-let mocha = require('gulp-mocha')
-let glob = require('glob')
-let path = require('path')
-let fs = require('fs')
-let browserify = require('browserify')
-let envify = require('envify')
 let babelify = require('babelify')
-let watch = require('gulp-watch')
-let karma = require('gulp-karma')
-let plumber = require('gulp-plumber')
 let browserSyncCreator = require('browser-sync')
-let watchify = require('watchify')
-let gutil = require('gulp-util')
-let q = require('q')
-let createRendezvousServer = require('./server/rendezvous').createRendezvousServer
+let browserify = require('browserify')
+let config = require('./config')
 let createAppServer = require('./server/app').createAppServer
+let createRendezvousServer = require('./server/rendezvous').createRendezvousServer
+let envify = require('envify')
+let exec = require('child_process').exec
+let fs = require('fs')
+let glob = require('glob')
+let gulp = require('gulp')
+let gutil = require('gulp-util')
+let karma = require('gulp-karma')
+let mocha = require('gulp-mocha')
+let path = require('path')
+let plumber = require('gulp-plumber')
+let q = require('q')
+let watch = require('gulp-watch')
+let watchify = require('watchify')
 
 let browserSyncs = []
 browserSyncs['3040'] = browserSyncCreator.create()
@@ -39,40 +40,10 @@ let browserifyOpts
 // Linux - presumably this is a platform issue.
 let watchifytimeout = 1000
 
-// By default, we assume browser-loaded javascript is served from the root
-// directory, "/", of the http server. karma, however, assumes files are in the
-// "/base/" directory, thus we invented this letiable to allow overriding the
-// directory. If you wish to put your javascript somewhere other than root,
-// specify it by setting this environment letiable before building. Some people
-// will also need it if they need to put their js in some specific location.
-if (!process.env.DATT_JS_BASE_URL) {
-  process.env.DATT_JS_BASE_URL = '/'
-}
-
-if (!process.env.DATT_CORE_JS_BUNDLE_FILE) {
-  process.env.DATT_CORE_JS_BUNDLE_FILE = 'datt-core.js'
-}
-
-if (!process.env.DATT_CORE_JS_WORKER_FILE) {
-  process.env.DATT_CORE_JS_WORKER_FILE = 'datt-core-worker.js'
-}
-
-if (!process.env.DATT_CORE_JS_WORKERPOOL_FILE) {
-  process.env.DATT_CORE_JS_WORKERPOOL_FILE = 'datt-core-workerpool.js'
-}
-
-if (!process.env.DATT_JS_TESTS_FILE) {
-  process.env.DATT_JS_TESTS_FILE = 'datt-tests.js'
-}
-
-if (!process.env.DATT_REACT_JS_FILE) {
-  process.env.DATT_REACT_JS_FILE = 'datt-react.js'
-}
-
 function build_workerpool () {
   return new Promise((resolve, reject) => {
     fs.createReadStream(path.join(__dirname, 'node_modules', 'workerpool', 'dist', 'workerpool.js'))
-      .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKERPOOL_FILE)))
+      .pipe(fs.createWriteStream(path.join(__dirname, 'build', config.DATT_CORE_JS_WORKERPOOL_FILE)))
       .on('close', resolve)
   })
 }
@@ -109,7 +80,7 @@ function build_worker () {
           set_build_worker_browserify()
           reject(err)
         })
-        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_WORKER_FILE)))
+        .pipe(fs.createWriteStream(path.join(__dirname, 'build', config.DATT_CORE_JS_WORKER_FILE)))
         .once('finish', resolve)
         .once('error', reject)
     })
@@ -149,7 +120,7 @@ function build_core () {
           set_build_core_browserify()
           reject(err)
         })
-        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_BUNDLE_FILE)))
+        .pipe(fs.createWriteStream(path.join(__dirname, 'build', config.DATT_CORE_JS_BUNDLE_FILE)))
         .once('finish', resolve)
         .once('error', reject)
     })
@@ -192,7 +163,7 @@ function build_react () {
           set_build_react_browserify()
           reject(err)
         })
-        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
+        .pipe(fs.createWriteStream(path.join(__dirname, 'build', config.DATT_REACT_JS_FILE)))
         .once('finish', resolve)
         .once('error', reject)
     })
@@ -248,7 +219,7 @@ function build_tests () {
             reject(err + ', ' + error)
           })
         })
-        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_JS_TESTS_FILE)))
+        .pipe(fs.createWriteStream(path.join(__dirname, 'build', config.DATT_JS_TESTS_FILE)))
         .on('finish', resolve)
     })
   })
@@ -320,7 +291,7 @@ gulp.task('watch-test-node', () => {
 
 gulp.task('build-karma-url', () => {
   // karma serves static files, including js files, from /base/
-  process.env.DATT_JS_BASE_URL = '/base/'
+  config.DATT_JS_BASE_URL = '/base/'
 })
 
 gulp.task('build-karma', ['build-karma-url', 'build'])
