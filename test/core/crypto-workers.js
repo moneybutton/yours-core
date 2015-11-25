@@ -79,6 +79,18 @@ describe('CryptoWorkers', function () {
     })
   })
 
+  describe('@addressStringFromAddress', function () {
+    it('should convert an address into a base58 string', function () {
+      return asink(function *() {
+        let privkey = Privkey().fromRandom()
+        let pubkey = Pubkey().fromPrivkey(privkey)
+        let address = yield CryptoWorkers.asyncAddressFromPubkey(pubkey)
+        let addressString = yield CryptoWorkers.asyncAddressStringFromAddress(address)
+        address.toString().should.equal(addressString)
+      })
+    })
+  })
+
   describe('@xkeysFromEntropy', function () {
     it('should derive new mnemonic, xprv, xpub', function () {
       return asink(function *() {

@@ -25,6 +25,11 @@ function addressHexFromPubkeyHex (pubkeyHex) {
   return Address().fromPubkey(pubkey).toHex()
 }
 
+function addressStringFromAddressHex (addressHex) {
+  let address = Address().fromHex(addressHex)
+  return address.toString()
+}
+
 function xkeysFromEntropyHex (entropyhex) {
   let entropybuf = new Buffer(entropyhex, 'hex')
   let bip39 = BIP39().fromEntropy(entropybuf)
@@ -103,6 +108,7 @@ let f = {
   sha256,
   pubkeyHexFromPrivkeyHex,
   addressHexFromPubkeyHex,
+  addressStringFromAddressHex,
   xkeysFromEntropyHex,
   deriveXkeysFromXprvHex,
   deriveXkeysFromXpubHex,

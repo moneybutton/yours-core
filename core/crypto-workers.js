@@ -84,6 +84,18 @@ CryptoWorkers.prototype.asyncAddressFromPubkey = function (pubkey) {
 }
 
 /**
+ * Derive the base58 string representation of an address. TODO: For speed,
+ * replace transmission code with buffers rather than JSON.
+ */
+CryptoWorkers.prototype.asyncAddressStringFromAddress = function (address) {
+  return asink(function *() {
+    let addressHex = address.toHex()
+    let addressString = yield q(this.pool.exec('addressStringFromAddressHex', [addressHex]))
+    return addressString
+  }.bind(this))
+}
+
+/**
  * Derive the xprv, xpub and mnemonic from an entropy buffer. That is, given
  * some random data of 128 bits, derive the extended private key and extended
  * public key from that entropy. TODO: Instead of sending hex or JSON to/from
