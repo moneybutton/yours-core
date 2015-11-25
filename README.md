@@ -87,3 +87,17 @@ folders are as follows:
 - serever/ - The Datt servers: app server and rendezvous server.
 - test/core/ - Tests for dattcore.
 - test/react/ - Tests for dattreact.
+
+Environment Variables
+---------------------
+- `DATT_JS_BASE_URL` - Default "/". The public-facing URL where the javascript
+  files are hosted, usually either "/" or "/js/"
+- `DATT_CORE_JS_BUNDLE_FILE` - Default "datt-core.js". The dattcore bundle
+  file.
+- `DATT_CORE_JS_WORKER_FILE` - Default "datt-core-worker.js". The dattcore
+  worker file.
+- `DATT_CORE_JS_WORKERPOOL_FILE` - Default "datt-core-workerpool.js". The
+  workerpool file, which manages the workers.
+- `DATT_JS_TESTS_FILE` - Default "datt-tests.js". The tests file - where the
+  browser tests are located.
+- `DATT_REACT_JS_FILE` - Default "datt-react.js". The React front-end bundle.
