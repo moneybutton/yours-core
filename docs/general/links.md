@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Zapchain Growth Proves Bitcoin Tipping Viable Social Media Model](https://news.bitcoin.com/zapchain-growth-proves-bitcoin-tipping-viable-social-media-model/)
 - [Phuc Dat Bich: Man posts passport to Facebook to prove his name is real](http://timesofindia.indiatimes.com/world/mad-mad-world/Phuc-Dat-Bich-Man-posts-passport-to-Facebook-to-prove-his-name-is-real/articleshow/49860844.cms)
 - [Companies Target Journalists With Ads on Facebook](http://www.wsj.com/articles/companies-target-journalists-with-ads-on-facebook-1447664403)
 - [Facebook and the Media Have an Increasingly Landlord-Tenant Style Relationship](http://fortune.com/2015/11/09/facebook-media/)
