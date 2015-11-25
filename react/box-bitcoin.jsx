@@ -6,6 +6,7 @@
  */
 'use strict'
 let React = require('react')
+let asink = require('asink')
 
 let BoxBitcoin = React.createClass({
   getInitialState: function () {
@@ -20,12 +21,13 @@ let BoxBitcoin = React.createClass({
   },
 
   componentDidMount: function () {
-    let dattcore = this.props.dattcore
-    return dattcore.asyncGetLatestBlockInfo().then(info => {
+    return asink(function *() {
+      let dattcore = this.props.dattcore
+      let info = yield dattcore.asyncGetLatestBlockInfo()
       this.setState({
         blockheightnum: info.height
       })
-    })
+    }.bind(this))
   },
 
   render: function () {

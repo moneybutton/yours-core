@@ -6,6 +6,7 @@
  */
 'use strict'
 let React = require('react')
+let asink = require('asink')
 
 let ContentList = React.createClass({
   getInitialState: function () {
@@ -15,8 +16,9 @@ let ContentList = React.createClass({
   },
 
   setStateFromDattCore: function () {
-    let dattcore = this.props.dattcore
-    return dattcore.asyncGetRecentContentAuth().then(contentauths => {
+    return asink(function *() {
+      let dattcore = this.props.dattcore
+      let contentauths = yield dattcore.asyncGetRecentContentAuth()
       let contentList = contentauths.map(contentauth => {
         let key = contentauth.cachehash.toString('hex')
         let content = contentauth.getContent()
@@ -27,7 +29,7 @@ let ContentList = React.createClass({
         return {key, title, name, label, body}
       })
       this.setState({contentList})
-    })
+    }.bind(this))
   },
 
   componentWillMount: function () {

@@ -6,6 +6,7 @@
  */
 'use strict'
 let React = require('react')
+let asink = require('asink')
 
 let BoxUser = React.createClass({
   getInitialState: function () {
@@ -21,18 +22,18 @@ let BoxUser = React.createClass({
   },
 
   setStateFromDattcore: function () {
-    let dattcore = this.props.dattcore
-    return dattcore.asyncGetUserName().then(userName => {
+    return asink(function *() {
+      let dattcore = this.props.dattcore
+      let userName = yield dattcore.asyncGetUserName()
       this.setState({
         userName: userName,
         newUserName: userName
       })
-      return dattcore.asyncGetUserMnemonic()
-    }).then(userMnemonic => {
+      let userMnemonic = yield dattcore.asyncGetUserMnemonic()
       this.setState({
         userMnemonic: userMnemonic
       })
-    })
+    }.bind(this))
   },
 
   componentWillMount: function () {
@@ -50,12 +51,13 @@ let BoxUser = React.createClass({
   },
 
   handleSubmit: function () {
-    let dattcore = this.props.dattcore
-    return dattcore.asyncSetUserName(this.state.newUserName).then(() => {
+    return asink(function *() {
+      let dattcore = this.props.dattcore
+      yield dattcore.asyncSetUserName(this.state.newUserName)
       this.setState({
         userName: this.state.newUserName
       })
-    })
+    }.bind(this))
   },
 
   render: function () {

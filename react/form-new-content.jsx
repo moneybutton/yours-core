@@ -8,6 +8,7 @@
  */
 'use strict'
 let React = require('react')
+let asink = require('asink')
 
 let FormNewContent = React.createClass({
   getInitialState: function () {
@@ -17,34 +18,41 @@ let FormNewContent = React.createClass({
       inputBody: ''
     }
   },
+
   propTypes: {
     dattcore: React.PropTypes.object
   },
+
   handleTitleChange: function (el) {
     this.setState({
       inputTitle: el.target.value
     })
   },
+
   handleLabelChange: function (el) {
     this.setState({
       inputLabel: el.target.value
     })
   },
+
   handleBodyChange: function (el) {
     this.setState({
       inputBody: el.target.value
     })
   },
+
   handleSubmit: function (el) {
-    el.preventDefault()
-    let title = this.state.inputTitle
-    let label = this.state.inputLabel
-    let body = this.state.inputBody
-    let dattcore = this.props.dattcore
-    return dattcore.asyncPostNewContentAuth(title, label, body).then(hashbuf => {
+    return asink(function *() {
+      el.preventDefault()
+      let title = this.state.inputTitle
+      let label = this.state.inputLabel
+      let body = this.state.inputBody
+      let dattcore = this.props.dattcore
+      yield dattcore.asyncPostNewContentAuth(title, label, body)
       this.setState(this.getInitialState())
-    })
+    }.bind(this))
   },
+
   render: function () {
     return (
       <div className='author-new-content well'>

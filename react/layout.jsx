@@ -12,6 +12,7 @@ let BoxPeer = require('./box-peer.jsx')
 let BoxUser = require('./box-user.jsx')
 let PageFront = require('./page-front.jsx')
 let React = require('react')
+let asink = require('asink')
 
 let Layout = React.createClass({
   getInitialState: function () {
@@ -22,18 +23,20 @@ let Layout = React.createClass({
   },
 
   componentWillMount: function () {
-    let dattcore = this.props.dattcore
-    return dattcore.asyncInitialize().then(() => {
-      this.setState({
-        dattcoreStatus: 'initialized'
-      })
-      this.monitorDattCore()
-    })
-    .catch(err => {
-      this.setState({
-        dattcoreStatus: 'error initializing: ' + err
-      })
-    })
+    return asink(function *() {
+      let dattcore = this.props.dattcore
+      try {
+        yield dattcore.asyncInitialize()
+        this.setState({
+          dattcoreStatus: 'initialized'
+        })
+        this.monitorDattCore()
+      } catch (err) {
+        this.setState({
+          dattcoreStatus: 'error initializing: ' + err
+        })
+      }
+    }.bind(this))
   },
 
   propTypes: {
@@ -47,12 +50,13 @@ let Layout = React.createClass({
   },
 
   handlePeersConnection: function () {
-    let dattcore = this.props.dattcore
-    return dattcore.asyncNumActiveConnections().then(n => {
+    return asink(function *() {
+      let dattcore = this.props.dattcore
+      let n = yield dattcore.asyncNumActiveConnections()
       this.setState({
         numActiveConnections: n
       })
-    })
+    }.bind(this))
   },
 
   render: function () {
