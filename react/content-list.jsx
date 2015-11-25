@@ -69,7 +69,7 @@ let ContentList = React.createClass({
           <h2>
             <a href='#'>{obj.title}</a>
           </h2>
-          <div className='author-name'>{obj.name} | {obj.address}</div>
+          <div className='author-information'>{obj.name} | {obj.address}</div>
         </li>
       )
     })
