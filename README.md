@@ -70,6 +70,12 @@ http://localhost:3043/
 http://localhost:3044/
 ```
 
+To run in testnet mode:
+
+```
+FULLNODE_NETWORK=testnet DATT_BLOCKCHAIN_API_URI=https://test-insight.bitpay.com/api/ npm run serve
+```
+
 Folder Layout
 -------------
 This repo contains both the main datt application as well as the landing page,
