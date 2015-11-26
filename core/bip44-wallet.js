@@ -73,8 +73,10 @@ BIP44Wallet.prototype.fromJSON = function (json) {
   this.masterxpub = BIP32().fromHex(json.masterxpub)
 
   this.bip44accounts = new Map()
-  Object.keys(json.bip44accounts).forEach((path) => {
-    this.bip44accounts.set(path, BIP44Account().fromJSON(json.bip44accounts[path]))
+  Object.keys(json.bip44accounts).forEach((indexstr) => {
+    let bip44account = BIP44Account().fromJSON(json.bip44accounts[indexstr])
+    let index = parseInt(indexstr, 10)
+    this.bip44accounts.set(index, bip44account)
   })
   return this
 }

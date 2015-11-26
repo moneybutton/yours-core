@@ -48,7 +48,8 @@ DBBIP44Wallet.prototype.asyncSave = function (bip44wallet) {
 DBBIP44Wallet.prototype.asyncGet = function () {
   return asink(function *() {
     let doc = yield this.db.asyncGet('bip44wallet')
-    return BIP44Wallet().fromJSON(doc.bip44wallet)
+    this.bip44wallet = BIP44Wallet().fromJSON(doc.bip44wallet)
+    return this.bip44wallet
   }.bind(this))
 }
 

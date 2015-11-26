@@ -56,6 +56,7 @@ describe('BIP44Wallet', function () {
         should.exist(bip44wallet2.masterxprv)
         should.exist(bip44wallet2.masterxpub)
         should.exist(bip44wallet2.bip44accounts)
+        should.exist(bip44wallet2.bip44accounts.get(0))
         bip44wallet2.bip44accounts.size.should.greaterThan(0)
       })
     })
