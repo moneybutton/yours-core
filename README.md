@@ -101,3 +101,5 @@ Environment Variables
 - `DATT_JS_TESTS_FILE` - Default "datt-tests.js". The tests file - where the
   browser tests are located.
 - `DATT_REACT_JS_FILE` - Default "datt-react.js". The React front-end bundle.
+- `FULLNODE_NETWORK` - Default "mainnet". Can also be "testnet".
+- `DATT_BLOCKCHAIN_API_URI` - Default "https://insight.bitpay.com/api/".

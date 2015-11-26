@@ -9,22 +9,23 @@
 let express = require('express')
 let path = require('path')
 let requestProxy = require('express-request-proxy')
+let config = require('../config')
 
 module.exports.createAppServer = function createAppServer (port) {
   let app = express()
 
   // The blockchain API proxy.
   app.get('/blockchain-api/:val1/:val2', requestProxy({
-    url: 'https://insight.bitpay.com/api/:val1/:val2' // TODO: support testnet; use environment variable
+    url: config.DATT_BLOCKCHAIN_API_URI + ':val1/:val2'
   }))
   app.get('/blockchain-api/:val1', requestProxy({
-    url: 'https://insight.bitpay.com/api/:val1' // TODO: support testnet; use environment variable
+    url: config.DATT_BLOCKCHAIN_API_URI + ':val1'
   }))
   app.post('/blockchain-api/:val1/:val2', requestProxy({
-    url: 'https://insight.bitpay.com/api/:val1/:val2' // TODO: support testnet; use environment variable
+    url: config.DATT_BLOCKCHAIN_API_URI + ':val1/:val2'
   }))
   app.post('/blockchain-api/:val1', requestProxy({
-    url: 'https://insight.bitpay.com/api/:val1' // TODO: support testnet; use environment variable
+    url: config.DATT_BLOCKCHAIN_API_URI + ':val1'
   }))
 
   // The front-end is just static HTML, CSS and JS files.

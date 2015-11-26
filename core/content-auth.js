@@ -48,8 +48,8 @@ ContentAuth.prototype.initialize = function () {
   this.date = new Date()
 
   // TODO: Default address is useful for testing but is a bad idea in
-  // production
-  this.address = Address().fromBuffer(buf.slice(0, 21))
+  // production.
+  this.address = Address().fromHashbuf(buf.slice(0, 20))
 
   return this
 }
