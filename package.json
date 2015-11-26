@@ -13,7 +13,7 @@
     "serve": "./node_modules/.bin/gulp serve",
     "watch-test-node": "./node_modules/.bin/gulp watch-test-node",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --compilers .jsx:jsx-require-extension test/**/*.js test/**/*.jsx",
-    "standard": "./node_modules/.bin/standard *.js core/**/*.js bin/**/*.js server/**/*.js test/**/*.js react/**/*.js react/**/*.jsx"
+    "standard": "./node_modules/.bin/standard *.js core/**/*.js bin/**/*.js server/**/*.js test/**/*.js test/**/*.jsx react/**/*.js react/**/*.jsx"
   },
   "engines": {
     "node": ">=4.2.0"
