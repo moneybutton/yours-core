@@ -49,7 +49,7 @@ ContentAuth.prototype.initialize = function () {
 
   // TODO: Default address is useful for testing but is a bad idea in
   // production.
-  this.address = Address().fromHashbuf(buf.slice(0, 20))
+  this.address = Address().fromPubkeyHashbuf(buf.slice(0, 20))
 
   return this
 }
