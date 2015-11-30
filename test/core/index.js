@@ -38,6 +38,7 @@ describe('DattCore', function () {
     it('should init the dattcore', function () {
       return asink(function *() {
         yield dattcore.asyncInitialize()
+        dattcore.isinitialized.should.equal(true)
         should.exist(dattcore.db)
         should.exist(dattcore.coreuser)
         dattcore.coreuser.user.keyIsSet().should.equal(true)

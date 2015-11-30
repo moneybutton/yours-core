@@ -11,6 +11,7 @@ let asink = require('asink')
 let BoxBitcoin = React.createClass({
   getInitialState: function () {
     return {
+      depositAddress: '',
       blockheightnum: 0
     }
   },
@@ -20,14 +21,34 @@ let BoxBitcoin = React.createClass({
     dattcore: React.PropTypes.object
   },
 
-  componentDidMount: function () {
+  setStateFromDattCore: function () {
     return asink(function *() {
       let dattcore = this.props.dattcore
+      let DattCore = dattcore.constructor
+      let depositAddress = ''
+
+      if (dattcore.isinitialized) {
+        // We always use the 0th address for the deposit address. TODO: This is
+        // bad practice for privacy reasons. Every deposit should be associated
+        // with a new address.
+        let address = yield dattcore.asyncGetAddress(0)
+        depositAddress = yield DattCore.CryptoWorkers.asyncAddressStringFromAddress(address)
+      }
+
       let info = yield dattcore.asyncGetLatestBlockInfo()
       this.setState({
-        blockheightnum: info.height
+        blockheightnum: info.height,
+        depositAddress: depositAddress
       })
     }.bind(this))
+  },
+
+  componentDidMount: function () {
+    return this.setStateFromDattCore()
+  },
+
+  componentWillReceiveProps: function () {
+    return this.setStateFromDattCore()
   },
 
   render: function () {
@@ -38,6 +59,7 @@ let BoxBitcoin = React.createClass({
         <p><button className='btn btn-default'>Send</button>
         <button className='btn btn-default'>Receive</button></p>
         <p>Latest block height: {this.state.blockheightnum}</p>
+        <p>Deposit: {this.state.depositAddress}</p>
       </div>
     )
   }

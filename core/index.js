@@ -33,12 +33,12 @@ let User = require('./user')
 let pkg = require('../package')
 let asink = require('asink')
 
-function DattCore (config, db, corebitcoin, corecontent, corepeers, coreuser) {
+function DattCore (config, db, corebitcoin, corecontent, corepeers, coreuser, isinitialized) {
   if (!(this instanceof DattCore)) {
-    return new DattCore(config, db, corebitcoin, corecontent, corepeers, coreuser)
+    return new DattCore(config, db, corebitcoin, corecontent, corepeers, coreuser, isinitialized)
   }
   this.initialize()
-  this.fromObject({config, db, corebitcoin, corecontent, corepeers, coreuser})
+  this.fromObject({config, db, corebitcoin, corecontent, corepeers, coreuser, isinitialized})
 }
 
 DattCore.prototype = Object.create(Struct.prototype)
@@ -59,6 +59,7 @@ DattCore.prototype.version = pkg.version
  */
 DattCore.prototype.initialize = function () {
   this.config = {}
+  this.isinitialized = false // Only set to true after asyncInitialize
   return this
 }
 
@@ -113,6 +114,7 @@ DattCore.prototype.asyncInitialize = function () {
       // a "network is OK" variable somewhere, perhaps?
     })
 
+    this.isinitialized = true
     return Promise.resolve()
   }.bind(this))
 }
