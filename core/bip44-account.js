@@ -116,6 +116,11 @@ BIP44Account.prototype.isPrivate = function () {
   return this.bip32.isPrivate()
 }
 
+/**
+ * TODO: When deriving keys from a path, we should also create a map from
+ * address to private key. This will let us easily sign transactions when we
+ * know which of our addresses it is.
+ */
 BIP44Account.prototype.asyncDeriveKeysFromPath = function (path) {
   return asink(function *() {
     if (!path) {
@@ -138,6 +143,9 @@ BIP44Account.prototype.asyncDeriveKeysFromPath = function (path) {
 
 BIP44Account.prototype.asyncGetAddressKeys = function (addrindex) {
   return asink(function *() {
+    if (typeof addrindex !== 'number' || addrindex < 0) {
+      throw new Error('invalid addrindex - must be number >= 0')
+    }
     let path = 'm/0/' + addrindex
     let keys = yield this.asyncDeriveKeysFromPath(path)
     return keys

@@ -74,6 +74,20 @@ describe('BIP44Wallet', function () {
     })
   })
 
+  describe('#asyncGetAddress', function () {
+    it('should return an address', function () {
+      return asink(function *() {
+        let bip44wallet = yield BIP44Wallet().asyncFromRandom()
+        let address = yield bip44wallet.asyncGetAddress(0, 0)
+        let address2 = yield bip44wallet.asyncGetAddress(0, 0)
+        let address3 = yield bip44wallet.asyncGetAddress(0, 15)
+        ;(address instanceof Address).should.equal(true)
+        address.toString().should.equal(address2.toString())
+        address.toString().should.not.equal(address3.toString())
+      })
+    })
+  })
+
   describe('#asyncGetNewAddress', function () {
     it('should return a new address', function () {
       return asink(function *() {

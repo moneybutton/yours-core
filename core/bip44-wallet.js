@@ -92,6 +92,14 @@ BIP44Wallet.prototype.asyncGetPrivateAccount = function (index) {
   }.bind(this))
 }
 
+BIP44Wallet.prototype.asyncGetAddress = function (accountindex, addrindex) {
+  return asink(function *() {
+    let account = yield this.asyncGetPrivateAccount(accountindex)
+    let keys = yield account.asyncGetAddressKeys(addrindex)
+    return keys.address
+  }.bind(this))
+}
+
 BIP44Wallet.prototype.asyncGetNewAddress = function (accountindex) {
   return asink(function *() {
     let account = yield this.asyncGetPrivateAccount(accountindex)

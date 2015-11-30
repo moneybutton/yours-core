@@ -183,6 +183,10 @@ DattCore.prototype.asyncGetLatestBlockInfo = function () {
   return this.corebitcoin.asyncGetLatestBlockInfo()
 }
 
+DattCore.prototype.asyncGetAddress = function (index) {
+  return this.corebitcoin.asyncGetAddress(index)
+}
+
 DattCore.prototype.asyncGetNewAddress = function () {
   return this.corebitcoin.asyncGetNewAddress()
 }

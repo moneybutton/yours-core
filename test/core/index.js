@@ -92,6 +92,20 @@ describe('DattCore', function () {
     })
   })
 
+  describe('#asyncGetAddress', function () {
+    it('should return addresses', function () {
+      return asink(function *() {
+        let address1 = yield dattcore.asyncGetAddress(0)
+        let address2 = yield dattcore.asyncGetAddress(0)
+        let address3 = yield dattcore.asyncGetAddress(15)
+        ;(address1 instanceof Address).should.equal(true)
+        ;(address2 instanceof Address).should.equal(true)
+        address1.toString().should.equal(address2.toString())
+        address1.toString().should.not.equal(address3.toString())
+      })
+    })
+  })
+
   describe('#asyncGetNewAddress', function () {
     it('should return new addresses', function () {
       return asink(function *() {

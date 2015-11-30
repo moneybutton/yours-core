@@ -67,6 +67,16 @@ CoreBitcoin.prototype.asyncGetLatestBlockInfo = function () {
   return this.blockchainAPI.asyncGetLatestBlockInfo()
 }
 
+CoreBitcoin.prototype.asyncGetAddress = function (index) {
+  return asink(function *() {
+    let address = yield this.bip44wallet.asyncGetAddress(0, index)
+    // TODO: Shouldn't save entire database here - should just save new address
+    // and keys
+    yield this.dbbip44wallet.asyncSave(this.bip44wallet)
+    return address
+  }.bind(this))
+}
+
 CoreBitcoin.prototype.asyncGetNewAddress = function () {
   return asink(function *() {
     let address = yield this.bip44wallet.asyncGetNewAddress(0)
