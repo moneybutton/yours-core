@@ -31,7 +31,7 @@ let BoxBitcoin = React.createClass({
         // We always use the 0th address for the deposit address. TODO: This is
         // bad practice for privacy reasons. Every deposit should be associated
         // with a new address.
-        let address = yield dattcore.asyncGetAddress(0)
+        let address = yield dattcore.asyncGetExtAddress(0)
         depositAddress = yield DattCore.CryptoWorkers.asyncAddressStringFromAddress(address)
       }
 

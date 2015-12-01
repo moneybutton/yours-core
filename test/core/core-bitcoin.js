@@ -41,12 +41,12 @@ describe('CoreBitcoin', function () {
     })
   })
 
-  describe('#asyncGetAddress', function () {
+  describe('#asyncGetExtAddress', function () {
     it('should get an address', function () {
       return asink(function *() {
-        let address = yield corebitcoin.asyncGetAddress(0)
-        let address2 = yield corebitcoin.asyncGetAddress(0)
-        let address3 = yield corebitcoin.asyncGetAddress(15)
+        let address = yield corebitcoin.asyncGetExtAddress(0)
+        let address2 = yield corebitcoin.asyncGetExtAddress(0)
+        let address3 = yield corebitcoin.asyncGetExtAddress(15)
         ;(address instanceof Address).should.equal(true)
         address.toString().should.equal(address2.toString())
         address.toString().should.not.equal(address3.toString())
@@ -54,19 +54,19 @@ describe('CoreBitcoin', function () {
     })
   })
 
-  describe('#asyncGetNewAddress', function () {
+  describe('#asyncGetNewExtAddress', function () {
     it('should get a new address', function () {
       return asink(function *() {
-        let address = yield corebitcoin.asyncGetNewAddress()
+        let address = yield corebitcoin.asyncGetNewExtAddress()
         ;(address instanceof Address).should.equal(true)
       })
     })
   })
 
-  describe('#asyncGetNewChangeAddress', function () {
+  describe('#asyncGetNewIntAddress', function () {
     it('should get a new address', function () {
       return asink(function *() {
-        let address = yield corebitcoin.asyncGetNewChangeAddress()
+        let address = yield corebitcoin.asyncGetNewIntAddress()
         ;(address instanceof Address).should.equal(true)
       })
     })

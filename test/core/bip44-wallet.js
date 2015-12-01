@@ -32,8 +32,8 @@ describe('BIP44Wallet', function () {
     it('should convert to JSON', function () {
       return asink(function *() {
         let bip44wallet = yield BIP44Wallet().asyncFromRandom()
-        yield bip44wallet.asyncGetNewAddress(0)
-        yield bip44wallet.asyncGetNewAddress(0)
+        yield bip44wallet.asyncGetNewExtAddress(0)
+        yield bip44wallet.asyncGetNewExtAddress(0)
         let json = bip44wallet.toJSON()
         should.exist(json.mnemonic)
         should.exist(json.masterxprv)
@@ -48,8 +48,8 @@ describe('BIP44Wallet', function () {
     it('should round trip with .toJSON', function () {
       return asink(function *() {
         let bip44wallet = yield BIP44Wallet().asyncFromRandom()
-        yield bip44wallet.asyncGetNewAddress(0)
-        yield bip44wallet.asyncGetNewAddress(0)
+        yield bip44wallet.asyncGetNewExtAddress(0)
+        yield bip44wallet.asyncGetNewExtAddress(0)
         let json = bip44wallet.toJSON()
         let bip44wallet2 = BIP44Wallet().fromJSON(json)
         should.exist(bip44wallet2.mnemonic)
@@ -74,26 +74,26 @@ describe('BIP44Wallet', function () {
     })
   })
 
-  describe('#asyncGetAllAddresses', function () {
+  describe('#asyncGetAllExtAddresses', function () {
     it('should return an address', function () {
       return asink(function *() {
         let bip44wallet = yield BIP44Wallet().asyncFromRandom()
-        yield bip44wallet.asyncGetNewAddress(0)
-        yield bip44wallet.asyncGetNewAddress(0)
-        yield bip44wallet.asyncGetNewAddress(0)
-        let addresses = yield bip44wallet.asyncGetAllAddresses(0)
+        yield bip44wallet.asyncGetNewExtAddress(0)
+        yield bip44wallet.asyncGetNewExtAddress(0)
+        yield bip44wallet.asyncGetNewExtAddress(0)
+        let addresses = yield bip44wallet.asyncGetAllExtAddresses(0)
         addresses.length.should.equal(3)
       })
     })
   })
 
-  describe('#asyncGetAddress', function () {
+  describe('#asyncGetExtAddress', function () {
     it('should return an address', function () {
       return asink(function *() {
         let bip44wallet = yield BIP44Wallet().asyncFromRandom()
-        let address = yield bip44wallet.asyncGetAddress(0, 0)
-        let address2 = yield bip44wallet.asyncGetAddress(0, 0)
-        let address3 = yield bip44wallet.asyncGetAddress(0, 15)
+        let address = yield bip44wallet.asyncGetExtAddress(0, 0)
+        let address2 = yield bip44wallet.asyncGetExtAddress(0, 0)
+        let address3 = yield bip44wallet.asyncGetExtAddress(0, 15)
         ;(address instanceof Address).should.equal(true)
         address.toString().should.equal(address2.toString())
         address.toString().should.not.equal(address3.toString())
@@ -101,34 +101,34 @@ describe('BIP44Wallet', function () {
     })
   })
 
-  describe('#asyncGetNewAddress', function () {
+  describe('#asyncGetNewExtAddress', function () {
     it('should return a new address', function () {
       return asink(function *() {
         let bip44wallet = yield BIP44Wallet().asyncFromRandom()
-        let address = yield bip44wallet.asyncGetNewAddress(0)
+        let address = yield bip44wallet.asyncGetNewExtAddress(0)
         ;(address instanceof Address).should.equal(true)
       })
     })
   })
 
-  describe('#asyncGetAllChangeAddresses', function () {
+  describe('#asyncGetAllIntAddresses', function () {
     it('should return an address', function () {
       return asink(function *() {
         let bip44wallet = yield BIP44Wallet().asyncFromRandom()
-        yield bip44wallet.asyncGetNewChangeAddress(0)
-        yield bip44wallet.asyncGetNewChangeAddress(0)
-        yield bip44wallet.asyncGetNewChangeAddress(0)
-        let addresses = yield bip44wallet.asyncGetAllChangeAddresses(0)
+        yield bip44wallet.asyncGetNewIntAddress(0)
+        yield bip44wallet.asyncGetNewIntAddress(0)
+        yield bip44wallet.asyncGetNewIntAddress(0)
+        let addresses = yield bip44wallet.asyncGetAllIntAddresses(0)
         addresses.length.should.equal(3)
       })
     })
   })
 
-  describe('#asyncGetNewChangeAddress', function () {
+  describe('#asyncGetNewIntAddress', function () {
     it('should return a new address', function () {
       return asink(function *() {
         let bip44wallet = yield BIP44Wallet().asyncFromRandom()
-        let address = yield bip44wallet.asyncGetNewChangeAddress(0)
+        let address = yield bip44wallet.asyncGetNewIntAddress(0)
         ;(address instanceof Address).should.equal(true)
       })
     })

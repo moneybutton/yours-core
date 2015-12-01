@@ -42,12 +42,12 @@ describe('BIP44Account', function () {
         seedbuf.fill(0)
         let bip32 = BIP32().fromSeed(seedbuf)
         let bip44account = BIP44Account(bip32)
-        yield bip44account.asyncGetNextChangeKeys()
-        yield bip44account.asyncGetNextAddressKeys()
-        yield bip44account.asyncGetNextAddressKeys()
+        yield bip44account.asyncGetNextIntAddressKeys()
+        yield bip44account.asyncGetNextExtAddressKeys()
+        yield bip44account.asyncGetNextExtAddressKeys()
         let json = bip44account.toJSON()
-        json.addrindex.should.equal(1)
-        json.changeindex.should.equal(0)
+        json.extindex.should.equal(1)
+        json.intindex.should.equal(0)
         Object.keys(json.keymap).length.should.equal(3)
       })
     })
@@ -60,13 +60,13 @@ describe('BIP44Account', function () {
         seedbuf.fill(0)
         let bip32 = BIP32().fromSeed(seedbuf)
         let bip44account = BIP44Account(bip32)
-        yield bip44account.asyncGetNextChangeKeys()
-        yield bip44account.asyncGetNextAddressKeys()
-        yield bip44account.asyncGetNextAddressKeys()
+        yield bip44account.asyncGetNextIntAddressKeys()
+        yield bip44account.asyncGetNextExtAddressKeys()
+        yield bip44account.asyncGetNextExtAddressKeys()
         let json = bip44account.toJSON()
         let bip44account2 = BIP44Account().fromJSON(json)
-        bip44account.addrindex.should.equal(bip44account2.addrindex)
-        bip44account.changeindex.should.equal(bip44account2.changeindex)
+        bip44account.extindex.should.equal(bip44account2.extindex)
+        bip44account.intindex.should.equal(bip44account2.intindex)
         bip44account.keymap.size.should.equal(bip44account2.keymap.size)
       })
     })
@@ -102,17 +102,17 @@ describe('BIP44Account', function () {
     })
   })
 
-  describe('#asyncGetAllAddresses', function () {
+  describe('#asyncGetAllExtAddresses', function () {
     it('should return all addresses', function () {
       return asink(function *() {
         let bip32 = BIP32().fromRandom()
         let bip44account = BIP44Account(bip32)
-        yield bip44account.asyncGetNextAddressKeys()
-        yield bip44account.asyncGetNextAddressKeys()
-        yield bip44account.asyncGetNextAddressKeys()
-        yield bip44account.asyncGetNextChangeKeys()
-        yield bip44account.asyncGetNextChangeKeys()
-        let addresses = yield bip44account.asyncGetAllAddresses()
+        yield bip44account.asyncGetNextExtAddressKeys()
+        yield bip44account.asyncGetNextExtAddressKeys()
+        yield bip44account.asyncGetNextExtAddressKeys()
+        yield bip44account.asyncGetNextIntAddressKeys()
+        yield bip44account.asyncGetNextIntAddressKeys()
+        let addresses = yield bip44account.asyncGetAllExtAddresses()
         addresses.length.should.equal(3)
       })
     })
@@ -123,23 +123,23 @@ describe('BIP44Account', function () {
       return asink(function *() {
         let bip32 = BIP32().fromRandom()
         let bip44account = BIP44Account(bip32)
-        yield bip44account.asyncGetNextAddressKeys()
-        yield bip44account.asyncGetNextAddressKeys()
-        yield bip44account.asyncGetNextAddressKeys()
-        yield bip44account.asyncGetNextChangeKeys()
-        yield bip44account.asyncGetNextChangeKeys()
-        let addresses = yield bip44account.asyncGetAllChangeAddresses()
+        yield bip44account.asyncGetNextExtAddressKeys()
+        yield bip44account.asyncGetNextExtAddressKeys()
+        yield bip44account.asyncGetNextExtAddressKeys()
+        yield bip44account.asyncGetNextIntAddressKeys()
+        yield bip44account.asyncGetNextIntAddressKeys()
+        let addresses = yield bip44account.asyncGetAllIntAddresses()
         addresses.length.should.equal(2)
       })
     })
   })
 
-  describe('#asyncGetAddressKeys', function () {
+  describe('#asyncGetExtAddressKeys', function () {
     it('should derive next address', function () {
       return asink(function *() {
         let bip32 = BIP32().fromRandom()
         let bip44account = BIP44Account(bip32)
-        let keys = yield bip44account.asyncGetAddressKeys(0)
+        let keys = yield bip44account.asyncGetExtAddressKeys(0)
         should.exist(keys.xprv)
         should.exist(keys.xpub)
         should.exist(keys.address)
@@ -147,27 +147,27 @@ describe('BIP44Account', function () {
     })
   })
 
-  describe('#asyncGetNextAddressKeys', function () {
+  describe('#asyncGetNextExtAddressKeys', function () {
     it('should derive next address', function () {
       return asink(function *() {
         let bip32 = BIP32().fromRandom()
         let bip44account = BIP44Account(bip32)
-        let keys = yield bip44account.asyncGetNextAddressKeys()
+        let keys = yield bip44account.asyncGetNextExtAddressKeys()
         should.exist(keys.xprv)
         should.exist(keys.xpub)
         should.exist(keys.address)
-        let keys2 = yield bip44account.asyncGetNextAddressKeys()
+        let keys2 = yield bip44account.asyncGetNextExtAddressKeys()
         keys2.xprv.toString().should.not.equal(keys.xprv.toString())
       })
     })
   })
 
-  describe('#asyncGetChangeKeys', function () {
+  describe('#asyncGetIntAddressKeys', function () {
     it('should derive next address', function () {
       return asink(function *() {
         let bip32 = BIP32().fromRandom()
         let bip44account = BIP44Account(bip32)
-        let keys = yield bip44account.asyncGetChangeKeys(0)
+        let keys = yield bip44account.asyncGetIntAddressKeys(0)
         should.exist(keys.xprv)
         should.exist(keys.xpub)
         should.exist(keys.address)
@@ -175,18 +175,18 @@ describe('BIP44Account', function () {
     })
   })
 
-  describe('#asyncGetNextChangeKeys', function () {
+  describe('#asyncGetNextIntAddressKeys', function () {
     it('should derive next address', function () {
       return asink(function *() {
         let bip32 = BIP32().fromRandom()
         let bip44account = BIP44Account(bip32)
-        let keys = yield bip44account.asyncGetNextChangeKeys()
+        let keys = yield bip44account.asyncGetNextIntAddressKeys()
         should.exist(keys.xprv)
         should.exist(keys.xpub)
         should.exist(keys.address)
-        let keys2 = yield bip44account.asyncGetNextChangeKeys()
+        let keys2 = yield bip44account.asyncGetNextIntAddressKeys()
         keys2.xprv.toString().should.not.equal(keys.xprv.toString())
-        let keys3 = yield bip44account.asyncGetNextAddressKeys()
+        let keys3 = yield bip44account.asyncGetNextExtAddressKeys()
         keys3.xprv.toString().should.not.equal(keys.xprv.toString())
       })
     })

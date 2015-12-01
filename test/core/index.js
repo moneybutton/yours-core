@@ -93,12 +93,12 @@ describe('DattCore', function () {
     })
   })
 
-  describe('#asyncGetAddress', function () {
+  describe('#asyncGetExtAddress', function () {
     it('should return addresses', function () {
       return asink(function *() {
-        let address1 = yield dattcore.asyncGetAddress(0)
-        let address2 = yield dattcore.asyncGetAddress(0)
-        let address3 = yield dattcore.asyncGetAddress(15)
+        let address1 = yield dattcore.asyncGetExtAddress(0)
+        let address2 = yield dattcore.asyncGetExtAddress(0)
+        let address3 = yield dattcore.asyncGetExtAddress(15)
         ;(address1 instanceof Address).should.equal(true)
         ;(address2 instanceof Address).should.equal(true)
         address1.toString().should.equal(address2.toString())
@@ -107,11 +107,11 @@ describe('DattCore', function () {
     })
   })
 
-  describe('#asyncGetNewAddress', function () {
+  describe('#asyncGetNewExtAddress', function () {
     it('should return new addresses', function () {
       return asink(function *() {
-        let address1 = yield dattcore.asyncGetNewAddress()
-        let address2 = yield dattcore.asyncGetNewAddress()
+        let address1 = yield dattcore.asyncGetNewExtAddress()
+        let address2 = yield dattcore.asyncGetNewExtAddress()
         ;(address1 instanceof Address).should.equal(true)
         ;(address2 instanceof Address).should.equal(true)
         address1.toString().should.not.equal(address2.toString())
@@ -119,11 +119,11 @@ describe('DattCore', function () {
     })
   })
 
-  describe('#asyncGetNewChangeAddress', function () {
+  describe('#asyncGetNewIntAddress', function () {
     it('should return new addresses', function () {
       return asink(function *() {
-        let address1 = yield dattcore.asyncGetNewChangeAddress()
-        let address2 = yield dattcore.asyncGetNewChangeAddress()
+        let address1 = yield dattcore.asyncGetNewIntAddress()
+        let address2 = yield dattcore.asyncGetNewIntAddress()
         ;(address1 instanceof Address).should.equal(true)
         ;(address2 instanceof Address).should.equal(true)
         address1.toString().should.not.equal(address2.toString())

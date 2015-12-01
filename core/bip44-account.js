@@ -14,12 +14,12 @@ let CryptoWorkers = require('./crypto-workers')
 let Struct = require('fullnode/lib/struct')
 let asink = require('asink')
 
-function BIP44Account (bip32, addrindex, changeindex, keymap) {
+function BIP44Account (bip32, extindex, intindex, keymap) {
   if (!(this instanceof BIP44Account)) {
-    return new BIP44Account(bip32, addrindex, changeindex, keymap)
+    return new BIP44Account(bip32, extindex, intindex, keymap)
   }
   this.initialize()
-  this.fromObject({bip32, addrindex, changeindex, keymap})
+  this.fromObject({bip32, extindex, intindex, keymap})
 }
 
 BIP44Account.prototype = Object.create(Struct.prototype)
@@ -27,8 +27,8 @@ BIP44Account.prototype.constructor = BIP44Account
 
 BIP44Account.prototype.initialize = function () {
   this.keymap = new Map()
-  this.addrindex = -1
-  this.changeindex = -1
+  this.extindex = -1
+  this.intindex = -1
   return this
 }
 
@@ -62,8 +62,8 @@ BIP44Account.prototype.asyncFromMasterXprvPublic = function (bip32, accountindex
 
 BIP44Account.prototype.toJSON = function () {
   let json = {}
-  json.addrindex = this.addrindex
-  json.changeindex = this.changeindex
+  json.extindex = this.extindex
+  json.intindex = this.intindex
 
   // TODO: Replace with proper non-blocking method
   json.bip32 = this.bip32.toHex()
@@ -87,8 +87,8 @@ BIP44Account.prototype.toJSON = function () {
 }
 
 BIP44Account.prototype.fromJSON = function (json) {
-  this.addrindex = json.addrindex
-  this.changeindex = json.changeindex
+  this.extindex = json.extindex
+  this.intindex = json.intindex
 
   // TODO: Replace with proper non-blocking method
   this.bip32 = BIP32().fromHex(json.bip32)
@@ -142,67 +142,73 @@ BIP44Account.prototype.asyncDeriveKeysFromPath = function (path) {
 }
 
 /**
- * Returns all normal, non-change addresses up to addrindex. This is
+ * Returns all external (non-change) addresses up to extindex. This is
  * essentially all the addresses that have been gotten with
  * asyncGetAddressKeys.
  */
-BIP44Account.prototype.asyncGetAllAddresses = function () {
+BIP44Account.prototype.asyncGetAllExtAddresses = function () {
   return asink(function *() {
     let addresses = []
-    for (let index = 0; index <= this.addrindex; index++) {
-      addresses.push(yield this.asyncGetAddressKeys(index).address)
+    for (let index = 0; index <= this.extindex; index++) {
+      addresses.push(yield this.asyncGetExtAddressKeys(index).address)
     }
     return addresses
   }.bind(this))
 }
 
 /**
- * Returns all change addresses up to changeindex. This is all the change
+ * Returns all internal (change) addresses up to intindex. This is all the change
  * addresses that have been gotten with asyncGetChangeKeys.
  */
-BIP44Account.prototype.asyncGetAllChangeAddresses = function () {
+BIP44Account.prototype.asyncGetAllIntAddresses = function () {
   return asink(function *() {
     let addresses = []
-    for (let index = 0; index <= this.changeindex; index++) {
-      addresses.push(yield this.asyncGetChangeKeys(index).address)
+    for (let index = 0; index <= this.intindex; index++) {
+      addresses.push(yield this.asyncGetIntAddressKeys(index).address)
     }
     return addresses
   }.bind(this))
 }
 
-BIP44Account.prototype.asyncGetAddressKeys = function (addrindex) {
+/**
+ * Get external (non-change) address keys.
+ */
+BIP44Account.prototype.asyncGetExtAddressKeys = function (extindex) {
   return asink(function *() {
-    if (typeof addrindex !== 'number' || addrindex < 0) {
-      throw new Error('invalid addrindex - must be number >= 0')
+    if (typeof extindex !== 'number' || extindex < 0) {
+      throw new Error('invalid extindex - must be number >= 0')
     }
-    let path = 'm/0/' + addrindex
+    let path = 'm/0/' + extindex
     let keys = yield this.asyncDeriveKeysFromPath(path)
     return keys
   }.bind(this))
 }
 
-BIP44Account.prototype.asyncGetNextAddressKeys = function () {
+BIP44Account.prototype.asyncGetNextExtAddressKeys = function () {
   return asink(function *() {
-    let addrindex = this.addrindex + 1
-    let keys = yield this.asyncGetAddressKeys(addrindex)
-    this.addrindex = addrindex
+    let extindex = this.extindex + 1
+    let keys = yield this.asyncGetExtAddressKeys(extindex)
+    this.extindex = extindex
     return keys
   }.bind(this))
 }
 
-BIP44Account.prototype.asyncGetChangeKeys = function (changeindex) {
+/**
+ * Get internal (change) address keys.
+ */
+BIP44Account.prototype.asyncGetIntAddressKeys = function (intindex) {
   return asink(function *() {
-    let path = 'm/1/' + changeindex
+    let path = 'm/1/' + intindex
     let keys = yield this.asyncDeriveKeysFromPath(path)
     return keys
   }.bind(this))
 }
 
-BIP44Account.prototype.asyncGetNextChangeKeys = function () {
+BIP44Account.prototype.asyncGetNextIntAddressKeys = function () {
   return asink(function *() {
-    let changeindex = this.changeindex + 1
-    let keys = yield this.asyncGetChangeKeys(changeindex)
-    this.changeindex = changeindex
+    let intindex = this.intindex + 1
+    let keys = yield this.asyncGetIntAddressKeys(intindex)
+    this.intindex = intindex
     return keys
   }.bind(this))
 }

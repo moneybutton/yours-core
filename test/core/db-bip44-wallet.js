@@ -26,9 +26,9 @@ describe('DBBIP44Wallet', function () {
     it('should save this new wallet and not throw an error', function () {
       return asink(function *() {
         let bip44wallet = yield BIP44Wallet().asyncFromRandom()
-        yield bip44wallet.asyncGetNewAddress(0)
-        yield bip44wallet.asyncGetNewAddress(0)
-        yield bip44wallet.asyncGetNewChangeAddress(0)
+        yield bip44wallet.asyncGetNewExtAddress(0)
+        yield bip44wallet.asyncGetNewExtAddress(0)
+        yield bip44wallet.asyncGetNewIntAddress(0)
         return DBBIP44Wallet(db).asyncSave(bip44wallet)
       })
     })

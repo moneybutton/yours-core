@@ -185,16 +185,16 @@ DattCore.prototype.asyncGetLatestBlockInfo = function () {
   return this.corebitcoin.asyncGetLatestBlockInfo()
 }
 
-DattCore.prototype.asyncGetAddress = function (index) {
-  return this.corebitcoin.asyncGetAddress(index)
+DattCore.prototype.asyncGetExtAddress = function (index) {
+  return this.corebitcoin.asyncGetExtAddress(index)
 }
 
-DattCore.prototype.asyncGetNewAddress = function () {
-  return this.corebitcoin.asyncGetNewAddress()
+DattCore.prototype.asyncGetNewExtAddress = function () {
+  return this.corebitcoin.asyncGetNewExtAddress()
 }
 
-DattCore.prototype.asyncGetNewChangeAddress = function () {
-  return this.corebitcoin.asyncGetNewChangeAddress()
+DattCore.prototype.asyncGetNewIntAddress = function () {
+  return this.corebitcoin.asyncGetNewIntAddress()
 }
 
 /**
@@ -222,7 +222,7 @@ DattCore.prototype.asyncNewContentAuth = function (title, label, body) {
     // done by either CoreUser or CoreBitcoin.
     let privkey = this.coreuser.user.masterxprv.privkey
     let pubkey = this.coreuser.user.masterxprv.pubkey
-    let address = yield this.asyncGetNewAddress()
+    let address = yield this.asyncGetNewExtAddress()
     let info = yield this.asyncGetLatestBlockInfo()
     let blockhashbuf = info.hashbuf
     let blockheightnum = info.height

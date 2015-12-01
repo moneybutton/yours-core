@@ -92,38 +92,38 @@ BIP44Wallet.prototype.asyncGetPrivateAccount = function (index) {
   }.bind(this))
 }
 
-BIP44Wallet.prototype.asyncGetAllAddresses = function (accountindex) {
+BIP44Wallet.prototype.asyncGetAllExtAddresses = function (accountindex) {
   return asink(function *() {
-    return this.bip44accounts.get(accountindex).asyncGetAllAddresses()
+    return this.bip44accounts.get(accountindex).asyncGetAllExtAddresses()
   }.bind(this))
 }
 
-BIP44Wallet.prototype.asyncGetAddress = function (accountindex, addrindex) {
+BIP44Wallet.prototype.asyncGetExtAddress = function (accountindex, addrindex) {
   return asink(function *() {
     let account = yield this.asyncGetPrivateAccount(accountindex)
-    let keys = yield account.asyncGetAddressKeys(addrindex)
+    let keys = yield account.asyncGetExtAddressKeys(addrindex)
     return keys.address
   }.bind(this))
 }
 
-BIP44Wallet.prototype.asyncGetNewAddress = function (accountindex) {
+BIP44Wallet.prototype.asyncGetNewExtAddress = function (accountindex) {
   return asink(function *() {
     let account = yield this.asyncGetPrivateAccount(accountindex)
-    let keys = yield account.asyncGetNextAddressKeys()
+    let keys = yield account.asyncGetNextExtAddressKeys()
     return keys.address
   }.bind(this))
 }
 
-BIP44Wallet.prototype.asyncGetAllChangeAddresses = function (accountindex) {
+BIP44Wallet.prototype.asyncGetAllIntAddresses = function (accountindex) {
   return asink(function *() {
-    return this.bip44accounts.get(accountindex).asyncGetAllChangeAddresses()
+    return this.bip44accounts.get(accountindex).asyncGetAllIntAddresses()
   }.bind(this))
 }
 
-BIP44Wallet.prototype.asyncGetNewChangeAddress = function (accountindex) {
+BIP44Wallet.prototype.asyncGetNewIntAddress = function (accountindex) {
   return asink(function *() {
     let account = yield this.asyncGetPrivateAccount(accountindex)
-    let keys = yield account.asyncGetNextChangeKeys()
+    let keys = yield account.asyncGetNextIntAddressKeys()
     return keys.address
   }.bind(this))
 }
