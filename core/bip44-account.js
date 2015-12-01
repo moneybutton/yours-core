@@ -141,6 +141,35 @@ BIP44Account.prototype.asyncDeriveKeysFromPath = function (path) {
   }.bind(this))
 }
 
+/**
+ * Returns all normal, non-change addresses up to addrindex. This is
+ * essentially all the addresses that have been gotten with
+ * asyncGetAddressKeys.
+ */
+BIP44Account.prototype.asyncGetAllAddresses = function () {
+  return asink(function *() {
+    let addresses = []
+    for (let index = 0; index <= this.addrindex; index++) {
+      addresses.push(yield this.asyncGetAddressKeys(index).address)
+    }
+    return addresses
+  }.bind(this))
+}
+
+/**
+ * Returns all change addresses up to changeindex. This is all the change
+ * addresses that have been gotten with asyncGetChangeKeys.
+ */
+BIP44Account.prototype.asyncGetAllChangeAddresses = function () {
+  return asink(function *() {
+    let addresses = []
+    for (let index = 0; index <= this.changeindex; index++) {
+      addresses.push(yield this.asyncGetChangeKeys(index).address)
+    }
+    return addresses
+  }.bind(this))
+}
+
 BIP44Account.prototype.asyncGetAddressKeys = function (addrindex) {
   return asink(function *() {
     if (typeof addrindex !== 'number' || addrindex < 0) {

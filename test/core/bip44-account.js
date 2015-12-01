@@ -102,6 +102,38 @@ describe('BIP44Account', function () {
     })
   })
 
+  describe('#asyncGetAllAddresses', function () {
+    it('should return all addresses', function () {
+      return asink(function *() {
+        let bip32 = BIP32().fromRandom()
+        let bip44account = BIP44Account(bip32)
+        yield bip44account.asyncGetNextAddressKeys()
+        yield bip44account.asyncGetNextAddressKeys()
+        yield bip44account.asyncGetNextAddressKeys()
+        yield bip44account.asyncGetNextChangeKeys()
+        yield bip44account.asyncGetNextChangeKeys()
+        let addresses = yield bip44account.asyncGetAllAddresses()
+        addresses.length.should.equal(3)
+      })
+    })
+  })
+
+  describe('#asyncGetAllChangeAddresses', function () {
+    it('should return all addresses', function () {
+      return asink(function *() {
+        let bip32 = BIP32().fromRandom()
+        let bip44account = BIP44Account(bip32)
+        yield bip44account.asyncGetNextAddressKeys()
+        yield bip44account.asyncGetNextAddressKeys()
+        yield bip44account.asyncGetNextAddressKeys()
+        yield bip44account.asyncGetNextChangeKeys()
+        yield bip44account.asyncGetNextChangeKeys()
+        let addresses = yield bip44account.asyncGetAllChangeAddresses()
+        addresses.length.should.equal(2)
+      })
+    })
+  })
+
   describe('#asyncGetAddressKeys', function () {
     it('should derive next address', function () {
       return asink(function *() {
