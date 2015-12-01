@@ -67,9 +67,28 @@ CoreBitcoin.prototype.asyncGetLatestBlockInfo = function () {
   return this.blockchainAPI.asyncGetLatestBlockInfo()
 }
 
-CoreBitcoin.prototype.asyncGetAllExtAddresses = function (index) {
+/**
+ * Get all addresses - both external (non-change) and internal (change). This
+ * only gets addresses that were derived with the "GetNew" methods - if you
+ * directly accessed an address it is not gotten. If you want to get all
+ * addresses in order to find the balance of a wallet, this is what you should
+ * use.
+ */
+CoreBitcoin.prototype.asyncGetAllAddresses = function () {
   return asink(function *() {
-    let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(index)
+    let extaddresses = yield this.asyncGetAllExtAddresses()
+    let intaddresses = yield this.asyncGetAllIntAddresses()
+    let addresses = extaddresses.concat(intaddresses)
+    return addresses
+  }.bind(this))
+}
+
+/**
+ * Get all external (non-change) addresses.
+ */
+CoreBitcoin.prototype.asyncGetAllExtAddresses = function () {
+  return asink(function *() {
+    let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(0)
     return yield bip44account.asyncGetAllExtAddresses()
   }.bind(this))
 }
@@ -94,9 +113,12 @@ CoreBitcoin.prototype.asyncGetNewExtAddress = function () {
   }.bind(this))
 }
 
-CoreBitcoin.prototype.asyncGetAllIntAddresses = function (index) {
+/**
+ * Get all internal (change) addresses.
+ */
+CoreBitcoin.prototype.asyncGetAllIntAddresses = function () {
   return asink(function *() {
-    let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(index)
+    let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(0)
     return yield bip44account.asyncGetAllIntAddresses()
   }.bind(this))
 }
