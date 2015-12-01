@@ -41,6 +41,23 @@ describe('CoreBitcoin', function () {
     })
   })
 
+  describe('#asyncGetAllExtAddresses', function () {
+    it('should get addresses', function () {
+      return asink(function *() {
+        let user = yield User().asyncFromRandom()
+        let corebitcoin = CoreBitcoin().fromUser(user)
+        corebitcoin.dbbip44wallet = {
+          asyncSave: () => Promise.resolve()
+        }
+        yield corebitcoin.asyncGetNewExtAddress()
+        yield corebitcoin.asyncGetNewExtAddress()
+        yield corebitcoin.asyncGetNewIntAddress()
+        let addresses = yield corebitcoin.asyncGetAllExtAddresses(0)
+        addresses.length.should.equal(2)
+      })
+    })
+  })
+
   describe('#asyncGetExtAddress', function () {
     it('should get an address', function () {
       return asink(function *() {
@@ -59,6 +76,23 @@ describe('CoreBitcoin', function () {
       return asink(function *() {
         let address = yield corebitcoin.asyncGetNewExtAddress()
         ;(address instanceof Address).should.equal(true)
+      })
+    })
+  })
+
+  describe('#asyncGetAllIntAddresses', function () {
+    it('should get addresses', function () {
+      return asink(function *() {
+        let user = yield User().asyncFromRandom()
+        let corebitcoin = CoreBitcoin().fromUser(user)
+        corebitcoin.dbbip44wallet = {
+          asyncSave: () => Promise.resolve()
+        }
+        yield corebitcoin.asyncGetNewExtAddress()
+        yield corebitcoin.asyncGetNewExtAddress()
+        yield corebitcoin.asyncGetNewIntAddress()
+        let addresses = yield corebitcoin.asyncGetAllIntAddresses(0)
+        addresses.length.should.equal(1)
       })
     })
   })

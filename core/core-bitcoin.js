@@ -67,6 +67,13 @@ CoreBitcoin.prototype.asyncGetLatestBlockInfo = function () {
   return this.blockchainAPI.asyncGetLatestBlockInfo()
 }
 
+CoreBitcoin.prototype.asyncGetAllExtAddresses = function (index) {
+  return asink(function *() {
+    let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(index)
+    return yield bip44account.asyncGetAllExtAddresses()
+  }.bind(this))
+}
+
 CoreBitcoin.prototype.asyncGetExtAddress = function (index) {
   return asink(function *() {
     let address = yield this.bip44wallet.asyncGetExtAddress(0, index)
@@ -84,6 +91,13 @@ CoreBitcoin.prototype.asyncGetNewExtAddress = function () {
     // and keys
     yield this.dbbip44wallet.asyncSave(this.bip44wallet)
     return address
+  }.bind(this))
+}
+
+CoreBitcoin.prototype.asyncGetAllIntAddresses = function (index) {
+  return asink(function *() {
+    let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(index)
+    return yield bip44account.asyncGetAllIntAddresses()
   }.bind(this))
 }
 
