@@ -74,6 +74,19 @@ describe('BIP44Wallet', function () {
     })
   })
 
+  describe('#asyncGetAllAddresses', function () {
+    it('should return an address', function () {
+      return asink(function *() {
+        let bip44wallet = yield BIP44Wallet().asyncFromRandom()
+        yield bip44wallet.asyncGetNewAddress(0)
+        yield bip44wallet.asyncGetNewAddress(0)
+        yield bip44wallet.asyncGetNewAddress(0)
+        let addresses = yield bip44wallet.asyncGetAllAddresses(0)
+        addresses.length.should.equal(3)
+      })
+    })
+  })
+
   describe('#asyncGetAddress', function () {
     it('should return an address', function () {
       return asink(function *() {
@@ -94,6 +107,19 @@ describe('BIP44Wallet', function () {
         let bip44wallet = yield BIP44Wallet().asyncFromRandom()
         let address = yield bip44wallet.asyncGetNewAddress(0)
         ;(address instanceof Address).should.equal(true)
+      })
+    })
+  })
+
+  describe('#asyncGetAllChangeAddresses', function () {
+    it('should return an address', function () {
+      return asink(function *() {
+        let bip44wallet = yield BIP44Wallet().asyncFromRandom()
+        yield bip44wallet.asyncGetNewChangeAddress(0)
+        yield bip44wallet.asyncGetNewChangeAddress(0)
+        yield bip44wallet.asyncGetNewChangeAddress(0)
+        let addresses = yield bip44wallet.asyncGetAllChangeAddresses(0)
+        addresses.length.should.equal(3)
       })
     })
   })
