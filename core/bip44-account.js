@@ -175,7 +175,7 @@ BIP44Account.prototype.asyncGetAllIntAddresses = function () {
  */
 BIP44Account.prototype.asyncGetExtAddressKeys = function (extindex) {
   return asink(function *() {
-    if (typeof extindex !== 'number' || extindex < 0) {
+    if (typeof extindex !== 'number' || extindex < 0 || Object.is(extindex, NaN)) {
       throw new Error('invalid extindex - must be number >= 0')
     }
     let path = 'm/0/' + extindex

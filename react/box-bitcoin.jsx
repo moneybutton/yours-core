@@ -24,21 +24,9 @@ let BoxBitcoin = React.createClass({
   setStateFromDattCore: function () {
     return asink(function *() {
       let dattcore = this.props.dattcore
-      let DattCore = dattcore.constructor
-      let depositAddress = ''
-
-      if (dattcore.isinitialized) {
-        // We always use the 0th address for the deposit address. TODO: This is
-        // bad practice for privacy reasons. Every deposit should be associated
-        // with a new address.
-        let address = yield dattcore.asyncGetExtAddress(0)
-        depositAddress = yield DattCore.CryptoWorkers.asyncAddressStringFromAddress(address)
-      }
-
       let info = yield dattcore.asyncGetLatestBlockInfo()
       this.setState({
-        blockheightnum: info.height,
-        depositAddress: depositAddress
+        blockheightnum: info.height
       })
     }.bind(this))
   },
@@ -51,13 +39,23 @@ let BoxBitcoin = React.createClass({
     return this.setStateFromDattCore()
   },
 
+  handleReceive: function () {
+    return asink(function *() {
+      let dattcore = this.props.dattcore
+      let DattCore = dattcore.constructor
+      let address = yield dattcore.asyncGetNewExtAddress()
+      let depositAddress = yield DattCore.CryptoWorkers.asyncAddressStringFromAddress(address)
+      this.setState({depositAddress})
+    }.bind(this))
+  },
+
   render: function () {
     return (
       <div className='info-box'>
         <h2>My Bitcoin</h2>
         <p>Your balance: {this.props.bitsbalance} bits</p>
         <p><button className='btn btn-default'>Send</button>
-        <button className='btn btn-default'>Receive</button></p>
+        <button className='btn btn-default' onClick={this.handleReceive}>Receive</button></p>
         <p>Latest block height: {this.state.blockheightnum}</p>
         <p>Deposit: {this.state.depositAddress}</p>
       </div>
