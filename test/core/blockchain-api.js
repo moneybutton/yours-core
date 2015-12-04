@@ -1,5 +1,6 @@
 /* global describe,it */
 'use strict'
+let Address = require('fullnode/lib/address')
 let BlockchainAPI = require('../../core/blockchain-api')
 let asink = require('asink')
 let should = require('should')
@@ -20,6 +21,45 @@ describe('BlockchainAPI', function () {
         should.exist(info.hashbuf)
         should.exist(info.hashhex)
         should.exist(info.height)
+      })
+    })
+  })
+
+  describe('#asyncGetConfirmedBalanceSatoshis', function () {
+    it('should return balance of this known address', function () {
+      return asink(function *() {
+        // This is one of Satoshi's addresses. It is in the Coinbase output of
+        // the second block. It mined 50 BTC, however people have since added
+        // more bitcoins to it, so the balance is a little greater than 50 BTC.
+        let address = Address().fromString('12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX')
+        let satoshis = yield BlockchainAPI().asyncGetConfirmedBalanceSatoshis(address)
+        satoshis.should.greaterThan(50 * 1e8)
+      })
+    })
+  })
+
+  describe('#asyncGetUnconfirmedBalanceSatoshis', function () {
+    it('should return balance of this known address', function () {
+      return asink(function *() {
+        // This is one of Satoshi's addresses. It is in the Coinbase output of
+        // the second block. It mined 50 BTC, however people have since added
+        // more bitcoins to it, so the balance is a little greater than 50 BTC.
+        let address = Address().fromString('12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX')
+        let satoshis = yield BlockchainAPI().asyncGetUnconfirmedBalanceSatoshis(address)
+        satoshis.should.greaterThan(-1)
+      })
+    })
+  })
+
+  describe('#asyncGetTotalBalanceSatoshis', function () {
+    it('should return balance of this known address', function () {
+      return asink(function *() {
+        // This is one of Satoshi's addresses. It is in the Coinbase output of
+        // the second block. It mined 50 BTC, however people have since added
+        // more bitcoins to it, so the balance is a little greater than 50 BTC.
+        let address = Address().fromString('12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX')
+        let satoshis = yield BlockchainAPI().asyncGetTotalBalanceSatoshis(address)
+        satoshis.should.greaterThan(50 * 1e8)
       })
     })
   })
