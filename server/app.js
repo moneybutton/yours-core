@@ -16,7 +16,7 @@ module.exports.createAppServer = function createAppServer (port) {
 
   // The blockchain API proxy.
   app.get('/blockchain-api/:val1/:val2/:val3', requestProxy({
-    url: config.DATT_BLOCKCHAIN_API_URI + ':val1/:val2/:val2'
+    url: config.DATT_BLOCKCHAIN_API_URI + ':val1/:val2/:val3'
   }))
   app.get('/blockchain-api/:val1/:val2', requestProxy({
     url: config.DATT_BLOCKCHAIN_API_URI + ':val1/:val2'

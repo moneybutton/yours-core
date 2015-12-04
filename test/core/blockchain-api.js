@@ -6,6 +6,8 @@ let asink = require('asink')
 let should = require('should')
 
 describe('BlockchainAPI', function () {
+  this.timeout(5000)
+
   it('should exist', function () {
     should.exist(BlockchainAPI)
     should.exist(BlockchainAPI())
@@ -13,7 +15,6 @@ describe('BlockchainAPI', function () {
 
   describe('#asyncGetLatestBlockInfo', function () {
     it('should make a real request and get the latest block info (if this test times out, it could be that the public Insight server is down)', function () {
-      this.timeout(5000)
       return asink(function *() {
         let info = yield BlockchainAPI().asyncGetLatestBlockInfo()
         should.exist(info.idbuf)
@@ -21,13 +22,12 @@ describe('BlockchainAPI', function () {
         should.exist(info.hashbuf)
         should.exist(info.hashhex)
         should.exist(info.height)
-      })
+      }.bind(this))
     })
   })
 
   describe('#asyncGetUTXOsJSON', function () {
     it('should get utxos for this known address', function () {
-      this.timeout(5000)
       return asink(function *() {
         // This is one of Satoshi's addresses. It is in the Coinbase output of
         // the second block. It mined 50 BTC, however people have since added
@@ -35,7 +35,20 @@ describe('BlockchainAPI', function () {
         let address = Address().fromString('12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX')
         let utxos = yield BlockchainAPI().asyncGetUTXOsJSON([address])
         utxos.length.should.greaterThan(26)
-      })
+      }.bind(this))
+    })
+  })
+
+  describe('#asyncGetAddressesBalancesSatoshis', function () {
+    it('should get balances for this known address', function () {
+      return asink(function *() {
+        let address1 = Address().fromString('12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX')
+        let address2 = Address().fromString('1MUSZkXpQE3mq6Hq3LpUrvmapKFkguTc3N')
+        let balances = yield BlockchainAPI().asyncGetAddressesBalancesSatoshis([address1, address2])
+        balances.confirmedBalanceSatoshis.should.greaterThan(50 * 1e8)
+        balances.unconfirmedBalanceSatoshis.should.greaterThan(-1)
+        balances.totalBalanceSatoshis.should.greaterThan(50 * 1e8)
+      }.bind(this))
     })
   })
 

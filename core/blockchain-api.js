@@ -92,6 +92,32 @@ BlockchainAPI.prototype.asyncGetUTXOsJSON = function (addresses) {
 }
 
 /**
+ * Returns an object containing the confirmed balance, unconfirmed balance, and
+ * total balance of the addresses.
+ */
+BlockchainAPI.prototype.asyncGetAddressesBalancesSatoshis = function (addresses) {
+  return asink(function *() {
+    let json = yield this.asyncGetUTXOsJSON(addresses)
+    let confirmedBalanceSatoshis = 0
+    let unconfirmedBalanceSatoshis = 0
+    let totalBalanceSatoshis = 0
+    json.forEach(obj => {
+      if (obj.confirmations > 0) {
+        confirmedBalanceSatoshis += obj.amount * 1e8
+      } else {
+        unconfirmedBalanceSatoshis += obj.amount * 1e8
+      }
+      totalBalanceSatoshis += obj.amount * 1e8
+    })
+    return {
+      confirmedBalanceSatoshis,
+      unconfirmedBalanceSatoshis,
+      totalBalanceSatoshis
+    }
+  }.bind(this))
+}
+
+/**
  * Get the balance only including transactions in blocks.
  */
 BlockchainAPI.prototype.asyncGetAddressConfirmedBalanceSatoshis = function (address) {
