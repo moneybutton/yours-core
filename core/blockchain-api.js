@@ -47,6 +47,23 @@ BlockchainAPI.prototype.asyncGetRequest = function (urlquery) {
   }.bind(this))
 }
 
+BlockchainAPI.prototype.asyncPostRequest = function (urlquery, json) {
+  return asink(function *() { //eslint-disable-line
+    if (!urlquery || !json) {
+      throw new Error('must specify urlquery and json for post data')
+    }
+    let res = yield new Promise((resolve, reject) => {
+      request.post(this.blockchainAPIURI + urlquery, {form: json}, function (error, response, body) {
+        if (error || response.statusCode !== 200) {
+          return reject(new Error(`blockchain-api getting ${urlquery}: ${error}`))
+        }
+        resolve(body)
+      })
+    })
+    return JSON.parse(res)
+  }.bind(this))
+}
+
 BlockchainAPI.prototype.asyncGetLatestBlockInfo = function () {
   return asink(function *() {
     let info = yield this.asyncGetRequest('status?q=getInfo')
@@ -60,10 +77,24 @@ BlockchainAPI.prototype.asyncGetLatestBlockInfo = function () {
   }.bind(this))
 }
 
+BlockchainAPI.prototype.asyncGetUTXOsJSON = function (addresses) {
+  return asink(function *() {
+    let addressStrings = []
+    for (let i = 0; i < addresses.length; i++) {
+      let addressString = yield CryptoWorkers.asyncAddressStringFromAddress(addresses[i])
+      addressStrings.push(addressString)
+    }
+    let UTXOsJSON = yield this.asyncPostRequest('addrs/utxo', {
+      'addrs': addressStrings.join(',')
+    })
+    return UTXOsJSON
+  }.bind(this))
+}
+
 /**
  * Get the balance only including transactions in blocks.
  */
-BlockchainAPI.prototype.asyncGetConfirmedBalanceSatoshis = function (address) {
+BlockchainAPI.prototype.asyncGetAddressConfirmedBalanceSatoshis = function (address) {
   return asink(function *() {
     let addressString = yield CryptoWorkers.asyncAddressStringFromAddress(address)
     let res = yield this.asyncGetRequest(`addr/${addressString}/balance`)
@@ -75,7 +106,7 @@ BlockchainAPI.prototype.asyncGetConfirmedBalanceSatoshis = function (address) {
 /**
  * Get balance only including transactions seen but not in blocks.
  */
-BlockchainAPI.prototype.asyncGetUnconfirmedBalanceSatoshis = function (address) {
+BlockchainAPI.prototype.asyncGetAddressUnconfirmedBalanceSatoshis = function (address) {
   return asink(function *() {
     let addressString = yield CryptoWorkers.asyncAddressStringFromAddress(address)
     let res = yield this.asyncGetRequest(`addr/${addressString}/unconfirmedBalance`)
@@ -88,11 +119,11 @@ BlockchainAPI.prototype.asyncGetUnconfirmedBalanceSatoshis = function (address) 
  * Get balance including both transactions in a block and transactions seen but
  * not in a block.
  */
-BlockchainAPI.prototype.asyncGetTotalBalanceSatoshis = function (address) {
+BlockchainAPI.prototype.asyncGetAddressTotalBalanceSatoshis = function (address) {
   return asink(function *() {
     let satoshis = 0
-    satoshis += yield this.asyncGetConfirmedBalanceSatoshis(address)
-    satoshis += yield this.asyncGetUnconfirmedBalanceSatoshis(address)
+    satoshis += yield this.asyncGetAddressConfirmedBalanceSatoshis(address)
+    satoshis += yield this.asyncGetAddressUnconfirmedBalanceSatoshis(address)
     return satoshis
   }.bind(this))
 }
