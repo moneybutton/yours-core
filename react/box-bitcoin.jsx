@@ -57,7 +57,7 @@ let BoxBitcoin = React.createClass({
         <p><button className='btn btn-default'>Send</button>
         <button className='btn btn-default' onClick={this.handleReceive}>Receive</button></p>
         <p>Latest block height: {this.state.blockheightnum}</p>
-        <p>Deposit: {this.state.depositAddress}</p>
+        <p>Deposit:<br/>{this.state.depositAddress}</p>
       </div>
     )
   }
