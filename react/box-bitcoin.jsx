@@ -11,13 +11,14 @@ let asink = require('asink')
 let BoxBitcoin = React.createClass({
   getInitialState: function () {
     return {
-      depositAddress: '',
-      blockheightnum: 0
+      bitsBalanceUnconfirmed: 0,
+      bitsBalanceConfirmed: 0,
+      blockheightnum: 0,
+      depositAddress: ''
     }
   },
 
   propTypes: {
-    bitsbalance: React.PropTypes.number,
     dattcore: React.PropTypes.object
   },
 
@@ -53,11 +54,12 @@ let BoxBitcoin = React.createClass({
     return (
       <div className='info-box'>
         <h2>My Bitcoin</h2>
-        <p>Your balance: {this.props.bitsbalance} bits</p>
+        <p>Confirmed balance: {this.state.bitsBalanceConfirmed} bits</p>
+        <p>Unconfirmed balance: {this.state.bitsBalanceUnconfirmed} bits</p>
+        <p>Latest block height: {this.state.blockheightnum}</p>
         <p><button className='btn btn-default'>Send</button>
         <button className='btn btn-default' onClick={this.handleReceive}>Receive</button></p>
-        <p>Latest block height: {this.state.blockheightnum}</p>
-        <p>Deposit:<br/>{this.state.depositAddress}</p>
+        <p>Deposit Address:<br/>{this.state.depositAddress}</p>
       </div>
     )
   }

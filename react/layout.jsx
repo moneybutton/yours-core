@@ -79,7 +79,7 @@ let Layout = React.createClass({
 
           <div className='col-md-4 side-boxes'>
             <BoxUser dattcore={dattcore}/>
-            <BoxBitcoin dattcore={dattcore} bitsbalance={0}/>
+            <BoxBitcoin dattcore={dattcore}/>
             <BoxContent postsnumber={0}/>
             <BoxPeer peersnumber={numActiveConnections}/>
             <BoxDeveloper dattcore={dattcore}/>
