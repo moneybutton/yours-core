@@ -30,7 +30,7 @@ let BoxBitcoin = React.createClass({
       this.setState({
         blockheightnum: info.height
       })
-    }.bind(this))
+    }, this)
   },
 
   componentWillMount: function () {
@@ -68,7 +68,7 @@ let BoxBitcoin = React.createClass({
       let address = yield dattcore.asyncGetNewExtAddress()
       let depositAddress = yield DattCore.CryptoWorkers.asyncAddressStringFromAddress(address)
       this.setState({depositAddress})
-    }.bind(this))
+    }, this)
   },
 
   render: function () {

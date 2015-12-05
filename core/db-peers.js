@@ -46,7 +46,7 @@ DBPeers.prototype.asyncSave = function (peers) {
       peers: peers.toJSON()
     }
     return this.db.put(doc)
-  }.bind(this))
+  }, this)
 }
 
 /**

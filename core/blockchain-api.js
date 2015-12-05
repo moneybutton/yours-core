@@ -44,7 +44,7 @@ BlockchainAPI.prototype.asyncGetRequest = function (urlquery) {
       })
     })
     return JSON.parse(res)
-  }.bind(this))
+  }, this)
 }
 
 BlockchainAPI.prototype.asyncPostRequest = function (urlquery, json) {
@@ -61,7 +61,7 @@ BlockchainAPI.prototype.asyncPostRequest = function (urlquery, json) {
       })
     })
     return JSON.parse(res)
-  }.bind(this))
+  }, this)
 }
 
 BlockchainAPI.prototype.asyncGetLatestBlockInfo = function () {
@@ -74,7 +74,7 @@ BlockchainAPI.prototype.asyncGetLatestBlockInfo = function () {
     let hashbuf = BR(idbuf).readReverse()
     let hashhex = hashbuf.toString('hex')
     return {idbuf, idhex, hashbuf, hashhex, height}
-  }.bind(this))
+  }, this)
 }
 
 BlockchainAPI.prototype.asyncGetUTXOsJSON = function (addresses) {
@@ -118,7 +118,7 @@ BlockchainAPI.prototype.asyncGetUTXOsJSON = function (addresses) {
     let UTXOsJSON = yield this.asyncGetRequest(`addrs/${addressStrings.join(',')}/utxo`)
 
     return UTXOsJSON
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -144,7 +144,7 @@ BlockchainAPI.prototype.asyncGetAddressesBalancesSatoshis = function (addresses)
       unconfirmedBalanceSatoshis,
       totalBalanceSatoshis
     }
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -156,7 +156,7 @@ BlockchainAPI.prototype.asyncGetAddressConfirmedBalanceSatoshis = function (addr
     let res = yield this.asyncGetRequest(`addr/${addressString}/balance`)
     let satoshis = parseInt(res, 10)
     return satoshis
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -168,7 +168,7 @@ BlockchainAPI.prototype.asyncGetAddressUnconfirmedBalanceSatoshis = function (ad
     let res = yield this.asyncGetRequest(`addr/${addressString}/unconfirmedBalance`)
     let satoshis = parseInt(res, 10)
     return satoshis
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -181,7 +181,7 @@ BlockchainAPI.prototype.asyncGetAddressTotalBalanceSatoshis = function (address)
     satoshis += yield this.asyncGetAddressConfirmedBalanceSatoshis(address)
     satoshis += yield this.asyncGetAddressUnconfirmedBalanceSatoshis(address)
     return satoshis
-  }.bind(this))
+  }, this)
 }
 
 module.exports = BlockchainAPI

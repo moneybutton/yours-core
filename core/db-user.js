@@ -43,7 +43,7 @@ DBUser.prototype.asyncSave = function (user) {
       user: user.toJSON()
     }
     return this.db.put(doc)
-  }.bind(this))
+  }, this)
 }
 
 DBUser.prototype.asyncGet = function () {

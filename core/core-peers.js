@@ -43,7 +43,7 @@ CorePeers.prototype.asyncInitialize = function () {
     yield this.peers.asyncInitialize()
     this.monitorPeers()
     this.dbpeers = DBPeers(this.db, this.peers)
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -59,7 +59,7 @@ CorePeers.prototype.asyncReconnectDBPeers = function () {
     }
     // TODO: Also do peer discovery and connect to new peers.
     return this.peers.asyncConnectManyFromJSON(peersJSON)
-  }.bind(this))
+  }, this)
 }
 
 CorePeers.prototype.disconnectFromError = function (network, connection, error) {
@@ -135,7 +135,7 @@ CorePeers.prototype.asyncHandleMsg = function (obj) {
       this.disconnectFromError(network, connection, error)
     }
     return this
-  }.bind(this))
+  }, this)
 }
 
 CorePeers.prototype.handleMsgPing = function (obj) {
@@ -181,7 +181,7 @@ CorePeers.prototype.asyncHandleMsgContentAuth = function (obj) {
     yield DBContentAuth(this.db).asyncSave(contentauth)
     this.emit('content-auth', {network, connection, contentauth})
     return this
-  }.bind(this))
+  }, this)
 }
 
 CorePeers.prototype.asyncConnect = function (connectionInfo) {

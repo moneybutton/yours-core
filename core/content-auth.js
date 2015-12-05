@@ -128,7 +128,7 @@ ContentAuth.prototype.asyncSign = function (keypair) {
     this.sig = sig
     this.pubkey = keypair.pubkey
     return this
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -163,7 +163,7 @@ ContentAuth.prototype.asyncVerify = function () {
     let hashbuf = yield CryptoWorkers.asyncSha256(this.getBufForSig())
     let info = yield CryptoWorkers.asyncVerifyCompactSig(hashbuf, this.sig)
     return info.verified && (info.pubkey.point.eq(this.pubkey.point))
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -178,7 +178,7 @@ ContentAuth.prototype.asyncValidate = function () {
       throw new Error('invalid content-auth')
     }
     return this
-  }.bind(this))
+  }, this)
 }
 
 ContentAuth.prototype.asyncValidate = function () {
@@ -237,7 +237,7 @@ ContentAuth.prototype.asyncGetHash = function () {
       this.setCacheHash(hashbuf)
       return hashbuf
     }
-  }.bind(this))
+  }, this)
 }
 
 module.exports = ContentAuth

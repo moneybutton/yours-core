@@ -61,14 +61,14 @@ CoreBitcoin.prototype.asyncInitialize = function (user) {
     }
     this.dbbip44wallet = DBBIP44Wallet(this.db, this.bip44wallet)
     return this
-  }.bind(this))
+  }, this)
 }
 
 CoreBitcoin.prototype.asyncFromRandom = function () {
   return asink(function *() {
     this.bip44wallet = yield BIP44Wallet().asyncFromRandom()
     return this
-  }.bind(this))
+  }, this)
 }
 
 CoreBitcoin.prototype.fromUser = function (user) {
@@ -117,7 +117,7 @@ CoreBitcoin.prototype.asyncUpdateBalance = function () {
       this.emit('balance', obj)
     }
     this.balances = obj
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -130,7 +130,7 @@ CoreBitcoin.prototype.asyncPollBalance = function () {
       yield this.asyncUpdateBalance()
       this.monitorBlockchainAPI()
     }
-  }.bind(this))
+  }, this)
 }
 
 CoreBitcoin.prototype.asyncGetLatestBlockInfo = function () {
@@ -150,7 +150,7 @@ CoreBitcoin.prototype.asyncGetAllAddresses = function () {
     let intaddresses = yield this.asyncGetAllIntAddresses()
     let addresses = extaddresses.concat(intaddresses)
     return addresses
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -160,7 +160,7 @@ CoreBitcoin.prototype.asyncGetAllExtAddresses = function () {
   return asink(function *() {
     let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(0)
     return yield bip44account.asyncGetAllExtAddresses()
-  }.bind(this))
+  }, this)
 }
 
 CoreBitcoin.prototype.asyncGetExtAddress = function (index) {
@@ -170,7 +170,7 @@ CoreBitcoin.prototype.asyncGetExtAddress = function (index) {
     // and keys
     yield this.dbbip44wallet.asyncSave(this.bip44wallet)
     return address
-  }.bind(this))
+  }, this)
 }
 
 CoreBitcoin.prototype.asyncGetNewExtAddress = function () {
@@ -180,7 +180,7 @@ CoreBitcoin.prototype.asyncGetNewExtAddress = function () {
     // and keys
     yield this.dbbip44wallet.asyncSave(this.bip44wallet)
     return address
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -190,7 +190,7 @@ CoreBitcoin.prototype.asyncGetAllIntAddresses = function () {
   return asink(function *() {
     let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(0)
     return yield bip44account.asyncGetAllIntAddresses()
-  }.bind(this))
+  }, this)
 }
 
 CoreBitcoin.prototype.asyncGetNewIntAddress = function () {
@@ -200,7 +200,7 @@ CoreBitcoin.prototype.asyncGetNewIntAddress = function () {
     // and keys
     yield this.dbbip44wallet.asyncSave(this.bip44wallet)
     return address
-  }.bind(this))
+  }, this)
 }
 
 module.exports = CoreBitcoin

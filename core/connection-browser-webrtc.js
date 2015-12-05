@@ -46,7 +46,7 @@ Connection.prototype.asyncHandleData = function (data) {
     }
     this.emit('msg', msg)
     return msg
-  }.bind(this))
+  }, this)
 }
 
 Connection.prototype.sendMsg = function (msg) {

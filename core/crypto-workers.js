@@ -53,7 +53,7 @@ CryptoWorkers.prototype.asyncSha256 = function sha256 (databuf) {
     let datahex = databuf.toString('hex')
     let hashhex = yield q(this.pool.exec('sha256', [datahex]))
     return new Buffer(hashhex, 'hex')
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -68,7 +68,7 @@ CryptoWorkers.prototype.asyncPubkeyFromPrivkey = function (privkey) {
     let pubkeyHex = yield q(this.pool.exec('pubkeyHexFromPrivkeyHex', [privkeyHex]))
     let pubkey = Pubkey().fromDER(new Buffer(pubkeyHex, 'hex'))
     return pubkey
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -80,7 +80,7 @@ CryptoWorkers.prototype.asyncAddressFromPubkey = function (pubkey) {
     let pubkeyHex = pubkey.toHex()
     let addressHex = yield q(this.pool.exec('addressHexFromPubkeyHex', [pubkeyHex]))
     return Address().fromHex(addressHex)
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -92,7 +92,7 @@ CryptoWorkers.prototype.asyncAddressStringFromAddress = function (address) {
     let addressHex = address.toHex()
     let addressString = yield q(this.pool.exec('addressStringFromAddressHex', [addressHex]))
     return addressString
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -113,7 +113,7 @@ CryptoWorkers.prototype.asyncXkeysFromEntropy = function (entropybuf) {
       xprv: xprv,
       xpub: xpub
     }
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -129,7 +129,7 @@ CryptoWorkers.prototype.asyncDeriveXkeysFromXprv = function (xprv, path) {
     let xpub = BIP32().fromHex(obj.xpub)
     let address = Address().fromHex(obj.address)
     return {xprv, xpub, address}
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -144,7 +144,7 @@ CryptoWorkers.prototype.asyncDeriveXkeysFromXpub = function (xpub, path) {
     xpub = BIP32().fromHex(obj.xpub)
     let address = Address().fromHex(obj.address)
     return {xpub, address}
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -158,7 +158,7 @@ CryptoWorkers.prototype.asyncSign = function (hash, privkey, endian) {
     let privkeyHex = privkey.toHex()
     let sighex = yield q(this.pool.exec('sign', [hashhex, privkeyHex, endian]))
     return Sig().fromHex(sighex)
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -172,7 +172,7 @@ CryptoWorkers.prototype.asyncSignCompact = function (hashbuf, privkey) {
     let privkeyHex = privkey.toHex()
     let sighex = yield q(this.pool.exec('signCompact', [hashhex, privkeyHex]))
     return Sig().fromCompact(new Buffer(sighex, 'hex'))
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -188,7 +188,7 @@ CryptoWorkers.prototype.asyncVerifySignature = function verifySignature (hash, s
     let pubkeyHex = pubkey.toDER(false).toString('hex')
     let signatureHex = signature.toHex()
     return q(this.pool.exec('verifySignature', [hashhex, signatureHex, pubkeyHex]))
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -212,7 +212,7 @@ CryptoWorkers.prototype.asyncVerifyCompactSig = function (hashbuf, sig) {
       verified: obj.verified,
       pubkey: obj.pubkey ? Pubkey().fromDER(new Buffer(obj.pubkey, 'hex')) : undefined
     }
-  }.bind(this))
+  }, this)
 }
 
 cryptoWorkers = new CryptoWorkers()

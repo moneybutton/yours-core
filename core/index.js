@@ -90,7 +90,7 @@ DattCore.prototype.asyncInitialize = function () {
 
     this.isinitialized = true
     return Promise.resolve()
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -113,7 +113,7 @@ DattCore.prototype.asyncNetworkInitialize = function () {
       yield this.corepeers.asyncDiscoverAndConnect()
     }
     return this
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -124,7 +124,7 @@ DattCore.prototype.asyncNetworkClose = function () {
   return asink(function *() {
     this.corebitcoin.unmonitorBlockchainAPI()
     // TODO: Also close p2p connections.
-  }.bind(this))
+  }, this)
 }
 
 DattCore.prototype.close = function () {
@@ -168,7 +168,7 @@ DattCore.prototype.asyncSetUserName = function (name) {
     yield DBContentAuth(this.db, msgauth.contentauth).asyncSave()
     // TODO: broadcast msgauth
     return this
-  }.bind(this))
+  }, this)
 }
 
 DattCore.prototype.asyncGetUserName = function () {
@@ -246,7 +246,7 @@ DattCore.prototype.asyncNewContentAuth = function (title, label, body) {
     let blockheightnum = info.height
     let name = this.coreuser.user.name
     return this.corecontent.asyncNewContentAuth(pubkey, privkey, address, name, label, title, body, blockhashbuf, blockheightnum)
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -258,7 +258,7 @@ DattCore.prototype.asyncPostContentAuth = function (contentauth) {
     let msg = MsgContentAuth().fromContentAuth(contentauth).toMsg()
     this.broadcastMsg(msg)
     return this.corecontent.asyncPostContentAuth(contentauth)
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -268,7 +268,7 @@ DattCore.prototype.asyncPostNewContentAuth = function (title, label, body) {
   return asink(function *() {
     let contentauth = yield this.asyncNewContentAuth(title, label, body)
     return this.asyncPostContentAuth(contentauth)
-  }.bind(this))
+  }, this)
 }
 
 /**

@@ -71,7 +71,7 @@ User.prototype.asyncFromRandom = function () {
     this.masterxprv = obj.xprv
     this.masterxpub = obj.xpub
     return this
-  }.bind(this))
+  }, this)
 }
 
 User.prototype.fromJSON = function (json) {

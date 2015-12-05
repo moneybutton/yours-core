@@ -49,7 +49,7 @@ CoreUser.prototype.asyncInitialize = function () {
       yield this.dbuser.asyncSave(this.user)
     }
     return this
-  }.bind(this))
+  }, this)
 }
 
 CoreUser.prototype.asyncSetName = function (name) {
@@ -63,7 +63,7 @@ CoreUser.prototype.asyncSetName = function (name) {
     }
     yield this.dbuser.asyncSave(this.user)
     return this
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -84,7 +84,7 @@ CoreUser.prototype.asyncGetMsgAuth = function (blockhashbuf, blockheightnum) {
       sig: sig
     })
     return msgauth
-  }.bind(this))
+  }, this)
 }
 
 module.exports = CoreUser

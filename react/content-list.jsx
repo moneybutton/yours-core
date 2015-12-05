@@ -32,7 +32,7 @@ let ContentList = React.createClass({
         contentList.push({key, address, title, name, label, body})
       }
       this.setState({contentList})
-    }.bind(this))
+    }, this)
   },
 
   componentWillMount: function () {

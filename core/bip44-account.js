@@ -43,7 +43,7 @@ BIP44Account.prototype.asyncFromMasterXprvPrivate = function (bip32, accountinde
     bip32 = keys.xprv
     this.fromObject({bip32})
     return this
-  }.bind(this))
+  }, this)
 }
 
 BIP44Account.prototype.asyncFromMasterXprvPublic = function (bip32, accountindex) {
@@ -57,7 +57,7 @@ BIP44Account.prototype.asyncFromMasterXprvPublic = function (bip32, accountindex
     bip32 = keys.xpub
     this.fromObject({bip32})
     return this
-  }.bind(this))
+  }, this)
 }
 
 BIP44Account.prototype.toJSON = function () {
@@ -138,7 +138,7 @@ BIP44Account.prototype.asyncDeriveKeysFromPath = function (path) {
     }
     this.keymap.set(path, keys)
     return keys
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -154,7 +154,7 @@ BIP44Account.prototype.asyncGetAllExtAddresses = function () {
       addresses.push(keys.address)
     }
     return addresses
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -169,7 +169,7 @@ BIP44Account.prototype.asyncGetAllIntAddresses = function () {
       addresses.push(keys.address)
     }
     return addresses
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -183,7 +183,7 @@ BIP44Account.prototype.asyncGetExtAddressKeys = function (extindex) {
     let path = 'm/0/' + extindex
     let keys = yield this.asyncDeriveKeysFromPath(path)
     return keys
-  }.bind(this))
+  }, this)
 }
 
 BIP44Account.prototype.asyncGetNextExtAddressKeys = function () {
@@ -192,7 +192,7 @@ BIP44Account.prototype.asyncGetNextExtAddressKeys = function () {
     let keys = yield this.asyncGetExtAddressKeys(extindex)
     this.extindex = extindex
     return keys
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -203,7 +203,7 @@ BIP44Account.prototype.asyncGetIntAddressKeys = function (intindex) {
     let path = 'm/1/' + intindex
     let keys = yield this.asyncDeriveKeysFromPath(path)
     return keys
-  }.bind(this))
+  }, this)
 }
 
 BIP44Account.prototype.asyncGetNextIntAddressKeys = function () {
@@ -212,7 +212,7 @@ BIP44Account.prototype.asyncGetNextIntAddressKeys = function () {
     let keys = yield this.asyncGetIntAddressKeys(intindex)
     this.intindex = intindex
     return keys
-  }.bind(this))
+  }, this)
 }
 
 module.exports = BIP44Account

@@ -50,7 +50,7 @@ let FormNewContent = React.createClass({
       let dattcore = this.props.dattcore
       yield dattcore.asyncPostNewContentAuth(title, label, body)
       this.setState(this.getInitialState())
-    }.bind(this))
+    }, this)
   },
 
   render: function () {
