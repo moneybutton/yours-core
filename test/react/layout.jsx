@@ -24,8 +24,11 @@ describe('Layout', function () {
   })
 
   after(function () {
-    // Note: All react test files must run dom.after()
-    dom.after()
+    return asink(function *() {
+      yield dattcore.asyncNetworkClose()
+      // Note: All react test files must run dom.after()
+      dom.after()
+    })
   })
 
   describe('#getInitialState', function () {

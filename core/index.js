@@ -80,42 +80,50 @@ DattCore.prototype.asyncInitialize = function () {
     this.coreuser = CoreUser(this.db)
     this.corepeers = CorePeers({rendezvous: this.config.rendezvous}, this.db)
 
-    // this.monitorCoreBitcoin()
+    this.monitorCoreBitcoin()
     this.monitorCoreContent()
     this.monitorCorePeers()
 
     yield this.db.asyncInitialize()
     yield this.coreuser.asyncInitialize()
-    // this.corebitcoin.fromUser(this.coreuser.user)
     yield this.corebitcoin.asyncInitialize(this.coreuser.user)
-
-    // Note: We do not want to wait for the network connections to be
-    // established before considering the app to be "initialized", thus we do
-    // not "yield" here. It should be possible to run the app with no network
-    // connections. Obviously not everything will work in that case, but the
-    // user should still be able to access and modify their own data.
-    // Nonetheless, we do still want to kick off the network connection
-    // initialization here - we just don't want to wait for it to finish before
-    // resolving.
-    asink(function *() {
-      yield this.corepeers.asyncInitialize()
-      if (process.browser) {
-        // TODO: Re-enable for node after network connections for node are
-        // finished
-        yield this.corepeers.asyncDiscoverAndConnect()
-      }
-    }.bind(this)).catch((err) => {
-      if (err) {
-        // TODO: Do something with this error. Display?
-        console.log('error initializing corepeers: ' + err)
-      }
-    }).then(() => {
-      // TODO: What should we do when network connections are initialized? Set
-      // a "network is OK" variable somewhere, perhaps?
-    })
 
     this.isinitialized = true
     return Promise.resolve()
+  }.bind(this))
+}
+
+/**
+ * Initializing network connections in a separate method than the rest of the
+ * initialization because you don't want to have to wait for network
+ * connections to be established before using the app. It is possible to use
+ * the app without establishing network connections at all. For instance, you
+ * might want to run the app offline just to backup your data.
+ *
+ * This applies both to p2p connections and blockchain API.
+ */
+DattCore.prototype.asyncNetworkInitialize = function () {
+  return asink(function *() {
+    this.corebitcoin.monitorBlockchainAPI()
+    yield this.corebitcoin.asyncUpdateBalance()
+    yield this.corepeers.asyncInitialize()
+    if (process.browser) {
+      // TODO: Re-enable for node after network connections for node are
+      // finished
+      yield this.corepeers.asyncDiscoverAndConnect()
+    }
+    return this
+  }.bind(this))
+}
+
+/**
+ * Close all network connections and do not receive new network connections.
+ * This applies both to p2p connections and the blockchain API.
+ */
+DattCore.prototype.asyncNetworkClose = function () {
+  return asink(function *() {
+    this.corebitcoin.unmonitorBlockchainAPI()
+    // TODO: Also close p2p connections.
   }.bind(this))
 }
 
@@ -175,6 +183,16 @@ DattCore.prototype.asyncGetUserMnemonic = function () {
  * Bitcoin
  * -------
  */
+
+DattCore.prototype.monitorCoreBitcoin = function () {
+  this.corebitcoin.on('balance', this.handleBitcoinBalance.bind(this))
+  return this
+}
+
+DattCore.prototype.handleBitcoinBalance = function (obj) {
+  this.emit('bitcoin-balance', obj)
+  return this
+}
 
 /**
  * Return information about the latest block, including the id and height.

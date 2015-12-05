@@ -79,6 +79,9 @@ BlockchainAPI.prototype.asyncGetLatestBlockInfo = function () {
 
 BlockchainAPI.prototype.asyncGetUTXOsJSON = function (addresses) {
   return asink(function *() {
+    if (addresses.length === 0) {
+      return []
+    }
     let addressStrings = []
     for (let i = 0; i < addresses.length; i++) {
       let addressString = yield CryptoWorkers.asyncAddressStringFromAddress(addresses[i])

@@ -28,6 +28,15 @@ describe('CoreBitcoin', function () {
     should.exist(CoreBitcoin())
   })
 
+  describe('#initialize', function () {
+    it('should set some initial variables', function () {
+      should.exist(corebitcoin.balances)
+      should.exist(corebitcoin.balances.confirmedBalanceSatoshis)
+      should.exist(corebitcoin.balances.unconfirmedBalanceSatoshis)
+      should.exist(corebitcoin.balances.totalBalanceSatoshis)
+    })
+  })
+
   describe('#fromUser', function () {
     it('should set known properties', function () {
       return asink(function *() {
@@ -37,6 +46,34 @@ describe('CoreBitcoin', function () {
         should.exist(corebitcoin.bip44wallet.mnemonic)
         should.exist(corebitcoin.bip44wallet.masterxprv)
         should.exist(corebitcoin.bip44wallet.masterxpub)
+      })
+    })
+  })
+
+  describe('#unmonitorBlockchainAPI', function () {
+    it('should set timeoutID to "unmonitor"', function () {
+      let corebitcoin = CoreBitcoin()
+      corebitcoin.unmonitorBlockchainAPI()
+      corebitcoin.timeoutID.should.equal('unmonitor')
+    })
+  })
+
+  describe('#asyncUpdateBalance', function () {
+    it('should use blockchain API to get balance', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+        corebitcoin.asyncGetAllAddresses = () => Promise.resolve([])
+        corebitcoin.blockchainAPI = {
+          asyncGetAddressesBalancesSatoshis: sinon.stub().returns(Promise.resolve({
+            confirmedBalanceSatoshis: 100,
+            unconfirmedBalanceSatoshis: 0,
+            totalBalanceSatoshis: 100
+          }))
+        }
+        corebitcoin.emit = sinon.spy()
+        yield corebitcoin.asyncUpdateBalance()
+        corebitcoin.blockchainAPI.asyncGetAddressesBalancesSatoshis.calledOnce.should.equal(true)
+        corebitcoin.emit.calledOnce.should.equal(true)
       })
     })
   })

@@ -22,7 +22,7 @@ describe('BlockchainAPI', function () {
         should.exist(info.hashbuf)
         should.exist(info.hashhex)
         should.exist(info.height)
-      }.bind(this))
+      })
     })
   })
 
@@ -35,7 +35,7 @@ describe('BlockchainAPI', function () {
         let address = Address().fromString('12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX')
         let utxos = yield BlockchainAPI().asyncGetUTXOsJSON([address])
         utxos.length.should.greaterThan(26)
-      }.bind(this))
+      })
     })
   })
 
@@ -48,7 +48,7 @@ describe('BlockchainAPI', function () {
         balances.confirmedBalanceSatoshis.should.greaterThan(50 * 1e8)
         balances.unconfirmedBalanceSatoshis.should.greaterThan(-1)
         balances.totalBalanceSatoshis.should.greaterThan(50 * 1e8)
-      }.bind(this))
+      })
     })
   })
 

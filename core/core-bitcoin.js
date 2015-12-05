@@ -10,19 +10,23 @@
  * object.
  */
 'use strict'
-let BlockchainAPI = require('./blockchain-api')
 let BIP44Wallet = require('./bip44-wallet')
-let User = require('./user')
+let BlockchainAPI = require('./blockchain-api')
+let Constants = require('./constants')
+let CryptoWorkers = require('./crypto-workers')
 let DBBIP44Wallet = require('./db-bip44-wallet')
+let EventEmitter = require('events')
 let Struct = require('fullnode/lib/struct')
+let User = require('./user')
 let asink = require('asink')
 
 // TODO: Also create and require db-bip44-wallet
-function CoreBitcoin (blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockchainAPI) {
+function CoreBitcoin (blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockchainAPI, timeoutID, balances) {
   if (!(this instanceof CoreBitcoin)) {
-    return new CoreBitcoin(blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockchainAPI)
+    return new CoreBitcoin(blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockchainAPI, timeoutID, balances)
   }
-  this.fromObject({blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockchainAPI})
+  this.initialize()
+  this.fromObject({blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockchainAPI, timeoutID, balances})
   if (!blockchainAPI) {
     this.blockchainAPI = BlockchainAPI(this.blockchainAPIURI)
   }
@@ -30,6 +34,16 @@ function CoreBitcoin (blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockcha
 
 CoreBitcoin.prototype = Object.create(Struct.prototype)
 CoreBitcoin.prototype.constructor = CoreBitcoin
+Object.assign(CoreBitcoin.prototype, EventEmitter.prototype)
+
+CoreBitcoin.prototype.initialize = function () {
+  this.balances = {
+    confirmedBalanceSatoshis: 0,
+    unconfirmedBalanceSatoshis: 0,
+    totalBalanceSatoshis: 0
+  }
+  return this
+}
 
 CoreBitcoin.prototype.asyncInitialize = function (user) {
   return asink(function *() {
@@ -61,6 +75,62 @@ CoreBitcoin.prototype.fromUser = function (user) {
   let bip44wallet = BIP44Wallet(user.mnemonic, user.masterxprv, user.masterxpub)
   this.bip44wallet = bip44wallet
   return this
+}
+
+/**
+ * Initialize monitoring of the bitcoin wallet's balance by polling the
+ * blockchain API. Polling is not ideal - but it is good enough for a
+ * prototype. We use setTimeout rather than setInterval because there are fewer
+ * sideeffects, but the basic is to just poll the blockchain API every few
+ * seconds to get the latest balance of our wallet.
+ */
+CoreBitcoin.prototype.monitorBlockchainAPI = function () {
+  this.timeoutID = setTimeout(this.asyncPollBalance.bind(this), Constants.blockchainAPIMonitorInterval)
+  return this
+}
+
+/**
+ * Turn off monitoring/polling.
+ */
+CoreBitcoin.prototype.unmonitorBlockchainAPI = function () {
+  if (this.timeoutID && this.timeoutID !== 'unmonitor') {
+    clearTimeout(this.timeoutID)
+  }
+  this.timeoutID = 'unmonitor'
+  return this
+}
+
+/**
+ * Update the wallet balance information by querying the blockchain API.
+ */
+CoreBitcoin.prototype.asyncUpdateBalance = function () {
+  return asink(function *() {
+    let addresses = yield this.asyncGetAllAddresses()
+    let addressStrings = []
+    for (let i = 0; i < addresses.length; i++) {
+      addressStrings.push(yield CryptoWorkers.asyncAddressStringFromAddress(addresses[i]))
+    }
+    let obj = yield this.blockchainAPI.asyncGetAddressesBalancesSatoshis(addresses)
+    if (obj.confirmedBalanceSatoshis !== this.balances.confirmedBalanceSatoshis ||
+        obj.unconfirmedBalanceSatoshis !== this.balances.unconfirmedBalanceSatoshis ||
+        obj.totalBalanceSatoshis !== this.balances.totalBalanceSatoshis) {
+      this.emit('balance', obj)
+    }
+    this.balances = obj
+  }.bind(this))
+}
+
+/**
+ * This method is what's called every few seconds telling us to query the
+ * blockchain API to get an updated balance.
+ */
+CoreBitcoin.prototype.asyncPollBalance = function () {
+  return asink(function *() {
+    if (this.timeoutID !== 'unmonitor') {
+      yield this.asyncUpdateBalance()
+      this.monitorBlockchainAPI()
+    }
+  }.bind(this))
 }
 
 CoreBitcoin.prototype.asyncGetLatestBlockInfo = function () {

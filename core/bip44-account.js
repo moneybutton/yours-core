@@ -150,7 +150,8 @@ BIP44Account.prototype.asyncGetAllExtAddresses = function () {
   return asink(function *() {
     let addresses = []
     for (let index = 0; index <= this.extindex; index++) {
-      addresses.push(yield this.asyncGetExtAddressKeys(index).address)
+      let keys = yield this.asyncGetExtAddressKeys(index)
+      addresses.push(keys.address)
     }
     return addresses
   }.bind(this))
@@ -164,7 +165,8 @@ BIP44Account.prototype.asyncGetAllIntAddresses = function () {
   return asink(function *() {
     let addresses = []
     for (let index = 0; index <= this.intindex; index++) {
-      addresses.push(yield this.asyncGetIntAddressKeys(index).address)
+      let keys = yield this.asyncGetIntAddressKeys(index)
+      addresses.push(keys.address)
     }
     return addresses
   }.bind(this))

@@ -36,6 +36,7 @@ let Layout = React.createClass({
           dattcoreStatus: 'error initializing: ' + err
         })
       }
+      yield dattcore.asyncNetworkInitialize()
     }.bind(this))
   },
 

@@ -11,8 +11,9 @@ let asink = require('asink')
 let BoxBitcoin = React.createClass({
   getInitialState: function () {
     return {
-      bitsBalanceUnconfirmed: 0,
-      bitsBalanceConfirmed: 0,
+      unconfirmedBalanceBits: 0,
+      confirmedBalanceBits: 0,
+      totalBalanceBits: 0,
       blockheightnum: 0,
       depositAddress: ''
     }
@@ -32,12 +33,32 @@ let BoxBitcoin = React.createClass({
     }.bind(this))
   },
 
+  componentWillMount: function () {
+    this.monitorDattCore()
+  },
+
   componentDidMount: function () {
     return this.setStateFromDattCore()
   },
 
   componentWillReceiveProps: function () {
     return this.setStateFromDattCore()
+  },
+
+  monitorDattCore: function () {
+    let dattcore = this.props.dattcore
+    dattcore.on('bitcoin-balance', this.handleBitcoinBalance)
+  },
+
+  handleBitcoinBalance: function (obj) {
+    let unconfirmedBalanceBits = Math.round(obj.unconfirmedBalanceSatoshis / 100)
+    let confirmedBalanceBits = Math.round(obj.confirmedBalanceSatoshis / 100)
+    let totalBalanceBits = Math.round(obj.totalBalanceSatoshis / 100)
+    this.setState({
+      unconfirmedBalanceBits,
+      confirmedBalanceBits,
+      totalBalanceBits
+    })
   },
 
   handleReceive: function () {
@@ -54,8 +75,9 @@ let BoxBitcoin = React.createClass({
     return (
       <div className='info-box'>
         <h2>My Bitcoin</h2>
-        <p>Confirmed balance: {this.state.bitsBalanceConfirmed} bits</p>
-        <p>Unconfirmed balance: {this.state.bitsBalanceUnconfirmed} bits</p>
+        <p>Confirmed balance: {this.state.confirmedBalanceBits} bits</p>
+        <p>Unconfirmed balance: {this.state.unconfirmedBalanceBits} bits</p>
+        <p>Total balance: {this.state.totalBalanceBits} bits</p>
         <p>Latest block height: {this.state.blockheightnum}</p>
         <p><button className='btn btn-default'>Send</button>
         <button className='btn btn-default' onClick={this.handleReceive}>Receive</button></p>

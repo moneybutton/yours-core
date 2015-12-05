@@ -80,6 +80,25 @@ describe('DattCore', function () {
     })
   })
 
+  describe('#monitorCoreBitcoin', function () {
+    it('should call corebitcoin.on', function () {
+      let dattcore = DattCore({dbname: 'datt-temp'})
+      dattcore.corebitcoin = {}
+      dattcore.corebitcoin.on = sinon.spy()
+      dattcore.monitorCoreBitcoin()
+      dattcore.corebitcoin.on.called.should.equal(true)
+    })
+  })
+
+  describe('#handleBitcoinBalance', function () {
+    it('should emit bitcoin-balance', function () {
+      let dattcore = DattCore({dbname: 'datt-temp'})
+      dattcore.emit = sinon.spy()
+      dattcore.handleBitcoinBalance('hello')
+      dattcore.emit.calledWith('bitcoin-balance', 'hello').should.equal(true)
+    })
+  })
+
   describe('#asyncGetLatestBlockInfo', function () {
     it('should return info', function () {
       return asink(function *() {
