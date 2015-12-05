@@ -87,9 +87,36 @@ BlockchainAPI.prototype.asyncGetUTXOsJSON = function (addresses) {
       let addressString = yield CryptoWorkers.asyncAddressStringFromAddress(addresses[i])
       addressStrings.push(addressString)
     }
-    let UTXOsJSON = yield this.asyncPostRequest('addrs/utxo', {
-      'addrs': addressStrings.join(',')
-    })
+
+    // TODO: Unfortunately Insight's POST API for getting UTXOs was not working
+    // on testnet. It worked on mainnet on their v0.2.18 version of Insight at
+    // insight.bitpay.com, but not on testnet on their v0.3.1 at
+    // test-insight.bitpay.com. When trying it on testnet, I would get an
+    // internal server error. Probably a regression from the old version
+    // running on mainnet to the new version running on testnet. In any case,
+    // what this means for Datt, is that we have to use a GET request, which
+    // has the tremendous drawback that the GET URL can only be something like
+    // 2000 bytes, which limits how many addresses you can query at one time.
+    // For now, I'm assuming the user only has a very small number of
+    // addresses, and thus they all fit in to the URL string. This is good
+    // enough for a prototype, but must absolutely be fixed somehow before
+    // launching to real users, because it would simply fail for large numbers
+    // of addresses. The way to fix this is to run our own version of Insight
+    // where the POST to get UTXOs actually works, but that means we either
+    // have to run an old version or fix it ourselves. Another way,
+    // longer-term, is to support SPV in a browser and not even use a
+    // blockchain API at all.  Another way that is very short-term would be to
+    // put as many addresses in a URL string as can fit, and then make multiple
+    // GET requests all at the same time. All of these are options that we will
+    // have to weigh before launching to the public.
+    //
+    // Old code, based on POST request:
+    // let UTXOsJSON = yield this.asyncPostRequest('addrs/utxo', {
+    //   'addrs': addressStrings.join(',')
+    // })
+    // New code, based on GET request:
+    let UTXOsJSON = yield this.asyncGetRequest(`addrs/${addressStrings.join(',')}/utxo`)
+
     return UTXOsJSON
   }.bind(this))
 }
