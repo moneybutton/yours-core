@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Social media censorship in Bangladesh hints at long-term problems for publishers](http://www.cjr.org/analysis/bangladesh_social_media.php)
 - [Soulseek banned from PayPal after 14 years](https://torrentfreak.com/paypal-bans-file-sharing-classic-soulseek-after-14-years-151205/)
 - [The ‘Facebook of Latin America’ Taringa! Just Paid $76,000 in Bitcoin to its Users](https://news.bitcoin.com/facebook-latin-america-taringa-just-paid-76000-bitcoin-users/)
 - [Zapchain Growth Proves Bitcoin Tipping Viable Social Media Model](https://news.bitcoin.com/zapchain-growth-proves-bitcoin-tipping-viable-social-media-model/)
