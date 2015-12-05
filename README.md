@@ -90,7 +90,7 @@ folders are as follows:
 - landing/ - The landing page content and source.
 - media/ - Logos, mockups, and template HTML.
 - react/ - dattreact - The React front-end.
-- serever/ - The Datt servers: app server and rendezvous server.
+- server/ - The Datt servers: app server and rendezvous server.
 - test/core/ - Tests for dattcore.
 - test/react/ - Tests for dattreact.
 
