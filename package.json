@@ -112,7 +112,7 @@
   "author": "Ryan X. Charles <ryanxcharles@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "asink": "1.0.2",
+    "asink": "1.0.3",
     "express": "4.13.3",
     "express-request-proxy": "1.0.9",
     "fullnode": "0.11.6",
