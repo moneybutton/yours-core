@@ -84,6 +84,17 @@ CryptoWorkers.prototype.asyncAddressFromPubkey = function (pubkey) {
 }
 
 /**
+ * Derive an address object from an address string.
+ */
+CryptoWorkers.prototype.asyncAddressFromAddressString = function (addressString) {
+  return asink(function *() {
+    let addressHex = yield q(this.pool.exec('addressHexFromAddressString', [addressString]))
+    let address = Address().fromHex(addressHex)
+    return address
+  }, this)
+}
+
+/**
  * Derive the base58 string representation of an address. TODO: For speed,
  * replace transmission code with buffers rather than JSON.
  */

@@ -79,6 +79,18 @@ describe('CryptoWorkers', function () {
     })
   })
 
+  describe('@addressFromAddressString', function () {
+    it('should compute the same as fullnode', function () {
+      return asink(function *() {
+        let privkey = Privkey().fromRandom()
+        let pubkey = Pubkey().fromPrivkey(privkey)
+        let address = yield CryptoWorkers.asyncAddressFromPubkey(pubkey)
+        let address2 = yield CryptoWorkers.asyncAddressFromAddressString(address.toString())
+        address.toString().should.equal(address2.toString())
+      })
+    })
+  })
+
   describe('@addressStringFromAddress', function () {
     it('should convert an address into a base58 string', function () {
       return asink(function *() {

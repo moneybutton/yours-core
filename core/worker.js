@@ -25,6 +25,11 @@ function addressHexFromPubkeyHex (pubkeyHex) {
   return Address().fromPubkey(pubkey).toHex()
 }
 
+function addressHexFromAddressString (addressString) {
+  let address = Address().fromString(addressString)
+  return address.toHex()
+}
+
 function addressStringFromAddressHex (addressHex) {
   let address = Address().fromHex(addressHex)
   return address.toString()
@@ -108,6 +113,7 @@ let f = {
   sha256,
   pubkeyHexFromPrivkeyHex,
   addressHexFromPubkeyHex,
+  addressHexFromAddressString,
   addressStringFromAddressHex,
   xkeysFromEntropyHex,
   deriveXkeysFromXprvHex,
