@@ -72,7 +72,7 @@ let Layout = React.createClass({
             <img src='/logo.svg' alt='' />
             <h1>{this.props.apptitle}</h1>
           </div>
-	  <TopMenu />	  
+	  <TopMenu dattcore={dattcore}/>	  
         </div>
 
         <div className='row'>
