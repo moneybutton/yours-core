@@ -14,7 +14,7 @@ let TopMenu = React.createClass({
 	dattcore.on('bitcoin-balance', function(obj) {
 	    let totalBalanceBits = Math.round(obj.totalBalanceSatoshis / 100)
 	    this.setState({totalBalanceBits})
-	})
+	}.bind(this))
     },
     render: function() {
 	return (
