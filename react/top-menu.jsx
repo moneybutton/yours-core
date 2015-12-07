@@ -29,6 +29,11 @@ let TopMenu = React.createClass({
 		<li><img src='images/icon_new.png' /></li>
 		<li><img src='images/icon_search.png' /></li>
 		</ul>
+		<div className="search_bar">
+		<form action="#">
+		<input type="text" className="search_input" placeholder="Search..." />
+		</form> 
+		</div>
 		</div>
 	);
     }
