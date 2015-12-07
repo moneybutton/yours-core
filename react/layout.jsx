@@ -10,6 +10,7 @@ let BoxContent = require('./box-content.jsx')
 let BoxDeveloper = require('./box-developer.jsx')
 let BoxPeer = require('./box-peer.jsx')
 let BoxUser = require('./box-user.jsx')
+let TopMenu = require('./top-menu.jsx')
 let PageFront = require('./page-front.jsx')
 let React = require('react')
 let asink = require('asink')
@@ -71,22 +72,7 @@ let Layout = React.createClass({
             <img src='/logo.svg' alt='' />
             <h1>{this.props.apptitle}</h1>
           </div>
-	  <div className='topMenu col-md-8 col-md-offset-3' id='header'>
-	  <ul className='menu'>
-	  <li className='selected'>VIEW ALL<img src='images/arrow.png'/></li>
-	  <li>MAIL</li>
-	  <li>SETTINGS</li>
-	  <li>BALANCE<span className='balance'>(0.0112)</span></li>
-	  </ul>
-
-
-	  <ul className='icons'>
-	  <li><img src='images/icon_new.png' /></li>
-	  <li><img src='images/icon_search.png' /></li>
-	  </ul>
-	  </div>
-
-	  
+	  <TopMenu />	  
         </div>
 
         <div className='row'>
