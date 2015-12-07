@@ -14,12 +14,12 @@ let CryptoWorkers = require('./crypto-workers')
 let Struct = require('fullnode/lib/struct')
 let asink = require('asink')
 
-function BIP44Account (bip32, extindex, intindex, pathmap) {
+function BIP44Account (bip32, extindex, intindex, pathmap, addrhexmap) {
   if (!(this instanceof BIP44Account)) {
-    return new BIP44Account(bip32, extindex, intindex, pathmap)
+    return new BIP44Account(bip32, extindex, intindex, pathmap, addrhexmap)
   }
   this.initialize()
-  this.fromObject({bip32, extindex, intindex, pathmap})
+  this.fromObject({bip32, extindex, intindex, pathmap, addrhexmap})
 }
 
 BIP44Account.prototype = Object.create(Struct.prototype)
@@ -27,6 +27,7 @@ BIP44Account.prototype.constructor = BIP44Account
 
 BIP44Account.prototype.initialize = function () {
   this.pathmap = new Map()
+  this.addrhexmap = new Map()
   this.extindex = -1
   this.intindex = -1
   return this
@@ -109,6 +110,27 @@ BIP44Account.prototype.fromJSON = function (json) {
     let address = Address().fromHex(keys.address)
     this.pathmap.set(path, {xprv, xpub, address})
   })
+
+  // Note that addrhexmap is not directly stored in JSON - it is rederived from
+  // the pathmap, which has all the information. We just have to rebuild the
+  // map.
+  this.addrhexmap = new Map()
+  Object.keys(json.pathmap).forEach((path) => {
+    let keys = json.pathmap[path]
+    let xprv
+
+    if (keys.xprv) {
+      // TODO: Replace with proper non-blocking method
+      xprv = BIP32().fromHex(keys.xprv)
+    }
+
+    // TODO: Replace with proper non-blocking method
+    let xpub = BIP32().fromHex(keys.xpub)
+
+    let address = Address().fromHex(keys.address)
+    this.addrhexmap.set(keys.address, {xprv, xpub, address})
+  })
+
   return this
 }
 
@@ -137,6 +159,7 @@ BIP44Account.prototype.asyncDeriveKeysFromPath = function (path) {
       keys = yield CryptoWorkers.asyncDeriveXkeysFromXpub(this.bip32, path)
     }
     this.pathmap.set(path, keys)
+    this.addrhexmap.set(keys.address.toHex(), keys)
     return keys
   }, this)
 }
