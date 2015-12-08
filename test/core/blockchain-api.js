@@ -6,6 +6,10 @@ let asink = require('asink')
 let should = require('should')
 
 describe('BlockchainAPI', function () {
+  // Because these tests make actual live calls over the internet to a
+  // blockchain API, we need to lengthen the timeout, because sometimes things
+  // go slow. Long-term, we hope to replace the blockchain API with
+  // SPV-in-a-browser, but for now we must deal with this.
   this.timeout(5000)
 
   it('should exist', function () {
