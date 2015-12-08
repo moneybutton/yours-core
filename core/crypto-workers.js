@@ -13,8 +13,9 @@ let BIP32 = require('fullnode/lib/bip32')
 let Pubkey = require('fullnode/lib/pubkey')
 let Sig = require('fullnode/lib/sig')
 let Struct = require('fullnode/lib/struct')
-let q = require('q')
+let Txbuilder = require('fullnode/lib/txbuilder')
 let asink = require('asink')
+let q = require('q')
 let workerpool = require('workerpool')
 
 let defaultPool
@@ -223,6 +224,24 @@ CryptoWorkers.prototype.asyncVerifyCompactSig = function (hashbuf, sig) {
       verified: obj.verified,
       pubkey: obj.pubkey ? Pubkey().fromDER(new Buffer(obj.pubkey, 'hex')) : undefined
     }
+  }, this)
+}
+
+/**
+ * txb must be a Txbuilder object that is *built*, i.e. you have run .build()
+ * on it, and it contains a transaction. The transaction has everything but the
+ * signatures. privkeys must be an array of Privkey objects where each privkey
+ * is the private key of the corresponding input on the transaction. i.e.,
+ * txb.tx.txins[0] requires the signature corresponding to privkeys[0],
+ * txb.tx.txins[1] requires privkeys[1], and so on.
+ */
+CryptoWorkers.prototype.asyncSignTransaction = function (txb, privkeys) {
+  return asink(function *() {
+    let txbjson = txb.toJSON()
+    let privkeysjson = privkeys.map(privkey => privkey.toHex())
+    let obj = yield q(this.pool.exec('signTransaction', [txbjson, privkeysjson]))
+    txb = Txbuilder().fromJSON(obj)
+    return txb
   }, this)
 }
 

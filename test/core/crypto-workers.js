@@ -1,15 +1,21 @@
 /* global it,describe */
 'use strict'
 let Address = require('fullnode/lib/address')
-let CryptoWorkers = require('../../core/crypto-workers')
 let BIP32 = require('fullnode/lib/bip32')
+let BN = require('fullnode/lib/bn')
+let CryptoWorkers = require('../../core/crypto-workers')
 let ECDSA = require('fullnode/lib/ecdsa')
 let Hash = require('fullnode/lib/hash')
+let Interp = require('fullnode/lib/interp')
 let Keypair = require('fullnode/lib/keypair')
 let Privkey = require('fullnode/lib/privkey')
 let Pubkey = require('fullnode/lib/pubkey')
-let should = require('should')
+let Script = require('fullnode/lib/script')
+let Txbuilder = require('fullnode/lib/txbuilder')
+let Txout = require('fullnode/lib/txout')
+let Txverifier = require('fullnode/lib/txverifier')
 let asink = require('asink')
+let should = require('should')
 let workerpool = require('workerpool')
 
 describe('CryptoWorkers', function () {
@@ -49,7 +55,7 @@ describe('CryptoWorkers', function () {
     })
   })
 
-  describe('@sha256', function () {
+  describe('@asyncSha256', function () {
     it('should compute the same as fullnode', function () {
       return asink(function *() {
         let buf = yield CryptoWorkers.asyncSha256(databuf)
@@ -58,7 +64,7 @@ describe('CryptoWorkers', function () {
     })
   })
 
-  describe('@pubkeyFromPrivkey', function () {
+  describe('@asyncPubkeyFromPrivkey', function () {
     it('should compute the same as fullnode', function () {
       return asink(function *() {
         let privkey = Privkey().fromRandom()
@@ -68,7 +74,7 @@ describe('CryptoWorkers', function () {
     })
   })
 
-  describe('@addressFromPubkey', function () {
+  describe('@asyncAddressFromPubkey', function () {
     it('should compute the same as fullnode', function () {
       return asink(function *() {
         let privkey = Privkey().fromRandom()
@@ -79,7 +85,7 @@ describe('CryptoWorkers', function () {
     })
   })
 
-  describe('@addressFromAddressString', function () {
+  describe('@asyncAddressFromAddressString', function () {
     it('should compute the same as fullnode', function () {
       return asink(function *() {
         let privkey = Privkey().fromRandom()
@@ -91,7 +97,7 @@ describe('CryptoWorkers', function () {
     })
   })
 
-  describe('@addressStringFromAddress', function () {
+  describe('@asyncAddressStringFromAddress', function () {
     it('should convert an address into a base58 string', function () {
       return asink(function *() {
         let privkey = Privkey().fromRandom()
@@ -103,7 +109,7 @@ describe('CryptoWorkers', function () {
     })
   })
 
-  describe('@xkeysFromEntropy', function () {
+  describe('@asyncXkeysFromEntropy', function () {
     it('should derive new mnemonic, xprv, xpub', function () {
       return asink(function *() {
         let seedbuf = new Buffer(128 / 8)
@@ -116,7 +122,7 @@ describe('CryptoWorkers', function () {
     })
   })
 
-  describe('@deriveXkeysFromXprv', function () {
+  describe('@asyncDeriveXkeysFromXprv', function () {
     it('should derive new xprv, xpub, address', function () {
       return asink(function *() {
         let seedbuf = new Buffer(128 / 8)
@@ -131,7 +137,7 @@ describe('CryptoWorkers', function () {
     })
   })
 
-  describe('@deriveXkeysFromXpub', function () {
+  describe('@asyncDeriveXkeysFromXpub', function () {
     it('should derive new xpub and address', function () {
       return asink(function *() {
         let seedbuf = new Buffer(128 / 8)
@@ -148,7 +154,7 @@ describe('CryptoWorkers', function () {
     })
   })
 
-  describe('@sign', function () {
+  describe('@asyncSign', function () {
     it('should compute the same as bitcore', function () {
       return asink(function *() {
         let privkey = Privkey().fromRandom()
@@ -159,7 +165,7 @@ describe('CryptoWorkers', function () {
     })
   })
 
-  describe('@signCompact', function () {
+  describe('@asyncSignCompact', function () {
     it('should compute a compact signature', function () {
       return asink(function *() {
         let privkey = Privkey().fromRandom()
@@ -170,7 +176,7 @@ describe('CryptoWorkers', function () {
     })
   })
 
-  describe('@verifySignature', function () {
+  describe('@asyncVerifySignature', function () {
     it('should return true for a valid signature', function () {
       return asink(function *() {
         let privkey = Privkey().fromRandom()
@@ -239,7 +245,7 @@ describe('CryptoWorkers', function () {
     })
   })
 
-  describe('@verifyCompactSig', function () {
+  describe('@asyncVerifyCompactSig', function () {
     it('should validate this signature', function () {
       return asink(function *() {
         let keypair = Keypair().fromRandom()
@@ -250,6 +256,62 @@ describe('CryptoWorkers', function () {
         obj.verified.should.equal(true)
         Buffer.compare(obj.pubkey.toDER(), keypair.pubkey.toDER()).should.equal(0)
       })
+    })
+  })
+
+  describe('@asyncSignTransaction', function () {
+    it('should sign this transaction', function () {
+      return asink(function *() {
+        // This transaction builder code was copied from fullnode.
+        let txb = new Txbuilder()
+
+        // make change address
+        let privkey = Privkey().fromBN(BN(1))
+        let keypair = Keypair().fromPrivkey(privkey)
+        let changeaddr = Address().fromPubkey(keypair.pubkey)
+
+        // make addresses to send from
+        let privkey1 = Privkey().fromBN(BN(2))
+        let keypair1 = Keypair().fromPrivkey(privkey1)
+        let addr1 = Address().fromPubkey(keypair1.pubkey)
+
+        let privkey2 = Privkey().fromBN(BN(3))
+        let keypair2 = Keypair().fromPrivkey(privkey2)
+        let addr2 = Address().fromPubkey(keypair2.pubkey)
+
+        // make addresses to send to
+        let saddr1 = addr1
+        let saddr2 = Address().fromRedeemScript(Script().fromString('OP_RETURN')) // fake, unredeemable p2sh address
+
+        // txouts that we are spending
+        let scriptout1 = Script().fromString('OP_DUP OP_HASH160 20 0x' + addr1.hashbuf.toString('hex') + ' OP_EQUALVERIFY OP_CHECKSIG')
+        let scriptout2 = Script().fromString('OP_DUP OP_HASH160 20 0x' + addr2.hashbuf.toString('hex') + ' OP_EQUALVERIFY OP_CHECKSIG')
+        let txout1 = Txout(BN(1e8), scriptout1)
+        let txout2 = Txout(BN(1e8 + 0.001e8), scriptout2) // contains extra that we will use for the fee
+
+        let txhashbuf = new Buffer(32)
+        txhashbuf.fill(0)
+        let txoutnum1 = 0
+        let txoutnum2 = 1
+
+        txb.setFeePerKBNum(0.0001e8)
+        txb.setChangeAddress(changeaddr)
+        txb.from(txhashbuf, txoutnum1, txout1, keypair1.pubkey)
+        txb.from(txhashbuf, txoutnum2, txout2, keypair2.pubkey)
+        txb.to(BN(1e8), saddr1) // pubkeyhash address
+        txb.to(BN(1e8), saddr2) // p2sh address
+        // txb.randomizeInputs()
+        // txb.randomizeOutputs()
+
+        txb.build()
+
+        let txb2 = yield CryptoWorkers.asyncSignTransaction(txb, [privkey1, privkey2])
+
+        txb2.tx.txouts[1].valuebn.gt(0).should.equal(true)
+        txb2.tx.txouts[1].valuebn.gt(546).should.equal(true)
+
+        Txverifier.verify(txb2.tx, txb.utxoutmap, Interp.SCRIPT_VERIFY_P2SH).should.equal(true)
+      }, this)
     })
   })
 })

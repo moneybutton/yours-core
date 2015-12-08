@@ -1,14 +1,15 @@
 /* global importScripts,self */
 'use strict'
-let Privkey = require('fullnode/lib/privkey')
-let Pubkey = require('fullnode/lib/pubkey')
+let Address = require('fullnode/lib/address')
 let BIP32 = require('fullnode/lib/bip32')
 let BIP39 = require('fullnode/lib/bip39')
-let Hash = require('fullnode/lib/hash')
-let Address = require('fullnode/lib/address')
-let Keypair = require('fullnode/lib/keypair')
 let ECDSA = require('fullnode/lib/ecdsa')
+let Hash = require('fullnode/lib/hash')
+let Keypair = require('fullnode/lib/keypair')
+let Privkey = require('fullnode/lib/privkey')
+let Pubkey = require('fullnode/lib/pubkey')
 let Sig = require('fullnode/lib/sig')
+let Txbuilder = require('fullnode/lib/txbuilder')
 
 function sha256 (datahex) {
   let buf = new Buffer(datahex, 'hex')
@@ -109,6 +110,19 @@ function verifyCompactSig (hashhex, signatureHex) {
   }
 }
 
+function signTransaction (txbjson, privkeys) {
+  let txb = Txbuilder().fromJSON(txbjson)
+  privkeys = privkeys.map(privkey => Privkey().fromHex(privkey))
+  let keypairs = privkeys.map(privkey => Keypair().fromPrivkey(privkey))
+  if (txb.txins.length !== keypairs.length) {
+    throw new Error('number of inputs and number of privkeys do not match')
+  }
+  for (let i = 0; i < keypairs.length; i++) {
+    txb.sign(i, keypairs[i])
+  }
+  return txb.toJSON()
+}
+
 let f = {
   sha256,
   pubkeyHexFromPrivkeyHex,
@@ -121,7 +135,8 @@ let f = {
   sign,
   signCompact,
   verifySignature,
-  verifyCompactSig
+  verifyCompactSig,
+  signTransaction
 }
 
 let workerpool
