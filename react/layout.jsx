@@ -19,7 +19,10 @@ let Layout = React.createClass({
   getInitialState: function () {
     return {
       dattcoreStatus: 'uninitialized',
-      numActiveConnections: 0
+	numActiveConnections: 0,
+	view: {
+	    'contentList': true
+	}
     }
   },
 
@@ -49,6 +52,15 @@ let Layout = React.createClass({
   monitorDattCore: function () {
     let dattcore = this.props.dattcore
     dattcore.on('peers-connection', this.handlePeersConnection)
+      
+      dattcore.on('ui-layout-toggle-view', function(view) {
+	  if(view && typeof(view) === 'string') {
+	      var obj = (this.state.view && typeof(this.state.view) === 'object'?this.state.view:{})
+	      obj[view] = (this.state.view[view]?false:true)
+	      this.setState({'view': obj})
+	      this.forceUpdate()
+	  }
+    }.bind(this))  
   },
 
   handlePeersConnection: function () {
@@ -65,6 +77,7 @@ let Layout = React.createClass({
     let dattcore = this.props.dattcore
     let dattcoreStatus = this.state.dattcoreStatus
     let numActiveConnections = this.state.numActiveConnections
+      
     return (
       <div className='container'>
         <div className='row page-header'>
@@ -77,10 +90,10 @@ let Layout = React.createClass({
 
         <div className='row'>
           <div className='col-md-8'>
-            <PageFront dattcore={dattcore}/>
+            <PageFront dattcore={dattcore} showContentList={this.state.view.contentList} showFormNewContent={this.state.view.formNewContent}/>
           </div>
 
-          <div className='col-md-4 side-boxes'>
+            <div className={'col-md-4 side-boxes '+(this.state.view.settings?'':'hidden')}>
             <BoxUser dattcore={dattcore}/>
             <BoxBitcoin dattcore={dattcore}/>
             <BoxContent postsnumber={0}/>

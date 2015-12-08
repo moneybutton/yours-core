@@ -53,7 +53,8 @@ let BoxBitcoin = React.createClass({
   handleBitcoinBalance: function (obj) {
     let unconfirmedBalanceBits = Math.round(obj.unconfirmedBalanceSatoshis / 100)
     let confirmedBalanceBits = Math.round(obj.confirmedBalanceSatoshis / 100)
-    let totalBalanceBits = Math.round(obj.totalBalanceSatoshis / 100)
+      let totalBalanceBits = Math.round(obj.totalBalanceSatoshis / 100)
+      
     this.setState({
       unconfirmedBalanceBits,
       confirmedBalanceBits,

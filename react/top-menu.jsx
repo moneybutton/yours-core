@@ -1,6 +1,9 @@
 let React = require('react')
 
 let TopMenu = React.createClass({
+    propTypes: {
+	dattcore: React.PropTypes.object
+    },
     getInitialState: function() {
 	return {
 	    totalBalanceBits: 0
@@ -16,17 +19,26 @@ let TopMenu = React.createClass({
 	    this.setState({totalBalanceBits})
 	}.bind(this))
     },
+    viewAllClicked: function() {
+	this.props.dattcore.emit('ui-layout-toggle-view', 'contentList')
+    },
+    newClicked: function() {
+	this.props.dattcore.emit('ui-layout-toggle-view', 'formNewContent')
+    },
+    settingsClicked: function() {
+	this.props.dattcore.emit('ui-layout-toggle-view', 'settings')
+    },
     render: function() {
 	return (
 		<div className='topMenu col-md-8 col-md-offset-3' id='header'>
 		<ul className='menu'>
-		<li className='selected'>VIEW ALL<img src='images/arrow.png'/></li>
+		<li className='selected' onClick={this.viewAllClicked}>VIEW ALL<img src='images/arrow.png'/></li>
 		<li>MAIL</li>
-		<li>SETTINGS</li>
+		<li onClick={this.settingsClicked}>SETTINGS</li>
 		<li>BALANCE<span className='balance'>( {this.state.totalBalanceBits} bits )</span></li>
 		</ul>
 		<ul className='icons'>
-		<li><img src='images/icon_new.png' /></li>
+		<li onClick={this.newClicked}><img src='images/icon_new.png' /></li>
 		<li><img src='images/icon_search.png' /></li>
 		</ul>
 		<div className="search_bar">

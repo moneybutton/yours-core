@@ -177,3 +177,7 @@ body {
 }
 
 /* search bar end */
+
+.hidden {
+    opacity: 0;
+}
