@@ -10,13 +10,19 @@
  * object.
  */
 'use strict'
+let Address = require('fullnode/lib/address')
 let BIP44Wallet = require('./bip44-wallet')
+let BN = require('fullnode/lib/bn')
+let BR = require('fullnode/lib/br')
 let BlockchainAPI = require('./blockchain-api')
 let Constants = require('./constants')
 let CryptoWorkers = require('./crypto-workers')
 let DBBIP44Wallet = require('./db-bip44-wallet')
 let EventEmitter = require('events')
+let Script = require('fullnode/lib/script')
 let Struct = require('fullnode/lib/struct')
+let Txbuilder = require('fullnode/lib/txbuilder')
+let Txout = require('fullnode/lib/txout')
 let User = require('./user')
 let asink = require('asink')
 
@@ -135,6 +141,86 @@ CoreBitcoin.prototype.asyncPollBalance = function () {
 
 CoreBitcoin.prototype.asyncGetLatestBlockInfo = function () {
   return this.blockchainAPI.asyncGetLatestBlockInfo()
+}
+
+CoreBitcoin.prototype.asyncBuildTransaction = function (toAddress, toAmountSatoshis) {
+  return asink(function *() {
+    let txb = new Txbuilder()
+    txb.setFeePerKBNum(0.0001e8) // TODO: Use more intelligent fee estimate
+    let changeAddress = yield this.asyncGetNewIntAddress()
+    txb.setChangeAddress(changeAddress)
+    let utxos = yield this.asyncGetAllUTXOs()
+    utxos.forEach(obj => {
+      txb.from(obj.txhashbuf, obj.txoutnum, obj.txout, obj.pubkey)
+    })
+    txb.to(BN(toAmountSatoshis), toAddress)
+    txb.build()
+    return txb
+  }, this)
+}
+
+/**
+ * txb must be a *built* Txbuilder object - that is, you must have already run
+ * the .build() command, so the transaction is filled in with correct inputs
+ * and outputs.
+ */
+CoreBitcoin.prototype.asyncSignTransaction = function (txb) {
+  return asink(function *() {
+    // gather the correct private key for each input
+    let privkeys = []
+    for (let txin of txb.tx.txins) {
+      // Note: We only support signing pubkeyhash transactions
+      let pubkeybuf = txin.script.chunks[1].buf
+      let address = yield CryptoWorkers.asyncAddressFromPubkeyBuffer(pubkeybuf)
+      let addrhex = address.toHex()
+      let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(0)
+      let keys = bip44account.addrhexmap.get(addrhex)
+      privkeys.push(keys.xprv.privkey)
+    }
+    txb = CryptoWorkers.asyncSignTransaction(txb, privkeys)
+    return txb
+  }, this)
+}
+
+CoreBitcoin.prototype.asyncSendTransaction = function (txb) {
+  // TODO:
+  // Use blockchain API to broadcast tx
+}
+
+CoreBitcoin.prototype.asyncBuildAndSendTransaction = function (toAddress, toAmountSatoshis) {
+  return asink(function *() {
+    let txb = yield this.asyncBuildTransaction(toAddress, toAmountSatoshis)
+    yield this.asyncSignTransaction(txb)
+    yield this.asyncSendTransaction(txb)
+    return txb
+  }, this)
+}
+
+CoreBitcoin.prototype.asyncGetAllUTXOs = function () {
+  return asink(function *() {
+    let addresses = yield this.asyncGetAllAddresses()
+    let utxosjson = yield this.blockchainAPI.asyncGetUTXOsJSON(addresses)
+
+    let utxos = []
+    for (let obj of utxosjson) {
+      let txhashbuf = BR(new Buffer(obj.txid, 'hex')).readReverse()
+      let txoutnum = obj.vout
+      let scriptPubKey = Script().fromHex(obj.scriptPubKey)
+      let txout = Txout(BN(Math.floor(obj.amount * 1e8))).setScript(scriptPubKey)
+
+      // Note we ASSUME the script PubKey is a normal pubkeyhash - we cannot
+      // spend anything other than that.
+      let pubkeyhashbuf = scriptPubKey.chunks[2].buf
+      let address = Address().fromPubkeyHashbuf(pubkeyhashbuf)
+      let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(0)
+      let keys = bip44account.addrhexmap.get(address.toHex())
+      let xpub = keys.xpub
+      let pubkey = xpub.pubkey
+      utxos.push({txhashbuf, txoutnum, txout, pubkey})
+    }
+
+    return utxos
+  }, this)
 }
 
 /**
