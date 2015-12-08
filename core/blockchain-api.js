@@ -38,7 +38,9 @@ BlockchainAPI.prototype.asyncGetRequest = function (urlquery) {
     let res = yield new Promise((resolve, reject) => {
       request(this.blockchainAPIURI + urlquery, function (error, response, body) {
         if (error || response.statusCode !== 200) {
-          return reject(new Error(`blockchain-api getting ${urlquery}: ${error}`))
+          error = new Error(`blockchain-api getting ${urlquery}: ${error} - statusCode: ${response.statusCode}`)
+          error.statusCode = response.statusCode
+          return reject()
         }
         resolve(body)
       })
@@ -55,7 +57,9 @@ BlockchainAPI.prototype.asyncPostRequest = function (urlquery, json) {
     let res = yield new Promise((resolve, reject) => {
       request.post(this.blockchainAPIURI + urlquery, {form: json}, function (error, response, body) {
         if (error || response.statusCode !== 200) {
-          return reject(new Error(`blockchain-api getting ${urlquery}: ${error}`))
+          error = new Error(`blockchain-api posting ${urlquery}: ${error} - statusCode: ${response.statusCode}`)
+          error.statusCode = response.statusCode
+          return reject(error)
         }
         resolve(body)
       })
@@ -181,6 +185,18 @@ BlockchainAPI.prototype.asyncGetAddressTotalBalanceSatoshis = function (address)
     satoshis += yield this.asyncGetAddressConfirmedBalanceSatoshis(address)
     satoshis += yield this.asyncGetAddressUnconfirmedBalanceSatoshis(address)
     return satoshis
+  }, this)
+}
+
+/**
+ * Send a transaction to the bitcoin network. txb must be a Txbuilder
+ * object.
+ */
+BlockchainAPI.prototype.asyncSendTransaction = function (txb) {
+  return asink(function *() {
+    let txhex = txb.tx.toHex()
+    let res = yield this.asyncPostRequest('tx/send', {rawtx: txhex})
+    return res
   }, this)
 }
 
