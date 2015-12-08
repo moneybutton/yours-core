@@ -114,7 +114,7 @@
   "dependencies": {
     "asink": "1.0.4",
     "express": "4.13.3",
-    "express-request-proxy": "1.0.9",
+    "express-request-proxy": "1.0.10",
     "fullnode": "0.11.7",
     "peer": "0.2.8",
     "peerjs": "0.3.14",
@@ -150,7 +150,7 @@
     "mocha": "2.3.4",
     "react-addons-test-utils": "0.14.3",
     "reactify": "1.1.1",
-    "should": "7.1.1",
+    "should": "8.0.0",
     "sinon": "1.17.2",
     "standard": "5.4.1",
     "through2": "2.0.0",
