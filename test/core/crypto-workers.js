@@ -74,6 +74,18 @@ describe('CryptoWorkers', function () {
     })
   })
 
+  describe('@asyncAddressFromPubkeyBuffer', function () {
+    it('should compute the same as fullnode', function () {
+      return asink(function *() {
+        let privkey = Privkey().fromRandom()
+        let pubkey = Pubkey().fromPrivkey(privkey)
+        let pubkeybuf = pubkey.toBuffer()
+        let address = yield CryptoWorkers.asyncAddressFromPubkeyBuffer(pubkeybuf)
+        address.toString().should.equal(Address().fromPubkey(pubkey).toString())
+      })
+    })
+  })
+
   describe('@asyncAddressFromPubkey', function () {
     it('should compute the same as fullnode', function () {
       return asink(function *() {

@@ -72,6 +72,14 @@ CryptoWorkers.prototype.asyncPubkeyFromPrivkey = function (privkey) {
   }, this)
 }
 
+CryptoWorkers.prototype.asyncAddressFromPubkeyBuffer = function (pubkeybuf) {
+  return asink(function *() {
+    let pubkeyHex = pubkeybuf.toString('hex')
+    let addressHex = yield q(this.pool.exec('addressHexFromPubkeyHex', [pubkeyHex]))
+    return Address().fromHex(addressHex)
+  }, this)
+}
+
 /**
  * Derive an address from a public key in a worker. TODO: For speed, replace
  * transmission code with buffers rather than JSON.
