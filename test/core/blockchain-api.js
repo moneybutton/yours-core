@@ -40,7 +40,7 @@ describe('BlockchainAPI', function () {
         // more bitcoins to it, so the balance is a little greater than 50 BTC.
         let address = Address().fromString('12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX')
         let utxos = yield BlockchainAPI().asyncGetUTXOsJSON([address])
-        utxos.length.should.greaterThan(26)
+        utxos.length.should.greaterThan(20)
       }, this)
     })
   })
@@ -100,7 +100,7 @@ describe('BlockchainAPI', function () {
   describe('#asyncSendTransaction', function () {
     it('should fail when broadcasting tx already in the blockchain', function () {
       return asink(function *() {
-        let txhex = '0100000001792d8bf46091200f76960aa0dbd6884191a7a2f55066bbc65322e6a7da0d2f62000000006a4730440220070d849fa9b6e0053ca47eb4dbb5232848585f1ce8c446a903e73d76b3817e8d02201dbaccc40c16d71232d3ba3b0224d9cc8b7aae8cfc3921ea8b2fd65beaa18b2e01210220c4fecd165305d4e90640fd09d6da06e619cfed87d9a30a9bb80c719b0ce3d9feffffff0200c2eb0b000000001976a914ef1167154c85b5345a026f08d2e90b79354bf19d88ac0f473d25000000001976a914621586964aa9ac26d9f031886c8d14d4325a43ac88ac19e90500'
+        let txhex = '010000000168a59c95a89ed5e9af00e90a7823156b02b7811000c63170bb2440d8db6a1869000000008a473044022050c32cf6cd888178268701a636b189dc3f026ee3ebd230fd77018e54044aac77022055aa7fa73c524dd4f0be02694683a21eb03d5d2f2c519d7dc7110b742c417517014104aa5c77986a87b93b03d949013e629601b6dbdbd5fc09f3bef9263b64b3c38d79d443fafa2fbf422a203fe433adf6e071f3172a53747739ce72c640fe7e514981ffffffff0140420f00000000001976a91449cf380abdb86449efc694988bf0f447739f73cd88ac00000000'
         let txb = {
           tx: Tx().fromHex(txhex)
         }
@@ -109,7 +109,7 @@ describe('BlockchainAPI', function () {
           yield BlockchainAPI().asyncSendTransaction(txb)
         } catch (err) {
           errors++
-          err.statusCode.should.equal(400)
+          err.body.should.equal('transaction already in block chain')
         }
         errors.should.equal(1)
       }, this)
