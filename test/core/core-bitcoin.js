@@ -142,18 +142,33 @@ describe('CoreBitcoin', function () {
     })
   })
 
-  describe('#asyncBuildAndSendTransaction', function () {
+  describe('#asyncSendTransaction', function () {
+    it('should call blockchainAPI\'s asyncSendTransaction', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+        corebitcoin.blockchainAPI = {
+          asyncSendTransaction: sinon.stub().returns(Promise.resolve())
+        }
+        let txb = 'hello'
+        yield corebitcoin.asyncSendTransaction(txb)
+        corebitcoin.blockchainAPI.asyncSendTransaction.calledOnce.should.equal(true)
+        corebitcoin.blockchainAPI.asyncSendTransaction.calledWith(txb).should.equal(true)
+      }, this)
+    })
+  })
+
+  describe('#asyncBuildSignAndSendTransaction', function () {
     it('should call other internal methods', function () {
       return asink(function *() {
         let corebitcoin = CoreBitcoin()
         corebitcoin.asyncBuildTransaction = sinon.stub().returns(Promise.resolve('hello'))
         corebitcoin.asyncSignTransaction = sinon.stub().returns(Promise.resolve('hello'))
         corebitcoin.asyncSendTransaction = sinon.spy()
-        let tx = yield corebitcoin.asyncBuildAndSendTransaction()
+        let txb = yield corebitcoin.asyncBuildSignAndSendTransaction()
         corebitcoin.asyncBuildTransaction.calledOnce.should.equal(true)
         corebitcoin.asyncSignTransaction.calledOnce.should.equal(true)
         corebitcoin.asyncSendTransaction.calledOnce.should.equal(true)
-        tx.should.equal('hello')
+        txb.should.equal('hello')
       })
     })
   })

@@ -184,6 +184,20 @@ DattCore.prototype.asyncGetUserMnemonic = function () {
  * -------
  */
 
+/**
+ * This convenience method is here primarily to iterate towards a prototype as
+ * fast as possible. Normally, you probably don't want to build, sign and send
+ * a transaction all in one go, because this provides no opportunity for user
+ * freedback along the way. For instance, what if the user belieeves the
+ * automatically calculated fees are excessive, and they wish not to actually
+ * send the transaction? The UI should have a step after building, but before
+ * signing and sending. But, like most prototype things, it's good enough for
+ * now, and we can break it up later, and then remove this method.
+ */
+DattCore.prototype.asyncBuildSignAndSendTransaction = function (toAddress, toAmountSatoshis) {
+  return this.corebitcoin.asyncBuildSignAndSendTransaction(toAddress, toAmountSatoshis)
+}
+
 DattCore.prototype.monitorCoreBitcoin = function () {
   this.corebitcoin.on('balance', this.handleBitcoinBalance.bind(this))
   return this

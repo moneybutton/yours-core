@@ -26,7 +26,6 @@ let Txout = require('fullnode/lib/txout')
 let User = require('./user')
 let asink = require('asink')
 
-// TODO: Also create and require db-bip44-wallet
 function CoreBitcoin (blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockchainAPI, timeoutID, balances) {
   if (!(this instanceof CoreBitcoin)) {
     return new CoreBitcoin(blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockchainAPI, timeoutID, balances)
@@ -182,15 +181,18 @@ CoreBitcoin.prototype.asyncSignTransaction = function (txb) {
   }, this)
 }
 
+/**
+ * txb should be a Txbuilder object.
+ */
 CoreBitcoin.prototype.asyncSendTransaction = function (txb) {
-  // TODO:
-  // Use blockchain API to broadcast tx
+  return this.blockchainAPI.asyncSendTransaction(txb)
 }
 
-CoreBitcoin.prototype.asyncBuildAndSendTransaction = function (toAddress, toAmountSatoshis) {
+CoreBitcoin.prototype.asyncBuildSignAndSendTransaction = function (toAddress, toAmountSatoshis) {
   return asink(function *() {
-    let txb = yield this.asyncBuildTransaction(toAddress, toAmountSatoshis)
-    yield this.asyncSignTransaction(txb)
+    let txb
+    txb = yield this.asyncBuildTransaction(toAddress, toAmountSatoshis)
+    txb = yield this.asyncSignTransaction(txb)
     yield this.asyncSendTransaction(txb)
     return txb
   }, this)

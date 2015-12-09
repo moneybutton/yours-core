@@ -4,10 +4,11 @@ let Address = require('fullnode/lib/address')
 let ContentAuth = require('../../core/content-auth')
 let DattCore = require('../../core')
 let MsgPing = require('../../core/msg-ping')
+let Privkey = require('fullnode/lib/privkey')
 let asink = require('asink')
+let mocks = require('./mocks')
 let should = require('should')
 let sinon = require('sinon')
-let mocks = require('./mocks')
 
 describe('DattCore', function () {
   let dattcore
@@ -77,6 +78,22 @@ describe('DattCore', function () {
         let mnemonic = yield dattcore.asyncGetUserMnemonic()
         mnemonic.should.equal(dattcore.coreuser.user.mnemonic)
       })
+    })
+  })
+
+  describe('#asyncBuildSignAndSendTransaction', function () {
+    it('should call the same method on corebitcoin', function () {
+      return asink(function *() {
+        let dattcore = DattCore()
+        dattcore.corebitcoin = {
+          asyncBuildSignAndSendTransaction: sinon.stub().returns(Promise.resolve())
+        }
+        let toAddress = Address().fromPrivkey(Privkey().fromRandom())
+        let toAmountSatoshis = 10000
+        yield dattcore.asyncBuildSignAndSendTransaction(toAddress, toAmountSatoshis)
+        dattcore.corebitcoin.asyncBuildSignAndSendTransaction.calledOnce.should.equal(true)
+        dattcore.corebitcoin.asyncBuildSignAndSendTransaction.calledWith(toAddress, toAmountSatoshis).should.equal(true)
+      }, this)
     })
   })
 
