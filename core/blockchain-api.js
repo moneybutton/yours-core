@@ -55,7 +55,12 @@ BlockchainAPI.prototype.asyncPostRequest = function (urlquery, json) {
       throw new Error('must specify urlquery and json for post data')
     }
     let res = yield new Promise((resolve, reject) => {
-      request.post(this.blockchainAPIURI + urlquery, {form: json}, function (error, response, body) {
+      let options = {
+        url: this.blockchainAPIURI + urlquery,
+        body: json,
+        json: true // Sets: Content-Type: application/json
+      }
+      request.post(options, function (error, response, body) {
         if (error || response.statusCode !== 200) {
           error = new Error(`blockchain-api posting ${urlquery}: ${error} - statusCode: ${response.statusCode}`)
           error.statusCode = response.statusCode
@@ -64,7 +69,7 @@ BlockchainAPI.prototype.asyncPostRequest = function (urlquery, json) {
         resolve(body)
       })
     })
-    return JSON.parse(res)
+    return res
   }, this)
 }
 
@@ -81,6 +86,9 @@ BlockchainAPI.prototype.asyncGetLatestBlockInfo = function () {
   }, this)
 }
 
+/**
+ * Note that this gets all UTXOs, including those with no confirmations.
+ */
 BlockchainAPI.prototype.asyncGetUTXOsJSON = function (addresses) {
   return asink(function *() {
     if (addresses.length === 0) {
@@ -189,14 +197,15 @@ BlockchainAPI.prototype.asyncGetAddressTotalBalanceSatoshis = function (address)
 }
 
 /**
- * Send a transaction to the bitcoin network. txb must be a Txbuilder
- * object.
+ * Send a transaction to the bitcoin network. txb must be a Txbuilder object,
+ * or an object that has a "tx" property which is a Tx object.
  */
 BlockchainAPI.prototype.asyncSendTransaction = function (txb) {
   return asink(function *() {
     let txhex = txb.tx.toHex()
     let res = yield this.asyncPostRequest('tx/send', {rawtx: txhex})
-    return res
+    let txidhex = res.txid
+    return new Buffer(txidhex, 'hex')
   }, this)
 }
 
