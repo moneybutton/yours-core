@@ -109,7 +109,7 @@ describe('BlockchainAPI', function () {
           yield BlockchainAPI().asyncSendTransaction(txb)
         } catch (err) {
           errors++
-          err.body.should.equal('transaction already in block chain')
+          err.body.includes('transaction already in block chain').should.equal(true)
         }
         errors.should.equal(1)
       }, this)
