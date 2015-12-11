@@ -308,14 +308,9 @@ gulp.task('test-karma', ['build-karma'], () => {
       process.exit(1)
     })
     .on('end', () => {
-      // This delay is necessary to prevent http-proxy from throwing a "socket
-      // hang up" error right as the karma tests close. If someone can find a
-      // better way to handle this than a delay, please change it.
-      q.delay(500).then(() => {
-        rendezvousServer.close()
-        appServer.close()
-        process.exit()
-      })
+      rendezvousServer.close()
+      appServer.close()
+      process.exit()
     })
 })
 

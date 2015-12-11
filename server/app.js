@@ -23,6 +23,11 @@ module.exports.createAppServer = function createAppServer (port) {
       changeOrigin: true
     })
   })
+  apiProxy.on('error', (err, req, res) => {
+    if (err) {
+      res.end()
+    }
+  })
 
   // The front-end is just static HTML, CSS and JS files.
   app.use(express.static(path.join(__dirname, '../build')))
@@ -33,13 +38,6 @@ module.exports.createAppServer = function createAppServer (port) {
     console.log('View the app at http://%s:%s/', host, port)
     console.log('Run the mocha browser tests at http://%s:%s/tests.html', host, port)
   })
-
-  // Be sure also to close the proxy server when "closing"
-  server.oldClose = server.close
-  server.close = () => {
-    server.oldClose()
-    apiProxy.close()
-  }
 
   return server
 }
