@@ -23,13 +23,14 @@ let ContentList = React.createClass({
       let contentList = []
       for (let contentauth of contentauths) {
         let key = contentauth.cachehash.toString('hex')
-        let address = yield DattCore.CryptoWorkers.asyncAddressStringFromAddress(contentauth.address)
+        let address = contentauth.address
+        let addressString = yield DattCore.CryptoWorkers.asyncAddressStringFromAddress(contentauth.address)
         let content = contentauth.getContent()
         let title = content.title
         let label = content.label
         let name = content.name
         let body = content.body
-        contentList.push({key, address, title, name, label, body})
+        contentList.push({key, address, addressString, title, name, label, body})
       }
       this.setState({contentList})
     }, this)
@@ -62,6 +63,15 @@ let ContentList = React.createClass({
     dattcore: React.PropTypes.object
   },
 
+  handleSend: function (address, el) {
+    return asink(function *() {
+      el.preventDefault()
+      let dattcore = this.props.dattcore
+      let satoshis = 5000 * 1e2 // 5000 bits converted to satoshis
+      yield dattcore.asyncBuildSignAndSendTransaction(address, satoshis)
+    }, this)
+  },
+
   render: function () {
     let contentList = this.state.contentList.map(obj => {
       return (
@@ -69,7 +79,10 @@ let ContentList = React.createClass({
           <h2>
             <a href='#'>{obj.title}</a>
           </h2>
-          <div className='author-information'>{obj.name} | {obj.address}</div>
+          <form>
+            <button type='pay' className='btn btn-default' onClick={this.handleSend.bind(this, obj.address)}>Send 5000 Bits</button>
+          </form>
+          <div className='author-information'>{obj.name} | {obj.addressString}</div>
         </li>
       )
     })
