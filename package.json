@@ -155,7 +155,7 @@
     "mocha": "2.3.4",
     "react-addons-test-utils": "0.14.3",
     "reactify": "1.1.1",
-    "should": "8.0.0",
+    "should": "8.0.1",
     "sinon": "1.17.2",
     "standard": "5.4.1",
     "through2": "2.0.0",
