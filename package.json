@@ -6,7 +6,7 @@
   "scripts": {
     "build": "./node_modules/.bin/gulp",
     "test": "npm run test-format && npm run test-both",
-    "test-local": "DATT_BLOCKCHAIN_API_URI=http://localhost:3001/insight-api/ npm run test-format && npm run test-both",
+    "test-local": "npm run test-format && DATT_BLOCKCHAIN_API_URI=http://localhost:3001/insight-api/ npm run test-both",
     "test-files": "./node_modules/.bin/mocha --compilers .jsx:babel-core/register",
     "test-format": "npm run standard",
     "test-both": "npm run test-node && npm run test-karma",
