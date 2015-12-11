@@ -119,7 +119,7 @@
   "dependencies": {
     "asink": "1.0.4",
     "express": "4.13.3",
-    "fullnode": "0.11.8",
+    "fullnode": "0.11.9",
     "http-proxy": "1.12.0",
     "peer": "0.2.8",
     "peerjs": "0.3.14",
