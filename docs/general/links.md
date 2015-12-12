@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [grasswire - decentralized, crowdsourced news network](https://grasswire.com/)
 - [eth-tweet - decentralized twitter based on ethereum](https://github.com/yep/eth-tweet)
 - [Social media censorship in Bangladesh hints at long-term problems for publishers](http://www.cjr.org/analysis/bangladesh_social_media.php)
 - [Soulseek banned from PayPal after 14 years](https://torrentfreak.com/paypal-bans-file-sharing-classic-soulseek-after-14-years-151205/)
@@ -88,6 +89,8 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [grasswire - decentralized, crowdsourced news network](https://grasswire.com/)
+- [eth-tweet - decentralized twitter based on ethereum](https://github.com/yep/eth-tweet)
 - [CrowdJury - decentralized justice](http://crowdjury.org/en/)
 - [Synero - decentralized social media with integrated payments using their own coin](http://www.synereo.com/)
 - [Fabriq - a decentralized reddit based on Ethereum](https://github.com/ckeenan/fabriq) - [see also Chris Keenan's tweet](https://twitter.com/j32804/status/664811118028849152)
