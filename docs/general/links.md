@@ -3,8 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
-- [grasswire - decentralized, crowdsourced news network](https://grasswire.com/)
-- [eth-tweet - decentralized twitter based on ethereum](https://github.com/yep/eth-tweet)
+- [Spotify but for the Titanic: A Proposal for the Future of News and Publishing](https://medium.com/message/spotify-but-for-the-titanic-a-proposal-for-the-future-of-news-and-publishing-40c41fbebe7b)
 - [Social media censorship in Bangladesh hints at long-term problems for publishers](http://www.cjr.org/analysis/bangladesh_social_media.php)
 - [Soulseek banned from PayPal after 14 years](https://torrentfreak.com/paypal-bans-file-sharing-classic-soulseek-after-14-years-151205/)
 - [The ‘Facebook of Latin America’ Taringa! Just Paid $76,000 in Bitcoin to its Users](https://news.bitcoin.com/facebook-latin-america-taringa-just-paid-76000-bitcoin-users/)
