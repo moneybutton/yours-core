@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [ChangeTip forced to blog users in Russia](http://forklog.net/changetip-has-blocked-account-of-forklog-magazine-due-to-us-sanctions-against-russia/)
 - [Spotify but for the Titanic: A Proposal for the Future of News and Publishing](https://medium.com/message/spotify-but-for-the-titanic-a-proposal-for-the-future-of-news-and-publishing-40c41fbebe7b)
 - [Social media censorship in Bangladesh hints at long-term problems for publishers](http://www.cjr.org/analysis/bangladesh_social_media.php)
 - [Soulseek banned from PayPal after 14 years](https://torrentfreak.com/paypal-bans-file-sharing-classic-soulseek-after-14-years-151205/)
