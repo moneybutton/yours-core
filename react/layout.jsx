@@ -41,7 +41,7 @@ let Layout = React.createClass({
         })
       }
       yield dattcore.asyncNetworkInitialize()
-    }.bind(this))
+    }, this)
   },
 
   propTypes: {
@@ -70,7 +70,7 @@ let Layout = React.createClass({
       this.setState({
         numActiveConnections: n
       })
-    }.bind(this))
+    }, this)
   },
 
   render: function () {

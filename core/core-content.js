@@ -55,7 +55,7 @@ CoreContent.prototype.asyncPostContentAuth = function (contentauth) {
     let res = yield DBContentAuth(this.db).asyncSave(contentauth)
     this.emit('content-auth', contentauth)
     return res
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -66,7 +66,7 @@ CoreContent.prototype.asyncPostNewContentAuth = function (pubkey, privkey, addre
   return asink(function *() {
     let contentauth = yield this.asyncNewContentAuth(pubkey, privkey, address, name, label, title, body, blockhashbuf, blockheightnum)
     return this.asyncPostContentAuth(contentauth)
-  }.bind(this))
+  }, this)
 }
 
 /**

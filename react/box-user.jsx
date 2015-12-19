@@ -33,7 +33,7 @@ let BoxUser = React.createClass({
       this.setState({
         userMnemonic: userMnemonic
       })
-    }.bind(this))
+    }, this)
   },
 
   componentWillMount: function () {
@@ -57,7 +57,7 @@ let BoxUser = React.createClass({
       this.setState({
         userName: this.state.newUserName
       })
-    }.bind(this))
+    }, this)
   },
 
   render: function () {

@@ -1,8 +1,12 @@
 /* global describe,it,before,after */
 'use strict'
 let Address = require('fullnode/lib/address')
+let BIP44Wallet = require('../../core/bip44-wallet')
 let CoreBitcoin = require('../../core/core-bitcoin')
 let DB = require('../../core/db')
+let Interp = require('fullnode/lib/interp')
+let Txverifier = require('fullnode/lib/txverifier')
+let Txbuilder = require('fullnode/lib/txbuilder')
 let User = require('../../core/user')
 let asink = require('asink')
 let should = require('should')
@@ -74,6 +78,129 @@ describe('CoreBitcoin', function () {
         yield corebitcoin.asyncUpdateBalance()
         corebitcoin.blockchainAPI.asyncGetAddressesBalancesSatoshis.calledOnce.should.equal(true)
         corebitcoin.emit.calledOnce.should.equal(true)
+      })
+    })
+  })
+
+  describe('#asyncBuildTransaction', function () {
+    it('should create a txbuilder object from mocked data', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+        let bip44wallet = yield BIP44Wallet().asyncFromRandom()
+        let bip44account = yield bip44wallet.asyncGetPrivateAccount(0)
+        let keys = yield bip44account.asyncGetNextExtAddressKeys()
+
+        corebitcoin.bip44wallet = bip44wallet
+        corebitcoin.asyncGetAllAddresses = () => Promise.resolve([keys.address])
+        corebitcoin.asyncGetNewIntAddress = () => Promise.resolve(keys.address)
+        corebitcoin.blockchainAPI.asyncGetUTXOsJSON = () => Promise.resolve([
+          {
+            address: keys.address.toString(),
+            txid: '0'.repeat(32 * 2),
+            vout: 0,
+            tx: 1449517728600,
+            scriptPubKey: keys.address.toScript().toHex(),
+            amount: 0.001,
+            confirmations: 1
+          }
+        ])
+
+        let txb = yield corebitcoin.asyncBuildTransaction(keys.address, 1000)
+        ;(txb instanceof Txbuilder).should.equal(true)
+      })
+    })
+  })
+
+  describe('#asyncSignTransaction', function () {
+    it('should create a txbuilder object from mocked data', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+        let bip44wallet = yield BIP44Wallet().asyncFromRandom()
+        let bip44account = yield bip44wallet.asyncGetPrivateAccount(0)
+        let keys = yield bip44account.asyncGetNextExtAddressKeys()
+
+        corebitcoin.bip44wallet = bip44wallet
+        corebitcoin.asyncGetAllAddresses = () => Promise.resolve([keys.address])
+        corebitcoin.asyncGetNewIntAddress = () => Promise.resolve(keys.address)
+        corebitcoin.blockchainAPI.asyncGetUTXOsJSON = () => Promise.resolve([
+          {
+            address: keys.address.toString(),
+            txid: '0'.repeat(32 * 2),
+            vout: 0,
+            tx: 1449517728600,
+            scriptPubKey: keys.address.toScript().toHex(),
+            amount: 0.001,
+            confirmations: 1
+          }
+        ])
+
+        let txb = yield corebitcoin.asyncBuildTransaction(keys.address, 1000)
+        let txb2 = yield corebitcoin.asyncSignTransaction(txb)
+        ;(txb2 instanceof Txbuilder).should.equal(true)
+        Txverifier.verify(txb2.tx, txb2.utxoutmap, Interp.SCRIPT_VERIFY_P2SH).should.equal(true)
+      })
+    })
+  })
+
+  describe('#asyncSendTransaction', function () {
+    it('should call blockchainAPI\'s asyncSendTransaction', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+        corebitcoin.blockchainAPI = {
+          asyncSendTransaction: sinon.stub().returns(Promise.resolve())
+        }
+        let txb = 'hello'
+        yield corebitcoin.asyncSendTransaction(txb)
+        corebitcoin.blockchainAPI.asyncSendTransaction.calledOnce.should.equal(true)
+        corebitcoin.blockchainAPI.asyncSendTransaction.calledWith(txb).should.equal(true)
+      }, this)
+    })
+  })
+
+  describe('#asyncBuildSignAndSendTransaction', function () {
+    it('should call other internal methods', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+        corebitcoin.asyncBuildTransaction = sinon.stub().returns(Promise.resolve('hello'))
+        corebitcoin.asyncSignTransaction = sinon.stub().returns(Promise.resolve('hello'))
+        corebitcoin.asyncSendTransaction = sinon.spy()
+        let txb = yield corebitcoin.asyncBuildSignAndSendTransaction()
+        corebitcoin.asyncBuildTransaction.calledOnce.should.equal(true)
+        corebitcoin.asyncSignTransaction.calledOnce.should.equal(true)
+        corebitcoin.asyncSendTransaction.calledOnce.should.equal(true)
+        txb.should.equal('hello')
+      })
+    })
+  })
+
+  describe('#asyncGetAllUTXOs', function () {
+    it('should get all utxos with mocked calls', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+        let bip44wallet = yield BIP44Wallet().asyncFromRandom()
+        let bip44account = yield bip44wallet.asyncGetPrivateAccount(0)
+        let keys = yield bip44account.asyncGetNextExtAddressKeys()
+
+        corebitcoin.bip44wallet = bip44wallet
+        corebitcoin.asyncGetAllAddresses = () => Promise.resolve([keys.address])
+        corebitcoin.blockchainAPI.asyncGetUTXOsJSON = () => Promise.resolve([
+          {
+            address: keys.address.toString(),
+            txid: '0'.repeat(32 * 2),
+            vout: 0,
+            tx: 1449517728600,
+            scriptPubKey: keys.address.toScript().toHex(),
+            amount: 0.001,
+            confirmations: 1
+          }
+        ])
+
+        let utxos = yield corebitcoin.asyncGetAllUTXOs()
+        utxos.length.should.equal(1)
+        should.exist(utxos[0].txhashbuf)
+        should.exist(utxos[0].txoutnum)
+        should.exist(utxos[0].txout)
+        should.exist(utxos[0].pubkey)
       })
     })
   })

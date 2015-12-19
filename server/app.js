@@ -8,40 +8,36 @@
 'use strict'
 let express = require('express')
 let path = require('path')
-let requestProxy = require('express-request-proxy')
+let httpProxy = require('http-proxy')
 let config = require('../config')
 
 module.exports.createAppServer = function createAppServer (port) {
   let app = express()
 
   // The blockchain API proxy.
-  app.get('/blockchain-api/:val1/:val2/:val3', requestProxy({
-    url: config.DATT_BLOCKCHAIN_API_URI + ':val1/:val2/:val3'
-  }))
-  app.get('/blockchain-api/:val1/:val2', requestProxy({
-    url: config.DATT_BLOCKCHAIN_API_URI + ':val1/:val2'
-  }))
-  app.get('/blockchain-api/:val1', requestProxy({
-    url: config.DATT_BLOCKCHAIN_API_URI + ':val1'
-  }))
-  app.post('/blockchain-api/:val1/:val2/:val3', requestProxy({
-    url: config.DATT_BLOCKCHAIN_API_URI + ':val1/:val2/:val3'
-  }))
-  app.post('/blockchain-api/:val1/:val2', requestProxy({
-    url: config.DATT_BLOCKCHAIN_API_URI + ':val1/:val2'
-  }))
-  app.post('/blockchain-api/:val1', requestProxy({
-    url: config.DATT_BLOCKCHAIN_API_URI + ':val1'
-  }))
+  let apiProxy = httpProxy.createProxyServer()
+  app.all('/blockchain-api/*', (req, res) => {
+    req.url = req.url.replace('/blockchain-api/', '/')
+    apiProxy.web(req, res, {
+      target: config.DATT_BLOCKCHAIN_API_URI,
+      changeOrigin: true
+    })
+  })
+  apiProxy.on('error', (err, req, res) => {
+    if (err) {
+      res.end()
+    }
+  })
 
   // The front-end is just static HTML, CSS and JS files.
   app.use(express.static(path.join(__dirname, '../build')))
 
-  let server = app.listen(port, function () {
+  let server = app.listen(port, () => {
     let host = server.address().address
     let port = server.address().port
     console.log('View the app at http://%s:%s/', host, port)
     console.log('Run the mocha browser tests at http://%s:%s/tests.html', host, port)
   })
+
   return server
 }

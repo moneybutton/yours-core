@@ -42,7 +42,7 @@ DBBIP44Wallet.prototype.asyncSave = function (bip44wallet) {
       bip44wallet: bip44wallet.toJSON()
     }
     return this.db.put(doc)
-  }.bind(this))
+  }, this)
 }
 
 DBBIP44Wallet.prototype.asyncGet = function () {
@@ -50,7 +50,7 @@ DBBIP44Wallet.prototype.asyncGet = function () {
     let doc = yield this.db.asyncGet('bip44wallet')
     this.bip44wallet = BIP44Wallet().fromJSON(doc.bip44wallet)
     return this.bip44wallet
-  }.bind(this))
+  }, this)
 }
 
 module.exports = DBBIP44Wallet

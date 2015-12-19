@@ -90,7 +90,7 @@ DattCore.prototype.asyncInitialize = function () {
 
     this.isinitialized = true
     return Promise.resolve()
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -113,7 +113,7 @@ DattCore.prototype.asyncNetworkInitialize = function () {
       yield this.corepeers.asyncDiscoverAndConnect()
     }
     return this
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -124,7 +124,7 @@ DattCore.prototype.asyncNetworkClose = function () {
   return asink(function *() {
     this.corebitcoin.unmonitorBlockchainAPI()
     // TODO: Also close p2p connections.
-  }.bind(this))
+  }, this)
 }
 
 DattCore.prototype.close = function () {
@@ -168,7 +168,7 @@ DattCore.prototype.asyncSetUserName = function (name) {
     yield DBContentAuth(this.db, msgauth.contentauth).asyncSave()
     // TODO: broadcast msgauth
     return this
-  }.bind(this))
+  }, this)
 }
 
 DattCore.prototype.asyncGetUserName = function () {
@@ -183,6 +183,20 @@ DattCore.prototype.asyncGetUserMnemonic = function () {
  * Bitcoin
  * -------
  */
+
+/**
+ * This convenience method is here primarily to iterate towards a prototype as
+ * fast as possible. Normally, you probably don't want to build, sign and send
+ * a transaction all in one go, because this provides no opportunity for user
+ * freedback along the way. For instance, what if the user belieeves the
+ * automatically calculated fees are excessive, and they wish not to actually
+ * send the transaction? The UI should have a step after building, but before
+ * signing and sending. But, like most prototype things, it's good enough for
+ * now, and we can break it up later, and then remove this method.
+ */
+DattCore.prototype.asyncBuildSignAndSendTransaction = function (toAddress, toAmountSatoshis) {
+  return this.corebitcoin.asyncBuildSignAndSendTransaction(toAddress, toAmountSatoshis)
+}
 
 DattCore.prototype.monitorCoreBitcoin = function () {
   this.corebitcoin.on('balance', this.handleBitcoinBalance.bind(this))
@@ -246,7 +260,7 @@ DattCore.prototype.asyncNewContentAuth = function (title, label, body) {
     let blockheightnum = info.height
     let name = this.coreuser.user.name
     return this.corecontent.asyncNewContentAuth(pubkey, privkey, address, name, label, title, body, blockhashbuf, blockheightnum)
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -258,7 +272,7 @@ DattCore.prototype.asyncPostContentAuth = function (contentauth) {
     let msg = MsgContentAuth().fromContentAuth(contentauth).toMsg()
     this.broadcastMsg(msg)
     return this.corecontent.asyncPostContentAuth(contentauth)
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -268,7 +282,7 @@ DattCore.prototype.asyncPostNewContentAuth = function (title, label, body) {
   return asink(function *() {
     let contentauth = yield this.asyncNewContentAuth(title, label, body)
     return this.asyncPostContentAuth(contentauth)
-  }.bind(this))
+  }, this)
 }
 
 /**

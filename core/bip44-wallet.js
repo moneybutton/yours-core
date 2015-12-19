@@ -42,7 +42,7 @@ BIP44Wallet.prototype.asyncFromRandom = function (entropybuf) {
     this.masterxprv = keys.xprv
     this.masterxpub = keys.xpub
     return this
-  }.bind(this))
+  }, this)
 }
 
 BIP44Wallet.prototype.toJSON = function () {
@@ -89,13 +89,13 @@ BIP44Wallet.prototype.asyncGetPrivateAccount = function (index) {
       this.bip44accounts.set(index, account)
     }
     return account
-  }.bind(this))
+  }, this)
 }
 
 BIP44Wallet.prototype.asyncGetAllExtAddresses = function (accountindex) {
   return asink(function *() {
     return this.bip44accounts.get(accountindex).asyncGetAllExtAddresses()
-  }.bind(this))
+  }, this)
 }
 
 BIP44Wallet.prototype.asyncGetExtAddress = function (accountindex, addrindex) {
@@ -103,7 +103,7 @@ BIP44Wallet.prototype.asyncGetExtAddress = function (accountindex, addrindex) {
     let account = yield this.asyncGetPrivateAccount(accountindex)
     let keys = yield account.asyncGetExtAddressKeys(addrindex)
     return keys.address
-  }.bind(this))
+  }, this)
 }
 
 BIP44Wallet.prototype.asyncGetNewExtAddress = function (accountindex) {
@@ -111,13 +111,13 @@ BIP44Wallet.prototype.asyncGetNewExtAddress = function (accountindex) {
     let account = yield this.asyncGetPrivateAccount(accountindex)
     let keys = yield account.asyncGetNextExtAddressKeys()
     return keys.address
-  }.bind(this))
+  }, this)
 }
 
 BIP44Wallet.prototype.asyncGetAllIntAddresses = function (accountindex) {
   return asink(function *() {
     return this.bip44accounts.get(accountindex).asyncGetAllIntAddresses()
-  }.bind(this))
+  }, this)
 }
 
 BIP44Wallet.prototype.asyncGetNewIntAddress = function (accountindex) {
@@ -125,7 +125,7 @@ BIP44Wallet.prototype.asyncGetNewIntAddress = function (accountindex) {
     let account = yield this.asyncGetPrivateAccount(accountindex)
     let keys = yield account.asyncGetNextIntAddressKeys()
     return keys.address
-  }.bind(this))
+  }, this)
 }
 
 module.exports = BIP44Wallet

@@ -56,7 +56,7 @@ MsgContentAuth.prototype.asyncFromContentAuth = function (contentauth) {
     this.hashbuf = hashbuf
     this.contentauth = contentauth
     return this
-  }.bind(this))
+  }, this)
 }
 
 MsgContentAuth.prototype.fromMsg = function (msg) {

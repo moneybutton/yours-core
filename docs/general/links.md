@@ -3,6 +3,13 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Decentralising Facebook with Blockchains and Userfeeds.](https://medium.com/@maciejolpinski/decentralising-facebook-with-blockchain-and-userfeeds-fcd25e4de097)
+- [YouTube's Top Style and Beauty Vloggers Earn as Much as $40k a Month](http://www.racked.com/2015/4/15/8421393/youtube-star-earnings-beauty-bloggers)
+- [ChangeTip forced to blog users in Russia](http://forklog.net/changetip-has-blocked-account-of-forklog-magazine-due-to-us-sanctions-against-russia/)
+- [Spotify but for the Titanic: A Proposal for the Future of News and Publishing](https://medium.com/message/spotify-but-for-the-titanic-a-proposal-for-the-future-of-news-and-publishing-40c41fbebe7b)
+- [Social media censorship in Bangladesh hints at long-term problems for publishers](http://www.cjr.org/analysis/bangladesh_social_media.php)
+- [Soulseek banned from PayPal after 14 years](https://torrentfreak.com/paypal-bans-file-sharing-classic-soulseek-after-14-years-151205/)
+- [The ‘Facebook of Latin America’ Taringa! Just Paid $76,000 in Bitcoin to its Users](https://news.bitcoin.com/facebook-latin-america-taringa-just-paid-76000-bitcoin-users/)
 - [Zapchain Growth Proves Bitcoin Tipping Viable Social Media Model](https://news.bitcoin.com/zapchain-growth-proves-bitcoin-tipping-viable-social-media-model/)
 - [Phuc Dat Bich: Man posts passport to Facebook to prove his name is real](http://timesofindia.indiatimes.com/world/mad-mad-world/Phuc-Dat-Bich-Man-posts-passport-to-Facebook-to-prove-his-name-is-real/articleshow/49860844.cms)
 - [Companies Target Journalists With Ads on Facebook](http://www.wsj.com/articles/companies-target-journalists-with-ads-on-facebook-1447664403)
@@ -84,6 +91,8 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [grasswire - decentralized, crowdsourced news network](https://grasswire.com/)
+- [eth-tweet - decentralized twitter based on ethereum](https://github.com/yep/eth-tweet)
 - [CrowdJury - decentralized justice](http://crowdjury.org/en/)
 - [Synero - decentralized social media with integrated payments using their own coin](http://www.synereo.com/)
 - [Fabriq - a decentralized reddit based on Ethereum](https://github.com/ckeenan/fabriq) - [see also Chris Keenan's tweet](https://twitter.com/j32804/status/664811118028849152)

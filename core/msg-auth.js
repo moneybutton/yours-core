@@ -96,7 +96,7 @@ MsgAuth.prototype.asyncSign = function (keypair) {
   return asink(function *() {
     yield this.contentauth.asyncSign(keypair)
     return this
-  }.bind(this))
+  }, this)
 }
 
 /**

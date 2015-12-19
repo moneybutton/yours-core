@@ -14,19 +14,20 @@ let CryptoWorkers = require('./crypto-workers')
 let Struct = require('fullnode/lib/struct')
 let asink = require('asink')
 
-function BIP44Account (bip32, extindex, intindex, keymap) {
+function BIP44Account (bip32, extindex, intindex, pathmap, addrhexmap) {
   if (!(this instanceof BIP44Account)) {
-    return new BIP44Account(bip32, extindex, intindex, keymap)
+    return new BIP44Account(bip32, extindex, intindex, pathmap, addrhexmap)
   }
   this.initialize()
-  this.fromObject({bip32, extindex, intindex, keymap})
+  this.fromObject({bip32, extindex, intindex, pathmap, addrhexmap})
 }
 
 BIP44Account.prototype = Object.create(Struct.prototype)
 BIP44Account.prototype.constructor = BIP44Account
 
 BIP44Account.prototype.initialize = function () {
-  this.keymap = new Map()
+  this.pathmap = new Map()
+  this.addrhexmap = new Map()
   this.extindex = -1
   this.intindex = -1
   return this
@@ -43,7 +44,7 @@ BIP44Account.prototype.asyncFromMasterXprvPrivate = function (bip32, accountinde
     bip32 = keys.xprv
     this.fromObject({bip32})
     return this
-  }.bind(this))
+  }, this)
 }
 
 BIP44Account.prototype.asyncFromMasterXprvPublic = function (bip32, accountindex) {
@@ -57,7 +58,7 @@ BIP44Account.prototype.asyncFromMasterXprvPublic = function (bip32, accountindex
     bip32 = keys.xpub
     this.fromObject({bip32})
     return this
-  }.bind(this))
+  }, this)
 }
 
 BIP44Account.prototype.toJSON = function () {
@@ -68,19 +69,19 @@ BIP44Account.prototype.toJSON = function () {
   // TODO: Replace with proper non-blocking method
   json.bip32 = this.bip32.toHex()
 
-  json.keymap = {}
-  this.keymap.forEach((keys, path) => {
-    json.keymap[path] = {}
+  json.pathmap = {}
+  this.pathmap.forEach((keys, path) => {
+    json.pathmap[path] = {}
 
     if (this.isPrivate()) {
       // TODO: Replace with proper non-blocking method
-      json.keymap[path].xprv = keys.xprv.toHex()
+      json.pathmap[path].xprv = keys.xprv.toHex()
     }
 
     // TODO: Replace with proper non-blocking method
-    json.keymap[path].xpub = keys.xpub.toHex()
+    json.pathmap[path].xpub = keys.xpub.toHex()
 
-    json.keymap[path].address = keys.address.toHex()
+    json.pathmap[path].address = keys.address.toHex()
   })
 
   return json
@@ -93,9 +94,9 @@ BIP44Account.prototype.fromJSON = function (json) {
   // TODO: Replace with proper non-blocking method
   this.bip32 = BIP32().fromHex(json.bip32)
 
-  this.keymap = new Map()
-  Object.keys(json.keymap).forEach((path) => {
-    let keys = json.keymap[path]
+  this.pathmap = new Map()
+  Object.keys(json.pathmap).forEach((path) => {
+    let keys = json.pathmap[path]
     let xprv
 
     if (keys.xprv) {
@@ -107,8 +108,29 @@ BIP44Account.prototype.fromJSON = function (json) {
     let xpub = BIP32().fromHex(keys.xpub)
 
     let address = Address().fromHex(keys.address)
-    this.keymap.set(path, {xprv, xpub, address})
+    this.pathmap.set(path, {xprv, xpub, address})
   })
+
+  // Note that addrhexmap is not directly stored in JSON - it is rederived from
+  // the pathmap, which has all the information. We just have to rebuild the
+  // map.
+  this.addrhexmap = new Map()
+  Object.keys(json.pathmap).forEach((path) => {
+    let keys = json.pathmap[path]
+    let xprv
+
+    if (keys.xprv) {
+      // TODO: Replace with proper non-blocking method
+      xprv = BIP32().fromHex(keys.xprv)
+    }
+
+    // TODO: Replace with proper non-blocking method
+    let xpub = BIP32().fromHex(keys.xpub)
+
+    let address = Address().fromHex(keys.address)
+    this.addrhexmap.set(keys.address, {xprv, xpub, address})
+  })
+
   return this
 }
 
@@ -127,7 +149,7 @@ BIP44Account.prototype.asyncDeriveKeysFromPath = function (path) {
       throw new Error('must specify path - see bip32 specification for format')
     }
     let keys
-    keys = this.keymap.get(path)
+    keys = this.pathmap.get(path)
     if (keys) {
       return keys
     }
@@ -136,9 +158,10 @@ BIP44Account.prototype.asyncDeriveKeysFromPath = function (path) {
     } else {
       keys = yield CryptoWorkers.asyncDeriveXkeysFromXpub(this.bip32, path)
     }
-    this.keymap.set(path, keys)
+    this.pathmap.set(path, keys)
+    this.addrhexmap.set(keys.address.toHex(), keys)
     return keys
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -154,7 +177,7 @@ BIP44Account.prototype.asyncGetAllExtAddresses = function () {
       addresses.push(keys.address)
     }
     return addresses
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -169,7 +192,7 @@ BIP44Account.prototype.asyncGetAllIntAddresses = function () {
       addresses.push(keys.address)
     }
     return addresses
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -183,7 +206,7 @@ BIP44Account.prototype.asyncGetExtAddressKeys = function (extindex) {
     let path = 'm/0/' + extindex
     let keys = yield this.asyncDeriveKeysFromPath(path)
     return keys
-  }.bind(this))
+  }, this)
 }
 
 BIP44Account.prototype.asyncGetNextExtAddressKeys = function () {
@@ -192,7 +215,7 @@ BIP44Account.prototype.asyncGetNextExtAddressKeys = function () {
     let keys = yield this.asyncGetExtAddressKeys(extindex)
     this.extindex = extindex
     return keys
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -203,7 +226,7 @@ BIP44Account.prototype.asyncGetIntAddressKeys = function (intindex) {
     let path = 'm/1/' + intindex
     let keys = yield this.asyncDeriveKeysFromPath(path)
     return keys
-  }.bind(this))
+  }, this)
 }
 
 BIP44Account.prototype.asyncGetNextIntAddressKeys = function () {
@@ -212,7 +235,7 @@ BIP44Account.prototype.asyncGetNextIntAddressKeys = function () {
     let keys = yield this.asyncGetIntAddressKeys(intindex)
     this.intindex = intindex
     return keys
-  }.bind(this))
+  }, this)
 }
 
 module.exports = BIP44Account

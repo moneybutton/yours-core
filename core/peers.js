@@ -56,7 +56,7 @@ Peers.prototype.asyncInitialize = function () {
     }
 
     return this
-  }.bind(this))
+  }, this)
 }
 
 Peers.prototype.monitorNetworkWebRTC = function () {
@@ -147,7 +147,7 @@ Peers.prototype.asyncConnectMany = function (connectionInfos) {
       }
     }
     return Promise.resolve(successes)
-  }.bind(this))
+  }, this)
 }
 
 Peers.prototype.asyncConnect = function (connectionInfo) {
@@ -164,7 +164,7 @@ Peers.prototype.asyncConnect = function (connectionInfo) {
     }
     let connection = yield network.asyncConnect(connectionInfo)
     return {connection, network}
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -196,7 +196,7 @@ Peers.prototype.asyncDiscoverAndConnect = function () {
       throw new Error('cannot discover and connect unless initialized')
     }
     yield this.asyncConnectMany(connectionInfos)
-  }.bind(this))
+  }, this)
 }
 
 Peers.prototype.numActiveConnections = function () {

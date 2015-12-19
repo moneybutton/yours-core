@@ -13,8 +13,9 @@ let BIP32 = require('fullnode/lib/bip32')
 let Pubkey = require('fullnode/lib/pubkey')
 let Sig = require('fullnode/lib/sig')
 let Struct = require('fullnode/lib/struct')
-let q = require('q')
+let Txbuilder = require('fullnode/lib/txbuilder')
 let asink = require('asink')
+let q = require('q')
 let workerpool = require('workerpool')
 
 let defaultPool
@@ -53,7 +54,7 @@ CryptoWorkers.prototype.asyncSha256 = function sha256 (databuf) {
     let datahex = databuf.toString('hex')
     let hashhex = yield q(this.pool.exec('sha256', [datahex]))
     return new Buffer(hashhex, 'hex')
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -68,7 +69,15 @@ CryptoWorkers.prototype.asyncPubkeyFromPrivkey = function (privkey) {
     let pubkeyHex = yield q(this.pool.exec('pubkeyHexFromPrivkeyHex', [privkeyHex]))
     let pubkey = Pubkey().fromDER(new Buffer(pubkeyHex, 'hex'))
     return pubkey
-  }.bind(this))
+  }, this)
+}
+
+CryptoWorkers.prototype.asyncAddressFromPubkeyBuffer = function (pubkeybuf) {
+  return asink(function *() {
+    let pubkeyHex = pubkeybuf.toString('hex')
+    let addressHex = yield q(this.pool.exec('addressHexFromPubkeyHex', [pubkeyHex]))
+    return Address().fromHex(addressHex)
+  }, this)
 }
 
 /**
@@ -80,7 +89,18 @@ CryptoWorkers.prototype.asyncAddressFromPubkey = function (pubkey) {
     let pubkeyHex = pubkey.toHex()
     let addressHex = yield q(this.pool.exec('addressHexFromPubkeyHex', [pubkeyHex]))
     return Address().fromHex(addressHex)
-  }.bind(this))
+  }, this)
+}
+
+/**
+ * Derive an address object from an address string.
+ */
+CryptoWorkers.prototype.asyncAddressFromAddressString = function (addressString) {
+  return asink(function *() {
+    let addressHex = yield q(this.pool.exec('addressHexFromAddressString', [addressString]))
+    let address = Address().fromHex(addressHex)
+    return address
+  }, this)
 }
 
 /**
@@ -92,7 +112,7 @@ CryptoWorkers.prototype.asyncAddressStringFromAddress = function (address) {
     let addressHex = address.toHex()
     let addressString = yield q(this.pool.exec('addressStringFromAddressHex', [addressHex]))
     return addressString
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -113,7 +133,7 @@ CryptoWorkers.prototype.asyncXkeysFromEntropy = function (entropybuf) {
       xprv: xprv,
       xpub: xpub
     }
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -129,7 +149,7 @@ CryptoWorkers.prototype.asyncDeriveXkeysFromXprv = function (xprv, path) {
     let xpub = BIP32().fromHex(obj.xpub)
     let address = Address().fromHex(obj.address)
     return {xprv, xpub, address}
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -144,7 +164,7 @@ CryptoWorkers.prototype.asyncDeriveXkeysFromXpub = function (xpub, path) {
     xpub = BIP32().fromHex(obj.xpub)
     let address = Address().fromHex(obj.address)
     return {xpub, address}
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -158,7 +178,7 @@ CryptoWorkers.prototype.asyncSign = function (hash, privkey, endian) {
     let privkeyHex = privkey.toHex()
     let sighex = yield q(this.pool.exec('sign', [hashhex, privkeyHex, endian]))
     return Sig().fromHex(sighex)
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -172,7 +192,7 @@ CryptoWorkers.prototype.asyncSignCompact = function (hashbuf, privkey) {
     let privkeyHex = privkey.toHex()
     let sighex = yield q(this.pool.exec('signCompact', [hashhex, privkeyHex]))
     return Sig().fromCompact(new Buffer(sighex, 'hex'))
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -188,7 +208,7 @@ CryptoWorkers.prototype.asyncVerifySignature = function verifySignature (hash, s
     let pubkeyHex = pubkey.toDER(false).toString('hex')
     let signatureHex = signature.toHex()
     return q(this.pool.exec('verifySignature', [hashhex, signatureHex, pubkeyHex]))
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -212,7 +232,25 @@ CryptoWorkers.prototype.asyncVerifyCompactSig = function (hashbuf, sig) {
       verified: obj.verified,
       pubkey: obj.pubkey ? Pubkey().fromDER(new Buffer(obj.pubkey, 'hex')) : undefined
     }
-  }.bind(this))
+  }, this)
+}
+
+/**
+ * txb must be a Txbuilder object that is *built*, i.e. you have run .build()
+ * on it, and it contains a transaction. The transaction has everything but the
+ * signatures. privkeys must be an array of Privkey objects where each privkey
+ * is the private key of the corresponding input on the transaction. i.e.,
+ * txb.tx.txins[0] requires the signature corresponding to privkeys[0],
+ * txb.tx.txins[1] requires privkeys[1], and so on.
+ */
+CryptoWorkers.prototype.asyncSignTransaction = function (txb, privkeys) {
+  return asink(function *() {
+    let txbjson = txb.toJSON()
+    let privkeysjson = privkeys.map(privkey => privkey.toHex())
+    let obj = yield q(this.pool.exec('signTransaction', [txbjson, privkeysjson]))
+    txb = Txbuilder().fromJSON(obj)
+    return txb
+  }, this)
 }
 
 cryptoWorkers = new CryptoWorkers()

@@ -48,7 +48,7 @@ describe('BIP44Account', function () {
         let json = bip44account.toJSON()
         json.extindex.should.equal(1)
         json.intindex.should.equal(0)
-        Object.keys(json.keymap).length.should.equal(3)
+        Object.keys(json.pathmap).length.should.equal(3)
       })
     })
   })
@@ -67,7 +67,8 @@ describe('BIP44Account', function () {
         let bip44account2 = BIP44Account().fromJSON(json)
         bip44account.extindex.should.equal(bip44account2.extindex)
         bip44account.intindex.should.equal(bip44account2.intindex)
-        bip44account.keymap.size.should.equal(bip44account2.keymap.size)
+        bip44account.pathmap.size.should.equal(bip44account2.pathmap.size)
+        bip44account.addrhexmap.size.should.equal(bip44account2.pathmap.size)
       })
     })
   })
@@ -92,6 +93,14 @@ describe('BIP44Account', function () {
         should.exist(keys.xprv)
         should.exist(keys.xpub)
         should.exist(keys.address)
+
+        // test that addrhexmap exists
+        keys = bip44account.addrhexmap.get(keys.address.toHex())
+        should.exist(keys.xprv)
+        should.exist(keys.xpub)
+        should.exist(keys.address)
+
+        // test that toPublic works
         bip32 = bip32.toPublic()
         bip44account = BIP44Account(bip32)
         keys = yield bip44account.asyncDeriveKeysFromPath('m/0')

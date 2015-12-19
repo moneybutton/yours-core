@@ -10,17 +10,22 @@
  * object.
  */
 'use strict'
+let Address = require('fullnode/lib/address')
 let BIP44Wallet = require('./bip44-wallet')
+let BN = require('fullnode/lib/bn')
+let BR = require('fullnode/lib/br')
 let BlockchainAPI = require('./blockchain-api')
 let Constants = require('./constants')
 let CryptoWorkers = require('./crypto-workers')
 let DBBIP44Wallet = require('./db-bip44-wallet')
 let EventEmitter = require('events')
+let Script = require('fullnode/lib/script')
 let Struct = require('fullnode/lib/struct')
+let Txbuilder = require('fullnode/lib/txbuilder')
+let Txout = require('fullnode/lib/txout')
 let User = require('./user')
 let asink = require('asink')
 
-// TODO: Also create and require db-bip44-wallet
 function CoreBitcoin (blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockchainAPI, timeoutID, balances) {
   if (!(this instanceof CoreBitcoin)) {
     return new CoreBitcoin(blockchainAPIURI, db, dbbip44wallet, bip44wallet, blockchainAPI, timeoutID, balances)
@@ -61,14 +66,14 @@ CoreBitcoin.prototype.asyncInitialize = function (user) {
     }
     this.dbbip44wallet = DBBIP44Wallet(this.db, this.bip44wallet)
     return this
-  }.bind(this))
+  }, this)
 }
 
 CoreBitcoin.prototype.asyncFromRandom = function () {
   return asink(function *() {
     this.bip44wallet = yield BIP44Wallet().asyncFromRandom()
     return this
-  }.bind(this))
+  }, this)
 }
 
 CoreBitcoin.prototype.fromUser = function (user) {
@@ -117,7 +122,7 @@ CoreBitcoin.prototype.asyncUpdateBalance = function () {
       this.emit('balance', obj)
     }
     this.balances = obj
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -130,11 +135,94 @@ CoreBitcoin.prototype.asyncPollBalance = function () {
       yield this.asyncUpdateBalance()
       this.monitorBlockchainAPI()
     }
-  }.bind(this))
+  }, this)
 }
 
 CoreBitcoin.prototype.asyncGetLatestBlockInfo = function () {
   return this.blockchainAPI.asyncGetLatestBlockInfo()
+}
+
+CoreBitcoin.prototype.asyncBuildTransaction = function (toAddress, toAmountSatoshis) {
+  return asink(function *() {
+    let txb = new Txbuilder()
+    txb.setFeePerKBNum(0.0001e8) // TODO: Use more intelligent fee estimate
+    let changeAddress = yield this.asyncGetNewIntAddress()
+    txb.setChangeAddress(changeAddress)
+    let utxos = yield this.asyncGetAllUTXOs()
+    utxos.forEach(obj => {
+      txb.from(obj.txhashbuf, obj.txoutnum, obj.txout, obj.pubkey)
+    })
+    txb.to(BN(toAmountSatoshis), toAddress)
+    txb.build()
+    return txb
+  }, this)
+}
+
+/**
+ * txb must be a *built* Txbuilder object - that is, you must have already run
+ * the .build() command, so the transaction is filled in with correct inputs
+ * and outputs.
+ */
+CoreBitcoin.prototype.asyncSignTransaction = function (txb) {
+  return asink(function *() {
+    // gather the correct private key for each input
+    let privkeys = []
+    for (let txin of txb.tx.txins) {
+      // Note: We only support signing pubkeyhash transactions
+      let pubkeybuf = txin.script.chunks[1].buf
+      let address = yield CryptoWorkers.asyncAddressFromPubkeyBuffer(pubkeybuf)
+      let addrhex = address.toHex()
+      let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(0)
+      let keys = bip44account.addrhexmap.get(addrhex)
+      privkeys.push(keys.xprv.privkey)
+    }
+    txb = CryptoWorkers.asyncSignTransaction(txb, privkeys)
+    return txb
+  }, this)
+}
+
+/**
+ * txb should be a Txbuilder object.
+ */
+CoreBitcoin.prototype.asyncSendTransaction = function (txb) {
+  return this.blockchainAPI.asyncSendTransaction(txb)
+}
+
+CoreBitcoin.prototype.asyncBuildSignAndSendTransaction = function (toAddress, toAmountSatoshis) {
+  return asink(function *() {
+    let txb
+    txb = yield this.asyncBuildTransaction(toAddress, toAmountSatoshis)
+    txb = yield this.asyncSignTransaction(txb)
+    yield this.asyncSendTransaction(txb)
+    return txb
+  }, this)
+}
+
+CoreBitcoin.prototype.asyncGetAllUTXOs = function () {
+  return asink(function *() {
+    let addresses = yield this.asyncGetAllAddresses()
+    let utxosjson = yield this.blockchainAPI.asyncGetUTXOsJSON(addresses)
+
+    let utxos = []
+    for (let obj of utxosjson) {
+      let txhashbuf = BR(new Buffer(obj.txid, 'hex')).readReverse()
+      let txoutnum = obj.vout
+      let scriptPubKey = Script().fromHex(obj.scriptPubKey)
+      let txout = Txout(BN(Math.floor(obj.amount * 1e8))).setScript(scriptPubKey)
+
+      // Note we ASSUME the script PubKey is a normal pubkeyhash - we cannot
+      // spend anything other than that.
+      let pubkeyhashbuf = scriptPubKey.chunks[2].buf
+      let address = Address().fromPubkeyHashbuf(pubkeyhashbuf)
+      let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(0)
+      let keys = bip44account.addrhexmap.get(address.toHex())
+      let xpub = keys.xpub
+      let pubkey = xpub.pubkey
+      utxos.push({txhashbuf, txoutnum, txout, pubkey})
+    }
+
+    return utxos
+  }, this)
 }
 
 /**
@@ -150,7 +238,7 @@ CoreBitcoin.prototype.asyncGetAllAddresses = function () {
     let intaddresses = yield this.asyncGetAllIntAddresses()
     let addresses = extaddresses.concat(intaddresses)
     return addresses
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -160,7 +248,7 @@ CoreBitcoin.prototype.asyncGetAllExtAddresses = function () {
   return asink(function *() {
     let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(0)
     return yield bip44account.asyncGetAllExtAddresses()
-  }.bind(this))
+  }, this)
 }
 
 CoreBitcoin.prototype.asyncGetExtAddress = function (index) {
@@ -170,7 +258,7 @@ CoreBitcoin.prototype.asyncGetExtAddress = function (index) {
     // and keys
     yield this.dbbip44wallet.asyncSave(this.bip44wallet)
     return address
-  }.bind(this))
+  }, this)
 }
 
 CoreBitcoin.prototype.asyncGetNewExtAddress = function () {
@@ -180,7 +268,7 @@ CoreBitcoin.prototype.asyncGetNewExtAddress = function () {
     // and keys
     yield this.dbbip44wallet.asyncSave(this.bip44wallet)
     return address
-  }.bind(this))
+  }, this)
 }
 
 /**
@@ -190,7 +278,7 @@ CoreBitcoin.prototype.asyncGetAllIntAddresses = function () {
   return asink(function *() {
     let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(0)
     return yield bip44account.asyncGetAllIntAddresses()
-  }.bind(this))
+  }, this)
 }
 
 CoreBitcoin.prototype.asyncGetNewIntAddress = function () {
@@ -200,7 +288,7 @@ CoreBitcoin.prototype.asyncGetNewIntAddress = function () {
     // and keys
     yield this.dbbip44wallet.asyncSave(this.bip44wallet)
     return address
-  }.bind(this))
+  }, this)
 }
 
 module.exports = CoreBitcoin
