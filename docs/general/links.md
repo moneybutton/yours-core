@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [User banned from ChangeTip for living in Libya](https://letstalkbitcoin.com/blog/post/the-africoin-report-changetip-isnt-global-anymore)
 - [Decentralising Facebook with Blockchains and Userfeeds.](https://medium.com/@maciejolpinski/decentralising-facebook-with-blockchain-and-userfeeds-fcd25e4de097)
 - [YouTube's Top Style and Beauty Vloggers Earn as Much as $40k a Month](http://www.racked.com/2015/4/15/8421393/youtube-star-earnings-beauty-bloggers)
 - [ChangeTip forced to blog users in Russia](http://forklog.net/changetip-has-blocked-account-of-forklog-magazine-due-to-us-sanctions-against-russia/)
