@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Kevin Rose on what Digg would be today - would use cryptocurrency](https://twitter.com/kevinrose/status/451531078650429440)
 - [User banned from ChangeTip for living in Libya](https://letstalkbitcoin.com/blog/post/the-africoin-report-changetip-isnt-global-anymore)
 - [Decentralising Facebook with Blockchains and Userfeeds.](https://medium.com/@maciejolpinski/decentralising-facebook-with-blockchain-and-userfeeds-fcd25e4de097)
 - [YouTube's Top Style and Beauty Vloggers Earn as Much as $40k a Month](http://www.racked.com/2015/4/15/8421393/youtube-star-earnings-beauty-bloggers)
