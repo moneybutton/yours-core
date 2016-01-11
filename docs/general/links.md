@@ -215,3 +215,5 @@ Press for Datt
 - [2015-11-12: 8btc has an article in Chinese about Datt](http://www.8btc.com/reddit-datt)
 - [2015-11-15: The Merkle: Turkey Blocks Reddit Access – Decentralized Social Networks Are Needed](http://themerkle.com/news/turkey-blocks-reddit-access-decentralized-social-networks-are-needed/)
 - [2015-12-20: BTCManager: Datt To Introduce A Decentralized, Bitcoin-Enabled, Content-Sharing Platform](https://btcmanager.com/news/business/first-working-prototype-of-datt-decentralized-bitcoin-enabled-reddit/)
+- [2016-01-11 Ryan X. Charles on the Bitcoin Podcast: Episode #34: 20,000 Lines Under the Code](http://thebitcoinpodcast.com/episode-34/)
+- [2016-01-11 Japan Bitcoin interview with Ryan X. Charles](https://www.youtube.com/watch?v=9QRkYRR2Hm4&feature=youtu.be)
