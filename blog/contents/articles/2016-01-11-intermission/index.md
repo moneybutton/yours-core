@@ -34,9 +34,8 @@ human organization will leverage cryptography to lower costs, increase trust
 and increase flexibility to organize human activity. Creating a legal
 corporation will ultimately be seen as an inefficient and insecure tool for
 organizations.  As such, while Datt works just fine for now as a Delaware C
-corp, my not all of my future activity will fall under the "Datt" label.
-Non-Datt activity will fall under corporations in other countries or
-cryptocorporations.
+corp, not all of my future activity will fall under the "Datt" label. Non-Datt
+activity will fall under corporations in other countries or cryptocorporations.
 
 In other news:
 
