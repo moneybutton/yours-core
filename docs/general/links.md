@@ -93,6 +93,7 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [Noisecrypt - a decentralized social media application with end-to-end encryption](https://github.com/mschultheiss/Noisecrypt)
 - [grasswire - decentralized, crowdsourced news network](https://grasswire.com/)
 - [eth-tweet - decentralized twitter based on ethereum](https://github.com/yep/eth-tweet)
 - [CrowdJury - decentralized justice](http://crowdjury.org/en/)
