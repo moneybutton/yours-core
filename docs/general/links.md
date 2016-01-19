@@ -165,6 +165,7 @@ Tools
 
 Bitcoin, lightning network, sidechains
 --------------------------------------
+- [Lightning Network implementation](https://github.com/LightningNetwork/lnd)
 - [Experimental lightning node in python](https://github.com/hashplex/Lightning)
 - [Amiko pay - something very much like the lightning network implemented in python, distinct from the hashplex one](https://github.com/cornwarecjp/amiko-pay)
 - [Thunder Network - a more near-term solution for our micropayments problem, already implemented in Java](http://thunder.network/)
