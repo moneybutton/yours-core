@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [The former CEO of Mozilla is launching a web browser that blocks all ads by default](http://www.businessinsider.com/former-mozilla-ceo-brendan-eich-launches-ad-blocking-web-browser-brave-2016-1?op=1)
 - [Kevin Rose on what Digg would be today - would use cryptocurrency](https://twitter.com/kevinrose/status/451531078650429440)
 - [User banned from ChangeTip for living in Libya](https://letstalkbitcoin.com/blog/post/the-africoin-report-changetip-isnt-global-anymore)
 - [Decentralising Facebook with Blockchains and Userfeeds.](https://medium.com/@maciejolpinski/decentralising-facebook-with-blockchain-and-userfeeds-fcd25e4de097)
@@ -93,6 +94,7 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [Brave is a new web browser from Brendan Eich that blocks ads by default](https://brave.com/)
 - [Noisecrypt - a decentralized social media application with end-to-end encryption](https://github.com/mschultheiss/Noisecrypt)
 - [grasswire - decentralized, crowdsourced news network](https://grasswire.com/)
 - [eth-tweet - decentralized twitter based on ethereum](https://github.com/yep/eth-tweet)
