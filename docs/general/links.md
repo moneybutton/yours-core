@@ -95,6 +95,7 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [RDOV - A business model for sustainable R&D of open source projects.](http://rdov.co/)
 - [Brave is a new web browser from Brendan Eich that blocks ads by default](https://brave.com/)
 - [Noisecrypt - a decentralized social media application with end-to-end encryption](https://github.com/mschultheiss/Noisecrypt)
 - [grasswire - decentralized, crowdsourced news network](https://grasswire.com/)
