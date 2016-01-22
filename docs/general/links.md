@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [IPFS - why I'm not yet on the bandwagon](https://medium.com/@bedeho/ipfs-why-i-m-not-yet-on-the-bandwagon-869508051e66)
 - [The former CEO of Mozilla is launching a web browser that blocks all ads by default](http://www.businessinsider.com/former-mozilla-ceo-brendan-eich-launches-ad-blocking-web-browser-brave-2016-1?op=1)
 - [Kevin Rose on what Digg would be today - would use cryptocurrency](https://twitter.com/kevinrose/status/451531078650429440)
 - [User banned from ChangeTip for living in Libya](https://letstalkbitcoin.com/blog/post/the-africoin-report-changetip-isnt-global-anymore)
