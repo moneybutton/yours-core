@@ -72,45 +72,45 @@ let Layout = React.createClass({
       })
     }, this)
   },
-
+  toggleView: function(self, viewLabel) {
+      var view = this.state.view || {}
+      view[viewLabel] = (view[viewLabel]?false:true)
+      self.setState({'view': view})
+  },
+  newPostView: function(self) {
+      self.toggleView(self, 'formNewContent')
+  },
   render: function () {
     let dattcore = this.props.dattcore
     let dattcoreStatus = this.state.dattcoreStatus
     let numActiveConnections = this.state.numActiveConnections
       
-    return (
-      <div className='container'>
-        <div className='row page-header'>
-          <div className='col-md-12'>
-            <img src='/logo.svg' alt='' />
-            <h1>{this.props.apptitle}</h1>
-          </div>
-	  <TopMenu dattcore={dattcore}/>	  
-        </div>
+      return (
+	      <div className='container'>
+	      <TopMenu newClicked={this.newPostView.bind(this,this)}/>	  
+	      <div className='row'>
+	      <div className='col-md-8'>
+	      <PageFront dattcore={dattcore} showContentList={this.state.view.contentList} showFormNewContent={this.state.view.formNewContent}/>
+	      </div>
 
-        <div className='row'>
-          <div className='col-md-8'>
-            <PageFront dattcore={dattcore} showContentList={this.state.view.contentList} showFormNewContent={this.state.view.formNewContent}/>
-          </div>
+    <div className={'col-md-4 side-boxes '+(this.state.view.settings?'':'hidden')}>
+      <BoxUser dattcore={dattcore}/>
+      <BoxBitcoin dattcore={dattcore}/>
+      <BoxContent postsnumber={0}/>
+      <BoxPeer peersnumber={numActiveConnections}/>
+      <BoxDeveloper dattcore={dattcore}/>
+    </div>
+  </div>
 
-            <div className={'col-md-4 side-boxes '+(this.state.view.settings?'':'hidden')}>
-            <BoxUser dattcore={dattcore}/>
-            <BoxBitcoin dattcore={dattcore}/>
-            <BoxContent postsnumber={0}/>
-            <BoxPeer peersnumber={numActiveConnections}/>
-            <BoxDeveloper dattcore={dattcore}/>
-          </div>
-        </div>
-
-        <div className='row page-footer'>
-          <div className='col-md-12'>
-            <div className='version-number'>
-              <p>Status of dattcore: {dattcoreStatus}</p>
-              <p>Datt v{dattcore.version}</p>
-            </div>
-          </div>
-        </div>
+  <div className='row page-footer'>
+    <div className='col-md-12'>
+      <div className='version-number'>
+        <p>Status of dattcore: {dattcoreStatus}</p>
+        <p>Datt v{dattcore.version}</p>
       </div>
+    </div>
+  </div>
+</div> 
     )
   }
 })
