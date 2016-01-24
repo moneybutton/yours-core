@@ -20,9 +20,8 @@ let PageFront = React.createClass({
   },
     
     render: function () {
-	var classes = (this.props.view.contentList || this.props.view.formNewContent?"":"hidden")
 	return (
-		<div className={classes}>
+		<div>
 		{
 		    [
 			(this.props.view.contentList? <ContentList dattcore={this.props.dattcore} updateView={this.props.updateView}/> : undefined ),

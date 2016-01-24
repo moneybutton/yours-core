@@ -78,20 +78,36 @@ let ContentList = React.createClass({
   render: function () {
     let contentList = this.state.contentList.map(obj => {
       return (
-        <li className='content-list-item' key={obj.key}>
-          <h2>
-            <a href='#'>{obj.title}</a>
-          </h2>
-          <form>
-            <button type='pay' className='btn btn-default' onClick={this.handleSend.bind(this, obj.address)}>Send 5000 Bits</button>
-          </form>
-          <div className='author-information'>{obj.name} | {obj.addressString}</div>
+              <li className='content-list-item' key={obj.key}>
+	      <div className='container-fluid'>
+	      <div className='row'>
+	      <div className='col-md-1'>
+	      <ul>
+	      <li>
+	      <span aria-hidden='true' className='glyphicon glyphicon-menu-up'></span>
+	      </li>
+	      <li>
+	      <span aria-hidden='true' className='glyphicon glyphicon-menu-down'></span>
+	      </li> 
+	      </ul>
+	      </div>
+	      <div className='col-md-10 col-md-offset-1'>
+              <h2>
+              <a href='#'>{obj.title}</a>
+              </h2>
+              <form>
+              <button type='pay' className='btn btn-default' onClick={this.handleSend.bind(this, obj.address)}>Send 5000 Bits</button>
+              </form>
+              <div className='author-information'>{obj.name} | {obj.addressString}</div>
+	      </div>
+	      </div>
+	      </div>
         </li>
       )
     })
     return (
     <div className='row' onClick={this.resetView}>
-    <div className='col-md-4 col-md-offset-4'>
+    <div className='col-md-5 col-md-offset-3'>
       <ul className='content-list'>
         {contentList}
       </ul>

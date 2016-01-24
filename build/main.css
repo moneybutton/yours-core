@@ -27,8 +27,16 @@ body {
   font-size: 1.4em;
 }
 
+.content-list .content-list-item h2 a {
+    color:black;
+}
+
 .content-list .content-list-item .author-information {
   font-size: 1.0em;
+}
+
+.content-list-item ul {
+    list-style: none;
 }
 
 .author-new-content {

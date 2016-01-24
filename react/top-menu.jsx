@@ -22,7 +22,7 @@ let TopMenu = React.createClass({
   </div>
   <div className='col-md-4 topMenu'>
   <div className='row'>
-  <div className='col-md-10'>
+  <div className='col-md-8 col-md-offset-2'>
     <div className="search_bar">
       <form action="javascript:void(0)">
 	<input type="text" className="search_input" placeholder="Search..." />
@@ -40,6 +40,7 @@ let TopMenu = React.createClass({
   </div>
   </div>
 </div>
+
 
 	);
     }
