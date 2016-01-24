@@ -16,23 +16,21 @@ let PageFront = React.createClass({
 
   propTypes: {
     dattcore: React.PropTypes.object,
-    dattcoreStatus: React.PropTypes.string,
-    hidden: React.PropTypes.bool
+    dattcoreStatus: React.PropTypes.string
   },
     
     render: function () {
-	var classes = (this.props.showContentList || this.props.showFormNewContent?"":"hidden")
+	var classes = (this.props.view.contentList || this.props.view.formNewContent?"":"hidden")
 	return (
 		<div className={classes}>
 		{
-		    (() => { return (this.props.showContentList? <ContentList dattcore={this.props.dattcore}/> : undefined ) }).bind(this)()
+		    [
+			(this.props.view.contentList? <ContentList dattcore={this.props.dattcore} updateView={this.props.updateView}/> : undefined ),
+			(this.props.view.formNewContent? <FormNewContent dattcore={this.props.dattcore}/> : undefined )
+		    ]
 		}
-	    {
-		(() => {
-		    return (this.props.showFormNewContent? <FormNewContent dattcore={this.props.dattcore}/> : undefined ) }).bind(this)()
-	    }
 		</div>
-    )
+	)
   }
 })
 

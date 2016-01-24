@@ -71,7 +71,10 @@ let ContentList = React.createClass({
       yield dattcore.asyncBuildSignAndSendTransaction(address, satoshis)
     }, this)
   },
-
+  resetView: function () {
+      this.props.updateView('formNewContent', false)
+      this.props.updateView('settings', false)      
+  },
   render: function () {
     let contentList = this.state.contentList.map(obj => {
       return (
@@ -87,9 +90,13 @@ let ContentList = React.createClass({
       )
     })
     return (
+    <div className='row' onClick={this.resetView}>
+    <div className='col-md-4 col-md-offset-4'>
       <ul className='content-list'>
         {contentList}
       </ul>
+      </div>
+      </div>
     )
   }
 })

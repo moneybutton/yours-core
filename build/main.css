@@ -79,10 +79,12 @@ body {
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	white-space:nowrap;
 }
 .topMenu ul li {
     	padding: 0;
 	margin: 0;
+	display: inline;
 }
 
 .arrow {
@@ -95,8 +97,8 @@ body {
 }
 
 .topMenu .menu > li {
-	float: left;
-	margin: 30px 40px 0 0;
+    /*float: left;*/
+    margin: 30px 40px 0 0;
 }
 
 .topMenu .selected {
@@ -110,7 +112,7 @@ body {
     float: right;
 }
 
-.topMenu .icons img {
+.topMenu .icons img, .topMenu .icons span {
     width: 18px;
     height: 18px;
 }

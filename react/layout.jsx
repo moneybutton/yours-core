@@ -52,15 +52,6 @@ let Layout = React.createClass({
   monitorDattCore: function () {
     let dattcore = this.props.dattcore
     dattcore.on('peers-connection', this.handlePeersConnection)
-      
-      dattcore.on('ui-layout-toggle-view', function(view) {
-	  if(view && typeof(view) === 'string') {
-	      var obj = (this.state.view && typeof(this.state.view) === 'object'?this.state.view:{})
-	      obj[view] = (this.state.view[view]?false:true)
-	      this.setState({'view': obj})
-	      this.forceUpdate()
-	  }
-    }.bind(this))  
   },
 
   handlePeersConnection: function () {
@@ -72,13 +63,20 @@ let Layout = React.createClass({
       })
     }, this)
   },
-  toggleView: function(self, viewLabel) {
-      var view = this.state.view || {}
-      view[viewLabel] = (view[viewLabel]?false:true)
+  updateView: function(self, viewLabel, value) {
+      var view = self.state.view || {}
+      view[viewLabel] = value
       self.setState({'view': view})
+  },
+  toggleView: function(self, viewLabel) {
+      var value = (self.state.view || {})[viewLabel]
+      self.updateView(self, viewLabel, (value?false:true))
   },
   newPostView: function(self) {
       self.toggleView(self, 'formNewContent')
+  },
+  configView: function(self) {
+      self.toggleView(self, 'settings')
   },
   render: function () {
     let dattcore = this.props.dattcore
@@ -87,19 +85,19 @@ let Layout = React.createClass({
       
       return (
 	      <div className='container'>
-	      <TopMenu newClicked={this.newPostView.bind(this,this)}/>	  
+	      <TopMenu newClicked={this.newPostView.bind(this,this)} configClicked={this.configView.bind(this,this)}/>	  
 	      <div className='row'>
-	      <div className='col-md-8'>
-	      <PageFront dattcore={dattcore} showContentList={this.state.view.contentList} showFormNewContent={this.state.view.formNewContent}/>
+	      <div className={(this.state.view.settings?'col-md-8':'')}>
+	      <PageFront dattcore={dattcore} view={this.state.view} updateView={this.updateView.bind(this,this)}/>
 	      </div>
-
-    <div className={'col-md-4 side-boxes '+(this.state.view.settings?'':'hidden')}>
+	      {[(this.state.view.settings?
+    (<div className='col-md-4 side-boxes'>
       <BoxUser dattcore={dattcore}/>
       <BoxBitcoin dattcore={dattcore}/>
       <BoxContent postsnumber={0}/>
       <BoxPeer peersnumber={numActiveConnections}/>
       <BoxDeveloper dattcore={dattcore}/>
-    </div>
+    </div>):null)]}
   </div>
 
   <div className='row page-footer'>

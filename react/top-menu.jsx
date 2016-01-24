@@ -32,7 +32,8 @@ let TopMenu = React.createClass({
   <div className='col-md-1 col-md-offset-1'>
     <div className='iconDiv'>
       <ul className='icons'>
-	<li><img src='images/icon_search.png' /></li>
+	<li ><img src='images/icon_search.png' /></li>
+	<li onClick={this.props.configClicked} ><span aria-hidden="true" className="glyphicon glyphicon-cog"></span></li>
       </ul>
     </div>
   </div>
