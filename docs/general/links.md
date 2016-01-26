@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Brave, Brenden Eich's new startup - it will include a bitcoin wallet with bitcoin micropayments](http://fusion.net/story/258828/brave-browser-business-model/)
 - [Curating Content through Prediction Markets and Network Tokens](http://www.philosophyofbitcoin.com/2014/04/curating-content-through-prediction.html)
 - [IPFS - why I'm not yet on the bandwagon](https://medium.com/@bedeho/ipfs-why-i-m-not-yet-on-the-bandwagon-869508051e66)
 - [The former CEO of Mozilla is launching a web browser that blocks all ads by default](http://www.businessinsider.com/former-mozilla-ceo-brendan-eich-launches-ad-blocking-web-browser-brave-2016-1?op=1)
