@@ -5,15 +5,11 @@
  * This is the main layout component which frames every page.
  */
 'use strict'
-let BoxBitcoin = require('./box-bitcoin.jsx')
-let BoxContent = require('./box-content.jsx')
-let BoxDeveloper = require('./box-developer.jsx')
-let BoxPeer = require('./box-peer.jsx')
-let BoxUser = require('./box-user.jsx')
 let TopMenu = require('./top-menu.jsx')
 let PageFront = require('./page-front.jsx')
 let React = require('react')
 let asink = require('asink')
+let ConfigPanel = require('./config-panel.jsx')
 
 let Layout = React.createClass({
   getInitialState: function () {
@@ -92,11 +88,7 @@ let Layout = React.createClass({
 	      </div>
 	      {[(this.state.view.settings?
     (<div className='col-md-4 side-boxes'>
-      <BoxUser dattcore={dattcore}/>
-      <BoxBitcoin dattcore={dattcore}/>
-      <BoxContent postsnumber={0}/>
-      <BoxPeer peersnumber={numActiveConnections}/>
-      <BoxDeveloper dattcore={dattcore}/>
+     <ConfigPanel dattcore={dattcore} numActiveConnections={numActiveConnections}/>
     </div>):null)]}
   </div>
 
