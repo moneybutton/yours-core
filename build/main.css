@@ -38,6 +38,9 @@ body {
 .content-list-item ul {
     list-style: none;
 }
+span.gray {
+    color: gray;
+}
 
 .author-new-content {
   background-color: #f3f8fa;

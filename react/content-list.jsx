@@ -84,10 +84,10 @@ let ContentList = React.createClass({
 	      <div className='col-md-1'>
 	      <ul>
 	      <li>
-	      <span aria-hidden='true' className='glyphicon glyphicon-menu-up'></span>
+	      <span aria-hidden='true' onClick={this.handleSend.bind(this, obj.address)} className='glyphicon glyphicon-menu-up'></span>
 	      </li>
 	      <li>
-	      <span aria-hidden='true' className='glyphicon glyphicon-menu-down'></span>
+	      <span aria-hidden='true' className='glyphicon glyphicon-menu-down gray'></span>
 	      </li> 
 	      </ul>
 	      </div>
@@ -95,9 +95,7 @@ let ContentList = React.createClass({
               <h2>
               <a href='#'>{obj.title}</a>
               </h2>
-              <form>
-              <button type='pay' className='btn btn-default' onClick={this.handleSend.bind(this, obj.address)}>Send 5000 Bits</button>
-              </form>
+              {[(false?(<form><button type='pay' className='btn btn-default' onClick={this.handleSend.bind(this, obj.address)}>Send 5000 Bits</button></form>):null)]} 
               <div className='author-information'>{obj.name} | {obj.addressString}</div>
 	      </div>
 	      </div>
@@ -107,7 +105,7 @@ let ContentList = React.createClass({
     })
     return (
     <div className='row' onClick={this.resetView}>
-    <div className='col-md-5 col-md-offset-3'>
+    <div className='col-md-6 col-md-offset-2'>
       <ul className='content-list'>
         {contentList}
       </ul>
