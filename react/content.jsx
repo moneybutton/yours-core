@@ -40,8 +40,9 @@ let Content = React.createClass({
 		let label = content.label
 		let name = content.name
 		let body = content.body
+		let comments = content.comments || []
 		
-		let contentObj = {key, address, addressString, title, name, label, body}
+		let contentObj = {key, address, addressString, title, name, label, body, comments}
 	
 		this.setState({
 		    'content': contentObj
@@ -53,21 +54,23 @@ let Content = React.createClass({
 	let content = this.state.content
 	let contentkey = this.props.contentkey
 	let dattcore = this.props.dattcore
-	
+
+	let viewjsx
 	if(content === null) {
-	    return (<div className='container-fluid'><span>Loading content {contentkey}...</span></div>)
+	    viewjsx = (<span className='gray'>Loading content {contentkey}...</span>)
+	} else {
+	    viewjsx = (
+		    <ContentHeader content={content} dattcore={dattcore}>
+		    <p className='content-body'>{content.body}</p>
+		    </ContentHeader>
+	    )
 	}
 	
 	return (
-		<div className='container-fluid content-view'>
+		<div className='container-fluid content-container'>
 		<div className='row'>
 		<div className='col-md-offset-2 col-md-6'>
-		<ContentHeader content={content} dattcore={dattcore} />
-		</div>
-		</div>
-		<div className='row'>
-		<div className='col-md-offset-3 col-md-6'>
-		<p>{content.body}</p>
+		{viewjsx}
 		</div>
 		</div>
 		</div>

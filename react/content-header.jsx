@@ -31,10 +31,18 @@ let ContentHeader = React.createClass({
 		<h2>
 		<a href={'#/content/'+content.key} >{content.title}</a>
 		</h2>
-		{[(false?(<form><button type='pay' className='btn btn-default' onClick={this.handleSend.bind(this, content.address)}>Send 5000 Bits</button></form>):null)]}
-		<div className='author-information'>{content.name} | {content.addressString}</div>
+		<div className='post-information'>{content.comments.length} comments | by {content.name}</div>
 		</div>
 		</div>
+		{
+		    (this.props.children?(
+			    <div className='row'>
+			    <div className='col-md-10 col-md-offset-2 content-view'>
+			    {this.props.children}
+			    </div>
+			    </div>
+		    ): null)
+		}
 		</div>
 	)
     }

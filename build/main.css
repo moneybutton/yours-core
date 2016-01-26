@@ -12,7 +12,12 @@ body {
   height: 2.6em;
 }
 
-.content-list , .content-view {
+.content-container {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.content-list  {
   padding: 1.5em 0 0.5em 0;
 }
 
@@ -31,8 +36,17 @@ body {
     color:black;
 }
 
-.content-header .author-information {
-  font-size: 1.0em;
+.content-body {
+    margin: 0;
+    font-size: 1.4em;
+    color: gray;
+    padding-bottom: 15px;
+}
+
+.content-header .post-information {
+    font-size: 0.8em;
+    color: gray;
+    text-transform: uppercase;
 }
 
 .content-header ul {
@@ -54,8 +68,8 @@ span.gray {
   border-bottom: 1px solid #eee;
 }
 
-div.content-view {
-
+.content-view {
+    border-bottom: 1px solid #eee;
 }
 
 .side-boxes {

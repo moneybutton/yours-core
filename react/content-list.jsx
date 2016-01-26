@@ -32,7 +32,9 @@ let ContentList = React.createClass({
         let label = content.label
         let name = content.name
         let body = content.body
-        contentList.push({key, address, addressString, title, name, label, body})
+	let comments = content.comments || []
+	  
+        contentList.push({key, address, addressString, title, name, label, body, comments})
       }
       this.setState({contentList})
     }, this)
