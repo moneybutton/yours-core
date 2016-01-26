@@ -14,6 +14,9 @@ let ContentHeader = React.createClass({
 
     'render': function () {
 	let content = this.props.content
+
+	let showInteractButtons = this.props.showInteractButtons
+	
 	return (
 		<div className='container-fluid content-header'>
 		<div className='row'>
@@ -31,7 +34,12 @@ let ContentHeader = React.createClass({
 		<h2>
 		<a href={'#/content/'+content.key} >{content.title}</a>
 		</h2>
-		<div className='post-information'>{content.comments.length} comments | by {content.name}</div>
+		<div className='post-information'>
+		<div>
+		{content.comments.length} comments | by {content.name}
+	        </div>
+	    {(showInteractButtons? (<div>| <a href='javascript:void(0)'>reply</a> | <span className='glyphicon glyphicon-heart-empty' aria-hidden='true'></span> </div>):null)}
+	    </div>
 		</div>
 		</div>
 		{

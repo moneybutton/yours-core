@@ -60,7 +60,7 @@ let Content = React.createClass({
 	    viewjsx = (<span className='gray'>Loading content {contentkey}...</span>)
 	} else {
 	    viewjsx = (
-		    <ContentHeader content={content} dattcore={dattcore}>
+		    <ContentHeader content={content} dattcore={dattcore} showInteractButtons='true'>
 		    <p className='content-body'>{content.body}</p>
 		    </ContentHeader>
 	    )

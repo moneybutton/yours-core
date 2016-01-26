@@ -47,12 +47,18 @@ body {
     font-size: 0.8em;
     color: gray;
     text-transform: uppercase;
+    display: inline-block;
+}
+
+.content-header .post-information div {
+    display: inline-block;
 }
 
 .content-header ul {
     list-style: none;
 }
-span.gray {
+
+span.gray, .content-header .post-information a {
     color: gray;
 }
 
