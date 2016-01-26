@@ -8,6 +8,8 @@
 let React = require('react')
 let asink = require('asink')
 
+let ContentHeader = require('./content-header.jsx')
+
 let ContentList = React.createClass({
   getInitialState: function () {
     return {
@@ -62,45 +64,18 @@ let ContentList = React.createClass({
   propTypes: {
     dattcore: React.PropTypes.object
   },
-
-  handleSend: function (address, el) {
-    return asink(function *() {
-      el.preventDefault()
-      let dattcore = this.props.dattcore
-      let satoshis = 5000 * 1e2 // 5000 bits converted to satoshis
-      yield dattcore.asyncBuildSignAndSendTransaction(address, satoshis)
-    }, this)
-  },
+    
   resetView: function () {
       this.props.updateView('formNewContent', false)
       this.props.updateView('settings', false)      
   },
+    
   render: function () {
     let contentList = this.state.contentList.map(obj => {
       return (
               <li className='content-list-item' key={obj.key}>
-	      <div className='container-fluid'>
-	      <div className='row'>
-	      <div className='col-md-1'>
-	      <ul>
-	      <li>
-	      <span aria-hidden='true' onClick={this.handleSend.bind(this, obj.address)} className='glyphicon glyphicon-menu-up'></span>
-	      </li>
-	      <li>
-	      <span aria-hidden='true' className='glyphicon glyphicon-menu-down gray'></span>
-	      </li> 
-	      </ul>
-	      </div>
-	      <div className='col-md-10 col-md-offset-1'>
-              <h2>
-              <a href='#'>{obj.title}</a>
-              </h2>
-              {[(false?(<form><button type='pay' className='btn btn-default' onClick={this.handleSend.bind(this, obj.address)}>Send 5000 Bits</button></form>):null)]} 
-              <div className='author-information'>{obj.name} | {obj.addressString}</div>
-	      </div>
-	      </div>
-	      </div>
-        </li>
+	      <ContentHeader dattcore={this.props.dattcore} content={obj}/>
+              </li>
       )
     })
     return (
