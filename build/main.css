@@ -12,30 +12,30 @@ body {
   height: 2.6em;
 }
 
-.content-list {
+.content-list , .content-view {
   padding: 1.5em 0 0.5em 0;
 }
 
-.content-list .content-list-item {
+.content-list .content-list-item, .content-header ul {
   list-style-type: none;
   display: block;
   margin: 0 0 1.5em 1.5em;
 }
 
-.content-list .content-list-item h2 {
+.content-header h2 {
   margin: 0;
   font-size: 1.4em;
 }
 
-.content-list .content-list-item h2 a {
+.content-header h2 a {
     color:black;
 }
 
-.content-list .content-list-item .author-information {
+.content-header .author-information {
   font-size: 1.0em;
 }
 
-.content-list-item ul {
+.content-header ul {
     list-style: none;
 }
 span.gray {
@@ -52,6 +52,10 @@ span.gray {
   margin: 0 0 0.5em 0;
   padding-bottom: 0.5em;
   border-bottom: 1px solid #eee;
+}
+
+div.content-view {
+
 }
 
 .side-boxes {

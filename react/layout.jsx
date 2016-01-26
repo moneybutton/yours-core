@@ -7,6 +7,7 @@
 'use strict'
 let TopMenu = require('./top-menu.jsx')
 let PageFront = require('./page-front.jsx')
+let Content = require('./content.jsx')
 let React = require('react')
 let asink = require('asink')
 let ConfigPanel = require('./config-panel.jsx')
@@ -20,9 +21,22 @@ let Layout = React.createClass({
 	    'contentList': true
 	}
     }
-  },
+  },    
 
+  updateStateFromHash: function () {
+	var hashString = (window.location.hash && window.location.hash.length > 1?window.location.hash:'#/')
+	var hashParts = hashString.split('/').slice(1)
+	
+	this.setState({
+            route: hashParts[0],
+	    routeArgs: hashParts.slice(1)
+	})
+  },
+    
   componentWillMount: function () {
+      this.updateStateFromHash()
+      window.addEventListener('hashchange', this.updateStateFromHash.bind(this))
+      
     return asink(function *() {
       let dattcore = this.props.dattcore
       try {
@@ -70,6 +84,7 @@ let Layout = React.createClass({
   },
   newPostView: function(self) {
       self.toggleView(self, 'formNewContent')
+      document.location.hash = '/frontpage'
   },
   configView: function(self) {
       self.toggleView(self, 'settings')
@@ -78,13 +93,23 @@ let Layout = React.createClass({
     let dattcore = this.props.dattcore
     let dattcoreStatus = this.state.dattcoreStatus
     let numActiveConnections = this.state.numActiveConnections
+    let View
+
+      switch(this.state.route) {
+      case 'content':
+	  View = Content
+	  break
+      default:
+	  View = PageFront
+	  break
+      }
       
       return (
 	      <div className='container'>
 	      <TopMenu newClicked={this.newPostView.bind(this,this)} configClicked={this.configView.bind(this,this)}/>	  
 	      <div className='row'>
 	      <div className={(this.state.view.settings?'col-md-8':'')}>
-	      <PageFront dattcore={dattcore} view={this.state.view} updateView={this.updateView.bind(this,this)}/>
+	      <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeParts} updateView={this.updateView.bind(this,this)} contentkey={this.state.routeArgs[0]} />
 	      </div>
 	      {[(this.state.view.settings?
     (<div className='col-md-4 side-boxes'>

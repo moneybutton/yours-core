@@ -11,10 +11,11 @@ let ContentHeader = React.createClass({
 	    yield dattcore.asyncBuildSignAndSendTransaction(address, satoshis)
 	}, this)
     },
+
     'render': function () {
 	let content = this.props.content
 	return (
-		<div className='container-fluid'>
+		<div className='container-fluid content-header'>
 		<div className='row'>
 		<div className='col-md-1'>
 		<ul>
@@ -28,7 +29,7 @@ let ContentHeader = React.createClass({
 		</div>
 		<div className='col-md-10 col-md-offset-1'>
 		<h2>
-		<a href='#'>{content.title}</a>
+		<a href={'#/content/'+content.key} >{content.title}</a>
 		</h2>
 		{[(false?(<form><button type='pay' className='btn btn-default' onClick={this.handleSend.bind(this, content.address)}>Send 5000 Bits</button></form>):null)]}
 		<div className='author-information'>{content.name} | {content.addressString}</div>

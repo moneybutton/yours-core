@@ -67,14 +67,15 @@ let ContentList = React.createClass({
     
   resetView: function () {
       this.props.updateView('formNewContent', false)
-      this.props.updateView('settings', false)      
+      this.props.updateView('settings', false)
+      document.location.hash = '/frontpage'
   },
     
   render: function () {
     let contentList = this.state.contentList.map(obj => {
       return (
-              <li className='content-list-item' key={obj.key}>
-	      <ContentHeader dattcore={this.props.dattcore} content={obj}/>
+              <li className='content-list-item' key={obj.key} >
+	      <ContentHeader content={obj} dattcore={this.props.dattcore} />
               </li>
       )
     })

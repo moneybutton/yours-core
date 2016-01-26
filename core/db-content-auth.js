@@ -45,7 +45,13 @@ DBContentAuth.prototype.asyncSave = function (contentauth) {
  * Get a piece of authenticated content by its hash.
  */
 DBContentAuth.prototype.asyncGet = function (hashbuf) {
-  let hashhex = hashbuf.toString('hex')
+    let hashhex
+    if(typeof(hashbuf) !== 'string') {
+	hashhex = hashbuf.toString('hex')
+    } else {
+	hashhex = hashbuf
+    }
+    
   return this.db.asyncGet(hashhex).then(doc => {
     this.hashbuf = hashbuf
     // TODO: Replace this with a non-blocking method.
@@ -68,8 +74,8 @@ DBContentAuth.prototype.asyncGetAll = function () {
       let doc = obj.doc
       if (doc.contentauthhex) {
         // TODO: Replace this .fromHex with a non-blocking method.
-        let contentauth = ContentAuth().fromHex(doc.contentauthhex)
-        let hashbuf = new Buffer(doc._id, 'hex')
+          let contentauth = ContentAuth().fromHex(doc.contentauthhex)
+          let hashbuf = new Buffer(doc._id, 'hex')
         contentauth.setCacheHash(hashbuf)
         contentauths.push(contentauth)
       } // else, the document is not a contentauth, so don't push

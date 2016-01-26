@@ -6,6 +6,9 @@ let TopMenu = React.createClass({
 	    totalBalanceBits: 0
 	}
     },
+    logoClicked: function() {
+        window.location.hash = '/frontpage'
+    },
     render: function() {
 	return (
 
@@ -17,8 +20,8 @@ let TopMenu = React.createClass({
       </ul>
     </div>
   </div>
-  <div className='col-md-4 logo'>
-    <img src='/logo.svg' alt='' />
+  <div className='col-md-4 logo' onClick={this.logoClicked} >
+    <img src='/logo.svg' alt='' onClick={this.logoClicked} />
   </div>
   <div className='col-md-4 topMenu'>
   <div className='row'>
