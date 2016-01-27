@@ -19,7 +19,7 @@ let BoxDeveloper = React.createClass({
 
   render: function () {
     return (
-      <div className='info-box'>
+    <div className='info-box'>
         <h2>Developer Tools</h2>
         <p>
           <button className='btn btn-default' onClick={this.handleDestroyDatabase}>Destroy Database</button>

@@ -16,27 +16,27 @@ let Layout = React.createClass({
   getInitialState: function () {
     return {
       dattcoreStatus: 'uninitialized',
-	numActiveConnections: 0,
-	view: {
-	    'contentList': true
-	}
+      numActiveConnections: 0,
+      view: {
+        'contentList': true
+      }
     }
-  },    
+  },
 
   updateStateFromHash: function () {
-	var hashString = (window.location.hash && window.location.hash.length > 1?window.location.hash:'#/')
-	var hashParts = hashString.split('/').slice(1)
-	
-	this.setState({
-            route: hashParts[0],
-	    routeArgs: hashParts.slice(1)
-	})
+    var hashString = (window.location.hash && window.location.hash.length > 1 ? window.location.hash : '#/')
+    var hashParts = hashString.split('/').slice(1)
+
+    this.setState({
+      route: hashParts[0],
+      routeArgs: hashParts.slice(1)
+    })
   },
-    
+
   componentWillMount: function () {
-      this.updateStateFromHash()
-      window.addEventListener('hashchange', this.updateStateFromHash.bind(this))
-      
+    this.updateStateFromHash()
+    window.addEventListener('hashchange', this.updateStateFromHash.bind(this))
+
     return asink(function *() {
       let dattcore = this.props.dattcore
       try {
@@ -73,21 +73,21 @@ let Layout = React.createClass({
       })
     }, this)
   },
-  updateView: function(self, viewLabel, value) {
-      var view = self.state.view || {}
-      view[viewLabel] = value
-      self.setState({'view': view})
+  updateView: function (self, viewLabel, value) {
+    var view = self.state.view || {}
+    view[viewLabel] = value
+    self.setState({'view': view})
   },
-  toggleView: function(self, viewLabel) {
-      var value = (self.state.view || {})[viewLabel]
-      self.updateView(self, viewLabel, (value?false:true))
+  toggleView: function (self, viewLabel) {
+    var value = (self.state.view || {})[viewLabel]
+    self.updateView(self, viewLabel, (value ? false : true))
   },
-  newPostView: function(self) {
-      self.toggleView(self, 'formNewContent')
-      document.location.hash = '/frontpage'
+  newPostView: function (self) {
+    self.toggleView(self, 'formNewContent')
+    document.location.hash = '/frontpage'
   },
-  configView: function(self) {
-      self.toggleView(self, 'settings')
+  configView: function (self) {
+    self.toggleView(self, 'settings')
   },
   render: function () {
     let dattcore = this.props.dattcore
@@ -95,37 +95,37 @@ let Layout = React.createClass({
     let numActiveConnections = this.state.numActiveConnections
     let View
 
-      switch(this.state.route) {
+    switch (this.state.route) {
       case 'content':
-	  View = Content
-	  break
+        View = Content
+        break
       default:
-	  View = PageFront
-	  break
-      }
-      
-      return (
-	      <div className='container'>
-	      <TopMenu newClicked={this.newPostView.bind(this,this)} configClicked={this.configView.bind(this,this)}/>	  
-	      <div className='row'>
-	      <div className={(this.state.view.settings?'col-md-8':'')}>
-	      <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeParts} updateView={this.updateView.bind(this,this)} contentkey={this.state.routeArgs[0]} />
-	      </div>
-	      {[(this.state.view.settings?
-    (<div className='col-md-4 side-boxes'>
-     <ConfigPanel dattcore={dattcore} numActiveConnections={numActiveConnections}/>
-    </div>):null)]}
-  </div>
+        View = PageFront
+        break
+    }
 
-  <div className='row page-footer'>
-    <div className='col-md-12'>
-      <div className='version-number'>
-        <p>Status of dattcore: {dattcoreStatus}</p>
-        <p>Datt v{dattcore.version}</p>
-      </div>
+    return (
+    <div className='container'>
+        <TopMenu newClicked={this.newPostView.bind(this, this)} configClicked={this.configView.bind(this, this)}/>
+        <div className='row'>
+        <div className={(this.state.view.settings ? 'col-md-8' : '')}>
+            <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeParts} updateView={this.updateView.bind(this, this)} contentkey={this.state.routeArgs[0]} />
+        </div>
+        {[(this.state.view.settings ?
+      (<div className='col-md-4 side-boxes'>
+            <ConfigPanel dattcore={dattcore} numActiveConnections={numActiveConnections}/>
+           </div>) : null)]}
+        </div>
+
+        <div className='row page-footer'>
+        <div className='col-md-12'>
+            <div className='version-number'>
+            <p>Status of dattcore: {dattcoreStatus}</p>
+            <p>Datt v{dattcore.version}</p>
+            </div>
+        </div>
+        </div>
     </div>
-  </div>
-</div> 
     )
   }
 })

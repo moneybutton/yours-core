@@ -9,12 +9,12 @@ let React = require('react')
 
 let BoxContent = React.createClass({
   propTypes: {
-      dattcore: React.PropTypes.object,
-      postsnumber: React.PropTypes.number
+    dattcore: React.PropTypes.object,
+    postsnumber: React.PropTypes.number
   },
   render: function () {
     return (
-      <div className='info-box'>
+    <div className='info-box'>
         <h2>My Content</h2>
         <p>Number of posts: {this.props.postsnumber}</p>
         <p>

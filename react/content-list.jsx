@@ -32,8 +32,8 @@ let ContentList = React.createClass({
         let label = content.label
         let name = content.name
         let body = content.body
-	let comments = content.comments || []
-	  
+        let comments = content.comments || []
+
         contentList.push({key, address, addressString, title, name, label, body, comments})
       }
       this.setState({contentList})
@@ -64,31 +64,33 @@ let ContentList = React.createClass({
   },
 
   propTypes: {
-    dattcore: React.PropTypes.object
+    dattcore: React.PropTypes.object,
+    updateView: React.PropTypes.func
   },
-    
+
   resetView: function () {
-      this.props.updateView('formNewContent', false)
-      this.props.updateView('settings', false)
-      document.location.hash = '/frontpage'
+    this.props.updateView('formNewContent', false)
+    this.props.updateView('settings', false)
+    document.location.hash = '/frontpage'
   },
-    
+
   render: function () {
     let contentList = this.state.contentList.map(obj => {
       return (
-              <li className='content-list-item' key={obj.key} >
-	      <ContentHeader content={obj} dattcore={this.props.dattcore} />
-              </li>
+      <li className='content-list-item' key={obj.key} >
+              <ContentHeader content={obj} dattcore={this.props.dattcore} />
+      </li>
       )
     })
+
     return (
     <div className='row' onClick={this.resetView}>
-    <div className='col-md-6 col-md-offset-2'>
-      <ul className='content-list'>
-        {contentList}
-      </ul>
-      </div>
-      </div>
+        <div className='col-md-6 col-md-offset-2'>
+        <ul className='content-list'>
+            {contentList}
+        </ul>
+        </div>
+    </div>
     )
   }
 })

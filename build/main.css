@@ -21,6 +21,10 @@ body {
   padding: 1.5em 0 0.5em 0;
 }
 
+.content-header {
+    white-space:nowrap;
+}
+
 .content-list .content-list-item, .content-header ul {
   list-style-type: none;
   display: block;
