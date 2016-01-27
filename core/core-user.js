@@ -45,7 +45,9 @@ CoreUser.prototype.asyncInitialize = function () {
       if (err.message !== 'missing') {
         throw err
       }
+        
       this.user = yield User().asyncFromRandom()
+      this.user.fromRandom = true  
       yield this.dbuser.asyncSave(this.user)
     }
     return this

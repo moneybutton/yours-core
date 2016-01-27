@@ -175,6 +175,10 @@ DattCore.prototype.asyncGetUserName = function () {
   return Promise.resolve(this.coreuser.user.name)
 }
 
+DattCore.prototype.asyncGetUser = function () {
+  return Promise.resolve(this.coreuser.user)
+}
+
 DattCore.prototype.asyncGetUserMnemonic = function () {
   return Promise.resolve(this.coreuser.user.mnemonic)
 }

@@ -48,8 +48,12 @@ let FormNewContent = React.createClass({
       let label = this.state.inputLabel
       let body = this.state.inputBody
       let dattcore = this.props.dattcore
-      yield dattcore.asyncPostNewContentAuth(title, label, body)
-      this.setState(this.getInitialState())
+      let contenthashbuf = yield dattcore.asyncPostNewContentAuth(title, label, body)
+      let hashbuf = contenthashbuf.toString('hex')
+
+      window.location.hash = '#/content/' + hashbuf
+
+      yield this.setState(this.getInitialState())
     }, this)
   },
 

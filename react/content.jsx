@@ -75,7 +75,7 @@ let Content = React.createClass({
     return (
     <div className='container-fluid content-container'>
         <div className='row'>
-        <div className='col-md-offset-2 col-md-8'>
+        <div className='col-md-8 col-md-offset-2'>
             {viewjsx}
         </div>
         </div>
