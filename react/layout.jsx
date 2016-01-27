@@ -11,8 +11,10 @@ let Content = require('./content.jsx')
 let React = require('react')
 let asink = require('asink')
 let ConfigPanel = require('./config-panel.jsx')
+let SetupModal = require('./setup-modal.jsx')
 
 let Layout = React.createClass({
+	
   getInitialState: function () {
     return {
       dattcoreStatus: 'uninitialized',
@@ -73,36 +75,44 @@ let Layout = React.createClass({
       })
     }, this)
   },
+    
   updateView: function (self, viewLabel, value) {
     var view = self.state.view || {}
     view[viewLabel] = value
     self.setState({'view': view})
   },
+    
   toggleView: function (self, viewLabel) {
     var value = (self.state.view || {})[viewLabel]
     self.updateView(self, viewLabel, (value ? false : true))
   },
+    
   newPostView: function (self) {
     self.toggleView(self, 'formNewContent')
     document.location.hash = '/frontpage'
   },
+    
   configView: function (self) {
     self.toggleView(self, 'settings')
   },
+    
   render: function () {
     let dattcore = this.props.dattcore
     let dattcoreStatus = this.state.dattcoreStatus
     let numActiveConnections = this.state.numActiveConnections
     let View
 
-    switch (this.state.route) {
-      case 'content':
-        View = Content
-        break
-      default:
-        View = PageFront
-        break
-    }
+      switch (this.state.route) {
+          case 'setup':
+              View = SetupModal
+              break
+          case 'content':
+              View = Content
+              break
+          default:
+              View = PageFront
+              break
+      }
 
     return (
     <div className='container'>

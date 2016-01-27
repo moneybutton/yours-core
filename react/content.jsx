@@ -66,7 +66,7 @@ let Content = React.createClass({
       viewjsx = (<span className='gray'>Loading content {contentkey}...</span>)
     } else {
       viewjsx = (
-        <ContentHeader content={content} dattcore={dattcore} showInteractButtons='true'>
+        <ContentHeader content={content} dattcore={dattcore} showInteractButtons={true}>
           <p className='content-body'>{content.body}</p>
       </ContentHeader>
       )
@@ -75,7 +75,7 @@ let Content = React.createClass({
     return (
     <div className='container-fluid content-container'>
         <div className='row'>
-        <div className='col-md-offset-2 col-md-6'>
+        <div className='col-md-offset-2 col-md-8'>
             {viewjsx}
         </div>
         </div>

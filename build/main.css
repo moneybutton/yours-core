@@ -21,10 +21,6 @@ body {
   padding: 1.5em 0 0.5em 0;
 }
 
-.content-header {
-    white-space:nowrap;
-}
-
 .content-list .content-list-item, .content-header ul {
   list-style-type: none;
   display: block;
@@ -231,4 +227,55 @@ div.iconDiv {
 
 .hidden {
     opacity: 0;
+}
+
+.vspacer05 {
+    margin-top: 5%;
+}
+
+.vspacer10 {
+    margin-top: 10%;
+}
+
+.vspacer15 {
+    margin-top: 15%;
+}
+
+.vspacer20 {
+    margin-top: 20%;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-center {
+    text-align: center;
+    align: middle;
+}
+
+.gray {
+    color: gray;
+}
+h4.gray {
+    font-weight: 70;
+}
+.text-inline-block {
+    display: inline-block;
+}
+
+.setup-modal, .setup-modal .modal-content {
+ border-radius: 0 !important;
+}
+
+.setup-modal button {
+    border-radius: 0;
+}
+
+.modal-backdrop.in {
+    opacity: 0.9;
 }
