@@ -2,7 +2,10 @@ let React = require('react')
 
 let SetupModal = React.createClass({
   componentDidMount: function () {
-    $('div.modal.setup-modal').modal()
+      $('div.modal.setup-modal').modal()
+      $('div.modal.setup-modal').on('hide.bs.modal', function () {
+          window.location.hash = '#/frontpage'
+      })
   },
   render: function () {
     return (
