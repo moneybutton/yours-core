@@ -127,6 +127,7 @@
     "q": "1.4.1",
     "react": "0.14.6",
     "react-dom": "0.14.6",
+    "react-markdown": "^1.2.4",
     "request": "2.67.0",
     "workerpool": "1.0.0"
   },

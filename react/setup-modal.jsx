@@ -134,7 +134,6 @@ let SetupModal = React.createClass({
                             <button className='btn btn-default text-uppercase text-bold' onClick={this.handleSubmitRestore}>Restore identity</button>
                         </div>
                     </div>
-                    <div className='row vspacer05 gray'><h4>RESTORE FROM MNEMONIC NOT IMPLEMENTED YET; GO BACK AND CREATE NEW</h4></div>
                     <div className='row vspacer05'></div>
                 </div>
     )

@@ -71,7 +71,7 @@ let ContentList = React.createClass({
   resetView: function () {
     this.props.updateView('formNewContent', false)
     this.props.updateView('settings', false)
-    document.location.hash = '/frontpage'
+    document.location.hash = '#/frontpage'
   },
 
   render: function () {
@@ -94,7 +94,7 @@ let ContentList = React.createClass({
 
     return (
     <div className='container-fluid content-list-container' onClick={this.resetView}>
-              <div className='row'>          
+              <div className='row'>
                   <div className='col-md-8 col-md-offset-2'>
                       {contentElement}
                   </div>

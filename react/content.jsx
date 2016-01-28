@@ -5,6 +5,8 @@ let asink = require('asink')
 
 let ContentHeader = require('./content-header.jsx')
 
+let ReactMarkdown = require('react-markdown')
+
 let Content = React.createClass({
   getInitialState: function () {
     return {
@@ -67,7 +69,7 @@ let Content = React.createClass({
     } else {
       viewjsx = (
         <ContentHeader content={content} dattcore={dattcore} showInteractButtons={true}>
-          <p className='content-body'>{content.body}</p>
+          <ReactMarkdown className='content-body' source={content.body}/>
       </ContentHeader>
       )
     }
