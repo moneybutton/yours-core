@@ -93,7 +93,7 @@ let ContentList = React.createClass({
     }
 
     return (
-    <div className='container-fluid' onClick={this.resetView}>
+    <div className='container-fluid content-list-container' onClick={this.resetView}>
               <div className='row'>          
                   <div className='col-md-8 col-md-offset-2'>
                       {contentElement}
