@@ -43,9 +43,9 @@ let Layout = React.createClass({
       try {
         yield dattcore.asyncInitialize()
 
-        let user = yield dattcore.asyncGetUser()
-
-        if (user.fromRandom && (window.location.hash === '#/frontpage' || !window.location.hash || window.location.hash === '#/')) {
+        let userSetupFlag = yield dattcore.asyncGetUserSetupFlag()
+              
+        if (!userSetupFlag && (window.location.hash === '#/frontpage' || !window.location.hash || window.location.hash === '#/')) {
           window.location.hash = '#/setup'
         }
 
@@ -125,7 +125,7 @@ let Layout = React.createClass({
         <TopMenu newClicked={this.newPostView.bind(this, this)} configClicked={this.configView.bind(this, this)}/>
         <div className='row'>
         <div className={(this.state.view.settings ? 'col-md-8' : '')}>
-            <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeParts} updateView={this.updateView.bind(this, this)} contentkey={this.state.routeArgs[0]} />
+            <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeArgs} updateView={this.updateView.bind(this, this)} contentkey={this.state.routeArgs[0]} />
         </div>
         {[(this.state.view.settings ?
       (<div className='col-md-4 side-boxes'>

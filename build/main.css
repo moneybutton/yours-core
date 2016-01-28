@@ -279,3 +279,15 @@ h4.gray {
 .modal-backdrop.in {
     opacity: 0.9;
 }
+
+.setup-input {
+    width: 100%;
+    font-weight: 70;
+    font-size: 18px;
+    color: gray;
+    padding-left: 10px;
+}
+
+.setup-mnemonic {
+    padding: 10px;
+}

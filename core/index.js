@@ -164,6 +164,7 @@ DattCore.prototype.asyncSetUserName = function (name) {
     let blockhashbuf = info.hashbuf
     let blockheightnum = info.blockheightnum
     yield this.coreuser.asyncSetName(name)
+      
     let msgauth = yield this.coreuser.asyncGetMsgAuth(blockhashbuf, blockheightnum)
     yield DBContentAuth(this.db, msgauth.contentauth).asyncSave()
     // TODO: broadcast msgauth
@@ -177,6 +178,14 @@ DattCore.prototype.asyncGetUserName = function () {
 
 DattCore.prototype.asyncGetUser = function () {
   return Promise.resolve(this.coreuser.user)
+}
+
+DattCore.prototype.asyncGetUserSetupFlag = function () {
+  return Promise.resolve(this.coreuser.user.getUserSetupFlag())
+}
+
+DattCore.prototype.asyncSetUserSetupFlag = function (value) {
+    return this.coreuser.asyncSetUserSetupFlag(value)
 }
 
 DattCore.prototype.asyncGetUserMnemonic = function () {

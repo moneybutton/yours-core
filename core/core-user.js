@@ -47,7 +47,7 @@ CoreUser.prototype.asyncInitialize = function () {
       }
         
       this.user = yield User().asyncFromRandom()
-      this.user.fromRandom = true  
+      this.user.setUserSetupFlag(false)  
       yield this.dbuser.asyncSave(this.user)
     }
     return this
@@ -66,6 +66,18 @@ CoreUser.prototype.asyncSetName = function (name) {
     yield this.dbuser.asyncSave(this.user)
     return this
   }, this)
+}
+
+CoreUser.prototype.asyncSetUserSetupFlag = function (value) {
+    return asink(function *() {
+        try {
+            this.user.setUserSetupFlag(value)
+        } catch (err) {
+            return Promise.reject(err)
+        }
+        yield this.dbuser.asyncSave(this.user)
+        return this        
+    }, this)
 }
 
 /**
