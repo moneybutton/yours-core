@@ -77,7 +77,7 @@ MsgAuth.prototype.setName = function (name) {
   let content = Content().fromObject({
     name: name,
     label: 'auth',
-    title: 'I am ' + name,
+    title: 'Hello, my name is ' + name,
     type: 'markdown',
     body: body
 
