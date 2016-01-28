@@ -97,6 +97,7 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [Enspiral - a virtual and physical network of companies and professionals brought together by a set of shared values and a passion for positive social impact.](http://www.enspiral.com/faq/)
 - [BlockAI - is a platform to give people who create digital assets a way to claim ownership of them by publishing to the blockchain, turning them into monetizable assets.](http://www.blockai.com/)
 - [Aetheral Research is a censorship resitant forums platform](http://aetheral.im/)
 - [Encrypt All The Things - an initiative to encrypt all the web with SSL](https://encryptallthethings.net/)
