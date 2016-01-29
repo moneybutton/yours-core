@@ -16,16 +16,22 @@ let PageFront = React.createClass({
 
   propTypes: {
     dattcore: React.PropTypes.object,
-    dattcoreStatus: React.PropTypes.string
+    dattcoreStatus: React.PropTypes.string,
+    view: React.PropTypes.object,
+    updateView: React.PropTypes.func
   },
 
   render: function () {
-    return (
-      <div>
-        <ContentList dattcore={this.props.dattcore}/>
-        <FormNewContent dattcore={this.props.dattcore}/>
-      </div>
-    )
+    let components = []
+
+    if (this.props.view.contentList) {
+      components.push(<ContentList dattcore={this.props.dattcore} updateView={this.props.updateView}/>)
+    }
+    if (this.props.view.formNewContent) {
+      components.push(<FormNewContent dattcore={this.props.dattcore}/>)
+    }
+
+    return (<div>{components}</div>)
   }
 })
 

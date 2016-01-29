@@ -5,28 +5,50 @@
  * This is the main layout component which frames every page.
  */
 'use strict'
-let BoxBitcoin = require('./box-bitcoin.jsx')
-let BoxContent = require('./box-content.jsx')
-let BoxDeveloper = require('./box-developer.jsx')
-let BoxPeer = require('./box-peer.jsx')
-let BoxUser = require('./box-user.jsx')
+let TopMenu = require('./top-menu.jsx')
 let PageFront = require('./page-front.jsx')
+let Content = require('./content.jsx')
 let React = require('react')
 let asink = require('asink')
+let ConfigPanel = require('./config-panel.jsx')
+let SetupModal = require('./setup-modal.jsx')
 
 let Layout = React.createClass({
   getInitialState: function () {
     return {
       dattcoreStatus: 'uninitialized',
-      numActiveConnections: 0
+      numActiveConnections: 0,
+      view: {
+        'contentList': true
+      }
     }
   },
 
+  updateStateFromHash: function () {
+    var hashString = (window.location.hash && window.location.hash.length > 1 ? window.location.hash : '#/')
+    var hashParts = hashString.split('/').slice(1)
+
+    this.setState({
+      route: hashParts[0],
+      routeArgs: hashParts.slice(1)
+    })
+  },
+
   componentWillMount: function () {
-    return asink(function *() {
+    this.updateStateFromHash()
+    window.addEventListener('hashchange', this.updateStateFromHash.bind(this))
+
+    return asink(function* () {
       let dattcore = this.props.dattcore
       try {
         yield dattcore.asyncInitialize()
+
+        let userSetupFlag = yield dattcore.asyncGetUserSetupFlag()
+              
+        if (!userSetupFlag && (window.location.hash === '#/frontpage' || !window.location.hash || window.location.hash === '#/')) {
+          window.location.hash = '#/setup'
+        }
+
         this.setState({
           dattcoreStatus: 'initialized'
         })
@@ -51,7 +73,7 @@ let Layout = React.createClass({
   },
 
   handlePeersConnection: function () {
-    return asink(function *() {
+    return asink(function * () {
       let dattcore = this.props.dattcore
       let n = yield dattcore.asyncNumActiveConnections()
       this.setState({
@@ -60,42 +82,71 @@ let Layout = React.createClass({
     }, this)
   },
 
+  updateView: function (self, viewLabel, value) {
+    var view = self.state.view || {}
+    view[viewLabel] = value
+    self.setState({'view': view})
+  },
+
+  toggleView: function (self, viewLabel) {
+    var value = (self.state.view || {})[viewLabel]
+    self.updateView(self, viewLabel, (value ? false : true))
+  },
+
+  newPostView: function (self) {
+    self.toggleView(self, 'formNewContent')
+    document.location.hash = '/frontpage'
+  },
+
+  configView: function (self) {
+    self.toggleView(self, 'settings')
+  },
+
   render: function () {
     let dattcore = this.props.dattcore
     let dattcoreStatus = this.state.dattcoreStatus
     let numActiveConnections = this.state.numActiveConnections
-    return (
-      <div className='container'>
-        <div className='row page-header'>
-          <div className='col-md-12'>
-            <img src='/logo.svg' alt='' />
-            <h1>{this.props.apptitle}</h1>
-          </div>
-        </div>
+    let View
 
-        <div className='row'>
-          <div className='col-md-8'>
-            <PageFront dattcore={dattcore}/>
-          </div>
+    switch (this.state.route) {
+      case 'setup':
+        View = SetupModal
+        break
+      case 'content':
+        View = Content
+        break
+      default:
+        View = PageFront
+        break
+    }
 
-          <div className='col-md-4 side-boxes'>
-            <BoxUser dattcore={dattcore}/>
-            <BoxBitcoin dattcore={dattcore}/>
-            <BoxContent postsnumber={0}/>
-            <BoxPeer peersnumber={numActiveConnections}/>
-            <BoxDeveloper dattcore={dattcore}/>
+      return (
+          <div className='container'>
+          <TopMenu newClicked={this.newPostView.bind(this, this)} configClicked={this.configView.bind(this, this)} />
+          <div className='row'>
+          <div className={(this.state.view.settings ? 'col-md-8' : '')}>
+          <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeArgs} updateView={this.updateView.bind(this, this)} contentkey={this.state.routeArgs[0]} />
           </div>
-        </div>
-
-        <div className='row page-footer'>
-          <div className='col-md-12'>
-            <div className='version-number'>
-              <p>Status of dattcore: {dattcoreStatus}</p>
-              <p>Datt v{dattcore.version}</p>
-            </div>
+          {[(this.state.view.settings ?
+             (<div className='col-md-4 side-boxes'>
+                 <ConfigPanel dattcore={dattcore} numActiveConnections={numActiveConnections}/>
+             </div>) : null)]}
           </div>
-        </div>
-      </div>
+          <div className='row footer container'>
+              <div className='col-md-4'></div>
+              <div className='col-md-4'>
+                  <footer className=''>
+                      <div className='page-footer'>
+                          <div className='version-number'>
+                              <p>Status of dattcore: {dattcoreStatus}</p>
+                              <p>Datt v{dattcore.version}</p>
+                          </div>
+                      </div>
+                  </footer>
+              </div>
+              <div className='col-md-4'></div>
+          </div>
+          </div>
     )
   }
 })

@@ -62,7 +62,7 @@ let BoxUser = React.createClass({
 
   render: function () {
     return (
-      <div className='info-box'>
+    <div className='info-box'>
         <h2>My User</h2>
         <p>Your mnemonic: {this.state.userMnemonic}</p>
         <p>Your current name: {this.state.userName}</p>

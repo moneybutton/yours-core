@@ -48,13 +48,19 @@ let FormNewContent = React.createClass({
       let label = this.state.inputLabel
       let body = this.state.inputBody
       let dattcore = this.props.dattcore
-      yield dattcore.asyncPostNewContentAuth(title, label, body)
-      this.setState(this.getInitialState())
+      let contenthashbuf = yield dattcore.asyncPostNewContentAuth(title, label, body)
+      let hashbuf = contenthashbuf.toString('hex')
+
+      window.location.hash = '#/content/' + hashbuf
+
+      yield this.setState(this.getInitialState())
     }, this)
   },
 
   render: function () {
     return (
+    <div className='row'>
+    <div className='col-md-8 col-md-offset-2'>
       <div className='author-new-content well'>
         <h2>Author New Content</h2>
         <form>
@@ -72,6 +78,8 @@ let FormNewContent = React.createClass({
           </div>
           <button type='submit' className='btn btn-default' onClick={this.handleSubmit}>Submit</button>
         </form>
+      </div>
+      </div>
       </div>
     )
   }

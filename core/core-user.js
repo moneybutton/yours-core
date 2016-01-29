@@ -45,7 +45,9 @@ CoreUser.prototype.asyncInitialize = function () {
       if (err.message !== 'missing') {
         throw err
       }
+        
       this.user = yield User().asyncFromRandom()
+      this.user.setUserSetupFlag(false)  
       yield this.dbuser.asyncSave(this.user)
     }
     return this
@@ -64,6 +66,18 @@ CoreUser.prototype.asyncSetName = function (name) {
     yield this.dbuser.asyncSave(this.user)
     return this
   }, this)
+}
+
+CoreUser.prototype.asyncSetUserSetupFlag = function (value) {
+    return asink(function *() {
+        try {
+            this.user.setUserSetupFlag(value)
+        } catch (err) {
+            return Promise.reject(err)
+        }
+        yield this.dbuser.asyncSave(this.user)
+        return this        
+    }, this)
 }
 
 /**

@@ -126,7 +126,9 @@
     "pouchdb": "5.2.0",
     "q": "1.4.1",
     "react": "0.14.6",
+    "react-bootstrap-modal": "^2.0.0",
     "react-dom": "0.14.6",
+    "react-markdown": "^1.2.4",
     "request": "2.67.0",
     "workerpool": "1.1.0"
   },

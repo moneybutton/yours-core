@@ -56,11 +56,11 @@ let BoxBitcoin = React.createClass({
     let unconfirmedBalanceBits = Math.round(obj.unconfirmedBalanceSatoshis / 100)
     let confirmedBalanceBits = Math.round(obj.confirmedBalanceSatoshis / 100)
     let totalBalanceBits = Math.round(obj.totalBalanceSatoshis / 100)
+
     this.setState({
       unconfirmedBalanceBits,
       confirmedBalanceBits,
-      totalBalanceBits
-    })
+    totalBalanceBits})
   },
 
   handleReceive: function () {
@@ -104,7 +104,7 @@ let BoxBitcoin = React.createClass({
 
   render: function () {
     return (
-      <div className='info-box'>
+    <div className='info-box'>
         <h2>My Bitcoin</h2>
         <p>Confirmed balance: {this.state.confirmedBalanceBits} bits</p>
         <p>Unconfirmed balance: {this.state.unconfirmedBalanceBits} bits</p>
