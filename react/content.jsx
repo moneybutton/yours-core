@@ -36,7 +36,7 @@ let Content = React.createClass({
       let dattcore = this.props.dattcore
       let DattCore = dattcore.constructor
 
-      let contentauth = yield dattcore.corecontent.asyncGetContentAuth(this.props.contentkey)
+      let contentauth = yield dattcore.corecontent.asyncGetContentAuth(new Buffer(this.props.contentkey, 'hex'))
 
       if (contentauth && contentauth.getContent()) {
         let key = contentauth.cachehash.toString('hex')
@@ -69,19 +69,19 @@ let Content = React.createClass({
     } else {
       viewjsx = (
         <ContentHeader content={content} dattcore={dattcore} showInteractButtons={true}>
-          <ReactMarkdown className='content-body' source={content.body}/>
-      </ContentHeader>
+            <ReactMarkdown className='content-body' source={content.body}/>
+        </ContentHeader>
       )
     }
 
     return (
-    <div className='container-fluid content-container'>
-        <div className='row'>
-        <div className='col-md-8 col-md-offset-2'>
-            {viewjsx}
-        </div>
-        </div>
-    </div>
+      <div className='container-fluid content-container'>
+          <div className='row'>
+              <div className='col-md-8 col-md-offset-2'>
+                  {viewjsx}
+              </div>
+          </div>
+      </div>
     )
   }
 })

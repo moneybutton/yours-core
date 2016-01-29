@@ -106,39 +106,38 @@ span.gray, .content-header .post-information a {
 /* TopMenu begin */
 
 .topMenu {
-	  margin-top: -30px;
-	  height: 100%;
+  margin-top: -30px;
+  height: 100%;
 } 
 
 .topMenu ul {
-	  list-style: none;
-	  padding: 0;
-	  margin: 0;
-	  white-space:nowrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  white-space:nowrap;
 }
 .topMenu ul li {
   padding: 0;
-	  margin: 0;
-	  display: inline;
+  margin: 0;
+  display: inline;
 }
 
 .arrow {
-	  margin-left: 5px;
+  margin-left: 5px;
 }
 
 .topMenu .menu {
-	  font-size: 13px;
-	  font-weight: 600;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .topMenu .menu > li {
-  /*float: left;*/
   margin: 30px 40px 0 0;
 }
 
 .topMenu .selected {
-	  border-bottom: 2px solid #404040;
-	  padding-bottom: 0;
+  border-bottom: 2px solid #404040;
+  padding-bottom: 0;
 }
 
 .topMenu .selected img {
@@ -153,26 +152,26 @@ span.gray, .content-header .post-information a {
 }
 
 .topMenu .selected a {
-	  color: #4c4c4c;
-	  text-decoration: none;
-	  height: 49px;
-	  display: block;
+  color: #4c4c4c;
+  text-decoration: none;
+  height: 49px;
+  display: block;
 }
 
 .topMenu .balance {
-	  font-size: 13px;
-	  color: #4c4c4c;
-	  font-weight: 400;
-	  margin-left: 10px;
+  font-size: 13px;
+  color: #4c4c4c;
+  font-weight: 400;
+  margin-left: 10px;
 }
 
 .topMenu .icons {
-	  height: 18px;
-	  margin: 32px 0px 0 0;
+  height: 18px;
+  margin: 32px 0px 0 0;
 }
 
 .topMenu .icons > li {
-	  margin-left: 15px;
+  margin-left: 15px;
 }
 /* TopMenu end */
 
@@ -182,37 +181,37 @@ div.iconDiv {
 
 /* search bar start */
 .search_bar {  
-	  position: absolute;
-	  margin-top: 25px;
-	  width: 0px;
-	  height: 30px;
-	  display: block;
-	  border-radius: 30px;
-	  border: 1px solid #e8e8e8;
-	  transition-duration: 0.3s;
-	  opacity: 0;
-	  float:right;
+  position: absolute;
+  margin-top: 25px;
+  width: 0px;
+  height: 30px;
+  display: block;
+  border-radius: 30px;
+  border: 1px solid #e8e8e8;
+  transition-duration: 0.3s;
+  opacity: 0;
+  float:right;
 }
 
 .topMenu:hover .search_bar {
-	  opacity: 1;
-	  width: 100%; 
+  opacity: 1;
+  width: 100%; 
 }
 
 .topMenu:hover .search_input {
-	  opacity: 1;
+  opacity: 1;
 }
 
 .search_input {
-	  opacity: 0;
-	  background: rgba(0,0,0,0);
-	  border: 0;
-	  color: #000;
-	  font-size: 13px;
-	  color: #A8A8A8;
-	  font-weight: 300;
-	  width: 100%;
-	  margin: 5px 0 0 10px;
+  opacity: 0;
+  background: rgba(0,0,0,0);
+  border: 0;
+  color: #000;
+  font-size: 13px;
+  color: #A8A8A8;
+  font-weight: 300;
+  width: 100%;
+  margin: 5px 0 0 10px;
 }
 
 /* search bar end */

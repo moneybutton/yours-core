@@ -45,12 +45,7 @@ DBContentAuth.prototype.asyncSave = function (contentauth) {
  * Get a piece of authenticated content by its hash.
  */
 DBContentAuth.prototype.asyncGet = function (hashbuf) {
-    let hashhex
-    if(typeof(hashbuf) !== 'string') {
-	hashhex = hashbuf.toString('hex')
-    } else {
-	hashhex = hashbuf
-    }
+  let hashhex = hashbuf.toString('hex')
     
   return this.db.asyncGet(hashhex).then(doc => {
     this.hashbuf = hashbuf
