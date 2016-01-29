@@ -324,7 +324,7 @@ gulp.task('build-browsersync', ['build'], () => {
   browserSyncs['3044'].reload()
 })
 
-gulp.task('serve', ['build'], () => {
+const serve = () => {
   // Create two rendezvous servers, one for the tests and one for the UI, so
   // that network connections do not overlap
   createRendezvousServer(3031) // For the tests (i.e., localhost:3040/tests.html)
@@ -347,6 +347,11 @@ gulp.task('serve', ['build'], () => {
   browserSyncs['3044'].init(Object.assign({port: 3044}, config))
 
   gulp.watch(allfiles, ['build-browsersync'])
-})
+}
+
+gulp.task('serve', ['build'], serve)
+
+// Like serve but assumes `gulp build` has already ran
+gulp.task('serve-prod', serve)
 
 gulp.task('default', ['build-exit'])

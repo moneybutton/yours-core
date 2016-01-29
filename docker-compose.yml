@@ -1,0 +1,20 @@
+serve:
+  build: .
+  dockerfile: Dockerfile
+  ports:
+    - "3040:3040"
+    - "3041:3041"
+    - "3042:3042"
+    - "3043:3043"
+    - "3044:3044"
+  environment:
+    - NODE_ENV=development
+    - DEBUG=*
+    - DATT_JS_BASE_URL="/"
+    - DATT_CORE_JS_BUNDLE_FILE="datt-core.js"
+    - DATT_CORE_JS_WORKER_FILE="datt-core-worker.js"
+    - DATT_CORE_JS_WORKERPOOL_FILE="datt-core-workerpool.js"
+    - DATT_JS_TESTS_FILE="datt-tests.js"
+    - DATT_REACT_JS_FILE="datt-react.js"
+    - FULLNODE_NETWORK="testnet"
+    - DATT_BLOCKCHAIN_API_URI="https://test-insight.bitpay.com/api/"
