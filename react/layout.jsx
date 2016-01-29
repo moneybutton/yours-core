@@ -122,7 +122,7 @@ let Layout = React.createClass({
 
       return (
           <div className='container'>
-          <TopMenu newClicked={this.newPostView.bind(this, this)} configClicked={this.configView.bind(this, this)}/>
+          <TopMenu newClicked={this.newPostView.bind(this, this)} configClicked={this.configView.bind(this, this)} />
           <div className='row'>
           <div className={(this.state.view.settings ? 'col-md-8' : '')}>
           <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeArgs} updateView={this.updateView.bind(this, this)} contentkey={this.state.routeArgs[0]} />
