@@ -295,6 +295,14 @@ h4.gray {
 .setup-mnemonic {
   padding: 10px;
 }
+
+textarea.setup-mnemonic {
+  background-color:#FFF !important;
+  background: center center no-repeat;  
+  resize: none;
+  border: 2px solid rgb(237, 237, 237);
+}
+
 .footer {
   bottom: 0;
   height: 60px;
@@ -304,4 +312,3 @@ h4.gray {
 .content-list-container {
   height: 100%;
 }
-

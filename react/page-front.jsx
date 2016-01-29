@@ -22,16 +22,11 @@ let PageFront = React.createClass({
   },
 
   render: function () {
-    let components = []
-
-    if (this.props.view.contentList) {
-      components.push(<ContentList dattcore={this.props.dattcore} updateView={this.props.updateView}/>)
-    }
-    if (this.props.view.formNewContent) {
-      components.push(<FormNewContent dattcore={this.props.dattcore}/>)
-    }
-
-    return (<div>{components}</div>)
+      return (
+      <div>
+          <ContentList key="contentList" dattcore={this.props.dattcore} updateView={this.props.updateView}/>
+      </div>
+    )
   }
 })
 

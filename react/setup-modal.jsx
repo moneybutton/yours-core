@@ -115,7 +115,7 @@ let SetupModal = React.createClass({
             <div className='row vspacer05'>
                 <div className='col-md-offset-1 col-md-10'>
                     <h4 className='gray'>Your Mnemonic</h4>
-                    <textarea className='setup-input setup-mnemonic' value={this.state.userMnemonic}></textarea>
+                    <textarea className='setup-input setup-mnemonic' value={this.state.userMnemonic} readOnly={true}></textarea>
                 </div>
             </div>
             <div className='row vspacer05'>

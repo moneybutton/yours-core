@@ -12,6 +12,7 @@ let React = require('react')
 let asink = require('asink')
 let ConfigPanel = require('./config-panel.jsx')
 let SetupModal = require('./setup-modal.jsx')
+let FormNewContent = require('./form-new-content.jsx')
 
 let Layout = React.createClass({
   getInitialState: function () {
@@ -82,24 +83,23 @@ let Layout = React.createClass({
     }, this)
   },
 
-  updateView: function (self, viewLabel, value) {
-    var view = self.state.view || {}
+  updateView: function (viewLabel, value) {
+    var view = this.state.view || {}
     view[viewLabel] = value
-    self.setState({'view': view})
+    this.setState({'view': view})
   },
 
-  toggleView: function (self, viewLabel) {
-    var value = (self.state.view || {})[viewLabel]
-    self.updateView(self, viewLabel, (value ? false : true))
+  toggleView: function (viewLabel) {
+    var value = (this.state.view || {})[viewLabel]
+    this.updateView(viewLabel, (value ? false : true))
   },
 
-  newPostView: function (self) {
-    self.toggleView(self, 'formNewContent')
-    document.location.hash = '/frontpage'
+  newPostView: function () {
+    document.location.hash = '#/new'
   },
 
-  configView: function (self) {
-    self.toggleView(self, 'settings')
+  configView: function () {
+    this.toggleView('settings')
   },
 
   render: function () {
@@ -115,6 +115,9 @@ let Layout = React.createClass({
       case 'content':
         View = Content
         break
+      case 'new':
+        View = FormNewContent
+        break
       default:
         View = PageFront
         break
@@ -122,10 +125,10 @@ let Layout = React.createClass({
 
       return (
           <div className='container'>
-          <TopMenu newClicked={this.newPostView.bind(this, this)} configClicked={this.configView.bind(this, this)} />
+          <TopMenu newClicked={this.newPostView} configClicked={this.configView} />
           <div className='row'>
           <div className={(this.state.view.settings ? 'col-md-8' : '')}>
-          <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeArgs} updateView={this.updateView.bind(this, this)} contentkey={this.state.routeArgs[0]} />
+          <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeArgs} updateView={this.updateView} contentkey={this.state.routeArgs[0]} />
           </div>
           {[(this.state.view.settings ?
              (<div className='col-md-4 side-boxes'>
