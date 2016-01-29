@@ -277,6 +277,11 @@ h4.gray {
 
 .modal-backdrop.in {
   opacity: 0.9;
+  background-image: url('/night-sky.jpg');
+}
+
+.modal-open  .modal {
+  display: block;
 }
 
 .setup-input {
@@ -300,6 +305,3 @@ h4.gray {
   height: 100%;
 }
 
-.modal-open  .modal {
-  display: block;
-}
