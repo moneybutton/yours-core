@@ -1,12 +1,9 @@
+'use strict'
 let React = require('react')
 let asink = require('asink')
 let Modal = require('react-bootstrap-modal')
 
 let SetupModal = React.createClass({
-  getInitialState: function () {
-    return { open: true }
-  },
-
   componentDidMount: function () {
     this.open()
   },
@@ -26,12 +23,14 @@ let SetupModal = React.createClass({
   clickCreateNew: function () {
     window.location.hash = '#/setup/new'
   },
+
   clickRestore: function () {
     window.location.hash = '#/setup/restore'
   },
 
   getInitialState: function () {
     return {
+      open: true,
       userName: '',
       userMnemonic: ''
     }
@@ -43,7 +42,7 @@ let SetupModal = React.createClass({
   },
 
   setStateFromDattcore: function () {
-    return asink(function* () {
+    return asink(function *() {
       let dattcore = this.props.dattcore
       let userName = yield dattcore.asyncGetUserName()
       this.setState({
@@ -67,7 +66,7 @@ let SetupModal = React.createClass({
   handleSubmitNew: function () {
     let newUserName = this.refs.newUserNameInput.value
 
-    return asink(function* () {
+    return asink(function *() {
       this.close()
       let dattcore = this.props.dattcore
       yield dattcore.asyncSetUserName(newUserName)
@@ -115,7 +114,7 @@ let SetupModal = React.createClass({
             <div className='row vspacer05'>
                 <div className='col-md-offset-1 col-md-10'>
                     <h4 className='gray'>Your Mnemonic</h4>
-                    <textarea className='setup-input setup-mnemonic' value={this.state.userMnemonic} readOnly={true}></textarea>
+                    <textarea className='setup-input setup-mnemonic' value={this.state.userMnemonic} readOnly></textarea>
                 </div>
             </div>
             <div className='row vspacer05'>
@@ -159,7 +158,7 @@ let SetupModal = React.createClass({
 
     return (
       <div ref='modal_container'>
-        <Modal show={true} onHide={this.onClose} container={this.refs.modal_container}>
+        <Modal show onHide={this.onClose} container={this.refs.modal_container}>
           <Modal.Body>
           <div className='container-fluid'>
             {setupContent}

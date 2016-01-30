@@ -60,7 +60,7 @@ let BoxBitcoin = React.createClass({
     this.setState({
       unconfirmedBalanceBits,
       confirmedBalanceBits,
-    totalBalanceBits})
+      totalBalanceBits})
   },
 
   handleReceive: function () {

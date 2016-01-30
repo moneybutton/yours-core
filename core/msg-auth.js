@@ -66,21 +66,12 @@ MsgAuth.prototype.setBlockInfo = function (blockhashbuf, blockheightnum) {
 }
 
 MsgAuth.prototype.setName = function (name) {
-  let body = '### Hello Datt!\nLet me introduce myself... My name is *' + name + '*.\n\n'
-
-  if (this.contentauth && (this.contentauth.blockhashbuf || this.contentauth.blockheightnum)) {
-    body += '\n\nMy choice of username is being saved in the blockchain for posterity.\n'
-    body += ((this.contentauth.blockheightnum ? ('\n_Block height: ' + this.contentauth.blockheightnum + '_') : '') +
-      (this.contentauth.blockhashbuf ? ('\n_Block hash: ' + this.contentauth.blockhashbuf.toString('hex') + '_') : ''))
-  }
-
   let content = Content().fromObject({
     name: name,
     label: 'auth',
-    title: 'Hello, my name is ' + name,
+    title: 'I am ' + name,
     type: 'markdown',
-    body: body
-
+    body: ''
   })
   this.contentauth.setContent(content)
   return this

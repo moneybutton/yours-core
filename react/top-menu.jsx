@@ -1,3 +1,4 @@
+'use strict'
 let React = require('react')
 
 let TopMenu = React.createClass({

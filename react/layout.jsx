@@ -37,15 +37,14 @@ let Layout = React.createClass({
 
   componentWillMount: function () {
     this.updateStateFromHash()
-    window.addEventListener('hashchange', this.updateStateFromHash.bind(this))
+    window.addEventListener('hashchange', this.updateStateFromHash)
 
-    return asink(function* () {
+    return asink(function *() {
       let dattcore = this.props.dattcore
       try {
         yield dattcore.asyncInitialize()
 
         let userSetupFlag = yield dattcore.asyncGetUserSetupFlag()
-              
         if (!userSetupFlag && (window.location.hash === '#/frontpage' || !window.location.hash || window.location.hash === '#/')) {
           window.location.hash = '#/setup'
         }
@@ -91,7 +90,7 @@ let Layout = React.createClass({
 
   toggleView: function (viewLabel) {
     var value = (this.state.view || {})[viewLabel]
-    this.updateView(viewLabel, (value ? false : true))
+    this.updateView(viewLabel, !value)
   },
 
   newPostView: function () {
@@ -123,34 +122,34 @@ let Layout = React.createClass({
         break
     }
 
-      return (
-          <div className='container'>
-          <TopMenu newClicked={this.newPostView} configClicked={this.configView} />
-          <div className='row'>
-          <div className={(this.state.view.settings ? 'col-md-8' : '')}>
-          <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeArgs} updateView={this.updateView} contentkey={this.state.routeArgs[0]} />
-          </div>
-          {[(this.state.view.settings ?
-             (<div className='col-md-4 side-boxes'>
-                 <ConfigPanel dattcore={dattcore} numActiveConnections={numActiveConnections}/>
-             </div>) : null)]}
-          </div>
-          <div className='row footer container'>
-              <div className='col-md-4'></div>
-              <div className='col-md-4'>
-                  <footer className=''>
-                      <div className='page-footer'>
-                          <div className='version-number'>
-                              <p>Status of dattcore: {dattcoreStatus}</p>
-                              <p>Datt v{dattcore.version}</p>
-                          </div>
+    return (
+      <div className='container'>
+      <TopMenu newClicked={this.newPostView} configClicked={this.configView} />
+      <div className='row'>
+      <div className={(this.state.view.settings ? 'col-md-8' : '')}>
+      <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeArgs} updateView={this.updateView} contentkey={this.state.routeArgs[0]} />
+      </div>
+      {[(this.state.view.settings
+         ? (<div className='col-md-4 side-boxes'>
+             <ConfigPanel dattcore={dattcore} numActiveConnections={numActiveConnections}/>
+         </div>) : null)]}
+      </div>
+      <div className='row footer container'>
+          <div className='col-md-4'></div>
+          <div className='col-md-4'>
+              <footer className=''>
+                  <div className='page-footer'>
+                      <div className='version-number'>
+                          <p>Status of dattcore: {dattcoreStatus}</p>
+                          <p>Datt v{dattcore.version}</p>
                       </div>
-                  </footer>
-              </div>
-              <div className='col-md-4'></div>
+                  </div>
+              </footer>
           </div>
-          </div>
-    )
+          <div className='col-md-4'></div>
+      </div>
+      </div>
+  )
   }
 })
 

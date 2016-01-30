@@ -79,7 +79,7 @@ CoreContent.prototype.asyncGetRecentContentAuth = function () {
 }
 
 CoreContent.prototype.asyncGetContentAuth = function (hashbuf) {
-    return DBContentAuth(this.db).asyncGet(hashbuf)
+  return DBContentAuth(this.db).asyncGet(hashbuf)
 }
 
 module.exports = CoreContent

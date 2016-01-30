@@ -53,7 +53,6 @@ User.prototype.fromRandom = function () {
   this.masterxprv = BIP32().fromSeed(bip39.toSeed())
   this.masterxpub = this.masterxprv.toPublic()
   this.beenSetup = false
-    
   return this
 }
 
@@ -73,7 +72,6 @@ User.prototype.asyncFromRandom = function () {
     this.masterxprv = obj.xprv
     this.masterxpub = obj.xpub
     this.beenSetup = false
-      
     return this
   }, this)
 }
@@ -91,7 +89,6 @@ User.prototype.fromJSON = function (json) {
   this.masterxpub = BIP32().fromHex(json.masterxpub)
   this.name = json.name
   this.beenSetup = json.beenSetup
-    
   return this
 }
 
@@ -101,7 +98,7 @@ User.prototype.toJSON = function () {
     masterxprv: this.masterxprv.toHex(),
     masterxpub: this.masterxpub.toHex(),
     name: this.name,
-    beenSetup: this.beenSetup  
+    beenSetup: this.beenSetup
   }
 }
 
@@ -142,14 +139,14 @@ User.prototype.isSet = function () {
  * Set flag which indicates whether user has been 'setup' yet (random users have not, for instance)
  */
 User.prototype.setUserSetupFlag = function (value) {
-    this.beenSetup = value
+  this.beenSetup = value
 }
 
 /**
- * Get flag which indicates whether user has been 'setup' yet 
+ * Get flag which indicates whether user has been 'setup' yet
  */
 User.prototype.getUserSetupFlag = function () {
-    return this.beenSetup
+  return this.beenSetup
 }
 
 module.exports = User

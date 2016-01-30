@@ -3,8 +3,9 @@ let React = require('react')
 let asink = require('asink')
 
 let ContentHeader = React.createClass({
-  handleSend: function (address, el) {
-    return asink(function* () {
+  handleSend: function (el) {
+    let address = this.props.content.address
+    return asink(function *() {
       el.preventDefault()
       let dattcore = this.props.dattcore
       let satoshis = 5000 * 1e2 // 5000 bits converted to satoshis
@@ -33,7 +34,7 @@ let ContentHeader = React.createClass({
         <div className='col-md-1'>
             <ul>
             <li>
-                <span aria-hidden='true' onClick={this.handleSend.bind(this, content.address)} className='glyphicon glyphicon-menu-up'></span>
+                <span aria-hidden='true' onClick={this.handleSend} className='glyphicon glyphicon-menu-up'></span>
             </li>
             <li>
                 <span aria-hidden='true' className='glyphicon glyphicon-menu-down gray'></span>

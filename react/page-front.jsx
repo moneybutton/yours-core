@@ -6,7 +6,6 @@
  */
 'use strict'
 let React = require('react')
-let FormNewContent = require('./form-new-content.jsx')
 let ContentList = require('./content-list.jsx')
 
 let PageFront = React.createClass({
@@ -22,9 +21,9 @@ let PageFront = React.createClass({
   },
 
   render: function () {
-      return (
+    return (
       <div>
-          <ContentList key="contentList" dattcore={this.props.dattcore} updateView={this.props.updateView}/>
+          <ContentList key='contentList' dattcore={this.props.dattcore} updateView={this.props.updateView}/>
       </div>
     )
   }
