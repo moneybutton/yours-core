@@ -73,7 +73,7 @@ let Layout = React.createClass({
   },
 
   handlePeersConnection: function () {
-    return asink(function * () {
+    return asink(function *() {
       let dattcore = this.props.dattcore
       let n = yield dattcore.asyncNumActiveConnections()
       this.setState({

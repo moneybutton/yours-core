@@ -17,7 +17,7 @@ body {
   margin-bottom: 35px;
 }
 
-.content-list  {
+.content-list {
   padding: 1.5em 0 0.5em 0;
 }
 
@@ -33,7 +33,7 @@ body {
 }
 
 .content-header h2 a {
-  color:black;
+  color: black;
 }
 
 .content-body {
@@ -108,13 +108,13 @@ span.gray, .content-header .post-information a {
 .topMenu {
   margin-top: -30px;
   height: 100%;
-} 
+}
 
 .topMenu ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  white-space:nowrap;
+  white-space: nowrap;
 }
 .topMenu ul li {
   padding: 0;
@@ -176,11 +176,11 @@ span.gray, .content-header .post-information a {
 /* TopMenu end */
 
 div.iconDiv {
-  float:right; 
+  float: right;
 }
 
 /* search bar start */
-.search_bar {  
+.search_bar {
   position: absolute;
   margin-top: 25px;
   width: 0px;
@@ -190,12 +190,12 @@ div.iconDiv {
   border: 1px solid #e8e8e8;
   transition-duration: 0.3s;
   opacity: 0;
-  float:right;
+  float: right;
 }
 
 .topMenu:hover .search_bar {
   opacity: 1;
-  width: 100%; 
+  width: 100%;
 }
 
 .topMenu:hover .search_input {
@@ -220,6 +220,7 @@ div.iconDiv {
   height: 100%;
   top: -5px;
 }
+ 
 .logo img {
   margin-left:50%;
 }
@@ -260,9 +261,11 @@ div.iconDiv {
 .gray {
   color: gray;
 }
+
 h4.gray {
   font-weight: 70;
 }
+
 .text-inline-block {
   display: inline-block;
 }
@@ -298,7 +301,7 @@ h4.gray {
 
 textarea.setup-mnemonic {
   background-color:#FFF !important;
-  background: center center no-repeat;  
+  background: center center no-repeat;
   resize: none;
   border: 2px solid rgb(237, 237, 237);
 }
