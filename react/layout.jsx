@@ -45,7 +45,8 @@ let Layout = React.createClass({
         yield dattcore.asyncInitialize()
 
         let userSetupFlag = yield dattcore.asyncGetUserSetupFlag()
-        if (!userSetupFlag && (window.location.hash === '#/frontpage' || !window.location.hash || window.location.hash === '#/')) {
+
+        if (!userSetupFlag && (window.location.hash === '#/frontpage' || !window.location.hash || window.location.hash === '#/') && (window.location.toString().indexOf('tests.html') === -1) ) {
           window.location.hash = '#/setup'
         }
 

@@ -69,8 +69,8 @@ let SetupModal = React.createClass({
     return asink(function *() {
       this.close()
       let dattcore = this.props.dattcore
-      yield dattcore.asyncSetUserName(newUserName)
       yield dattcore.asyncSetUserSetupFlag(true)
+      dattcore.asyncSetUserName(newUserName) // *intentionally* NOT yield-ing
       window.location.hash = '#/frontpage'
     }, this)
   },

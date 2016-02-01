@@ -18,11 +18,12 @@ let ContentList = React.createClass({
   },
 
   setStateFromDattCore: function () {
-    return asink(function* () {
+    return asink(function * () {
       let dattcore = this.props.dattcore
       let DattCore = dattcore.constructor
       let contentauths = yield dattcore.asyncGetRecentContentAuth()
       let waitOnUserSetup = false
+
       if (!contentauths || !contentauths.length) {
         waitOnUserSetup = !(yield dattcore.asyncGetUserSetupFlag())
       }
@@ -47,9 +48,8 @@ let ContentList = React.createClass({
       if (waitOnUserSetup) {
         setTimeout(function () {
           this.setState({waitOnUserSetup: false})
-        }.bind(this), 1000)
+        }.bind(this), 2000)
       }
-
     }, this)
   },
 
