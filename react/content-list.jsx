@@ -18,7 +18,7 @@ let ContentList = React.createClass({
   },
 
   setStateFromDattCore: function () {
-    return asink(function * () {
+    return asink(function *() {
       let dattcore = this.props.dattcore
       let DattCore = dattcore.constructor
       let contentauths = yield dattcore.asyncGetRecentContentAuth()
@@ -94,8 +94,8 @@ let ContentList = React.createClass({
       let contentList = this.state.contentList.map(obj => {
         return (
         <li className='content-list-item' key={obj.key} >
-                      <ContentHeader content={obj} dattcore={this.props.dattcore} />
-                  </li>
+            <ContentHeader content={obj} dattcore={this.props.dattcore} />
+        </li>
         )
       })
       contentElement = (<ul className='content-list'>{contentList}</ul>)
@@ -106,13 +106,13 @@ let ContentList = React.createClass({
     }
 
     return (
-    <div className='container-fluid content-list-container' onClick={this.resetView}>
-              <div className='row'>
-                  <div className='col-md-8 col-md-offset-2'>
-                      {contentElement}
-                  </div>
+      <div className='container-fluid content-list-container' onClick={this.resetView}>
+          <div className='row'>
+              <div className='col-md-8 col-md-offset-2'>
+                  {contentElement}
               </div>
           </div>
+      </div>
     )
   }
 })
