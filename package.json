@@ -150,7 +150,7 @@
     "gulp-util": "3.0.7",
     "gulp-watch": "4.3.5",
     "istanbul": "0.4.2",
-    "jsdom": "8.0.1",
+    "jsdom": "8.0.2",
     "karma": "0.13.19",
     "karma-firefox-launcher": "0.1.7",
     "karma-mocha": "0.2.1",
