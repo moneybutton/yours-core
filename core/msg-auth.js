@@ -81,7 +81,7 @@ MsgAuth.prototype.setName = function (name) {
     type: 'markdown',
     body: body
   })
-    
+
   this.contentauth.setContent(content)
   return this
 }

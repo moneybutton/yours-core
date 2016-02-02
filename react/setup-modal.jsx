@@ -70,8 +70,10 @@ let SetupModal = React.createClass({
       this.close()
       let dattcore = this.props.dattcore
       yield dattcore.asyncSetUserSetupFlag(true)
-      dattcore.asyncSetUserName(newUserName) // *intentionally* NOT yield-ing
+      let userNameSynced = dattcore.asyncSetUserName(newUserName) // *intentionally* NOT yield-ing
       window.location.hash = '#/frontpage'
+      yield userNameSynced
+      dattcore.emit('refresh-content', null)
     }, this)
   },
 

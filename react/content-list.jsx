@@ -66,6 +66,7 @@ let ContentList = React.createClass({
     let dattcore = this.props.dattcore
     dattcore.on('peers-content-auth', this.handlePeersContentAuth)
     dattcore.on('content-content-auth', this.handleContentContentAuth)
+    dattcore.on('refresh-content', this.handleRefreshContent)
   },
 
   handlePeersContentAuth: function () {
@@ -73,6 +74,10 @@ let ContentList = React.createClass({
   },
 
   handleContentContentAuth: function () {
+    return this.setStateFromDattCore()
+  },
+
+  handleRefreshContent: function () {
     return this.setStateFromDattCore()
   },
 
