@@ -89,7 +89,7 @@ CoreUser.prototype.asyncGetMsgAuth = function (blockhashbuf, blockheightnum) {
     msgauth.setBlockInfo(blockhashbuf, blockheightnum)
     msgauth.setName(this.user.name)
     let buf = msgauth.getBufForSig()
-    let hashbuf = yield CryptoWorkers.asyncSha256(buf)
+    let hashbuf = yield CryptoWorkers.asyncBSMHash(buf)
     let privkey = this.user.masterxprv.privkey
     let sig = yield CryptoWorkers.asyncSignCompact(hashbuf, privkey)
     msgauth.contentauth.fromObject({

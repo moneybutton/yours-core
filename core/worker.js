@@ -3,6 +3,7 @@
 let Address = require('fullnode/lib/address')
 let BIP32 = require('fullnode/lib/bip32')
 let BIP39 = require('fullnode/lib/bip39')
+let BSM = require('fullnode/lib/bsm')
 let ECDSA = require('fullnode/lib/ecdsa')
 let Hash = require('fullnode/lib/hash')
 let Keypair = require('fullnode/lib/keypair')
@@ -14,6 +15,11 @@ let Txbuilder = require('fullnode/lib/txbuilder')
 function sha256 (datahex) {
   let buf = new Buffer(datahex, 'hex')
   return Hash.sha256(buf).toString('hex')
+}
+
+function BSMHash (datahex) {
+  let buf = new Buffer(datahex, 'hex')
+  return BSM.magicHash(buf)
 }
 
 function pubkeyHexFromPrivkeyHex (privkeyHex) {
@@ -125,6 +131,7 @@ function signTransaction (txbjson, privkeys) {
 
 let f = {
   sha256,
+  BSMHash,
   pubkeyHexFromPrivkeyHex,
   addressHexFromPubkeyHex,
   addressHexFromAddressString,

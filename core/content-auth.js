@@ -14,10 +14,11 @@
  */
 'use strict'
 let Address = require('fullnode/lib/address')
-let CryptoWorkers = require('./crypto-workers')
 let BN = require('fullnode/lib/bn')
+let BSM = require('fullnode/lib/bsm')
 let BW = require('fullnode/lib/bw')
 let Content = require('./content')
+let CryptoWorkers = require('./crypto-workers')
 let ECDSA = require('fullnode/lib/ecdsa')
 let Hash = require('fullnode/lib/hash')
 let Keypair = require('fullnode/lib/keypair')
@@ -104,7 +105,7 @@ ContentAuth.prototype.getBufForSig = function () {
  * This method uses cryptography synchronously. Do not use in the main thread.
  */
 ContentAuth.prototype.sign = function (keypair) {
-  let hashbuf = Hash.sha256(this.getBufForSig())
+  let hashbuf = BSM.magicHash(this.getBufForSig())
   let ecdsa = ECDSA().fromObject({
     hashbuf: hashbuf,
     keypair: keypair
@@ -123,7 +124,7 @@ ContentAuth.prototype.sign = function (keypair) {
  */
 ContentAuth.prototype.asyncSign = function (keypair) {
   return asink(function *() {
-    let hashbuf = yield CryptoWorkers.asyncSha256(this.getBufForSig())
+    let hashbuf = yield CryptoWorkers.asyncBSMHash(this.getBufForSig())
     let sig = yield CryptoWorkers.asyncSignCompact(hashbuf, keypair.privkey)
     this.sig = sig
     this.pubkey = keypair.pubkey
@@ -136,7 +137,7 @@ ContentAuth.prototype.asyncSign = function (keypair) {
  * uses cryptography synchronously. Do not use in the main thread.
  */
 ContentAuth.prototype.verify = function () {
-  let hashbuf = Hash.sha256(this.getBufForSig())
+  let hashbuf = BSM.magicHash(this.getBufForSig())
   let ecdsa = ECDSA().fromObject({
     hashbuf: hashbuf,
     sig: this.sig,
@@ -160,7 +161,7 @@ ContentAuth.prototype.verify = function () {
 
 ContentAuth.prototype.asyncVerify = function () {
   return asink(function *() {
-    let hashbuf = yield CryptoWorkers.asyncSha256(this.getBufForSig())
+    let hashbuf = yield CryptoWorkers.asyncBSMHash(this.getBufForSig())
     let info = yield CryptoWorkers.asyncVerifyCompactSig(hashbuf, this.sig)
     return info.verified && (info.pubkey.point.eq(this.pubkey.point))
   }, this)
