@@ -58,6 +58,22 @@ CryptoWorkers.prototype.asyncSha256 = function sha256 (databuf) {
 }
 
 /**
+ * For signing data, we don't want to just use the sha256 hash like bitcoin so
+ * that we are not tricked into signing a transaction that spends bitcoin. It
+ * is safer to use the Bitcoin Signed Message hashing method which prepends the
+ * data with a prefix that makes it basically impossible to accidentally sign a
+ * transaction. TODO: For speed, rewrite tranmission to copy (node) or transfer
+ * (browser) a buffer rather than a hex string.
+ */
+CryptoWorkers.prototype.asyncBSMHash = function BSMHash (databuf) {
+  return asink(function *() {
+    let datahex = databuf.toString('hex')
+    let hashhex = yield q(this.pool.exec('BSMHash', [datahex]))
+    return new Buffer(hashhex, 'hex')
+  }, this)
+}
+
+/**
  * Derive a pubkey object from a privkey object in a worker. TODO: For
  * speed, rewrite transmission code to copy/transfer the buffer form of the
  * privkey to the worker and to send back the buffer form of the pubkey,
