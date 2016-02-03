@@ -231,5 +231,5 @@ Press for Datt
 - [2015-12-20: BTCManager: Datt To Introduce A Decentralized, Bitcoin-Enabled, Content-Sharing Platform](https://btcmanager.com/news/business/first-working-prototype-of-datt-decentralized-bitcoin-enabled-reddit/)
 - [2016-01-11 Ryan X. Charles on the Bitcoin Podcast: Episode #34: 20,000 Lines Under the Code](http://thebitcoinpodcast.com/episode-34/)
 - [2016-01-11 Japan Bitcoin interview with Ryan X. Charles](https://www.youtube.com/watch?v=9QRkYRR2Hm4&feature=youtu.be)
-- [2016-01-26 Bitcoin Social Network DATT Reaches Proof-of-Concept Stage](Bitcoin Social Network DATT Reaches Proof-of-Concept Stage)
+- [2016-01-26 CoinDesk: Bitcoin Social Network DATT Reaches Proof-of-Concept Stage](http://www.coindesk.com/bitcoin-social-network-datt-proof-of-concept/)
 - [2016-02-01 Phil Gomes: How Emerging Social Networks are Applying Economic Models to Attention and Content](https://www.linkedin.com/pulse/how-emerging-social-networks-applying-economic-models-phil-gomes)
