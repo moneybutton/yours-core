@@ -14,6 +14,8 @@ let ConfigPanel = require('./config-panel.jsx')
 let SetupModal = require('./setup-modal.jsx')
 let FormNewContent = require('./form-new-content.jsx')
 
+let EventEmitter = require('events')
+
 let Layout = React.createClass({
   getInitialState: function () {
     return {
@@ -21,7 +23,9 @@ let Layout = React.createClass({
       numActiveConnections: 0,
       view: {
         'contentList': true
-      }
+      },
+      skipSetup: false,
+      uiEvents: new EventEmitter()
     }
   },
 
@@ -36,6 +40,11 @@ let Layout = React.createClass({
   },
 
   componentWillMount: function () {
+    this.state.uiEvents.on('setup-closed', function () {
+      this.state.uiEvents.emit('refresh-content')
+      this.setState({skipSetup: true})
+    }.bind(this))
+
     this.updateStateFromHash()
     window.addEventListener('hashchange', this.updateStateFromHash)
 
@@ -46,13 +55,14 @@ let Layout = React.createClass({
 
         let userSetupFlag = yield dattcore.asyncGetUserSetupFlag()
 
-        if (!userSetupFlag && (window.location.hash === '#/frontpage' || !window.location.hash || window.location.hash === '#/') && (window.location.toString().indexOf('tests.html') === -1)) {
+        if (!userSetupFlag && !this.state.skipSetup && (window.location.hash === '#/frontpage' || !window.location.hash || window.location.hash === '#/') && (window.location.toString().indexOf('tests.html') === -1)) {
           window.location.hash = '#/setup'
         }
 
         this.setState({
           dattcoreStatus: 'initialized'
         })
+
         this.monitorDattCore()
       } catch (err) {
         this.setState({
@@ -128,11 +138,11 @@ let Layout = React.createClass({
       <TopMenu newClicked={this.newPostView} configClicked={this.configView} />
       <div className='row'>
       <div className={(this.state.view.settings ? 'col-md-8' : '')}>
-      <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeArgs} updateView={this.updateView} contentkey={this.state.routeArgs[0]} />
+      <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeArgs} updateView={this.updateView} contentkey={this.state.routeArgs[0]} uiEvents={this.state.uiEvents} skipSetup={this.state.skipSetup}/>
       </div>
       {[(this.state.view.settings
          ? (<div className='col-md-4 side-boxes'>
-             <ConfigPanel dattcore={dattcore} numActiveConnections={numActiveConnections}/>
+             <ConfigPanel dattcore={dattcore} numActiveConnections={numActiveConnections} />
          </div>) : null)]}
       </div>
       <div className='row footer container'>

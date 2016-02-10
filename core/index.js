@@ -123,7 +123,7 @@ DattCore.prototype.asyncNetworkInitialize = function () {
 DattCore.prototype.asyncNetworkClose = function () {
   return asink(function *() {
     this.corebitcoin.unmonitorBlockchainAPI()
-    // TODO: Also close p2p connections.
+  // TODO: Also close p2p connections.
   }, this)
 }
 
@@ -165,8 +165,9 @@ DattCore.prototype.asyncSetUserName = function (name) {
     let blockheightnum = info.blockheightnum
     yield this.coreuser.asyncSetName(name)
     let msgauth = yield this.coreuser.asyncGetMsgAuth(blockhashbuf, blockheightnum)
-    yield DBContentAuth(this.db, msgauth.contentauth).asyncSave()
-    // TODO: broadcast msgauth
+
+    this.asyncPostContentAuth(msgauth.contentauth)
+
     return this
   }, this)
 }
@@ -200,7 +201,7 @@ DattCore.prototype.asyncGetUserMnemonic = function () {
  * This convenience method is here primarily to iterate towards a prototype as
  * fast as possible. Normally, you probably don't want to build, sign and send
  * a transaction all in one go, because this provides no opportunity for user
- * freedback along the way. For instance, what if the user belieeves the
+ * freedback along the way. For instance, what if the user believes the
  * automatically calculated fees are excessive, and they wish not to actually
  * send the transaction? The UI should have a step after building, but before
  * signing and sending. But, like most prototype things, it's good enough for
@@ -281,9 +282,15 @@ DattCore.prototype.asyncNewContentAuth = function (title, label, body) {
  */
 DattCore.prototype.asyncPostContentAuth = function (contentauth) {
   return asink(function *() {
-    let msg = MsgContentAuth().fromContentAuth(contentauth).toMsg()
-    this.broadcastMsg(msg)
-    return this.corecontent.asyncPostContentAuth(contentauth)
+    let msgauth = MsgContentAuth().fromContentAuth(contentauth)
+    return this.asyncPostMsgAuth(msgauth)
+  }, this)
+}
+
+DattCore.prototype.asyncPostMsgAuth = function (msgauth) {
+  return asink(function *() {
+    this.broadcastMsg(msgauth.toMsg())
+    return this.corecontent.asyncPostContentAuth(msgauth.contentauth)
   }, this)
 }
 

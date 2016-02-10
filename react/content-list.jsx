@@ -17,14 +17,15 @@ let ContentList = React.createClass({
     }
   },
 
-  setStateFromDattCore: function () {
+  setStateFromDattCore: function (skipSetup) {
     return asink(function *() {
       let dattcore = this.props.dattcore
+
       let DattCore = dattcore.constructor
       let contentauths = yield dattcore.asyncGetRecentContentAuth()
       let waitOnUserSetup = false
 
-      if (!contentauths || !contentauths.length) {
+      if ((!contentauths || !contentauths.length) && !this.props.skipSetup && !skipSetup) {
         waitOnUserSetup = !(yield dattcore.asyncGetUserSetupFlag())
       }
 
@@ -43,12 +44,11 @@ let ContentList = React.createClass({
         contentList.push({key, address, addressString, title, name, label, body, comments})
       }
 
-      this.setState({contentList, waitOnUserSetup})
-
-      if (waitOnUserSetup) {
-        setTimeout(function () {
-          this.setState({waitOnUserSetup: false})
-        }.bind(this), 2000)
+      // doing this in case component is unmounted while waiting for 'yield' to return
+      // for argument for not using isMounted see: https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
+      // here there is no dangling reference but 'yield' within asink
+      if (this.isMounted()) {
+        this.setState({contentList, waitOnUserSetup})
       }
     }, this)
   },
@@ -58,15 +58,30 @@ let ContentList = React.createClass({
     return this.setStateFromDattCore()
   },
 
+  componentWillUnmount: function () {
+    this.unmonitorDattCore()
+  },
+
   componentWillReceiveProps: function () {
     return this.setStateFromDattCore()
   },
 
   monitorDattCore: function () {
     let dattcore = this.props.dattcore
+    let uiEvents = this.props.uiEvents
+
     dattcore.on('peers-content-auth', this.handlePeersContentAuth)
     dattcore.on('content-content-auth', this.handleContentContentAuth)
-    dattcore.on('refresh-content', this.handleRefreshContent)
+    uiEvents.on('refresh-content', this.handleRefreshContent)
+  },
+
+  unmonitorDattCore: function () {
+    let dattcore = this.props.dattcore
+    let uiEvents = this.props.uiEvents
+
+    dattcore.removeListener('peers-content-auth', this.handlePeersContentAuth)
+    dattcore.removeListener('content-content-auth', this.handleContentContentAuth)
+    uiEvents.removeListener('refresh-content', this.handleRefreshContent)
   },
 
   handlePeersContentAuth: function () {
@@ -78,12 +93,14 @@ let ContentList = React.createClass({
   },
 
   handleRefreshContent: function () {
-    return this.setStateFromDattCore()
+    return this.setStateFromDattCore(true)
   },
 
   propTypes: {
     dattcore: React.PropTypes.object,
-    updateView: React.PropTypes.func
+    updateView: React.PropTypes.func,
+    uiEvents: React.PropTypes.object,
+    skipSetup: React.PropTypes.bool
   },
 
   resetView: function () {
