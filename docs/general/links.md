@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [SatoshiPay Launches Bitcoin Nanopayment Network for Online Content](https://bitcoinmagazine.com/articles/satoshipay-launches-bitcoin-nanopayment-network-for-online-content-1454530389)
 - [OpenBazaar in Depth: Interview with COO Sam Patterson](http://bitcoinist.net/openbazaar-in-depth-interview-with-coo-sam-patterson/)
 - [Brave, Brenden Eich's new startup - it will include a bitcoin wallet with bitcoin micropayments](http://fusion.net/story/258828/brave-browser-business-model/)
 - [Curating Content through Prediction Markets and Network Tokens](http://www.philosophyofbitcoin.com/2014/04/curating-content-through-prediction.html)
@@ -98,6 +99,7 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [SatoshiPay](https://satoshipay.io/)
 - [WebTorrent](https://github.com/feross/webtorrent) - Torrent, for HTML5
 - [Enspiral - a virtual and physical network of companies and professionals brought together by a set of shared values and a passion for positive social impact.](http://www.enspiral.com/faq/)
 - [BlockAI - is a platform to give people who create digital assets a way to claim ownership of them by publishing to the blockchain, turning them into monetizable assets.](http://www.blockai.com/)
@@ -231,5 +233,6 @@ Press for Datt
 - [2015-12-20: BTCManager: Datt To Introduce A Decentralized, Bitcoin-Enabled, Content-Sharing Platform](https://btcmanager.com/news/business/first-working-prototype-of-datt-decentralized-bitcoin-enabled-reddit/)
 - [2016-01-11 Ryan X. Charles on the Bitcoin Podcast: Episode #34: 20,000 Lines Under the Code](http://thebitcoinpodcast.com/episode-34/)
 - [2016-01-11 Japan Bitcoin interview with Ryan X. Charles](https://www.youtube.com/watch?v=9QRkYRR2Hm4&feature=youtu.be)
-- [2016-01-26 Bitcoin Social Network DATT Reaches Proof-of-Concept Stage](Bitcoin Social Network DATT Reaches Proof-of-Concept Stage)
+- [2016-01-26 CoinDesk: Bitcoin Social Network DATT Reaches Proof-of-Concept Stage](http://www.coindesk.com/bitcoin-social-network-datt-proof-of-concept/)
 - [2016-02-01 Phil Gomes: How Emerging Social Networks are Applying Economic Models to Attention and Content](https://www.linkedin.com/pulse/how-emerging-social-networks-applying-economic-models-phil-gomes)
+- [2016-02-04 CoinTelegraph: Decentralized Social Networks with Bitcoin](http://cointelegraph.com/news/social-network-bitcoin-facebook-youtube)
