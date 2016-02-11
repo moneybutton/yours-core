@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Ello and consumer friendly business models (argues Ello's business model can't work because it charges money)](https://stratechery.com/2014/ello-consumer-friendly-business-models/)
 - [SatoshiPay Launches Bitcoin Nanopayment Network for Online Content](https://bitcoinmagazine.com/articles/satoshipay-launches-bitcoin-nanopayment-network-for-online-content-1454530389)
 - [OpenBazaar in Depth: Interview with COO Sam Patterson](http://bitcoinist.net/openbazaar-in-depth-interview-with-coo-sam-patterson/)
 - [Brave, Brenden Eich's new startup - it will include a bitcoin wallet with bitcoin micropayments](http://fusion.net/story/258828/brave-browser-business-model/)
