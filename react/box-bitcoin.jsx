@@ -7,6 +7,7 @@
 'use strict'
 let React = require('react')
 let asink = require('asink')
+let BitcoinQRCode = require('react-bitcoin-qr')
 
 let BoxBitcoin = React.createClass({
   getInitialState: function () {
@@ -113,6 +114,7 @@ let BoxBitcoin = React.createClass({
         <p>
           <button className='btn btn-default' onClick={this.handleReceive}>Receive</button>
         </p>
+        <BitcoinQRCode address={this.state.depositAddress} />
         <p>Deposit Address:<br/>{this.state.depositAddress}</p>
         <form>
           <div className='form-group'>
