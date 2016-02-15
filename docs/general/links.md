@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [A Decentralized Web Site Anchored in the Blockchain - Andrew Barisser](https://medium.com/@abarisser/a-decentralized-web-site-anchored-in-the-blockchain-14b91cef0e4c)
 - [People In Silicon Valley Don't Click On Ads](https://medium.com/@robleathern/people-in-silicon-valley-don-t-click-on-ads-9d2eed1c74af)
 - [Ello and consumer friendly business models (argues Ello's business model can't work because it charges money)](https://stratechery.com/2014/ello-consumer-friendly-business-models/)
 - [SatoshiPay Launches Bitcoin Nanopayment Network for Online Content](https://bitcoinmagazine.com/articles/satoshipay-launches-bitcoin-nanopayment-network-for-online-content-1454530389)
