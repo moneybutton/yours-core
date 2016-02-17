@@ -102,6 +102,7 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [Nuzzle - turns your twitter feed into a reddit-like feed](http://nuzzel.com/)
 - [SatoshiPay](https://satoshipay.io/)
 - [WebTorrent](https://github.com/feross/webtorrent) - Torrent, for HTML5
 - [Enspiral - a virtual and physical network of companies and professionals brought together by a set of shared values and a passion for positive social impact.](http://www.enspiral.com/faq/)
