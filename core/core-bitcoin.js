@@ -116,11 +116,7 @@ CoreBitcoin.prototype.asyncUpdateBalance = function () {
       addressStrings.push(yield CryptoWorkers.asyncAddressStringFromAddress(addresses[i]))
     }
     let obj = yield this.blockchainAPI.asyncGetAddressesBalancesSatoshis(addresses)
-    if (obj.confirmedBalanceSatoshis !== this.balances.confirmedBalanceSatoshis ||
-        obj.unconfirmedBalanceSatoshis !== this.balances.unconfirmedBalanceSatoshis ||
-        obj.totalBalanceSatoshis !== this.balances.totalBalanceSatoshis) {
-      this.emit('balance', obj)
-    }
+    this.emit('balance', obj)
     this.balances = obj
   }, this)
 }
@@ -153,6 +149,7 @@ CoreBitcoin.prototype.asyncBuildTransaction = function (toAddress, toAmountSatos
       txb.from(obj.txhashbuf, obj.txoutnum, obj.txout, obj.pubkey)
     })
     txb.to(BN(toAmountSatoshis), toAddress)
+
     txb.build()
     return txb
   }, this)
