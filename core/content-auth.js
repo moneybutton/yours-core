@@ -35,22 +35,38 @@ function ContentAuth (pubkey, sig, blockhashbuf, blockheightnum, parenthashbuf, 
   if (!(this instanceof ContentAuth)) {
     return new ContentAuth(pubkey, sig, blockhashbuf, blockheightnum, parenthashbuf, date, address, contentbuf)
   }
-  this.initialize()
+
   this.fromObject({pubkey, sig, blockhashbuf, blockheightnum, parenthashbuf, date, address, contentbuf})
+  this.initialize()
 }
 
 ContentAuth.prototype = Object.create(Struct.prototype)
 ContentAuth.prototype.constructor = ContentAuth
 
-ContentAuth.prototype.initialize = function () {
-  let buf = new Buffer(32)
-  buf.fill(0)
-  this.parenthashbuf = buf // Default to 'null' parent
-  this.date = new Date()
+let NULL_BUFFER_20 = new Buffer(20)
+NULL_BUFFER_20.fill(0)
+ContentAuth.NULL_ADDRESS = Address().fromPubkeyHashbuf(NULL_BUFFER_20)
 
-  // TODO: Default address is useful for testing but is a bad idea in
-  // production.
-  this.address = Address().fromPubkeyHashbuf(buf.slice(0, 20))
+ContentAuth.prototype.initialize = function () {
+  if (this.parenthashbuf === undefined || this.parenthashbuf === null) {
+    let nullBuf = new Buffer(32)
+    nullBuf.fill(0)
+    this.parenthashbuf = nullBuf // Default to 'null' parent
+  }
+
+  if (this.date === undefined || this.date === null) {
+    this.date = new Date()
+  }
+
+  if (this.address === undefined || this.address === null) {
+    if (this.pubkey !== undefined && this.pubkey !== null) {
+      // IF NO ADDRESS IS SET, BUT PUBKEY IS DEFINED, CREATE ADDRESS FROM PUBKEY (address for signing user)
+      this.address = Address().fromPubkey(this.pubkey)
+    } else {
+      // IF NO ADDRESS IS SET AND NO PUBKEY IS DEFINED, CREATE NULL ADDRESS TEMPORARILY
+      this.address = ContentAuth.NULL_ADDRESS
+    }
+  }
 
   return this
 }
@@ -101,10 +117,23 @@ ContentAuth.prototype.getBufForSig = function () {
   return bw.toBuffer()
 }
 
+ContentAuth.prototype.setAddressFromPubkey = function (pubkey) {
+  // console.log('ContentAuth.prototype.setAddressFromPubkey(pubkey="' + pubkey + '")')
+  // console.log('Old address, this.address="' + this.address + '"')
+  this.address = Address().fromPubkey(pubkey)
+  // console.log('New address, this.address="' + this.address + '"')
+  return this.address
+}
+
 /**
  * This method uses cryptography synchronously. Do not use in the main thread.
  */
 ContentAuth.prototype.sign = function (keypair) {
+  this.pubkey = keypair.pubkey
+  if (this.address === ContentAuth.NULL_ADDRESS || this.address === undefined || this.address === null) {
+    this.setAddressFromPubkey(this.pubkey)
+  }
+
   let hashbuf = BSM.magicHash(this.getBufForSig())
   let ecdsa = ECDSA().fromObject({
     hashbuf: hashbuf,
@@ -113,7 +142,6 @@ ContentAuth.prototype.sign = function (keypair) {
   ecdsa.sign()
   ecdsa.calcrecovery()
   let sig = ecdsa.sig
-  this.pubkey = keypair.pubkey
   this.sig = sig
   return this
 }
@@ -124,10 +152,13 @@ ContentAuth.prototype.sign = function (keypair) {
  */
 ContentAuth.prototype.asyncSign = function (keypair) {
   return asink(function *() {
+    this.pubkey = keypair.pubkey
+    if (this.address === ContentAuth.NULL_ADDRESS || this.address === undefined || this.address === null) {
+      this.setAddressFromPubkey(this.pubkey)
+    }
     let hashbuf = yield CryptoWorkers.asyncBSMHash(this.getBufForSig())
     let sig = yield CryptoWorkers.asyncSignCompact(hashbuf, keypair.privkey)
     this.sig = sig
-    this.pubkey = keypair.pubkey
     return this
   }, this)
 }
