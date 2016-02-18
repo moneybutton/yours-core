@@ -54,8 +54,12 @@ let ContentList = React.createClass({
   },
 
   componentWillMount: function () {
-    this.monitorDattCore()
-    return this.setStateFromDattCore()
+    return asink(function *() {
+      this.monitorDattCore()
+      let dattcore = this.props.dattcore
+      yield dattcore.whenInitialized()
+      return this.setStateFromDattCore()
+    }, this)
   },
 
   componentWillUnmount: function () {
