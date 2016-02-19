@@ -191,6 +191,10 @@ DattCore.prototype.asyncGetUserMnemonic = function () {
   return Promise.resolve(this.coreuser.user.mnemonic)
 }
 
+DattCore.prototype.getLastBalances = function () {
+  return this.corebitcoin.getLastBalances()
+}
+
 /**
  * Bitcoin
  * -------
@@ -212,6 +216,7 @@ DattCore.prototype.asyncBuildSignAndSendTransaction = function (toAddress, toAmo
 
 DattCore.prototype.monitorCoreBitcoin = function () {
   this.corebitcoin.on('balance', this.handleBitcoinBalance.bind(this))
+  this.corebitcoin.on('block-info', this.handleBlockInfo.bind(this))
   return this
 }
 
@@ -220,13 +225,25 @@ DattCore.prototype.handleBitcoinBalance = function (obj) {
   return this
 }
 
+DattCore.prototype.handleBlockInfo = function (obj) {
+  this.emit('bitcoin-block-info', obj)
+  return this
+}
+
 /**
  * Return information about the latest block, including the id and height.
- * TODO: Make this actually return the latest block info instead of a
- * pre-programmed value.
  */
 DattCore.prototype.asyncGetLatestBlockInfo = function () {
   return this.corebitcoin.asyncGetLatestBlockInfo()
+}
+
+/**
+ * Return cached info for last block if available
+ * Will return undefined if called before the first call of CoreBitcoin#asyncGetLatestBlockInfo
+ * Just for cases where you need to show something immediately and update after
+ */
+DattCore.prototype.getLastBlockInfo = function () {
+  return this.corebitcoin.getLastBlockInfo()
 }
 
 DattCore.prototype.asyncGetExtAddress = function (index) {

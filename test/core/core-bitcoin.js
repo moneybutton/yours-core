@@ -82,6 +82,44 @@ describe('CoreBitcoin', function () {
     })
   })
 
+  describe('#getLastBalances', function () {
+    it('if no balances have been retrieved remotely, it should return default balances obj from CoreBitcoin#initialize', function () {
+      let corebitcoin = CoreBitcoin()
+
+      let cachedBalances = corebitcoin.getLastBalances()
+
+      should.exist(cachedBalances)
+
+      cachedBalances.should.be.an.instanceOf(Object)
+      cachedBalances.should.have.property('confirmedBalanceSatoshis', 0)
+      cachedBalances.should.have.property('unconfirmedBalanceSatoshis', 0)
+      cachedBalances.should.have.property('totalBalanceSatoshis', 0)
+    })
+
+    it('should return the last balances retrieved', function () {
+      return asink(function *() {
+        let mockBalances = {
+          confirmedBalanceSatoshis: 100,
+          unconfirmedBalanceSatoshis: 0,
+          totalBalanceSatoshis: 100
+        }
+
+        let corebitcoin = CoreBitcoin()
+
+        corebitcoin.asyncGetAllAddresses = () => Promise.resolve([])
+        corebitcoin.blockchainAPI = {
+          asyncGetAddressesBalancesSatoshis: sinon.stub().returns(Promise.resolve(mockBalances))
+        }
+
+        yield corebitcoin.asyncUpdateBalance()
+
+        let cachedBalances = corebitcoin.getLastBalances()
+
+        mockBalances.should.equal(cachedBalances)
+      })
+    })
+  })
+
   describe('#asyncBuildTransaction', function () {
     it('should create a txbuilder object from mocked data', function () {
       return asink(function *() {

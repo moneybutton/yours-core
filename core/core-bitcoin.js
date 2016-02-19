@@ -116,7 +116,11 @@ CoreBitcoin.prototype.asyncUpdateBalance = function () {
       addressStrings.push(yield CryptoWorkers.asyncAddressStringFromAddress(addresses[i]))
     }
     let obj = yield this.blockchainAPI.asyncGetAddressesBalancesSatoshis(addresses)
-    this.emit('balance', obj)
+
+    if (obj.confirmedBalanceSatoshis !== this.balances.confirmedBalanceSatoshis || obj.unconfirmedBalanceSatoshis !== this.balances.unconfirmedBalanceSatoshis ||
+        obj.totalBalanceSatoshis !== this.balances.totalBalanceSatoshis) {
+      this.emit('balance', obj)
+    }
     this.balances = obj
   }, this)
 }
@@ -134,8 +138,28 @@ CoreBitcoin.prototype.asyncPollBalance = function () {
   }, this)
 }
 
+CoreBitcoin.prototype.getLastBalances = function () {
+  return this.balances
+}
+
 CoreBitcoin.prototype.asyncGetLatestBlockInfo = function () {
-  return this.blockchainAPI.asyncGetLatestBlockInfo()
+  return asink(function *() {
+    let blockInfo = yield this.blockchainAPI.asyncGetLatestBlockInfo()
+
+    let blockInfoFound = blockInfo && blockInfo.hashbuf
+    let blockChanged = blockInfoFound && (!this.lastBlockInfo || !this.lastBlockInfo.hashbuf || this.lastBlockInfo.hashbuf.toString('hex') !== blockInfo.hashbuf.toString('hex'))
+
+    if (blockChanged) {
+      this.emit('block-info', blockInfo)
+    }
+
+    this.lastBlockInfo = blockInfo
+    return blockInfo
+  }, this)
+}
+
+CoreBitcoin.prototype.getLastBlockInfo = function () {
+  return this.lastBlockInfo
 }
 
 CoreBitcoin.prototype.asyncBuildTransaction = function (toAddress, toAmountSatoshis) {
