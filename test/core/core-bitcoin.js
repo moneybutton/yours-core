@@ -334,5 +334,14 @@ describe('CoreBitcoin', function () {
         corebitcoin.blockchainAPI.asyncGetLatestBlockInfo.calledOnce.should.equal(true)
       })
     })
+
+    it('should emit event "block-info" on CoreBitcoin', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+        corebitcoin.emit = sinon.spy()
+        yield corebitcoin.asyncGetLatestBlockInfo()
+        corebitcoin.emit.calledWith('block-info').should.equal(true)
+      })
+    })
   })
 })
