@@ -344,4 +344,25 @@ describe('CoreBitcoin', function () {
       })
     })
   })
+
+  describe('#getLastBlockInfo', function () {
+    it('if no block has been retrieved, it should return null', function () {
+      let corebitcoin = CoreBitcoin()
+
+      let lastBlockInfo = corebitcoin.getLastBlockInfo()
+
+      should(lastBlockInfo).not.be.ok()
+    })
+
+    it('should return the last block retrieved', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+
+        let retrievedBlockInfo = yield corebitcoin.asyncGetLatestBlockInfo()
+        let cachedBlockInfo = corebitcoin.getLastBlockInfo()
+
+        retrievedBlockInfo.should.equal(cachedBlockInfo)
+      })
+    })
+  })
 })
