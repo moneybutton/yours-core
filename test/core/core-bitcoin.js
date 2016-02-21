@@ -354,7 +354,7 @@ describe('CoreBitcoin', function () {
       should(lastBlockInfo).not.be.ok()
     })
 
-    it('should return the last block retrieved', function () {
+    it('should return the last block retrieved by #asyncGetLatestBlockInfo', function () {
       return asink(function *() {
         let corebitcoin = CoreBitcoin()
 

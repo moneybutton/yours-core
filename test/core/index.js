@@ -275,4 +275,25 @@ describe('DattCore', function () {
       dattcore.corepeers.broadcastMsg.calledWith(msg).should.equal(true)
     })
   })
+
+  describe('#getLastBlockInfo', function () {
+    it('if no block has been retrieved, it should return null', function () {
+      let dattcore = DattCore({dbname: 'datt-temp'})
+
+      let lastBlockInfo = dattcore.getLastBlockInfo()
+
+      should(lastBlockInfo).not.be.ok()
+    })
+
+    it('should return the last block retrieved #asyncGetLatestBlockInfo', function () {
+      return asink(function *() {
+        let dattcore = DattCore({dbname: 'datt-temp'})
+
+        let retrievedBlockInfo = yield dattcore.asyncGetLatestBlockInfo()
+        let cachedBlockInfo = dattcore.getLastBlockInfo()
+
+        retrievedBlockInfo.should.equal(cachedBlockInfo)
+      })
+    })
+  })
 })
