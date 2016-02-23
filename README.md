@@ -9,6 +9,10 @@ stay up-to-date on progress.
 
 How To Test And Develop Datt
 ----------------------------
+
+Just want to get Datt up and running quickly? See [Running Datt with
+Docker](#running-datt-with-docker).
+
 Datt can be built and run on Linux. It is not tested on Mac or Windows, but
 should work with minimal or no changes on those platforms. To help program the
 Datt application, first be sure you are running node 4.2:
@@ -109,3 +113,13 @@ Environment Variables
 - `DATT_REACT_JS_FILE` - Default "datt-react.js". The React front-end bundle.
 - `FULLNODE_NETWORK` - Default "mainnet". Can also be "testnet".
 - `DATT_BLOCKCHAIN_API_URI` - Default "https://insight.bitpay.com/api/".
+
+Running Datt with Docker
+-------------------------
+
+- Make sure you have [docker](https://www.docker.com/) installed on your machine.
+- Run `docker-compose up`.
+- Open your web browser at http://docker_host_ip:3040. You can find out
+  `docker_host_ip` by running `docker-machine ip default` if use use
+  docker-machine. If you are running docker locally on a Linux machine,
+  the IP will simply be 127.0.0.1.
