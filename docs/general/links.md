@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Apple: A Message to Our Customers (a letter by Apple about not giving into the FBI to help them decrypt their phones)](http://www.apple.com/customer-letter/)
 - [Datt: The next step in social networks? (video by Chris)](https://www.youtube.com/watch?v=NjMIeio_qfY)
 - [The Ad Blocking Wars - NYTimes](http://www.nytimes.com/2016/02/21/opinion/sunday/the-ad-blocking-wars.html?smid=tw-nytopinion&smtyp=cur&_r=0)
 - [A Decentralized Web Site Anchored in the Blockchain - Andrew Barisser](https://medium.com/@abarisser/a-decentralized-web-site-anchored-in-the-blockchain-14b91cef0e4c)
