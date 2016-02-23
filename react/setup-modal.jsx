@@ -14,10 +14,13 @@ let SetupModal = React.createClass({
 
   close: function () {
     this.setState({open: false})
+    this.onClose()
   },
 
   onClose: function () {
+    let uiEvents = this.props.uiEvents
     window.location.hash = '#/frontpage'
+    uiEvents.emit('setup-closed', null)
   },
 
   clickCreateNew: function () {
@@ -38,7 +41,8 @@ let SetupModal = React.createClass({
 
   propTypes: {
     dattcore: React.PropTypes.object,
-    routeArgs: React.PropTypes.arrayOf(React.PropTypes.string)
+    routeArgs: React.PropTypes.arrayOf(React.PropTypes.string),
+    uiEvents: React.PropTypes.object
   },
 
   setStateFromDattcore: function () {
@@ -67,11 +71,16 @@ let SetupModal = React.createClass({
     let newUserName = this.refs.newUserNameInput.value
 
     return asink(function *() {
-      this.close()
+      let uiEvents = this.props.uiEvents
       let dattcore = this.props.dattcore
-      yield dattcore.asyncSetUserName(newUserName)
+
+      this.close()
+
       yield dattcore.asyncSetUserSetupFlag(true)
-      window.location.hash = '#/frontpage'
+
+      yield dattcore.asyncSetUserName(newUserName)
+
+      uiEvents.emit('refresh-content', null)
     }, this)
   },
 
@@ -158,7 +167,7 @@ let SetupModal = React.createClass({
 
     return (
       <div ref='modal_container'>
-        <Modal show onHide={this.onClose} container={this.refs.modal_container}>
+        <Modal show={this.state.open} onHide={this.onClose} container={this.refs.modal_container} >
           <Modal.Body>
           <div className='container-fluid'>
             {setupContent}
