@@ -35,14 +35,16 @@ npm run watch-test-node
 ```
 ...then save a file and the tests will run.
 
-To run only the browser tests:
+To run the server and use the app:
 ```
-npm run serve
+npm run serve-testnet
 ```
 
 This will serve the files, run the PeerJS rendezvous server, and run a
 browser-sync proxy server that will automatically refresh your browser when the
-files change. You can then access the tests at:
+files change. (If for some reason you wish to run in dangerous mainnet mode
+instead, replace 'testnet' for 'mainnet' above). You can then access the tests
+at:
 
 ```
 http://localhost:3040/tests.html
