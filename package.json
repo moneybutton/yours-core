@@ -1,24 +1,25 @@
 {
   "name": "datt",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "It's cool when users own their content.",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/gulp",
+    "build": "gulp",
     "test": "npm run test-format && npm run test-both",
-    "test-local": "npm run test-format && DATT_BLOCKCHAIN_API_URI=http://localhost:3001/insight-api/ npm run test-both",
-    "test-files": "./node_modules/.bin/mocha --compilers .jsx:babel-core/register",
+    "test-localapi": "npm run test-format && DATT_BLOCKCHAIN_API_URI=http://localhost:3001/insight-api/ npm run test-both",
+    "test-files": "mocha --compilers .jsx:babel-core/register",
     "test-format": "npm run standard",
     "test-both": "npm run test-node && npm run test-karma",
-    "test-node": "./node_modules/.bin/gulp test-node",
-    "test-karma": "./node_modules/.bin/gulp test-karma",
-    "serve-local-mainnet": "DATT_BLOCKCHAIN_API_URI=http://localhost:3001/insight-api/ ./node_modules/.bin/gulp serve",
-    "serve-local-testnet": "FULLNODE_NETWORK=testnet DATT_BLOCKCHAIN_API_URI=http://localhost:3002/insight-api/ ./node_modules/.bin/gulp serve",
-    "serve": "./node_modules/.bin/gulp serve",
-    "watch-test-node-local": "DATT_BLOCKCHAIN_API_URI=http://localhost:3001/insight-api/ ./node_modules/.bin/gulp watch-test-node",
-    "watch-test-node": "./node_modules/.bin/gulp watch-test-node",
-    "core-coverage": "./node_modules/.bin/istanbul cover -v ./node_modules/.bin/_mocha -- test/**/*.js -R spec",
-    "standard": "./node_modules/.bin/standard *.js core/**/*.js bin/**/*.js server/**/*.js test/**/*.js test/**/*.jsx react/**/*.js react/**/*.jsx"
+    "test-node": "gulp test-node",
+    "test-karma": "gulp test-karma",
+    "serve-localapi-mainnet": "DATT_BLOCKCHAIN_API_URI=http://localhost:3001/insight-api/ gulp serve",
+    "serve-localapi-testnet": "FULLNODE_NETWORK=testnet DATT_BLOCKCHAIN_API_URI=http://localhost:3002/insight-api/ gulp serve",
+    "serve-mainnet": "gulp serve",
+    "serve-testnet": "FULLNODE_NETWORK=testnet DATT_BLOCKCHAIN_API_URI=https://test-insight.bitpay.com/api/ gulp serve",
+    "watch-test-node-localapi": "DATT_BLOCKCHAIN_API_URI=http://localhost:3001/insight-api/ gulp watch-test-node",
+    "watch-test-node": "gulp watch-test-node",
+    "core-coverage": "istanbul cover -v _mocha -- test/**/*.js -R spec",
+    "standard": "standard *.js core/**/*.js bin/**/*.js server/**/*.js test/**/*.js test/**/*.jsx react/**/*.js react/**/*.jsx"
   },
   "engines": {
     "node": ">=4.2.0"
