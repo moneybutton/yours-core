@@ -36,6 +36,18 @@ let BoxBitcoin = React.createClass({
   },
 
   componentWillMount: function () {
+    let dattcore = this.props.dattcore
+
+    let initBalances = dattcore.getLastBalances()
+    if (initBalances) {
+      this.handleBitcoinBalance(initBalances)
+    }
+
+    let initBlockInfo = dattcore.getLastBlockInfo()
+    if (initBlockInfo) {
+      this.handleBlockInfo(initBlockInfo)
+    }
+
     this.monitorDattCore()
   },
 
@@ -49,14 +61,7 @@ let BoxBitcoin = React.createClass({
 
   monitorDattCore: function () {
     let dattcore = this.props.dattcore
-    let initBalances = dattcore.getLastBalances()
-    if (initBalances) {
-      this.handleBitcoinBalance(initBalances)
-    }
-    let initBlockInfo = dattcore.getLastBlockInfo()
-    if (initBlockInfo) {
-      this.handleBlockInfo(initBlockInfo)
-    }
+
     dattcore.on('bitcoin-balance', this.handleBitcoinBalance)
     dattcore.on('bitcoin-block-info', this.handleBlockInfo)
   },
