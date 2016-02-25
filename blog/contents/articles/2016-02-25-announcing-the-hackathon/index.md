@@ -6,7 +6,7 @@ template: article.jade
 ---
 We're holding the second Datt hackathon this weekend, Feb. 26 - 28, 2016, on
 the Datt Slack channel and in real life at the LAUNCH Hackathon in San
-Francisco. The follow text was sent out to the Datt hackathon this morning:
+Francisco. The follow text was sent out to the Datt mailing list this morning:
 
 -------------------
 
