@@ -325,22 +325,35 @@ describe('CoreBitcoin', function () {
     })
   })
 
-  describe('#asyncGetLatestBlockInfo', function () {
+  describe('#asyncUpdateBlockInfo', function () {
     it('should call blockchainAPI.asyncGetLatestBlockInfo', function () {
       return asink(function *() {
+        this.timeout(10000)
         let corebitcoin = CoreBitcoin()
         corebitcoin.blockchainAPI.asyncGetLatestBlockInfo = sinon.spy()
         yield corebitcoin.asyncGetLatestBlockInfo()
         corebitcoin.blockchainAPI.asyncGetLatestBlockInfo.calledOnce.should.equal(true)
-      })
+      }, this)
     })
 
     it('should emit event "block-info" on CoreBitcoin', function () {
       return asink(function *() {
+        this.timeout(10000)
         let corebitcoin = CoreBitcoin()
         corebitcoin.emit = sinon.spy()
         yield corebitcoin.asyncGetLatestBlockInfo()
         corebitcoin.emit.calledWith('block-info').should.equal(true)
+      }, this)
+    })
+  })
+
+  describe('#asyncGetLatestBlockInfo', function () {
+    it('should call #asyncUpdateBlockInfo', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+        corebitcoin.asyncUpdateBlockInfo = sinon.spy()
+        yield corebitcoin.asyncGetLatestBlockInfo()
+        corebitcoin.asyncUpdateBlockInfo.calledOnce.should.equal(true)
       })
     })
   })

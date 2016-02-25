@@ -12,6 +12,7 @@ let sinon = require('sinon')
 
 describe('DattCore', function () {
   let dattcore
+  this.timeout(5000)
 
   it('should have these known properties', function () {
     should.exist(DattCore.CryptoWorkers)
@@ -31,8 +32,9 @@ describe('DattCore', function () {
 
   after(function () {
     return asink(function *() {
-      yield dattcore.db.asyncDestroy()
-    })
+      this.timeout(10000)
+      return dattcore.db.asyncDestroy()
+    }, this)
   })
 
   describe('#asyncInitialize', function () {
@@ -278,22 +280,44 @@ describe('DattCore', function () {
 
   describe('#getLastBlockInfo', function () {
     it('if no block has been retrieved, it should return null', function () {
-      let dattcore = DattCore({dbname: 'datt-temp'})
+      return asink(function *() {
+        let dattcore = DattCore({dbname: 'datt-temp-for-asyncGetLatestBlockInfo-1'})
+        yield dattcore.asyncInitialize()
+        let lastBlockInfo = dattcore.getLastBlockInfo()
 
-      let lastBlockInfo = dattcore.getLastBlockInfo()
+        should(lastBlockInfo).not.be.ok()
 
-      should(lastBlockInfo).not.be.ok()
+        yield dattcore.db.asyncDestroy()
+      })
     })
 
-    it('should return the last block retrieved #asyncGetLatestBlockInfo', function () {
+    it('should return the last block updated with CoreBitcoin#asyncUpdateLatestBlockInfo', function () {
       return asink(function *() {
-        let dattcore = DattCore({dbname: 'datt-temp'})
+        this.timeout(10000)
+
+        let dattcore = DattCore({dbname: 'datt-temp-for-asyncGetLatestBlockInfo-2'})
+
+        yield dattcore.asyncInitialize()
+
+        // Mock underlying BlockchainAPI call to speed up tests
+        // this is already tested in CoreBitcoin#asyncUpdateLatestBlockInfo and BlockchainAPI tests
+        let mockedBlockInfo = {
+          idbuf: new Buffer([0, 0, 0, 0, 0, 0, 0, 0, 5, 157, 214, 159, 69, 45, 35, 224, 22, 208, 238, 207, 115, 29, 160, 134, 76, 174, 84, 140, 203, 61, 184, 53]),
+          idhex: '0000000000000000059dd69f452d23e016d0eecf731da0864cae548ccb3db835',
+          hashbuf: new Buffer([53, 184, 61, 203, 140, 84, 174, 76, 134, 160, 29, 115, 207, 238, 208, 22, 224, 35, 45, 69, 159, 214, 157, 5, 0, 0, 0, 0, 0, 0, 0, 0]),
+          hashhex: '35b83dcb8c54ae4c86a01d73cfeed016e0232d459fd69d050000000000000000',
+          height: 399796
+        }
+
+        dattcore.corebitcoin.blockchainAPI.asyncGetLatestBlockInfo = sinon.stub().returns(Promise.resolve(mockedBlockInfo))
 
         let retrievedBlockInfo = yield dattcore.asyncGetLatestBlockInfo()
         let cachedBlockInfo = dattcore.getLastBlockInfo()
 
         retrievedBlockInfo.should.equal(cachedBlockInfo)
-      })
+
+        yield dattcore.db.asyncDestroy()
+      }, this)
     })
   })
 })

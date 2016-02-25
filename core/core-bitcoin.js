@@ -142,19 +142,26 @@ CoreBitcoin.prototype.getLastBalances = function () {
   return this.balances
 }
 
-CoreBitcoin.prototype.asyncGetLatestBlockInfo = function () {
+CoreBitcoin.prototype.asyncUpdateBlockInfo = function () {
   return asink(function *() {
     let blockInfo = yield this.blockchainAPI.asyncGetLatestBlockInfo()
 
     let blockInfoFound = blockInfo && blockInfo.hashbuf
     let blockChanged = blockInfoFound && (!this.lastBlockInfo || !this.lastBlockInfo.hashbuf || this.lastBlockInfo.hashbuf.toString('hex') !== blockInfo.hashbuf.toString('hex'))
 
+    this.lastBlockInfo = blockInfo
+
     if (blockChanged) {
       this.emit('block-info', blockInfo)
     }
 
-    this.lastBlockInfo = blockInfo
     return blockInfo
+  }, this)
+}
+
+CoreBitcoin.prototype.asyncGetLatestBlockInfo = function () {
+  return asink(function *() {
+    return this.asyncUpdateBlockInfo()
   }, this)
 }
 
