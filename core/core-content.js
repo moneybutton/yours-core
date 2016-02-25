@@ -78,6 +78,10 @@ CoreContent.prototype.asyncGetRecentContentAuth = function () {
   return DBContentAuth(this.db).asyncGetAll()
 }
 
+/**
+ * Retrieve single piece of content by hashbuf.
+ * This is the basic content retrieval method when you know the hashbuf of the content you want.
+ */
 CoreContent.prototype.asyncGetContentAuth = function (hashbuf) {
   return DBContentAuth(this.db).asyncGet(hashbuf)
 }

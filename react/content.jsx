@@ -36,7 +36,7 @@ let Content = React.createClass({
       let dattcore = this.props.dattcore
       let DattCore = dattcore.constructor
 
-      let contentauth = yield dattcore.corecontent.asyncGetContentAuth(new Buffer(this.props.contentkey, 'hex'))
+      let contentauth = yield dattcore.asyncGetContentAuth(new Buffer(this.props.contentkey, 'hex'))
 
       if (contentauth && contentauth.getContent()) {
         let key = contentauth.cachehash.toString('hex')

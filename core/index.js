@@ -69,28 +69,80 @@ DattCore.prototype.initialize = function () {
  */
 DattCore.prototype.asyncInitialize = function () {
   return asink(function *() {
+    yield this.asyncInitializeDb()
+    yield this.asyncInitializeCoreContent()
+
+    yield this.asyncInitializeCoreUser()
+    yield this.asyncInitializeCoreBitcoin()
+    yield this.asyncInitializeCorePeers()
+
+    this.isinitialized = true
+    this.emit('initialized', this.isinitialized)
+    return Promise.resolve()
+  }, this)
+}
+
+DattCore.prototype.asyncInitializeDb = function () {
+  return asink(function *() {
     if (!this.db) {
       let name = this.config.dbName
       let basePath = this.config.dbBasePath
       this.db = DB(name, basePath)
     }
+    return this.db.asyncInitialize()
+  }, this)
+}
 
+DattCore.prototype.asyncInitializeCoreBitcoin = function () {
+  return asink(function *() {
     this.corebitcoin = CoreBitcoin(this.config.blockchainAPIURI, this.db)
-    this.corecontent = CoreContent(this.db)
-    this.coreuser = CoreUser(this.db)
-    this.corepeers = CorePeers({rendezvous: this.config.rendezvous}, this.db)
-
     this.monitorCoreBitcoin()
-    this.monitorCoreContent()
-    this.monitorCorePeers()
-
-    yield this.db.asyncInitialize()
-    yield this.coreuser.asyncInitialize()
     yield this.corebitcoin.asyncInitialize(this.coreuser.user)
 
-    this.isinitialized = true
-    return Promise.resolve()
+    return this.corebitcoin
   }, this)
+}
+
+DattCore.prototype.asyncInitializeCoreContent = function () {
+  return asink(function *() {
+    this.corecontent = CoreContent(this.db)
+    this.monitorCoreContent()
+
+    return this.corecontent
+  }, this)
+}
+
+DattCore.prototype.asyncInitializeCoreUser = function () {
+  return asink(function *() {
+    this.coreuser = CoreUser(this.db)
+    yield this.coreuser.asyncInitialize()
+
+    return this.coreuser
+  }, this)
+}
+
+DattCore.prototype.asyncInitializeCorePeers = function () {
+  return asink(function *() {
+    this.corepeers = CorePeers({rendezvous: this.config.rendezvous}, this.db)
+    this.monitorCorePeers()
+
+    return this.corepeers
+  }, this)
+}
+
+/**
+ * Get a promise resolved if/when DattCore and all its dependencies are finished initializing
+ */
+DattCore.prototype.whenInitialized = function () {
+  return new Promise(function (resolve) {
+    if (this.isinitialized) {
+      resolve(true)
+    } else {
+      this.on('initialized', function () {
+        resolve(this.isinitialized)
+      }.bind(this))
+    }
+  }.bind(this))
 }
 
 /**
@@ -123,7 +175,7 @@ DattCore.prototype.asyncNetworkInitialize = function () {
 DattCore.prototype.asyncNetworkClose = function () {
   return asink(function *() {
     this.corebitcoin.unmonitorBlockchainAPI()
-    // TODO: Also close p2p connections.
+  // TODO: Also close p2p connections.
   }, this)
 }
 
@@ -165,8 +217,9 @@ DattCore.prototype.asyncSetUserName = function (name) {
     let blockheightnum = info.blockheightnum
     yield this.coreuser.asyncSetName(name)
     let msgauth = yield this.coreuser.asyncGetMsgAuth(blockhashbuf, blockheightnum)
-    yield DBContentAuth(this.db, msgauth.contentauth).asyncSave()
-    // TODO: broadcast msgauth
+
+    this.asyncPostContentAuth(msgauth.contentauth)
+
     return this
   }, this)
 }
@@ -200,7 +253,7 @@ DattCore.prototype.asyncGetUserMnemonic = function () {
  * This convenience method is here primarily to iterate towards a prototype as
  * fast as possible. Normally, you probably don't want to build, sign and send
  * a transaction all in one go, because this provides no opportunity for user
- * freedback along the way. For instance, what if the user belieeves the
+ * freedback along the way. For instance, what if the user believes the
  * automatically calculated fees are excessive, and they wish not to actually
  * send the transaction? The UI should have a step after building, but before
  * signing and sending. But, like most prototype things, it's good enough for
@@ -281,9 +334,19 @@ DattCore.prototype.asyncNewContentAuth = function (title, label, body) {
  */
 DattCore.prototype.asyncPostContentAuth = function (contentauth) {
   return asink(function *() {
-    let msg = MsgContentAuth().fromContentAuth(contentauth).toMsg()
-    this.broadcastMsg(msg)
-    return this.corecontent.asyncPostContentAuth(contentauth)
+    let msgauth = MsgContentAuth().fromContentAuth(contentauth)
+    return this.asyncPostMsgAuth(msgauth)
+  }, this)
+}
+
+/**
+ * Post new message auth. This both saves the associated contentauth to the DB
+ * and broadcasts the message auth in message form to your peers.
+ */
+DattCore.prototype.asyncPostMsgAuth = function (msgauth) {
+  return asink(function *() {
+    this.broadcastMsg(msgauth.toMsg())
+    return this.corecontent.asyncPostContentAuth(msgauth.contentauth)
   }, this)
 }
 
@@ -304,6 +367,15 @@ DattCore.prototype.asyncPostNewContentAuth = function (title, label, body) {
  */
 DattCore.prototype.asyncGetRecentContentAuth = function () {
   return this.corecontent.asyncGetRecentContentAuth()
+}
+
+/**
+ * Retrieve single piece of content by hashbuf.
+ * This is the basic content retrieval method used by the single-content view.
+ * Use this whenever you need a single piece of content by hash.
+ */
+DattCore.prototype.asyncGetContentAuth = function (hashbuf) {
+  return this.corecontent.asyncGetContentAuth(hashbuf)
 }
 
 /**

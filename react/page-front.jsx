@@ -17,13 +17,15 @@ let PageFront = React.createClass({
     dattcore: React.PropTypes.object,
     dattcoreStatus: React.PropTypes.string,
     view: React.PropTypes.object,
-    updateView: React.PropTypes.func
+    updateView: React.PropTypes.func,
+    uiEvents: React.PropTypes.object,
+    skipSetup: React.PropTypes.bool
   },
 
   render: function () {
     return (
       <div>
-          <ContentList key='contentList' dattcore={this.props.dattcore} updateView={this.props.updateView}/>
+          <ContentList key='contentList' dattcore={this.props.dattcore} updateView={this.props.updateView} uiEvents={this.props.uiEvents} skipSetup={this.props.skipSetup} />
       </div>
     )
   }
