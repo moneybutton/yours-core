@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Changetip embraces decentralization with new wallet - will support Lightning Network in the future](http://coinjournal.net/changetip-embraces-decentralization-with-new-bitcoin-wallet/)
 - [Apple: A Message to Our Customers (a letter by Apple about not giving into the FBI to help them decrypt their phones)](http://www.apple.com/customer-letter/)
 - [Datt: The next step in social networks? (video by Chris)](https://www.youtube.com/watch?v=NjMIeio_qfY)
 - [The Ad Blocking Wars - NYTimes](http://www.nytimes.com/2016/02/21/opinion/sunday/the-ad-blocking-wars.html?smid=tw-nytopinion&smtyp=cur&_r=0)
