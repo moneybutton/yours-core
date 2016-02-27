@@ -22,7 +22,7 @@
     "standard": "standard *.js core/**/*.js bin/**/*.js server/**/*.js test/**/*.js test/**/*.jsx react/**/*.js react/**/*.jsx"
   },
   "engines": {
-    "node": ">=4.2.0"
+    "node": ">=4.3.0"
   },
   "browserify": {
     "transform": [
