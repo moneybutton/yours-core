@@ -10,7 +10,7 @@ Datt, and the idea of decentralized content sharing that rewards the users on th
 
                                                          
 
-The internet, it was on the most significant advents in human history. Thanks to the power of the “interwebs”, for the first time we (humanity) had finally been gifted a medium to truly call our own; with the ability to communicate in realtime with some of the brightest minds all over the world.
+The internet, it was one of the most significant advents in human history. Thanks to the power of the “interwebs”, for the first time we (humanity) had finally been gifted a medium to truly call our own; with the ability to communicate in realtime with some of the brightest minds all over the world.
 
 The passage of human knowledge from one to the other is the most essential aspect of human advancement. Thanks to our ability to record and share knowledge for others to see and experience, our lives on this pale blue dot are vastly improved.
 
