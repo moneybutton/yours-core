@@ -9,7 +9,7 @@ normal word that everyone understands, and not based on a niche meme. If
 something belongs to you, it's yours. This perfectly describes the essence of
 what Datt is trying to achieve. Yours gives control of content, moderation,
 hosting, and payments to the users. If it's yours, post it on Yours. Yours is
-the product, but behind the scenes it is base on the Datt software and Datt
+the product, but behind the scenes it is based on the Datt software and Datt
 network. It is a product intended to have a mainstream audience, so it has a
 mainstream name.
 
