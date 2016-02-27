@@ -53,7 +53,7 @@ Network.prototype.asyncInitialize = function () {
     let peerjs = this.peerjs = new PeerJS(id, rendezvous)
 
     peerjs.on('open', resolve)
-    peerjs.on('error', error => {
+    peerjs.on('error', (error) => {
       // We might not have connected - so reject (it is safe to do this after
       // resolving)
       reject(error)
@@ -139,7 +139,7 @@ Network.prototype.isSameNetwork = function (connectionInfo) {
 }
 
 Network.prototype.removeConnection = function (connection) {
-  let index = this.connections.findIndex(_connection => _connection === connection)
+  let index = this.connections.findIndex((_connection) => _connection === connection)
   if (index >= 0) {
     this.connections.splice(index, 1)
   }
@@ -208,7 +208,7 @@ Network.prototype.asyncConnect = function (connectionInfo) {
  */
 Network.prototype.asyncGetAllWebRTCPeerIDs = function () {
   return new Promise((resolve, reject) => {
-    this.peerjs.listAllPeers(peers => {
+    this.peerjs.listAllPeers((peers) => {
       resolve(peers)
     })
     q.delay(Constants.timeout).then(() => {

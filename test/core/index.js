@@ -217,7 +217,7 @@ describe('DattCore', function () {
       return asink(function *() {
         let contentauths = yield dattcore.asyncGetRecentContentAuth()
         contentauths.length.should.greaterThan(0)
-        contentauths.forEach(contentauth => {
+        contentauths.forEach((contentauth) => {
           ;(contentauth instanceof ContentAuth).should.equal(true)
           should.exist(contentauth.cachehash)
         })

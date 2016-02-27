@@ -74,7 +74,7 @@ function build_worker () {
     q.delay(watchifytimeout).then(() => {
       build_worker_browserify
         .bundle()
-        .on('error', err => {
+        .on('error', (err) => {
           gutil.log.bind(gutil, 'Browserify Error')
           build_worker_browserify.close()
           set_build_worker_browserify()
@@ -114,7 +114,7 @@ function build_core () {
     q.delay(watchifytimeout).then(() => {
       build_core_browserify
         .bundle()
-        .on('error', err => {
+        .on('error', (err) => {
           gutil.log.bind(gutil, 'Browserify Error')
           build_core_browserify.close()
           set_build_core_browserify()
@@ -157,7 +157,7 @@ function build_react () {
     q.delay(watchifytimeout).then(() => {
       build_react_browserify
         .bundle()
-        .on('error', err => {
+        .on('error', (err) => {
           gutil.log.bind(gutil, 'Browserify Error')
           build_react_browserify.close()
           set_build_react_browserify()
@@ -210,12 +210,12 @@ function build_tests () {
     q.delay(watchifytimeout).then(() => {
       build_tests_browserify
         .bundle()
-        .on('error', err => {
+        .on('error', (err) => {
           gutil.log.bind(gutil, 'Browserify Error')
           build_tests_browserify.close()
           set_build_tests_browserify().then(function () {
             reject(err)
-          }).catch(error => {
+          }).catch((error) => {
             reject(err + ', ' + error)
           })
         })

@@ -22,7 +22,7 @@ let BoxUser = React.createClass({
   },
 
   setStateFromDattcore: function () {
-    return asink(function *() {
+    return asink(function * () {
       let dattcore = this.props.dattcore
       let userName = yield dattcore.asyncGetUserName()
       this.setState({
@@ -51,7 +51,7 @@ let BoxUser = React.createClass({
   },
 
   handleSubmit: function () {
-    return asink(function *() {
+    return asink(function * () {
       let dattcore = this.props.dattcore
       yield dattcore.asyncSetUserName(this.state.newUserName)
       this.setState({
@@ -62,15 +62,23 @@ let BoxUser = React.createClass({
 
   render: function () {
     return (
-    <div className='info-box'>
+      <div className='info-box'>
         <h2>My User</h2>
-        <p>Your mnemonic: {this.state.userMnemonic}</p>
-        <p>Your current name: {this.state.userName}</p>
+        <p>
+          Your mnemonic:
+          {this.state.userMnemonic}
+        </p>
+        <p>
+          Your current name:
+          {this.state.userName}
+        </p>
         <div className='input-group'>
-          <input type='text' className='form-control' value={this.state.newUserName} onChange={this.handleChange}/>
-          <span className='input-group-btn'>
-            <button className='btn btn-default' onClick={this.handleSubmit}>Set</button>
-          </span>
+          <input
+            type='text'
+            className='form-control'
+            value={this.state.newUserName}
+            onChange={this.handleChange} />
+          <span className='input-group-btn'><button className='btn btn-default' onClick={this.handleSubmit}> Set </button></span>
         </div>
       </div>
     )

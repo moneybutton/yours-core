@@ -119,7 +119,7 @@ BlockchainAPI.prototype.asyncGetAddressesBalancesSatoshis = function (addresses)
     let confirmedBalanceSatoshis = 0
     let unconfirmedBalanceSatoshis = 0
     let totalBalanceSatoshis = 0
-    json.forEach(obj => {
+    json.forEach((obj) => {
       if (obj.confirmations > 0) {
         confirmedBalanceSatoshis += obj.amount * 1e8
       } else {

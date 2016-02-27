@@ -17,11 +17,11 @@ let ConfigPanel = React.createClass({
 
     return (
       <div>
-        <BoxUser dattcore={dattcore}/>
-        <BoxBitcoin dattcore={dattcore}/>
-        <BoxContent postsnumber={0}/>
-        <BoxPeer peersnumber={numActiveConnections}/>
-        <BoxDeveloper dattcore={dattcore}/>
+        <BoxUser dattcore={dattcore} />
+        <BoxBitcoin dattcore={dattcore} />
+        <BoxContent postsnumber={0} />
+        <BoxPeer peersnumber={numActiveConnections} />
+        <BoxDeveloper dattcore={dattcore} />
       </div>
     )
   }

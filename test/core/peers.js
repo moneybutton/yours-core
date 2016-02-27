@@ -182,7 +182,7 @@ describe('Peers', function () {
 
         // assume connection to network2 has already been made
         yield new Promise((resolve, reject) => {
-          network2.connections[0].on('msg', msg => {
+          network2.connections[0].on('msg', (msg) => {
             let msgcontentauth = MsgContentAuth().fromMsg(msg)
             ;(msgcontentauth.contentauth instanceof ContentAuth).should.equal(true)
             resolve()

@@ -104,7 +104,7 @@ Peers.prototype.toJSON = function () {
   // TODO: Also support web sockets
   let connections = []
   if (this.networkWebRTC) {
-    this.networkWebRTC.connections.forEach(connection => {
+    this.networkWebRTC.connections.forEach((connection) => {
       connections.push({
         type: 'webrtc',
         id: connection.getId(),
@@ -116,7 +116,7 @@ Peers.prototype.toJSON = function () {
 }
 
 Peers.connectionInfosFromJSON = function (json) {
-  return json.map(obj =>
+  return json.map((obj) =>
     ConnectionInfo()
       .setType(obj.type)
       .setObj({id: obj.id, rendezvous: obj.rendezvous})
@@ -181,7 +181,7 @@ Peers.prototype.asyncDiscoverAndConnect = function () {
     let connectionInfos = []
     if (this.networkWebRTC) {
       let peerids = yield this.networkWebRTC.asyncGetAllWebRTCPeerIDs()
-      connectionInfos = peerids.map(peerid => {
+      connectionInfos = peerids.map((peerid) => {
         let connectionInfo = ConnectionInfo()
           .setType('webrtc')
           .setObj({id: peerid, rendezvous: this.networkWebRTC.rendezvous})
@@ -207,7 +207,7 @@ Peers.prototype.numActiveConnections = function () {
 Peers.prototype.broadcastMsg = function (msg) {
   // TODO: Work for web sockets also
   if (this.networkWebRTC) {
-    this.networkWebRTC.connections.forEach(connection => {
+    this.networkWebRTC.connections.forEach((connection) => {
       connection.sendMsg(msg)
     })
   }

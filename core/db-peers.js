@@ -57,7 +57,7 @@ DBPeers.prototype.asyncSave = function (peers) {
  * still need to actually connect to them.
  */
 DBPeers.prototype.asyncGetJSON = function () {
-  return this.db.asyncGet('peers').then(doc => {
+  return this.db.asyncGet('peers').then((doc) => {
     return doc.peers
   })
 }

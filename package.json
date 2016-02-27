@@ -160,7 +160,7 @@
     "reactify": "1.1.1",
     "should": "8.2.2",
     "sinon": "1.17.3",
-    "standard": "5.4.1",
+    "standard": "6.0.7",
     "through2": "2.0.1",
     "watchify": "3.7.0"
   }

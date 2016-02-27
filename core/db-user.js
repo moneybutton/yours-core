@@ -47,7 +47,7 @@ DBUser.prototype.asyncSave = function (user) {
 }
 
 DBUser.prototype.asyncGet = function () {
-  return this.db.asyncGet('user').then(doc => {
+  return this.db.asyncGet('user').then((doc) => {
     this.user = User().fromJSON(doc.user)
     return this.user
   })

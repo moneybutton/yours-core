@@ -30,7 +30,7 @@ DBContentAuth.prototype.asyncSave = function (contentauth) {
   }
   let hashbuf
   let _id
-  return contentauth.asyncGetHash().then(_hashbuf => {
+  return contentauth.asyncGetHash().then((_hashbuf) => {
     hashbuf = _hashbuf
     _id = hashbuf.toString('hex')
     let contentauthhex = contentauth.toBuffer().toString('hex')
@@ -46,7 +46,7 @@ DBContentAuth.prototype.asyncSave = function (contentauth) {
  */
 DBContentAuth.prototype.asyncGet = function (hashbuf) {
   let hashhex = hashbuf.toString('hex')
-  return this.db.asyncGet(hashhex).then(doc => {
+  return this.db.asyncGet(hashhex).then((doc) => {
     this.hashbuf = hashbuf
     // TODO: Replace this with a non-blocking method.
     this.contentauth = ContentAuth().fromHex(doc.contentauthhex)
@@ -62,7 +62,7 @@ DBContentAuth.prototype.asyncGet = function (hashbuf) {
  * data.
  */
 DBContentAuth.prototype.asyncGetAll = function () {
-  return this.db.allDocs({include_docs: true}).then(res => {
+  return this.db.allDocs({include_docs: true}).then((res) => {
     let contentauths = []
     for (let obj of res.rows) {
       let doc = obj.doc

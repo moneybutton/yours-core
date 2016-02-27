@@ -13,9 +13,12 @@ let BoxPeer = React.createClass({
   },
   render: function () {
     return (
-    <div className='info-box'>
+      <div className='info-box'>
         <h2>My Peers</h2>
-        <p>Number of peers: {this.props.peersnumber}</p>
+        <p>
+          Number of peers:
+          {this.props.peersnumber}
+        </p>
       </div>
     )
   }

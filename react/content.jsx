@@ -28,7 +28,7 @@ let Content = React.createClass({
   },
 
   setStateFromDattCore: function () {
-    return asink(function *() {
+    return asink(function * () {
       if (!this.props.contentkey) {
         return
       }
@@ -69,18 +69,18 @@ let Content = React.createClass({
     } else {
       viewjsx = (
         <ContentHeader content={content} dattcore={dattcore} showInteractButtons>
-            <ReactMarkdown className='content-body' source={content.body}/>
+          <ReactMarkdown className='content-body' source={content.body} />
         </ContentHeader>
       )
     }
 
     return (
       <div className='container-fluid content-container'>
-          <div className='row'>
-              <div className='col-md-8 col-md-offset-2'>
-                  {viewjsx}
-              </div>
+        <div className='row'>
+          <div className='col-md-8 col-md-offset-2'>
+            {viewjsx}
           </div>
+        </div>
       </div>
     )
   }

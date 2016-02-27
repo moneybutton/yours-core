@@ -70,7 +70,7 @@ describe('CorePeers', function () {
         corepeers2.peers.networkWebRTC.connections.length.should.equal(1)
         yield new Promise((resolve, reject) => {
           let msgPing = MsgPing().fromRandom()
-          corepeers1.on('msg', obj => {
+          corepeers1.on('msg', (obj) => {
             let msg = obj.msg
             msg.getCmd().should.equal('pong')
             resolve()

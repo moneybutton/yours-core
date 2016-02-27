@@ -174,11 +174,10 @@ ContentAuth.prototype.asyncValidate = function () {
   return asink(function *() {
     let verified = yield this.asyncVerify()
     if (verified) {
-      return
+      return this
     } else {
       throw new Error('invalid content-auth')
     }
-    return this
   }, this)
 }
 

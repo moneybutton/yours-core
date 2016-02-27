@@ -39,7 +39,7 @@ let Layout = React.createClass({
     this.updateStateFromHash()
     window.addEventListener('hashchange', this.updateStateFromHash)
 
-    return asink(function *() {
+    return asink(function * () {
       let dattcore = this.props.dattcore
       try {
         yield dattcore.asyncInitialize()
@@ -73,7 +73,7 @@ let Layout = React.createClass({
   },
 
   handlePeersConnection: function () {
-    return asink(function *() {
+    return asink(function * () {
       let dattcore = this.props.dattcore
       let n = yield dattcore.asyncNumActiveConnections()
       this.setState({
@@ -124,32 +124,41 @@ let Layout = React.createClass({
 
     return (
       <div className='container'>
-      <TopMenu newClicked={this.newPostView} configClicked={this.configView} />
-      <div className='row'>
-      <div className={(this.state.view.settings ? 'col-md-8' : '')}>
-      <View dattcore={dattcore} view={this.state.view} route={this.state.route} routeArgs={this.state.routeArgs} updateView={this.updateView} contentkey={this.state.routeArgs[0]} />
-      </div>
-      {[(this.state.view.settings
-         ? (<div className='col-md-4 side-boxes'>
-             <ConfigPanel dattcore={dattcore} numActiveConnections={numActiveConnections}/>
-         </div>) : null)]}
-      </div>
-      <div className='row footer container'>
+        <TopMenu newClicked={this.newPostView} configClicked={this.configView} />
+        <div className='row'>
+          <div className={(this.state.view.settings ? 'col-md-8' : '')}>
+            <View
+              dattcore={dattcore}
+              view={this.state.view}
+              route={this.state.route}
+              routeArgs={this.state.routeArgs}
+              updateView={this.updateView}
+              contentkey={this.state.routeArgs[0]} />
+          </div>
+          {[(this.state.view.settings ? (<div className='col-md-4 side-boxes'><ConfigPanel dattcore={dattcore} numActiveConnections={numActiveConnections} /></div>) : null)]}
+        </div>
+        <div className='row footer container'>
           <div className='col-md-4'></div>
           <div className='col-md-4'>
-              <footer className=''>
-                  <div className='page-footer'>
-                      <div className='version-number'>
-                          <p>Status of dattcore: {dattcoreStatus}</p>
-                          <p>Datt v{dattcore.version}</p>
-                      </div>
-                  </div>
-              </footer>
+            <footer className=''>
+              <div className='page-footer'>
+                <div className='version-number'>
+                  <p>
+                    Status of dattcore:
+                    {dattcoreStatus}
+                  </p>
+                  <p>
+                    Datt v
+                    {dattcore.version}
+                  </p>
+                </div>
+              </div>
+            </footer>
           </div>
           <div className='col-md-4'></div>
+        </div>
       </div>
-      </div>
-  )
+    )
   }
 })
 

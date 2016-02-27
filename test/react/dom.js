@@ -29,7 +29,7 @@ module.exports.before = function () {
 
 module.exports.after = function () {
   if (!process.browser) {
-    global.dom_propagated.forEach(key => {
+    global.dom_propagated.forEach((key) => {
       global[key] = undefined
     })
     global.document = undefined

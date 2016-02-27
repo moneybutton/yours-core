@@ -118,8 +118,8 @@ function verifyCompactSig (hashhex, signatureHex) {
 
 function signTransaction (txbjson, privkeys) {
   let txb = Txbuilder().fromJSON(txbjson)
-  privkeys = privkeys.map(privkey => Privkey().fromHex(privkey))
-  let keypairs = privkeys.map(privkey => Keypair().fromPrivkey(privkey))
+  privkeys = privkeys.map((privkey) => Privkey().fromHex(privkey))
+  let keypairs = privkeys.map((privkey) => Keypair().fromPrivkey(privkey))
   if (txb.txins.length !== keypairs.length) {
     throw new Error('number of inputs and number of privkeys do not match')
   }

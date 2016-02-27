@@ -42,7 +42,7 @@ let FormNewContent = React.createClass({
   },
 
   handleSubmit: function (el) {
-    return asink(function *() {
+    return asink(function * () {
       el.preventDefault()
       let title = this.state.inputTitle
       let label = this.state.inputLabel
@@ -65,18 +65,43 @@ let FormNewContent = React.createClass({
             <h2>Author New Content</h2>
             <form>
               <div className='form-group'>
-                <label htmlFor='inputTitle'>Title</label>
-                <input type='text' className='form-control' id='inputTitle' placeholder='Title' onChange={this.handleTitleChange} value={this.state.inputTitle}/>
+                <label htmlFor='inputTitle'>
+                  Title
+                </label>
+                <input
+                  type='text'
+                  className='form-control'
+                  id='inputTitle'
+                  placeholder='Title'
+                  onChange={this.handleTitleChange}
+                  value={this.state.inputTitle} />
               </div>
               <div className='form-group'>
-                <label htmlFor='inputLabel'>Label</label>
-                <input type='text' className='form-control' id='inputLabel' placeholder='Label' onChange={this.handleLabelChange} value={this.state.inputLabel}/>
+                <label htmlFor='inputLabel'>
+                  Label
+                </label>
+                <input
+                  type='text'
+                  className='form-control'
+                  id='inputLabel'
+                  placeholder='Label'
+                  onChange={this.handleLabelChange}
+                  value={this.state.inputLabel} />
               </div>
               <div className='form-group'>
-                <label htmlFor='inputBody'>Body</label>
-                <textarea className='form-control' rows='5' id='inputBody' onChange={this.handleBodyChange} value={this.state.inputBody}></textarea>
+                <label htmlFor='inputBody'>
+                  Body
+                </label>
+                <textarea
+                  className='form-control'
+                  rows='5'
+                  id='inputBody'
+                  onChange={this.handleBodyChange}
+                  value={this.state.inputBody}></textarea>
               </div>
-              <button type='submit' className='btn btn-default' onClick={this.handleSubmit}>Submit</button>
+              <button type='submit' className='btn btn-default' onClick={this.handleSubmit}>
+                Submit
+              </button>
             </form>
           </div>
         </div>

@@ -15,6 +15,7 @@ let Sig = require('fullnode/lib/sig')
 let Struct = require('fullnode/lib/struct')
 let Txbuilder = require('fullnode/lib/txbuilder')
 let asink = require('asink')
+let path = require('path')
 let q = require('q')
 let workerpool = require('workerpool')
 
@@ -30,7 +31,8 @@ function CryptoWorkers (pool) {
       // Cache global worker pool, so if you create a new cryptoWorkers instance
       // it will use the global worker pool by default.
       if (!process.browser) {
-        defaultPool = workerpool.pool(__dirname + '/worker.js')
+        let pathstr = path.join(__dirname, 'worker.js')
+        defaultPool = workerpool.pool(pathstr)
       } else {
         defaultPool = workerpool.pool(process.env.DATT_JS_BASE_URL + process.env.DATT_CORE_JS_WORKER_FILE)
       }
@@ -262,7 +264,7 @@ CryptoWorkers.prototype.asyncVerifyCompactSig = function (hashbuf, sig) {
 CryptoWorkers.prototype.asyncSignTransaction = function (txb, privkeys) {
   return asink(function *() {
     let txbjson = txb.toJSON()
-    let privkeysjson = privkeys.map(privkey => privkey.toHex())
+    let privkeysjson = privkeys.map((privkey) => privkey.toHex())
     let obj = yield q(this.pool.exec('signTransaction', [txbjson, privkeysjson]))
     txb = Txbuilder().fromJSON(obj)
     return txb

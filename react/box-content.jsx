@@ -14,12 +14,19 @@ let BoxContent = React.createClass({
   },
   render: function () {
     return (
-    <div className='info-box'>
+      <div className='info-box'>
         <h2>My Content</h2>
-        <p>Number of posts: {this.props.postsnumber}</p>
         <p>
-          <button className='btn btn-default'>Export</button>
-          <button className='btn btn-default'>Import</button>
+          Number of posts:
+          {this.props.postsnumber}
+        </p>
+        <p>
+          <button className='btn btn-default'>
+            Export
+          </button>
+          <button className='btn btn-default'>
+            Import
+          </button>
         </p>
       </div>
     )

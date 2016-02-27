@@ -149,7 +149,7 @@ CoreBitcoin.prototype.asyncBuildTransaction = function (toAddress, toAmountSatos
     let changeAddress = yield this.asyncGetNewIntAddress()
     txb.setChangeAddress(changeAddress)
     let utxos = yield this.asyncGetAllUTXOs()
-    utxos.forEach(obj => {
+    utxos.forEach((obj) => {
       txb.from(obj.txhashbuf, obj.txoutnum, obj.txout, obj.pubkey)
     })
     txb.to(BN(toAmountSatoshis), toAddress)

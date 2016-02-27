@@ -23,7 +23,7 @@ let PageFront = React.createClass({
   render: function () {
     return (
       <div>
-          <ContentList key='contentList' dattcore={this.props.dattcore} updateView={this.props.updateView}/>
+        <ContentList key='contentList' dattcore={this.props.dattcore} updateView={this.props.updateView} />
       </div>
     )
   }

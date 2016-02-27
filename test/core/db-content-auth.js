@@ -42,7 +42,7 @@ describe('DBContentAuth', function () {
         blockheightnum: blockheightnum
       })
       contentauth.sign(keypair)
-      return DBContentAuth(db).asyncSave(contentauth).then(_hashbuf => {
+      return DBContentAuth(db).asyncSave(contentauth).then((_hashbuf) => {
         should.exist(_hashbuf)
         hashbuf = _hashbuf
         Buffer.isBuffer(hashbuf).should.equal(true)
@@ -53,7 +53,7 @@ describe('DBContentAuth', function () {
 
   describe('#asyncGet', function () {
     it('should be able to get a contentauth we previously inserted', function () {
-      return DBContentAuth(db).asyncGet(hashbuf).then(contentauth => {
+      return DBContentAuth(db).asyncGet(hashbuf).then((contentauth) => {
         ;(contentauth instanceof ContentAuth).should.equal(true)
         contentauth.getContent().body.should.equal('test body')
         should.exist(contentauth.cachehash)
@@ -85,7 +85,7 @@ describe('DBContentAuth', function () {
         return DBContentAuth(db).asyncSave(contentauth2)
       }).then(() => {
         return DBContentAuth(db).asyncGetAll()
-      }).then(contentauths => {
+      }).then((contentauths) => {
         contentauths.length.should.greaterThan(0)
         for (let contentauth of contentauths) {
           ;(contentauth instanceof ContentAuth).should.equal(true)

@@ -26,7 +26,7 @@ let BoxBitcoin = React.createClass({
   },
 
   setStateFromDattCore: function () {
-    return asink(function *() {
+    return asink(function * () {
       let dattcore = this.props.dattcore
       let info = yield dattcore.asyncGetLatestBlockInfo()
       this.setState({
@@ -64,7 +64,7 @@ let BoxBitcoin = React.createClass({
   },
 
   handleReceive: function () {
-    return asink(function *() {
+    return asink(function * () {
       let dattcore = this.props.dattcore
       let DattCore = dattcore.constructor
       let address = yield dattcore.asyncGetNewExtAddress()
@@ -86,7 +86,7 @@ let BoxBitcoin = React.createClass({
   },
 
   handleSend: function (el) {
-    return asink(function *() {
+    return asink(function * () {
       el.preventDefault()
       let dattcore = this.props.dattcore
       let DattCore = dattcore.constructor
@@ -104,26 +104,62 @@ let BoxBitcoin = React.createClass({
 
   render: function () {
     return (
-    <div className='info-box'>
+      <div className='info-box'>
         <h2>My Bitcoin</h2>
-        <p>Confirmed balance: {this.state.confirmedBalanceBits} bits</p>
-        <p>Unconfirmed balance: {this.state.unconfirmedBalanceBits} bits</p>
-        <p>Total balance: {this.state.totalBalanceBits} bits</p>
-        <p>Latest block height: {this.state.blockheightnum}</p>
         <p>
-          <button className='btn btn-default' onClick={this.handleReceive}>Receive</button>
+          Confirmed balance:
+          {this.state.confirmedBalanceBits} bits
         </p>
-        <p>Deposit Address:<br/>{this.state.depositAddress}</p>
+        <p>
+          Unconfirmed balance:
+          {this.state.unconfirmedBalanceBits} bits
+        </p>
+        <p>
+          Total balance:
+          {this.state.totalBalanceBits} bits
+        </p>
+        <p>
+          Latest block height:
+          {this.state.blockheightnum}
+        </p>
+        <p>
+          <button className='btn btn-default' onClick={this.handleReceive}>
+            Receive
+          </button>
+        </p>
+        <p>
+          Deposit Address:
+          <br/>
+          {this.state.depositAddress}
+        </p>
         <form>
           <div className='form-group'>
-            <label htmlFor='toAddress'>To Address</label>
-            <input type='text' className='form-control' id='toAddress' placeholder='Label' onChange={this.handleToAddressChange} value={this.state.toAddress}/>
+            <label htmlFor='toAddress'>
+              To Address
+            </label>
+            <input
+              type='text'
+              className='form-control'
+              id='toAddress'
+              placeholder='Label'
+              onChange={this.handleToAddressChange}
+              value={this.state.toAddress} />
           </div>
           <div className='form-group'>
-            <label htmlFor='toAmount'># of Bits</label>
-            <input type='text' className='form-control' id='toAmount' placeholder='Label' onChange={this.handleToAmountChange} value={this.state.toAmount}/>
+            <label htmlFor='toAmount'>
+              # of Bits
+            </label>
+            <input
+              type='text'
+              className='form-control'
+              id='toAmount'
+              placeholder='Label'
+              onChange={this.handleToAmountChange}
+              value={this.state.toAmount} />
           </div>
-          <button type='submit' className='btn btn-default' onClick={this.handleSend}>Send</button>
+          <button type='submit' className='btn btn-default' onClick={this.handleSend}>
+            Send
+          </button>
         </form>
       </div>
     )

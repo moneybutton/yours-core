@@ -18,7 +18,7 @@ let ContentList = React.createClass({
   },
 
   setStateFromDattCore: function () {
-    return asink(function *() {
+    return asink(function * () {
       let dattcore = this.props.dattcore
       let DattCore = dattcore.constructor
       let contentauths = yield dattcore.asyncGetRecentContentAuth()
@@ -78,27 +78,41 @@ let ContentList = React.createClass({
     let contentElement
 
     if (this.state.contentList && this.state.contentList.length) {
-      let contentList = this.state.contentList.map(obj => {
+      let contentList = this.state.contentList.map((obj) => {
         return (
-        <li className='content-list-item' key={obj.key} >
+          <li className='content-list-item' key={obj.key}>
             <ContentHeader content={obj} dattcore={this.props.dattcore} />
-        </li>
+          </li>
         )
       })
       contentElement = (<ul className='content-list'>{contentList}</ul>)
     } else if (this.state.contentList && !this.state.contentList.length) {
-      contentElement = (<div className='no-content text-center vspacer10'><h4>Oops, there's no content!</h4><div className='vspacer05'>There's nothing on Datt to read right now... You should post something!<br/> (Why? You are probably on a private / test network.) </div><div className='vspacer05'></div></div>)
+      contentElement = (
+        <div className='no-content text-center vspacer10'>
+          <h4>Oops, there's no content!</h4>
+          <div className='vspacer05'>
+            There's nothing on Datt to read right now... You should post something!
+            <br/> (Why? You are probably on a private / test network.)
+          </div>
+          <div className='vspacer05'></div>
+        </div>
+      )
     } else {
-      contentElement = (<div className='loading-content text-center vspacer10'><h4>Loading...</h4><div className='vspacer05'></div></div>)
+      contentElement = (
+        <div className='loading-content text-center vspacer10'>
+          <h4>Loading...</h4>
+          <div className='vspacer05'></div>
+        </div>
+      )
     }
 
     return (
       <div className='container-fluid content-list-container' onClick={this.resetView}>
-          <div className='row'>
-              <div className='col-md-8 col-md-offset-2'>
-                  {contentElement}
-              </div>
+        <div className='row'>
+          <div className='col-md-8 col-md-offset-2'>
+            {contentElement}
           </div>
+        </div>
       </div>
     )
   }
