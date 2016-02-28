@@ -116,8 +116,8 @@ CoreBitcoin.prototype.asyncUpdateBalance = function () {
       addressStrings.push(yield CryptoWorkers.asyncAddressStringFromAddress(addresses[i]))
     }
     let obj = yield this.blockchainAPI.asyncGetAddressesBalancesSatoshis(addresses)
-    if (obj.confirmedBalanceSatoshis !== this.balances.confirmedBalanceSatoshis ||
-        obj.unconfirmedBalanceSatoshis !== this.balances.unconfirmedBalanceSatoshis ||
+
+    if (obj.confirmedBalanceSatoshis !== this.balances.confirmedBalanceSatoshis || obj.unconfirmedBalanceSatoshis !== this.balances.unconfirmedBalanceSatoshis ||
         obj.totalBalanceSatoshis !== this.balances.totalBalanceSatoshis) {
       this.emit('balance', obj)
     }
@@ -138,8 +138,35 @@ CoreBitcoin.prototype.asyncPollBalance = function () {
   }, this)
 }
 
+CoreBitcoin.prototype.getLastBalances = function () {
+  return this.balances
+}
+
+CoreBitcoin.prototype.asyncUpdateBlockInfo = function () {
+  return asink(function *() {
+    let blockInfo = yield this.blockchainAPI.asyncGetLatestBlockInfo()
+
+    let blockInfoFound = blockInfo && blockInfo.hashbuf
+    let blockChanged = blockInfoFound && (!this.lastBlockInfo || !this.lastBlockInfo.hashbuf || this.lastBlockInfo.hashbuf.toString('hex') !== blockInfo.hashbuf.toString('hex'))
+
+    this.lastBlockInfo = blockInfo
+
+    if (blockChanged) {
+      this.emit('block-info', blockInfo)
+    }
+
+    return blockInfo
+  }, this)
+}
+
 CoreBitcoin.prototype.asyncGetLatestBlockInfo = function () {
-  return this.blockchainAPI.asyncGetLatestBlockInfo()
+  return asink(function *() {
+    return this.asyncUpdateBlockInfo()
+  }, this)
+}
+
+CoreBitcoin.prototype.getLastBlockInfo = function () {
+  return this.lastBlockInfo
 }
 
 CoreBitcoin.prototype.asyncBuildTransaction = function (toAddress, toAmountSatoshis) {
@@ -153,6 +180,7 @@ CoreBitcoin.prototype.asyncBuildTransaction = function (toAddress, toAmountSatos
       txb.from(obj.txhashbuf, obj.txoutnum, obj.txout, obj.pubkey)
     })
     txb.to(BN(toAmountSatoshis), toAddress)
+
     txb.build()
     return txb
   }, this)

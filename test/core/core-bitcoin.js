@@ -82,6 +82,44 @@ describe('CoreBitcoin', function () {
     })
   })
 
+  describe('#getLastBalances', function () {
+    it('if no balances have been retrieved remotely, it should return default balances obj from CoreBitcoin#initialize', function () {
+      let corebitcoin = CoreBitcoin()
+
+      let cachedBalances = corebitcoin.getLastBalances()
+
+      should.exist(cachedBalances)
+
+      cachedBalances.should.be.an.instanceOf(Object)
+      cachedBalances.should.have.property('confirmedBalanceSatoshis', 0)
+      cachedBalances.should.have.property('unconfirmedBalanceSatoshis', 0)
+      cachedBalances.should.have.property('totalBalanceSatoshis', 0)
+    })
+
+    it('should return the last balances retrieved', function () {
+      return asink(function *() {
+        let mockBalances = {
+          confirmedBalanceSatoshis: 100,
+          unconfirmedBalanceSatoshis: 0,
+          totalBalanceSatoshis: 100
+        }
+
+        let corebitcoin = CoreBitcoin()
+
+        corebitcoin.asyncGetAllAddresses = () => Promise.resolve([])
+        corebitcoin.blockchainAPI = {
+          asyncGetAddressesBalancesSatoshis: sinon.stub().returns(Promise.resolve(mockBalances))
+        }
+
+        yield corebitcoin.asyncUpdateBalance()
+
+        let cachedBalances = corebitcoin.getLastBalances()
+
+        mockBalances.should.equal(cachedBalances)
+      })
+    })
+  })
+
   describe('#asyncBuildTransaction', function () {
     it('should create a txbuilder object from mocked data', function () {
       return asink(function *() {
@@ -287,13 +325,56 @@ describe('CoreBitcoin', function () {
     })
   })
 
-  describe('#asyncGetLatestBlockInfo', function () {
+  describe('#asyncUpdateBlockInfo', function () {
     it('should call blockchainAPI.asyncGetLatestBlockInfo', function () {
       return asink(function *() {
+        this.timeout(10000)
         let corebitcoin = CoreBitcoin()
         corebitcoin.blockchainAPI.asyncGetLatestBlockInfo = sinon.spy()
         yield corebitcoin.asyncGetLatestBlockInfo()
         corebitcoin.blockchainAPI.asyncGetLatestBlockInfo.calledOnce.should.equal(true)
+      }, this)
+    })
+
+    it('should emit event "block-info" on CoreBitcoin', function () {
+      return asink(function *() {
+        this.timeout(10000)
+        let corebitcoin = CoreBitcoin()
+        corebitcoin.emit = sinon.spy()
+        yield corebitcoin.asyncGetLatestBlockInfo()
+        corebitcoin.emit.calledWith('block-info').should.equal(true)
+      }, this)
+    })
+  })
+
+  describe('#asyncGetLatestBlockInfo', function () {
+    it('should call #asyncUpdateBlockInfo', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+        corebitcoin.asyncUpdateBlockInfo = sinon.spy()
+        yield corebitcoin.asyncGetLatestBlockInfo()
+        corebitcoin.asyncUpdateBlockInfo.calledOnce.should.equal(true)
+      })
+    })
+  })
+
+  describe('#getLastBlockInfo', function () {
+    it('if no block has been retrieved, it should return null', function () {
+      let corebitcoin = CoreBitcoin()
+
+      let lastBlockInfo = corebitcoin.getLastBlockInfo()
+
+      should(lastBlockInfo).not.be.ok()
+    })
+
+    it('should return the last block retrieved by #asyncGetLatestBlockInfo', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+
+        let retrievedBlockInfo = yield corebitcoin.asyncGetLatestBlockInfo()
+        let cachedBlockInfo = corebitcoin.getLastBlockInfo()
+
+        retrievedBlockInfo.should.equal(cachedBlockInfo)
       })
     })
   })
