@@ -36,7 +36,11 @@ let BoxBitcoin = React.createClass({
   },
 
   componentWillMount: function () {
-    this.monitorDattCore()
+    return asink(function *() {
+      let dattcore = this.props.dattcore
+      this.monitorDattCore()
+      yield dattcore.asyncUpdateBalance()
+    }, this)
   },
 
   componentDidMount: function () {

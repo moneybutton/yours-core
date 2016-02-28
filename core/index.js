@@ -220,6 +220,10 @@ DattCore.prototype.handleBitcoinBalance = function (obj) {
   return this
 }
 
+DattCore.prototype.asyncUpdateBalance = function () {
+  return this.corebitcoin.asyncUpdateBalance(true)
+}
+
 /**
  * Return information about the latest block, including the id and height.
  * TODO: Make this actually return the latest block info instead of a

@@ -41,6 +41,15 @@ describe('CoreBitcoin', function () {
     })
   })
 
+  describe('#resetBalances', function () {
+    it('should set balances to zero', function () {
+      corebitcoin.resetBalances()
+      corebitcoin.balances.confirmedBalanceSatoshis.should.equal(0)
+      corebitcoin.balances.unconfirmedBalanceSatoshis.should.equal(0)
+      corebitcoin.balances.totalBalanceSatoshis.should.equal(0)
+    })
+  })
+
   describe('#fromUser', function () {
     it('should set known properties', function () {
       return asink(function *() {

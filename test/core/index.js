@@ -116,6 +116,19 @@ describe('DattCore', function () {
     })
   })
 
+  describe('#asyncUpdateBalance', function () {
+    it('should call corebitcoin.asyncUpdateBalance', function () {
+      return asink(function *() {
+        let dattcore = DattCore({dbname: 'datt-temp'})
+        dattcore.corebitcoin = {
+          asyncUpdateBalance: sinon.spy()
+        }
+        yield dattcore.asyncUpdateBalance()
+        dattcore.corebitcoin.asyncUpdateBalance.calledOnce.should.equal(true)
+      }, this)
+    })
+  })
+
   describe('#asyncGetLatestBlockInfo', function () {
     it('should return info', function () {
       return asink(function *() {

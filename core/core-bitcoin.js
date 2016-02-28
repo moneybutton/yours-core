@@ -42,11 +42,7 @@ CoreBitcoin.prototype.constructor = CoreBitcoin
 Object.assign(CoreBitcoin.prototype, EventEmitter.prototype)
 
 CoreBitcoin.prototype.initialize = function () {
-  this.balances = {
-    confirmedBalanceSatoshis: 0,
-    unconfirmedBalanceSatoshis: 0,
-    totalBalanceSatoshis: 0
-  }
+  this.resetBalances()
   return this
 }
 
@@ -67,6 +63,15 @@ CoreBitcoin.prototype.asyncInitialize = function (user) {
     this.dbbip44wallet = DBBIP44Wallet(this.db, this.bip44wallet)
     return this
   }, this)
+}
+
+CoreBitcoin.prototype.resetBalances = function () {
+  this.balances = {
+    confirmedBalanceSatoshis: 0,
+    unconfirmedBalanceSatoshis: 0,
+    totalBalanceSatoshis: 0
+  }
+  return this
 }
 
 CoreBitcoin.prototype.asyncFromRandom = function () {
@@ -108,7 +113,7 @@ CoreBitcoin.prototype.unmonitorBlockchainAPI = function () {
 /**
  * Update the wallet balance information by querying the blockchain API.
  */
-CoreBitcoin.prototype.asyncUpdateBalance = function () {
+CoreBitcoin.prototype.asyncUpdateBalance = function (forceUpdate) {
   return asink(function *() {
     let addresses = yield this.asyncGetAllAddresses()
     let addressStrings = []
@@ -116,7 +121,8 @@ CoreBitcoin.prototype.asyncUpdateBalance = function () {
       addressStrings.push(yield CryptoWorkers.asyncAddressStringFromAddress(addresses[i]))
     }
     let obj = yield this.blockchainAPI.asyncGetAddressesBalancesSatoshis(addresses)
-    if (obj.confirmedBalanceSatoshis !== this.balances.confirmedBalanceSatoshis ||
+    if (forceUpdate ||
+        obj.confirmedBalanceSatoshis !== this.balances.confirmedBalanceSatoshis ||
         obj.unconfirmedBalanceSatoshis !== this.balances.unconfirmedBalanceSatoshis ||
         obj.totalBalanceSatoshis !== this.balances.totalBalanceSatoshis) {
       this.emit('balance', obj)
