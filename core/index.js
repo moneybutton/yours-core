@@ -19,19 +19,20 @@
  * files.
  */
 'use strict'
-let CryptoWorkers = require('./crypto-workers')
+let ContentAuth = require('./content-auth')
 let CoreBitcoin = require('./core-bitcoin')
 let CoreContent = require('./core-content')
 let CorePeers = require('./core-peers')
 let CoreUser = require('./core-user')
+let CryptoWorkers = require('./crypto-workers')
 let DB = require('./db')
 let DBContentAuth = require('./db-content-auth')
 let EventEmitter = require('events')
 let MsgContentAuth = require('./msg-content-auth')
 let Struct = require('fullnode/lib/struct')
 let User = require('./user')
-let pkg = require('../package')
 let asink = require('asink')
+let pkg = require('../package')
 
 function DattCore (config, db, corebitcoin, corecontent, corepeers, coreuser, isinitialized) {
   if (!(this instanceof DattCore)) {
@@ -45,10 +46,11 @@ DattCore.prototype = Object.create(Struct.prototype)
 DattCore.prototype.constructor = DattCore
 Object.assign(DattCore.prototype, EventEmitter.prototype)
 
-DattCore.CryptoWorkers = CryptoWorkers
+DattCore.ContentAuth = ContentAuth
 DattCore.CoreBitcoin = CoreBitcoin
 DattCore.CoreContent = CoreContent
 DattCore.CoreUser = CoreUser
+DattCore.CryptoWorkers = CryptoWorkers
 DattCore.DB = DB
 DattCore.DBContentAuth = DBContentAuth
 DattCore.User = User
