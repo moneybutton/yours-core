@@ -106,6 +106,7 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [Dat - share and sync data instantly. Open-source, decentralized. Plus, it's called "dat"](http://dat-data.com/)
 - [BigchainDB - a blockchain database](https://www.bigchaindb.com/)
 - [PeerTweet - node.js twitter using DHTs for each person's stream](https://github.com/lmatteis/peer-tweet)
 - [Nuzzle - turns your twitter feed into a reddit-like feed](http://nuzzel.com/)
