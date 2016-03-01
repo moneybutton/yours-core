@@ -247,3 +247,4 @@ Press for Datt
 - [2016-01-26 CoinDesk: Bitcoin Social Network DATT Reaches Proof-of-Concept Stage](http://www.coindesk.com/bitcoin-social-network-datt-proof-of-concept/)
 - [2016-02-01 Phil Gomes: How Emerging Social Networks are Applying Economic Models to Attention and Content](https://www.linkedin.com/pulse/how-emerging-social-networks-applying-economic-models-phil-gomes)
 - [2016-02-04 CoinTelegraph: Decentralized Social Networks with Bitcoin](http://cointelegraph.com/news/social-network-bitcoin-facebook-youtube)
+- [2016-02-29 Finance Magnates: Yours Blends Reddit, ChangeTip and Virality at the Launch Festival Hackathon](http://www.financemagnates.com/cryptocurrency/innovation/yours-blends-reddit-changetip-and-virality-at-the-launch-festival-hackathon/)
