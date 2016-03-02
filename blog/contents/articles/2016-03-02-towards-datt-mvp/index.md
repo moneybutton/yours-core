@@ -1,7 +1,7 @@
 ---
 title: "Towards an MVP"
 author: ryanxcharles
-date: 2016-03-02
+date: 2016-03-02 01:00:00
 template: article.jade
 ---
 The Datt prototype has a primitive p2p protocol that is only capable of 1)

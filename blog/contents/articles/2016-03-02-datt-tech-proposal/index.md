@@ -1,12 +1,9 @@
 ---
-title: "Summary of the Second Datt Hackathon"
+title: "Datt Tech Proposal"
 author: ClemensLey
 date: 2016-03-02
 template: article.jade
 ---
-
-# Datt Tech Proposal
-#### Clemens Ley
 
 *I think we should consider splitting the project into two parts (similar to the Datt-Yours split). We could use our core technology to build a "framework for building decentralized web apps with micropayment integration". On top of that we and others could build apps like [Yours](http://yours.press/).*
 
