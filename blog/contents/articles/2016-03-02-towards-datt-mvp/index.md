@@ -66,7 +66,7 @@ amount of effort put behind it and has recently launched, so it is our first
 candidate to manage identity.
 
 I believe in creating valuable technology. The outline here for an MVP of Datt
-is technically complicated, but once all the pieces are fit together, enable a
-genuine decentralized content sharing system with integrated micropayments.
-That has never existed before, and would enable the information economy to do
-things that are impossible today.
+is technically complicated, but once all the pieces are fit together, it will
+enable a genuine decentralized content sharing system with integrated
+micropayments. That has never existed before, and would enable the information
+economy to do things that are impossible today.
