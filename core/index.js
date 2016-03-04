@@ -174,8 +174,10 @@ DattCore.prototype.asyncNetworkInitialize = function () {
  */
 DattCore.prototype.asyncNetworkClose = function () {
   return asink(function *() {
-    this.corebitcoin.unmonitorBlockchainAPI()
-  // TODO: Also close p2p connections.
+    if (this.corebitcoin !== undefined && this.corebitcoin !== null) {
+      this.corebitcoin.unmonitorBlockchainAPI()
+      // TODO: Also close p2p connections.
+    }
   }, this)
 }
 

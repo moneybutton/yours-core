@@ -104,7 +104,8 @@ describe('DattCore', function () {
       dattcore.corebitcoin = {}
       dattcore.corebitcoin.on = sinon.spy()
       dattcore.monitorCoreBitcoin()
-      dattcore.corebitcoin.on.called.should.equal(true)
+      dattcore.corebitcoin.on.calledWith('balance').should.equal(true)
+      dattcore.corebitcoin.on.calledWith('block-info').should.equal(true)
     })
   })
 

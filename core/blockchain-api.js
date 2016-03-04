@@ -38,13 +38,15 @@ BlockchainAPI.prototype.asyncGetRequest = function (urlquery) {
     let res = yield new Promise((resolve, reject) => {
       request(this.blockchainAPIURI + urlquery, function (error, response, body) {
         if (error || response.statusCode !== 200) {
-          error = new Error(`blockchain-api getting ${urlquery}: ${error} - statusCode: ${response.statusCode}`)
-          error.statusCode = response.statusCode
+          let responseStatusCode = (response !== undefined && response !== null ? response.statusCode : null)
+          error = new Error(`blockchain-api getting ${urlquery}: ${error} - statusCode: ${responseStatusCode}`)
+          error.statusCode = responseStatusCode
           return reject()
         }
         resolve(body)
       })
     })
+
     return JSON.parse(res)
   }, this)
 }
@@ -83,6 +85,7 @@ BlockchainAPI.prototype.asyncGetLatestBlockInfo = function () {
     let idbuf = new Buffer(idhex, 'hex')
     let hashbuf = BR(idbuf).readReverse()
     let hashhex = hashbuf.toString('hex')
+
     return {idbuf, idhex, hashbuf, hashhex, height}
   }, this)
 }
