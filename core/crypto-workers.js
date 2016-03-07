@@ -85,7 +85,7 @@ CryptoWorkers.prototype.asyncPubkeyFromPrivkey = function (privkey) {
   return asink(function *() {
     let privkeyHex = privkey.toHex()
     let pubkeyHex = yield q(this.pool.exec('pubkeyHexFromPrivkeyHex', [privkeyHex]))
-    let pubkey = Pubkey().fromDER(new Buffer(pubkeyHex, 'hex'))
+    let pubkey = Pubkey().fromFastBuffer(new Buffer(pubkeyHex, 'hex'))
     return pubkey
   }, this)
 }
@@ -248,7 +248,7 @@ CryptoWorkers.prototype.asyncVerifyCompactSig = function (hashbuf, sig) {
     let obj = yield q(this.pool.exec('verifyCompactSig', [hashhex, signatureHex]))
     return {
       verified: obj.verified,
-      pubkey: obj.pubkey ? Pubkey().fromDER(new Buffer(obj.pubkey, 'hex')) : undefined
+      pubkey: obj.pubkey ? Pubkey().fromFastBuffer(new Buffer(obj.pubkey, 'hex')) : undefined
     }
   }, this)
 }

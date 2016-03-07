@@ -24,7 +24,7 @@ function BSMHash (datahex) {
 
 function pubkeyHexFromPrivkeyHex (privkeyHex) {
   let privkey = Privkey().fromHex(privkeyHex)
-  return Pubkey().fromPrivkey(privkey).toDER(false).toString('hex')
+  return Pubkey().fromPrivkey(privkey).toFastBuffer().toString('hex')
 }
 
 function addressHexFromPubkeyHex (pubkeyHex) {
@@ -112,7 +112,7 @@ function verifyCompactSig (hashhex, signatureHex) {
   }
   return {
     verified: ECDSA.verify(hashbuf, sig, pubkey),
-    pubkey: pubkey.toDER(false).toString('hex')
+    pubkey: pubkey.toFastBuffer().toString('hex')
   }
 }
 
