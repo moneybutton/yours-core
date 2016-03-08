@@ -10,6 +10,7 @@
 'use strict'
 let Address = require('fullnode/lib/address')
 let BIP32 = require('fullnode/lib/bip32')
+let Hash = require('fullnode/lib/hash')
 let Pubkey = require('fullnode/lib/pubkey')
 let Sig = require('fullnode/lib/sig')
 let Struct = require('fullnode/lib/struct')
@@ -52,11 +53,12 @@ CryptoWorkers.prototype.constructor = CryptoWorkers
  * than a hex string.
  */
 CryptoWorkers.prototype.asyncSha256 = function sha256 (databuf) {
-  return asink(function *() {
-    let datahex = databuf.toString('hex')
-    let hashhex = yield q(this.pool.exec('sha256', [datahex]))
-    return new Buffer(hashhex, 'hex')
-  }, this)
+  return Hash.asyncSha256(databuf)
+  // return asink(function *() {
+  //   let datahex = databuf.toString('hex')
+  //   let hashhex = yield q(this.pool.exec('sha256', [datahex]))
+  //   return new Buffer(hashhex, 'hex')
+  // }, this)
 }
 
 /**

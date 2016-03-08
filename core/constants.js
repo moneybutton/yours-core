@@ -1,4 +1,4 @@
-/* global window */
+/* global window,self */
 'use strict'
 let os = require('os')
 
@@ -11,7 +11,8 @@ let os = require('os')
  */
 let blockchainAPIURI = ''
 if (process.browser) {
-  blockchainAPIURI = window.location.origin + '/blockchain-api/'
+  let win = typeof window === 'undefined' ? self : window
+  blockchainAPIURI = win.location.origin + '/blockchain-api/'
 } else {
   if (process.env.DATT_BLOCKCHAIN_API_URI) {
     blockchainAPIURI = process.env.DATT_BLOCKCHAIN_API_URI

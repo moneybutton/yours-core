@@ -11,3 +11,4 @@ build/datt-*.js
 build/mocha.css
 build/mocha.js
 build/tests.js
+build/fullnode-worker.js

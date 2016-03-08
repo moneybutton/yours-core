@@ -19,6 +19,26 @@ let q = require('q')
 let watch = require('gulp-watch')
 let watchify = require('watchify')
 
+if (!process.env.FULLNODE_JS_BASE_URL) {
+  process.env.FULLNODE_JS_BASE_URL = '/'
+}
+
+if (!process.env.FULLNODE_JS_BUNDLE_FILE) {
+  process.env.FULLNODE_JS_BUNDLE_FILE = 'datt-core.js'
+}
+
+if (!process.env.FULLNODE_JS_WORKER_FILE) {
+  process.env.FULLNODE_JS_WORKER_FILE = 'fullnode-worker.js'
+}
+
+if (!process.env.FULLNODE_JS_BUNDLE_MIN_FILE) {
+  process.env.FULLNODE_JS_BUNDLE_MIN_FILE = 'fullnode-min.js'
+}
+
+if (!process.env.FULLNODE_JS_WORKER_MIN_FILE) {
+  process.env.FULLNODE_JS_WORKER_MIN_FILE = 'fullnode-worker-min.js'
+}
+
 let browserSyncs = []
 browserSyncs['3040'] = browserSyncCreator.create()
 browserSyncs['3041'] = browserSyncCreator.create()
@@ -39,6 +59,19 @@ let browserifyOpts
 // bundles that depend on the changed files. At least, that's what happens on
 // Linux - presumably this is a platform issue.
 let watchifytimeout = 1000
+
+gulp.task('build-fullnode-worker', function () {
+  return new Promise(function (resolve, reject) {
+    browserify({debug: false})
+      .transform(envify)
+      .transform(babelify.configure({ignore: /node_modules/, presets: ['es2015']}))
+      .require(require.resolve('fullnode/lib/worker-browser.js'), {entry: true})
+      .bundle()
+      .on('error', reject)
+      .on('end', resolve)
+      .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.FULLNODE_JS_WORKER_FILE)))
+  })
+})
 
 function build_workerpool () {
   return new Promise((resolve, reject) => {
@@ -249,7 +282,7 @@ gulp.task('build-mocha', () => {
   })
 })
 
-gulp.task('build', ['build-react', 'build-core', 'build-tests', 'build-mocha'])
+gulp.task('build', ['build-react', 'build-core', 'build-fullnode-worker', 'build-tests', 'build-mocha'])
 
 gulp.task('build-exit', ['build'], () => {
   process.exit()

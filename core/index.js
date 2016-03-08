@@ -46,6 +46,7 @@ DattCore.prototype = Object.create(Struct.prototype)
 DattCore.prototype.constructor = DattCore
 Object.assign(DattCore.prototype, EventEmitter.prototype)
 
+DattCore.fullnode = require('fullnode')
 DattCore.ContentAuth = ContentAuth
 DattCore.CoreBitcoin = CoreBitcoin
 DattCore.CoreContent = CoreContent
