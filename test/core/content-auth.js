@@ -56,6 +56,24 @@ describe('ContentAuth', function () {
     })
   })
 
+  describe('#setAddressFromPubkey', function () {
+    it('should derive and set an address from the provided public key using Address().fromPubkey', function () {
+      return asink(function *() {
+        let contentauth = ContentAuth().fromHex(contentauthhex)
+        let keypair = Keypair().fromRandom()
+        let pubkey = keypair.pubkey
+        let expectedAddress = Address().fromPubkey(pubkey)
+        let address = yield contentauth.setAddressFromPubkey(pubkey)
+        should.exist(address)
+        should.exist(address.hashbuf)
+        should.exist(contentauth.address)
+        should.exist(contentauth.address.hashbuf)
+        expectedAddress.hashbuf.toString('hex').should.equal(address.hashbuf.toString('hex'))
+        expectedAddress.hashbuf.toString('hex').should.equal(contentauth.address.hashbuf.toString('hex'))
+      })
+    })
+  })
+
   describe('#sign', function () {
     it('should sign this value and get the same thing back', function () {
       let contentauth = ContentAuth().fromHex(contentauthhex)
@@ -65,7 +83,7 @@ describe('ContentAuth', function () {
   })
 
   describe('#asyncSign', function () {
-    it('should resuld the same as #sign', function () {
+    it('should result the same as #sign', function () {
       return asink(function *() {
         let contentauth = ContentAuth().fromHex(contentauthhex)
         let sig = yield contentauth.asyncSign(keypair)

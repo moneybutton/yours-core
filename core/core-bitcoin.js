@@ -196,6 +196,7 @@ CoreBitcoin.prototype.asyncSendTransaction = function (txb) {
 
 CoreBitcoin.prototype.asyncBuildSignAndSendTransaction = function (toAddress, toAmountSatoshis) {
   return asink(function *() {
+    // console.log('CoreBitcoin.prototype.asyncBuildSignAndSendTransaction(toAddress="'+toAddress+'",toAmountSatoshis="'+toAmountSatoshis+'")')
     let txb
     txb = yield this.asyncBuildTransaction(toAddress, toAmountSatoshis)
     txb = yield this.asyncSignTransaction(txb)

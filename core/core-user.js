@@ -9,7 +9,6 @@
  * database, i.e. the current user.
  */
 'use strict'
-let CryptoWorkers = require('./crypto-workers')
 let DBUser = require('./db-user')
 let MsgAuth = require('./msg-auth')
 let Struct = require('fullnode/lib/struct')
@@ -83,19 +82,14 @@ CoreUser.prototype.asyncSetUserSetupFlag = function (value) {
  * After setting your name, you may wish to 'auth', that is send a piece of
  * content to your peers declaring what your name is. This gets that message.
  */
-CoreUser.prototype.asyncGetMsgAuth = function (blockhashbuf, blockheightnum) {
+CoreUser.prototype.asyncGetMsgAuth = function (blockhashbuf, blockheightnum, address) {
   return asink(function *() {
     let msgauth = MsgAuth()
+
     msgauth.setBlockInfo(blockhashbuf, blockheightnum)
     msgauth.setName(this.user.name)
-    let buf = msgauth.getBufForSig()
-    let hashbuf = yield CryptoWorkers.asyncBSMHash(buf)
-    let privkey = this.user.masterxprv.privkey
-    let sig = yield CryptoWorkers.asyncSignCompact(hashbuf, privkey)
-    msgauth.contentauth.fromObject({
-      pubkey: this.user.masterxprv.pubkey,
-      sig: sig
-    })
+    yield msgauth.contentauth.asyncSign(this.user.masterxprv)
+
     return msgauth
   }, this)
 }
