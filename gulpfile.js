@@ -2,6 +2,7 @@
 let asink = require('asink')
 let babel_core_register = require('babel-core/register')
 let babelify = require('babelify')
+let browserSyncCreator = require('browser-sync')
 let browserify = require('browserify')
 let createAppServer = require('./server/app').createAppServer
 let createRendezvousServer = require('./server/rendezvous').createRendezvousServer
@@ -164,5 +165,38 @@ function task_test_node () {
 }
 
 gulp.task('test-node', task_test_node)
+
+function task_serve () {
+  // Create two rendezvous servers, one for the tests and one for the UI, so
+  // that network connections do not overlap
+  createRendezvousServer(3031) // For the tests (i.e., localhost:3040/tests.html)
+  createRendezvousServer(3032) // For the UI (i.e., localhost:3040)
+
+  // One app server, that delivers the app and the tests file
+  createAppServer(3030)
+
+  let config = {
+    ui: false,
+    proxy: 'http://localhost:3030',
+    open: false // don't automatically open browser window
+  }
+
+  let browserSyncs = []
+  browserSyncs['3040'] = browserSyncCreator.create()
+  browserSyncs['3041'] = browserSyncCreator.create()
+  browserSyncs['3042'] = browserSyncCreator.create()
+  browserSyncs['3043'] = browserSyncCreator.create()
+  browserSyncs['3044'] = browserSyncCreator.create()
+
+  console.log('browser-sync proxy on ports 3040 - 3044')
+  console.log('Make sure you also built the browser files with "gulp build"')
+  browserSyncs['3040'].init(Object.assign({port: 3040}, config))
+  browserSyncs['3041'].init(Object.assign({port: 3041}, config))
+  browserSyncs['3042'].init(Object.assign({port: 3042}, config))
+  browserSyncs['3043'].init(Object.assign({port: 3043}, config))
+  browserSyncs['3044'].init(Object.assign({port: 3044}, config))
+}
+
+gulp.task('serve', task_serve)
 
 gulp.task('default', ['build'])
