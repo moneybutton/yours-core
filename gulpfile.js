@@ -117,6 +117,8 @@ function task_build_tests () {
 
 gulp.task('build-tests', task_build_tests)
 
+gulp.task('build', ['build-fullnode-worker', 'build-fullnode', 'build-dattcore', 'build-dattreact', 'build-mocha', 'build-tests'])
+
 function task_test_node () {
   return gulp.src(['./test/*.js', './test/**/*.js', './test/**/*.jsx'])
     .pipe(gulp_plumber()) // keeps gulp from crashing when there is an exception
