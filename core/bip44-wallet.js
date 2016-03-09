@@ -6,11 +6,11 @@
  * xprv and derive the different "accounts" of BIP44.
  */
 'use strict'
-let BIP32 = require('fullnode').BIP32
+let BIP32 = fullnode.BIP32
 let BIP44Account = require('./bip44-account')
 let CryptoWorkers = require('./crypto-workers')
-let Random = require('fullnode').Random
-let Struct = require('fullnode').Struct
+let Random = fullnode.Random
+let Struct = fullnode.Struct
 let asink = require('asink')
 
 function BIP44Wallet (mnemonic, masterxprv, masterxpub, bip44accounts) {

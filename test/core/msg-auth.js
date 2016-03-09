@@ -1,12 +1,12 @@
 /* global describe,it,before */
 'use strict'
-let BN = require('fullnode/lib/bn')
-let BR = require('fullnode/lib/br')
+let BN = fullnode.BN
+let BR = fullnode.BR
 let Content = require('../../core/content')
-let Keypair = require('fullnode/lib/keypair')
+let Keypair = fullnode.Keypair
 let Msg = require('../../core/msg')
 let MsgAuth = require('../../core/msg-auth')
-let Privkey = require('fullnode/lib/privkey')
+let Privkey = fullnode.Privkey
 let asink = require('asink')
 let should = require('should')
 

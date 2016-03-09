@@ -1,7 +1,7 @@
 /* global describe,it */
 'use strict'
 let ContentAuth = require('../../core/content-auth')
-let Hash = require('fullnode/lib/hash')
+let Hash = fullnode.Hash
 let Msg = require('../../core/msg')
 let MsgContentAuth = require('../../core/msg-content-auth')
 let asink = require('asink')

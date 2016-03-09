@@ -18,7 +18,7 @@ let ConnectionInfo = require('./connection-info')
 let Constants = require('./constants')
 let EventEmitter = require('events')
 let NetworkWebRTC = require('./network-webrtc')
-let Struct = require('fullnode').Struct
+let Struct = fullnode.Struct
 let asink = require('asink')
 
 function Peers (config, networkWebRTC, networkSocket) {

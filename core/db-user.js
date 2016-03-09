@@ -7,7 +7,7 @@
  */
 'use strict'
 let User = require('./user')
-let Struct = require('fullnode').Struct
+let Struct = fullnode.Struct
 let asink = require('asink')
 
 function DBUser (db, user) {

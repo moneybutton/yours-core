@@ -1,12 +1,12 @@
 /* global describe,it,before,after */
 'use strict'
 let Peers = require('../../core/peers')
-let Address = require('fullnode/lib/address')
+let Address = fullnode.Address
 let Content = require('../../core/content')
 let ContentAuth = require('../../core/content-auth')
 let MsgContentAuth = require('../../core/msg-content-auth')
-let BR = require('fullnode/lib/br')
-let Keypair = require('fullnode/lib/keypair')
+let BR = fullnode.BR
+let Keypair = fullnode.Keypair
 let sinon = require('sinon')
 let asink = require('asink')
 let should = require('should')

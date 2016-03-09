@@ -1,7 +1,7 @@
 /* global describe,it */
 'use strict'
 let BIP44Account = require('../../core/bip44-account')
-let BIP32 = require('fullnode/lib/bip32')
+let BIP32 = fullnode.BIP32
 let should = require('should')
 let asink = require('asink')
 

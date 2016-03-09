@@ -1,10 +1,10 @@
 /* global before,describe,it,after */
 'use strict'
-let Address = require('fullnode/lib/address')
+let Address = fullnode.Address
 let ContentAuth = require('../../core/content-auth')
 let DattCore = require('../../core')
 let MsgPing = require('../../core/msg-ping')
-let Privkey = require('fullnode/lib/privkey')
+let Privkey = fullnode.Privkey
 let asink = require('asink')
 let mocks = require('./mocks')
 let should = require('should')

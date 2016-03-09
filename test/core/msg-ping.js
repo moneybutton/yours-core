@@ -3,7 +3,7 @@
 let should = require('should')
 let MsgPing = require('../../core/msg-ping')
 let Msg = require('../../core/msg')
-let Random = require('fullnode/lib/random')
+let Random = fullnode.Random
 
 describe('MsgPing', function () {
   let msgping

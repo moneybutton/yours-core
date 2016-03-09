@@ -17,11 +17,11 @@
  * let user = User().fromJSON(json)
  */
 'use strict'
-let BIP32 = require('fullnode').BIP32
-let BIP39 = require('fullnode').BIP39
+let BIP32 = fullnode.BIP32
+let BIP39 = fullnode.BIP39
 let CryptoWorkers = require('./crypto-workers')
-let Random = require('fullnode').Random
-let Struct = require('fullnode').Struct
+let Random = fullnode.Random
+let Struct = fullnode.Struct
 let asink = require('asink')
 
 function User (mnemonic, masterxprv, masterxpub, name) {

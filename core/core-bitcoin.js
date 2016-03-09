@@ -10,19 +10,19 @@
  * object.
  */
 'use strict'
-let Address = require('fullnode').Address
+let Address = fullnode.Address
 let BIP44Wallet = require('./bip44-wallet')
-let BN = require('fullnode').BN
-let BR = require('fullnode').BR
+let BN = fullnode.BN
+let BR = fullnode.BR
 let BlockchainAPI = require('./blockchain-api')
 let Constants = require('./constants')
 let CryptoWorkers = require('./crypto-workers')
 let DBBIP44Wallet = require('./db-bip44-wallet')
 let EventEmitter = require('events')
-let Script = require('fullnode').Script
-let Struct = require('fullnode').Struct
-let Txbuilder = require('fullnode').Txbuilder
-let Txout = require('fullnode').Txout
+let Script = fullnode.Script
+let Struct = fullnode.Struct
+let Txbuilder = fullnode.Txbuilder
+let Txout = fullnode.Txout
 let User = require('./user')
 let asink = require('asink')
 

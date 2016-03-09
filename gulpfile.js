@@ -27,15 +27,12 @@ gulp.task('build-fullnode-worker', () => {
 })
 
 function task_build_fullnode () {
-  // the fullnode config sets environment variables necessary to use fullnode
-  // if they are not already set in he environment.
   require('fullnode/config')
-
   return browserify({debug: false})
     .add(require.resolve('babel-polyfill'))
     .transform(envify)
-    .transform(babelify.configure({ignore: /node_modules/, presets: ['es2015']}))
-    .require(require.resolve('fullnode/index.js'), {entry: true})
+    .transform(babelify.configure({presets: ['es2015']}))
+    .add(require.resolve('fullnode'), {entry: true})
     .bundle()
     .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.FULLNODE_JS_BUNDLE_FILE)))
 }
@@ -48,7 +45,7 @@ function task_build_dattcore () {
   require('./config')
 
   return browserify({debug: false})
-    .exclude(require.resolve('fullnode'))
+    .external('fullnode')
     // Do not include the polyfill - it is already included by fullnode.js
     .transform(envify)
     .transform(babelify.configure({ignore: /node_modules/, presets: ['es2015']}))
@@ -87,6 +84,7 @@ function task_test_node () {
     .pipe(gulp_plumber()) // keeps gulp from crashing when there is an exception
     .pipe(gulp_mocha({
       reporter: 'dot',
+      require: ['fullnode'],
       compilers: {
         jsx: babel_core_register
       }

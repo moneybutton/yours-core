@@ -8,8 +8,8 @@
  */
 'use strict'
 let Msg = require('./msg')
-let Random = require('fullnode').Random
-let Struct = require('fullnode').Struct
+let Random = fullnode.Random
+let Struct = fullnode.Struct
 
 function MsgPing (databuf) {
   if (!(this instanceof MsgPing)) {

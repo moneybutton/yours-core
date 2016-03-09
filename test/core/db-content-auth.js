@@ -4,9 +4,9 @@ let DB = require('../../core/db')
 let Content = require('../../core/content')
 let ContentAuth = require('../../core/content-auth')
 let DBContentAuth = require('../../core/db-content-auth')
-let Keypair = require('fullnode/lib/keypair')
+let Keypair = fullnode.Keypair
 let should = require('should')
-let BR = require('fullnode/lib/br')
+let BR = fullnode.BR
 
 describe('DBContentAuth', function () {
   let blockidhex = '00000000000000000e6188a4cc93e3d3244b20bfdef1e9bd9db932e30f3aa2f1'

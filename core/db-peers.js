@@ -6,7 +6,7 @@
  * to, to the database.
  */
 'use strict'
-let Struct = require('fullnode').Struct
+let Struct = fullnode.Struct
 let asink = require('asink')
 
 function DBPeers (db, peers) {

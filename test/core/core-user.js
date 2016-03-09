@@ -1,6 +1,6 @@
 /* global describe,it,before,after */
 'use strict'
-let BR = require('fullnode/lib/br')
+let BR = fullnode.BR
 let CoreUser = require('../../core/core-user')
 let DB = require('../../core/db')
 let MsgAuth = require('../../core/msg-auth')

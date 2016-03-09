@@ -1,13 +1,13 @@
 /* global describe,it */
 'use strict'
-let Address = require('fullnode/lib/address')
-let BN = require('fullnode/lib/bn')
-let BR = require('fullnode/lib/br')
+let Address = fullnode.Address
+let BN = fullnode.BN
+let BR = fullnode.BR
 let Content = require('../../core/content')
 let ContentAuth = require('../../core/content-auth')
-let Hash = require('fullnode/lib/hash')
-let Keypair = require('fullnode/lib/keypair')
-let Privkey = require('fullnode/lib/privkey')
+let Hash = fullnode.Hash
+let Keypair = fullnode.Keypair
+let Privkey = fullnode.Privkey
 let should = require('should')
 let asink = require('asink')
 

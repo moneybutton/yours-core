@@ -29,7 +29,7 @@ let DB = require('./db')
 let DBContentAuth = require('./db-content-auth')
 let EventEmitter = require('events')
 let MsgContentAuth = require('./msg-content-auth')
-let Struct = require('fullnode').Struct
+let Struct = fullnode.Struct
 let User = require('./user')
 let asink = require('asink')
 let pkg = require('../package')
@@ -46,7 +46,7 @@ DattCore.prototype = Object.create(Struct.prototype)
 DattCore.prototype.constructor = DattCore
 Object.assign(DattCore.prototype, EventEmitter.prototype)
 
-DattCore.fullnode = require('fullnode')
+DattCore.fullnode = fullnode
 DattCore.ContentAuth = ContentAuth
 DattCore.CoreBitcoin = CoreBitcoin
 DattCore.CoreContent = CoreContent

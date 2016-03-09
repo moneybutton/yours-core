@@ -17,8 +17,8 @@ let ConnectionInfo = require('./connection-info')
 let Constants = require('./constants')
 let EventEmitter = require('events')
 let PeerJS = require('peerjs')
-let Random = require('fullnode').Random
-let Struct = require('fullnode').Struct
+let Random = fullnode.Random
+let Struct = fullnode.Struct
 let q = require('q')
 
 let Network = function NetworkBrowserWebRTC (rendezvous, id, peerjs, connections) {

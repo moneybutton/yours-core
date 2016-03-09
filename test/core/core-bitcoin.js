@@ -1,12 +1,12 @@
 /* global describe,it,before,after */
 'use strict'
-let Address = require('fullnode/lib/address')
+let Address = fullnode.Address
 let BIP44Wallet = require('../../core/bip44-wallet')
 let CoreBitcoin = require('../../core/core-bitcoin')
 let DB = require('../../core/db')
-let Interp = require('fullnode/lib/interp')
-let Txverifier = require('fullnode/lib/txverifier')
-let Txbuilder = require('fullnode/lib/txbuilder')
+let Interp = fullnode.Interp
+let Txverifier = fullnode.Txverifier
+let Txbuilder = fullnode.Txbuilder
 let User = require('../../core/user')
 let asink = require('asink')
 let should = require('should')

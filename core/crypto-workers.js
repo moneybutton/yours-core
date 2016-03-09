@@ -8,13 +8,13 @@
  * isomorphic between node and a browser (i.e., it works in both).
  */
 'use strict'
-let Address = require('fullnode').Address
-let BIP32 = require('fullnode').BIP32
-let Hash = require('fullnode').Hash
-let Pubkey = require('fullnode').Pubkey
-let Sig = require('fullnode').Sig
-let Struct = require('fullnode').Struct
-let Txbuilder = require('fullnode').Txbuilder
+let Address = fullnode.Address
+let BIP32 = fullnode.BIP32
+let Hash = fullnode.Hash
+let Pubkey = fullnode.Pubkey
+let Sig = fullnode.Sig
+let Struct = fullnode.Struct
+let Txbuilder = fullnode.Txbuilder
 let asink = require('asink')
 let path = require('path')
 let q = require('q')

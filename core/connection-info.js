@@ -11,8 +11,8 @@
  * filled out as we add support for web sockets and Web RTC.
  */
 'use strict'
-let BW = require('fullnode').BW
-let Struct = require('fullnode').Struct
+let BW = fullnode.BW
+let Struct = fullnode.Struct
 
 function ConnectionInfo (typebuf, objbuf) {
   if (!(this instanceof ConnectionInfo)) {

@@ -2,8 +2,8 @@
 'use strict'
 let Constants = require('../../core/constants')
 let Msg = require('../../core/msg')
-let BR = require('fullnode/lib/br')
-let BW = require('fullnode/lib/bw')
+let BR = fullnode.BR
+let BW = fullnode.BW
 let should = require('should')
 
 describe('Msg', function () {

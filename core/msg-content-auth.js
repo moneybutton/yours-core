@@ -6,10 +6,10 @@
  * authenticated content to a peer.
  */
 'use strict'
-let BW = require('fullnode').BW
+let BW = fullnode.BW
 let ContentAuth = require('./content-auth')
 let Msg = require('./msg')
-let Struct = require('fullnode').Struct
+let Struct = fullnode.Struct
 let asink = require('asink')
 
 function MsgContentAuth (hashbuf, contentauth) {

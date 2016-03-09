@@ -14,8 +14,8 @@
  * does not refer to other content.
  */
 'use strict'
-let BW = require('fullnode').BW
-let Struct = require('fullnode').Struct
+let BW = fullnode.BW
+let Struct = fullnode.Struct
 
 function Content (name, label, title, type, body) {
   if (!(this instanceof Content)) {

@@ -6,7 +6,7 @@
  * hanging when the tests are done running so that the tests end properly.
  */
 'use strict'
-let Workers = require('fullnode').Workers
+let Workers = fullnode.Workers
 
 after(function () {
   Workers.endGlobalWorkers()

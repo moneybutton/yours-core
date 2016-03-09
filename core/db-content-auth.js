@@ -6,7 +6,7 @@
  */
 'use strict'
 let ContentAuth = require('./content-auth')
-let Struct = require('fullnode').Struct
+let Struct = fullnode.Struct
 
 function DBContentAuth (db, contentauth) {
   if (!(this instanceof DBContentAuth)) {

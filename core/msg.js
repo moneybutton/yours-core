@@ -5,10 +5,10 @@
  * A message on the datt p2p network.
  */
 'use strict'
-let BR = require('fullnode').BR
-let BW = require('fullnode').BW
+let BR = fullnode.BR
+let BW = fullnode.BW
 let Constants = require('./constants')
-let Struct = require('fullnode').Struct
+let Struct = fullnode.Struct
 
 function Msg (magicnum, cmdbuf, datasize, databuf) {
   if (!(this instanceof Msg)) {

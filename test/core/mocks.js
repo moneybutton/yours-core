@@ -2,7 +2,7 @@
  * Mockups useful for testing
  */
 'use strict'
-let BR = require('fullnode/lib/br')
+let BR = fullnode.BR
 let asink = require('asink')
 
 exports.asyncGetLatestBlockInfo = function () {

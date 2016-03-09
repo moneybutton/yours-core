@@ -1,6 +1,6 @@
 /* global describe,it,before,after */
 'use strict'
-let Address = require('fullnode/lib/address')
+let Address = fullnode.Address
 let ContentAuth = require('../../core/content-auth')
 let CoreContent = require('../../core/core-content')
 let DB = require('../../core/db')
