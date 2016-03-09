@@ -1,4 +1,4 @@
-/* global before,describe,it,after */
+/* global fullnode,before,describe,it,after */
 'use strict'
 let Address = fullnode.Address
 let ContentAuth = require('../../core/content-auth')

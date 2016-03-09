@@ -1,4 +1,4 @@
-/* global describe,it,before,after */
+/* global fullnode,describe,it,before,after */
 'use strict'
 let Peers = require('../../core/peers')
 let Address = fullnode.Address

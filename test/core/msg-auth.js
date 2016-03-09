@@ -1,4 +1,4 @@
-/* global describe,it,before */
+/* global fullnode,describe,it,before */
 'use strict'
 let BN = fullnode.BN
 let BR = fullnode.BR

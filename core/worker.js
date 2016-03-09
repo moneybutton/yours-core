@@ -1,4 +1,4 @@
-/* global require('fullnode'),importScripts,self */
+/* global importScripts,self */
 'use strict'
 let Address = require('fullnode').Address
 let BIP32 = require('fullnode').BIP32

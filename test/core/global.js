@@ -1,4 +1,4 @@
-/* global after */
+/* global fullnode,after */
 /**
  * Global "before" and "after" to run before and after all tests. These can be
  * used to establish and also tear down global database connections, network

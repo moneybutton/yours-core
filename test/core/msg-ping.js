@@ -1,4 +1,4 @@
-/* global describe,it */
+/* global fullnode,describe,it */
 'use strict'
 let should = require('should')
 let MsgPing = require('../../core/msg-ping')

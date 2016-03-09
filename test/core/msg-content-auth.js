@@ -1,4 +1,4 @@
-/* global describe,it */
+/* global fullnode,describe,it */
 'use strict'
 let ContentAuth = require('../../core/content-auth')
 let Hash = fullnode.Hash

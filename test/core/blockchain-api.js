@@ -1,4 +1,4 @@
-/* global describe,it */
+/* global fullnode,describe,it */
 'use strict'
 let Address = fullnode.Address
 let BlockchainAPI = require('../../core/blockchain-api')

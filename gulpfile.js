@@ -132,3 +132,5 @@ function task_test_node () {
 }
 
 gulp.task('test-node', task_test_node)
+
+gulp.task('default', ['build'])

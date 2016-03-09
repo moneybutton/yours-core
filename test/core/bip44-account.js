@@ -1,4 +1,4 @@
-/* global describe,it */
+/* global fullnode,describe,it */
 'use strict'
 let BIP44Account = require('../../core/bip44-account')
 let BIP32 = fullnode.BIP32

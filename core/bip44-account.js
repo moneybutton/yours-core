@@ -1,4 +1,5 @@
-/**
+/* global fullnode */
+/*
  * BIP44 Account
  * =============
  *

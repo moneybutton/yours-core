@@ -1,4 +1,4 @@
-/* global describe,it,before,after */
+/* global fullnode,describe,it,before,after */
 'use strict'
 let DB = require('../../core/db')
 let Content = require('../../core/content')

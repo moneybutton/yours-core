@@ -1,4 +1,4 @@
-/* global it,describe */
+/* global fullnode,it,describe */
 'use strict'
 let Address = fullnode.Address
 let BIP32 = fullnode.BIP32

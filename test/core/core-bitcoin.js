@@ -1,4 +1,4 @@
-/* global describe,it,before,after */
+/* global fullnode,describe,it,before,after */
 'use strict'
 let Address = fullnode.Address
 let BIP44Wallet = require('../../core/bip44-wallet')

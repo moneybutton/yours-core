@@ -1,4 +1,4 @@
-/* global describe,it */
+/* global fullnode,describe,it */
 'use strict'
 let Address = fullnode.Address
 let BN = fullnode.BN

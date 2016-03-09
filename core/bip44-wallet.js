@@ -1,3 +1,4 @@
+/* global fullnode */
 /**
  * BIP44 Wallet
  * ============

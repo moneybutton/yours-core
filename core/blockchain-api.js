@@ -1,3 +1,4 @@
+/* global fullnode */
 /**
  * Blockchain API
  * ==============

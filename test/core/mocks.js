@@ -1,3 +1,4 @@
+/* global fullnode */
 /**
  * Mockups useful for testing
  */

@@ -1,4 +1,4 @@
-/* global describe,it */
+/* global fullnode,describe,it */
 'use strict'
 let Constants = require('../../core/constants')
 let Msg = require('../../core/msg')
