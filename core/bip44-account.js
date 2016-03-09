@@ -11,7 +11,6 @@
 'use strict'
 let Address = fullnode.Address
 let BIP32 = fullnode.BIP32
-let CryptoWorkers = require('./crypto-workers')
 let Struct = fullnode.Struct
 let asink = require('asink')
 
@@ -41,8 +40,7 @@ BIP44Account.prototype.asyncFromMasterXprvPrivate = function (bip32, accountinde
     }
     // TODO: Support testnet, which has a 1 for the coin type
     let path = "m/44'/0'/" + accountindex + "'"
-    let keys = yield CryptoWorkers.asyncDeriveXkeysFromXprv(bip32, path)
-    bip32 = keys.xprv
+    bip32 = yield bip32.asyncDerive(path)
     this.fromObject({bip32})
     return this
   }, this)
@@ -55,8 +53,8 @@ BIP44Account.prototype.asyncFromMasterXprvPublic = function (bip32, accountindex
     }
     // TODO: Support testnet, which has a 1 for the coin type
     let path = "m/44'/0'/" + accountindex + "'"
-    let keys = yield CryptoWorkers.asyncDeriveXkeysFromXprv(bip32, path)
-    bip32 = keys.xpub
+    bip32 = yield bip32.asyncDerive(path)
+    bip32 = bip32.toPublic()
     this.fromObject({bip32})
     return this
   }, this)
@@ -155,9 +153,14 @@ BIP44Account.prototype.asyncDeriveKeysFromPath = function (path) {
       return keys
     }
     if (this.bip32.isPrivate()) {
-      keys = yield CryptoWorkers.asyncDeriveXkeysFromXprv(this.bip32, path)
+      let xprv = yield this.bip32.asyncDerive(path)
+      let xpub = xprv.toPublic()
+      let address = yield Address().asyncFromPubkey(xpub.pubkey)
+      keys = {xprv, xpub, address}
     } else {
-      keys = yield CryptoWorkers.asyncDeriveXkeysFromXpub(this.bip32, path)
+      let xpub = this.bip32.toPublic()
+      let address = yield Address().asyncFromPubkey(xpub.pubkey)
+      keys = {xpub, address}
     }
     this.pathmap.set(path, keys)
     this.addrhexmap.set(keys.address.toHex(), keys)
