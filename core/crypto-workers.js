@@ -17,12 +17,8 @@ let ECDSA = fullnode.ECDSA
 let Hash = fullnode.Hash
 let Keypair = fullnode.Keypair
 let Pubkey = fullnode.Pubkey
-let Sig = fullnode.Sig
 let Struct = fullnode.Struct
-let Txbuilder = fullnode.Txbuilder
 let asink = require('asink')
-let path = require('path')
-let q = require('q')
 
 function CryptoWorkers () {
   if (!(this instanceof CryptoWorkers)) {
@@ -201,7 +197,8 @@ CryptoWorkers.prototype.asyncVerifyCompactSig = function (hashbuf, sig) {
     if (sig.recovery === undefined || sig.compressed === undefined) {
       throw new Error('verifyCompactSig takes a compact signature only')
     }
-    let pubkey, verified = false
+    let pubkey
+    let verified = false
     try {
       pubkey = yield ECDSA.asyncSig2pubkey(sig, hashbuf)
       verified = yield ECDSA.asyncVerify(hashbuf, sig, pubkey)

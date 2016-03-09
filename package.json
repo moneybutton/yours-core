@@ -130,8 +130,7 @@
     "react-bootstrap-modal": "^2.0.0",
     "react-dom": "0.14.7",
     "react-markdown": "2.0.1",
-    "request": "2.69.0",
-    "workerpool": "1.1.0"
+    "request": "2.69.0"
   },
   "devDependencies": {
     "babel-core": "6.7.0",

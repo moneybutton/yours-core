@@ -15,9 +15,7 @@ let Txbuilder = fullnode.Txbuilder
 let Txout = fullnode.Txout
 let Txverifier = fullnode.Txverifier
 let asink = require('asink')
-let path = require('path')
 let should = require('should')
-let workerpool = require('workerpool')
 
 describe('CryptoWorkers', function () {
   let databuf = new Buffer(50)
