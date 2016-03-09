@@ -22,7 +22,7 @@ function task_build_fullnode_worker () {
     .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.FULLNODE_JS_WORKER_FILE)))
 }
 
-gulp.task('build-fullnode-worker', function () {
+gulp.task('build-fullnode-worker', () => {
   return task_build_fullnode_worker()
 })
 
@@ -32,6 +32,7 @@ function task_build_fullnode () {
   require('fullnode/config')
 
   return browserify({debug: false})
+    .add(require.resolve('babel-polyfill'))
     .transform(envify)
     .transform(babelify.configure({ignore: /node_modules/, presets: ['es2015']}))
     .require(require.resolve('fullnode/index.js'), {entry: true})
@@ -39,7 +40,7 @@ function task_build_fullnode () {
     .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.FULLNODE_JS_BUNDLE_FILE)))
 }
 
-gulp.task('build-fullnode', function () {
+gulp.task('build-fullnode', () => {
   return task_build_fullnode()
 })
 
@@ -48,6 +49,7 @@ function task_build_dattcore () {
 
   return browserify({debug: false})
     .exclude(require.resolve('fullnode'))
+    // Do not include the polyfill - it is already included by fullnode.js
     .transform(envify)
     .transform(babelify.configure({ignore: /node_modules/, presets: ['es2015']}))
     .require(require.resolve('./core'), {entry: true})
@@ -55,8 +57,29 @@ function task_build_dattcore () {
     .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_BUNDLE_FILE)))
 }
 
-gulp.task('build-dattcore', function () {
+gulp.task('build-dattcore', () => {
   return task_build_dattcore()
+})
+
+function task_build_css () {
+  return fs.createReadStream(path.join(__dirname, 'node_modules', 'bootstrap', 'dist', 'css', 'bootstrap.css'))
+    .pipe(fs.createWriteStream(path.join(__dirname, 'build', 'bootstrap.css')))
+}
+
+gulp.task('build-css', () => {
+  return task_build_css()
+})
+
+function task_build_dattreact () {
+  return browserify({debug: false})
+    // Do not include the polyfill - it is already included by fullnode.js
+    .transform('reactify')
+    .transform(babelify, {presets: ['es2015', 'react'], sourceMaps: false})
+    .add(require.resolve('./react/index.js'), {entry: true})
+}
+
+gulp.task('build-dattreact', () => {
+  return task_build_dattreact()
 })
 
 function task_test_node () {
