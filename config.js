@@ -6,6 +6,7 @@
  * to change the behavior of Datt.
  */
 'use strict'
+require('fullnode/config')
 
 // By default, we assume browser-loaded javascript is served from the root
 // directory, "/", of the http server. karma, however, assumes files are in the
@@ -35,10 +36,6 @@ if (!process.env.DATT_JS_TESTS_FILE) {
 
 if (!process.env.DATT_REACT_JS_FILE) {
   process.env.DATT_REACT_JS_FILE = 'datt-react.js'
-}
-
-if (!process.env.FULLNODE_NETWORK) {
-  process.env.FULLNODE_NETWORK = 'mainnet'
 }
 
 if (!process.env.DATT_BLOCKCHAIN_API_URI) {

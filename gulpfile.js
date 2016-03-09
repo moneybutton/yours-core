@@ -1,13 +1,16 @@
 'use strict'
+let asink = require('asink')
 let babel_core_register = require('babel-core/register')
 let babelify = require('babelify')
 let browserify = require('browserify')
 let envify = require('envify')
 let fs = require('fs')
+let glob = require('glob')
 let gulp = require('gulp')
 let gulp_mocha = require('gulp-mocha')
 let gulp_plumber = require('gulp-plumber')
 let path = require('path')
+require('./config')
 
 function task_build_fullnode_worker () {
   // the fullnode config sets environment variables necessary to use fullnode
@@ -22,9 +25,7 @@ function task_build_fullnode_worker () {
     .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.FULLNODE_JS_WORKER_FILE)))
 }
 
-gulp.task('build-fullnode-worker', () => {
-  return task_build_fullnode_worker()
-})
+gulp.task('build-fullnode-worker', task_build_fullnode_worker)
 
 function task_build_fullnode () {
   require('fullnode/config')
@@ -37,9 +38,7 @@ function task_build_fullnode () {
     .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.FULLNODE_JS_BUNDLE_FILE)))
 }
 
-gulp.task('build-fullnode', () => {
-  return task_build_fullnode()
-})
+gulp.task('build-fullnode', task_build_fullnode)
 
 function task_build_dattcore () {
   require('./config')
@@ -54,18 +53,14 @@ function task_build_dattcore () {
     .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_CORE_JS_BUNDLE_FILE)))
 }
 
-gulp.task('build-dattcore', () => {
-  return task_build_dattcore()
-})
+gulp.task('build-dattcore', task_build_dattcore)
 
 function task_build_css () {
   return fs.createReadStream(path.join(__dirname, 'node_modules', 'bootstrap', 'dist', 'css', 'bootstrap.css'))
     .pipe(fs.createWriteStream(path.join(__dirname, 'build', 'bootstrap.css')))
 }
 
-gulp.task('build-css', () => {
-  return task_build_css()
-})
+gulp.task('build-css', task_build_css)
 
 function task_build_dattreact () {
   return browserify({debug: false})
@@ -75,9 +70,7 @@ function task_build_dattreact () {
     .add(require.resolve('./react/index.js'), {entry: true})
 }
 
-gulp.task('build-dattreact', () => {
-  return task_build_dattreact()
-})
+gulp.task('build-dattreact', task_build_dattreact)
 
 function task_test_node () {
   return gulp.src(['./test/*.js', './test/**/*.js', './test/**/*.jsx'])
@@ -91,6 +84,49 @@ function task_test_node () {
     }))
 }
 
-gulp.task('test-node', () => {
-  return task_test_node()
-})
+gulp.task('test-node', task_test_node)
+
+function task_build_mocha () {
+  return asink(function *() {
+    // copy the mocha js and css files to our build directory so you can use them
+    // in the tests HTML file
+    yield new Promise((resolve, reject) => {
+      fs.createReadStream(path.join(__dirname, 'node_modules', 'mocha', 'mocha.js'))
+        .pipe(fs.createWriteStream(path.join(__dirname, 'build', 'mocha.js')))
+        .on('close', resolve)
+        .on('error', reject)
+    })
+    yield new Promise((resolve, reject) => {
+      fs.createReadStream(path.join(__dirname, 'node_modules', 'mocha', 'mocha.css'))
+        .pipe(fs.createWriteStream(path.join(__dirname, 'build', 'mocha.css')))
+        .on('close', resolve)
+        .on('error', reject)
+    })
+  }, this)
+}
+
+gulp.task('build-mocha', task_build_mocha)
+
+function task_build_tests () {
+  return new Promise((resolve, reject) => {
+    glob('./test/**/*+(.js|.jsx)', {}, (err, files) => {
+      if (err) {
+        reject(err)
+        return
+      }
+      let b = browserify({debug: false})
+      b.transform(envify)
+        .transform(babelify, {presets: ['es2015', 'react'], sourceMaps: false})
+        .ignore('jsdom')
+      for (let file of files) {
+        b.add(file)
+      }
+      b.bundle()
+        .on('error', reject)
+        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_JS_TESTS_FILE)))
+        .on('finish', resolve)
+    })
+  })
+}
+
+gulp.task('build-tests', task_build_tests)
