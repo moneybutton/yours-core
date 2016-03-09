@@ -8,10 +8,10 @@
  * derive public keys and addresses.
  */
 'use strict'
-let Address = require('fullnode/lib/address')
-let BIP32 = require('fullnode/lib/bip32')
+let Address = require('fullnode').Address
+let BIP32 = require('fullnode').BIP32
 let CryptoWorkers = require('./crypto-workers')
-let Struct = require('fullnode/lib/struct')
+let Struct = require('fullnode').Struct
 let asink = require('asink')
 
 function BIP44Account (bip32, extindex, intindex, pathmap, addrhexmap) {

@@ -15,7 +15,7 @@ let MsgContentAuth = require('./msg-content-auth')
 let MsgPing = require('./msg-ping')
 let MsgPong = require('./msg-pong')
 let Peers = require('./peers')
-let Struct = require('fullnode/lib/struct')
+let Struct = require('fullnode').Struct
 let asink = require('asink')
 
 function CorePeers (config, db, dbpeers, peers) {

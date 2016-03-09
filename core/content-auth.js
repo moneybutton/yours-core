@@ -13,18 +13,18 @@
  * cryptography.
  */
 'use strict'
-let Address = require('fullnode/lib/address')
-let BN = require('fullnode/lib/bn')
-let BSM = require('fullnode/lib/bsm')
-let BW = require('fullnode/lib/bw')
+let Address = require('fullnode').Address
+let BN = require('fullnode').BN
+let BSM = require('fullnode').BSM
+let BW = require('fullnode').BW
 let Content = require('./content')
 let CryptoWorkers = require('./crypto-workers')
-let ECDSA = require('fullnode/lib/ecdsa')
-let Hash = require('fullnode/lib/hash')
-let Keypair = require('fullnode/lib/keypair')
-let Pubkey = require('fullnode/lib/pubkey')
-let Sig = require('fullnode/lib/sig')
-let Struct = require('fullnode/lib/struct')
+let ECDSA = require('fullnode').ECDSA
+let Hash = require('fullnode').Hash
+let Keypair = require('fullnode').Keypair
+let Pubkey = require('fullnode').Pubkey
+let Sig = require('fullnode').Sig
+let Struct = require('fullnode').Struct
 let asink = require('asink')
 
 /**

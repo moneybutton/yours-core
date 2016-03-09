@@ -1,16 +1,16 @@
 /* global importScripts,self */
 'use strict'
-let Address = require('fullnode/lib/address')
-let BIP32 = require('fullnode/lib/bip32')
-let BIP39 = require('fullnode/lib/bip39')
-let BSM = require('fullnode/lib/bsm')
-let ECDSA = require('fullnode/lib/ecdsa')
-let Hash = require('fullnode/lib/hash')
-let Keypair = require('fullnode/lib/keypair')
-let Privkey = require('fullnode/lib/privkey')
-let Pubkey = require('fullnode/lib/pubkey')
-let Sig = require('fullnode/lib/sig')
-let Txbuilder = require('fullnode/lib/txbuilder')
+let Address = require('fullnode').Address
+let BIP32 = require('fullnode').BIP32
+let BIP39 = require('fullnode').BIP39
+let BSM = require('fullnode').BSM
+let ECDSA = require('fullnode').ECDSA
+let Hash = require('fullnode').Hash
+let Keypair = require('fullnode').Keypair
+let Privkey = require('fullnode').Privkey
+let Pubkey = require('fullnode').Pubkey
+let Sig = require('fullnode').Sig
+let Txbuilder = require('fullnode').Txbuilder
 
 function sha256 (datahex) {
   let buf = new Buffer(datahex, 'hex')

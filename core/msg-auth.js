@@ -14,7 +14,7 @@
 let Content = require('./content')
 let ContentAuth = require('./content-auth')
 let Msg = require('./msg')
-let Struct = require('fullnode/lib/struct')
+let Struct = require('fullnode').Struct
 let asink = require('asink')
 
 function MsgAuth (contentauth) {

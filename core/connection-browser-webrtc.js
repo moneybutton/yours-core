@@ -9,7 +9,7 @@
  * NetworkBrowserWebRTC.prototype.connect to create an object for you.
  */
 'use strict'
-let Struct = require('fullnode/lib/struct')
+let Struct = require('fullnode').Struct
 let Msg = require('./msg')
 let asink = require('asink')
 let EventEmitter = require('events')

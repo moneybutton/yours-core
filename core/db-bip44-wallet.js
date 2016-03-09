@@ -6,7 +6,7 @@
  */
 'use strict'
 let BIP44Wallet = require('./bip44-wallet')
-let Struct = require('fullnode/lib/struct')
+let Struct = require('fullnode').Struct
 let asink = require('asink')
 
 function DBBIP44Wallet (db, bip44wallet) {

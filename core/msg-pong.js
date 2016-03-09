@@ -8,7 +8,7 @@
  */
 'use strict'
 let Msg = require('./msg')
-let Struct = require('fullnode/lib/struct')
+let Struct = require('fullnode').Struct
 
 function MsgPong (databuf) {
   if (!(this instanceof MsgPong)) {

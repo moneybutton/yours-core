@@ -8,7 +8,7 @@
 let Constants = require('./constants').DB
 let Path = require('path')
 let PouchDB = require('pouchdb')
-let Struct = require('fullnode/lib/struct')
+let Struct = require('fullnode').Struct
 
 function DB (name, basePath, pouchdb) {
   if (!(this instanceof DB)) {

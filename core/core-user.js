@@ -12,7 +12,7 @@
 let CryptoWorkers = require('./crypto-workers')
 let DBUser = require('./db-user')
 let MsgAuth = require('./msg-auth')
-let Struct = require('fullnode/lib/struct')
+let Struct = require('fullnode').Struct
 let User = require('./user')
 let asink = require('asink')
 

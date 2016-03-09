@@ -10,10 +10,10 @@
  * but for now this is simpler.
  */
 'use strict'
-let BR = require('fullnode/lib/br')
+let BR = require('fullnode').BR
 let Constants = require('./constants')
 let CryptoWorkers = require('./crypto-workers')
-let Struct = require('fullnode/lib/struct')
+let Struct = require('fullnode').Struct
 let asink = require('asink')
 let request = require('request') // TODO: replace request w/ something smaller
 

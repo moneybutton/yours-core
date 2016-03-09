@@ -13,8 +13,8 @@
 let Content = require('./content')
 let ContentAuth = require('./content-auth')
 let DBContentAuth = require('./db-content-auth')
-let Struct = require('fullnode/lib/struct')
-let Keypair = require('fullnode/lib/keypair')
+let Struct = require('fullnode').Struct
+let Keypair = require('fullnode').Keypair
 let EventEmitter = require('events')
 let asink = require('asink')
 
