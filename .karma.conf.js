@@ -5,9 +5,9 @@ module.exports = function (config) {
     frameworks: ['mocha'],
 
     files: [
+      {pattern: 'fullnode-worker.js', watched: true, included: false, served: true},
+      {pattern: 'fullnode.js', watched: true, included: true, served: true},
       {pattern: 'datt-core.js', watched: true, included: true, served: true},
-      {pattern: 'datt-core-worker.js', watched: true, included: false, served: true},
-      {pattern: 'datt-core-workerpool.js', watched: true, included: false, served: true},
       {pattern: 'datt-react.js', watched: true, included: false, served: true},
       {pattern: 'datt-tests.js'}
     ],

@@ -38,23 +38,6 @@ describe('CryptoWorkers', function () {
       should.exist(cryptoWorkers.asyncAddressFromPubkey)
       should.exist(cryptoWorkers.asyncSign)
     })
-
-    it('should share the same default worker pool', function () {
-      let cryptoWorkers = new CryptoWorkers()
-      let cryptoWorkers2 = new CryptoWorkers()
-      cryptoWorkers2.pool.should.equal(cryptoWorkers.pool)
-
-      let pool
-      if (!process.browser) {
-        let pathstr = path.join(__dirname, 'worker.js')
-        pool = workerpool.pool(pathstr)
-      } else {
-        pool = workerpool.pool(process.env.DATT_JS_BASE_URL + process.env.DATT_CORE_JS_WORKER_FILE)
-      }
-      let cryptoWorkers3 = new CryptoWorkers(pool)
-      cryptoWorkers3.pool.should.not.equal(cryptoWorkers.pool)
-      cryptoWorkers3.pool.should.equal(pool)
-    })
   })
 
   describe('@asyncSha256', function () {

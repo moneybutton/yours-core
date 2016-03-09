@@ -11,7 +11,11 @@
 'use strict'
 let Address = fullnode.Address
 let BIP32 = fullnode.BIP32
+let BIP39 = fullnode.BIP39
+let BSM = fullnode.BSM
+let ECDSA = fullnode.ECDSA
 let Hash = fullnode.Hash
+let Keypair = fullnode.Keypair
 let Pubkey = fullnode.Pubkey
 let Sig = fullnode.Sig
 let Struct = fullnode.Struct
@@ -19,29 +23,11 @@ let Txbuilder = fullnode.Txbuilder
 let asink = require('asink')
 let path = require('path')
 let q = require('q')
-let workerpool = require('workerpool')
 
-let defaultPool
-let cryptoWorkers
-
-function CryptoWorkers (pool) {
+function CryptoWorkers () {
   if (!(this instanceof CryptoWorkers)) {
-    return new CryptoWorkers(pool)
+    return new CryptoWorkers()
   }
-  if (!pool) {
-    if (!defaultPool) {
-      // Cache global worker pool, so if you create a new cryptoWorkers instance
-      // it will use the global worker pool by default.
-      if (!process.browser) {
-        let pathstr = path.join(__dirname, 'worker.js')
-        defaultPool = workerpool.pool(pathstr)
-      } else {
-        defaultPool = workerpool.pool(process.env.DATT_JS_BASE_URL + process.env.DATT_CORE_JS_WORKER_FILE)
-      }
-    }
-    pool = defaultPool
-  }
-  this.fromObject({pool})
 }
 
 CryptoWorkers.prototype = Object.create(Struct.prototype)
@@ -55,11 +41,6 @@ CryptoWorkers.prototype.constructor = CryptoWorkers
  */
 CryptoWorkers.prototype.asyncSha256 = function sha256 (databuf) {
   return Hash.asyncSha256(databuf)
-  // return asink(function *() {
-  //   let datahex = databuf.toString('hex')
-  //   let hashhex = yield q(this.pool.exec('sha256', [datahex]))
-  //   return new Buffer(hashhex, 'hex')
-  // }, this)
 }
 
 /**
@@ -71,11 +52,7 @@ CryptoWorkers.prototype.asyncSha256 = function sha256 (databuf) {
  * (browser) a buffer rather than a hex string.
  */
 CryptoWorkers.prototype.asyncBSMHash = function BSMHash (databuf) {
-  return asink(function *() {
-    let datahex = databuf.toString('hex')
-    let hashhex = yield q(this.pool.exec('BSMHash', [datahex]))
-    return new Buffer(hashhex, 'hex')
-  }, this)
+  return BSM.asyncMagicHash(databuf)
 }
 
 /**
@@ -85,19 +62,13 @@ CryptoWorkers.prototype.asyncBSMHash = function BSMHash (databuf) {
  * rather than copying JSON data.
  */
 CryptoWorkers.prototype.asyncPubkeyFromPrivkey = function (privkey) {
-  return asink(function *() {
-    let privkeyHex = privkey.toHex()
-    let pubkeyHex = yield q(this.pool.exec('pubkeyHexFromPrivkeyHex', [privkeyHex]))
-    let pubkey = Pubkey().fromFastBuffer(new Buffer(pubkeyHex, 'hex'))
-    return pubkey
-  }, this)
+  return Pubkey().asyncFromPrivkey(privkey)
 }
 
 CryptoWorkers.prototype.asyncAddressFromPubkeyBuffer = function (pubkeybuf) {
   return asink(function *() {
-    let pubkeyHex = pubkeybuf.toString('hex')
-    let addressHex = yield q(this.pool.exec('addressHexFromPubkeyHex', [pubkeyHex]))
-    return Address().fromHex(addressHex)
+    let pubkey = yield Pubkey().asyncFromBuffer(pubkeybuf)
+    return Address().asyncFromPubkey(pubkey)
   }, this)
 }
 
@@ -106,22 +77,14 @@ CryptoWorkers.prototype.asyncAddressFromPubkeyBuffer = function (pubkeybuf) {
  * transmission code with buffers rather than JSON.
  */
 CryptoWorkers.prototype.asyncAddressFromPubkey = function (pubkey) {
-  return asink(function *() {
-    let pubkeyHex = pubkey.toHex()
-    let addressHex = yield q(this.pool.exec('addressHexFromPubkeyHex', [pubkeyHex]))
-    return Address().fromHex(addressHex)
-  }, this)
+  return Address().asyncFromPubkey(pubkey)
 }
 
 /**
  * Derive an address object from an address string.
  */
 CryptoWorkers.prototype.asyncAddressFromAddressString = function (addressString) {
-  return asink(function *() {
-    let addressHex = yield q(this.pool.exec('addressHexFromAddressString', [addressString]))
-    let address = Address().fromHex(addressHex)
-    return address
-  }, this)
+  return Address().asyncFromString(addressString)
 }
 
 /**
@@ -129,11 +92,7 @@ CryptoWorkers.prototype.asyncAddressFromAddressString = function (addressString)
  * replace transmission code with buffers rather than JSON.
  */
 CryptoWorkers.prototype.asyncAddressStringFromAddress = function (address) {
-  return asink(function *() {
-    let addressHex = address.toHex()
-    let addressString = yield q(this.pool.exec('addressStringFromAddressHex', [addressHex]))
-    return addressString
-  }, this)
+  return address.asyncToString()
 }
 
 /**
@@ -144,11 +103,12 @@ CryptoWorkers.prototype.asyncAddressStringFromAddress = function (address) {
  */
 CryptoWorkers.prototype.asyncXkeysFromEntropy = function (entropybuf) {
   return asink(function *() {
-    let entropyhex = entropybuf.toString('hex')
-    let obj = yield q(this.pool.exec('xkeysFromEntropyHex', [entropyhex]))
-    let mnemonic = obj.mnemonic
-    let xprv = BIP32().fromHex(obj.xprv)
-    let xpub = BIP32().fromHex(obj.xpub)
+    let bip39 = yield BIP39().asyncFromEntropy(entropybuf)
+    let seed = yield bip39.asyncToSeed()
+    let bip32 = yield BIP32().asyncFromSeed(seed)
+    let mnemonic = bip39.toString()
+    let xprv = bip32
+    let xpub = bip32.toPublic()
     return {
       mnemonic: mnemonic,
       xprv: xprv,
@@ -164,12 +124,10 @@ CryptoWorkers.prototype.asyncXkeysFromEntropy = function (entropybuf) {
  */
 CryptoWorkers.prototype.asyncDeriveXkeysFromXprv = function (xprv, path) {
   return asink(function *() {
-    let xprvhex = xprv.toHex()
-    let obj = yield q(this.pool.exec('deriveXkeysFromXprvHex', [xprvhex, path]))
-    xprv = BIP32().fromHex(obj.xprv)
-    let xpub = BIP32().fromHex(obj.xpub)
-    let address = Address().fromHex(obj.address)
-    return {xprv, xpub, address}
+    let xprv2 = yield xprv.asyncDerive(path)
+    let xpub = xprv2.toPublic()
+    let address = yield Address().asyncFromPubkey(xprv2.pubkey)
+    return {xprv: xprv2, xpub, address}
   }, this)
 }
 
@@ -180,10 +138,8 @@ CryptoWorkers.prototype.asyncDeriveXkeysFromXprv = function (xprv, path) {
  */
 CryptoWorkers.prototype.asyncDeriveXkeysFromXpub = function (xpub, path) {
   return asink(function *() {
-    let xpubhex = xpub.toHex()
-    let obj = yield q(this.pool.exec('deriveXkeysFromXpubHex', [xpubhex, path]))
-    xpub = BIP32().fromHex(obj.xpub)
-    let address = Address().fromHex(obj.address)
+    xpub = yield xpub.asyncDerive(path)
+    let address = yield Address().asyncFromPubkey(xpub.pubkey)
     return {xpub, address}
   }, this)
 }
@@ -195,10 +151,10 @@ CryptoWorkers.prototype.asyncDeriveXkeysFromXpub = function (xpub, path) {
  */
 CryptoWorkers.prototype.asyncSign = function (hash, privkey, endian) {
   return asink(function *() {
-    let hashhex = hash.toString('hex')
-    let privkeyHex = privkey.toHex()
-    let sighex = yield q(this.pool.exec('sign', [hashhex, privkeyHex, endian]))
-    return Sig().fromHex(sighex)
+    let pubkey = yield Pubkey().asyncFromPrivkey(privkey)
+    let keypair = Keypair(privkey, pubkey)
+    let sig = yield ECDSA.asyncSign(hash, keypair, endian)
+    return sig
   }, this)
 }
 
@@ -209,10 +165,11 @@ CryptoWorkers.prototype.asyncSign = function (hash, privkey, endian) {
  */
 CryptoWorkers.prototype.asyncSignCompact = function (hashbuf, privkey) {
   return asink(function *() {
-    let hashhex = hashbuf.toString('hex')
-    let privkeyHex = privkey.toHex()
-    let sighex = yield q(this.pool.exec('signCompact', [hashhex, privkeyHex]))
-    return Sig().fromCompact(new Buffer(sighex, 'hex'))
+    let pubkey = yield Pubkey().asyncFromPrivkey(privkey)
+    let keypair = Keypair(privkey, pubkey)
+    let sig = yield ECDSA.asyncSign(hashbuf, keypair)
+    sig = yield ECDSA.asyncCalcrecovery(sig, pubkey, hashbuf)
+    return sig
   }, this)
 }
 
@@ -225,10 +182,8 @@ CryptoWorkers.prototype.asyncVerifySignature = function verifySignature (hash, s
     if (!hash || !signature || !pubkey) {
       throw new Error('verifySignature takes 3 arguments: hash, signature, and pubkey')
     }
-    let hashhex = hash.toString('hex')
-    let pubkeyHex = pubkey.toDER(false).toString('hex')
-    let signatureHex = signature.toHex()
-    return q(this.pool.exec('verifySignature', [hashhex, signatureHex, pubkeyHex]))
+    let verified = yield ECDSA.asyncVerify(hash, signature, pubkey)
+    return verified
   }, this)
 }
 
@@ -246,13 +201,14 @@ CryptoWorkers.prototype.asyncVerifyCompactSig = function (hashbuf, sig) {
     if (sig.recovery === undefined || sig.compressed === undefined) {
       throw new Error('verifyCompactSig takes a compact signature only')
     }
-    let signatureHex = sig.toCompact().toString('hex')
-    let hashhex = hashbuf.toString('hex')
-    let obj = yield q(this.pool.exec('verifyCompactSig', [hashhex, signatureHex]))
-    return {
-      verified: obj.verified,
-      pubkey: obj.pubkey ? Pubkey().fromFastBuffer(new Buffer(obj.pubkey, 'hex')) : undefined
+    let pubkey, verified = false
+    try {
+      pubkey = yield ECDSA.asyncSig2pubkey(sig, hashbuf)
+      verified = yield ECDSA.asyncVerify(hashbuf, sig, pubkey)
+    } catch (err) {
+      pubkey = undefined
     }
+    return {verified, pubkey}
   }, this)
 }
 
@@ -266,15 +222,23 @@ CryptoWorkers.prototype.asyncVerifyCompactSig = function (hashbuf, sig) {
  */
 CryptoWorkers.prototype.asyncSignTransaction = function (txb, privkeys) {
   return asink(function *() {
-    let txbjson = txb.toJSON()
-    let privkeysjson = privkeys.map((privkey) => privkey.toHex())
-    let obj = yield q(this.pool.exec('signTransaction', [txbjson, privkeysjson]))
-    txb = Txbuilder().fromJSON(obj)
+    let keypairs = []
+    for (let i = 0; i < privkeys.length; i++) {
+      let privkey = privkeys[i]
+      let pubkey = yield Pubkey().asyncFromPrivkey(privkey)
+      keypairs[i] = yield Keypair(privkey, pubkey)
+    }
+    if (txb.txins.length !== keypairs.length) {
+      throw new Error('number of inputs and number of privkeys do not match')
+    }
+    for (let i = 0; i < keypairs.length; i++) {
+      yield txb.asyncSign(i, keypairs[i])
+    }
     return txb
   }, this)
 }
 
-cryptoWorkers = new CryptoWorkers()
+let cryptoWorkers = new CryptoWorkers()
 for (let method in CryptoWorkers.prototype) {
   // This javascript wizardry makes it possible to use methods like
   // CryptoWorkers.asyncSha256 that will re-use the same global cryptoWorkers object for

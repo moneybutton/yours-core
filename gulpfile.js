@@ -3,13 +3,17 @@ let asink = require('asink')
 let babel_core_register = require('babel-core/register')
 let babelify = require('babelify')
 let browserify = require('browserify')
+let createAppServer = require('./server/app').createAppServer
+let createRendezvousServer = require('./server/rendezvous').createRendezvousServer
 let envify = require('envify')
 let fs = require('fs')
 let glob = require('glob')
 let gulp = require('gulp')
 let gulp_mocha = require('gulp-mocha')
 let gulp_plumber = require('gulp-plumber')
+let karma = require('gulp-karma')
 let path = require('path')
+
 require('./config')
 
 function task_build_fullnode_worker () {
@@ -118,6 +122,34 @@ function task_build_tests () {
 gulp.task('build-tests', task_build_tests)
 
 gulp.task('build', ['build-fullnode-worker', 'build-fullnode', 'build-dattcore', 'build-dattreact', 'build-mocha', 'build-tests'])
+
+gulp.task('build-karma-url', () => {
+  // karma serves static files, including js files, from /base/
+  process.env.FULLNODE_JS_BASE_URL = '/base/'
+  process.env.DATT_JS_BASE_URL = '/base/'
+})
+
+gulp.task('build-karma', ['build-karma-url', 'build'])
+
+function task_test_karma () {
+  let rendezvousServer = createRendezvousServer(3031)
+  let appServer = createAppServer(3030)
+  return gulp.src([])
+    .pipe(karma({
+      configFile: '.karma.conf.js',
+      action: 'run'
+    }))
+    .on('error', () => {
+      process.exit(1)
+    })
+    .on('end', () => {
+      rendezvousServer.close()
+      appServer.close()
+      process.exit()
+    })
+}
+
+gulp.task('test-karma', ['build-karma'], task_test_karma)
 
 function task_test_node () {
   return gulp.src(['./test/*.js', './test/**/*.js', './test/**/*.jsx'])
