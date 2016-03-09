@@ -72,20 +72,6 @@ function task_build_dattreact () {
 
 gulp.task('build-dattreact', task_build_dattreact)
 
-function task_test_node () {
-  return gulp.src(['./test/*.js', './test/**/*.js', './test/**/*.jsx'])
-    .pipe(gulp_plumber()) // keeps gulp from crashing when there is an exception
-    .pipe(gulp_mocha({
-      reporter: 'dot',
-      require: ['fullnode'],
-      compilers: {
-        jsx: babel_core_register
-      }
-    }))
-}
-
-gulp.task('test-node', task_test_node)
-
 function task_build_mocha () {
   return asink(function *() {
     // copy the mocha js and css files to our build directory so you can use them
@@ -130,3 +116,17 @@ function task_build_tests () {
 }
 
 gulp.task('build-tests', task_build_tests)
+
+function task_test_node () {
+  return gulp.src(['./test/*.js', './test/**/*.js', './test/**/*.jsx'])
+    .pipe(gulp_plumber()) // keeps gulp from crashing when there is an exception
+    .pipe(gulp_mocha({
+      reporter: 'dot',
+      require: ['fullnode'],
+      compilers: {
+        jsx: babel_core_register
+      }
+    }))
+}
+
+gulp.task('test-node', task_test_node)
