@@ -8,8 +8,8 @@
  */
 'use strict'
 let BIP32 = fullnode.BIP32
+let BIP39 = fullnode.BIP39
 let BIP44Account = require('./bip44-account')
-let CryptoWorkers = require('./crypto-workers')
 let Random = fullnode.Random
 let Struct = fullnode.Struct
 let asink = require('asink')
@@ -38,10 +38,12 @@ BIP44Wallet.prototype.asyncFromRandom = function (entropybuf) {
     if (entropybuf.length !== 128 / 8 && entropybuf.length !== 256 / 8) {
       throw new Error('entropybuf must be 128 bits of 256 bits')
     }
-    let keys = yield CryptoWorkers.asyncXkeysFromEntropy(entropybuf)
-    this.mnemonic = keys.mnemonic
-    this.masterxprv = keys.xprv
-    this.masterxpub = keys.xpub
+    let bip39 = yield BIP39().asyncFromEntropy(entropybuf)
+    let seed = yield bip39.asyncToSeed()
+    let bip32 = yield BIP32().asyncFromSeed(seed)
+    this.mnemonic = bip39.toString()
+    this.masterxprv = bip32
+    this.masterxpub = bip32.toPublic()
     return this
   }, this)
 }

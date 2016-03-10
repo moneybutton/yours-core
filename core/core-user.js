@@ -10,8 +10,10 @@
  * database, i.e. the current user.
  */
 'use strict'
-let CryptoWorkers = require('./crypto-workers')
+let BSM = fullnode.BSM
 let DBUser = require('./db-user')
+let ECDSA = fullnode.ECDSA
+let Keypair = fullnode.Keypair
 let MsgAuth = require('./msg-auth')
 let Struct = fullnode.Struct
 let User = require('./user')
@@ -90,9 +92,12 @@ CoreUser.prototype.asyncGetMsgAuth = function (blockhashbuf, blockheightnum) {
     msgauth.setBlockInfo(blockhashbuf, blockheightnum)
     msgauth.setName(this.user.name)
     let buf = msgauth.getBufForSig()
-    let hashbuf = yield CryptoWorkers.asyncBSMHash(buf)
+    let hashbuf = yield BSM.asyncMagicHash(buf)
     let privkey = this.user.masterxprv.privkey
-    let sig = yield CryptoWorkers.asyncSignCompact(hashbuf, privkey)
+    let pubkey = this.user.masterxpub.pubkey
+    let keypair = Keypair(privkey, pubkey)
+    let sig = yield ECDSA.asyncSign(hashbuf, keypair)
+    sig = yield ECDSA.asyncCalcrecovery(sig, pubkey, hashbuf)
     msgauth.contentauth.fromObject({
       pubkey: this.user.masterxprv.pubkey,
       sig: sig
