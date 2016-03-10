@@ -73,6 +73,8 @@ function task_build_dattreact () {
     .transform('reactify')
     .transform(babelify, {presets: ['es2015', 'react'], sourceMaps: false})
     .add(require.resolve('./react/index.js'), {entry: true})
+    .bundle()
+    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
 }
 
 gulp.task('build-dattreact', task_build_dattreact)
