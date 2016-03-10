@@ -19,7 +19,6 @@ let BN = fullnode.BN
 let BSM = fullnode.BSM
 let BW = fullnode.BW
 let Content = require('./content')
-let CryptoWorkers = require('./crypto-workers')
 let ECDSA = fullnode.ECDSA
 let Hash = fullnode.Hash
 let Keypair = fullnode.Keypair
@@ -125,10 +124,12 @@ ContentAuth.prototype.sign = function (keypair) {
  */
 ContentAuth.prototype.asyncSign = function (keypair) {
   return asink(function *() {
-    let hashbuf = yield CryptoWorkers.asyncBSMHash(this.getBufForSig())
-    let sig = yield CryptoWorkers.asyncSignCompact(hashbuf, keypair.privkey)
+    let hashbuf = yield BSM.asyncMagicHash(this.getBufForSig())
+    let sig = yield ECDSA.asyncSign(hashbuf, keypair)
+    let pubkey = keypair.pubkey
+    sig = yield ECDSA.asyncCalcrecovery(sig, pubkey, hashbuf)
     this.sig = sig
-    this.pubkey = keypair.pubkey
+    this.pubkey = pubkey
     return this
   }, this)
 }
@@ -162,9 +163,17 @@ ContentAuth.prototype.verify = function () {
 
 ContentAuth.prototype.asyncVerify = function () {
   return asink(function *() {
-    let hashbuf = yield CryptoWorkers.asyncBSMHash(this.getBufForSig())
-    let info = yield CryptoWorkers.asyncVerifyCompactSig(hashbuf, this.sig)
-    return info.verified && (info.pubkey.point.eq(this.pubkey.point))
+    let hashbuf = yield BSM.asyncMagicHash(this.getBufForSig())
+    let sig = this.sig
+    let pubkey
+    let verified = false
+    try {
+      pubkey = yield ECDSA.asyncSig2pubkey(sig, hashbuf)
+      verified = yield ECDSA.asyncVerify(hashbuf, sig, pubkey)
+    } catch (err) {
+      pubkey = undefined
+    }
+    return verified
   }, this)
 }
 
@@ -234,7 +243,7 @@ ContentAuth.prototype.asyncGetHash = function () {
     if (this.cachehash) {
       return Promise.resolve(this.cachehash)
     } else {
-      let hashbuf = yield CryptoWorkers.asyncSha256(buf)
+      let hashbuf = yield Hash.asyncSha256(buf)
       this.setCacheHash(hashbuf)
       return hashbuf
     }
