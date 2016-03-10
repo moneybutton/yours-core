@@ -13,7 +13,6 @@
 'use strict'
 let BR = fullnode.BR
 let Constants = require('./constants')
-let CryptoWorkers = require('./crypto-workers')
 let Struct = fullnode.Struct
 let asink = require('asink')
 let request = require('request') // TODO: replace request w/ something smaller
@@ -98,7 +97,7 @@ BlockchainAPI.prototype.asyncGetUTXOsJSON = function (addresses) {
     }
     let addressStrings = []
     for (let i = 0; i < addresses.length; i++) {
-      let addressString = yield CryptoWorkers.asyncAddressStringFromAddress(addresses[i])
+      let addressString = yield addresses[i].asyncToString()
       addressStrings.push(addressString)
     }
 
@@ -141,7 +140,7 @@ BlockchainAPI.prototype.asyncGetAddressesBalancesSatoshis = function (addresses)
  */
 BlockchainAPI.prototype.asyncGetAddressConfirmedBalanceSatoshis = function (address) {
   return asink(function *() {
-    let addressString = yield CryptoWorkers.asyncAddressStringFromAddress(address)
+    let addressString = yield address.asyncToString()
     let res = yield this.asyncGetRequest(`addr/${addressString}/balance`)
     let satoshis = parseInt(res, 10)
     return satoshis
@@ -153,7 +152,7 @@ BlockchainAPI.prototype.asyncGetAddressConfirmedBalanceSatoshis = function (addr
  */
 BlockchainAPI.prototype.asyncGetAddressUnconfirmedBalanceSatoshis = function (address) {
   return asink(function *() {
-    let addressString = yield CryptoWorkers.asyncAddressStringFromAddress(address)
+    let addressString = yield address.asyncToString()
     let res = yield this.asyncGetRequest(`addr/${addressString}/unconfirmedBalance`)
     let satoshis = parseInt(res, 10)
     return satoshis
