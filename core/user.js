@@ -20,7 +20,6 @@
 'use strict'
 let BIP32 = fullnode.BIP32
 let BIP39 = fullnode.BIP39
-let CryptoWorkers = require('./crypto-workers')
 let Random = fullnode.Random
 let Struct = fullnode.Struct
 let asink = require('asink')
@@ -68,10 +67,12 @@ User.prototype.asyncFromRandom = function () {
     // remember in the form of a mnemonic
     let entropybuf = Random.getRandomBuffer(128 / 8)
 
-    let obj = yield CryptoWorkers.asyncXkeysFromEntropy(entropybuf)
-    this.mnemonic = obj.mnemonic
-    this.masterxprv = obj.xprv
-    this.masterxpub = obj.xpub
+    let bip39 = yield BIP39().asyncFromEntropy(entropybuf)
+    let seed = yield bip39.asyncToSeed()
+    let bip32 = yield BIP32().asyncFromSeed(seed)
+    this.mnemonic = bip39.toString()
+    this.masterxprv = bip32
+    this.masterxpub = bip32.toPublic()
     this.beenSetup = false
     return this
   }, this)
