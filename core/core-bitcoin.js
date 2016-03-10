@@ -17,9 +17,10 @@ let BN = fullnode.BN
 let BR = fullnode.BR
 let BlockchainAPI = require('./blockchain-api')
 let Constants = require('./constants')
-let CryptoWorkers = require('./crypto-workers')
 let DBBIP44Wallet = require('./db-bip44-wallet')
 let EventEmitter = require('events')
+let Keypair = fullnode.Keypair
+let Pubkey = fullnode.Pubkey
 let Script = fullnode.Script
 let Struct = fullnode.Struct
 let Txbuilder = fullnode.Txbuilder
@@ -119,7 +120,7 @@ CoreBitcoin.prototype.asyncUpdateBalance = function (forceUpdate) {
     let addresses = yield this.asyncGetAllAddresses()
     let addressStrings = []
     for (let i = 0; i < addresses.length; i++) {
-      addressStrings.push(yield CryptoWorkers.asyncAddressStringFromAddress(addresses[i]))
+      addressStrings.push(yield addresses[i].asyncToString())
     }
     let obj = yield this.blockchainAPI.asyncGetAddressesBalancesSatoshis(addresses)
     if (forceUpdate ||
@@ -177,13 +178,25 @@ CoreBitcoin.prototype.asyncSignTransaction = function (txb) {
     for (let txin of txb.tx.txins) {
       // Note: We only support signing pubkeyhash transactions
       let pubkeybuf = txin.script.chunks[1].buf
-      let address = yield CryptoWorkers.asyncAddressFromPubkeyBuffer(pubkeybuf)
+      let pubkey = yield Pubkey().asyncFromBuffer(pubkeybuf)
+      let address = yield Address().asyncFromPubkey(pubkey)
       let addrhex = address.toHex()
       let bip44account = yield this.bip44wallet.asyncGetPrivateAccount(0)
       let keys = bip44account.addrhexmap.get(addrhex)
       privkeys.push(keys.xprv.privkey)
     }
-    txb = CryptoWorkers.asyncSignTransaction(txb, privkeys)
+    let keypairs = []
+    for (let i = 0; i < privkeys.length; i++) {
+      let privkey = privkeys[i]
+      let pubkey = yield Pubkey().asyncFromPrivkey(privkey)
+      keypairs[i] = yield Keypair(privkey, pubkey)
+    }
+    if (txb.txins.length !== keypairs.length) {
+      throw new Error('number of inputs and number of privkeys do not match')
+    }
+    for (let i = 0; i < keypairs.length; i++) {
+      yield txb.asyncSign(i, keypairs[i])
+    }
     return txb
   }, this)
 }
