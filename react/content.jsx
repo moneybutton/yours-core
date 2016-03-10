@@ -34,14 +34,13 @@ let Content = React.createClass({
       }
 
       let dattcore = this.props.dattcore
-      let DattCore = dattcore.constructor
 
       let contentauth = yield dattcore.corecontent.asyncGetContentAuth(new Buffer(this.props.contentkey, 'hex'))
 
       if (contentauth && contentauth.getContent()) {
         let key = contentauth.cachehash.toString('hex')
         let address = contentauth.address
-        let addressString = yield DattCore.CryptoWorkers.asyncAddressStringFromAddress(contentauth.address)
+        let addressString = yield contentauth.address.asyncToString()
         let content = contentauth.getContent()
         let title = content.title
         let label = content.label

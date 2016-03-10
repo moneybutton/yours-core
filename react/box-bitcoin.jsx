@@ -1,3 +1,4 @@
+/* global fullnode */
 /**
  * Box Bitcoin
  * ===========
@@ -70,9 +71,8 @@ let BoxBitcoin = React.createClass({
   handleReceive: function () {
     return asink(function * () {
       let dattcore = this.props.dattcore
-      let DattCore = dattcore.constructor
       let address = yield dattcore.asyncGetNewExtAddress()
-      let depositAddress = yield DattCore.CryptoWorkers.asyncAddressStringFromAddress(address)
+      let depositAddress = yield address.asyncToString()
       this.setState({depositAddress})
     }, this)
   },
@@ -93,11 +93,10 @@ let BoxBitcoin = React.createClass({
     return asink(function * () {
       el.preventDefault()
       let dattcore = this.props.dattcore
-      let DattCore = dattcore.constructor
       let toAddressString = this.state.toAddress
       let toAmountBits = parseInt(this.state.toAmount, 10)
       let satoshis = toAmountBits * 100
-      let address = yield DattCore.CryptoWorkers.asyncAddressFromAddressString(toAddressString)
+      let address = yield fullnode.Address().asyncFromString(toAddressString)
       yield dattcore.asyncBuildSignAndSendTransaction(address, satoshis)
       this.setState({
         toAddress: '',

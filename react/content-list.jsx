@@ -20,13 +20,12 @@ let ContentList = React.createClass({
   setStateFromDattCore: function () {
     return asink(function * () {
       let dattcore = this.props.dattcore
-      let DattCore = dattcore.constructor
       let contentauths = yield dattcore.asyncGetRecentContentAuth()
       let contentList = []
       for (let contentauth of contentauths) {
         let key = contentauth.cachehash.toString('hex')
         let address = contentauth.address
-        let addressString = yield DattCore.CryptoWorkers.asyncAddressStringFromAddress(contentauth.address)
+        let addressString = yield contentauth.address.asyncToString()
         let content = contentauth.getContent()
         let title = content.title
         let label = content.label
