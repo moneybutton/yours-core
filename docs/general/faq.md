@@ -61,6 +61,7 @@ What if someone posts content that isn't theirs, or illegal, or immoral?
   content, illegal content or immoral content.
 - Escrow for payments to ensure they're not going to the wrong person
 - Author puts their public key on linked page
+- http://blog.datt.co/articles/2016-03-13-solutions-to-the-copyright-problem/
 
 What about bullies and spammers?
 --------------------------------
