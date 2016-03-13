@@ -44,12 +44,13 @@ Why would I want to pay for content?
 - Believe in what author is saying
 - Want to increase visibility of author's posts
 - Repost to your page - you get paid repost from you - profitable
+- Investment - can profit
 
 Aren't micropayments are psychologically expensive?
 ---------------------------------------------------
 
 - Payments will be $0.25 or greater to account for this
-- Smaller payments, if necessary, can be handle by paying a monthly fee
+- Smaller payments, if necessary, can be handled by paying a monthly fee
 
 What if someone posts content that isn't theirs, or illegal, or immoral?
 ------------------------------------------------------------------------
@@ -58,6 +59,8 @@ What if someone posts content that isn't theirs, or illegal, or immoral?
 - If noticed by chance, user is banned from Datt, Inc.'s node.
 - After initial launch, can add scanning system to look for copyrighted
   content, illegal content or immoral content.
+- Escrow for payments to ensure they're not going to the wrong person
+- Author puts their public key on linked page
 
 What about bullies and spammers?
 --------------------------------
