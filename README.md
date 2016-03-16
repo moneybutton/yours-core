@@ -11,10 +11,10 @@ How To Test And Develop Datt
 ----------------------------
 Datt can be built and run on Linux. It is not tested on Mac or Windows, but
 should work with minimal or no changes on those platforms. To help program the
-Datt application, first be sure you are running node 4.2:
+Datt application, first be sure you are running node 4.3:
 ```
 > node --version
-v4.2.1
+v4.3.1
 ```
 Then clone this repo:
 ```
