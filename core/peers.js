@@ -11,7 +11,7 @@
  * and possibly other types of networks in the future. This class does NOT
  * understand the database, and therefore is not capable of responding to
  * messages that query content. That is handled by CorePeers, which is directly
- * used by dattcore.
+ * used by datt.
  */
 'use strict'
 // let NetworkSocket = require('./network-socket')

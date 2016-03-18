@@ -1,17 +1,17 @@
 /* global fullnode */
 /**
- * DattCore
- * ========
+ * Datt
+ * ====
  *
- * This is the entry point into the DattCore application. The way to use it is
+ * This is the entry point into the Datt application. The way to use it is
  * like this:
  *
  * let config = { [insert config here] }
- * let dattcore = DattCore.create(config)
- * // dattcore now exists, and you need to initialize it:
- * return dattcore.asyncInitialize().then( [handle datt after it is initialized] )
+ * let datt = Datt.create(config)
+ * // datt now exists, and you need to initialize it:
+ * return datt.asyncInitialize().then( [handle datt after it is initialized] )
  *
- * A word on architecture of this file: This file, dattcore, is intended to be
+ * A word on architecture of this file: This file, datt, is intended to be
  * a window into the p2p connections and database. It is NOT intended to host
  * application logic - but just provide an API to the code contained in other
  * files in core/*.js. If the methods here have too many lines of code and
@@ -34,32 +34,32 @@ let User = require('./user')
 let asink = require('asink')
 let pkg = require('../package')
 
-function DattCore (config, db, corebitcoin, corecontent, corepeers, coreuser, isinitialized) {
-  if (!(this instanceof DattCore)) {
-    return new DattCore(config, db, corebitcoin, corecontent, corepeers, coreuser, isinitialized)
+function Datt (config, db, corebitcoin, corecontent, corepeers, coreuser, isinitialized) {
+  if (!(this instanceof Datt)) {
+    return new Datt(config, db, corebitcoin, corecontent, corepeers, coreuser, isinitialized)
   }
   this.initialize()
   this.fromObject({config, db, corebitcoin, corecontent, corepeers, coreuser, isinitialized})
 }
 
-DattCore.prototype = Object.create(Struct.prototype)
-DattCore.prototype.constructor = DattCore
-Object.assign(DattCore.prototype, EventEmitter.prototype)
+Datt.prototype = Object.create(Struct.prototype)
+Datt.prototype.constructor = Datt
+Object.assign(Datt.prototype, EventEmitter.prototype)
 
-DattCore.fullnode = fullnode
-DattCore.ContentAuth = ContentAuth
-DattCore.CoreBitcoin = CoreBitcoin
-DattCore.CoreContent = CoreContent
-DattCore.CoreUser = CoreUser
-DattCore.DB = DB
-DattCore.DBContentAuth = DBContentAuth
-DattCore.User = User
-DattCore.prototype.version = pkg.version
+Datt.fullnode = fullnode
+Datt.ContentAuth = ContentAuth
+Datt.CoreBitcoin = CoreBitcoin
+Datt.CoreContent = CoreContent
+Datt.CoreUser = CoreUser
+Datt.DB = DB
+Datt.DBContentAuth = DBContentAuth
+Datt.User = User
+Datt.prototype.version = pkg.version
 
 /**
  * Synchronous initialization to set default values.
  */
-DattCore.prototype.initialize = function () {
+Datt.prototype.initialize = function () {
   this.config = {}
   this.isinitialized = false // Only set to true after asyncInitialize
   return this
@@ -67,9 +67,9 @@ DattCore.prototype.initialize = function () {
 
 /**
  * Asynchronous initialization method to prepare the database and network
- * connections. Run this to turn dattcore on.
+ * connections. Run this to turn datt on.
  */
-DattCore.prototype.asyncInitialize = function () {
+Datt.prototype.asyncInitialize = function () {
   return asink(function *() {
     if (!this.db) {
       let name = this.config.dbName
@@ -104,7 +104,7 @@ DattCore.prototype.asyncInitialize = function () {
  *
  * This applies both to p2p connections and blockchain API.
  */
-DattCore.prototype.asyncNetworkInitialize = function () {
+Datt.prototype.asyncNetworkInitialize = function () {
   return asink(function *() {
     this.corebitcoin.monitorBlockchainAPI()
     yield this.corebitcoin.asyncUpdateBalance()
@@ -122,36 +122,36 @@ DattCore.prototype.asyncNetworkInitialize = function () {
  * Close all network connections and do not receive new network connections.
  * This applies both to p2p connections and the blockchain API.
  */
-DattCore.prototype.asyncNetworkClose = function () {
+Datt.prototype.asyncNetworkClose = function () {
   return asink(function *() {
     this.corebitcoin.unmonitorBlockchainAPI()
     // TODO: Also close p2p connections.
   }, this)
 }
 
-DattCore.prototype.close = function () {
+Datt.prototype.close = function () {
   return this.db.close()
 }
 
 /**
- * Create a new dattcore.
+ * Create a new datt.
  */
-DattCore.create = function (config) {
-  let dattcore = DattCore(config)
-  return dattcore
+Datt.create = function (config) {
+  let datt = Datt(config)
+  return datt
 }
 
 /**
- * Get cached global dattcore, or else make a new one. Note that the config
- * is only used if a new dattcore needs to be created.
+ * Get cached global datt, or else make a new one. Note that the config is only
+ * used if a new dattneeds to be created.
  */
-DattCore.getGlobal = function (config) {
-  if (global.dattcore) {
-    return global.dattcore
+Datt.getGlobal = function (config) {
+  if (global.datt) {
+    return global.datt
   } else {
-    let dattcore = DattCore.create(config)
-    global.dattcore = dattcore
-    return dattcore
+    let datt = Datt.create(config)
+    global.datt = datt
+    return datt
   }
 }
 
@@ -160,7 +160,7 @@ DattCore.getGlobal = function (config) {
  * ----
  */
 
-DattCore.prototype.asyncSetUserName = function (name) {
+Datt.prototype.asyncSetUserName = function (name) {
   return asink(function *() {
     let info = yield this.asyncGetLatestBlockInfo()
     let blockhashbuf = info.hashbuf
@@ -173,23 +173,23 @@ DattCore.prototype.asyncSetUserName = function (name) {
   }, this)
 }
 
-DattCore.prototype.asyncGetUserName = function () {
+Datt.prototype.asyncGetUserName = function () {
   return Promise.resolve(this.coreuser.user.name)
 }
 
-DattCore.prototype.asyncGetUser = function () {
+Datt.prototype.asyncGetUser = function () {
   return Promise.resolve(this.coreuser.user)
 }
 
-DattCore.prototype.asyncGetUserSetupFlag = function () {
+Datt.prototype.asyncGetUserSetupFlag = function () {
   return Promise.resolve(this.coreuser.user.getUserSetupFlag())
 }
 
-DattCore.prototype.asyncSetUserSetupFlag = function (value) {
+Datt.prototype.asyncSetUserSetupFlag = function (value) {
   return this.coreuser.asyncSetUserSetupFlag(value)
 }
 
-DattCore.prototype.asyncGetUserMnemonic = function () {
+Datt.prototype.asyncGetUserMnemonic = function () {
   return Promise.resolve(this.coreuser.user.mnemonic)
 }
 
@@ -208,21 +208,21 @@ DattCore.prototype.asyncGetUserMnemonic = function () {
  * signing and sending. But, like most prototype things, it's good enough for
  * now, and we can break it up later, and then remove this method.
  */
-DattCore.prototype.asyncBuildSignAndSendTransaction = function (toAddress, toAmountSatoshis) {
+Datt.prototype.asyncBuildSignAndSendTransaction = function (toAddress, toAmountSatoshis) {
   return this.corebitcoin.asyncBuildSignAndSendTransaction(toAddress, toAmountSatoshis)
 }
 
-DattCore.prototype.monitorCoreBitcoin = function () {
+Datt.prototype.monitorCoreBitcoin = function () {
   this.corebitcoin.on('balance', this.handleBitcoinBalance.bind(this))
   return this
 }
 
-DattCore.prototype.handleBitcoinBalance = function (obj) {
+Datt.prototype.handleBitcoinBalance = function (obj) {
   this.emit('bitcoin-balance', obj)
   return this
 }
 
-DattCore.prototype.asyncUpdateBalance = function () {
+Datt.prototype.asyncUpdateBalance = function () {
   return this.corebitcoin.asyncUpdateBalance(true)
 }
 
@@ -231,19 +231,19 @@ DattCore.prototype.asyncUpdateBalance = function () {
  * TODO: Make this actually return the latest block info instead of a
  * pre-programmed value.
  */
-DattCore.prototype.asyncGetLatestBlockInfo = function () {
+Datt.prototype.asyncGetLatestBlockInfo = function () {
   return this.corebitcoin.asyncGetLatestBlockInfo()
 }
 
-DattCore.prototype.asyncGetExtAddress = function (index) {
+Datt.prototype.asyncGetExtAddress = function (index) {
   return this.corebitcoin.asyncGetExtAddress(index)
 }
 
-DattCore.prototype.asyncGetNewExtAddress = function () {
+Datt.prototype.asyncGetNewExtAddress = function () {
   return this.corebitcoin.asyncGetNewExtAddress()
 }
 
-DattCore.prototype.asyncGetNewIntAddress = function () {
+Datt.prototype.asyncGetNewIntAddress = function () {
   return this.corebitcoin.asyncGetNewIntAddress()
 }
 
@@ -252,12 +252,12 @@ DattCore.prototype.asyncGetNewIntAddress = function () {
  * -------
  */
 
-DattCore.prototype.monitorCoreContent = function () {
+Datt.prototype.monitorCoreContent = function () {
   this.corecontent.on('content-auth', this.handleContentContentAuth.bind(this))
   return this
 }
 
-DattCore.prototype.handleContentContentAuth = function (contentauth) {
+Datt.prototype.handleContentContentAuth = function (contentauth) {
   this.emit('content-content-auth', contentauth)
   return this
 }
@@ -265,7 +265,7 @@ DattCore.prototype.handleContentContentAuth = function (contentauth) {
 /**
  * Creates new ContentAuth, but does not save or broadcast it.
  */
-DattCore.prototype.asyncNewContentAuth = function (title, label, body) {
+Datt.prototype.asyncNewContentAuth = function (title, label, body) {
   return asink(function *() {
     // TODO: Should not use the user's master key for the address. We should
     // generate a new address for each new use. That is something that can be
@@ -285,7 +285,7 @@ DattCore.prototype.asyncNewContentAuth = function (title, label, body) {
  * Post new content auth. This both saves the contentauth to the DB and
  * broadcasts it to your peers.
  */
-DattCore.prototype.asyncPostContentAuth = function (contentauth) {
+Datt.prototype.asyncPostContentAuth = function (contentauth) {
   return asink(function *() {
     let msg = MsgContentAuth().fromContentAuth(contentauth).toMsg()
     this.broadcastMsg(msg)
@@ -296,7 +296,7 @@ DattCore.prototype.asyncPostContentAuth = function (contentauth) {
 /**
  * The simplest way to post new data.
  */
-DattCore.prototype.asyncPostNewContentAuth = function (title, label, body) {
+Datt.prototype.asyncPostNewContentAuth = function (title, label, body) {
   return asink(function *() {
     let contentauth = yield this.asyncNewContentAuth(title, label, body)
     return this.asyncPostContentAuth(contentauth)
@@ -308,7 +308,7 @@ DattCore.prototype.asyncPostNewContentAuth = function (title, label, body) {
  * will take arguments to query, say, recent data under a particular label, and
  * also get, say, the second "page" of results
  */
-DattCore.prototype.asyncGetRecentContentAuth = function () {
+Datt.prototype.asyncGetRecentContentAuth = function () {
   return this.corecontent.asyncGetRecentContentAuth()
 }
 
@@ -322,30 +322,30 @@ DattCore.prototype.asyncGetRecentContentAuth = function () {
  * This is executed automatically by this.asyncInitialize, and therefore you
  * should not need to run this by hand.
  */
-DattCore.prototype.monitorCorePeers = function () {
+Datt.prototype.monitorCorePeers = function () {
   this.corepeers.on('connection', this.handlePeersConnection.bind(this))
   this.corepeers.on('content-auth', this.handlePeersContentAuth.bind(this))
   return this
 }
 
-DattCore.prototype.handlePeersConnection = function (obj) {
+Datt.prototype.handlePeersConnection = function (obj) {
   this.emit('peers-connection', obj)
   return this
 }
 
-DattCore.prototype.handlePeersContentAuth = function (obj) {
+Datt.prototype.handlePeersContentAuth = function (obj) {
   this.emit('peers-content-auth', obj)
   return this
 }
 
-DattCore.prototype.asyncNumActiveConnections = function () {
+Datt.prototype.asyncNumActiveConnections = function () {
   return Promise.resolve(this.corepeers.numActiveConnections())
 }
 
-DattCore.prototype.broadcastMsg = function (msg) {
+Datt.prototype.broadcastMsg = function (msg) {
   this.corepeers.broadcastMsg(msg)
   return this
 }
 
-module.exports = DattCore
-global.DattCore = DattCore
+module.exports = Datt
+global.Datt = Datt

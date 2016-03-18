@@ -2,7 +2,7 @@
 'use strict'
 let Address = fullnode.Address
 let ContentAuth = require('../core/content-auth')
-let DattCore = require('../core')
+let Datt = require('../core')
 let MsgPing = require('../core/msg-ping')
 let Privkey = fullnode.Privkey
 let asink = require('asink')
@@ -10,54 +10,54 @@ let mocks = require('./mocks')
 let should = require('should')
 let sinon = require('sinon')
 
-describe('DattCore', function () {
-  let dattcore
+describe('Datt', function () {
+  let datt
 
   it('should have these known properties', function () {
-    should.exist(DattCore.DB)
-    should.exist(DattCore.User)
+    should.exist(Datt.DB)
+    should.exist(Datt.User)
   })
 
   before(function () {
-    dattcore = DattCore.create()
+    datt = Datt.create()
 
     // Some methods like asyncSetUserName and asyncNewContentAuth use the
     // method asyncGetLatestBlockInfo, howevever that method makes a call over
     // the internet by default. It is better to mock up that method and not
     // make that call to speed up the tests.
-    dattcore.asyncGetLatestBlockInfo = mocks.asyncGetLatestBlockInfo
+    datt.asyncGetLatestBlockInfo = mocks.asyncGetLatestBlockInfo
   })
 
   after(function () {
     return asink(function *() {
-      yield dattcore.db.asyncDestroy()
+      yield datt.db.asyncDestroy()
     })
   })
 
   describe('#asyncInitialize', function () {
-    it('should init the dattcore', function () {
+    it('should init the datt', function () {
       return asink(function *() {
-        yield dattcore.asyncInitialize()
-        dattcore.isinitialized.should.equal(true)
-        should.exist(dattcore.db)
-        should.exist(dattcore.coreuser)
-        dattcore.coreuser.user.keyIsSet().should.equal(true)
+        yield datt.asyncInitialize()
+        datt.isinitialized.should.equal(true)
+        should.exist(datt.db)
+        should.exist(datt.coreuser)
+        datt.coreuser.user.keyIsSet().should.equal(true)
       })
     })
   })
 
   describe('@create', function () {
-    it('should create a new dattcore', function () {
-      let dattcore = DattCore.create()
-      should.exist(dattcore)
+    it('should create a new datt', function () {
+      let datt = Datt.create()
+      should.exist(datt)
     })
   })
 
   describe('#asyncSetUserName', function () {
     it('should set the username', function () {
       return asink(function *() {
-        let res = yield dattcore.asyncSetUserName('valid_username')
-        res.should.equal(dattcore)
+        let res = yield datt.asyncSetUserName('valid_username')
+        res.should.equal(datt)
       })
     })
   })
@@ -65,7 +65,7 @@ describe('DattCore', function () {
   describe('#asyncGetUserName', function () {
     it('should get the username', function () {
       return asink(function *() {
-        let userName = yield dattcore.asyncGetUserName()
+        let userName = yield datt.asyncGetUserName()
         userName.should.equal('valid_username')
       })
     })
@@ -74,8 +74,8 @@ describe('DattCore', function () {
   describe('#asyncGetUserMnemonic', function () {
     it('should return the mnemonic', function () {
       return asink(function *() {
-        let mnemonic = yield dattcore.asyncGetUserMnemonic()
-        mnemonic.should.equal(dattcore.coreuser.user.mnemonic)
+        let mnemonic = yield datt.asyncGetUserMnemonic()
+        mnemonic.should.equal(datt.coreuser.user.mnemonic)
       })
     })
   })
@@ -83,47 +83,47 @@ describe('DattCore', function () {
   describe('#asyncBuildSignAndSendTransaction', function () {
     it('should call the same method on corebitcoin', function () {
       return asink(function *() {
-        let dattcore = DattCore()
-        dattcore.corebitcoin = {
+        let datt = Datt()
+        datt.corebitcoin = {
           asyncBuildSignAndSendTransaction: sinon.stub().returns(Promise.resolve())
         }
         let toAddress = Address().fromPrivkey(Privkey().fromRandom())
         let toAmountSatoshis = 10000
-        yield dattcore.asyncBuildSignAndSendTransaction(toAddress, toAmountSatoshis)
-        dattcore.corebitcoin.asyncBuildSignAndSendTransaction.calledOnce.should.equal(true)
-        dattcore.corebitcoin.asyncBuildSignAndSendTransaction.calledWith(toAddress, toAmountSatoshis).should.equal(true)
+        yield datt.asyncBuildSignAndSendTransaction(toAddress, toAmountSatoshis)
+        datt.corebitcoin.asyncBuildSignAndSendTransaction.calledOnce.should.equal(true)
+        datt.corebitcoin.asyncBuildSignAndSendTransaction.calledWith(toAddress, toAmountSatoshis).should.equal(true)
       }, this)
     })
   })
 
   describe('#monitorCoreBitcoin', function () {
     it('should call corebitcoin.on', function () {
-      let dattcore = DattCore({dbname: 'datt-temp'})
-      dattcore.corebitcoin = {}
-      dattcore.corebitcoin.on = sinon.spy()
-      dattcore.monitorCoreBitcoin()
-      dattcore.corebitcoin.on.called.should.equal(true)
+      let datt = Datt({dbname: 'datt-temp'})
+      datt.corebitcoin = {}
+      datt.corebitcoin.on = sinon.spy()
+      datt.monitorCoreBitcoin()
+      datt.corebitcoin.on.called.should.equal(true)
     })
   })
 
   describe('#handleBitcoinBalance', function () {
     it('should emit bitcoin-balance', function () {
-      let dattcore = DattCore({dbname: 'datt-temp'})
-      dattcore.emit = sinon.spy()
-      dattcore.handleBitcoinBalance('hello')
-      dattcore.emit.calledWith('bitcoin-balance', 'hello').should.equal(true)
+      let datt = Datt({dbname: 'datt-temp'})
+      datt.emit = sinon.spy()
+      datt.handleBitcoinBalance('hello')
+      datt.emit.calledWith('bitcoin-balance', 'hello').should.equal(true)
     })
   })
 
   describe('#asyncUpdateBalance', function () {
     it('should call corebitcoin.asyncUpdateBalance', function () {
       return asink(function *() {
-        let dattcore = DattCore({dbname: 'datt-temp'})
-        dattcore.corebitcoin = {
+        let datt = Datt({dbname: 'datt-temp'})
+        datt.corebitcoin = {
           asyncUpdateBalance: sinon.spy()
         }
-        yield dattcore.asyncUpdateBalance()
-        dattcore.corebitcoin.asyncUpdateBalance.calledOnce.should.equal(true)
+        yield datt.asyncUpdateBalance()
+        datt.corebitcoin.asyncUpdateBalance.calledOnce.should.equal(true)
       }, this)
     })
   })
@@ -131,7 +131,7 @@ describe('DattCore', function () {
   describe('#asyncGetLatestBlockInfo', function () {
     it('should return info', function () {
       return asink(function *() {
-        let info = yield dattcore.asyncGetLatestBlockInfo()
+        let info = yield datt.asyncGetLatestBlockInfo()
         should.exist(info.idbuf)
         should.exist(info.idhex)
         should.exist(info.hashbuf)
@@ -144,9 +144,9 @@ describe('DattCore', function () {
   describe('#asyncGetExtAddress', function () {
     it('should return addresses', function () {
       return asink(function *() {
-        let address1 = yield dattcore.asyncGetExtAddress(0)
-        let address2 = yield dattcore.asyncGetExtAddress(0)
-        let address3 = yield dattcore.asyncGetExtAddress(15)
+        let address1 = yield datt.asyncGetExtAddress(0)
+        let address2 = yield datt.asyncGetExtAddress(0)
+        let address3 = yield datt.asyncGetExtAddress(15)
         ;(address1 instanceof Address).should.equal(true)
         ;(address2 instanceof Address).should.equal(true)
         address1.toString().should.equal(address2.toString())
@@ -158,8 +158,8 @@ describe('DattCore', function () {
   describe('#asyncGetNewExtAddress', function () {
     it('should return new addresses', function () {
       return asink(function *() {
-        let address1 = yield dattcore.asyncGetNewExtAddress()
-        let address2 = yield dattcore.asyncGetNewExtAddress()
+        let address1 = yield datt.asyncGetNewExtAddress()
+        let address2 = yield datt.asyncGetNewExtAddress()
         ;(address1 instanceof Address).should.equal(true)
         ;(address2 instanceof Address).should.equal(true)
         address1.toString().should.not.equal(address2.toString())
@@ -170,8 +170,8 @@ describe('DattCore', function () {
   describe('#asyncGetNewIntAddress', function () {
     it('should return new addresses', function () {
       return asink(function *() {
-        let address1 = yield dattcore.asyncGetNewIntAddress()
-        let address2 = yield dattcore.asyncGetNewIntAddress()
+        let address1 = yield datt.asyncGetNewIntAddress()
+        let address2 = yield datt.asyncGetNewIntAddress()
         ;(address1 instanceof Address).should.equal(true)
         ;(address2 instanceof Address).should.equal(true)
         address1.toString().should.not.equal(address2.toString())
@@ -185,7 +185,7 @@ describe('DattCore', function () {
         let title = 'test title'
         let label = 'testlabel'
         let body = 'test body'
-        let contentauth = yield dattcore.asyncNewContentAuth(title, label, body)
+        let contentauth = yield datt.asyncNewContentAuth(title, label, body)
         ;(contentauth instanceof ContentAuth).should.equal(true)
         let content = contentauth.getContent()
         content.title.should.equal('test title')
@@ -201,8 +201,8 @@ describe('DattCore', function () {
         let title = 'test title'
         let label = 'testlabel'
         let body = 'test body'
-        let contentauth = yield dattcore.asyncNewContentAuth(title, label, body)
-        let hashbuf = yield dattcore.asyncPostContentAuth(contentauth)
+        let contentauth = yield datt.asyncNewContentAuth(title, label, body)
+        let hashbuf = yield datt.asyncPostContentAuth(contentauth)
         should.exist(hashbuf)
         Buffer.isBuffer(hashbuf).should.equal(true)
         hashbuf.length.should.equal(32)
@@ -216,7 +216,7 @@ describe('DattCore', function () {
         let title = 'test title'
         let label = 'testlabel'
         let body = 'test body'
-        let hashbuf = yield dattcore.asyncPostNewContentAuth(title, label, body)
+        let hashbuf = yield datt.asyncPostNewContentAuth(title, label, body)
         should.exist(hashbuf)
         Buffer.isBuffer(hashbuf).should.equal(true)
         hashbuf.length.should.equal(32)
@@ -227,7 +227,7 @@ describe('DattCore', function () {
   describe('#asyncGetRecentContentAuth', function () {
     it('should return some content', function () {
       return asink(function *() {
-        let contentauths = yield dattcore.asyncGetRecentContentAuth()
+        let contentauths = yield datt.asyncGetRecentContentAuth()
         contentauths.length.should.greaterThan(0)
         contentauths.forEach((contentauth) => {
           ;(contentauth instanceof ContentAuth).should.equal(true)
@@ -239,52 +239,52 @@ describe('DattCore', function () {
 
   describe('#monitorCorePeers', function () {
     it('should call corepeers.on', function () {
-      let dattcore = DattCore({dbname: 'datt-temp'})
-      dattcore.corepeers = {}
-      dattcore.corepeers.on = sinon.spy()
-      dattcore.monitorCorePeers()
-      dattcore.corepeers.on.called.should.equal(true)
+      let datt = Datt({dbname: 'datt-temp'})
+      datt.corepeers = {}
+      datt.corepeers.on = sinon.spy()
+      datt.monitorCorePeers()
+      datt.corepeers.on.called.should.equal(true)
     })
   })
 
   describe('#handlePeersConnection', function () {
     it('should emit peers-connection', function () {
-      let dattcore = DattCore({dbname: 'datt-temp'})
-      dattcore.emit = sinon.spy()
-      dattcore.handlePeersConnection('hello')
-      dattcore.emit.calledWith('peers-connection', 'hello').should.equal(true)
+      let datt = Datt({dbname: 'datt-temp'})
+      datt.emit = sinon.spy()
+      datt.handlePeersConnection('hello')
+      datt.emit.calledWith('peers-connection', 'hello').should.equal(true)
     })
   })
 
   describe('#asyncHandlePeersContentAuth', function () {
     it('should emit peers-content-auth', function () {
-      let dattcore = DattCore({dbname: 'datt-temp'})
-      dattcore.emit = sinon.spy()
-      dattcore.handlePeersContentAuth('hello')
-      dattcore.emit.calledWith('peers-content-auth', 'hello').should.equal(true)
+      let datt = Datt({dbname: 'datt-temp'})
+      datt.emit = sinon.spy()
+      datt.handlePeersContentAuth('hello')
+      datt.emit.calledWith('peers-content-auth', 'hello').should.equal(true)
     })
   })
 
   describe('#asyncNumActiveConnections', function () {
     it('should call corepeers numActiveConnections', function () {
       return asink(function *() {
-        let dattcore = DattCore({dbname: 'datt-temp'})
-        dattcore.corepeers = {}
-        dattcore.corepeers.numActiveConnections = sinon.spy()
-        yield dattcore.asyncNumActiveConnections()
-        dattcore.corepeers.numActiveConnections.calledOnce.should.equal(true)
+        let datt = Datt({dbname: 'datt-temp'})
+        datt.corepeers = {}
+        datt.corepeers.numActiveConnections = sinon.spy()
+        yield datt.asyncNumActiveConnections()
+        datt.corepeers.numActiveConnections.calledOnce.should.equal(true)
       })
     })
   })
 
   describe('#broadcastMsg', function () {
     it('should call corepeers.broadcastMsg', function () {
-      let dattcore = DattCore({dbname: 'datt-temp'})
-      dattcore.corepeers = {}
-      dattcore.corepeers.broadcastMsg = sinon.spy()
+      let datt = Datt({dbname: 'datt-temp'})
+      datt.corepeers = {}
+      datt.corepeers.broadcastMsg = sinon.spy()
       let msg = MsgPing().fromRandom()
-      dattcore.broadcastMsg(msg)
-      dattcore.corepeers.broadcastMsg.calledWith(msg).should.equal(true)
+      datt.broadcastMsg(msg)
+      datt.corepeers.broadcastMsg.calledWith(msg).should.equal(true)
     })
   })
 })
