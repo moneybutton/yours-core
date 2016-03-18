@@ -1,7 +1,7 @@
 /* global fullnode,describe,it */
 'use strict'
-let Constants = require('../core/constants')
-let Msg = require('../core/msg')
+let Constants = require('../lib/constants')
+let Msg = require('../lib/msg')
 let BR = fullnode.BR
 let BW = fullnode.BW
 let should = require('should')

@@ -1,8 +1,8 @@
 /* global fullnode,describe,it */
 'use strict'
 let should = require('should')
-let MsgPing = require('../core/msg-ping')
-let Msg = require('../core/msg')
+let MsgPing = require('../lib/msg-ping')
+let Msg = require('../lib/msg')
 let Random = fullnode.Random
 
 describe('MsgPing', function () {

@@ -2,10 +2,10 @@
 'use strict'
 let BN = fullnode.BN
 let BR = fullnode.BR
-let Content = require('../core/content')
+let Content = require('../lib/content')
 let Keypair = fullnode.Keypair
-let Msg = require('../core/msg')
-let MsgAuth = require('../core/msg-auth')
+let Msg = require('../lib/msg')
+let MsgAuth = require('../lib/msg-auth')
 let Privkey = fullnode.Privkey
 let asink = require('asink')
 let should = require('should')

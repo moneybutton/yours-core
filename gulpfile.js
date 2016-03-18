@@ -53,7 +53,7 @@ function task_build_datt () {
     // Do not include the polyfill - it is already included by fullnode.js
     .transform(envify)
     .transform(babelify.configure({ignore: /node_modules/, presets: ['es2015']}))
-    .require(require.resolve('./core'), {entry: true})
+    .require(require.resolve('./lib'), {entry: true})
     .bundle()
     .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_JS_BUNDLE_FILE)))
 }

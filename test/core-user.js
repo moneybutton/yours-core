@@ -1,9 +1,9 @@
 /* global fullnode,describe,it,before,after */
 'use strict'
 let BR = fullnode.BR
-let CoreUser = require('../core/core-user')
-let DB = require('../core/db')
-let MsgAuth = require('../core/msg-auth')
+let CoreUser = require('../lib/core-user')
+let DB = require('../lib/db')
+let MsgAuth = require('../lib/msg-auth')
 let asink = require('asink')
 let should = require('should')
 

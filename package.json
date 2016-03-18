@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp build",
-    "standard": "standard *.js core/**/*.js bin/**/*.js server/**/*.js test/**/*.js test/**/*.jsx",
+    "standard": "standard *.js lib/**/*.js bin/**/*.js server/**/*.js test/**/*.js test/**/*.jsx",
     "test-format": "npm run standard",
     "test-node": "gulp test-node",
     "test-karma": "gulp test-karma",

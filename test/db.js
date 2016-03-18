@@ -1,6 +1,6 @@
 /* global describe,it,before,after */
 'use strict'
-let DB = require('../core/db')
+let DB = require('../lib/db')
 let asink = require('asink')
 let should = require('should')
 

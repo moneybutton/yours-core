@@ -70,9 +70,9 @@ folders are as follows:
 - bin/ - Executable files, particularly for running the app servers.
 - blog/ - The blog content and source.
 - build/ - Static files and build files for the browser.
-- core/ - The core logic of p2p, database and API.
 - docs/ - Documentation on business, product, community, technology.
 - landing/ - The landing page content and source.
+- lib/ - The core logic of p2p, database and API.
 - media/ - Logos, mockups, and template HTML.
 - server/ - The Datt servers: app server and rendezvous server.
 - test/ - Tests for datt.
