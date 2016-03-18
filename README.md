@@ -1,11 +1,10 @@
 Datt
 ====
-Datt is a node.js and web browser app for decentralized content sharing with
-integrated payments. It is currently undergoing heavy development and has not
-yet reached alpha. [Our issues are tracked on
-GitHub](https://github.com/dattnetwork/datt/issues). Check out the
-[blog](http://blog.datt.co) or [twitter](https://twitter.com/dattnetwork) to
-stay up-to-date on progress.
+Datt is a decentralized content sharing platform with integrated payments. It
+is currently undergoing heavy development and has not yet reached alpha. [Our
+issues are tracked on GitHub](https://github.com/dattnetwork/datt/issues).
+Check out the [blog](http://blog.datt.co) or
+[twitter](https://twitter.com/dattnetwork) to stay up-to-date on progress.
 
 How To Test And Develop Datt
 ----------------------------
@@ -29,11 +28,10 @@ To run all of Datt tests:
 ```
 npm test
 ```
-To run the server and use the app, first build the files:
+To build the browser bundles:
 ```
 npm run build
 ```
-
 Then run the server:
 ```
 npm run serve-testnet
@@ -46,12 +44,6 @@ access the tests at:
 
 ```
 http://localhost:3040/tests.html
-```
-
-Or access the app itself at:
-
-```
-http://localhost:3040/
 ```
 
 The app makes use of IndexedDB and Web RTC in a browser. Each "domain" has its
@@ -83,10 +75,8 @@ folders are as follows:
 - ember/ - The Ember UI, currently unmaintained.
 - landing/ - The landing page content and source.
 - media/ - Logos, mockups, and template HTML.
-- react/ - dattreact - The React front-end.
 - server/ - The Datt servers: app server and rendezvous server.
 - test/core/ - Tests for dattcore.
-- test/react/ - Tests for dattreact.
 
 Environment Variables
 ---------------------
@@ -100,6 +90,5 @@ Environment Variables
   workerpool file, which manages the workers.
 - `DATT_JS_TESTS_FILE` - Default "datt-tests.js". The tests file - where the
   browser tests are located.
-- `DATT_REACT_JS_FILE` - Default "datt-react.js". The React front-end bundle.
-- `FULLNODE_NETWORK` - Default "mainnet". Can also be "testnet".
 - `DATT_BLOCKCHAIN_API_URI` - Default "https://insight.bitpay.com/api/".
+- `FULLNODE_NETWORK` - Default "mainnet". Can also be "testnet".

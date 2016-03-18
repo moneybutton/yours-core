@@ -34,10 +34,6 @@ if (!process.env.DATT_JS_TESTS_FILE) {
   process.env.DATT_JS_TESTS_FILE = 'datt-tests.js'
 }
 
-if (!process.env.DATT_REACT_JS_FILE) {
-  process.env.DATT_REACT_JS_FILE = 'datt-react.js'
-}
-
 if (!process.env.DATT_BLOCKCHAIN_API_URI) {
   process.env.DATT_BLOCKCHAIN_API_URI = 'https://insight.bitpay.com/api/'
 }

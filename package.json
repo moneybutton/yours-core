@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp build",
-    "standard": "standard *.js core/**/*.js bin/**/*.js server/**/*.js test/**/*.js test/**/*.jsx react/**/*.js react/**/*.jsx",
+    "standard": "standard *.js core/**/*.js bin/**/*.js server/**/*.js test/**/*.js test/**/*.jsx",
     "test-format": "npm run standard",
     "test-node": "gulp test-node",
     "test-karma": "gulp test-karma",
@@ -122,10 +122,6 @@
     "peerjs": "0.3.14",
     "pouchdb": "5.3.1",
     "q": "1.4.1",
-    "react": "0.14.7",
-    "react-bootstrap-modal": "2.0.0",
-    "react-dom": "0.14.7",
-    "react-markdown": "2.0.1",
     "request": "2.69.0"
   },
   "devDependencies": {
@@ -150,9 +146,6 @@
     "karma-firefox-launcher": "0.1.7",
     "karma-mocha": "0.2.2",
     "mocha": "2.4.5",
-    "react-addons-test-utils": "0.14.7",
-    "react-markdown": "2.1.0",
-    "reactify": "1.1.1",
     "should": "8.2.2",
     "sinon": "1.17.3",
     "standard": "6.0.8",

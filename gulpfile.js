@@ -67,18 +67,6 @@ function task_build_css () {
 
 gulp.task('build-css', task_build_css)
 
-function task_build_dattreact () {
-  return browserify({debug: false})
-    // Do not include the polyfill - it is already included by fullnode.js
-    .transform('reactify')
-    .transform(babelify, {presets: ['es2015', 'react'], sourceMaps: false})
-    .add(require.resolve('./react/index.js'), {entry: true})
-    .bundle()
-    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_REACT_JS_FILE)))
-}
-
-gulp.task('build-dattreact', task_build_dattreact)
-
 function task_build_mocha () {
   return asink(function *() {
     // copy the mocha js and css files to our build directory so you can use them
@@ -124,7 +112,7 @@ function task_build_tests () {
 
 gulp.task('build-tests', task_build_tests)
 
-gulp.task('build', ['build-fullnode-worker', 'build-fullnode', 'build-dattcore', 'build-dattreact', 'build-mocha', 'build-tests'])
+gulp.task('build', ['build-fullnode-worker', 'build-fullnode', 'build-dattcore', 'build-mocha', 'build-tests'])
 
 gulp.task('build-karma-url', () => {
   // karma serves static files, including js files, from /base/
