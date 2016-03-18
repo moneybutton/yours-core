@@ -1,9 +1,0 @@
-{{textarea value=body placeholder='Your comment goes here' class='form-control'}}
-<button {{action 'cancel'}} class='btn-danger'>Cancel</button>
-<button {{action 'save'}} class='btn-primary'>Save Comment</button>
-{{#if body}}
-  <h6>Comment Preview</h6>
-  <div class='well'>
-    <div class='md'>{{markdown-to-html markdown=body}}</div>
-  </div>
-{{/if}}

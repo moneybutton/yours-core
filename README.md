@@ -72,7 +72,6 @@ folders are as follows:
 - build/ - Static files and build files for the browser.
 - core/ - dattcore - The core logic of p2p, database and API.
 - docs/ - Documentation on business, product, community, technology.
-- ember/ - The Ember UI, currently unmaintained.
 - landing/ - The landing page content and source.
 - media/ - Logos, mockups, and template HTML.
 - server/ - The Datt servers: app server and rendezvous server.
