@@ -1,9 +1,9 @@
 /* global fullnode,before,describe,it,after */
 'use strict'
 let Address = fullnode.Address
-let ContentAuth = require('../../core/content-auth')
-let DattCore = require('../../core')
-let MsgPing = require('../../core/msg-ping')
+let ContentAuth = require('../core/content-auth')
+let DattCore = require('../core')
+let MsgPing = require('../core/msg-ping')
 let Privkey = fullnode.Privkey
 let asink = require('asink')
 let mocks = require('./mocks')

@@ -2,8 +2,8 @@
 'use strict'
 let Network
 let should = require('should')
-let MsgPing = require('../../core/msg-ping')
-let MsgPong = require('../../core/msg-pong')
+let MsgPing = require('../core/msg-ping')
+let MsgPong = require('../core/msg-pong')
 let asink = require('asink')
 
 describe('NetworkBrowserWebRTC', function () {
@@ -12,7 +12,7 @@ describe('NetworkBrowserWebRTC', function () {
     return
   }
 
-  Network = require('../../core/network-browser-webrtc')
+  Network = require('../core/network-browser-webrtc')
 
   it('should exist', function () {
     should.exist(Network)

@@ -1,9 +1,9 @@
 /* global fullnode,describe,it,before,after */
 'use strict'
-let DB = require('../../core/db')
-let Content = require('../../core/content')
-let ContentAuth = require('../../core/content-auth')
-let DBContentAuth = require('../../core/db-content-auth')
+let DB = require('../core/db')
+let Content = require('../core/content')
+let ContentAuth = require('../core/content-auth')
+let DBContentAuth = require('../core/db-content-auth')
 let Keypair = fullnode.Keypair
 let should = require('should')
 let BR = fullnode.BR

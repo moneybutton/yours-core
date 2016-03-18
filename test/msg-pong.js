@@ -1,9 +1,9 @@
 /* global describe,it */
 'use strict'
 let should = require('should')
-let Msg = require('../../core/msg')
-let MsgPing = require('../../core/msg-ping')
-let MsgPong = require('../../core/msg-pong')
+let Msg = require('../core/msg')
+let MsgPing = require('../core/msg-ping')
+let MsgPong = require('../core/msg-pong')
 
 describe('MsgPong', function () {
   let msgping = MsgPing().fromRandom()

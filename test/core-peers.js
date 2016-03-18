@@ -1,10 +1,10 @@
 /* global describe,it */
 'use strict'
-let ContentAuth = require('../../core/content-auth')
-let CorePeers = require('../../core/core-peers')
-let MsgContentAuth = require('../../core/msg-content-auth')
-let MsgPing = require('../../core/msg-ping')
-let MsgPong = require('../../core/msg-pong')
+let ContentAuth = require('../core/content-auth')
+let CorePeers = require('../core/core-peers')
+let MsgContentAuth = require('../core/msg-content-auth')
+let MsgPing = require('../core/msg-ping')
+let MsgPong = require('../core/msg-pong')
 let should = require('should')
 let sinon = require('sinon')
 let asink = require('asink')

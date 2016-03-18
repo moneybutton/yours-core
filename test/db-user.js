@@ -1,8 +1,8 @@
 /* global describe,it,before,after */
 'use strict'
-let DB = require('../../core/db')
-let DBUser = require('../../core/db-user')
-let User = require('../../core/user')
+let DB = require('../core/db')
+let DBUser = require('../core/db-user')
+let User = require('../core/user')
 let asink = require('asink')
 let should = require('should')
 

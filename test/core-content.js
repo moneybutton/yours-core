@@ -1,10 +1,10 @@
 /* global fullnode,describe,it,before,after */
 'use strict'
 let Address = fullnode.Address
-let ContentAuth = require('../../core/content-auth')
-let CoreContent = require('../../core/core-content')
-let DB = require('../../core/db')
-let User = require('../../core/user')
+let ContentAuth = require('../core/content-auth')
+let CoreContent = require('../core/core-content')
+let DB = require('../core/db')
+let User = require('../core/user')
 let asink = require('asink')
 let should = require('should')
 let mocks = require('./mocks')

@@ -1,6 +1,6 @@
 /* global describe,it */
 'use strict'
-let User = require('../../core/user')
+let User = require('../core/user')
 let asink = require('asink')
 let should = require('should')
 

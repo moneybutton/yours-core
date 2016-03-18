@@ -1,8 +1,8 @@
 /* global describe,it,before,after */
 'use strict'
-let DB = require('../../core/db')
-let DBPeers = require('../../core/db-peers')
-let Peers = require('../../core/peers')
+let DB = require('../core/db')
+let DBPeers = require('../core/db-peers')
+let Peers = require('../core/peers')
 let should = require('should')
 let asink = require('asink')
 

@@ -1,6 +1,6 @@
 /* global describe,it */
 'use strict'
-let ConnectionInfo = require('../../core/connection-info')
+let ConnectionInfo = require('../core/connection-info')
 let should = require('should')
 
 describe('ConnectionInfo', function () {

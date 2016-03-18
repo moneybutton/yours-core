@@ -1,10 +1,10 @@
 /* global fullnode,describe,it,before,after */
 'use strict'
-let Peers = require('../../core/peers')
+let Peers = require('../core/peers')
 let Address = fullnode.Address
-let Content = require('../../core/content')
-let ContentAuth = require('../../core/content-auth')
-let MsgContentAuth = require('../../core/msg-content-auth')
+let Content = require('../core/content')
+let ContentAuth = require('../core/content-auth')
+let MsgContentAuth = require('../core/msg-content-auth')
 let BR = fullnode.BR
 let Keypair = fullnode.Keypair
 let sinon = require('sinon')
@@ -20,9 +20,9 @@ describe('Peers', function () {
   let peers
   let Network, network2
   if (process.browser) {
-    Network = require('../../core/network-browser-webrtc')
+    Network = require('../core/network-browser-webrtc')
   } else {
-    Network = require('../../core/network-node-socket')
+    Network = require('../core/network-node-socket')
   }
 
   let blockidhex = '00000000000000000e6188a4cc93e3d3244b20bfdef1e9bd9db932e30f3aa2f1'
