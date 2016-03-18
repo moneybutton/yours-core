@@ -7,7 +7,7 @@ module.exports = function (config) {
     files: [
       {pattern: 'fullnode-worker.js', watched: true, included: false, served: true},
       {pattern: 'fullnode.js', watched: true, included: true, served: true},
-      {pattern: 'datt-core.js', watched: true, included: true, served: true},
+      {pattern: 'datt.js', watched: true, included: true, served: true},
       {pattern: 'datt-react.js', watched: true, included: false, served: true},
       {pattern: 'datt-tests.js'}
     ],

@@ -18,16 +18,8 @@ if (!process.env.DATT_JS_BASE_URL) {
   process.env.DATT_JS_BASE_URL = '/'
 }
 
-if (!process.env.DATT_CORE_JS_BUNDLE_FILE) {
-  process.env.DATT_CORE_JS_BUNDLE_FILE = 'datt-core.js'
-}
-
-if (!process.env.DATT_CORE_JS_WORKER_FILE) {
-  process.env.DATT_CORE_JS_WORKER_FILE = 'datt-core-worker.js'
-}
-
-if (!process.env.DATT_CORE_JS_WORKERPOOL_FILE) {
-  process.env.DATT_CORE_JS_WORKERPOOL_FILE = 'datt-core-workerpool.js'
+if (!process.env.DATT_JS_BUNDLE_FILE) {
+  process.env.DATT_JS_BUNDLE_FILE = 'datt.js'
 }
 
 if (!process.env.DATT_JS_TESTS_FILE) {
