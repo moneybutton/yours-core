@@ -1,7 +1,7 @@
 /* global describe,it,before,after */
 'use strict'
 let DB = require('../lib/db')
-let DBUser = require('../lib/db-user')
+let DBUser = require('../lib/dbuser')
 let User = require('../lib/user')
 let asink = require('asink')
 let should = require('should')

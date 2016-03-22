@@ -1,8 +1,8 @@
 /* global describe,it,before,after */
 'use strict'
-let BIP44Wallet = require('../lib/bip44-wallet')
+let BIP44Wallet = require('../lib/bip44wallet')
 let DB = require('../lib/db')
-let DBBIP44Wallet = require('../lib/db-bip44-wallet')
+let DBBIP44Wallet = require('../lib/dbbip44wallet')
 let asink = require('asink')
 let should = require('should')
 

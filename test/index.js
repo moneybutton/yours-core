@@ -1,9 +1,9 @@
 /* global fullnode,before,describe,it,after */
 'use strict'
 let Address = fullnode.Address
-let ContentAuth = require('../lib/content-auth')
+let ContentAuth = require('../lib/contentauth')
 let Datt = require('../lib')
-let MsgPing = require('../lib/msg-ping')
+let MsgPing = require('../lib/msgping')
 let Privkey = fullnode.Privkey
 let asink = require('asink')
 let mocks = require('./mocks')
@@ -257,11 +257,11 @@ describe('Datt', function () {
   })
 
   describe('#asyncHandlePeersContentAuth', function () {
-    it('should emit peers-content-auth', function () {
+    it('should emit peers-contentauth', function () {
       let datt = Datt({dbname: 'datt-temp'})
       datt.emit = sinon.spy()
       datt.handlePeersContentAuth('hello')
-      datt.emit.calledWith('peers-content-auth', 'hello').should.equal(true)
+      datt.emit.calledWith('peers-contentauth', 'hello').should.equal(true)
     })
   })
 

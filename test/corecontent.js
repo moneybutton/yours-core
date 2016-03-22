@@ -1,8 +1,8 @@
 /* global fullnode,describe,it,before,after */
 'use strict'
 let Address = fullnode.Address
-let ContentAuth = require('../lib/content-auth')
-let CoreContent = require('../lib/core-content')
+let ContentAuth = require('../lib/contentauth')
+let CoreContent = require('../lib/corecontent')
 let DB = require('../lib/db')
 let User = require('../lib/user')
 let asink = require('asink')

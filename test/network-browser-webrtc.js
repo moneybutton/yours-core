@@ -2,8 +2,8 @@
 'use strict'
 let Network
 let should = require('should')
-let MsgPing = require('../lib/msg-ping')
-let MsgPong = require('../lib/msg-pong')
+let MsgPing = require('../lib/msgping')
+let MsgPong = require('../lib/msgpong')
 let asink = require('asink')
 
 describe('NetworkBrowserWebRTC', function () {

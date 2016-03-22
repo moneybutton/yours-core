@@ -1,8 +1,8 @@
 /* global fullnode,describe,it,before,after */
 'use strict'
 let Address = fullnode.Address
-let BIP44Wallet = require('../lib/bip44-wallet')
-let CoreBitcoin = require('../lib/core-bitcoin')
+let BIP44Wallet = require('../lib/bip44wallet')
+let CoreBitcoin = require('../lib/corebitcoin')
 let DB = require('../lib/db')
 let Interp = fullnode.Interp
 let Txverifier = fullnode.Txverifier

@@ -24,7 +24,7 @@ module.exports = function (config) {
     singleRun: true,
 
     proxies: {
-      '/blockchain-api': 'http://localhost:3030/blockchain-api'
+      '/blockchainapi': 'http://localhost:3030/blockchainapi'
     }
   })
 }

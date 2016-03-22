@@ -2,8 +2,8 @@
 'use strict'
 let should = require('should')
 let Msg = require('../lib/msg')
-let MsgPing = require('../lib/msg-ping')
-let MsgPong = require('../lib/msg-pong')
+let MsgPing = require('../lib/msgping')
+let MsgPong = require('../lib/msgpong')
 
 describe('MsgPong', function () {
   let msgping = MsgPing().fromRandom()

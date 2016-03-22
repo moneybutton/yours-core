@@ -1,8 +1,8 @@
 /* global fullnode,describe,it */
 'use strict'
 let Address = fullnode.Address
-let BIP44Account = require('../lib/bip44-account')
-let BIP44Wallet = require('../lib/bip44-wallet')
+let BIP44Account = require('../lib/bip44account')
+let BIP44Wallet = require('../lib/bip44wallet')
 let asink = require('asink')
 let should = require('should')
 

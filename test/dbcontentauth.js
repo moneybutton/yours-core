@@ -2,8 +2,8 @@
 'use strict'
 let DB = require('../lib/db')
 let Content = require('../lib/content')
-let ContentAuth = require('../lib/content-auth')
-let DBContentAuth = require('../lib/db-content-auth')
+let ContentAuth = require('../lib/contentauth')
+let DBContentAuth = require('../lib/dbcontentauth')
 let Keypair = fullnode.Keypair
 let should = require('should')
 let BR = fullnode.BR
