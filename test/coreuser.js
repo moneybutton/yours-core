@@ -3,7 +3,7 @@
 let BR = fullnode.BR
 let CoreUser = require('../lib/coreuser')
 let DB = require('../lib/db')
-let MsgAuth = require('../lib/msgauth')
+let DMsgAuth = require('../lib/dmsgauth')
 let asink = require('asink')
 let should = require('should')
 
@@ -51,11 +51,11 @@ describe('CoreUser', function () {
     })
   })
 
-  describe('#asyncGetMsgAuth', function () {
+  describe('#asyncGetDMsgAuth', function () {
     it('should return a valid msgauth', function () {
       return asink(function *() {
-        let msgauth = yield coreuser.asyncGetMsgAuth(blockhashbuf, blockheightnum)
-        ;(msgauth instanceof MsgAuth).should.equal(true)
+        let msgauth = yield coreuser.asyncGetDMsgAuth(blockhashbuf, blockheightnum)
+        ;(msgauth instanceof DMsgAuth).should.equal(true)
         let verified = yield msgauth.asyncVerify()
         verified.should.equal(true)
       })

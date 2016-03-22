@@ -4,7 +4,7 @@ let Peers = require('../lib/peers')
 let Address = fullnode.Address
 let Content = require('../lib/content')
 let ContentAuth = require('../lib/contentauth')
-let MsgContentAuth = require('../lib/msgcontentauth')
+let DMsgContentAuth = require('../lib/dmsgcontentauth')
 let BR = fullnode.BR
 let Keypair = fullnode.Keypair
 let sinon = require('sinon')
@@ -163,7 +163,7 @@ describe('Peers', function () {
     })
   })
 
-  describe('#broadcastMsg', function () {
+  describe('#broadcastDMsg', function () {
     it('should send contentauth', function () {
       return asink(function *() {
         let content = Content().fromObject({
@@ -182,13 +182,13 @@ describe('Peers', function () {
 
         // assume connection to network2 has already been made
         yield new Promise((resolve, reject) => {
-          network2.connections[0].on('msg', (msg) => {
-            let msgcontentauth = MsgContentAuth().fromMsg(msg)
+          network2.connections[0].on('dmsg', (msg) => {
+            let msgcontentauth = DMsgContentAuth().fromDMsg(msg)
             ;(msgcontentauth.contentauth instanceof ContentAuth).should.equal(true)
             resolve()
           })
-          let msg = MsgContentAuth().fromContentAuth(contentauth).toMsg()
-          peers.broadcastMsg(msg)
+          let msg = DMsgContentAuth().fromContentAuth(contentauth).toDMsg()
+          peers.broadcastDMsg(msg)
         })
       })
     })

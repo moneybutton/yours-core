@@ -2,8 +2,8 @@
 'use strict'
 let Network
 let should = require('should')
-let MsgPing = require('../lib/msgping')
-let MsgPong = require('../lib/msgpong')
+let DMsgPing = require('../lib/dmsgping')
+let DMsgPong = require('../lib/dmsgpong')
 let asink = require('asink')
 
 describe('NetworkBrowserWebRTC', function () {
@@ -65,19 +65,19 @@ describe('NetworkBrowserWebRTC', function () {
           network2.close()
           throw new Error('could not connect to other peer: ' + error)
         }
-        let msgPing = MsgPing().fromRandom()
+        let msgPing = DMsgPing().fromRandom()
         yield new Promise((resolve, reject) => {
-          connection1.on('msg', (msg) => {
+          connection1.on('dmsg', (msg) => {
             msg.getCmd().should.equal('pong')
             resolve()
           })
-          connection2.on('msg', (msg) => {
+          connection2.on('dmsg', (msg) => {
             msg.getCmd().should.equal('ping')
-            let msgPing = MsgPing().fromMsg(msg)
-            let msgPong = MsgPong().fromMsgPing(msgPing)
-            connection2.sendMsg(msgPong.toMsg())
+            let msgPing = DMsgPing().fromDMsg(msg)
+            let msgPong = DMsgPong().fromDMsgPing(msgPing)
+            connection2.sendDMsg(msgPong.toDMsg())
           })
-          connection1.sendMsg(msgPing.toMsg())
+          connection1.sendDMsg(msgPing.toDMsg())
         })
         network1.close()
         network2.close()

@@ -1,7 +1,7 @@
 /* global describe,it */
 'use strict'
 let Connection
-let Msg = require('../lib/msg')
+let DMsg = require('../lib/dmsg')
 let sinon = require('sinon')
 let asink = require('asink')
 let should = require('should')
@@ -22,14 +22,14 @@ describe('ConnectionBrowserWebRTC', function () {
   describe('#asyncHandleData', function () {
     it('should parse this valid message', function () {
       return asink(function *() {
-        let msghex = '255a484b76657261636b00000000000000000000'
-        let msg = Msg().fromHex(msghex)
+        let msghex = '255a484b696e76000000000000000000000000005df6e0e2'
+        let msg = DMsg().fromHex(msghex)
         let connection = Connection()
         connection.emit = sinon.spy()
         msg = yield connection.asyncHandleData(msg.toBuffer())
-        ;(msg instanceof Msg).should.equal(true)
+        ;(msg instanceof DMsg).should.equal(true)
         msg.isValid().should.equal(true)
-        connection.emit.calledWith('msg', msg).should.equal(true)
+        connection.emit.calledWith('dmsg', msg).should.equal(true)
       })
     })
   })

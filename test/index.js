@@ -3,7 +3,7 @@
 let Address = fullnode.Address
 let ContentAuth = require('../lib/contentauth')
 let Datt = require('../lib')
-let MsgPing = require('../lib/msgping')
+let DMsgPing = require('../lib/dmsgping')
 let Privkey = fullnode.Privkey
 let asink = require('asink')
 let mocks = require('./mocks')
@@ -277,14 +277,14 @@ describe('Datt', function () {
     })
   })
 
-  describe('#broadcastMsg', function () {
-    it('should call corepeers.broadcastMsg', function () {
+  describe('#broadcastDMsg', function () {
+    it('should call corepeers.broadcastDMsg', function () {
       let datt = Datt({dbname: 'datt-temp'})
       datt.corepeers = {}
-      datt.corepeers.broadcastMsg = sinon.spy()
-      let msg = MsgPing().fromRandom()
-      datt.broadcastMsg(msg)
-      datt.corepeers.broadcastMsg.calledWith(msg).should.equal(true)
+      datt.corepeers.broadcastDMsg = sinon.spy()
+      let msg = DMsgPing().fromRandom()
+      datt.broadcastDMsg(msg)
+      datt.corepeers.broadcastDMsg.calledWith(msg).should.equal(true)
     })
   })
 })
