@@ -1,6 +1,6 @@
-/* global fullnode,describe,it */
+/* global Fullnode,describe,it */
 'use strict'
-let Address = fullnode.Address
+let Address = Fullnode.Address
 let BlockchainAPI = require('../lib/blockchainapi')
 let Tx = require('fullnode/lib/tx')
 let asink = require('asink')

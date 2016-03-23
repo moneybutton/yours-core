@@ -1,4 +1,4 @@
-/* global fullnode,after */
+/* global Fullnode,after */
 /**
  * Global "before" and "after" to run before and after all tests. These can be
  * used to establish and also tear down global database connections, network
@@ -6,7 +6,7 @@
  * hanging when the tests are done running so that the tests end properly.
  */
 'use strict'
-let Workers = fullnode.Workers
+let Workers = Fullnode.Workers
 
 after(function () {
   Workers.endGlobalWorkers()

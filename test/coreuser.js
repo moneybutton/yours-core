@@ -1,6 +1,6 @@
-/* global fullnode,describe,it,before,after */
+/* global Fullnode,describe,it,before,after */
 'use strict'
-let BR = fullnode.BR
+let BR = Fullnode.BR
 let CoreUser = require('../lib/coreuser')
 let DB = require('../lib/db')
 let DMsgAuth = require('../lib/dmsgauth')

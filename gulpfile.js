@@ -18,7 +18,7 @@ let path = require('path')
 require('./config')
 
 function task_build_fullnode_worker () {
-  // the fullnode config sets environment variables necessary to use fullnode
+  // the Fullnode config sets environment variables necessary to use Fullnode
   // if they are not already set in he environment.
   require('fullnode/config')
 

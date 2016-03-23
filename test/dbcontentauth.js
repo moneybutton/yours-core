@@ -1,12 +1,12 @@
-/* global fullnode,describe,it,before,after */
+/* global Fullnode,describe,it,before,after */
 'use strict'
 let DB = require('../lib/db')
 let Content = require('../lib/content')
 let ContentAuth = require('../lib/contentauth')
 let DBContentAuth = require('../lib/dbcontentauth')
-let Keypair = fullnode.Keypair
+let Keypair = Fullnode.Keypair
 let should = require('should')
-let BR = fullnode.BR
+let BR = Fullnode.BR
 
 describe('DBContentAuth', function () {
   let blockidhex = '00000000000000000e6188a4cc93e3d3244b20bfdef1e9bd9db932e30f3aa2f1'

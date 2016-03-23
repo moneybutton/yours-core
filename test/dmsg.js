@@ -1,9 +1,9 @@
-/* global fullnode,describe,it */
+/* global Fullnode,describe,it */
 'use strict'
 let Constants = require('../lib/constants')
 let DMsg = require('../lib/dmsg')
-let BR = fullnode.BR
-let BW = fullnode.BW
+let BR = Fullnode.BR
+let BW = Fullnode.BW
 let should = require('should')
 
 describe('DMsg', function () {
