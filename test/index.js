@@ -37,7 +37,7 @@ describe('Datt', function () {
   describe('#asyncInitialize', function () {
     it('should init the datt', function () {
       return asink(function *() {
-        yield datt.asyncInitialize()
+        yield datt.asyncInitialize({peers: false, bitcoin: false})
         datt.isinitialized.should.equal(true)
         should.exist(datt.db)
         should.exist(datt.coreuser)
