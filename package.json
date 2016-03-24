@@ -118,11 +118,11 @@
     "express": "4.13.4",
     "fullnode": "0.13.0",
     "http-proxy": "1.13.2",
+    "isomorphic-fetch": "2.2.1",
     "peer": "0.2.8",
     "peerjs": "0.3.14",
     "pouchdb": "5.3.1",
-    "q": "1.4.1",
-    "request": "2.69.0"
+    "q": "1.4.1"
   },
   "devDependencies": {
     "babel-core": "6.7.4",
