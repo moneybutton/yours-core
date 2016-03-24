@@ -115,14 +115,14 @@
   "license": "MIT",
   "dependencies": {
     "asink": "1.0.4",
+    "asyncdelay": "1.0.0",
     "express": "4.13.4",
     "fullnode": "0.13.0",
     "http-proxy": "1.13.2",
     "isomorphic-fetch": "2.2.1",
     "peer": "0.2.8",
     "peerjs": "0.3.14",
-    "pouchdb": "5.3.1",
-    "q": "1.4.1"
+    "pouchdb": "5.3.1"
   },
   "devDependencies": {
     "babel-core": "6.7.4",

@@ -6,6 +6,10 @@
       "version": "1.0.4",
       "from": "asink@1.0.4"
     },
+    "asyncdelay": {
+      "version": "1.0.0",
+      "from": "asyncdelay@latest"
+    },
     "express": {
       "version": "4.13.4",
       "from": "express@4.13.4",
@@ -3176,11 +3180,6 @@
           }
         }
       }
-    },
-    "q": {
-      "version": "1.4.1",
-      "from": "q@1.4.1",
-      "resolved": "https://registry.npmjs.org/q/-/q-1.4.1.tgz"
     }
   }
 }
