@@ -3,4 +3,5 @@
  * you want to use to run a datt node, either in node.js or a web browser.  It
  * does not include the UI.
  */
+require('fullnode')
 module.exports = require('./lib/index')
