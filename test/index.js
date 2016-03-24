@@ -237,6 +237,35 @@ describe('Datt', function () {
     })
   })
 
+  describe('#asyncGetContentAuth', function () {
+    it('should return a known piece of content', function () {
+      return asink(function *() {
+        let title = 'test title 2'
+        let label = 'testlabel'
+        let body = 'test body'
+        let hashbuf = yield datt.asyncPostNewContentAuth(title, label, body)
+        let contentauth = yield datt.asyncGetContentAuth(hashbuf)
+        let hashbuf2 = yield contentauth.asyncGetHash()
+        Buffer.compare(hashbuf2, hashbuf).should.equal(0)
+      })
+    })
+
+    it('should not return a fake piece of content', function () {
+      return asink(function *() {
+        let hashbuf = new Buffer(32)
+        hashbuf.fill(0)
+        let errors = 0
+        try {
+          yield datt.asyncGetContentAuth(hashbuf)
+        } catch (error) {
+          errors++
+          error.message.should.equal('missing')
+        }
+        errors.should.equal(1)
+      })
+    })
+  })
+
   describe('#monitorCorePeers', function () {
     it('should call corepeers.on', function () {
       let datt = Datt({dbname: 'datt-temp'})
