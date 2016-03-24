@@ -149,7 +149,6 @@
     "should": "8.3.0",
     "sinon": "1.17.3",
     "standard": "6.0.8",
-    "through2": "2.0.1",
     "watchify": "3.7.0"
   }
 }
