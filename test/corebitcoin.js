@@ -306,4 +306,15 @@ describe('CoreBitcoin', function () {
       })
     })
   })
+
+  describe('#asyncGetBlockchainPayerAddresses', function () {
+    it('should call blockchainAPI.asyncGetBlockchainPayerAddresses', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+        corebitcoin.blockchainAPI.asyncGetBlockchainPayerAddresses = sinon.spy()
+        yield corebitcoin.asyncGetBlockchainPayerAddresses()
+        corebitcoin.blockchainAPI.asyncGetBlockchainPayerAddresses.calledOnce.should.equal(true)
+      })
+    })
+  })
 })

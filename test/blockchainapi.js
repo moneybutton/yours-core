@@ -47,13 +47,13 @@ describe('BlockchainAPI', function () {
     })
   })
 
-  describe('#asyncGetPayerAddresses', function () {
+  describe('#asyncGetBlockchainPayerAddresses', function () {
     it('should get no payer addresses for a new address', function () {
       return asink(function *() {
         let privKey = Privkey().fromRandom()
         let pubKey = Pubkey().fromPrivkey(privKey)
         let address = Address().fromPubkey(pubKey)
-        let addresses = yield BlockchainAPI().asyncGetPayerAddresses(address)
+        let addresses = yield BlockchainAPI().asyncGetBlockchainPayerAddresses(address)
         addresses.length.should.equal(0)
       }, this)
     })
@@ -61,7 +61,7 @@ describe('BlockchainAPI', function () {
     it('should get payer addresses for this known address', function () {
       return asink(function *() {
         let address = Address().fromString('1DYJLdYrC4mWTH6YcDTJ6NqnMzfDE4aFeZ')
-        let addresses = yield BlockchainAPI().asyncGetPayerAddresses(address)
+        let addresses = yield BlockchainAPI().asyncGetBlockchainPayerAddresses(address)
         addresses.length.should.greaterThan(0)
         ;(addresses[0] instanceof Address).should.equal(true)
       }, this)

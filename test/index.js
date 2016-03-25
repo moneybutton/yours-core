@@ -128,6 +128,19 @@ describe('Datt', function () {
     })
   })
 
+  describe('#asyncGetBlockchainPayerAddresses', function () {
+    it('should call corebitcoin.asyncGetBlockchainPayerAddresses', function () {
+      return asink(function *() {
+        let datt = Datt({dbname: 'datt-temp'})
+        datt.corebitcoin = {
+          asyncGetBlockchainPayerAddresses: sinon.spy()
+        }
+        yield datt.asyncGetBlockchainPayerAddresses()
+        datt.corebitcoin.asyncGetBlockchainPayerAddresses.calledOnce.should.equal(true)
+      }, this)
+    })
+  })
+
   describe('#asyncGetLatestBlockInfo', function () {
     it('should return info', function () {
       return asink(function *() {
