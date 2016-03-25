@@ -1,5 +1,7 @@
 /* global Fullnode,describe,it */
 'use strict'
+let Privkey = Fullnode.Privkey
+let Pubkey = Fullnode.Pubkey
 let Address = Fullnode.Address
 let BlockchainAPI = require('../lib/blockchainapi')
 let Tx = require('fullnode/lib/tx')
@@ -41,6 +43,27 @@ describe('BlockchainAPI', function () {
         let address = Address().fromString('12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX')
         let utxos = yield BlockchainAPI().asyncGetUTXOsJSON([address])
         utxos.length.should.greaterThan(20)
+      }, this)
+    })
+  })
+
+  describe('#asyncGetPayerAddresses', function () {
+    it('should get no payer addresses for a new address', function () {
+      return asink(function *() {
+        let privKey = Privkey().fromRandom()
+        let pubKey = Pubkey().fromPrivkey(privKey)
+        let address = Address().fromPubkey(pubKey)
+        let addresses = yield BlockchainAPI().asyncGetPayerAddresses(address)
+        addresses.length.should.equal(0)
+      }, this)
+    })
+
+    it('should get payer addresses for this known address', function () {
+      return asink(function *() {
+        let address = Address().fromString('1DYJLdYrC4mWTH6YcDTJ6NqnMzfDE4aFeZ')
+        let addresses = yield BlockchainAPI().asyncGetPayerAddresses(address)
+        addresses.length.should.greaterThan(0)
+        ;(addresses[0] instanceof Address).should.equal(true)
       }, this)
     })
   })
