@@ -114,7 +114,9 @@ describe('CoreBitcoin', function () {
           }
         ])
 
-        let txb = yield corebitcoin.asyncBuildTransaction(keys.address, 1000)
+        let toAddress = keys.address
+        let toAmountSatoshis = 1000
+        let txb = yield corebitcoin.asyncBuildTransaction([{toAddress, toAmountSatoshis}])
         ;(txb instanceof Txbuilder).should.equal(true)
       })
     })
@@ -143,7 +145,9 @@ describe('CoreBitcoin', function () {
           }
         ])
 
-        let txb = yield corebitcoin.asyncBuildTransaction(keys.address, 1000)
+        let toAddress = keys.address
+        let toAmountSatoshis = 1000
+        let txb = yield corebitcoin.asyncBuildTransaction([{toAddress, toAmountSatoshis}])
         let txb2 = yield corebitcoin.asyncSignTransaction(txb)
         ;(txb2 instanceof Txbuilder).should.equal(true)
         Txverifier.verify(txb2.tx, txb2.utxoutmap, Interp.SCRIPT_VERIFY_P2SH).should.equal(true)

@@ -89,9 +89,10 @@ describe('Datt', function () {
         }
         let toAddress = Address().fromPrivkey(Privkey().fromRandom())
         let toAmountSatoshis = 10000
-        yield datt.asyncBuildSignAndSendTransaction(toAddress, toAmountSatoshis)
+        let paymentDescriptions = [{toAddress, toAmountSatoshis}]
+        yield datt.asyncBuildSignAndSendTransaction(paymentDescriptions)
         datt.corebitcoin.asyncBuildSignAndSendTransaction.calledOnce.should.equal(true)
-        datt.corebitcoin.asyncBuildSignAndSendTransaction.calledWith(toAddress, toAmountSatoshis).should.equal(true)
+        datt.corebitcoin.asyncBuildSignAndSendTransaction.calledWith(paymentDescriptions).should.equal(true)
       }, this)
     })
   })
