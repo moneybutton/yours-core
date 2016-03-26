@@ -4,18 +4,18 @@
   "description": "It's cool when users own their content.",
   "main": "index.js",
   "scripts": {
-    "build": "gulp build",
-    "standard": "standard *.js lib/**/*.js bin/**/*.js server/**/*.js test/**/*.js test/**/*.jsx",
+    "build": "./node_modules/.bin/gulp build",
+    "standard": "./node_modules/.bin/standard *.js lib/**/*.js bin/**/*.js server/**/*.js test/**/*.js test/**/*.jsx",
     "test-format": "npm run standard",
-    "test-node": "gulp test-node",
-    "test-karma": "gulp test-karma",
+    "test-node": "./node_modules/.bin/gulp test-node",
+    "test-karma": "./node_modules/.bin/gulp test-karma",
     "test-both": "npm run test-node && npm run test-karma",
     "test": "npm run test-format && npm run test-both",
-    "test-files": "mocha --compilers .jsx:babel-core/register --require=fullnode",
-    "serve-localapi-mainnet": "DATT_BLOCKCHAIN_API_URI=http://localhost:3001/insight-api/ gulp serve",
-    "serve-localapi-testnet": "FULLNODE_NETWORK=testnet DATT_BLOCKCHAIN_API_URI=http://localhost:3002/insight-api/ gulp serve",
-    "serve-mainnet": "gulp serve",
-    "serve-testnet": "FULLNODE_NETWORK=testnet DATT_BLOCKCHAIN_API_URI=https://test-insight.bitpay.com/api/ gulp serve"
+    "test-files": "./node_modules/.bin/mocha --compilers .jsx:babel-core/register --require=fullnode",
+    "serve-localapi-mainnet": "DATT_BLOCKCHAIN_API_URI=http://localhost:3001/insight-api/ ./node_modules/.bin/gulp serve",
+    "serve-localapi-testnet": "FULLNODE_NETWORK=testnet DATT_BLOCKCHAIN_API_URI=http://localhost:3002/insight-api/ ./node_modules/.bin/gulp serve",
+    "serve-mainnet": "./node_modules/.bin/gulp serve",
+    "serve-testnet": "FULLNODE_NETWORK=testnet DATT_BLOCKCHAIN_API_URI=https://test-insight.bitpay.com/api/ ./node_modules/.bin/gulp serve"
   },
   "engines": {
     "node": ">=4.3.0"
