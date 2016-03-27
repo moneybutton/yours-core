@@ -142,6 +142,19 @@ describe('Datt', function () {
     })
   })
 
+  describe('#asyncGetAddressesBalancesSatoshis', function () {
+    it('should call corebitcoin.asyncGetAddressesBalancesSatoshis', function () {
+      return asink(function *() {
+        let datt = Datt({dbname: 'datt-temp'})
+        datt.corebitcoin = {
+          asyncGetAddressesBalancesSatoshis: sinon.spy()
+        }
+        yield datt.asyncGetAddressesBalancesSatoshis()
+        datt.corebitcoin.asyncGetAddressesBalancesSatoshis.calledOnce.should.equal(true)
+      }, this)
+    })
+  })
+
   describe('#asyncGetLatestBlockInfo', function () {
     it('should return info', function () {
       return asink(function *() {
