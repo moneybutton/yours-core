@@ -1,6 +1,6 @@
 {
   "name": "datt",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "It's cool when users own their content.",
   "main": "index.js",
   "scripts": {
