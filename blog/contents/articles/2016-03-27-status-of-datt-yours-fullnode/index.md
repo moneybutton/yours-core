@@ -9,8 +9,8 @@ Updates since the hackathon:
   work by Steven McKie. The new layouts include the hot page, all page, wallet
   page, and submit new content page.
 - Yours has been rewritten (almost) from scratch. The most significant change
-  is that depend on a database hosted on AWS, Yours now uses the Datt database
-  on the server (and client, as before).
+  is that we no longer depend on a database hosted on AWS. Yours now uses the
+  Datt database on the server (and client, as before).
 - Clemens Ley is visiting San Francisco, and we are working on getting
   something launchable out soon. The Yours product has also changed slightly -
   rather than endorsing a random earlier endorser, you now endorse all earlier
