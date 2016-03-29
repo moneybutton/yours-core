@@ -20,9 +20,9 @@ Updates since the hackathon:
   "upvoted" content reaches the top spot.
 - We have removed the UI from Datt since we are now focused on building the UI
   for Yours, and don't want to maintain both UIs are the same time. Datt should
-  still have its own UI intended for a technical udience, but that can be added
-  later. Philosophically, we now consider Datt to be a backend that can power
-  many possible products, of which Yours is just one example.
+  still have its own UI intended for a technical audience, but that can be
+  added later. Philosophically, we now consider Datt to be a backend that can
+  power many possible products, of which Yours is just one example.
 - Fullnode has a new worker interface that is being use extensively both
   throughout Fullnode itself and throughout Datt. The interface is very easy to
   use - all common methods that need to be put in a worker now have "async"
