@@ -73,6 +73,19 @@ What about bullies and spammers?
 - Costs $$ to post to someone else's profile; cannot spam or troll the without
   also paying them.
 
+What if somebody gets their friends to upvote?
+----------------------------------------------
+
+- Yours: If your friends invest in your post, this discourages others from
+  investing, because they will reap a smaller reward. It doesn't pay to cheat.
+
+Won't marketers just upvote their own votes to the front-page?
+--------------------------------------------------------------
+
+- We will take a portion of payments of content on the front-page. The more
+  popular the front-page is, the larger fee we can justify taking. Getting to
+  the front-page has a cost of marketing.
+
 How will you get users?
 -----------------------
 
@@ -112,3 +125,13 @@ Twitter:
 
 What if I don't want to manage my private keys?
 -----------------------------------------------
+
+- Automatically back up private keys, so it is no harder to manage keys this
+  way than managing an account on any other website.
+
+How will you earn money?
+------------------------
+
+- Take a portion of the payments.
+- Advertizing. Can go further by allowing advertizers pay to directly target
+  some users who opt-in to revealing personal info.
