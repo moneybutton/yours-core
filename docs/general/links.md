@@ -194,10 +194,11 @@ Tools
 
 Bitcoin, lightning network, sidechains
 --------------------------------------
+- [Emulation of Hash-Time-Locked Contracts of the Lightning network by a trusted, but publically auditable escrow service (PDF)](https://cornwarecjp.github.io/amiko-pay/doc/lightning_emulation.pdf)
+- [Rusty Russell 1](http://rusty.ozlabs.org/?p=450), [Rusty Russell 2](http://rusty.ozlabs.org/?p=462), [Rusty Russell 3](http://rusty.ozlabs.org/?p=467), [Rusty Russsell 4](http://rusty.ozlabs.org/?p=477)
 - [Lightning Network implementation](https://github.com/LightningNetwork/lnd)
 - [Alex Axelrod's Bitcoin Wiki page on chained payment channels](https://en.bitcoin.it/wiki/User:Aakselrod/Draft)
 - [Experimental lightning node in python](https://github.com/hashplex/Lightning)
-- [Emulation of Hash-Time-Locked Contracts of the Lightning network by a trusted, but publically auditable escrow service (PDF)](https://cornwarecjp.github.io/amiko-pay/doc/lightning_emulation.pdf)
 - [Amiko pay - something very much like the lightning network implemented in python, distinct from the hashplex one](https://github.com/cornwarecjp/amiko-pay)
 - [Thunder Network - a more near-term solution for our micropayments problem, already implemented in Java](http://thunder.network/)
 - [A fast and scalable network with bitcoin micropayment channels (PDF)](http://www.researchgate.net/profile/Christian_Decker5/publication/277991245_A_Fast_and_Scalable_Payment_Network_with_Bitcoin_Duplex_Micropayment_Channels/links/55780a4e08aeb6d8c01cf2d0.pdf) - not lightning, but similar
