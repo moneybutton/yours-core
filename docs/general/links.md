@@ -195,6 +195,7 @@ Tools
 Bitcoin, lightning network, sidechains
 --------------------------------------
 - [Lightning Network implementation](https://github.com/LightningNetwork/lnd)
+- [Alex Axelrod's Bitcoin Wiki page on chained payment channels](https://en.bitcoin.it/wiki/User:Aakselrod/Draft)
 - [Experimental lightning node in python](https://github.com/hashplex/Lightning)
 - [Emulation of Hash-Time-Locked Contracts of the Lightning network by a trusted, but publically auditable escrow service (PDF)](https://cornwarecjp.github.io/amiko-pay/doc/lightning_emulation.pdf)
 - [Amiko pay - something very much like the lightning network implemented in python, distinct from the hashplex one](https://github.com/cornwarecjp/amiko-pay)
