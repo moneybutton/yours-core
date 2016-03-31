@@ -107,6 +107,7 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [DEVCON1: Decentralized reddit - Connor Keenan](https://www.youtube.com/watch?v=ivkBxkSTCMQ)
 - [Blockai - keep track of authorship of content on the blockchain](https://blockai.com/)
 - [Codemill: A Marketplace for Pull Requests](http://codemill.io/)
 - [Mediachain: a distributed metadata protocol (could be used by Datt, and mentions Datt in the article)](https://medium.com/mine-labs/mediachain-483f49cbe37a)
