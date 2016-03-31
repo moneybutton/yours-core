@@ -13,7 +13,7 @@ describe('BlockchainAPI', function () {
   // blockchain API, we need to lengthen the timeout, because sometimes things
   // go slow. Long-term, we hope to replace the blockchain API with
   // SPV-in-a-browser, but for now we must deal with this.
-  this.timeout(5000)
+  this.timeout(7500)
 
   it('should exist', function () {
     should.exist(BlockchainAPI)
