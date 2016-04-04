@@ -19,15 +19,15 @@ are:
   many people, it is clear that "Datt" is a good name for technical people and
   bitcoin people, but it is not a good name for a mainstream audience, since
   most people don't get the joke. Fortunately, we have found a name good for
-  all audiences - Yours. We will come up with a plan for the rebrand and
-  execute the plan before launch. After the rebrand, Datt, the software, will
-  still be called Datt, but the public facing name we will use will be Yours.
-  Datt will be like the name of an engine in a car. Unless you are technically
-  savvy, you probably have no idea the name of your engine is, but you do know
-  the name of the company that made your car. Datt is the name of the engine
-  and Yours is the compay. Part of that plan will probably include moving the
-  blog and software from Datt-branded pages to Yours-branded pages. The Datt
-  Blog will probably become the Yours Engineering Blog.
+  all audiences - [Yours](http://yours.press). We will come up with a plan for
+  the rebrand and execute the plan before launch. After the rebrand, Datt, the
+  software, will still be called Datt, but the public facing name we will use
+  will be Yours.  Datt will be like the name of an engine in a car. Unless you
+  are technically savvy, you probably have no idea the name of your engine is,
+  but you do know the name of the company that made your car. Datt is the name
+  of the engine and Yours is the compay. Part of that plan will probably
+  include moving the blog and software from Datt-branded pages to Yours-branded
+  pages. The Datt Blog will probably become the Yours Engineering Blog.
 - **We will finish our implementation of a [trustless payment channel hub based
   on hash time lock contracts](https://github.com/dattnetwork/fullnode-pc)**
   and integrate that into the bitcoin wallet before launch, so that genuine p2p
