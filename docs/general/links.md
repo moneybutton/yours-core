@@ -107,6 +107,7 @@ _ [Youtube Red: $10/mo for no ads](http://gizmodo.com/youtube-really-wants-you-t
 Related projects
 ----------------
 - [OpenBazaar - open-source, decentralized marketplace](https://openbazaar.org/) - Also [OB1](http://ob1.io/), the First Company on OpenBazaar
+- [SpaceTimeBubble - Mats Henricson](https://github.com/matshenricson/xyztr)
 - [PopChest - bitcoin micropayments for video](https://video.popchest.com/)
 - [DEVCON1: Decentralized reddit - Connor Keenan](https://www.youtube.com/watch?v=ivkBxkSTCMQ)
 - [Blockai - keep track of authorship of content on the blockchain](https://blockai.com/)
