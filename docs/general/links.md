@@ -266,3 +266,4 @@ Press for Datt
 - [2016-03-26 Coinfund.io: Five Bitcoin and Ethereum Based Projects to Watch in 2016](https://blog.coinfund.io/five-bitcoin-and-ethereum-based-projects-to-watch-in-2016-664f3a20fa3f)
 - [2016-04-04 Steven McKie on the Bitcoin Podcast: Not Giving a Good Got Damn](http://thebitcoinpodcast.com/episode-50/)
 - [2016-04-04 The Merkle: Ryan X. Charles is Not Convinced Ethereum will Outpace Bitcoin](http://themerkle.com/ryan-x-charles-is-not-convinced-ethereum-will-outpace-bitcoin/)
+- [2016-06-06 Funding the Bigger Blockchain Space (several quotes from RXC)](https://btcmanager.com/news/finance/the-bigger-blockchain-space-venture-capital-flows-not-to-bitcoin-startups-alone/)
