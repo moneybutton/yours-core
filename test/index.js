@@ -3,7 +3,6 @@
 let Address = Fullnode.Address
 let ContentAuth = require('../lib/contentauth')
 let Datt = require('../lib')
-let DMsgPing = require('../lib/dmsgping')
 let Privkey = Fullnode.Privkey
 let asink = require('asink')
 let mocks = require('./mocks')
@@ -290,57 +289,6 @@ describe('Datt', function () {
         }
         errors.should.equal(1)
       })
-    })
-  })
-
-  describe('#monitorCorePeers', function () {
-    it('should call corepeers.on', function () {
-      let datt = Datt({dbname: 'datt-temp'})
-      datt.corepeers = {}
-      datt.corepeers.on = sinon.spy()
-      datt.monitorCorePeers()
-      datt.corepeers.on.called.should.equal(true)
-    })
-  })
-
-  describe('#handlePeersConnection', function () {
-    it('should emit peers-connection', function () {
-      let datt = Datt({dbname: 'datt-temp'})
-      datt.emit = sinon.spy()
-      datt.handlePeersConnection('hello')
-      datt.emit.calledWith('peers-connection', 'hello').should.equal(true)
-    })
-  })
-
-  describe('#asyncHandlePeersContentAuth', function () {
-    it('should emit peers-contentauth', function () {
-      let datt = Datt({dbname: 'datt-temp'})
-      datt.emit = sinon.spy()
-      datt.handlePeersContentAuth('hello')
-      datt.emit.calledWith('peers-contentauth', 'hello').should.equal(true)
-    })
-  })
-
-  describe('#asyncNumActiveConnections', function () {
-    it('should call corepeers numActiveConnections', function () {
-      return asink(function *() {
-        let datt = Datt({dbname: 'datt-temp'})
-        datt.corepeers = {}
-        datt.corepeers.numActiveConnections = sinon.spy()
-        yield datt.asyncNumActiveConnections()
-        datt.corepeers.numActiveConnections.calledOnce.should.equal(true)
-      })
-    })
-  })
-
-  describe('#broadcastDMsg', function () {
-    it('should call corepeers.broadcastDMsg', function () {
-      let datt = Datt({dbname: 'datt-temp'})
-      datt.corepeers = {}
-      datt.corepeers.broadcastDMsg = sinon.spy()
-      let msg = DMsgPing().fromRandom()
-      datt.broadcastDMsg(msg)
-      datt.corepeers.broadcastDMsg.calledWith(msg).should.equal(true)
     })
   })
 })

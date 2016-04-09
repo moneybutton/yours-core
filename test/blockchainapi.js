@@ -62,7 +62,7 @@ describe('BlockchainAPI', function () {
       return asink(function *() {
         let address = Address().fromString('1DYJLdYrC4mWTH6YcDTJ6NqnMzfDE4aFeZ')
         let addresses = yield BlockchainAPI().asyncGetBlockchainPayerAddresses(address)
-        addresses.length.should.greaterThan(0)
+        addresses.length.should.greaterThan(1)
         ;(addresses[0] instanceof Address).should.equal(true)
       }, this)
     })

@@ -37,23 +37,20 @@ Then run the server:
 npm run serve-testnet
 ```
 
-This will serve the files, run the PeerJS rendezvous server, and run a
-browser-sync proxy server (If for some reason you wish to run in dangerous
-mainnet mode instead, replace 'testnet' for 'mainnet' above). You can then
-access the tests at:
+This will serve the files and run a browser-sync proxy server (If for some
+reason you wish to run in dangerous mainnet mode instead, replace 'testnet' for
+'mainnet' above). You can then access the tests at:
 
 ```
 http://localhost:3040/tests.html
 ```
 
-The app makes use of IndexedDB and Web RTC in a browser. Each "domain" has its
-own IndexedDB and p2p connections. This means if you run the app on a different
-port, it's as though you're running the app as a different person from a
-different computer. This makes it easy to test the p2p properties of Datt if
-you simply deliver the same app from different ports. To facilitate this, the
-ports 3040 - 3044 are all assigned to simply deliver the app. So feel free to
-open up these other ports to see the same app but with a different user,
-content, and p2p connections:
+The app makes use of IndexedDB in a browser. Each "domain" has its own
+IndexedDB. This means if you run the app on a different port, it's as though
+you're running the app as a different person from a different computer. To
+facilitate this for testing purposes, the ports 3040 - 3044 are all assigned to
+simply deliver the app. So feel free to open up these other ports to see the
+same app but with a different user:
 ```
 http://localhost:3040/
 http://localhost:3041/
@@ -72,9 +69,9 @@ folders are as follows:
 - build/ - Static files and build files for the browser.
 - docs/ - Documentation on business, product, community, technology.
 - landing/ - The landing page content and source.
-- lib/ - The core logic of p2p, database and API.
+- lib/ - The core logic of the database and API.
 - media/ - Logos, mockups, and template HTML.
-- server/ - The Datt servers: app server and rendezvous server.
+- server/ - The Datt servers.
 - test/ - Tests for datt.
 
 Environment Variables

@@ -5,7 +5,6 @@ let babelify = require('babelify')
 let browserSyncCreator = require('browser-sync')
 let browserify = require('browserify')
 let createAppServer = require('./server/app').createAppServer
-let createRendezvousServer = require('./server/rendezvous').createRendezvousServer
 let envify = require('envify')
 let fs = require('fs')
 let glob = require('glob')
@@ -123,7 +122,6 @@ gulp.task('build-karma-url', () => {
 gulp.task('build-karma', ['build-karma-url', 'build'])
 
 function task_test_karma () {
-  let rendezvousServer = createRendezvousServer(3031)
   let appServer = createAppServer(3030)
   return gulp.src([])
     .pipe(karma({
@@ -134,7 +132,6 @@ function task_test_karma () {
       process.exit(1)
     })
     .on('end', () => {
-      rendezvousServer.close()
       appServer.close()
       process.exit()
     })
@@ -157,11 +154,6 @@ function task_test_node () {
 gulp.task('test-node', task_test_node)
 
 function task_serve () {
-  // Create two rendezvous servers, one for the tests and one for the UI, so
-  // that network connections do not overlap
-  createRendezvousServer(3031) // For the tests (i.e., localhost:3040/tests.html)
-  createRendezvousServer(3032) // For the UI (i.e., localhost:3040)
-
   // One app server, that delivers the app and the tests file
   createAppServer(3030)
 
