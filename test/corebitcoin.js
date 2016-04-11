@@ -4,6 +4,7 @@ let Address = Fullnode.Address
 let BIP44Wallet = require('../lib/bip44wallet')
 let CoreBitcoin = require('../lib/corebitcoin')
 let DB = require('../lib/db')
+let DBBIP44Wallet = require('../lib/dbbip44wallet')
 let Interp = Fullnode.Interp
 let Txverifier = Fullnode.Txverifier
 let Txbuilder = Fullnode.Txbuilder
@@ -14,7 +15,7 @@ let sinon = require('sinon')
 
 describe('CoreBitcoin', function () {
   let db = DB('datt-testdatabase')
-  let corebitcoin = CoreBitcoin(undefined, db)
+  let corebitcoin = CoreBitcoin(undefined, db, DBBIP44Wallet(db))
 
   before(function () {
     return asink(function *() {
@@ -224,6 +225,7 @@ describe('CoreBitcoin', function () {
         let user = yield User().asyncFromRandom()
         let corebitcoin = CoreBitcoin().fromUser(user)
         corebitcoin.dbbip44wallet = {
+          asyncRevHasChanged: () => Promise.resolve(false),
           asyncSave: () => Promise.resolve()
         }
         yield corebitcoin.asyncGetNewExtAddress()
@@ -241,6 +243,7 @@ describe('CoreBitcoin', function () {
         let user = yield User().asyncFromRandom()
         let corebitcoin = CoreBitcoin().fromUser(user)
         corebitcoin.dbbip44wallet = {
+          asyncRevHasChanged: () => Promise.resolve(false),
           asyncSave: () => Promise.resolve()
         }
         yield corebitcoin.asyncGetNewExtAddress()
@@ -263,6 +266,20 @@ describe('CoreBitcoin', function () {
         address.toString().should.not.equal(address3.toString())
       })
     })
+
+    it('should reload wallet if revision has changed', function () {
+      return asink(function *() {
+        let user = yield User().asyncFromRandom()
+        let corebitcoin = CoreBitcoin(db, DBBIP44Wallet(db)).fromUser(user)
+        corebitcoin.dbbip44wallet = {
+          asyncGet: sinon.stub().returns(Promise.resolve(corebitcoin.bip44wallet)),
+          asyncRevHasChanged: () => Promise.resolve(true),
+          asyncSave: sinon.stub().returns(Promise.resolve())
+        }
+        yield corebitcoin.asyncGetExtAddress(0)
+        corebitcoin.dbbip44wallet.asyncGet.calledOnce.should.equal(true)
+      }, this)
+    })
   })
 
   describe('#asyncGetNewExtAddress', function () {
@@ -272,6 +289,20 @@ describe('CoreBitcoin', function () {
         ;(address instanceof Address).should.equal(true)
       })
     })
+
+    it('should reload wallet if revision has changed', function () {
+      return asink(function *() {
+        let user = yield User().asyncFromRandom()
+        let corebitcoin = CoreBitcoin(db, DBBIP44Wallet(db)).fromUser(user)
+        corebitcoin.dbbip44wallet = {
+          asyncGet: sinon.stub().returns(Promise.resolve(corebitcoin.bip44wallet)),
+          asyncRevHasChanged: () => Promise.resolve(true),
+          asyncSave: sinon.stub().returns(Promise.resolve())
+        }
+        yield corebitcoin.asyncGetNewExtAddress()
+        corebitcoin.dbbip44wallet.asyncGet.calledOnce.should.equal(true)
+      }, this)
+    })
   })
 
   describe('#asyncGetAllIntAddresses', function () {
@@ -280,6 +311,7 @@ describe('CoreBitcoin', function () {
         let user = yield User().asyncFromRandom()
         let corebitcoin = CoreBitcoin().fromUser(user)
         corebitcoin.dbbip44wallet = {
+          asyncRevHasChanged: () => Promise.resolve(false),
           asyncSave: () => Promise.resolve()
         }
         yield corebitcoin.asyncGetNewExtAddress()
@@ -297,6 +329,20 @@ describe('CoreBitcoin', function () {
         let address = yield corebitcoin.asyncGetNewIntAddress()
         ;(address instanceof Address).should.equal(true)
       })
+    })
+
+    it('should reload wallet if revision has changed', function () {
+      return asink(function *() {
+        let user = yield User().asyncFromRandom()
+        let corebitcoin = CoreBitcoin(db, DBBIP44Wallet(db)).fromUser(user)
+        corebitcoin.dbbip44wallet = {
+          asyncGet: sinon.stub().returns(Promise.resolve(corebitcoin.bip44wallet)),
+          asyncRevHasChanged: () => Promise.resolve(true),
+          asyncSave: sinon.stub().returns(Promise.resolve())
+        }
+        yield corebitcoin.asyncGetNewIntAddress()
+        corebitcoin.dbbip44wallet.asyncGet.calledOnce.should.equal(true)
+      }, this)
     })
   })
 

@@ -37,7 +37,9 @@ describe('BIP44Wallet', function () {
         let json = bip44wallet.toJSON()
         should.exist(json.mnemonic)
         should.exist(json.masterxprv)
+        json.masterxprv.length.should.equal(156) // confirm length of toFastHex
         should.exist(json.masterxpub)
+        json.masterxpub.length.should.equal(222) // confirm length of toFastHex
         should.exist(json.bip44accounts)
         Object.keys(json.bip44accounts).length.should.greaterThan(0)
       })
