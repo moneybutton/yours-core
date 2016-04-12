@@ -31,26 +31,26 @@ describe('DB', function () {
     })
   })
 
-  describe('#info', function () {
+  describe('#asyncInfo', function () {
     it('should give some info', function () {
       return asink(function *() {
-        let info = yield db.info()
+        let info = yield db.asyncInfo()
         should.exist(info)
         should.exist(info.db_name)
       })
     })
   })
 
-  describe('#put', function () {
+  describe('#asyncPut', function () {
     it('should put a piece of data', function () {
-      return db.put(doc)
+      return db.asyncPut(doc)
     })
 
     it('should should get an update conflict if inserting again', function () {
       return asink(function *() {
         let errors = 0
         try {
-          yield db.put(doc)
+          yield db.asyncPut(doc)
         } catch (err) {
           errors++
         }
