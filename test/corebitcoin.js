@@ -378,4 +378,15 @@ describe('CoreBitcoin', function () {
       })
     })
   })
+
+  describe('#asyncGetAddressesIndividualBalancesSatoshis', function () {
+    it('should call blockchainAPI.asyncGetAddressesIndividualBalancesSatoshis', function () {
+      return asink(function *() {
+        let corebitcoin = CoreBitcoin()
+        corebitcoin.blockchainAPI.asyncGetAddressesIndividualBalancesSatoshis = sinon.spy()
+        yield corebitcoin.asyncGetAddressesIndividualBalancesSatoshis()
+        corebitcoin.blockchainAPI.asyncGetAddressesIndividualBalancesSatoshis.calledOnce.should.equal(true)
+      })
+    })
+  })
 })

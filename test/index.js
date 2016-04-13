@@ -263,6 +263,46 @@ describe('Datt', function () {
     })
   })
 
+  describe('#asyncGetHotContentAuth', function () {
+    it('should return some content sorted by descending total balance', function () {
+      return asink(function *() {
+        let contentauths = [ContentAuth(), ContentAuth()]
+        let datt = Datt()
+        datt.corecontent = {
+          asyncGetRecentContentAuth: () => Promise.resolve(contentauths)
+        }
+        datt.corebitcoin = {
+          asyncGetAddressesIndividualBalancesSatoshis: () => [
+            {confirmedBalanceSatoshis: 0, unconfirmedBalanceSatoshis: 0, totalBalanceSatoshis: 0},
+            {confirmedBalanceSatoshis: 0, unconfirmedBalanceSatoshis: 5000, totalBalanceSatoshis: 5000}
+          ]
+        }
+        let contentauths2 = yield datt.asyncGetHotContentAuth()
+        contentauths2[0].should.equal(contentauths[1])
+        contentauths2[1].should.equal(contentauths[0])
+      })
+    })
+
+    it('should return some content sorted by descending total balance', function () {
+      return asink(function *() {
+        let contentauths = [ContentAuth(), ContentAuth()]
+        let datt = Datt()
+        datt.corecontent = {
+          asyncGetRecentContentAuth: () => Promise.resolve(contentauths)
+        }
+        datt.corebitcoin = {
+          asyncGetAddressesIndividualBalancesSatoshis: () => [
+            {confirmedBalanceSatoshis: 5000, unconfirmedBalanceSatoshis: 0, totalBalanceSatoshis: 5000},
+            {confirmedBalanceSatoshis: 5000, unconfirmedBalanceSatoshis: 5000, totalBalanceSatoshis: 10000}
+          ]
+        }
+        let contentauths2 = yield datt.asyncGetHotContentAuth()
+        contentauths2[0].should.equal(contentauths[1])
+        contentauths2[1].should.equal(contentauths[0])
+      })
+    })
+  })
+
   describe('#asyncGetContentAuth', function () {
     it('should return a known piece of content', function () {
       return asink(function *() {

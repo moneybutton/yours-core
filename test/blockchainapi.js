@@ -81,6 +81,22 @@ describe('BlockchainAPI', function () {
     })
   })
 
+  describe('#asyncGetAddressesIndividualBalancesSatoshis', function () {
+    it('should get balances for these known addresses', function () {
+      return asink(function *() {
+        let address1 = Address().fromString('12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX')
+        let address2 = Address().fromString('1MUSZkXpQE3mq6Hq3LpUrvmapKFkguTc3N')
+        let balances = yield BlockchainAPI().asyncGetAddressesIndividualBalancesSatoshis([address1, address2])
+        balances[0].confirmedBalanceSatoshis.should.greaterThan(-1)
+        balances[0].unconfirmedBalanceSatoshis.should.greaterThan(-1)
+        balances[0].totalBalanceSatoshis.should.greaterThan(-1)
+        balances[1].confirmedBalanceSatoshis.should.greaterThan(-1)
+        balances[1].unconfirmedBalanceSatoshis.should.greaterThan(-1)
+        balances[1].totalBalanceSatoshis.should.greaterThan(-1)
+      }, this)
+    })
+  })
+
   describe('#asyncGetAddressConfirmedBalanceSatoshis', function () {
     it('should return balance of this known address', function () {
       return asink(function *() {
