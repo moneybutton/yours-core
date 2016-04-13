@@ -64,6 +64,53 @@ describe('DBContentAuth', function () {
     })
   })
 
+  describe('#asyncGetRecent', function () {
+    it('should return several contentauths after inserting some contentauths', function () {
+      return asink(function *() {
+        let keypair = Keypair().fromRandom()
+
+        let content1 = Content().fromObject({body: 'test body 1'})
+        let contentauth1 = ContentAuth().setContent(content1)
+        contentauth1.fromObject({
+          blockhashbuf: blockhashbuf,
+          blockheightnum: blockheightnum
+        })
+        contentauth1.sign(keypair)
+
+        let content2 = Content().fromObject({body: 'test body 2'})
+        let contentauth2 = ContentAuth().setContent(content2)
+        contentauth2.fromObject({
+          blockhashbuf: blockhashbuf,
+          blockheightnum: blockheightnum
+        })
+        contentauth2.sign(keypair)
+
+        let content3 = Content().fromObject({body: 'test body 3'})
+        let contentauth3 = ContentAuth().setContent(content3)
+        contentauth3.fromObject({
+          blockhashbuf: blockhashbuf,
+          blockheightnum: blockheightnum
+        })
+        contentauth3.sign(keypair)
+
+        yield DBContentAuth(db).asyncSave(contentauth1)
+        yield DBContentAuth(db).asyncSave(contentauth2)
+        yield DBContentAuth(db).asyncSave(contentauth3)
+
+        let contentauths = yield DBContentAuth(db).asyncGetRecent()
+        contentauths.length.should.greaterThan(0)
+        // content should be in the reverse order it was inserted
+        contentauths[0].getContent().body.should.equal('test body 3')
+        contentauths[1].getContent().body.should.equal('test body 2')
+        contentauths[2].getContent().body.should.equal('test body 1')
+        for (let contentauth of contentauths) {
+          ;(contentauth instanceof ContentAuth).should.equal(true)
+          should.exist(contentauth.cachehash)
+        }
+      }, this)
+    })
+  })
+
   describe('#asyncGetAll', function () {
     it('should return several contentauths after inserting some contentauths', function () {
       return asink(function *() {

@@ -119,7 +119,8 @@
     "fullnode": "0.13.13",
     "http-proxy": "1.13.2",
     "isomorphic-fetch": "2.2.1",
-    "pouchdb": "5.3.1"
+    "pouchdb": "5.3.1",
+    "pouchdb-find": "0.9.0"
   },
   "devDependencies": {
     "babel-core": "6.7.6",

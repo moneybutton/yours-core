@@ -27,10 +27,6 @@ describe('CoreContent', function () {
     should.exist(CoreContent())
   })
 
-  describe('#asyncGetRecentContentAuth', function () {
-    // TODO: Fill in.
-  })
-
   describe('#asyncNewContentAuth', function () {
     it('should get a new contentauth', function () {
       return asink(function *() {

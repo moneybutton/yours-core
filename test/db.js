@@ -3,6 +3,7 @@
 let DB = require('../lib/db')
 let asink = require('asink')
 let should = require('should')
+let sinon = require('sinon')
 
 describe('DB', function () {
   let db = DB('datt-testdatabase')
@@ -65,6 +66,17 @@ describe('DB', function () {
         let doc2 = yield db.asyncGet(doc._id)
         doc2.data.should.equal('test-data')
       })
+    })
+  })
+
+  describe('#asyncFind', function () {
+    it('should call pouchdb.find', function () {
+      let db = DB()
+      db.pouchdb = {
+        find: sinon.spy()
+      }
+      db.asyncFind()
+      db.pouchdb.find.calledOnce.should.equal(true)
     })
   })
 })
