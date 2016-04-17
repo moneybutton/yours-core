@@ -22,7 +22,7 @@ We launched the prototype in December, and now we’re holding the second great
 channel. The event will go from Feb. 26 - Feb. 28, starting at 2pm PT Friday.
 This is an open event for anyone interested in the future of content
 monetization -- all are welcome. To join us for the event, simply [sign up for
-our Slack channel here](http://datt-slackin.herokuapp.com/), and be online
+our Slack channel here](http://yours-slackin.herokuapp.com/), and be online
 during the hackathon. Some of us located in the San Francisco Bay Area will
 also be at the LAUNCH Hackathon during this time. You can sign up for that at
 [launchhackathon.com](http://www.launchhackathon.com/).

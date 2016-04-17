@@ -52,7 +52,7 @@ basic technology in place - but the MVP actually uses the technology in an
 intelligent, albeit minimal way to actually create value for end users.
 
 If you are interested in contributing to Datt, please [join our Slack
-channel](http://datt-slackin.herokuapp.com/). The most important thing right
+channel](http://yours-slackin.herokuapp.com/). The most important thing right
 now is simply writing the software. However, there are lots of other ways to
 contribute, including expanding on our business, community, product and
 technology plans. Also feel free to contribute to

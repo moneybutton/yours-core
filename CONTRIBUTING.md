@@ -13,4 +13,4 @@ and issue a pull request to the appropriate repo. Someone with commit access
 accept it if it enhanes the project.
 
 To be more involved in Datt, you can join our Slack group [by signing up
-here](https://datt-slackin.herokuapp.com/).
+here](https://yours-slackin.herokuapp.com/).

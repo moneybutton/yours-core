@@ -34,7 +34,7 @@ Datt is open-source and invites contributions from anyone who wants to help.
 There are two primary ways we organize activity to help build Datt: The first
 is our Slack channel, which serves as our headquarters of communication. You
 should sign up for our Slack channel
-[here](http://datt-slackin.herokuapp.com/). You should read what people are
+[here](http://yours-slackin.herokuapp.com/). You should read what people are
 saying in Slack, and consider scrolling back through history and reading older
 comments in the Slack channel to have a better idea what has been done and what
 is going on.
