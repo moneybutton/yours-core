@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [Facebook considers letting users add a tip jar to make money from posts](http://www.theverge.com/2016/4/19/11455840/facebook-tip-jar-partner-program-monetization)
 - [We’re building a decentralized YouTube with micropayments (PopChest)](https://medium.com/pop-chest/we-re-building-a-decentralized-youtube-with-micropayments-db9a08345319)
 - [Media Websites Battle Faltering Ad Revenue and Traffic](http://www.nytimes.com/2016/04/18/business/media-websites-battle-falteringad-revenue-and-traffic.html?_r=0)
 - [Startup Legion M Launches Crowdfunded Studio That Lets Fans Buy Piece of Company](http://variety.com/2016/digital/news/legion-m-crowdfunded-studio-jobs-act-1201726003/)
