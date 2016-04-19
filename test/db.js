@@ -6,7 +6,7 @@ let should = require('should')
 let sinon = require('sinon')
 
 describe('DB', function () {
-  let db = DB('datt-testdatabase')
+  let db = DB('yourscore-testdatabase')
   let doc = {
     _id: 'test-document-id',
     data: 'test-data'

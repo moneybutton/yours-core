@@ -12,10 +12,10 @@
     "test-both": "npm run test-node && npm run test-karma",
     "test": "npm run test-format && npm run test-both",
     "test-files": "./node_modules/.bin/mocha --compilers .jsx:babel-core/register --require=fullnode",
-    "serve-localapi-mainnet": "DATT_BLOCKCHAIN_API_URI=http://localhost:3001/insight-api/ ./node_modules/.bin/gulp serve",
-    "serve-localapi-testnet": "FULLNODE_NETWORK=testnet DATT_BLOCKCHAIN_API_URI=http://localhost:3002/insight-api/ ./node_modules/.bin/gulp serve",
+    "serve-localapi-mainnet": "YOURS_CORE_BLOCKCHAIN_API_URI=http://localhost:3001/insight-api/ ./node_modules/.bin/gulp serve",
+    "serve-localapi-testnet": "FULLNODE_NETWORK=testnet YOURS_CORE_BLOCKCHAIN_API_URI=http://localhost:3002/insight-api/ ./node_modules/.bin/gulp serve",
     "serve-mainnet": "./node_modules/.bin/gulp serve",
-    "serve-testnet": "FULLNODE_NETWORK=testnet DATT_BLOCKCHAIN_API_URI=https://test-insight.bitpay.com/api/ ./node_modules/.bin/gulp serve"
+    "serve-testnet": "FULLNODE_NETWORK=testnet YOURS_CORE_BLOCKCHAIN_API_URI=https://test-insight.bitpay.com/api/ ./node_modules/.bin/gulp serve"
   },
   "engines": {
     "node": ">=4.3.0"
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dattnetwork/datt.git"
+    "url": "https://github.com/yoursnetwork/yours.git"
   },
   "contributors": [
     {

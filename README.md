@@ -1,30 +1,31 @@
-Datt
-====
-Datt is a decentralized content sharing platform with integrated payments. It
-is currently undergoing heavy development and has not yet reached alpha. [Our
-issues are tracked on GitHub](https://github.com/dattnetwork/datt/issues).
-Check out the [blog](http://blog.datt.co) or
-[twitter](https://twitter.com/dattnetwork) to stay up-to-date on progress.
+Yours Core
+==========
+Yours Core is a decentralized content sharing platform with integrated
+payments. It is currently undergoing heavy development and has not yet reached
+alpha. [Our issues are tracked on
+GitHub](https://github.com/yoursnetwork/yours-core/issues).  Check out the
+[blog](http://blog.yourscore.co) or
+[twitter](https://twitter.com/yoursnetwork) to stay up-to-date on progress.
 
-How To Test And Develop Datt
-----------------------------
-Datt can be built and run on Linux. It is not tested on Mac or Windows, but
+How To Test And Develop Yours Core
+----------------------------------
+Yours Core can be built and run on Linux. It is not tested on Mac or Windows, but
 should work with minimal or no changes on those platforms. To help program the
-Datt application, first be sure you are running node 4.3:
+Yours Core application, first be sure you are running node 4.3:
 ```
 > node --version
 v4.3.1
 ```
 Then clone this repo:
 ```
-git clone https://github.com/dattnetwork/datt.git
+git clone https://github.com/yoursnetwork/yours-core.git
 ```
 Then install the dependencies:
 ```
-cd datt
+cd your-score
 npm install
 ```
-To run all of Datt tests:
+To run all of Yours Core tests:
 ```
 npm test
 ```
@@ -61,7 +62,7 @@ http://localhost:3044/
 
 Folder Layout
 -------------
-This repo contains both the main datt application as well as the landing page,
+This repo contains both the main yourscore application as well as the landing page,
 blog, documentation, mockups and other media, and a second unfinished UI. The
 folders are as follows:
 - bin/ - Executable files, particularly for running the app servers.
@@ -71,15 +72,15 @@ folders are as follows:
 - landing/ - The landing page content and source.
 - lib/ - The core logic of the database and API.
 - media/ - Logos, mockups, and template HTML.
-- server/ - The Datt servers.
-- test/ - Tests for datt.
+- server/ - The Yours Core servers.
+- test/ - Tests for yourscore.
 
 Environment Variables
 ---------------------
-- `DATT_JS_BASE_URL` - Default "/". The public-facing URL where the javascript
+- `YOURS_CORE_JS_BASE_URL` - Default "/". The public-facing URL where the javascript
   files are hosted, usually either "/" or "/js/".
-- `DATT_JS_BUNDLE_FILE` - Default "datt.js". The Datt bundle file.
-- `DATT_JS_TESTS_FILE` - Default "datt-tests.js". The tests file - where the
+- `YOURS_CORE_JS_BUNDLE_FILE` - Default "yours-core.js". The Yours Core bundle file.
+- `YOURS_CORE_JS_TESTS_FILE` - Default "yours-core-tests.js". The tests file - where the
   browser tests are located.
-- `DATT_BLOCKCHAIN_API_URI` - Default "https://insight.bitpay.com/api/".
+- `YOURS_CORE_BLOCKCHAIN_API_URI` - Default "https://insight.bitpay.com/api/".
 - `FULLNODE_NETWORK` - Default "mainnet". Can also be "testnet".

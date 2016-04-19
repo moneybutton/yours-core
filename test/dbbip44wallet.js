@@ -7,7 +7,7 @@ let asink = require('asink')
 let should = require('should')
 
 describe('DBBIP44Wallet', function () {
-  let db = DB('datt-testdatabase')
+  let db = DB('yourscore-testdatabase')
 
   before(function () {
     return db.asyncInitialize()

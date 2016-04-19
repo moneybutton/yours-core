@@ -7,9 +7,8 @@ npm-debug.log
 *~
 
 build/bootstrap.css
-build/datt.js
-build/datt-react.js
-build/datt-tests.js
+build/yours-core.js
+build/yours-core-tests.js
 build/mocha.css
 build/mocha.js
 build/tests.js

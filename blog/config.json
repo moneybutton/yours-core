@@ -1,8 +1,8 @@
 {
   "locals": {
-    "url": "http://blog.datt.co",
-    "name": "Datt Blog",
-    "owner": "Datt, Inc.",
+    "url": "http://blog.yourscore.co",
+    "name": "Yours Engineering",
+    "owner": "Yours",
     "description": "It's cool when users own their content."
   },
   "plugins": [

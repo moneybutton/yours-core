@@ -2,8 +2,8 @@
  * Configuration
  * =============
  *
- * These are Datt-wide configuration settings. Set these environment variables
- * to change the behavior of Datt.
+ * These are YoursCore-wide configuration settings. Set these environment variables
+ * to change the behavior of YoursCore.
  */
 'use strict'
 require('fullnode/config')
@@ -14,20 +14,20 @@ require('fullnode/config')
 // directory. If you wish to put your javascript somewhere other than root,
 // specify it by setting this environment variable before building. Some people
 // will also need it if they need to put their js in some specific location.
-if (!process.env.DATT_JS_BASE_URL) {
-  process.env.DATT_JS_BASE_URL = '/'
+if (!process.env.YOURS_CORE_JS_BASE_URL) {
+  process.env.YOURS_CORE_JS_BASE_URL = '/'
 }
 
-if (!process.env.DATT_JS_BUNDLE_FILE) {
-  process.env.DATT_JS_BUNDLE_FILE = 'datt.js'
+if (!process.env.YOURS_CORE_JS_BUNDLE_FILE) {
+  process.env.YOURS_CORE_JS_BUNDLE_FILE = 'yours-core.js'
 }
 
-if (!process.env.DATT_JS_TESTS_FILE) {
-  process.env.DATT_JS_TESTS_FILE = 'datt-tests.js'
+if (!process.env.YOURS_CORE_JS_TESTS_FILE) {
+  process.env.YOURS_CORE_JS_TESTS_FILE = 'yours-core-tests.js'
 }
 
-if (!process.env.DATT_BLOCKCHAIN_API_URI) {
-  process.env.DATT_BLOCKCHAIN_API_URI = 'https://insight.bitpay.com/api/'
+if (!process.env.YOURS_CORE_BLOCKCHAIN_API_URI) {
+  process.env.YOURS_CORE_BLOCKCHAIN_API_URI = 'https://insight.bitpay.com/api/'
 }
 
 module.exports = process.env

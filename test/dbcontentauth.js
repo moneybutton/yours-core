@@ -14,7 +14,7 @@ describe('DBContentAuth', function () {
   let blockhashbuf = BR(new Buffer(blockidhex, 'hex')).readReverse()
   let blockheightnum = 376949
   let hashbuf
-  let db = DB('datt-testdatabase')
+  let db = DB('yourscore-testdatabase')
 
   before(function () {
     return db.asyncInitialize()

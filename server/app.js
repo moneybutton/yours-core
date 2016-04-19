@@ -19,7 +19,7 @@ module.exports.createAppServer = function createAppServer (port) {
   app.all('/blockchainapi/*', (req, res) => {
     req.url = req.url.replace('/blockchainapi/', '/')
     apiProxy.web(req, res, {
-      target: config.DATT_BLOCKCHAIN_API_URI,
+      target: config.YOURS_CORE_BLOCKCHAIN_API_URI,
       changeOrigin: true
     })
   })

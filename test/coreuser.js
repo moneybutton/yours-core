@@ -8,7 +8,7 @@ let asink = require('asink')
 let should = require('should')
 
 describe('CoreUser', function () {
-  let db = DB('datt-testdatabase')
+  let db = DB('yourscore-testdatabase')
   let coreuser = CoreUser(db)
   let blockidhex = '00000000000000000e6188a4cc93e3d3244b20bfdef1e9bd9db932e30f3aa2f1'
   let blockhashbuf = BR(new Buffer(blockidhex, 'hex')).readReverse()

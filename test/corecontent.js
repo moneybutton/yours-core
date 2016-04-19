@@ -12,7 +12,7 @@ let mocks = require('./mocks')
 describe('CoreContent', function () {
   let contentauth
   let user = User().fromRandom()
-  let db = DB('datt-testdatabase')
+  let db = DB('yourscore-testdatabase')
 
   before(function () {
     return db.asyncInitialize()

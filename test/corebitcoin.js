@@ -14,7 +14,7 @@ let should = require('should')
 let sinon = require('sinon')
 
 describe('CoreBitcoin', function () {
-  let db = DB('datt-testdatabase')
+  let db = DB('yourscore-testdatabase')
   let corebitcoin = CoreBitcoin(undefined, db, DBBIP44Wallet(db))
 
   before(function () {

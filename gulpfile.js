@@ -44,7 +44,7 @@ function task_build_fullnode () {
 
 gulp.task('build-fullnode', task_build_fullnode)
 
-function task_build_datt () {
+function task_build_yourscore () {
   require('./config')
 
   return browserify({debug: false})
@@ -54,10 +54,10 @@ function task_build_datt () {
     .transform(babelify.configure({ignore: /node_modules/, presets: ['es2015']}))
     .require(require.resolve('./lib'), {entry: true})
     .bundle()
-    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_JS_BUNDLE_FILE)))
+    .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.YOURS_CORE_JS_BUNDLE_FILE)))
 }
 
-gulp.task('build-datt', task_build_datt)
+gulp.task('build-yourscore', task_build_yourscore)
 
 function task_build_css () {
   return fs.createReadStream(path.join(__dirname, 'node_modules', 'bootstrap', 'dist', 'css', 'bootstrap.css'))
@@ -103,7 +103,7 @@ function task_build_tests () {
       }
       b.bundle()
         .on('error', reject)
-        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.DATT_JS_TESTS_FILE)))
+        .pipe(fs.createWriteStream(path.join(__dirname, 'build', process.env.YOURS_CORE_JS_TESTS_FILE)))
         .on('finish', resolve)
     })
   })
@@ -111,12 +111,12 @@ function task_build_tests () {
 
 gulp.task('build-tests', task_build_tests)
 
-gulp.task('build', ['build-fullnode-worker', 'build-fullnode', 'build-datt', 'build-mocha', 'build-tests'])
+gulp.task('build', ['build-fullnode-worker', 'build-fullnode', 'build-yourscore', 'build-mocha', 'build-tests'])
 
 gulp.task('build-karma-url', () => {
   // karma serves static files, including js files, from /base/
   process.env.FULLNODE_JS_BASE_URL = '/base/'
-  process.env.DATT_JS_BASE_URL = '/base/'
+  process.env.YOURS_CORE_JS_BASE_URL = '/base/'
 })
 
 gulp.task('build-karma', ['build-karma-url', 'build'])

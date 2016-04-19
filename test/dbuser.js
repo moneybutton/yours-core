@@ -7,7 +7,7 @@ let asink = require('asink')
 let should = require('should')
 
 describe('DBUser', function () {
-  let db = DB('datt-testdatabase')
+  let db = DB('yourscore-testdatabase')
   let user
 
   before(function () {
