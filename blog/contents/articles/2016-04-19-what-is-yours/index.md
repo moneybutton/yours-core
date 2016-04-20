@@ -4,7 +4,7 @@ author: ryanxcharles
 date: 2016-04-17
 template: article.jade
 ---
-[Yours](http://yours.press) is a way for writers, musicians, and video
+[Yours](http://www.yours.network) is a way for writers, musicians, and video
 producers to earn more money for their content by incentivizing people to pay
 for it. Unlike many media companies, Yours is not funded by advertisements.
 Yours is funded by people who send payments to creators, with a twist: the
@@ -41,7 +41,7 @@ from doing so.
 Yours is the result of a community effort to solve the content monetization
 problem. Hundreds of people contributed to our solution. The first version will
 be launched in May, 2016. To get invited to our early preview, please [sign up
-for our mailing list](http://yours.press) or [join us on
+for our mailing list](http://www.yours.network) or [join us on
 Slack](https://yours-slackin.herokuapp.com/).
 
 This article was originally published on [The Ryan X. Charles

@@ -21,17 +21,18 @@ the investor may not profit, but at least they’ve still paid something to the
 creator of content they like.
 
 A few weeks ago my collaborators and I built a product that does this:
-[Yours](http://yours.press).  The mission of Yours is to solve the incentives
-problem of social media. We want to make it possible for content creators to
-get paid, and to do so, we want to make it profitable to pay them. This aligns
-the incentives of everyone who uses Yours. Not only do content creators get
-paid for producing good content, but people who are good at curating (the
-“investors”), also get paid.  Of course, not everyone will profit — people who
-are not very good at creating content won’t get paid much, and people who
-aren’t very good at curating may lose what they put in. But this is exactly how
-it should be: The people creating and curating valuable content profit, and the
-people creating and curating content that isn’t valuable either don’t get paid
-or lose money. The right behavior is encouraged — good content wins.
+[Yours](http://www.yours.network).  The mission of Yours is to solve the
+incentives problem of social media. We want to make it possible for content
+creators to get paid, and to do so, we want to make it profitable to pay them.
+This aligns the incentives of everyone who uses Yours. Not only do content
+creators get paid for producing good content, but people who are good at
+curating (the “investors”), also get paid.  Of course, not everyone will
+profit — people who are not very good at creating content won’t get paid much,
+and people who aren’t very good at curating may lose what they put in. But this
+is exactly how it should be: The people creating and curating valuable content
+profit, and the people creating and curating content that isn’t valuable either
+don’t get paid or lose money. The right behavior is encouraged — good content
+wins.
 
 It would be technically easy to build Yours with a dependency on the legacy
 financial system. However, it would be socially difficult to convince third

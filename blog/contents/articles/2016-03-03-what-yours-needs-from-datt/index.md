@@ -7,10 +7,10 @@ template: article.jade
 Yours is a product based on Datt we developed at the LAUNCH Hackathon last
 weekend ([1](/articles/2016-02-26-yours/),
 [2](/articles/2016-02-26-making-it-yours/),
-[3](/articles/2016-02-29-summary-of-hackathon/), [4](http://yours.press)).
-Yours needs some but not all the features of Datt to reach MVP. In order to
-reach MVP of Yours sooner rather than later, I suggest it needs the following
-properties of Datt:
+[3](/articles/2016-02-29-summary-of-hackathon/),
+[4](http://www.yours.network)).  Yours needs some but not all the features of
+Datt to reach MVP. In order to reach MVP of Yours sooner rather than later, I
+suggest it needs the following properties of Datt:
 - Yours does not need genuine micropayments. It is worth experimenting with
   moderately large payments such as at least $0.25 or perhaps $1.00. The
   current Datt wallet is almost good enough for Yours. We just need to make

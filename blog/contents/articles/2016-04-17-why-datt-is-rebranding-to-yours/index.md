@@ -21,7 +21,7 @@ myself to what domain names were available, and the best I could come up with
 was “Gild Forge”. No one liked that one. Finally, before the LAUNCH Hackathon
 in February, I brainstormed names again, this time unconstrained by whether the
 domain name was available or not. One name stood
-out — “[Yours](http://yours.press/)”.
+out — “[Yours](http://www.yours.network/)”.
 
 What would you call a social network where you owned your content? Where your
 work was correctly attributed to you? Where you got paid for the work that you

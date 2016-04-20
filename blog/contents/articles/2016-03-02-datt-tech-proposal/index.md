@@ -5,7 +5,7 @@ date: 2016-03-02
 template: article.jade
 ---
 
-*I think we should consider splitting the project into two parts (similar to the Datt-Yours split). We could use our core technology to build a "framework for building decentralized web apps with micropayment integration". On top of that we and others could build apps like [Yours](http://yours.press/).*
+*I think we should consider splitting the project into two parts (similar to the Datt-Yours split). We could use our core technology to build a "framework for building decentralized web apps with micropayment integration". On top of that we and others could build apps like [Yours](http://www.yours.network/).*
 
 The advantage of the split would be that the base layer would be of interest to a much larger audience (people who want to build apps on top of it). These would be more likely to contribute to the open source project. We’d also be de-risking the company because launching a consumer product is a bit of a gamble. If there are several applications we’d only need one of them to work (not necessarily the one built by us).
 
