@@ -286,4 +286,5 @@ Press
 - [2016-06-06: Funding the Bigger Blockchain Space (several quotes from RXC)](https://btcmanager.com/news/finance/the-bigger-blockchain-space-venture-capital-flows-not-to-bitcoin-startups-alone/)
 - [2016-04-10: CoinDesk: Why Datt is Sticking With Bitcoin Over Ethereum (CoinDesk republished article)](http://www.coindesk.com/why-developer-bitcoin-ethereum/)
 - [2016-04-13: Datt is now Yours and has a new way to monetize web content](http://tldrbtc.com/2016/04/13/datt-is-now-yours-and-has-a-new-way-to-monetize-web-content/)
+- [2016-04-14: EconoTimes: Bitcoin-Powered Social Media Platform Datt To Rebrand As Yours](Bitcoin-Powered Social Media Platform Datt To Rebrand As Yours)
 - [2016-04-17: Bitcoin.com on Datt rebranding to Yours](https://news.bitcoin.com/datt-roadmap-includes-rebranding-trustless-bitcoin-micropayments/)
