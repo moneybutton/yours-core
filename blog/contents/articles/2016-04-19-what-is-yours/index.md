@@ -1,7 +1,7 @@
 ---
 title: "What is Yours?"
 author: ryanxcharles
-date: 2016-04-17
+date: 2016-04-19
 template: article.jade
 ---
 [Yours](http://www.yours.network) is a way for writers, musicians, and video

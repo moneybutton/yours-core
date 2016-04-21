@@ -1,7 +1,7 @@
 ---
 title: "How Yours Will Use the Lightning Network"
 author: ryanxcharles
-date: 2016-04-17
+date: 2016-04-21
 template: article.jade
 ---
 [Yours](https://www.yours.network/) is a marketplace for content where
