@@ -251,6 +251,9 @@ Comment threads
 - [2016-04-13: r/btc thread on "Yours is now Datt" article](https://www.reddit.com/r/btc/comments/4emn6i/datt_is_now_yours_and_has_a_new_way_to_monetize/)
 - [2016-04-19: r/bitcoin thread on "What is Yours?"](https://www.reddit.com/r/Bitcoin/comments/4fje1o/ryan_charles_ceo_of_yours_formerly_datt/)
 - [2016-04-21: r/bitcoin thread on Clemens' new document about lightning network](https://www.reddit.com/r/Bitcoin/comments/4ftlaf/clemens_ley_payment_channel_engineer_at_yours/)
+- [2016-04-22: r/btc thread on RXC tweet](https://www.reddit.com/r/btc/comments/4fw3vp/ryan_x_charles_on_twitter_coinbase_integrated/)
+- [2016-04-22: r/btc thread on Clemens' document about lightning](https://www.reddit.com/r/btc/comments/4fvavq/a_gentle_introduction_to_the_lightning_network/)
+- [2016-04-22: r/btc thread about Steven McKie's tweet about using bitcoin](https://www.reddit.com/r/btc/comments/4fusx1/yours_on_twitter_on_yours_we_will_not_be_using_a/)
 
 Press
 -----
