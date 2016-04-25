@@ -132,6 +132,6 @@ YouTuber? Wordpress blogger? Instagram celebs? We want to help empower your
 creations from all over the web.
 
 We hope you join us for the soft launch in May. Visit our site at
-(yours.network)[https://www.yours.network] to site up to be notified with
+[yours.network](https://www.yours.network) to site up to be notified with
 information about the preview, and check out our Engineering blog:
-(engineering.yours.network)[https://engineering.yours.network]
+[engineering.yours.network](https://engineering.yours.network)
