@@ -22,7 +22,7 @@ git clone https://github.com/yoursnetwork/yours-core.git
 ```
 Then install the dependencies:
 ```
-cd your-score
+cd yours-core
 npm install
 ```
 To run all of Yours Core tests:
