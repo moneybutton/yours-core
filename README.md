@@ -67,7 +67,6 @@ Folder Layout
 - build/ - Static files and build files for the browser.
 - docs/ - Documentation on business, product, community, technology.
 - lib/ - The core logic of the database and API.
-- media/ - Logos, mockups, and template HTML.
 - server/ - The Yours Core servers.
 - test/ - Tests for yourscore.
 
