@@ -62,14 +62,10 @@ http://localhost:3044/
 
 Folder Layout
 -------------
-This repo contains both the main yourscore application as well as the landing page,
-blog, documentation, mockups and other media, and a second unfinished UI. The
-folders are as follows:
 - bin/ - Executable files, particularly for running the app servers.
-- blog/ - The blog content and source.
+- blog/ - The engineering blog content and source.
 - build/ - Static files and build files for the browser.
 - docs/ - Documentation on business, product, community, technology.
-- landing/ - The landing page content and source.
 - lib/ - The core logic of the database and API.
 - media/ - Logos, mockups, and template HTML.
 - server/ - The Yours Core servers.
