@@ -3,6 +3,7 @@ Links, Resources and Related Projects
 
 Articles and Links
 ------------------
+- [How reddit plans to earn money (more sophisticated ads)](http://fortune.com/reddit-real-business/)
 - [Fired Reddit exec quietly launches ‘Imzy,’ a warmer, fuzzier Reddit](http://thenextweb.com/insider/2016/04/22/fired-reddit-exec-quietly-launches-izzy-a-warmer-fuzzier-reddit/)
 - [Beautyon comments on smart contracts and the definitions of words](https://medium.com/@beautyon_/well-done-ryan-for-doing-this-incredible-work-ac8b8cb0c17f)
 - [Medium raises $50 million again](http://venturebeat.com/2016/04/21/medium-raises-50-million-while-it-can-adds-ben-horowitz-and-judy-estrin-to-board/)
